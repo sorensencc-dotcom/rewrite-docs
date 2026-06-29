@@ -53,7 +53,9 @@ export class EnforcementEngine {
       threshold: this.criticalBurnRateThreshold,
     });
 
-    const rollbackResult = await executeCanaryRollback();
+    // TODO: Map sloId to proposalId via governance_config
+    // For now, assume sloId is associated with proposal
+    const rollbackResult = await executeCanaryRollback(result.sloId);
 
     if (rollbackResult.success && rollbackResult.completeMs <= 300) {
       return {

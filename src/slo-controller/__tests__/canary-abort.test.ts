@@ -12,7 +12,7 @@ describe('canary-abort', () => {
   test('triggerCanaryAbort emits abort signal', async () => {
     const emitSpy = jest.spyOn(canaryEventBus, 'emit');
 
-    await triggerCanaryAbort({
+    await triggerCanaryAbort('prop-test-123', {
       reason: 'test_violation',
       sloId: 'latency_p99',
       burnRate: 15,
@@ -26,7 +26,7 @@ describe('canary-abort', () => {
   });
 
   test('triggerCanaryAbort records metric', async () => {
-    await triggerCanaryAbort({
+    await triggerCanaryAbort('prop-test-123', {
       reason: 'test_violation',
     });
 

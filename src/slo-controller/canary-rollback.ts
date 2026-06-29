@@ -19,7 +19,7 @@ export async function executeCanaryRollback(proposalId: string): Promise<Rollbac
   } as any);
 
   try {
-    // Query previous stable version from canary_state_history
+    // Query previous version from canary_state_history
     const rows = await pgQuery(
       `SELECT previous_version FROM canary_state_history
        WHERE proposal_id = $1 ORDER BY recorded_at DESC LIMIT 1`,

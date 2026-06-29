@@ -20,25 +20,38 @@ type ViolationClass =
 type AbortSeverity = 'soft' | 'hard';
 
 export async function triggerCanaryAbort(
-  proposalId: string,
-  context: AbortContext
+  proposalId: string | AbortContext,
+  context?: AbortContext
 ): Promise<void> {
   const startTime = Date.now();
 
+  let finalProposalId: string;
+  let finalContext: AbortContext;
+
+  if (typeof proposalId === 'object' && !context) {
+    finalContext = proposalId;
+    finalProposalId = finalContext.sloId ?? 'unknown_proposal';
+  } else {
+    finalProposalId = proposalId as string;
+    finalContext = context || { reason: 'unknown_violation' };
+  }
+
+  const reason = finalContext.reason ?? 'unknown_violation';
+
   try {
     // Step 1: Record abort event to state machine
-    await recordAbortEvent(proposalId, context.reason);
+    await recordAbortEvent(finalProposalId, reason);
 
     // Step 2: Compute abort severity
-    const violationClass = classifyViolationFromAbort(context.reason);
+    const violationClass = classifyViolationFromAbort(reason);
     const severity = computeAbortSeverity(violationClass);
 
     // Step 3: Rollback to previous version
-    const rollbackResult = await executeCanaryRollback(proposalId);
+    const rollbackResult = await executeCanaryRollback(finalProposalId);
 
     // Step 4: Append abort lineage
-    await appendAbortLineage(proposalId, {
-      abortReason: context.reason,
+    await appendAbortLineage(finalProposalId, {
+      abortReason: reason,
       severity,
       rollbackSuccess: rollbackResult.success,
       previousVersion: rollbackResult.previousVersion,
@@ -49,8 +62,8 @@ export async function triggerCanaryAbort(
     const signal: CanarySignal = {
       type: 'abort',
       timestamp: Date.now(),
-      reason: context.reason,
-      context: { ...context, proposalId, severity },
+      reason,
+      context: { ...finalContext, proposalId: finalProposalId, severity },
     };
 
     // Record metric
@@ -60,12 +73,12 @@ export async function triggerCanaryAbort(
     canaryEventBus.emit('abort', signal);
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : 'unknown error';
-    console.error(`[canary-abort] failed for proposal ${proposalId}:`, errorMsg);
+    console.error(`[canary-abort] failed for proposal ${finalProposalId}:`, errorMsg);
     canaryEventBus.emit('abort', {
       type: 'abort',
       timestamp: Date.now(),
-      reason: context.reason,
-      context: { ...context, proposalId, error: errorMsg },
+      reason,
+      context: { ...finalContext, proposalId: finalProposalId, error: errorMsg },
     } as any);
   }
 }
@@ -83,10 +96,10 @@ function computeAbortSeverity(violationClass: ViolationClass): AbortSeverity {
 
 async function recordAbortEvent(proposalId: string, abortReason: string): Promise<void> {
   // Write to canary_state_history table (PostgreSQL, Phase 5)
-  // Schema columns: proposal_id, state, version, previous_version, snapshot, recorded_at
+  // Schema columns: proposal_id, current_version, previous_version, event_type, recorded_at
   await pgQuery(
-    `INSERT INTO canary_state_history (proposal_id, state, version, previous_version, recorded_at)
-     VALUES ($1, 'abort', '', NULL, CURRENT_TIMESTAMP)`,
+    `INSERT INTO canary_state_history (proposal_id, current_version, previous_version, event_type, recorded_at)
+     VALUES ($1, '', NULL, 'abort', CURRENT_TIMESTAMP)`,
     [proposalId]
   );
 }
