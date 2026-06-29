@@ -44,8 +44,8 @@ jobs:
 
       - name: Push commits and tags
         run: |
-          git push origin HEAD:main
-          git push origin --tags
+          git push origin main
+          git push origin --follow-tags
 
       - name: Upload refresh report
         if: always()
