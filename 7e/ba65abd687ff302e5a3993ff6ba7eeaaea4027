@@ -1,0 +1,161 @@
+src/autonomy/AutonomyAPIServer.ts
+  s_658bf2605d5067::t_4cb4eb30a02005 1-263
+src/autonomy/EXECUTION_POLICY_GUIDE.md
+  s_b7660d9c740629::t_a46476b5fb53c2 1-548
+src/autonomy/ExecutionPolicy.phase-d.test.ts
+  s_b7660d9c740629::t_dbb711d746438f 1-518
+src/autonomy/ExecutionPolicy.test.ts
+  s_b7660d9c740629::t_dc331cdff85e40 1-485
+src/autonomy/ExecutionPolicy.ts
+  s_b7660d9c740629::t_36d7dc32868d1f 1-336
+src/autonomy/ExecutionPolicyInterceptor.test.ts
+  s_b7660d9c740629::t_ebd59eb7662bec 1-225
+src/autonomy/ExecutionPolicyInterceptor.ts
+  s_b7660d9c740629::t_e3fff7f4b8dd78 1-165
+src/autonomy/FireDrillManager.ts
+  s_b7660d9c740629::t_9da8526408adc2 1-92
+src/autonomy/TaskMetadataStore.ts
+  s_b7660d9c740629::t_827617a8a56ca5 1-227
+src/autonomy/__tests__/phase-23-2-integration.test.ts
+  s_b7660d9c740629::t_88bcc36074b439 1-343
+src/autonomy/adapters/MemoryStoreAdapter.ts
+  s_b7660d9c740629::t_5594f4d32d6fd4 1-28
+src/autonomy/routes/__tests__/firedrills-integration.test.ts
+  s_b7660d9c740629::t_904f130a68ff0e 1-63
+src/autonomy/routes/__tests__/memory-governance.test.ts
+  s_b7660d9c740629::t_9f641bc99e2b78 1-108
+src/autonomy/routes/console.ts
+  s_b7660d9c740629::t_0303bfdf75df21 1-399
+src/autonomy/routes/execution.ts
+  s_b7660d9c740629::t_3ac3df4165121f 1-251
+src/autonomy/routes/firedrills.ts
+  s_b7660d9c740629::t_e57a31349e3e8c 1-161
+src/autonomy/routes/governance.ts
+  s_b7660d9c740629::t_b9344d56d1a8c0 1-182
+src/autonomy/routes/mappers/consoleMappers.ts
+  s_b7660d9c740629::t_ec9fc0c67b8092 1-209
+src/autonomy/routes/memory.ts
+  s_b7660d9c740629::t_d48793ea7805a3 1-182
+src/cic-runtime/audit-log/postgres-client.ts
+  s_e9508a1ab58572::t_98e296b604aa2f 1-8
+src/cic-runtime/drift/embedding-cache.ts
+  s_e9508a1ab58572::t_81ebb938d272f2 1-34
+src/cic-runtime/drift/embedding-model-onnx.ts
+  s_e9508a1ab58572::t_9d85cc33cc5f3e 1-41
+src/cic-runtime/firecracker/firecracker-config.ts
+  s_e9508a1ab58572::t_4afe00374f01d4 1-64
+src/cic-runtime/firecracker/firecracker-jailer.ts
+  s_e9508a1ab58572::t_bea462dc7ad1f7 1-27
+src/cic-runtime/firecracker/firecracker-runtime.ts
+  s_e9508a1ab58572::t_1821ada9308fc5 1-55
+src/cic-runtime/firecracker/firecracker-vsock.ts
+  s_e9508a1ab58572::t_251f4d55817a55 1-45
+src/cic-runtime/isolation/enforce-isolation.ts
+  s_d9a91c29232dfe::t_56eb62c9f4a49a 1-41
+src/cic-runtime/sandbox-exec/s3-exec-firecracker-v3.ts
+  s_e9508a1ab58572::t_6f0086be7ec363 1-84
+src/cic-runtime/sandbox-exec/s3-exec-firecracker.ts
+  s_d9a91c29232dfe::t_9becb1e0cf054f 1-92
+src/cic-runtime/sandbox-exec/sandbox-exec-router.ts
+  s_d9a91c29232dfe::t_f32bf74f3d956f 1-35
+src/cic-runtime/tracing/network-tracer.ts
+  s_e9508a1ab58572::t_b21425fe54596b 1-58
+src/cic-runtime/tracing/syscall-tracer.ts
+  s_e9508a1ab58572::t_3d1fc79c8a5e2b 1-83
+src/cic-runtime/tracing/trace-collector.ts
+  s_e9508a1ab58572::t_490c1fa76dab4d 1-56
+src/cic-runtime/tracing/trace-ingest.ts
+  s_e9508a1ab58572::t_3aca10eb5f5b8c 1-53
+src/cic-runtime/tracing/trace-schema.sql
+  s_e9508a1ab58572::t_2c23c1c0bb5e27 1-33
+src/components/CostComputePanel.module.css
+  s_7bbb786c5bdab7::t_722ce4125b6d7b 1-89
+src/components/CostComputePanel.tsx
+  s_7bbb786c5bdab7::t_cd7248216d4443 1-176
+src/components/agents/AgentCard.tsx
+  s_b7660d9c740629::t_2e8e5259dc56b8 1-67
+src/components/agents/AgentDetailPanel.tsx
+  s_b7660d9c740629::t_f6f0ec52e1ec61 1-258
+src/components/agents/Metric.tsx
+  s_b7660d9c740629::t_353a9f06a31ea6 1-16
+src/components/agents/SkillsList.tsx
+  s_b7660d9c740629::t_99f6cbb69e8bb0 1-18
+src/components/agents/StatusPill.tsx
+  s_b7660d9c740629::t_6c3750dec01ba9 1-21
+src/components/cic/Input.tsx
+  s_b7660d9c740629::t_8805692ce351df 1-37
+src/components/cic/Table.tsx
+  s_b7660d9c740629::t_f55774e38fed3a 1-20
+src/components/cic/Tabs.tsx
+  s_b7660d9c740629::t_fa67693f96cf75 1-90
+src/lib/charts/CostCharts.ts
+  s_b7660d9c740629::t_6c8897d1da4da2 1-206
+src/lib/cost/GpuAmortization.ts
+  s_b7660d9c740629::t_35b90165291c88 1-42
+src/lib/cost/modelPricing.ts
+  s_b7660d9c740629::t_5658606c378d16 1-20
+src/lib/notify/CostNotifier.test.ts
+  s_658bf2605d5067::t_f1e88c5a1fffdf 1-127
+src/lib/notify/CostNotifier.ts
+  s_658bf2605d5067::t_86444dd58a9b21 1-273
+src/lib/report/CicCostComputeReport.ts
+  s_b7660d9c740629::t_8ed57076498cbc 1-97
+src/lib/report/renderReportHtml.ts
+  s_b7660d9c740629::t_52c288ef9830b3 1-280
+src/lib/usage/UsageLedger.ts
+  s_b7660d9c740629::t_8d57cc9c274149 1-136
+src/orchestrator/__tests__/routingCostSignals.test.ts
+  s_b7660d9c740629::t_3858d7dc65b0f8 1-211
+src/orchestrator/routingCostSignals.ts
+  s_b7660d9c740629::t_1a6bb43e468752 1-66
+src/ui/console-v3/focus-order.test.tsx
+  s_7bbb786c5bdab7::t_f8e2aac115d423 1-328
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "7eba65abd687ff302e5a3993ff6ba7eeaaea4027",
+  "prompts": {},
+  "sessions": {
+    "s_658bf2605d5067": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ab18ad0c-b44f-4d4b-a24d-5fcf6ffea313",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_7bbb786c5bdab7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cafe39c1-6d11-4ed3-ade6-57281359f45a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_b7660d9c740629": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f4e52b6c-1f36-461e-aa68-6808865d1038",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_d9a91c29232dfe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a334afb9-8d75-4b83-8eb5-8201f5843cb3",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_e9508a1ab58572": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ff02a811-586c-4a20-a727-6f2ce26060d7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
