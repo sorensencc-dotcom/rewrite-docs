@@ -1,0 +1,7 @@
+{
+  "paths": {
+    "trust": "federation/trust",
+    "handoff": "federation/handoff",
+    "agents": "federation/agents"
+  }
+}

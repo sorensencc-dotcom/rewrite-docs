@@ -1,0 +1,9 @@
+{
+  "sources": {
+    "routing": "dist/routing",
+    "sandbox": "dist/sandbox",
+    "onnx": "dist/onnx",
+    "harness": "dist/harness"
+  },
+  "deterministic": true
+}

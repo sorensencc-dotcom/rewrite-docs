@@ -1,0 +1,7 @@
+{
+  "paths": {
+    "acl": "access/acl",
+    "permissions": "access/permissions",
+    "bundles": "access/bundles"
+  }
+}

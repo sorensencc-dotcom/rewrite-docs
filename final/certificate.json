@@ -1,0 +1,8 @@
+{
+  "sandbox3": {
+    "version": "1.0.0",
+    "deterministic": true,
+    "sealed": true,
+    "completed": "2026-06-29T00:00:00Z"
+  }
+}

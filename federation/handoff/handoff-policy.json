@@ -1,0 +1,9 @@
+{
+  "handoffRules": {
+    "cic-api": ["onnx", "sandbox", "harness"],
+    "sandbox": ["cic-api"],
+    "onnx": ["cic-api"],
+    "harness": ["cic-api"]
+  },
+  "deterministic": true
+}

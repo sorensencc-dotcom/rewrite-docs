@@ -1,0 +1,7 @@
+{
+  "paths": {
+    "corpus": "snapshot/corpus",
+    "world": "snapshot/world",
+    "torque": "snapshot/torque"
+  }
+}

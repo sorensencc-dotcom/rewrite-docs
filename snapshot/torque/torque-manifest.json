@@ -1,0 +1,6 @@
+{
+  "adapter": "TorqueQuery",
+  "ingest": "snapshot/corpus/corpus-index.json",
+  "world": "snapshot/world/world-state.json",
+  "deterministic": true
+}

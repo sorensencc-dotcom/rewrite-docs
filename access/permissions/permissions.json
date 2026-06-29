@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "read": ["pods", "services", "deployments"],
+    "write": ["configs", "policies"],
+    "manage": ["routing", "runtime", "network"],
+    "execute": ["harness", "validation"],
+    "invoke": ["onnx"],
+    "spawn": ["sandbox"],
+    "vm-start": ["sandbox"],
+    "vm-stop": ["sandbox"],
+    "infer": ["onnx"]
+  }
+}

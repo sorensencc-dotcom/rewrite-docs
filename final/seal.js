@@ -1,0 +1,25 @@
+/*
+  filename: seal.js
+  version: 1.0.0
+  updated: 2026-06-29
+*/
+
+import fs from "fs";
+import crypto from "crypto";
+
+export function sealLayer(path) {
+  const files = fs.readdirSync(path, { withFileTypes: true });
+  const hash = crypto.createHash("sha256");
+
+  for (const f of files) {
+    const full = `${path}/${f.name}`;
+    if (f.isDirectory()) {
+      hash.update(sealLayer(full));
+    } else {
+      const data = fs.readFileSync(full);
+      hash.update(data);
+    }
+  }
+
+  return hash.digest("hex");
+}

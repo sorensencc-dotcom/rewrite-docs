@@ -1,0 +1,28 @@
+{
+  "layers": {
+    "build": "build/",
+    "packaging": "packaging/",
+    "release": "release/",
+    "ci": "ci/",
+    "nightly": "nightly/",
+    "regression": "regression/",
+    "drift": "drift/",
+    "stability": "stability/",
+    "repro": "repro/",
+    "deployment": "deployment/",
+    "infra": "infra/",
+    "observability": "observability/",
+    "audit": "audit/",
+    "policy": "policy/",
+    "runtime": "runtime/",
+    "storage": "storage/",
+    "network": "network/",
+    "security": "security/",
+    "secrets-engine": "secrets-engine/",
+    "identity": "identity/",
+    "access": "access/",
+    "federation": "federation/",
+    "orchestration": "orchestration/",
+    "snapshot": "snapshot/"
+  }
+}

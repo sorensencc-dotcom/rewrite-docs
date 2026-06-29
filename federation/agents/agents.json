@@ -1,0 +1,8 @@
+{
+  "agents": {
+    "cic-api": { "type": "router", "version": "1.0.0" },
+    "sandbox": { "type": "vm", "version": "1.0.0" },
+    "onnx": { "type": "inference", "version": "1.0.0" },
+    "harness": { "type": "validation", "version": "1.0.0" }
+  }
+}

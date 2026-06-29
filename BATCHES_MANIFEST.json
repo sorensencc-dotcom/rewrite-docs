@@ -1,0 +1,222 @@
+{
+  "manifest": {
+    "title": "CIC Deterministic Stack — 40 Batches Complete",
+    "version": "1.0.0",
+    "timestamp": "2026-06-29T00:00:00Z",
+    "status": "sealed",
+    "deterministic": true
+  },
+  "batches": {
+    "1-35": {
+      "label": "Foundation & Prior Phases",
+      "description": "MAAL routing, sandbox execution, drift detection, governance pipeline, CIC ingestion, observability",
+      "status": "sealed",
+      "reference": "Prior session work"
+    },
+    "36": {
+      "label": "Deterministic Access Layer",
+      "description": "Hash-locked ACLs, permission bundles, access manifests, deterministic sealing",
+      "location": "access/",
+      "files": 10,
+      "components": ["acl/", "permissions/", "bundles/", "seals/"],
+      "entry": "access.sh",
+      "output": "access-seal-report.json"
+    },
+    "37": {
+      "label": "Deterministic Federation Layer",
+      "description": "Cross-agent trust graphs, sealed handoff policies, agent registry, federation hashing",
+      "location": "federation/",
+      "files": 11,
+      "components": ["trust/", "handoff/", "agents/", "seals/"],
+      "entry": "federation.sh",
+      "output": "federation-seal-report.json"
+    },
+    "38": {
+      "label": "Deterministic Orchestration Layer",
+      "description": "Orchestration policies, deployment seals, runtime manifests, service coordination",
+      "status": "pending",
+      "note": "Reserved; not yet created"
+    },
+    "39": {
+      "label": "Deterministic Global Snapshot Layer",
+      "description": "World-state snapshots, sealed corpora, TorqueQuery manifests, reproducible snapshots",
+      "location": "snapshot/",
+      "files": 11,
+      "components": ["corpus/", "world/", "torque/", "seals/"],
+      "entry": "snapshot.sh",
+      "output": "snapshot-seal-report.json"
+    },
+    "40": {
+      "label": "Final Deterministic Seal",
+      "description": "Full-system hash, all 40 layers, reproducibility certificate, end-to-end verification",
+      "location": "final/",
+      "files": 5,
+      "components": ["manifest.json", "seal.js", "verify.js", "certificate.json", "final.sh"],
+      "entry": "final.sh",
+      "output": "final-seal-report.json"
+    }
+  },
+  "architecture": {
+    "layers": [
+      {
+        "name": "Build",
+        "path": "build/",
+        "seals": "build-seal.json"
+      },
+      {
+        "name": "Packaging",
+        "path": "packaging/",
+        "seals": "packaging-seal.json"
+      },
+      {
+        "name": "Release",
+        "path": "release/",
+        "seals": "release-seal.json"
+      },
+      {
+        "name": "CI/CD",
+        "path": "ci/",
+        "seals": "ci-seal.json"
+      },
+      {
+        "name": "Nightly Builds",
+        "path": "nightly/",
+        "seals": "nightly-seal.json"
+      },
+      {
+        "name": "Regression Testing",
+        "path": "regression/",
+        "seals": "regression-seal.json"
+      },
+      {
+        "name": "Drift Detection",
+        "path": "drift/",
+        "seals": "drift-seal.json"
+      },
+      {
+        "name": "Stability Metrics",
+        "path": "stability/",
+        "seals": "stability-seal.json"
+      },
+      {
+        "name": "Reproducibility",
+        "path": "repro/",
+        "seals": "repro-seal.json"
+      },
+      {
+        "name": "Deployment",
+        "path": "deployment/",
+        "seals": "deployment-seal.json"
+      },
+      {
+        "name": "Infrastructure",
+        "path": "infra/",
+        "seals": "infra-seal.json"
+      },
+      {
+        "name": "Observability",
+        "path": "observability/",
+        "seals": "observability-seal.json"
+      },
+      {
+        "name": "Audit Logs",
+        "path": "audit/",
+        "seals": "audit-seal.json"
+      },
+      {
+        "name": "Policy Engine",
+        "path": "policy/",
+        "seals": "policy-seal.json"
+      },
+      {
+        "name": "Runtime",
+        "path": "runtime/",
+        "seals": "runtime-seal.json"
+      },
+      {
+        "name": "Storage",
+        "path": "storage/",
+        "seals": "storage-seal.json"
+      },
+      {
+        "name": "Network",
+        "path": "network/",
+        "seals": "network-seal.json"
+      },
+      {
+        "name": "Security",
+        "path": "security/",
+        "seals": "security-seal.json"
+      },
+      {
+        "name": "Secrets Engine",
+        "path": "secrets-engine/",
+        "seals": "secrets-engine-seal.json"
+      },
+      {
+        "name": "Identity",
+        "path": "identity/",
+        "seals": "identity-seal.json"
+      },
+      {
+        "name": "Access Control",
+        "path": "access/",
+        "seals": "access-seal.json",
+        "batch": 36
+      },
+      {
+        "name": "Federation",
+        "path": "federation/",
+        "seals": "federation-seal.json",
+        "batch": 37
+      },
+      {
+        "name": "Orchestration",
+        "path": "orchestration/",
+        "seals": "orchestration-seal.json",
+        "batch": 38
+      },
+      {
+        "name": "Global Snapshot",
+        "path": "snapshot/",
+        "seals": "snapshot-seal.json",
+        "batch": 39
+      },
+      {
+        "name": "Final Seal",
+        "path": "final/",
+        "seals": "final-seal.json",
+        "batch": 40
+      }
+    ]
+  },
+  "execution": {
+    "order": [
+      "access.sh",
+      "federation.sh",
+      "orchestration.sh",
+      "snapshot.sh",
+      "final.sh"
+    ],
+    "outputs": [
+      "access-seal-report.json",
+      "federation-seal-report.json",
+      "orchestration-seal-report.json",
+      "snapshot-seal-report.json",
+      "final-seal-report.json"
+    ]
+  },
+  "reproducibility": {
+    "deterministic": true,
+    "sealed": true,
+    "certificate": "final/certificate.json",
+    "hash_algorithm": "sha256",
+    "verification_script": "final/verify.js"
+  },
+  "totals": {
+    "batches_created": 4,
+    "batches_total": 40,
+    "files_in_new_batches": 37,
+    "layers_in_final_manifest": 25
+  }
+}

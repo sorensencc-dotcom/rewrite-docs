@@ -1,0 +1,10 @@
+{
+  "trust": {
+    "cic-api": ["sandbox", "onnx", "harness"],
+    "sandbox": ["cic-api"],
+    "onnx": ["cic-api"],
+    "harness": ["cic-api"],
+    "operator": ["cic-api"],
+    "admin": ["cic-api", "sandbox", "onnx", "harness"]
+  }
+}

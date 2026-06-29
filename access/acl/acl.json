@@ -1,0 +1,9 @@
+{
+  "acl": {
+    "admin": ["read", "write", "manage"],
+    "operator": ["read", "execute"],
+    "cic-api": ["invoke", "spawn"],
+    "sandbox": ["vm-start", "vm-stop"],
+    "onnx": ["infer"]
+  }
+}
