@@ -1,0 +1,42 @@
+src/slo-controller/canary-rollback.ts
+  s_36fb254a0cc773::t_46bb76744eb033 2,12
+src/slo-controller/canary-abort.ts
+  s_36fb254a0cc773::t_47d4b50c16d025 3-4,14-18,20,22-26,28-87,90,93,95,97
+  s_36fb254a0cc773::t_de0d7a95ea30af 88-89
+  s_36fb254a0cc773::t_d1289b1a7b3a5e 91-92
+  s_36fb254a0cc773::t_9fa882bea5f40f 94
+  s_36fb254a0cc773::t_4a0e261e34ed27 96
+  s_36fb254a0cc773::t_18bfdba65b8442 98-100
+src/governance/config/governance.config.ts
+  s_36fb254a0cc773::t_f24b755bb82c53 1-198
+src/governance/lineage/migrations/004_add_severity_category_policy.sql
+  s_36fb254a0cc773::t_3dac4eaa6d6760 1-14
+src/governance/lineage/index.ts
+  s_36fb254a0cc773::t_5bff33d21a286a 14-17,20
+  s_36fb254a0cc773::t_32835846290235 18-19,21-27,36-38
+src/maal/router/sandbox-violation.ts
+  s_36fb254a0cc773::t_f4655e1f7ceb50 20,22,28,33
+  s_36fb254a0cc773::t_add9dabc980233 38-40,42,46-50,52-61
+  s_36fb254a0cc773::t_4d649e913c193e 5,13
+src/slo-controller/enforcement-integration.ts
+  s_36fb254a0cc773::t_b56b6a95d05fb3 8-11
+  s_36fb254a0cc773::t_0f2e05ccf01d44 5-7
+src/governance/lineage/unified-lineage.ts
+  s_36fb254a0cc773::t_d1598765335b74 1-129
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "7cb823b3375ce5b59a975da437cdde892da08f60",
+  "prompts": {},
+  "sessions": {
+    "s_36fb254a0cc773": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65474609-ed90-4416-b93e-eda46cfea5ab",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
