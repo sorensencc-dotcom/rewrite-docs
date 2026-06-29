@@ -7,6 +7,12 @@ import { GovernanceConfigLoader } from './governance.config';
 
 describe('GovernanceConfigLoader', () => {
   describe('load', () => {
+    beforeEach(() => {
+      delete process.env.HYBRID_THRESHOLD;
+      delete process.env.GRS_WEIGHTS;
+      delete process.env.AUDIT_CACHE_TTL_DAYS;
+    });
+
     it('should load config from environment', () => {
       process.env.HYBRID_THRESHOLD = '0.35';
       const config = GovernanceConfigLoader.load();

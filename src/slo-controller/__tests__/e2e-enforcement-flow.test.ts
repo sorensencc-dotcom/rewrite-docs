@@ -28,7 +28,7 @@ describe("E2E: SLO Enforcement Flow", () => {
       metric: "e2e_metric",
       target: 100,
       window: "5m",
-      burnRateThreshold: 10,
+      burnRateThreshold: 2,
     };
 
     await sloController.loadRules([rule]);

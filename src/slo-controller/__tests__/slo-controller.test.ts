@@ -22,6 +22,7 @@ describe("SLOController", () => {
     ];
 
     await controller.loadRules(rules);
+    controller.setMetrics({ slo_latency_p99: 50 });
     // Rules are loaded internally, verify by evaluating
     const results = await controller.evaluate();
     expect(results).toHaveLength(1);
