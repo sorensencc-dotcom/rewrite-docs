@@ -1,0 +1,118 @@
+name: CIC Governance CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_id:
+        description: "Build ID to govern"
+        required: true
+      cic_pipeline_id:
+        description: "Pipeline ID"
+        required: true
+  repository_dispatch:
+    types: [governance-request]
+
+jobs:
+  governance-ci:
+    runs-on: ubuntu-latest
+
+    env:
+      GOVERNANCE_API_ENDPOINT: ${{ secrets.GOVERNANCE_API_ENDPOINT }}
+      GOVERNANCE_API_KEY: ${{ secrets.GOVERNANCE_API_KEY }}
+      VAULT_API_ENDPOINT: ${{ secrets.VAULT_API_ENDPOINT }}
+      VAULT_API_KEY: ${{ secrets.VAULT_API_KEY }}
+      FOUNDRY_LINEAGE_ENDPOINT: ${{ secrets.FOUNDRY_LINEAGE_ENDPOINT }}
+      FOUNDRY_API_KEY: ${{ secrets.FOUNDRY_API_KEY }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Builder Container (TheFoundry)
+        run: |
+          docker build \
+            -t thefoundry-node-build:${{ github.sha }} \
+            -f rewrite-mcp/thefoundry/images/node-build/Dockerfile \
+            --target builder \
+            .
+
+      - name: Fetch lineage packet
+        run: |
+          docker run --rm \
+            -e FOUNDRY_LINEAGE_ENDPOINT \
+            -e FOUNDRY_API_KEY \
+            -v ${{ github.workspace }}:/app/workspace \
+            thefoundry-node-build:${{ github.sha }} \
+            node scripts/fetch-lineage.js \
+              --build-id "${{ github.event.inputs.build_id || github.event.client_payload.build_id }}" \
+              --output /app/workspace/lineage.json
+
+      - name: Submit lineage to governance API
+        run: |
+          docker run --rm \
+            -e GOVERNANCE_API_ENDPOINT \
+            -e GOVERNANCE_API_KEY \
+            -v ${{ github.workspace }}:/app/workspace \
+            thefoundry-node-build:${{ github.sha }} \
+            node scripts/submit-governance.js \
+              --endpoint "$GOVERNANCE_API_ENDPOINT" \
+              --api-key "$GOVERNANCE_API_KEY" \
+              --lineage-file /app/workspace/lineage.json \
+              --output /app/workspace/decision.json
+
+      - name: Evaluate governance decision
+        id: decision
+        run: |
+          DECISION=$(jq -r '.decision' decision.json)
+          REASON=$(jq -r '.decision_reason' decision.json)
+          echo "decision=$DECISION" >> $GITHUB_OUTPUT
+          echo "reason=$REASON" >> $GITHUB_OUTPUT
+          echo "Governance decision: $DECISION"
+          echo "Reason: $REASON"
+
+      - name: Fail if governance blocked
+        if: steps.decision.outputs.decision != 'Approved'
+        run: |
+          echo "Governance decision: ${{ steps.decision.outputs.decision }}"
+          echo "Reason: ${{ steps.decision.outputs.reason }}"
+          exit 1
+
+      - name: Sign artifact (stub)
+        if: steps.decision.outputs.decision == 'Approved'
+        run: |
+          cat > signing.json <<'EOF'
+          {
+            "status": "Signed",
+            "signing_key_id": "key-prod-01",
+            "signature_ref": "sig://artifact-${{ github.event.inputs.build_id || github.event.client_payload.build_id }}",
+            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          }
+          EOF
+
+      - name: Promote artifact (stub)
+        if: steps.decision.outputs.decision == 'Approved'
+        run: |
+          cat > promotion.json <<'EOF'
+          {
+            "status": "NotPromoted",
+            "target_environment": null,
+            "timestamp": null,
+            "initiator": null
+          }
+          EOF
+
+      - name: Write governance vault record
+        if: steps.decision.outputs.decision == 'Approved'
+        run: |
+          docker run --rm \
+            -e VAULT_API_ENDPOINT \
+            -e VAULT_API_KEY \
+            -v ${{ github.workspace }}:/app/workspace \
+            thefoundry-node-build:${{ github.sha }} \
+            node scripts/write-vault-record.js \
+              --vault-endpoint "$VAULT_API_ENDPOINT" \
+              --vault-api-key "$VAULT_API_KEY" \
+              --lineage-file /app/workspace/lineage.json \
+              --decision-file /app/workspace/decision.json \
+              --signing-file /app/workspace/signing.json \
+              --promotion-file /app/workspace/promotion.json

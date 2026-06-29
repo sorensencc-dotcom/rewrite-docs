@@ -1,0 +1,31 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+    inputs:
+      phase:
+        description: Target phase
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Builder Container (TheFoundry)
+        run: |
+          docker build \
+            -t thefoundry-node-build:${{ github.sha }} \
+            -f rewrite-mcp/thefoundry/images/node-build/Dockerfile \
+            --target builder \
+            .
+      - name: Run tests inside container
+        run: |
+          docker run --rm thefoundry-node-build:${{ github.sha }} npm test
+      - run: |
+          git config user.email "ci@cic.dev"
+          git config user.name "CIC Automation"
+          git add -A
+          git commit -m "[automated] CI build" || true

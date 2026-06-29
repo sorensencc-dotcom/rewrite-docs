@@ -1,0 +1,47 @@
+{
+  "build_id": "build-20260613-test",
+  "cic_pipeline_id": "pipeline-phase-0-9-m2",
+  "git": {
+    "repo": "https://github.com/anthropics/cic-dev",
+    "branch": "develop",
+    "commit_sha": "abc123def456",
+    "tag": "v0.9.0-m2-test"
+  },
+  "environment": {
+    "builder_image": "thefoundry-node-build:20260613",
+    "cic_cli_version": "1.0.0",
+    "os": "Linux",
+    "toolchain_fingerprint": "sha256:thefoundry-node-20-alpine"
+  },
+  "sbom_ref": "sbom://cic-0.9.0-m2",
+  "provenance_ref": "provenance://github-actions-run-12345",
+  "determinism_hash": "sha256:abc123def456abc123def456abc123def456abc123def456abc123def456abc1",
+  "test_summary": {
+    "total": 42,
+    "passed": 42,
+    "failed": 0,
+    "skipped": 0
+  },
+  "artifact": {
+    "type": "container",
+    "coordinates": {
+      "group": "cic",
+      "name": "governance-ci",
+      "version": "0.9.0-m2"
+    },
+    "digest": "sha256:fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210",
+    "size_bytes": 193000000
+  },
+  "audit": {
+    "request_id": "req-20260613-test",
+    "ci_job_id": "github-actions-run-12345",
+    "ip_or_node_id": "runner-ubuntu-latest",
+    "extra_metadata": {
+      "labels": {
+        "phase": "0.9",
+        "milestone": "m2",
+        "environment": "staging"
+      }
+    }
+  }
+}

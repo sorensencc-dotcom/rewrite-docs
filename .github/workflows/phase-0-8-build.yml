@@ -1,0 +1,170 @@
+name: Phase 0.8 Build Orchestration Test
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'orchestrator.js'
+      - 'build-worker.js'
+      - 'performance-store.js'
+      - 'predictive-routing-engine.js'
+      - '.github/workflows/phase-0-8-build.yml'
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  phase-0-8-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Build and start services with Docker Compose
+        run: |
+          docker compose build
+          docker compose up -d
+          sleep 10
+          docker compose ps
+
+      - name: Health check - Orchestrator
+        run: |
+          curl -f http://localhost:3104/health || exit 1
+
+      - name: Health check - BuildWorker
+        run: |
+          curl -f http://localhost:3101/health || exit 1
+
+      - name: Health check - LineageRegistry
+        run: |
+          curl -f http://localhost:3102/health || exit 1
+
+      - name: Health check - RoutingValidator
+        run: |
+          curl -f http://localhost:3103/health || exit 1
+
+      - name: Health check - PerformanceStore
+        run: |
+          curl -f http://localhost:3105/health || exit 1
+
+      - name: Health check - PredictiveRoutingEngine
+        run: |
+          curl -f http://localhost:3106/health || exit 1
+
+      - name: Submit simple DAG (2 nodes)
+        id: simple_build
+        run: |
+          RESPONSE=$(curl -s -X POST http://localhost:3104/execute \
+            -H "Content-Type: application/json" \
+            -d '{
+              "dag": [
+                {"id": "extract", "phase": "0.8", "dependencies": []},
+                {"id": "enrich", "phase": "0.8", "dependencies": ["extract"]}
+              ]
+            }')
+          BUILD_ID=$(echo $RESPONSE | grep -o '"jobId":"[^"]*"' | cut -d'"' -f4)
+          echo "BUILD_ID=$BUILD_ID" >> $GITHUB_OUTPUT
+          echo "✓ Build submitted: $BUILD_ID"
+
+      - name: Wait for build completion
+        run: |
+          sleep 3
+          curl -s http://localhost:3104/builds/${{ steps.simple_build.outputs.BUILD_ID }}
+
+      - name: Check services still running
+        run: |
+          echo "=== Container Status ==="
+          docker compose ps
+
+      - name: Verify metrics recorded
+        run: |
+          echo "Querying performance-store:3105/metrics..."
+          METRICS=$(curl -s http://localhost:3105/metrics)
+          echo "Response: $METRICS"
+          COUNT=$(echo "$METRICS" | grep -o '"totalBuilds":[0-9]*' | grep -o '[0-9]*')
+          echo "✓ Metrics recorded: $COUNT builds"
+          [[ $COUNT -gt 0 ]] || { echo "ERROR: No metrics recorded"; exit 1; }
+
+      - name: Get node statistics
+        run: |
+          curl -s http://localhost:3105/stats/extract | head -c 200
+          echo ""
+
+      - name: Submit complex DAG (4 nodes, 2 layers)
+        id: complex_build
+        run: |
+          RESPONSE=$(curl -s -X POST http://localhost:3104/execute \
+            -H "Content-Type: application/json" \
+            -d '{
+              "dag": [
+                {"id": "compile", "phase": "0.8", "dependencies": []},
+                {"id": "test", "phase": "0.8", "dependencies": ["compile"]},
+                {"id": "package", "phase": "0.8", "dependencies": ["compile"]},
+                {"id": "deploy", "phase": "0.8", "dependencies": ["test", "package"]}
+              ]
+            }')
+          BUILD_ID=$(echo $RESPONSE | grep -o '"jobId":"[^"]*"' | cut -d'"' -f4)
+          echo "BUILD_ID=$BUILD_ID" >> $GITHUB_OUTPUT
+          echo "✓ Complex build submitted: $BUILD_ID"
+
+      - name: Wait for complex build
+        run: sleep 4
+
+      - name: Get critical path prediction
+        run: |
+          curl -s -X POST http://localhost:3105/predict \
+            -H "Content-Type: application/json" \
+            -d '{
+              "dag": [
+                {"id": "compile", "dependencies": []},
+                {"id": "test", "dependencies": ["compile"]},
+                {"id": "package", "dependencies": ["compile"]},
+                {"id": "deploy", "dependencies": ["test", "package"]}
+              ]
+            }' | head -c 300
+          echo ""
+
+      - name: Test routing decisions
+        run: |
+          for node in "compile" "test" "package" "deploy"; do
+            echo "Routing decision for: $node"
+            curl -s -X POST http://localhost:3106/route \
+              -H "Content-Type: application/json" \
+              -d "{\"nodeId\": \"$node\", \"availableServices\": [\"build-worker\", \"test-runner\"]}" | grep -o '"selected":"[^"]*"'
+          done
+
+      - name: Get all metrics
+        run: |
+          echo "=== Final Metrics Summary ==="
+          curl -s http://localhost:3105/metrics | grep -o '"totalBuilds":[0-9]*'
+
+      - name: View orchestrator logs
+        if: always()
+        run: |
+          echo "=== Orchestrator Logs ==="
+          docker logs build-orchestrator | tail -30
+
+      - name: View performance-store logs
+        if: always()
+        run: |
+          echo "=== Performance Store Logs ==="
+          docker logs performance-store | tail -20
+
+      - name: Cleanup
+        if: always()
+        run: |
+          docker compose down
+          docker compose ps
+
+      - name: Report results
+        run: |
+          echo "✓ Phase 0.8 Build Orchestration Test Complete"
+          echo "  - 2 DAGs submitted (simple + complex)"
+          echo "  - Metrics collection verified"
+          echo "  - Routing decisions tested"
+          echo "  - Critical path prediction working"

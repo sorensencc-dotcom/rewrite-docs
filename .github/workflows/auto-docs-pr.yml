@@ -1,0 +1,45 @@
+name: Auto-Docs PR
+
+on:
+  pull_request:
+    branches: [ master, main, feature/* ]
+    types: [ opened, synchronize, reopened ]
+  workflow_dispatch:
+
+jobs:
+  auto-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Configure git
+        run: |
+          git config user.email "ci@cic.dev"
+          git config user.name "CIC Automation"
+
+      - name: Run auto-docs
+        run: node run-auto-docs.js
+
+      - name: Commit doc changes
+        if: success()
+        run: |
+          git config user.name "CIC Automation"
+          git config user.email "ci@cic.dev"
+          git add -A
+          git diff --quiet && git diff --staged --quiet || git commit -m "[automated] Update docs from PR changes"
+
+      - name: Push changes back to PR branch
+        if: success()
+        run: |
+          git push origin ${{ github.head_ref }} || echo "No changes to push"

@@ -1,0 +1,55 @@
+name: Release with Docs Refresh
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version type (patch|minor|major)'
+        required: true
+        default: 'patch'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --frozen-lockfile
+
+      - name: Build
+        run: npm run build
+
+      - name: Docs refresh (full audit + sync + consolidate)
+        run: npm run docs:refresh
+
+      - name: Configure git
+        run: |
+          git config user.name "docs-manager[bot]"
+          git config user.email "noreply@github.com"
+
+      - name: Commit refreshed docs
+        run: |
+          git add docs/ docs-manager/
+          git commit -m "docs: refresh for release [skip ci]" || true
+
+      - name: Version bump
+        run: npm version ${{ github.event.inputs.version }}
+
+      - name: Push commits and tags
+        run: |
+          git push origin HEAD:main
+          git push origin --tags
+
+      - name: Upload refresh report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-refresh-report
+          path: docs-manager/

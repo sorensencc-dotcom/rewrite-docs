@@ -1,0 +1,6 @@
+{
+  "signing_status": "Signed",
+  "signing_key_id": "key-prod-01",
+  "signature_ref": "sig://artifact-build-20260613-test",
+  "signing_timestamp": "2026-06-13T12:01:00Z"
+}

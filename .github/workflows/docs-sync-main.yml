@@ -1,0 +1,51 @@
+name: Docs Sync on Merge
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - docs/**
+      - docs-manager/**
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --frozen-lockfile
+
+      - name: Run docs sync
+        run: npx tsx docs-manager/cli.ts sync
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if [ -z "$(git status --porcelain docs/)" ]; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit synced docs
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "docs-manager[bot]"
+          git config user.email "noreply@github.com"
+          git add docs/
+          git commit -m "docs: sync documentation with code changes [skip ci]"
+          git push
+
+      - name: Upload sync report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-sync-report
+          path: docs-manager/docs-sync-summary.json

@@ -1,0 +1,31 @@
+name: CIC Ingestion Docker Build & Test
+
+on:
+  push:
+    branches:
+      - feature/planning-engine
+      - master
+    paths:
+      - 'cic-ingestion/**'
+      - '.github/workflows/cic-ingestion-build.yml'
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker-compose build cic-ingestion
+
+      - name: Run tests in container
+        run: docker-compose run --rm cic-ingestion npm test
+
+      - name: Health check
+        run: |
+          docker-compose up -d cic-ingestion
+          sleep 5
+          docker-compose exec -T cic-ingestion curl -f http://localhost:3000/health || exit 1
+          docker-compose down

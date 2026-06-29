@@ -1,0 +1,18 @@
+{
+  "decision": "Approved",
+  "decision_reason": "All governance gates passed. Council unanimous approval granted.",
+  "policy_version": "1.0.0",
+  "council": {
+    "members": [
+      {
+        "id": "council-member-governance",
+        "role": "service",
+        "vote": "Approve",
+        "timestamp": "2026-06-13T12:00:00Z",
+        "signature": "sig://governance-service-key-01"
+      }
+    ],
+    "quorum_met": true,
+    "decision_signature": "sig://council-decision-123"
+  }
+}
