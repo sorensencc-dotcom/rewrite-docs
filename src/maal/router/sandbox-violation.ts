@@ -2,7 +2,7 @@
 
 import sandboxConfig from "./sandbox.config.json";
 import { SandboxTierId } from "../../cic/types/run-manifest";
-import { pgQuery } from "../cic-runtime/audit-log/postgres-client";
+import { pgQuery } from "../../cic-runtime/audit-log/postgres-client";
 
 /**
  * Sandbox violation types reported by the execution harness.

@@ -1,6 +1,9 @@
 // src/maal/router/maal-router-types.ts
 
-import { SandboxTierId } from "../../cic/types/run-manifest";
+import { SandboxTierId } from "../../cic/types/run-manifest.js";
+import { UnifiedChatRequest, UnifiedChatResponse } from "../../types/unifiedChatTypes.js";
+
+export { UnifiedChatRequest, UnifiedChatResponse };
 
 /**
  * Request for MAAL routing decision.
