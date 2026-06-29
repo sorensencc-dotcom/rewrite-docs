@@ -1,0 +1,15 @@
+{
+  "title": "Sandbox-3",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Firecracker Boot",
+      "targets": [{ "expr": "sandbox3_firecracker_boot_ms" }]
+    },
+    {
+      "type": "graph",
+      "title": "Snapshot Integrity",
+      "targets": [{ "expr": "sandbox3_snapshot_integrity" }]
+    }
+  ]
+}

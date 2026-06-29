@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Row dark mode snapshots renders default row in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <div
+    aria-selected="false"
+    class="cic-row"
+    data-cic-component="row"
+    data-selected="false"
+    tabindex="-1"
+  >
+    Content
+  </div>
+</div>
+`;
+
+exports[`Row dark mode snapshots renders multiple cells in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <div
+    aria-selected="false"
+    class="cic-row"
+    data-cic-component="row"
+    data-selected="false"
+    tabindex="-1"
+  >
+    <span>
+      Cell 1
+    </span>
+    <span>
+      Cell 2
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Row dark mode snapshots renders selected row in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <div
+    aria-selected="true"
+    class="cic-row"
+    data-cic-component="row"
+    data-selected="true"
+    tabindex="-1"
+  >
+    Content
+  </div>
+</div>
+`;
+
+exports[`Row light mode snapshots renders default row snapshot 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <div
+    aria-selected="false"
+    class="cic-row"
+    data-cic-component="row"
+    data-selected="false"
+    tabindex="-1"
+  >
+    Content
+  </div>
+</div>
+`;
+
+exports[`Row light mode snapshots renders multiple cells snapshot 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <div
+    aria-selected="false"
+    class="cic-row"
+    data-cic-component="row"
+    data-selected="false"
+    tabindex="-1"
+  >
+    <span>
+      Cell 1
+    </span>
+    <span>
+      Cell 2
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Row light mode snapshots renders selected row snapshot 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <div
+    aria-selected="true"
+    class="cic-row"
+    data-cic-component="row"
+    data-selected="true"
+    tabindex="-1"
+  >
+    Content
+  </div>
+</div>
+`;

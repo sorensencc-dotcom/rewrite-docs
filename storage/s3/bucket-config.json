@@ -1,0 +1,6 @@
+{
+  "bucketName": "cic-deterministic-storage",
+  "region": "us-east-1",
+  "versioning": true,
+  "serverSideEncryption": "AES256"
+}

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table dark mode snapshots renders table in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-table "
+    data-cic-component="table"
+  >
+    Content
+  </div>
+</div>
+`;
+
+exports[`Table light mode snapshots renders table in light mode 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-table "
+    data-cic-component="table"
+  >
+    Content
+  </div>
+</div>
+`;

@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Dark mode snapshots matches dark mode snapshot - all sizes 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <div
+    style="display: flex; gap: 12px;"
+  >
+    <button
+      class="cic-button cic-button--primary cic-button--small"
+    >
+      Small
+    </button>
+    <button
+      class="cic-button cic-button--primary cic-button--medium"
+    >
+      Medium
+    </button>
+    <button
+      class="cic-button cic-button--primary cic-button--large"
+    >
+      Large
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Button Dark mode snapshots matches dark mode snapshot - danger 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <button
+    class="cic-button cic-button--danger cic-button--medium"
+  >
+    Danger
+  </button>
+</div>
+`;
+
+exports[`Button Dark mode snapshots matches dark mode snapshot - ghost 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <button
+    class="cic-button cic-button--ghost cic-button--medium"
+  >
+    Ghost
+  </button>
+</div>
+`;
+
+exports[`Button Dark mode snapshots matches dark mode snapshot - primary 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <button
+    class="cic-button cic-button--primary cic-button--medium"
+  >
+    Primary
+  </button>
+</div>
+`;
+
+exports[`Button Dark mode snapshots matches dark mode snapshot - secondary 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <button
+    class="cic-button cic-button--secondary cic-button--medium"
+  >
+    Secondary
+  </button>
+</div>
+`;
+
+exports[`Button Light mode snapshots matches light mode snapshot - all sizes 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <div
+    style="display: flex; gap: 12px;"
+  >
+    <button
+      class="cic-button cic-button--primary cic-button--small"
+    >
+      Small
+    </button>
+    <button
+      class="cic-button cic-button--primary cic-button--medium"
+    >
+      Medium
+    </button>
+    <button
+      class="cic-button cic-button--primary cic-button--large"
+    >
+      Large
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Button Light mode snapshots matches light mode snapshot - danger 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <button
+    class="cic-button cic-button--danger cic-button--medium"
+  >
+    Danger
+  </button>
+</div>
+`;
+
+exports[`Button Light mode snapshots matches light mode snapshot - ghost 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <button
+    class="cic-button cic-button--ghost cic-button--medium"
+  >
+    Ghost
+  </button>
+</div>
+`;
+
+exports[`Button Light mode snapshots matches light mode snapshot - primary 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <button
+    class="cic-button cic-button--primary cic-button--medium"
+  >
+    Primary
+  </button>
+</div>
+`;
+
+exports[`Button Light mode snapshots matches light mode snapshot - secondary 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <button
+    class="cic-button cic-button--secondary cic-button--medium"
+  >
+    Secondary
+  </button>
+</div>
+`;

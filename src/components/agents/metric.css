@@ -1,0 +1,29 @@
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 100px;
+}
+
+.metric-label {
+  font-size: var(--cic-font-size-xs, 0.75rem);
+  font-weight: 600;
+  color: var(--cic-color-text-secondary, #666);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+[data-theme="dark"] .metric-label {
+  color: var(--cic-color-text-secondary-dark, #999);
+}
+
+.metric-value {
+  font-size: var(--cic-font-size-lg, 1.125rem);
+  font-weight: 700;
+  color: var(--cic-color-text-primary, #000);
+}
+
+[data-theme="dark"] .metric-value {
+  color: var(--cic-color-text-primary-dark, #fff);
+}

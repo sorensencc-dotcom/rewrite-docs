@@ -1,0 +1,11 @@
+.cic-card {
+  background: var(--cic-card-surface);
+  border: 1px solid var(--cic-card-border);
+  padding: var(--cic-space-12);
+  border-radius: var(--cic-space-4);
+  transition: background var(--cic-motion-duration-fast) var(--cic-motion-ease);
+}
+
+.cic-card[data-variant="subtle"] {
+  background: var(--cic-color-surface-1);
+}

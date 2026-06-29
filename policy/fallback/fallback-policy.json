@@ -1,0 +1,7 @@
+{
+  "fallbacks": {
+    "onnx-large": "onnx-medium",
+    "onnx-medium": "onnx-small",
+    "onnx-small": "onnx-small"
+  }
+}

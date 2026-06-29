@@ -1,0 +1,12 @@
+.cic-grid {
+  display: grid;
+  gap: var(--cic-space-16);
+}
+
+[data-density="compact"] .cic-grid {
+  gap: var(--cic-space-12);
+}
+
+[data-density="comfortable"] .cic-grid {
+  gap: var(--cic-space-24);
+}

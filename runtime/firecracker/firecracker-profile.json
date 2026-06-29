@@ -1,0 +1,13 @@
+{
+  "vcpuCount": 1,
+  "memSizeMB": 256,
+  "kernelArgs": "console=ttyS0 noapic noacpi pci=off",
+  "jailer": {
+    "enabled": true,
+    "uid": 1000,
+    "gid": 1000
+  },
+  "network": {
+    "enabled": false
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "paths": {
+    "ledger": "audit/ledger",
+    "events": "audit/events"
+  }
+}

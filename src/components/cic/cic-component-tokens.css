@@ -1,0 +1,89 @@
+/* CIC Component Token Mapping v2.0 — canonical dark mode tokens */
+
+:root {
+  /* Surface layers — light mode defaults */
+  --cic-color-surface-0: #ffffff;
+  --cic-color-surface-1: #f9fafb;
+  --cic-color-surface-2: #f3f4f6;
+
+  /* Card surfaces */
+  --cic-card-surface: #f9fafb;
+  --cic-card-border: #e5e7eb;
+
+  /* Panel */
+  --cic-panel-border: #e5e7eb;
+  --cic-panel-elevation: 0 1px 2px rgba(0, 0, 0, 0.04),
+                         0 2px 4px rgba(0, 0, 0, 0.08);
+
+  /* Table/Alert surfaces */
+  --cic-color-surface: #f9fafb;
+
+  /* Row interactions */
+  --cic-row-height: 44px;
+  --cic-row-gap: 12px;
+  --cic-row-hover-bg: rgba(0, 0, 0, 0.04);
+  --cic-row-selected-bg: rgba(59, 130, 246, 0.12);
+
+  /* Text colors */
+  --cic-color-text: #111827;
+  --cic-color-text-muted: #6b7280;
+  --cic-color-text-inverse: #ffffff;
+
+  /* Accent and status */
+  --cic-color-accent: #3b82f6;
+  --cic-color-danger: #dc2626;
+  --cic-color-border: #d1d5db;
+
+  /* Interaction tokens */
+  --cic-interaction-hover-bg: rgba(0, 0, 0, 0.04);
+  --cic-interaction-active-bg: rgba(0, 0, 0, 0.08);
+  --cic-interaction-selected-bg: rgba(59, 130, 246, 0.12);
+
+  /* Focus and interaction */
+  --cic-interaction-focus-ring: 2px solid #3b82f6;
+
+  /* Spacing */
+  --cic-space-4: 4px;
+  --cic-space-8: 8px;
+  --cic-space-12: 12px;
+  --cic-space-16: 16px;
+  --cic-space-24: 24px;
+
+  /* Motion/transitions */
+  --cic-motion-duration-fast: 120ms;
+  --cic-motion-duration-medium: 160ms;
+  --cic-motion-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Dark mode overrides */
+[data-theme='dark'] {
+  --cic-color-surface-0: #0f0f11;
+  --cic-color-surface-1: #161618;
+  --cic-color-surface-2: #1d1d20;
+
+  --cic-card-surface: #161618;
+  --cic-card-border: #2a2a2e;
+
+  --cic-panel-border: #2a2a2e;
+  --cic-panel-elevation: 0 0 0 1px rgba(255, 255, 255, 0.04),
+                         0 4px 12px rgba(0, 0, 0, 0.6);
+
+  --cic-color-text: #f5f5f7;
+  --cic-color-text-muted: #a0a0a8;
+
+  --cic-color-accent: #4d8dff;
+  --cic-color-danger: #ff6b6b;
+  --cic-color-border: #2a2a2e;
+
+  --cic-interaction-hover-bg: rgba(255, 255, 255, 0.06);
+  --cic-interaction-active-bg: rgba(255, 255, 255, 0.10);
+  --cic-interaction-selected-bg: rgba(77, 141, 255, 0.18);
+  --cic-interaction-focus-ring: 2px solid #4d8dff;
+
+  /* Table/Alert surfaces */
+  --cic-color-surface: #161618;
+
+  /* Row interactions */
+  --cic-row-hover-bg: rgba(255, 255, 255, 0.06);
+  --cic-row-selected-bg: rgba(77, 141, 255, 0.18);
+}

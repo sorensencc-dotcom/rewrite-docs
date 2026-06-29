@@ -1,0 +1,19 @@
+{
+  "name": "glm-flash",
+  "provider": "zhipu",
+  "type": "openai-compatible",
+  "apiBase": "https://open.bigmodel.cn/api/paas/v4",
+  "env": "ZHIPU_API_KEY",
+  "supports": {
+    "chat": true,
+    "completion": true,
+    "toolCalls": false,
+    "streaming": true,
+    "vision": false,
+    "embeddings": false
+  },
+  "routing": {
+    "score": 70,
+    "domains": ["reasoning"]
+  }
+}

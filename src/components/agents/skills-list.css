@@ -1,0 +1,21 @@
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: var(--cic-font-size-xs, 0.75rem);
+  font-weight: 500;
+  background-color: var(--cic-color-accent-bg, #eff6ff);
+  color: var(--cic-color-accent, #0284c7);
+}
+
+[data-theme="dark"] .skill-badge {
+  background-color: var(--cic-color-accent-bg-dark, #1f3a3f);
+  color: var(--cic-color-accent-dark, #38bdf8);
+}

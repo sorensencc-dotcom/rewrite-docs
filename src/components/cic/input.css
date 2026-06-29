@@ -1,0 +1,66 @@
+.cic-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cic-input-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cic-color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cic-input {
+  font-family: inherit;
+  font-size: 14px;
+  border: 1px solid var(--cic-color-border);
+  border-radius: 4px;
+  background-color: var(--cic-color-surface-0);
+  color: var(--cic-color-text);
+  transition: all var(--cic-motion-duration-fast) var(--cic-motion-ease);
+  outline: none;
+}
+
+/* Sizes */
+.cic-input--small {
+  padding: 6px 10px;
+  height: 32px;
+  font-size: 12px;
+}
+
+.cic-input--medium {
+  padding: 10px 14px;
+  height: 40px;
+  font-size: 14px;
+}
+
+.cic-input--large {
+  padding: 14px 18px;
+  height: 48px;
+  font-size: 16px;
+}
+
+/* States */
+.cic-input:hover:not(:disabled) {
+  border-color: var(--cic-color-accent);
+}
+
+.cic-input:focus {
+  border-color: var(--cic-color-accent);
+  box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.1);
+}
+
+.cic-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cic-input--error {
+  border-color: var(--cic-color-danger);
+}
+
+.cic-input--error:focus {
+  box-shadow: 0 0 0 2px rgba(255, 100, 100, 0.1);
+}

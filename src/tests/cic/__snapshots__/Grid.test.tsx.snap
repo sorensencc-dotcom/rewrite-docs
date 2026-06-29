@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid dark mode snapshots renders default grid in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-grid"
+    data-cic-component="grid"
+    style="grid-template-columns: repeat(12, 1fr);"
+  >
+    <div>
+      Item
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Grid dark mode snapshots renders grid with custom cols in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-grid"
+    data-cic-component="grid"
+    style="grid-template-columns: repeat(6, 1fr);"
+  >
+    <div>
+      Item
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Grid dark mode snapshots renders multiple items in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-grid"
+    data-cic-component="grid"
+    style="grid-template-columns: repeat(3, 1fr);"
+  >
+    <div>
+      Item 1
+    </div>
+    <div>
+      Item 2
+    </div>
+    <div>
+      Item 3
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Grid light mode snapshots renders default grid snapshot 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-grid"
+    data-cic-component="grid"
+    style="grid-template-columns: repeat(12, 1fr);"
+  >
+    <div>
+      Item
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Grid light mode snapshots renders grid with custom cols snapshot 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-grid"
+    data-cic-component="grid"
+    style="grid-template-columns: repeat(6, 1fr);"
+  >
+    <div>
+      Item
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Grid light mode snapshots renders multiple items snapshot 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-grid"
+    data-cic-component="grid"
+    style="grid-template-columns: repeat(3, 1fr);"
+  >
+    <div>
+      Item 1
+    </div>
+    <div>
+      Item 2
+    </div>
+    <div>
+      Item 3
+    </div>
+  </div>
+</div>
+`;

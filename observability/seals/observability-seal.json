@@ -1,0 +1,6 @@
+{
+  "paths": {
+    "prometheus": "observability/prometheus",
+    "grafana": "observability/grafana"
+  }
+}

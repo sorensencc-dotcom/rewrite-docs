@@ -1,0 +1,8 @@
+.cic-alert {
+  background: var(--cic-color-surface-1);
+  border: 1px solid var(--cic-color-border);
+  padding: var(--cic-space-12);
+  border-radius: var(--cic-space-4);
+  color: var(--cic-color-text);
+  transition: background var(--cic-motion-duration-medium) var(--cic-motion-ease);
+}

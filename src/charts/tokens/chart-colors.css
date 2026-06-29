@@ -1,0 +1,45 @@
+/* Chart color tokens */
+:root {
+  --cic-chart-primary: var(--cic-color-accent);
+  --cic-chart-secondary: var(--cic-color-surface);
+  --cic-chart-neutral: var(--cic-color-border);
+  --cic-chart-success: var(--cic-color-success);
+  --cic-chart-warning: var(--cic-color-warning);
+  --cic-chart-error: var(--cic-color-error);
+
+  --cic-chart-grid-color: var(--cic-color-border);
+  --cic-chart-grid-opacity: 0.1;
+
+  --cic-chart-axis-label-color: var(--cic-color-text-secondary);
+  --cic-chart-axis-label-size: 12px;
+
+  --cic-chart-tooltip-bg: var(--cic-color-surface-elevated);
+  --cic-chart-tooltip-text: var(--cic-color-text-primary);
+}
+
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--cic-color-background);
+  border-radius: var(--cic-border-radius-md);
+}
+
+.chart-grid {
+  stroke: var(--cic-chart-grid-color);
+  stroke-opacity: var(--cic-chart-grid-opacity);
+}
+
+.chart-axis-label {
+  fill: var(--cic-chart-axis-label-color);
+  font-size: var(--cic-chart-axis-label-size);
+  font-weight: 500;
+}
+
+.chart-tooltip {
+  background-color: var(--cic-chart-tooltip-bg);
+  color: var(--cic-chart-tooltip-text);
+  border-radius: var(--cic-border-radius-sm);
+  padding: var(--cic-spacing-xs) var(--cic-spacing-sm);
+  font-size: 13px;
+}

@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: sandbox-nodepool
+spec:
+  selector:
+    matchLabels:
+      app: sandbox-nodepool
+  template:
+    metadata:
+      labels:
+        app: sandbox-nodepool
+    spec:
+      containers:
+        - name: firecracker
+          image: sandbox-firecracker:latest
+          securityContext:
+            privileged: true

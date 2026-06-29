@@ -1,0 +1,29 @@
+name: CIC Nightly Deterministic Regression
+
+on:
+  schedule:
+    - cron: "0 3 * * *"   # 3 AM UTC nightly
+
+jobs:
+  nightly:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install
+        run: npm install
+
+      - name: Run Nightly Regression
+        run: node src/harness/regression/nightly.js
+
+      - name: Upload Nightly Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-regression
+          path: regression-report.json

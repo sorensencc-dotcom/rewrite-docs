@@ -1,0 +1,7 @@
+{
+  "paths": {
+    "config": "runtime/config",
+    "onnx": "runtime/onnx",
+    "firecracker": "runtime/firecracker"
+  }
+}

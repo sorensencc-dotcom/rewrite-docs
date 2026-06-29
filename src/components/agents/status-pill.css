@@ -1,0 +1,49 @@
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: var(--cic-font-size-xs, 0.75rem);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-pill--healthy {
+  background-color: var(--cic-color-success-bg, #f0fdf4);
+  color: var(--cic-color-success, #16a34a);
+}
+
+[data-theme="dark"] .status-pill--healthy {
+  background-color: var(--cic-color-success-bg-dark, #1f3a1f);
+  color: var(--cic-color-success-dark, #86efac);
+}
+
+.status-pill--degraded {
+  background-color: var(--cic-color-warning-bg, #fefce8);
+  color: var(--cic-color-warning, #ca8a04);
+}
+
+[data-theme="dark"] .status-pill--degraded {
+  background-color: var(--cic-color-warning-bg-dark, #3a3a1f);
+  color: var(--cic-color-warning-dark, #eab308);
+}
+
+.status-pill--offline {
+  background-color: var(--cic-color-error-bg, #fef2f2);
+  color: var(--cic-color-error, #dc2626);
+}
+
+[data-theme="dark"] .status-pill--offline {
+  background-color: var(--cic-color-error-bg-dark, #3f1f1f);
+  color: var(--cic-color-error-dark, #ff6b6b);
+}
+
+.status-pill--starting {
+  background-color: var(--cic-color-info-bg, #eff6ff);
+  color: var(--cic-color-info, #0284c7);
+}
+
+[data-theme="dark"] .status-pill--starting {
+  background-color: var(--cic-color-info-bg-dark, #1f3a3f);
+  color: var(--cic-color-info-dark, #38bdf8);
+}

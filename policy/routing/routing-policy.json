@@ -1,0 +1,12 @@
+{
+  "tiers": {
+    "small": { "maxTokens": 128, "model": "onnx-small" },
+    "medium": { "maxTokens": 512, "model": "onnx-medium" },
+    "large": { "maxTokens": 2048, "model": "onnx-large" }
+  },
+  "rules": [
+    { "task": "summarize", "tier": "small" },
+    { "task": "translate", "tier": "medium" },
+    { "task": "reason", "tier": "large" }
+  ]
+}

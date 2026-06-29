@@ -1,0 +1,42 @@
+name: CIC Deterministic CI
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+
+jobs:
+  deterministic-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install
+        run: npm install
+
+      - name: Unit Tests
+        run: npm test
+
+      - name: Reproducibility Harness
+        run: node src/harness/repro-check.js
+
+      - name: Stability Harness
+        run: node src/harness/stability-check.js
+
+      - name: Drift Harness
+        run: node src/harness/drift/drift-harness.js
+
+      - name: Regression Matrix
+        run: node src/harness/regression/regression-runner.js
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-report
+          path: regression-report.json

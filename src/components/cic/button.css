@@ -1,0 +1,89 @@
+.cic-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--cic-motion-duration-fast) var(--cic-motion-ease);
+  outline: none;
+}
+
+/* Sizes */
+.cic-button--small {
+  padding: 6px 12px;
+  font-size: 12px;
+  min-height: 32px;
+}
+
+.cic-button--medium {
+  padding: 12px 16px;
+  font-size: 14px;
+  min-height: 40px;
+}
+
+.cic-button--large {
+  padding: 16px 20px;
+  font-size: 16px;
+  min-height: 48px;
+}
+
+/* Variants */
+.cic-button--primary {
+  background-color: var(--cic-color-accent);
+  color: var(--cic-color-text-inverse);
+}
+
+.cic-button--primary:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.cic-button--primary:active:not(:disabled) {
+  filter: brightness(0.95);
+}
+
+.cic-button--secondary {
+  background-color: var(--cic-color-surface-1);
+  color: var(--cic-color-text);
+  border: 1px solid var(--cic-color-border);
+}
+
+.cic-button--secondary:hover:not(:disabled) {
+  background-color: var(--cic-color-surface-2);
+}
+
+.cic-button--danger {
+  background-color: var(--cic-color-danger);
+  color: var(--cic-color-text-inverse);
+}
+
+.cic-button--danger:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.cic-button--ghost {
+  background-color: transparent;
+  color: var(--cic-color-text);
+}
+
+.cic-button--ghost:hover:not(:disabled) {
+  background-color: var(--cic-interaction-hover-bg);
+}
+
+/* States */
+.cic-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cic-button:focus-visible {
+  outline: 2px solid var(--cic-color-accent);
+  outline-offset: 2px;
+}
+
+/* Dark mode overrides */
+[data-theme='dark'] .cic-button--danger {
+  color: var(--cic-color-text-inverse);
+}

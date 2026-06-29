@@ -1,0 +1,89 @@
+.panel {
+  background-color: #0d0d0d;
+  color: #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.card {
+  background-color: #1a1a1a;
+  border: 1px solid #00ff88;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.header {
+  color: #00ff88;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.headerSmall {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #333;
+}
+
+.label {
+  color: #999;
+}
+
+.value {
+  color: #fff;
+  font-weight: bold;
+}
+
+.valuePrimary {
+  color: #4ade80;
+}
+
+.valueSecondary {
+  color: #00ccff;
+}
+
+.agentEntry {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #333;
+}
+
+.stageSection {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #333;
+}
+
+.lastUpdated {
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+  margin-top: 16px;
+}
+
+.loadingError {
+  color: #00ff88;
+}
+
+.error {
+  color: #ff6b6b;
+}
+
+.noActivity {
+  color: #999;
+}
+
+.roiNeutral {
+  color: #999;
+}

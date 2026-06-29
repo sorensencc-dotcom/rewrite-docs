@@ -1,0 +1,213 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel dark mode snapshots renders default panel in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <section
+    aria-busy="false"
+    class="cic-panel"
+    data-cic-component="panel"
+    data-elevation="default"
+    data-loading="false"
+    data-padding="default"
+  >
+    <div
+      aria-atomic="false"
+      aria-live="polite"
+      class="cic-panel-body"
+    >
+      Content
+    </div>
+  </section>
+</div>
+`;
+
+exports[`Panel dark mode snapshots renders loading panel in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <section
+    aria-busy="true"
+    class="cic-panel"
+    data-cic-component="panel"
+    data-elevation="default"
+    data-loading="true"
+    data-padding="default"
+  >
+    <div
+      aria-atomic="false"
+      aria-live="polite"
+      class="cic-panel-body"
+    >
+      Content
+    </div>
+  </section>
+</div>
+`;
+
+exports[`Panel dark mode snapshots renders panel with elevation none in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <section
+    aria-busy="false"
+    class="cic-panel"
+    data-cic-component="panel"
+    data-elevation="none"
+    data-loading="false"
+    data-padding="default"
+  >
+    <div
+      aria-atomic="false"
+      aria-live="polite"
+      class="cic-panel-body"
+    >
+      Content
+    </div>
+  </section>
+</div>
+`;
+
+exports[`Panel dark mode snapshots renders panel with header+footer in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <section
+    aria-busy="false"
+    class="cic-panel"
+    data-cic-component="panel"
+    data-elevation="default"
+    data-loading="false"
+    data-padding="default"
+  >
+    <div
+      class="cic-panel-header"
+    >
+      Title
+    </div>
+    <div
+      aria-atomic="false"
+      aria-live="polite"
+      class="cic-panel-body"
+    >
+      Content
+    </div>
+    <div
+      class="cic-panel-footer"
+    >
+      Footer
+    </div>
+  </section>
+</div>
+`;
+
+exports[`Panel light mode snapshots renders default panel snapshot 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <section
+    aria-busy="false"
+    class="cic-panel"
+    data-cic-component="panel"
+    data-elevation="default"
+    data-loading="false"
+    data-padding="default"
+  >
+    <div
+      aria-atomic="false"
+      aria-live="polite"
+      class="cic-panel-body"
+    >
+      Content
+    </div>
+  </section>
+</div>
+`;
+
+exports[`Panel light mode snapshots renders loading panel snapshot 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <section
+    aria-busy="true"
+    class="cic-panel"
+    data-cic-component="panel"
+    data-elevation="default"
+    data-loading="true"
+    data-padding="default"
+  >
+    <div
+      aria-atomic="false"
+      aria-live="polite"
+      class="cic-panel-body"
+    >
+      Content
+    </div>
+  </section>
+</div>
+`;
+
+exports[`Panel light mode snapshots renders panel with elevation none snapshot 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <section
+    aria-busy="false"
+    class="cic-panel"
+    data-cic-component="panel"
+    data-elevation="none"
+    data-loading="false"
+    data-padding="default"
+  >
+    <div
+      aria-atomic="false"
+      aria-live="polite"
+      class="cic-panel-body"
+    >
+      Content
+    </div>
+  </section>
+</div>
+`;
+
+exports[`Panel light mode snapshots renders panel with header+footer snapshot 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <section
+    aria-busy="false"
+    class="cic-panel"
+    data-cic-component="panel"
+    data-elevation="default"
+    data-loading="false"
+    data-padding="default"
+  >
+    <div
+      class="cic-panel-header"
+    >
+      Title
+    </div>
+    <div
+      aria-atomic="false"
+      aria-live="polite"
+      class="cic-panel-body"
+    >
+      Content
+    </div>
+    <div
+      class="cic-panel-footer"
+    >
+      Footer
+    </div>
+  </section>
+</div>
+`;

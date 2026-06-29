@@ -1,0 +1,32 @@
+groups:
+  - name: cic-deterministic-alerts
+    rules:
+      - alert: DriftSpike
+        expr: cic_drift_score > 0.75
+        for: 2m
+        labels:
+          severity: critical
+
+      - alert: ReproFailure
+        expr: sandbox3_reproducibility_score < 0.7
+        for: 1m
+        labels:
+          severity: critical
+
+      - alert: FirecrackerBootSlow
+        expr: sandbox3_firecracker_boot_ms > 500
+        for: 1m
+        labels:
+          severity: high
+
+      - alert: OnnxLatencyHigh
+        expr: sandbox3_onnx_inference_ms > 60
+        for: 1m
+        labels:
+          severity: high
+
+      - alert: RoutingInstability
+        expr: cic_routing_variance > 0.10
+        for: 2m
+        labels:
+          severity: high

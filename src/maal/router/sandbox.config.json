@@ -1,0 +1,55 @@
+{
+  "sandboxMatrix": {
+    "S0": {
+      "isolationLevel": "container",
+      "determinism": "low",
+      "network": "off",
+      "costTier": "lowest",
+      "defaultFor": {
+        "taskTypes": ["code_run", "build", "test"],
+        "trustLevels": ["internal"],
+        "dataSensitivity": ["low"]
+      }
+    },
+    "S1": {
+      "isolationLevel": "hardened_container",
+      "determinism": "medium",
+      "network": "allowlist",
+      "costTier": "low",
+      "defaultFor": {
+        "taskTypes": ["code_run", "build", "test", "analysis"],
+        "trustLevels": ["internal", "partner"],
+        "dataSensitivity": ["medium"]
+      }
+    },
+    "S2": {
+      "isolationLevel": "microvm",
+      "determinism": "medium_high",
+      "network": "strict",
+      "costTier": "medium",
+      "defaultFor": {
+        "taskTypes": ["code_run", "analysis"],
+        "trustLevels": ["external", "unknown"],
+        "dataSensitivity": ["medium", "high"]
+      }
+    },
+    "S3": {
+      "isolationLevel": "microvm_offline",
+      "determinism": "high",
+      "network": "none",
+      "costTier": "highest",
+      "defaultFor": {
+        "taskTypes": ["code_run", "analysis"],
+        "trustLevels": ["external", "unknown"],
+        "dataSensitivity": ["high"]
+      }
+    }
+  },
+
+  "sandboxFallbackChain": {
+    "S0": "S1",
+    "S1": "S2",
+    "S2": "S3",
+    "S3": null
+  }
+}

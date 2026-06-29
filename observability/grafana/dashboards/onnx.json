@@ -1,0 +1,10 @@
+{
+  "title": "ONNX",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Inference Latency",
+      "targets": [{ "expr": "sandbox3_onnx_inference_ms" }]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert dark mode snapshots renders alert in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-alert "
+    data-cic-component="alert"
+    role="alert"
+  >
+    Content
+  </div>
+</div>
+`;
+
+exports[`Alert light mode snapshots renders alert in light mode 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-alert "
+    data-cic-component="alert"
+    role="alert"
+  >
+    Content
+  </div>
+</div>
+`;

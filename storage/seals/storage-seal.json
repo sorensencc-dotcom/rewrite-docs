@@ -1,0 +1,7 @@
+{
+  "paths": {
+    "bucketConfig": "storage/s3/bucket-config.json",
+    "bucketPolicy": "storage/s3/bucket-policy.json",
+    "objectManifest": "storage/s3/object-manifest.json"
+  }
+}

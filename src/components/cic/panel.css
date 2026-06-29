@@ -1,0 +1,22 @@
+.cic-panel {
+  background: var(--cic-color-surface-0);
+  border: 1px solid var(--cic-panel-border);
+  border-radius: var(--cic-space-4);
+  padding: var(--cic-space-12);
+  box-shadow: var(--cic-panel-elevation);
+  transition:
+    background var(--cic-motion-duration-medium) var(--cic-motion-ease),
+    box-shadow var(--cic-motion-duration-medium) var(--cic-motion-ease);
+}
+
+.cic-panel[data-padding="none"] {
+  padding: 0;
+}
+
+.cic-panel[data-elevation="none"] {
+  box-shadow: none;
+}
+
+[data-density="comfortable"] .cic-panel {
+  padding: var(--cic-space-16);
+}

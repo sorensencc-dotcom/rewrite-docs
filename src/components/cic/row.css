@@ -1,0 +1,21 @@
+.cic-row {
+  display: flex;
+  align-items: center;
+  height: var(--cic-row-height);
+  gap: var(--cic-row-gap);
+  padding: 0 var(--cic-space-12);
+  border-radius: var(--cic-space-4);
+  transition: background var(--cic-motion-duration-fast) var(--cic-motion-ease);
+}
+
+.cic-row:hover {
+  background: var(--cic-row-hover-bg);
+}
+
+.cic-row[data-selected="true"] {
+  background: var(--cic-row-selected-bg);
+}
+
+.cic-row:focus-visible {
+  outline: var(--cic-interaction-focus-ring);
+}

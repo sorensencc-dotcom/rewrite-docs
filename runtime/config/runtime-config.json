@@ -1,0 +1,12 @@
+{
+  "seed": 42,
+  "onnxThreads": 1,
+  "sandbox": {
+    "snapshotVerify": true,
+    "fsVerify": true,
+    "envVerify": true
+  },
+  "routing": {
+    "deterministic": true
+  }
+}

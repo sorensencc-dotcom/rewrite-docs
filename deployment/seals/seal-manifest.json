@@ -1,0 +1,9 @@
+{
+  "manifests": {
+    "cic-api": "deployment/k8s/cic-api.yaml",
+    "sandbox-nodepool": "deployment/k8s/sandbox-nodepool.yaml",
+    "onnx-sidecar": "deployment/k8s/onnx-sidecar.yaml",
+    "harness": "deployment/k8s/harness.yaml",
+    "gateway": "deployment/k8s/gateway.yaml"
+  }
+}

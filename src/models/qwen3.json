@@ -1,0 +1,19 @@
+{
+  "name": "qwen3",
+  "provider": "alibaba",
+  "type": "openai-compatible",
+  "apiBase": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+  "env": "DASHSCOPE_API_KEY",
+  "supports": {
+    "chat": true,
+    "completion": true,
+    "toolCalls": true,
+    "streaming": true,
+    "vision": false,
+    "embeddings": false
+  },
+  "routing": {
+    "score": 75,
+    "domains": ["coding"]
+  }
+}

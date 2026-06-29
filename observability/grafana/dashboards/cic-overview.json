@@ -1,0 +1,15 @@
+{
+  "title": "CIC Overview",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Drift Score",
+      "targets": [{ "expr": "cic_drift_score" }]
+    },
+    {
+      "type": "graph",
+      "title": "Reproducibility Score",
+      "targets": [{ "expr": "sandbox3_reproducibility_score" }]
+    }
+  ]
+}

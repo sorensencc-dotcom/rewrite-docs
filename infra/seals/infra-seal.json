@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "network": "infra/modules/network",
+    "nodepool": "infra/modules/nodepool",
+    "gateway": "infra/modules/gateway"
+  }
+}

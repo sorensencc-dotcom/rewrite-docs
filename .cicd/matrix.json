@@ -1,0 +1,13 @@
+{
+  "checks": {
+    "repro": ["seed", "snapshot", "fs", "env", "routing", "onnx", "firecracker"],
+    "stability": ["firecracker", "onnx", "routing"],
+    "drift": ["embedding", "preprocessing", "onnx", "routing", "snapshot"]
+  },
+  "thresholds": {
+    "latency": { "p50": 20, "p95": 40, "p99": 60 },
+    "stability_cv": 0.10,
+    "drift": { "max": 0.75, "trend": 0.15 },
+    "firecracker_boot_ms": 500
+  }
+}

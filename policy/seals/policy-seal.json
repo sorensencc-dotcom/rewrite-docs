@@ -1,0 +1,7 @@
+{
+  "paths": {
+    "routing": "policy/routing",
+    "constraints": "policy/constraints",
+    "fallback": "policy/fallback"
+  }
+}

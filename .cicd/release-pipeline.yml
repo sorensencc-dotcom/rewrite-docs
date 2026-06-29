@@ -1,0 +1,40 @@
+name: CIC Deterministic Release Pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install
+        run: npm install
+
+      - name: Version Bump
+        run: node .cicd/version-bump.js
+
+      - name: Build
+        run: npm run build
+
+      - name: Compute Build Hash
+        run: node .cicd/build-hash.js
+
+      - name: Release Gate
+        run: node .cicd/release-gate.js
+
+      - name: Publish Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cic-release
+          path: dist/

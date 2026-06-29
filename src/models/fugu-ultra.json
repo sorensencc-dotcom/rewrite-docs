@@ -1,0 +1,20 @@
+{
+  "env": "GOOGLE_API_KEY",
+  "supports": {
+    "chat": true,
+    "vision": true,
+    "embeddings": false,
+    "streaming": true,
+    "toolCalls": true
+  },
+  "costPer1kTokens": {
+    "output": 0.003,
+    "input": 0.00075
+  },
+  "provider": "google",
+  "version": "2.0",
+  "contextWindow": 1000000,
+  "apiBase": "https://generativelanguage.googleapis.com",
+  "name": "fugu-ultra",
+  "type": "google"
+}

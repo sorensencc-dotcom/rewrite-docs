@@ -1,0 +1,10 @@
+{
+  "title": "Routing",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Routing Variance",
+      "targets": [{ "expr": "cic_routing_variance" }]
+    }
+  ]
+}

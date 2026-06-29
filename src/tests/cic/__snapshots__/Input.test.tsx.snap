@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Component dark mode snapshots renders error input in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-input-group"
+  >
+    <input
+      class="cic-input cic-input--medium cic-input--error"
+      id="test-input-6"
+    />
+  </div>
+</div>
+`;
+
+exports[`Input Component dark mode snapshots renders input in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-input-group"
+  >
+    <input
+      class="cic-input cic-input--medium"
+      id="test-input-4"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`Input Component dark mode snapshots renders input with label in dark mode 1`] = `
+<div
+  data-theme="dark"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-input-group"
+  >
+    <label
+      class="cic-input-label"
+      for="test-input-5"
+    >
+      Email
+    </label>
+    <input
+      class="cic-input cic-input--medium"
+      id="test-input-5"
+      type="email"
+    />
+  </div>
+</div>
+`;
+
+exports[`Input Component light mode snapshots renders error input in light mode 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-input-group"
+  >
+    <input
+      class="cic-input cic-input--medium cic-input--error"
+      id="test-input-3"
+    />
+  </div>
+</div>
+`;
+
+exports[`Input Component light mode snapshots renders input in light mode 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-input-group"
+  >
+    <input
+      class="cic-input cic-input--medium"
+      id="test-input-1"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`Input Component light mode snapshots renders input with label in light mode 1`] = `
+<div
+  data-theme="light"
+  style="padding: 20px;"
+>
+  <div
+    class="cic-input-group"
+  >
+    <label
+      class="cic-input-label"
+      for="test-input-2"
+    >
+      Email
+    </label>
+    <input
+      class="cic-input cic-input--medium"
+      id="test-input-2"
+      type="email"
+    />
+  </div>
+</div>
+`;

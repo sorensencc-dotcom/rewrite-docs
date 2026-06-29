@@ -1,0 +1,21 @@
+{
+  "apiBase": "local",
+  "costPer1kTokens": {
+    "input": 0,
+    "output": 0
+  },
+  "contextWindow": 2048,
+  "name": "mock",
+  "env": null,
+  "type": "mock",
+  "supports": {
+    "embeddings": true,
+    "vision": true,
+    "chat": true,
+    "streaming": true,
+    "toolCalls": true
+  },
+  "routingBias": 999,
+  "provider": "mock",
+  "version": "1.0"
+}

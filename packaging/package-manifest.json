@@ -1,0 +1,20 @@
+{
+  "bundles": {
+    "cic-api": {
+      "input": "dist/cic-api",
+      "output": "bundle/cic-api.tar.gz"
+    },
+    "routing": {
+      "input": "dist/routing",
+      "output": "bundle/routing.tar.gz"
+    },
+    "sandbox": {
+      "input": "dist/sandbox",
+      "output": "bundle/sandbox.tar.gz"
+    },
+    "harness": {
+      "input": "dist/harness",
+      "output": "bundle/harness.tar.gz"
+    }
+  }
+}

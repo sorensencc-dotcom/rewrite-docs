@@ -1,0 +1,10 @@
+{
+  "queries": [
+    {
+      "id": "q1",
+      "query": "what is CIC?",
+      "expectedResults": 5,
+      "tags": ["basic"]
+    }
+  ]
+}
