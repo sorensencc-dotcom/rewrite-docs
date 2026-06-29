@@ -1,0 +1,51 @@
+harvester-bridge/resolver.ts
+  s_3c4c528fa7d8bd::t_6d5e54aeb29949 25-31
+  s_3c4c528fa7d8bd::t_33154d128cd36c 22-24
+  s_3c4c528fa7d8bd::t_804a60dfcc6c84 32-34
+src/maal/router/maal-routing-policy.ts
+  s_3c4c528fa7d8bd::t_4e10c16da9bf7e 130,137-138
+src/server/adapterGatewayAPI.ts
+  s_3c4c528fa7d8bd::t_064fd3e9bda462 156-157
+  s_3c4c528fa7d8bd::t_812b73f48640ba 243-244
+  s_3c4c528fa7d8bd::t_b283e34d8007c3 304-305
+  s_36fb254a0cc773::t_1c7d7a3f9475c0 1-16,21-76,85-155,158-196,199-242,245-303,306-322,324-332,335-340,343,356,359-360,403-411
+  s_3c4c528fa7d8bd::t_d16768d16ad260 323,333-334
+  s_3c4c528fa7d8bd::t_ff6198625509de 197-198
+  s_36fb254a0cc773::t_d24e9fa460f9ab 77-84
+  s_3c4c528fa7d8bd::t_3ec759e22e215e 17-20
+  s_3c4c528fa7d8bd::t_7e57641e9224dc 347,351-352,354,361,366,368-402
+  s_36fb254a0cc773::t_c0af176d6daf8f 341-342
+  s_3c4c528fa7d8bd::t_e46d27e74295fe 348-350
+  s_3c4c528fa7d8bd::t_6f07db223873ae 353
+  s_36fb254a0cc773::t_919a82767967fb 357-358
+  s_3c4c528fa7d8bd::t_8c16412ac375f6 362-365
+  s_3c4c528fa7d8bd::t_e078a979f9bf5b 367
+dashboard.html
+  s_3c4c528fa7d8bd::t_70113081c190ed 537-554
+  s_3c4c528fa7d8bd::t_2a5b74fd93353b 534-536
+  s_3c4c528fa7d8bd::t_c84dad78b5415a 555-557
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "a79df98ef8dc871228680af38bfb22263c11272e",
+  "prompts": {},
+  "sessions": {
+    "s_36fb254a0cc773": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65474609-ed90-4416-b93e-eda46cfea5ab",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_3c4c528fa7d8bd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4568709f-67d2-4790-96e9-6240756d776f",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
