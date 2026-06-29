@@ -1,0 +1,23 @@
+src/maal/router/maal-router-types.ts
+  s_36fb254a0cc773::t_1c7d7a3f9475c0 3-6
+src/maal/router/maal-routing-policy.ts
+  s_36fb254a0cc773::t_1c7d7a3f9475c0 1-141
+src/maal/router/sandbox-violation.ts
+  s_36fb254a0cc773::t_1c7d7a3f9475c0 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "5ac4ae88b31094e372b521b591b5ee486d826986",
+  "prompts": {},
+  "sessions": {
+    "s_36fb254a0cc773": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65474609-ed90-4416-b93e-eda46cfea5ab",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
