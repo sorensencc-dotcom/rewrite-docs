@@ -1,0 +1,23 @@
+.github/workflows/docs-release.yml
+  s_61d272931279ac::t_8da082e27c7157 47-48
+docs-manager/cli.ts
+  s_61d272931279ac::t_e6c17de01ad45e 4-24,32,34-37,41,43,45-51,53,55,57-62,64
+.github/workflows/docs-sync-main.yml
+  s_61d272931279ac::t_874180cbf22e12 44-57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "632e847d4bb568255e4ebea6a83c6077b9fb8f6c",
+  "prompts": {},
+  "sessions": {
+    "s_61d272931279ac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3be727e-31ce-455a-b684-4be0b17901b2",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
