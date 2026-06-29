@@ -1,0 +1,37 @@
+src/governance/scoring/grs.ts
+  s_36fb254a0cc773::t_ac9309de8d8e76 1-75
+src/governance/gates/gate-b.ts
+  s_36fb254a0cc773::t_e76a7b446f974b 1-63
+src/governance/config/governance-cache.ts
+  s_36fb254a0cc773::t_92ab13320e0f9d 1-113
+src/governance/gates/gate-c.ts
+  s_36fb254a0cc773::t_6e5409b9afba9c 1-83
+src/governance/services/scp-governance-bridge.ts
+  s_36fb254a0cc773::t_68e746e1ec1ba1 4,7-8
+  s_36fb254a0cc773::t_dfd11ef03ad23a 9-13
+src/governance/models/index.ts
+  s_36fb254a0cc773::t_77d9c85243ab76 6-14
+  s_36fb254a0cc773::t_427001a649a3b7 15-17
+src/governance/canary/state-machine.ts
+  s_36fb254a0cc773::t_1812e9b3e83f24 1-128
+src/governance/gates/gate-a.ts
+  s_36fb254a0cc773::t_5a36d23075e2de 1-51
+src/slo-controller/canary-abort.ts
+  s_36fb254a0cc773::t_e6b56c3055f622 85-86
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "344191b9af3619f708468755b001c0f25f488941",
+  "prompts": {},
+  "sessions": {
+    "s_36fb254a0cc773": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65474609-ed90-4416-b93e-eda46cfea5ab",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
