@@ -11,6 +11,20 @@ export class SkillLineage {
   async record(skill: Skill, audit: AuditResult, ctx: GovernanceContext): Promise<void> {
     const policyIds = audit.policies_triggered.map((p) => p.id);
 
+    // Determine row-level severity: highest severity across all triggered policies
+    const severityOrder = { low: 1, medium: 2, high: 3 };
+    const maxSeverity = audit.policies_triggered.length > 0
+      ? audit.policies_triggered.reduce((max, p) => {
+          const sev = (severityOrder as any)[p.severity] || 1;
+          return sev > (severityOrder as any)[max] ? p.severity : max;
+        }, "low" as "low" | "medium" | "high")
+      : "medium";
+
+    // Determine row-level category: first category from triggered policies
+    const category = audit.policies_triggered.length > 0
+      ? audit.policies_triggered[0].category
+      : "governance";
+
     await this.db.insert("skill_lineage", {
       skill_id: skill.meta.id,
       skill_name: skill.meta.name,
@@ -19,6 +33,9 @@ export class SkillLineage {
       audit_verdict: audit.verdict,
       policies_triggered: JSON.stringify(policyIds),
       risk_score: audit.risk_score,
+      severity: maxSeverity,
+      category,
+      policy_metadata: JSON.stringify(audit.policies_triggered),
       audit_timestamp: audit.audit_timestamp,
       auditor_model: audit.auditor_model,
       policy_version: audit.policy_version,
@@ -93,21 +110,41 @@ export class SkillLineage {
 
   private rowToAuditResult(row: Record<string, unknown>): AuditResult {
     // Reconstruct AuditResult from database row
-    // Parse policy IDs from JSON string
+    // Try to use stored policy_metadata first; fall back to policy IDs
     let policies_triggered = [];
-    if (row.policies_triggered) {
+    if (row.policy_metadata) {
+      try {
+        policies_triggered = JSON.parse(row.policy_metadata as string);
+      } catch (e) {
+        // If policy_metadata parsing fails, fall back to policy IDs
+        if (row.policies_triggered) {
+          try {
+            const policyIds = JSON.parse(row.policies_triggered as string);
+            policies_triggered = policyIds.map((id: string) => ({
+              id,
+              description: "Policy from lineage",
+              severity: (row.severity as "low" | "medium" | "high") ?? "medium",
+              category: (row.category as "injection" | "safety" | "completeness" | "scope") ?? "governance",
+              reaudit_interval_days: 90,
+              examples: { pass: [], fail: [] },
+            }));
+          } catch (e2) {
+            policies_triggered = [];
+          }
+        }
+      }
+    } else if (row.policies_triggered) {
       try {
         const policyIds = JSON.parse(row.policies_triggered as string);
         policies_triggered = policyIds.map((id: string) => ({
           id,
           description: "Policy from lineage",
-          severity: "medium" as const,
-          category: "governance" as const,
+          severity: (row.severity as "low" | "medium" | "high") ?? "medium",
+          category: (row.category as "injection" | "safety" | "completeness" | "scope") ?? "governance",
           reaudit_interval_days: 90,
           examples: { pass: [], fail: [] },
         }));
       } catch (e) {
-        // If parsing fails, leave as empty array
         policies_triggered = [];
       }
     }

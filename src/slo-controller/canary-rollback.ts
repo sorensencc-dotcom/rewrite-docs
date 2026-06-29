@@ -1,4 +1,5 @@
 import { canaryEventBus, CanarySignal } from './canary-signals';
+import { pgQuery } from '../cic-runtime/audit-log/postgres-client';
 
 export interface RollbackResult {
   success: boolean;
@@ -8,7 +9,7 @@ export interface RollbackResult {
   error?: string;
 }
 
-export async function executeCanaryRollback(): Promise<RollbackResult> {
+export async function executeCanaryRollback(proposalId: string): Promise<RollbackResult> {
   const startTs = Date.now();
 
   canaryEventBus.emit('rollback', {
@@ -18,12 +19,26 @@ export async function executeCanaryRollback(): Promise<RollbackResult> {
   } as any);
 
   try {
+    // Query previous stable version from canary_state_history
+    const rows = await pgQuery(
+      `SELECT previous_version FROM canary_state_history
+       WHERE proposal_id = $1 ORDER BY recorded_at DESC LIMIT 1`,
+      [proposalId]
+    );
+
+    if (rows.length === 0) {
+      throw new Error(`No state history found for proposal ${proposalId}`);
+    }
+
+    const previousVersion = rows[0].previous_version as string | null;
+    if (!previousVersion) {
+      throw new Error(`No previous version recorded for proposal ${proposalId}`);
+    }
+
     // TODO: Wire to Phase 5 deployment state machine
-    // - Query previous stable version
     // - Restore from canary state table
     // - Verify data integrity (audit log replay if needed)
     // - Wait for health checks to pass
-    const previousVersion = null; // TODO: query from state table
 
     const completeTs = Date.now();
     const completeMs = completeTs - startTs;

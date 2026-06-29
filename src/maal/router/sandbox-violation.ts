@@ -2,6 +2,7 @@
 
 import sandboxConfig from "./sandbox.config.json";
 import { SandboxTierId } from "../../cic/types/run-manifest";
+import { pgQuery } from "../cic-runtime/audit-log/postgres-client";
 
 /**
  * Sandbox violation types reported by the execution harness.
@@ -9,50 +10,53 @@ import { SandboxTierId } from "../../cic/types/run-manifest";
 export interface SandboxRunResult {
   tierId: SandboxTierId;
   violationType?: "resource" | "isolation" | "determinism" | "unknown";
+  driftScore?: number;
 }
 
 /**
  * Escalate sandbox tier based on violation type.
  * Uses sandboxFallbackChain from sandbox.config.json.
  */
-export function handleSandboxViolation(
+export async function handleSandboxViolation(
   run: SandboxRunResult
-): SandboxTierId {
+): Promise<SandboxTierId> {
   const currentTier = run.tierId;
   const nextTier = sandboxConfig.sandboxFallbackChain[currentTier];
 
   // No higher tier available → stay on current tier
   if (!nextTier) {
-    logSandboxDrift(run, currentTier, currentTier);
+    await logSandboxDrift(run, currentTier, currentTier);
     return currentTier;
   }
 
   // Escalate to next tier
-  logSandboxDrift(run, currentTier, nextTier as SandboxTierId);
+  await logSandboxDrift(run, currentTier, nextTier as SandboxTierId);
   return nextTier as SandboxTierId;
 }
 
 /**
- * Drift logging hook.
- * CIC will wire this into the audit log + stability metrics.
+ * Drift logging hook (Phase 5).
+ * Ingests sandbox drift reports to sandbox_drift_log table.
+ * Non-fatal: failures do not block canary execution.
  */
-function logSandboxDrift(
+async function logSandboxDrift(
   run: SandboxRunResult,
   fromTier: SandboxTierId,
   toTier: SandboxTierId
-): void {
-  // Stub: CIC will implement actual logging.
-  // This function intentionally does not throw or return anything.
-  // It simply emits a structured event for the audit log.
-  const event = {
-    type: "sandbox_escalation",
-    fromTier,
-    toTier,
-    violationType: run.violationType ?? "unknown",
-    timestamp: new Date().toISOString()
-  };
+): Promise<void> {
+  try {
+    const type = "sandbox_escalation";
+    const violationType = run.violationType ?? "unknown";
+    const driftScore = run.driftScore ?? 0.0;
 
-  // In Phase Sandbox‑1, we only console.log.
-  // CIC Phase Sandbox‑2 will replace this with DB ingestion.
-  console.log("[CIC][SandboxViolation]", JSON.stringify(event));
+    await pgQuery(
+      `INSERT INTO sandbox_drift_log (type, from_tier, to_tier, violation_type, drift_score, recorded_at)
+       VALUES ($1, $2, $3, $4, $5, CURRENT_TIMESTAMP)`,
+      [type, fromTier, toTier, violationType, driftScore]
+    );
+  } catch (err) {
+    const errorMsg = err instanceof Error ? err.message : "unknown error";
+    console.error(`[sandbox-drift] non-fatal write failure:`, errorMsg);
+    // Do not rethrow — lineage failures must not block canary execution
+  }
 }
