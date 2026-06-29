@@ -1,0 +1,93 @@
+federation/seals/federation-verify.js
+  s_61d272931279ac::t_701f8fa70c4a22 1-16
+snapshot/seals/snapshot-verify.js
+  s_61d272931279ac::t_d9f175ab0ba618 1-16
+federation/seals/deterministic-federation.js
+  s_61d272931279ac::t_9c52271961d981 1-30
+access/seals/access-seal.json
+  s_61d272931279ac::t_966f056bfe7130 1-7
+snapshot.sh
+  s_61d272931279ac::t_73ed6f56166410 1-2
+access/seals/deterministic-access.js
+  s_61d272931279ac::t_7a4e3619419fdf 1-30
+federation/seals/federation-hash.js
+  s_61d272931279ac::t_c705a9a8b167b1 1-20
+federation/seals/federation-seal.json
+  s_61d272931279ac::t_02d7b32f8b28e3 1-7
+final/verify.js
+  s_61d272931279ac::t_7896f6b25f97ff 1-16
+federation/handoff/handoff.ts
+  s_61d272931279ac::t_1bdb6a5e4e5c54 1-18
+snapshot/world/world-hash.ts
+  s_61d272931279ac::t_92d0b3a09b68bd 1-13
+final/certificate.json
+  s_61d272931279ac::t_a9c000df437fcb 1-8
+access/permissions/permissions.ts
+  s_61d272931279ac::t_e6da597b316cfc 1-18
+snapshot/seals/snapshot-hash.js
+  s_61d272931279ac::t_1aa42988ed3a55 1-20
+final/seal.js
+  s_61d272931279ac::t_1265b1a75e30e5 1-25
+access/bundles/access-bundle.json
+  s_61d272931279ac::t_970b7ffa997057 1-5
+snapshot/torque/torque-manifest.json
+  s_61d272931279ac::t_2f4ed1b4385728 1-6
+snapshot/torque/torque-adapter.ts
+  s_61d272931279ac::t_54623082340d4c 1-21
+snapshot/corpus/corpus-ingest.ts
+  s_61d272931279ac::t_d9ae885c61e896 1-27
+access/acl/acl.json
+  s_61d272931279ac::t_f7280d266fcc54 1-9
+federation/trust/trust-graph.json
+  s_61d272931279ac::t_bc7a78a643b7d4 1-10
+federation/agents/agents.json
+  s_61d272931279ac::t_98170c4f882a8c 1-8
+snapshot/corpus/corpus-manifest.json
+  s_61d272931279ac::t_ad1c55c968aed3 1-9
+access/permissions/permissions.json
+  s_61d272931279ac::t_d5922c723f17db 1-13
+snapshot/seals/deterministic-snapshot.js
+  s_61d272931279ac::t_889c5c1c9950ae 1-30
+snapshot/world/world-state.json
+  s_61d272931279ac::t_0820ba31f0b6ba 1-18
+federation.sh
+  s_61d272931279ac::t_2b1df986c28a7d 1-2
+federation/agents/agents.ts
+  s_61d272931279ac::t_4dd9e9e1d98b3c 1-17
+BATCHES_MANIFEST.json
+  s_61d272931279ac::t_034550ba4d03a9 1-222
+final/manifest.json
+  s_61d272931279ac::t_7a374a71d6f98e 1-28
+snapshot/seals/snapshot-seal.json
+  s_61d272931279ac::t_20242ad5912582 1-7
+federation/handoff/handoff-policy.json
+  s_61d272931279ac::t_c4c386a88edb2c 1-9
+access/acl/acl.ts
+  s_61d272931279ac::t_84049b2a99a706 1-16
+access/seals/access-hash.js
+  s_61d272931279ac::t_72ff1b5068942f 1-20
+access.sh
+  s_61d272931279ac::t_668524e67ef43c 1-2
+final.sh
+  s_61d272931279ac::t_70fc174ff1d110 1-2
+access/seals/access-verify.js
+  s_61d272931279ac::t_f5cb7913841d13 1-16
+federation/trust/trust-graph.ts
+  s_61d272931279ac::t_e52c89be5ad203 1-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "f1fef46551bdc15b2d18365ec019b5dfe59518e5",
+  "prompts": {},
+  "sessions": {
+    "s_61d272931279ac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3be727e-31ce-455a-b684-4be0b17901b2",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
