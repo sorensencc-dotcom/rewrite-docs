@@ -1,0 +1,50 @@
+package.json
+  s_61d272931279ac::t_e8c13396a9ad07 32-36
+  s_36fb254a0cc773::t_1c7d7a3f9475c0 1-13,15-18,20-31,37-79,81-89
+  s_61d272931279ac::t_6fcc5606fc114c 14,19
+  s_3c4c528fa7d8bd::t_5867d348a86f25 80
+docs-manager/cli.ts
+  s_61d272931279ac::t_7903699089fda9 14-16
+  s_3c4c528fa7d8bd::t_a5f10ee26b07ae 1-13,17-39
+.github/workflows/docs-sync-main.yml
+  s_61d272931279ac::t_c47b034e152348 1-51
+.gitignore
+  s_61d272931279ac::t_c7bee31cd3a4ac 48
+  s_3c4c528fa7d8bd::t_3443e03b354f05 1-47,49-65
+.github/workflows/docs-release.yml
+  s_61d272931279ac::t_c05a623d1bf741 1-55
+.github/workflows/docs-audit-pr.yml
+  s_61d272931279ac::t_938c63f1a8cc1b 1-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "aab20caddb96c2b17a5c1caccbb8c7bfee644b5e",
+  "prompts": {},
+  "sessions": {
+    "s_36fb254a0cc773": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65474609-ed90-4416-b93e-eda46cfea5ab",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_3c4c528fa7d8bd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4568709f-67d2-4790-96e9-6240756d776f",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_61d272931279ac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3be727e-31ce-455a-b684-4be0b17901b2",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
