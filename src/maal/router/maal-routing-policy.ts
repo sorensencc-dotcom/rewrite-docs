@@ -127,14 +127,15 @@ export function route(request: UnifiedChatRequest, cic: CICState): BackendId {
   // 10. Drift-aware pruning (CIC feedback)
   for (const backend of [...order]) {
     const driftScore = cic.drift[backend] ?? 0;
-    if (driftScore > DRIFT_THRESHOLD) {
+    if (driftScore >= DRIFT_THRESHOLD) {
       order = avoid(backend, "drift-detected", order);
     }
   }
 
   // 11. Final selection
   if (order.length === 0) {
-    return "ollama";
+    return (Object.entries(cic.drift) as [BackendId, number][])
+      .sort(([, a], [, b]) => a - b)[0]?.[0] ?? "mock";
   }
 
   return order[0];
