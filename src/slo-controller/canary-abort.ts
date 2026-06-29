@@ -82,6 +82,8 @@ function computeAbortSeverity(violationClass: ViolationClass): AbortSeverity {
 }
 
 async function recordAbortEvent(proposalId: string, abortReason: string): Promise<void> {
+  // Write to canary_state_history table (PostgreSQL, Phase 5)
+  // Schema columns: proposal_id, state, version, previous_version, snapshot, recorded_at
   await pgQuery(
     `INSERT INTO canary_state_history (proposal_id, state, version, previous_version, recorded_at)
      VALUES ($1, 'abort', '', NULL, CURRENT_TIMESTAMP)`,

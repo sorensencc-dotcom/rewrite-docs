@@ -3,6 +3,20 @@
 export type ISO8601 = string; // "2026-06-07T12:00:00Z"
 export type GovernanceVerdict = "PASS" | "WARN" | "FAIL";
 
+// Phase 5: Adaptive Governance
+export type ViolationClass =
+  | "soft_violation_minor"
+  | "soft_violation_major"
+  | "hard_violation_structural"
+  | "hard_violation_runtime";
+
+export interface GovernanceVerdictV2 {
+  verdict: "PASS" | "WARN" | "FAIL";
+  governance_reason: string;
+  governance_path: "gate_a" | "gate_b" | "gate_c";
+  risk_score: number;
+}
+
 export interface GovernancePolicy {
   id: string;
   description: string;
