@@ -1,0 +1,23 @@
+src/governance/scoring/grs.test.ts
+  s_36fb254a0cc773::t_1d4828973fa265 1-101
+src/governance/gates/gates.test.ts
+  s_36fb254a0cc773::t_32de3b5f8ae39d 1-97
+src/governance/config/governance.config.test.ts
+  s_36fb254a0cc773::t_7177f07ce1d168 1-65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "49a89b10b256d84d7cd8402d33a5c7d10963899f",
+  "prompts": {},
+  "sessions": {
+    "s_36fb254a0cc773": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65474609-ed90-4416-b93e-eda46cfea5ab",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
