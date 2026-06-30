@@ -1,0 +1,39 @@
+ingestion/trace-emitter.ts
+  s_44f326489d92f7::t_af1ad337abac5a 1-165
+ingestion/multi-pipeline-orchestrator.ts
+  s_44f326489d92f7::t_b23795112b6353 207-210
+  s_44f326489d92f7::t_7fcf2aafb7fd35 1-16,18-40,42-60,63-126,129-135,138-206,211-216
+  s_44f326489d92f7::t_389d282fbdd02b 61-62
+  s_44f326489d92f7::t_147333a25b1a72 127-128
+  s_44f326489d92f7::t_c4025f6272279b 17
+  s_44f326489d92f7::t_8a64526b11387c 41
+  s_44f326489d92f7::t_3eda5cf01e0c44 136-137
+snapshot/multi-pipeline-delta.json
+  s_44f326489d92f7::t_ad6ca895cd9786 1-31
+snapshot/torque/ingestion-queries.json
+  s_44f326489d92f7::t_189c26e313efe1 1-49
+tests/phase-2-multi-pipeline-verification.ts
+  s_44f326489d92f7::t_d364080a03118b 1-143
+tests/phase-3-trace-console-verification.ts
+  s_44f326489d92f7::t_b4d1212be9e240 1-141
+ingestion/unified-ingestion-adapter.ts
+  s_44f326489d92f7::t_95e5f8ad14d8a9 1-146
+ingestion/operator-console-view.ts
+  s_44f326489d92f7::t_9d594230129d22 1-171
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "1b1b6f34d8c81008b048b5c63b73519d1a6c6350",
+  "prompts": {},
+  "sessions": {
+    "s_44f326489d92f7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7e6bdb5a-54b7-4d24-a9e9-685f40ec28c9",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
