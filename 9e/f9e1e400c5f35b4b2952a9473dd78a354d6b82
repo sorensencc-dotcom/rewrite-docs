@@ -1,0 +1,22 @@
+docs-manager/export-spec.md
+  s_df2e6afa516d1b::t_e6295273d4ed07 1-290
+docs-manager/emitter.ts
+  s_df2e6afa516d1b::t_bde197eef950a6 3-4
+  s_df2e6afa516d1b::t_e94457ff68f443 1-2,5-346
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "9ef9e1e400c5f35b4b2952a9473dd78a354d6b82",
+  "prompts": {},
+  "sessions": {
+    "s_df2e6afa516d1b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4a2e1852-b897-4d5c-bdd0-12ea7d0cb831",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
