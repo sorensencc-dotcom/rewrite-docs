@@ -18,6 +18,7 @@ import { resolveJob } from "../../harvester-bridge/resolver.js";
 import { clientSessionExtractor } from "../../cic-ingestion/src/extractors/clientSessionExtractor.js";
 import { processClientSession } from "../../cic-ingestion/src/harness/replayHarness.js";
 import { decayDriftScores } from "../../cic-ingestion/src/drift/driftEngine.js";
+import { CICStateStore } from "./cicStateStore.js";
 
 const PORT = Number(process.env.ADAPTER_GATEWAY_PORT || 3119);
 
@@ -46,22 +47,9 @@ app.use((req, res, next) => {
   next();
 });
 
-interface CICState {
-  drift: Record<BackendId, number>;
-}
-
-// Simple in-memory drift state; in real CIC this is hydrated from storage
-const cicState: CICState = {
-  drift: {
-    ollama: 0,
-    localai: 0,
-    gpt4all: 0,
-    llamafile: 0,
-    koboldcpp: 0,
-    anythingllm: 0,
-    mock: 0,
-  },
-};
+// Persistent state store for SLA metrics, playbooks, and freeze gates
+const stateStore = new CICStateStore();
+let cicState = stateStore.load();
 
 // ---------- helpers ----------
 
@@ -148,7 +136,9 @@ app.post("/v1/chat", async (req, res) => {
   };
 
   try {
-    const backend = route(unifiedReq, cicState);
+    const backend = cicState.routingFrozen && cicState.frozenBackend
+      ? cicState.frozenBackend
+      : route(unifiedReq, cicState);
     const response = await dispatchToBackend(backend, unifiedReq);
 
     // log for CIC ingestion (offline-first)
@@ -190,7 +180,9 @@ app.post("/v1/completion", async (req, res) => {
   };
 
   try {
-    const backend = route(unifiedReq, cicState);
+    const backend = cicState.routingFrozen && cicState.frozenBackend
+      ? cicState.frozenBackend
+      : route(unifiedReq, cicState);
     const response = await dispatchToBackend(backend, unifiedReq);
 
     appendClientLog({
@@ -297,7 +289,9 @@ app.post("/client/send", async (req, res) => {
   };
 
   try {
-    const backend = route(unifiedReq, cicState);
+    const backend = cicState.routingFrozen && cicState.frozenBackend
+      ? cicState.frozenBackend
+      : route(unifiedReq, cicState);
     const response = await dispatchToBackend(backend, unifiedReq);
 
     appendClientLog({
@@ -355,6 +349,14 @@ app.get("/metrics", (_req, res) => {
 
   res.json({
     drift: cicState.drift,
+    slaMetrics: cicState.slaMetrics,
+    activePlaybooks: cicState.activePlaybooks,
+    violations: cicState.violations,
+    routingFrozen: cicState.routingFrozen,
+    frozenBackend: cicState.frozenBackend,
+    promotionsFrozen: cicState.promotionsFrozen,
+    rollbacksFrozen: cicState.rollbacksFrozen,
+    governanceLockdown: cicState.governanceLockdown,
     recent,
     timestamp: Date.now(),
   });
@@ -373,7 +375,27 @@ app.post("/admin/reset-drift", (req, res) => {
   } else {
     for (const k in cicState.drift) cicState.drift[k as BackendId] = 0;
   }
+  stateStore.save(cicState);
   res.json({ reset: true, drift: cicState.drift });
+});
+
+// POST /admin/playbook/trigger
+app.post("/admin/playbook/trigger", (req, res) => {
+  const { playbook, active } = req.body;
+  if (!playbook || typeof active !== "boolean") {
+    return res.status(400).json({ error: "playbook and active required" });
+  }
+  cicState = stateStore.triggerPlaybook(playbook, active);
+  res.json({ playbook, active, activePlaybooks: cicState.activePlaybooks });
+});
+
+// GET /admin/playbook/status
+app.get("/admin/playbook/status", (_req, res) => {
+  res.json({
+    activePlaybooks: cicState.activePlaybooks,
+    routingFrozen: cicState.routingFrozen,
+    governanceLockdown: cicState.governanceLockdown,
+  });
 });
 
 // ---------- feedback loop ----------
@@ -383,6 +405,7 @@ const processedIds = new Set<string>();
 
 async function runFeedbackLoop() {
   try {
+    cicState = stateStore.load();
     const entries = resolveJob({ type: "client_session", payload: { path: logsFilePath } });
     decayDriftScores(cicState.drift);
     for (const entry of entries) {
@@ -393,6 +416,7 @@ async function runFeedbackLoop() {
       const extracted = await clientSessionExtractor(entry);
       processClientSession(extracted, cicState);
     }
+    stateStore.save(cicState);
   } catch (err: any) {
     console.error("[adapter-gateway] feedback loop error:", err.message);
   }

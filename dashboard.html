@@ -370,6 +370,19 @@
     </div>
   </header>
 
+  <!-- SLA Violation Alert Banner -->
+  <div id="slaAlertBanner" style="display: none; background: rgba(255, 23, 68, 0.15); border: 1px solid rgba(255, 23, 68, 0.3); border-radius: 12px; padding: 16px; margin-bottom: 20px; color: #ff1744;">
+    <div style="display: flex; align-items: flex-start; gap: 12px;">
+      <span style="font-weight: 700; font-size: 1.1rem;">⚠️ ALERTS ACTIVE</span>
+      <div id="slaViolationsList" style="flex: 1; font-size: 0.95rem;"></div>
+    </div>
+  </div>
+
+  <!-- Governance Lockdown Banner -->
+  <div id="lockdownBanner" style="display: none; background: rgba(124, 77, 255, 0.15); border: 1px solid rgba(124, 77, 255, 0.3); border-radius: 12px; padding: 16px; margin-bottom: 20px; color: #7c4dff;">
+    <div style="font-weight: 700; font-size: 1.1rem;">🔒 GOVERNANCE LOCKDOWN - Promotions & Rollbacks Frozen</div>
+  </div>
+
   <!-- Stats banner -->
   <div class="stats-banner">
     <div class="stat-card">
@@ -450,6 +463,26 @@
       try {
         const res = await fetch("/metrics");
         const data = await res.json();
+
+        // 0. Render SLA Violations Banner
+        const slaAlertBanner = document.getElementById("slaAlertBanner");
+        const slaViolationsList = document.getElementById("slaViolationsList");
+        if (data.violations && data.violations.length > 0) {
+          slaAlertBanner.style.display = "block";
+          slaViolationsList.innerHTML = data.violations.map(v =>
+            `<div>${v.severity}: ${v.category} - ${v.description}</div>`
+          ).join("");
+        } else {
+          slaAlertBanner.style.display = "none";
+        }
+
+        // 0b. Render Governance Lockdown Banner
+        const lockdownBanner = document.getElementById("lockdownBanner");
+        if (data.governanceLockdown) {
+          lockdownBanner.style.display = "block";
+        } else {
+          lockdownBanner.style.display = "none";
+        }
 
         // 1. Render Drift Scores
         const driftContainer = document.getElementById("driftContainer");

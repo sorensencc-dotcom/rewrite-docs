@@ -17,7 +17,12 @@ export interface AuditEvent {
     | "promotion_requested"
     | "promotion_executed"
     | "rollback_initiated"
-    | "rollback_completed";
+    | "rollback_completed"
+    | "drift_decay"
+    | "drift_score_updated"
+    | "sla_violation"
+    | "governance_lockdown"
+    | "promotion_frozen";
   actor: string;
   taskId: string;
   targetStage: string;
@@ -112,7 +117,7 @@ export function createAuditEvent(
     policyChecksPassed,
     policyChecksFailed,
     hash,
-    timestamp: 0
+    timestamp: Date.now()
   };
 }
 
@@ -140,11 +145,19 @@ export function appendAuditEvent(
 
   let log = loadAuditLog(logPath);
 
+  // Implement cryptographic hash-chaining: incorporate previous event's hash
+  const previousHash = log.lastEventHash || "";
+  const chainedHash = crypto
+    .createHash("sha256")
+    .update(`${previousHash}:${event.eventId}:${event.status}`)
+    .digest("hex");
+  event.hash = chainedHash;
+
   log.events.push(event);
   log.totalEvents = log.events.length;
   log.successCount = log.events.filter(e => e.status === "success").length;
   log.failureCount = log.events.filter(e => e.status === "failure").length;
-  log.lastEventHash = event.hash;
+  log.lastEventHash = chainedHash;
 
   fs.writeFileSync(logPath, JSON.stringify(log, null, 2));
   return log;
@@ -175,4 +188,34 @@ export function generateAuditReport(
     events: taskEvents,
     summary
   };
+}
+
+export function verifyAuditChain(
+  logPath: string = "governance/audit-log.json"
+): {
+  valid: boolean;
+  breakAt?: number;
+} {
+  const log = loadAuditLog(logPath);
+
+  if (log.events.length === 0) {
+    return { valid: true };
+  }
+
+  let previousHash = "";
+  for (let i = 0; i < log.events.length; i++) {
+    const event = log.events[i];
+    const expectedHash = crypto
+      .createHash("sha256")
+      .update(`${previousHash}:${event.eventId}:${event.status}`)
+      .digest("hex");
+
+    if (event.hash !== expectedHash) {
+      return { valid: false, breakAt: i };
+    }
+
+    previousHash = event.hash;
+  }
+
+  return { valid: true };
 }

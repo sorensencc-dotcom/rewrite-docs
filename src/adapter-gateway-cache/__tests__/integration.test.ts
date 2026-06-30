@@ -193,10 +193,12 @@ describe("Integration Tests", () => {
       gateway.registerAdapter("data-adapter", mockAdapters["data-adapter"]);
 
       policyManager.setPolicy("analytics-adapter", CachePolicy.ALWAYS);
-      policyManager.setPolicy("data-adapter", CachePolicy.READ_ONLY);
 
       const r1 = await gateway.invoke("analytics-adapter", { event: "click" });
       expect(r1.success).toBe(true);
+
+      await gateway.invoke("data-adapter", { query: "SELECT *" });
+      policyManager.setPolicy("data-adapter", CachePolicy.READ_ONLY);
 
       const r2 = await gateway.invoke("data-adapter", { query: "SELECT *" });
       expect(r2.success).toBe(true);

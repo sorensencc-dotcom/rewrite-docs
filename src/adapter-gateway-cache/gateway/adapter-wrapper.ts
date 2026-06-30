@@ -7,6 +7,8 @@ import { OfflineModeHandler } from "./offline-mode";
 import { CacheHit, AdapterResponse } from "../cache-engine/cache-types";
 
 export class AdapterWrapper {
+  private trackedKeys = new Set<string>();
+
   constructor(
     private adapterId: string,
     private adapter: any,
@@ -19,6 +21,7 @@ export class AdapterWrapper {
 
   async invoke(payload: any, skipCache = false): Promise<AdapterResponse> {
     const cacheKey = CacheKeyGenerator.computeWithAdapter(this.adapterId, payload);
+    this.trackedKeys.add(cacheKey);
 
     if (skipCache) {
       return this.invokeAdapter(payload, cacheKey);
@@ -151,13 +154,22 @@ export class AdapterWrapper {
     const allPatterns = pattern ? [pattern, ...patterns] : patterns;
 
     let invalidated = 0;
-    const keys = await this.l2.list();
 
-    for (const key of keys) {
-      if (this.policyManager.matchesInvalidation(key, allPatterns)) {
+    if (allPatterns.length === 0) {
+      for (const key of this.trackedKeys) {
         this.l1.delete(key);
         await this.l2.delete(key);
         invalidated++;
+      }
+      this.trackedKeys.clear();
+    } else {
+      const keys = await this.l2.list();
+      for (const key of keys) {
+        if (this.policyManager.matchesInvalidation(key, allPatterns)) {
+          this.l1.delete(key);
+          await this.l2.delete(key);
+          invalidated++;
+        }
       }
     }
 

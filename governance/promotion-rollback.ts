@@ -6,6 +6,10 @@
 
 import crypto from "crypto";
 import fs from "fs";
+import { CICStateStore } from "../src/server/cicStateStore.js";
+
+export const ERR_PROMOTIONS_FROZEN = "ERR_PROMOTIONS_FROZEN";
+export const ERR_ROLLBACKS_FROZEN = "ERR_ROLLBACKS_FROZEN";
 
 export type Stage = "sandbox" | "canary" | "staging" | "production";
 
@@ -101,6 +105,13 @@ export function executePromotion(record: PromotionRecord, timestamp: number): Pr
     throw new Error(`Promotion ${record.promotionId} is not pending`);
   }
 
+  // Check if promotions are frozen
+  const stateStore = new CICStateStore();
+  const state = stateStore.load();
+  if (state.promotionsFrozen) {
+    throw new Error(ERR_PROMOTIONS_FROZEN);
+  }
+
   return {
     ...record,
     status: "executing",
@@ -185,6 +196,13 @@ export function createRollbackRecord(request: RollbackRequest): RollbackRecord {
 export function executeRollback(record: RollbackRecord, timestamp: number): RollbackRecord {
   if (record.status !== "pending") {
     throw new Error(`Rollback ${record.rollbackId} is not pending`);
+  }
+
+  // Check if rollbacks are frozen
+  const stateStore = new CICStateStore();
+  const state = stateStore.load();
+  if (state.rollbacksFrozen) {
+    throw new Error(ERR_ROLLBACKS_FROZEN);
   }
 
   return {
