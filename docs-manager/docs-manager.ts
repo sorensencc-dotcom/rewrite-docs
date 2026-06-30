@@ -323,7 +323,7 @@ class DocsManager {
     const missingFrontmatter = docFiles.filter((file) => {
       try {
         const content = fs.readFileSync(file, 'utf-8');
-        return !content.startsWith('---');
+        return !content.trimStart().startsWith('---');
       } catch {
         return false;
       }
@@ -404,10 +404,29 @@ class DocsManager {
     const walk = (dir: string) => {
       if (!fs.existsSync(dir)) return;
 
-      const entries = fs.readdirSync(dir);
+      let entries;
+      try {
+        entries = fs.readdirSync(dir);
+      } catch (err: unknown) {
+        const error = err as NodeJS.ErrnoException;
+        if (error.code === 'EACCES') {
+          return;
+        }
+        throw err;
+      }
+
       for (const entry of entries) {
         const fullPath = path.join(dir, entry);
-        const stat = fs.statSync(fullPath);
+        let stat;
+        try {
+          stat = fs.statSync(fullPath);
+        } catch (err: unknown) {
+          const error = err as NodeJS.ErrnoException;
+          if (error.code === 'EACCES') {
+            continue;
+          }
+          throw err;
+        }
 
         if (stat.isDirectory() && !this.config.ignorePaths.includes(entry)) {
           walk(fullPath);
@@ -602,24 +621,22 @@ class DocsManager {
   }
 
   private calculateSimilarity(a: string, b: string): number {
-    // Simple line-by-line similarity (improved from naive string matching)
     const aLines = a.split("\n");
     const bLines = b.split("\n");
-
+    const bSet = new Set(bLines.map(line => line.trim()).filter(l => l.length > 10));
+    const counted = new Set<string>();
     let matches = 0;
     for (const aLine of aLines) {
-      if (bLines.some((bLine) => aLine.trim() === bLine.trim() && aLine.trim().length > 10)) {
+      const trimmed = aLine.trim();
+      if (trimmed.length > 10 && bSet.has(trimmed) && !counted.has(trimmed)) {
         matches++;
+        counted.add(trimmed);
       }
     }
-
     const maxLen = Math.max(aLines.length, bLines.length);
     if (maxLen === 0) return 0;
-
-    // Weighted: 70% line overlap, 30% length similarity
     const lineOverlap = matches / maxLen;
     const lenSimilarity = Math.min(aLines.length, bLines.length) / maxLen;
-
     return lineOverlap * 0.7 + lenSimilarity * 0.3;
   }
 
@@ -751,18 +768,33 @@ async function main() {
 
   try {
     switch (mode) {
-      case "audit":
-        await manager.audit();
+      case "audit": {
+        const report = await manager.audit();
+        const critical = (report as any).summary?.severity_breakdown?.critical ?? 0;
+        if (critical > 0) {
+          console.error(`❌ Audit failed: ${critical} critical findings`);
+          process.exit(1);
+        }
         break;
-      case "sync":
-        await manager.sync();
+      }
+      case "sync": {
+        const report = await manager.sync();
+        if ((report as any).operations_failed > 0) {
+          process.exit(1);
+        }
         break;
+      }
       case "consolidate":
         await manager.consolidate();
         break;
-      case "drift":
-        await manager.drift();
+      case "drift": {
+        const report = await manager.drift();
+        const critical = (report as any).severity_breakdown?.critical ?? 0;
+        if (critical > 0) {
+          process.exit(1);
+        }
         break;
+      }
       case "refresh":
         await manager.refresh();
         break;
