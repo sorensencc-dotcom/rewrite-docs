@@ -1,0 +1,40 @@
+src/adapter-gateway-cache/gateway/adapter-wrapper.ts
+  s_af0f24f8db94a6::t_7e6e4e049ab7f1 10-11
+governance/audit-policy.ts
+  s_af0f24f8db94a6::t_0f7277829d2fb0 20-25
+governance/promotion-rollback.ts
+  s_af0f24f8db94a6::t_3a5dc776e8430c 9-11
+  s_af0f24f8db94a6::t_845efe6d32c8ff 12
+src/server/adapterGatewayAPI.ts
+  s_af0f24f8db94a6::t_1885f00c1d2aea 21
+jest.config.js
+  s_af0f24f8db94a6::t_b5c432a61fe4d8 30
+  s_af0f24f8db94a6::t_ede30a5f95d25f 27-29
+  s_af0f24f8db94a6::t_6d3eaa54fd18b7 31-33
+task.md
+  s_36fb254a0cc773::t_6262497a279277 1-36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "ad0d0853df59d583b01d37a04edc5d61c429a6e4",
+  "prompts": {},
+  "sessions": {
+    "s_36fb254a0cc773": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65474609-ed90-4416-b93e-eda46cfea5ab",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_af0f24f8db94a6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "63c86926-a7bc-4285-8630-019579b14225",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
