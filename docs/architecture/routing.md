@@ -1,3 +1,7 @@
+---
+title: routing
+---
+
 # Routing Engine & Policies
 
 The Routing layer manages how requests are mapped to different backend LLM providers (e.g., Ollama, Llamafile, Mock) based on local-first constraints, performance metrics, and active drift scores.

@@ -1,3 +1,7 @@
+---
+title: batch 37
+---
+
 # Batch 37: Deterministic Federation Layer
 
 Cross-agent trust graphs, sealed handoff policies, and agent registries.

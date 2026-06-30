@@ -1,3 +1,7 @@
+---
+title: dashboard tests
+---
+
 # Dashboard & Console View Test Matrix
 
 The Dashboard tests validate telemetry presentation, alert banners, sparklines, and accessibility compliance.

@@ -1,3 +1,7 @@
+---
+title: schemas
+---
+
 # Schemas
 
 TypeScript and JSON schemas for MAAL Sandbox data structures.

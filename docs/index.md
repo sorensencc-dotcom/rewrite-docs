@@ -1,3 +1,7 @@
+---
+title: index
+---
+
 # MAAL Sandbox System
 
 **Complete deterministic governance, routing, federation, and snapshot architecture for the CIC platform.**

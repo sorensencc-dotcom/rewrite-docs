@@ -1,3 +1,7 @@
+---
+title: adapterGatewayAPI
+---
+
 # Adapter Gateway API & State Store
 
 The Adapter Gateway serves as the centralized interface for routing LLM traffic, monitoring SLA breaches, and tracking active playbooks.

@@ -1,3 +1,7 @@
+---
+title: batches 1 35
+---
+
 # Batches 1-35: Foundation & Prior Phases
 
 Overview of foundation work completed in prior sessions.

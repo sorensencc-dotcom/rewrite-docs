@@ -1,3 +1,7 @@
+---
+title: verification
+---
+
 # Verification
 
 Complete guide to verifying sealed layers and system reproducibility.

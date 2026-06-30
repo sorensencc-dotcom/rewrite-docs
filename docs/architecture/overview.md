@@ -1,3 +1,7 @@
+---
+title: overview
+---
+
 # Architecture Overview
 
 The MAAL Sandbox System is built on a **deterministic, layered architecture** where each layer is sealed with SHA256 hashing for reproducibility.

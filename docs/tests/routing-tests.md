@@ -1,3 +1,7 @@
+---
+title: routing tests
+---
+
 # Routing Test Matrix
 
 The Routing Test Suite validates local-first constraints, fallback mechanics, and drift routing rules.

@@ -1,3 +1,7 @@
+---
+title: ingestion
+---
+
 # Multi-Pipeline Ingestion & Ingestion Trace
 
 The Ingestion layer is responsible for taking raw assets (documents, images), normalizing them, and fanning them out into four deterministic pipelines: Corpus, Model Training Prep, Treatment, and Rewrite Labs Redesign.

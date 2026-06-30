@@ -1,3 +1,7 @@
+---
+title: access layer
+---
+
 # Access Layer API
 
 Detailed API reference for access control functions (Batch 36).

@@ -1,3 +1,7 @@
+---
+title: batch 39
+---
+
 # Batch 39: Deterministic Global Snapshot Layer
 
 World-state snapshots, sealed corpora, and TorqueQuery manifests.

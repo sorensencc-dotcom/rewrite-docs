@@ -1,3 +1,7 @@
+---
+title: snapshot layer
+---
+
 # Snapshot Layer API
 
 Detailed API reference for snapshot functions (Batch 39).

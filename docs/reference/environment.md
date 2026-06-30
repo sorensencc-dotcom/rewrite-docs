@@ -1,3 +1,7 @@
+---
+title: environment
+---
+
 # Environment Configuration
 
 Configuration options for running the MAAL Sandbox system.

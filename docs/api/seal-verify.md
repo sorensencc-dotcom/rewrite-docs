@@ -1,3 +1,7 @@
+---
+title: seal verify
+---
+
 # Seal & Verify API
 
 Detailed API reference for sealing and verification functions (Batch 40).

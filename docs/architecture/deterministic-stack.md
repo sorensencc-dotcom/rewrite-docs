@@ -1,3 +1,7 @@
+---
+title: deterministic stack
+---
+
 # Deterministic Stack
 
 How the MAAL Sandbox achieves deterministic reproducibility through sealed layers.

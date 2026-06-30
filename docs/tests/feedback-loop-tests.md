@@ -1,3 +1,7 @@
+---
+title: feedback loop tests
+---
+
 # Feedback Loop & Playbook Test Matrix
 
 The Feedback Loop tests ensure the control plane responds correctly to SLA breaches, applies drift decay, and runs recovery runbooks.

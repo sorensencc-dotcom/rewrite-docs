@@ -1,3 +1,7 @@
+---
+title: first steps
+---
+
 # First Steps
 
 After installation, get familiar with the MAAL system.

@@ -1,3 +1,7 @@
+---
+title: dashboard
+---
+
 # Operator Console View & Dashboard
 
 The Operator Dashboard provides a live unified control panel for reviewing the status of running ingestion pipelines, routing configurations, and local-first cryptographic certificates.

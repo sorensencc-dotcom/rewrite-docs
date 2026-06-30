@@ -1,3 +1,7 @@
+---
+title: monitoring
+---
+
 # Monitoring
 
 Monitor system seals, hashes, and reproducibility.

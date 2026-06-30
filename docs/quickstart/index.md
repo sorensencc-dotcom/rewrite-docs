@@ -1,3 +1,7 @@
+---
+title: index
+---
+
 # Quickstart Guide
 
 Get the MAAL Sandbox system running in 5 minutes.

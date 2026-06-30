@@ -1,3 +1,7 @@
+---
+title: installation
+---
+
 # Installation Guide
 
 ## System Requirements

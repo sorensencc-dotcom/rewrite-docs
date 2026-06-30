@@ -1,3 +1,7 @@
+---
+title: batch 40
+---
+
 # Batch 40: Final Deterministic Seal
 
 Full-system seal, recursive layer hashing, and reproducibility certificate.

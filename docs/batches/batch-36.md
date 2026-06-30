@@ -1,3 +1,7 @@
+---
+title: batch 36
+---
+
 # Batch 36: Deterministic Access Layer
 
 Hash-locked ACLs, permission bundles, and access manifests.

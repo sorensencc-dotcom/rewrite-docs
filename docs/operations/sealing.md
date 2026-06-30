@@ -1,3 +1,7 @@
+---
+title: sealing
+---
+
 # Sealing Layers
 
 Detailed guide to sealing individual layers and the complete system.

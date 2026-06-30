@@ -1,3 +1,7 @@
+---
+title: federation layer
+---
+
 # Federation Layer API
 
 Detailed API reference for federation functions (Batch 37).

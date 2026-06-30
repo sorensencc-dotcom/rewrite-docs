@@ -1,3 +1,7 @@
+---
+title: design
+---
+
 # System Design
 
 Detailed design of the MAAL Sandbox deterministic architecture.

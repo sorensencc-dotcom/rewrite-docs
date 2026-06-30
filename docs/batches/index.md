@@ -1,3 +1,7 @@
+---
+title: index
+---
+
 # Batch Catalog
 
 Complete reference of all 40 batches in the MAAL Sandbox system.

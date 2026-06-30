@@ -1,3 +1,7 @@
+---
+title: manifests
+---
+
 # Manifests
 
 Complete reference of all manifests in the MAAL Sandbox system.

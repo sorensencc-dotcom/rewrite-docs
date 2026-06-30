@@ -1,3 +1,7 @@
+---
+title: troubleshooting
+---
+
 # Troubleshooting
 
 Common issues and solutions.

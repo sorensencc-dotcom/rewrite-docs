@@ -1,3 +1,7 @@
+---
+title: cli
+---
+
 # CLI Commands
 
 Complete reference of command-line interface commands.
