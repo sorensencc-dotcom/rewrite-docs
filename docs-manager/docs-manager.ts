@@ -238,20 +238,41 @@ class DocsManager {
    * Drift mode: identify code-docs divergence
    */
   async drift(): Promise<any> {
-    console.log("⚠️  Checking for drift...");
+    console.log("⚠️  Checking for code-docs drift...");
 
-    const driftFindings = this.findings.filter((f) => f.type === "drift");
+    const codeFiles = this.scanCodeDirectory();
+    const docFiles = this.scanDocsDirectory();
+
+    // Check for missing documentation
+    this.checkMissingDocs(codeFiles, docFiles);
+
+    // Check for outdated documentation
+    this.checkOutdatedDocs(codeFiles, docFiles);
+
+    // Check for broken links
+    this.checkBrokenLinks(docFiles);
+
+    const driftFindings = this.findings.filter((f) => f.severity === "critical");
+    const warningFindings = this.findings.filter((f) => f.severity === "warning");
+    const infoFindings = this.findings.filter((f) => f.severity === "info");
 
     const report = {
       timestamp: new Date().toISOString(),
       mode: "drift",
-      drift_areas: driftFindings,
-      total_drift_issues: driftFindings.length,
-      severity_breakdown: {
-        critical: driftFindings.filter((f) => f.severity === "critical").length,
-        warning: driftFindings.filter((f) => f.severity === "warning").length,
-        info: driftFindings.filter((f) => f.severity === "info").length,
+      analysis: {
+        code_files_scanned: codeFiles.length,
+        doc_files_scanned: docFiles.length,
+        missing_docs: driftFindings.filter((f) => f.type === "missing_docs").length,
+        outdated_docs: warningFindings.filter((f) => f.type === "outdated").length,
+        broken_links: infoFindings.filter((f) => f.type === "broken_link").length,
       },
+      drift_areas: this.findings,
+      severity_breakdown: {
+        critical: driftFindings.length,
+        warning: warningFindings.length,
+        info: infoFindings.length,
+      },
+      total_drift_issues: this.findings.length,
     };
 
     this.saveReport(report, "docs-drift-report.json");

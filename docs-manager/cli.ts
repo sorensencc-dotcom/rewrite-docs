@@ -77,8 +77,24 @@ try {
       break;
     }
 
+    case 'drift': {
+      console.log('[docs-manager] Analyzing code-docs drift...');
+      const driftReport = manager.drift() as {
+        severity_breakdown?: { critical: number; warning: number; info: number };
+        total_drift_issues?: number;
+      };
+      const critical = driftReport?.severity_breakdown?.critical ?? 0;
+      const warning = driftReport?.severity_breakdown?.warning ?? 0;
+      const info = driftReport?.severity_breakdown?.info ?? 0;
+      console.log(`✓ Drift analysis complete: ${critical} critical, ${warning} warnings, ${info} info`);
+      if (critical > 0) {
+        process.exit(1);
+      }
+      break;
+    }
+
     default:
-      console.error(`Unknown mode: ${mode}. Use: audit|sync|refresh|consolidate`);
+      console.error(`Unknown mode: ${mode}. Use: audit|sync|refresh|consolidate|drift`);
       process.exit(1);
   }
 } catch (err) {

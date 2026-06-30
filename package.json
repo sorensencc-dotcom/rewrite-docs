@@ -32,6 +32,7 @@
     "fire-drills": "tsx scripts/fire-drills.ts",
     "docs:audit": "tsx docs-manager/cli.ts audit",
     "docs:sync": "tsx docs-manager/cli.ts sync",
+    "docs:drift": "tsx docs-manager/cli.ts drift",
     "docs:consolidate": "tsx docs-manager/cli.ts consolidate",
     "docs:refresh": "tsx docs-manager/cli.ts refresh",
     "release": "npm run build && npm run docs:refresh && npm version patch"
