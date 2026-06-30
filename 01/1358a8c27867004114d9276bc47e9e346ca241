@@ -1,0 +1,37 @@
+docker-init-phase6.sql
+  s_62ab85d7a21222::t_0af533da9be68e 1-252
+docs-manager/docs-manager.ts
+  s_61d272931279ac::t_c83bf59c101d26 326
+  s_61d272931279ac::t_aedbf31b0331d7 771-777,779-784,786,790-795,797
+  s_61d272931279ac::t_a67974c3c09225 626-627,630-631,633
+  s_61d272931279ac::t_596bf5c3b398dc 407-417,420-429
+docker-compose.yml
+  s_62ab85d7a21222::t_a1d74ad141a174 593
+  s_61d272931279ac::t_076f3ba112b4fd 1-592,594-611
+PHASE6-IMPLEMENTATION-SUMMARY.md
+  s_62ab85d7a21222::t_c3bceacdaf5c31 1-207
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "011358a8c27867004114d9276bc47e9e346ca241",
+  "prompts": {},
+  "sessions": {
+    "s_61d272931279ac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3be727e-31ce-455a-b684-4be0b17901b2",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_62ab85d7a21222": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4e203350-bc20-46f6-a14e-f0545f73a12a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
