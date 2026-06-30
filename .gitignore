@@ -59,6 +59,8 @@ CIP/
 charlie-deep-research/
 cic/
 cic-ingestion/
+!cic-ingestion/src/ingestion/jobs/docsManager*.ts
+!cic-ingestion/src/ingestion/daemon.ts
 claude-configs/
 claude-skills/
 financeos/

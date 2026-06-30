@@ -1,0 +1,115 @@
+site_name: MAAL Sandbox System
+site_description: Complete deterministic CIC/MAAL governance, routing, federation, and snapshot architecture
+site_author: CIC Team
+site_url: https://example.com/maal-sandbox/
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - toc.follow
+    - content.tabs.link
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Quickstart: quickstart/index.md
+      - Installation: quickstart/installation.md
+      - First Steps: quickstart/first-steps.md
+  - Architecture:
+      - Overview: architecture/overview.md
+      - System Design: architecture/design.md
+      - Deterministic Stack: architecture/deterministic-stack.md
+      - Data Flow: architecture/data-flow.md
+      - Local-First Routing: architecture/routing.md
+      - Drift Classification: architecture/drift.md
+      - Ingestion & Trace: architecture/ingestion.md
+  - Gateway:
+      - API & State Store: gateway/adapterGatewayAPI.md
+      - Providers Configuration: gateway/providers.md
+  - CIC Subsystems:
+      - CodeFlow Harvester: cic/harvester.md
+      - Drift Engine: cic/driftEngine.md
+      - Replay Harness: cic/replayHarness.md
+  - Dashboard:
+      - Operator Dashboard: dashboard/dashboard.md
+  - Test Matrices:
+      - Routing Tests: tests/routing-tests.md
+      - Feedback Loop Tests: tests/feedback-loop-tests.md
+      - Dashboard Tests: tests/dashboard-tests.md
+  - Batches:
+      - Batch Catalog: batches/index.md
+      - Batches 1-35: batches/batches-1-35.md
+      - Batch 36 (Access): batches/batch-36.md
+      - Batch 37 (Federation): batches/batch-37.md
+      - Batch 39 (Snapshot): batches/batch-39.md
+      - Batch 40 (Final Seal): batches/batch-40.md
+  - API Reference:
+      - Overview: api/overview.md
+      - Access Layer: api/access-layer.md
+      - Federation Layer: api/federation-layer.md
+      - Snapshot Layer: api/snapshot-layer.md
+      - Seal & Verify: api/seal-verify.md
+  - Operations:
+      - Running the System: operations/running.md
+      - Sealing Layers: operations/sealing.md
+      - Verification: operations/verification.md
+      - Monitoring: operations/monitoring.md
+      - Troubleshooting: operations/troubleshooting.md
+  - Reference:
+      - Manifests: reference/manifests.md
+      - Schemas: reference/schemas.md
+      - Environment: reference/environment.md
+      - CLI Commands: reference/cli.md
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.emoji
+  - tables
+  - toc:
+      toc_depth: 3
+  - codehilite
+  - smarty
+  - sane_lists
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/example/maal-sandbox
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/r/example/maal
+  version: 1.0.0
+  last_update: 2026-06-29
+
+copyright: Copyright &copy; 2026 CIC Team. All rights reserved.
