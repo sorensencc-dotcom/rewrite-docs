@@ -144,7 +144,7 @@
     /* Stats Banner */
     .stats-banner {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 20px;
       margin-bottom: 30px;
     }
@@ -401,6 +401,20 @@
       <div class="stat-value" id="statLastIngest" style="font-size: 1.2rem; line-height: 2.7rem; font-family: 'JetBrains Mono', monospace;">-</div>
       <div class="stat-label">Last Activity</div>
     </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statBacklog">0</div>
+      <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin-top: 10px;">
+        <div id="backlogBar" style="height: 100%; width: 0%; background: var(--success); transition: width 0.3s;"></div>
+      </div>
+      <div class="stat-label" style="margin-top: 5px;">Ingestion Backlog</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statOscillations">0</div>
+      <div id="routingChangesSparkline" style="margin-top: 10px; height: 16px; display: flex; align-items: flex-end; justify-content: center; gap: 2px;">
+        <!-- Dyn sparkline bars -->
+      </div>
+      <div class="stat-label" style="margin-top: 5px;">Routing Changes</div>
+    </div>
   </div>
 
   <div class="dashboard-grid">
@@ -519,6 +533,35 @@
         const alertStat = document.getElementById("statAlerts");
         alertStat.innerText = activeAlerts;
         alertStat.style.color = activeAlerts > 0 ? 'var(--danger)' : 'var(--success)';
+
+        // 3b. Render SLA backlog meter
+        const backlog = data.slaMetrics?.backlogCount ?? 0;
+        document.getElementById("statBacklog").innerText = backlog;
+        const backlogBar = document.getElementById("backlogBar");
+        const maxBacklog = data.slaSettings?.maxBacklog ?? 200;
+        const backlogPct = Math.min(100, (backlog / maxBacklog) * 100);
+        backlogBar.style.width = `${backlogPct}%`;
+        backlogBar.style.backgroundColor = backlog > maxBacklog ? 'var(--danger)' : backlog > maxBacklog * 0.5 ? 'var(--warning)' : 'var(--success)';
+
+        // 3c. Render routing changes / oscillations sparkline
+        const oscillations = data.slaMetrics?.routingChanges ?? 0;
+        document.getElementById("statOscillations").innerText = oscillations;
+        
+        if (!window.routingChangesHistory) {
+          window.routingChangesHistory = [];
+        }
+        window.routingChangesHistory.push(oscillations);
+        if (window.routingChangesHistory.length > 10) {
+          window.routingChangesHistory.shift();
+        }
+        
+        const sparkline = document.getElementById("routingChangesSparkline");
+        const maxVal = Math.max(2, ...window.routingChangesHistory);
+        sparkline.innerHTML = window.routingChangesHistory.map(val => {
+          const height = Math.max(4, (val / maxVal) * 16);
+          const color = val > (data.slaSettings?.maxOscillations ?? 2) ? 'var(--danger)' : val > 0 ? 'var(--warning)' : 'var(--success)';
+          return `<div style="width: 4px; height: ${height}px; background: ${color}; border-radius: 1px;"></div>`;
+        }).join("");
 
         // 4. Render Average Latency of last 10 runs
         const chatRuns = data.recent.filter(e => e.type === "chat_turn" || e.type === "client_send" || e.type === "completion_turn");

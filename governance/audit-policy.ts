@@ -190,32 +190,29 @@ export function generateAuditReport(
   };
 }
 
-export function verifyAuditChain(
-  logPath: string = "governance/audit-log.json"
-): {
-  valid: boolean;
-  breakAt?: number;
-} {
-  const log = loadAuditLog(logPath);
-
-  if (log.events.length === 0) {
+export function verifyAuditChain(logPath?: string): { valid: boolean; breakAt?: number } {
+  const finalPath = logPath || process.env.AUDIT_LOG_FILE || path.resolve(process.cwd(), "governance", "audit-log.json");
+  if (!fs.existsSync(finalPath)) {
     return { valid: true };
   }
-
-  let previousHash = "";
-  for (let i = 0; i < log.events.length; i++) {
-    const event = log.events[i];
-    const expectedHash = crypto
-      .createHash("sha256")
-      .update(`${previousHash}:${event.eventId}:${event.status}`)
-      .digest("hex");
-
-    if (event.hash !== expectedHash) {
-      return { valid: false, breakAt: i };
+  try {
+    const log = JSON.parse(fs.readFileSync(finalPath, "utf8")) as AuditLog;
+    let prevHash = "";
+    for (let i = 0; i < log.events.length; i++) {
+      const event = log.events[i];
+      const expectedHash = crypto
+        .createHash("sha256")
+        .update(`${prevHash}:${event.eventId}:${event.status}`)
+        .digest("hex");
+      
+      if (event.hash !== expectedHash) {
+        return { valid: false, breakAt: i };
+      }
+      prevHash = event.hash;
     }
-
-    previousHash = event.hash;
+  } catch (err) {
+    return { valid: false, breakAt: 0 };
   }
-
   return { valid: true };
 }
+
