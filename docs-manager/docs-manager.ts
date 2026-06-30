@@ -97,6 +97,21 @@ class DocsManager {
     this.findings = [];
     this.filesScanned = 0;
 
+    // Validate schema and structure first
+    const schemaValidation = this.validateSchemas();
+    if (!schemaValidation.valid) {
+      schemaValidation.errors.forEach((err) => {
+        const parts = err.match(/^(❌|⚠️)/);
+        const severity = err.includes('missing') ? 'critical' : 'warning';
+        this.findings.push({
+          type: 'drift',
+          location: 'docs root',
+          description: err,
+          severity: severity as 'critical' | 'warning' | 'info',
+        });
+      });
+    }
+
     const docFiles = this.scanDocsDirectory();
     const codeFiles = this.scanCodeDirectory();
 
@@ -277,6 +292,51 @@ class DocsManager {
 
     this.saveReport(report, "docs-drift-report.json");
     return report;
+  }
+
+  /**
+   * Validate documentation schemas and structure
+   */
+  private validateSchemas(): { valid: boolean; errors: string[] } {
+    const errors: string[] = [];
+
+    // Validate mkdocs.yml exists
+    const mkdocsPath = path.join(this.rootDir, this.config.mkdocsFile);
+    if (!fs.existsSync(mkdocsPath)) {
+      errors.push(`❌ mkdocs.yml not found at ${mkdocsPath}`);
+    }
+
+    // Validate docs directory exists
+    const docsPath = path.join(this.rootDir, this.config.docsDir);
+    if (!fs.existsSync(docsPath)) {
+      errors.push(`❌ Docs directory not found at ${docsPath}`);
+    }
+
+    // Validate index.md exists
+    const indexPath = path.join(docsPath, 'index.md');
+    if (!fs.existsSync(indexPath)) {
+      errors.push(`⚠️  Missing docs/index.md`);
+    }
+
+    // Validate docs have frontmatter
+    const docFiles = this.scanDocsDirectory();
+    const missingFrontmatter = docFiles.filter((file) => {
+      try {
+        const content = fs.readFileSync(file, 'utf-8');
+        return !content.startsWith('---');
+      } catch {
+        return false;
+      }
+    });
+
+    if (missingFrontmatter.length > 0) {
+      errors.push(`⚠️  ${missingFrontmatter.length} docs missing YAML frontmatter`);
+    }
+
+    return {
+      valid: errors.length === 0,
+      errors,
+    };
   }
 
   /**
