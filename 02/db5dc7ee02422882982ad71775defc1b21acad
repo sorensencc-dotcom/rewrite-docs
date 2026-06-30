@@ -1,0 +1,32 @@
+governance/governance-orchestrator.ts
+  s_44f326489d92f7::t_d8e755e4af4cc9 1-254
+tests/phase-4-governance-verification.ts
+  s_44f326489d92f7::t_f85dbead1a0682 108
+  s_44f326489d92f7::t_7cd3aaf3d0b30b 1-6,9-12,14-18,20-88,90-107,109-203,211-212
+  s_44f326489d92f7::t_7148af5007d962 204-210
+  s_44f326489d92f7::t_25865eae693087 7-8,13,19
+  s_44f326489d92f7::t_c99cb5d30ad27a 89
+governance/audit-policy.ts
+  s_44f326489d92f7::t_9d217c2ea837a7 1-178
+governance/approval-gate.ts
+  s_44f326489d92f7::t_8d10c8242d61d8 1-54,56-146
+  s_44f326489d92f7::t_7548c7cb1c7100 55
+governance/promotion-rollback.ts
+  s_44f326489d92f7::t_8141776dfa5ba1 1-225
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "02db5dc7ee02422882982ad71775defc1b21acad",
+  "prompts": {},
+  "sessions": {
+    "s_44f326489d92f7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7e6bdb5a-54b7-4d24-a9e9-685f40ec28c9",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
