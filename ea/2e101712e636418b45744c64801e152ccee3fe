@@ -1,0 +1,41 @@
+governance/audit-log.json
+  s_af0f24f8db94a6::t_36827e22390da2 626-768
+  s_af0f24f8db94a6::t_d389a56fbca2a7 769-913,915-916,918-922,925-926,928-929,931-935,938-939,941-942,944-948,951-952,954-955,957-961,964-965,967-968,970-974,977-978,980-981,983-987,990-991,993-994,996-1000,1003-1004,1006-1007,1009-1013,1016-1017,1019-1020,1022-1026
+  s_af0f24f8db94a6::t_a36a62be948308 1-625,1029-1035
+  s_62ab85d7a21222::t_a463907354a552 914,917,923-924,927,930,936-937,940,943,949-950,953,956,962-963,966,969,975-976,979,982,988-989,992,995,1001-1002,1005,1008,1014-1015,1018,1021,1027-1028
+test-resilience.ts
+  s_61d272931279ac::t_d028cff5b858bc 1-21,25,31-85
+  s_61d272931279ac::t_b3c3c188e0f064 22-24,26-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "ea2e101712e636418b45744c64801e152ccee3fe",
+  "prompts": {},
+  "sessions": {
+    "s_61d272931279ac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3be727e-31ce-455a-b684-4be0b17901b2",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_62ab85d7a21222": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4e203350-bc20-46f6-a14e-f0545f73a12a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_af0f24f8db94a6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "63c86926-a7bc-4285-8630-019579b14225",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
