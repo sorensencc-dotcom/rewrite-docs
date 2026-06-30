@@ -1,0 +1,29 @@
+task.md
+  s_36fb254a0cc773::t_07a1f4fd311db6 1,3-22
+walkthrough.md
+  s_61d272931279ac::t_63ceb28b27a13f 1,3,5,7,9-12,14-18,20-24,26-32,34-36,38-43,49-57,59-107,109-113
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "41898621f032d4bf151983e5db99ce7c2ecf2a7d",
+  "prompts": {},
+  "sessions": {
+    "s_36fb254a0cc773": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65474609-ed90-4416-b93e-eda46cfea5ab",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_61d272931279ac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3be727e-31ce-455a-b684-4be0b17901b2",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
