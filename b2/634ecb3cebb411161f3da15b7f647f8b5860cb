@@ -1,0 +1,19 @@
+docs-manager/cli.ts
+  s_61d272931279ac::t_45e827acbb93bb 66-79,81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "b2634ecb3cebb411161f3da15b7f647f8b5860cb",
+  "prompts": {},
+  "sessions": {
+    "s_61d272931279ac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3be727e-31ce-455a-b684-4be0b17901b2",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
