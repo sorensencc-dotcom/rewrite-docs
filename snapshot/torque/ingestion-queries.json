@@ -1,0 +1,49 @@
+{
+  "queries": [
+    {
+      "id": "q-new-assets-count",
+      "description": "Count assets added by runId",
+      "type": "local-first",
+      "sealed": true,
+      "query": "SELECT COUNT(*) FROM world_state.ingestedAssets WHERE assetId IN (SELECT assetId FROM orchestration_runs WHERE runId = $1)",
+      "parameters": ["runId"],
+      "returns": "count"
+    },
+    {
+      "id": "q-local-first-mode",
+      "description": "Assert local-first mode is enabled",
+      "type": "local-first",
+      "sealed": true,
+      "query": "SELECT localFirstProfile.enabled FROM local_first_profile WHERE localFirstProfile.enabled = true",
+      "parameters": [],
+      "returns": "boolean"
+    },
+    {
+      "id": "q-ingestion-pipelines-status",
+      "description": "Read multi-pipeline-seal status",
+      "type": "local-first",
+      "sealed": true,
+      "query": "SELECT multiPipelineSeal.pipelines FROM multi_pipeline_seal WHERE multiPipelineSeal.sealed = true",
+      "parameters": [],
+      "returns": "object"
+    },
+    {
+      "id": "q-world-state-components",
+      "description": "List all components in world-state",
+      "type": "local-first",
+      "sealed": true,
+      "query": "SELECT components FROM world_state WHERE components IS NOT NULL",
+      "parameters": [],
+      "returns": "array"
+    },
+    {
+      "id": "q-snapshot-hash",
+      "description": "Return world-state hash field",
+      "type": "local-first",
+      "sealed": true,
+      "query": "SELECT snapshotHash FROM execution_traces WHERE snapshotHash IS NOT NULL ORDER BY timestamp DESC LIMIT 1",
+      "parameters": [],
+      "returns": "string"
+    }
+  ]
+}

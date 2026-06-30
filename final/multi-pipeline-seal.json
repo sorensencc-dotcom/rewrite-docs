@@ -1,0 +1,22 @@
+{
+  "multiPipelineSeal": {
+    "version": "1.0.0",
+    "localFirst": true,
+    "deterministic": true,
+    "sealed": true,
+    "pipelines": {
+      "corpus": "sealed",
+      "modelTraining": "sealed",
+      "treatment": "sealed",
+      "rewriteLabs": "sealed"
+    },
+    "hashes": {
+      "corpus": "<PLACEHOLDER>",
+      "modelTraining": "<PLACEHOLDER>",
+      "treatment": "<PLACEHOLDER>",
+      "rewriteLabs": "<PLACEHOLDER>"
+    },
+    "finalSealHash": "<PLACEHOLDER>",
+    "completed": "<PLACEHOLDER>"
+  }
+}

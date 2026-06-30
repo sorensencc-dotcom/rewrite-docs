@@ -1,0 +1,31 @@
+{
+  "multiPipelineDelta": {
+    "version": "1.0.0",
+    "localFirst": true,
+    "changes": [
+      {
+        "component": "world-state",
+        "field": "ingestedAssets",
+        "operation": "append",
+        "from": "[]",
+        "to": "[<PLACEHOLDER: asset IDs>]"
+      },
+      {
+        "component": "data/training-assets",
+        "field": "root",
+        "operation": "write",
+        "from": "[]",
+        "to": "[<PLACEHOLDER: training metadata>]"
+      },
+      {
+        "component": "data/rewrite-labs-assets",
+        "field": "root",
+        "operation": "write",
+        "from": "[]",
+        "to": "[<PLACEHOLDER: rewrite seeds>]"
+      }
+    ],
+    "assetCount": 0,
+    "completed": "<PLACEHOLDER>"
+  }
+}
