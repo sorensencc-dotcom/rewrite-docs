@@ -1,0 +1,21 @@
+docs-manager/docs-manager.ts
+  s_61d272931279ac::t_22c7ad7b42118c 100-114
+  s_61d272931279ac::t_e7923f8e2c3a71 298-341
+  s_61d272931279ac::t_b46043fc190abe 297
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "1157704c4b1920a9db9efa59ddfdd6c395e43b49",
+  "prompts": {},
+  "sessions": {
+    "s_61d272931279ac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3be727e-31ce-455a-b684-4be0b17901b2",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
