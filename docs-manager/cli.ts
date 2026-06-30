@@ -63,8 +63,22 @@ try {
       break;
     }
 
+    case 'consolidate': {
+      console.log('[docs-manager] Finding duplicates and consolidation opportunities...');
+      const consolidationPlan = manager.consolidate() as {
+        duplicates?: Array<{ file1: string; file2: string; similarity: number }>;
+        merges?: Array<unknown>;
+        deletions?: Array<unknown>;
+      };
+      const duplicateCount = consolidationPlan?.duplicates?.length ?? 0;
+      const mergeCount = consolidationPlan?.merges?.length ?? 0;
+      const deleteCount = consolidationPlan?.deletions?.length ?? 0;
+      console.log(`✓ Consolidation complete: ${duplicateCount} duplicates, ${mergeCount} merges, ${deleteCount} deletions`);
+      break;
+    }
+
     default:
-      console.error(`Unknown mode: ${mode}`);
+      console.error(`Unknown mode: ${mode}. Use: audit|sync|refresh|consolidate`);
       process.exit(1);
   }
 } catch (err) {
