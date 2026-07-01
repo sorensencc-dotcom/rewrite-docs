@@ -1,0 +1,33 @@
+docs/implementation/phase-26/architecture-decision-log.md
+  s_221e0e15286437::t_e3525fe2515a54 1-636
+docs/implementation/phase-26/test-verification-report.md
+  s_221e0e15286437::t_b187c123019657 1-306
+docs/implementation/phase-26/deployment-checklist.md
+  s_221e0e15286437::t_bfceeb3b466c67 1-472
+docs/implementation/phase-26/summary.md
+  s_5d0c5e7843ce32::t_3a2258fe89fe43 1-283
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "e651480c98ae2ed9618954bb681986d8def9172d",
+  "prompts": {},
+  "sessions": {
+    "s_221e0e15286437": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3d4616f8-e928-4baa-ad90-d5cc01d545e6",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_5d0c5e7843ce32": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "13c90d8b-008b-4cd1-9cbc-a8e19f55c5d1",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
