@@ -5,6 +5,7 @@ export type ModelType =
   | "ollama"
   | "local-gguf"
   | "azure-openai"
+  | "cloud-openai-compatible"
   | "mock";
 
 export interface ModelCapabilities {

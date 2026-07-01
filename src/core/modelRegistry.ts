@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { ModelSpec } from "./modelSpec.js";
 import { ConfigurationError } from "./errors.js";
+import { CLOUD_MODEL_SPECS, CloudModelSpec } from "./cloudModelSpecs.js";
 
 const modelsBasePath = process.env.NODE_ENV === "test"
   ? path.join(process.cwd(), "src")
@@ -33,7 +34,34 @@ export function loadModelRegistry(): Map<string, ModelSpec> {
     registry.set(spec.name, spec);
   }
 
+  // Add cloud model specs
+  for (const [id, cloudSpec] of Object.entries(CLOUD_MODEL_SPECS)) {
+    if (cloudSpec.supported) {
+      const modelSpec = convertCloudSpecToModelSpec(cloudSpec);
+      registry.set(id, modelSpec);
+    }
+  }
+
   return registry;
+}
+
+function convertCloudSpecToModelSpec(cloudSpec: CloudModelSpec): ModelSpec {
+  return {
+    name: cloudSpec.id,
+    provider: cloudSpec.provider,
+    type: "cloud-openai-compatible",
+    apiBase: `https://api.${cloudSpec.provider}.com/v1`,
+    env: cloudSpec.auth.envVar,
+    maxTokens: 4096,
+    supports: {
+      chat: true,
+      toolCalls: true,
+      streaming: false,
+      vision: false,
+      embeddings: false,
+    },
+    routingBias: 50,
+  };
 }
 
 export function getModelSpec(name: string): ModelSpec {

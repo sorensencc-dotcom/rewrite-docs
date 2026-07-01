@@ -124,6 +124,14 @@ export class ModelRouter {
   }
 }
 
+const cloudProviderStub: Provider = {
+  callChat: async () => {
+    throw new RoutingError(
+      "Cloud models must be dispatched through adapterGatewayAPI with routing.allowCloud=true"
+    );
+  },
+};
+
 const providers: Record<ModelSpec["type"], Provider> = {
   "openai-compatible": openaiCompatibleProvider,
   "anthropic": anthropicProvider,
@@ -131,6 +139,7 @@ const providers: Record<ModelSpec["type"], Provider> = {
   "ollama": ollamaProvider,
   "local-gguf": localProvider,
   "azure-openai": azureOpenAIProvider,
+  "cloud-openai-compatible": cloudProviderStub,
   "mock": mockProvider
 };
 

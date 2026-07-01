@@ -14,6 +14,7 @@ import { ollamaChat } from "../providers/ollamaProvider.js";
 import { localaiChat } from "../providers/localaiProvider.js";
 import { gpt4allChat } from "../providers/gpt4allProvider.js";
 import { anythingllmChat } from "../providers/anythingllmProvider.js";
+import { cloudProviders, getCloudProvider } from "./cloudProviders.js";
 import { resolveJob } from "../../harvester-bridge/resolver.js";
 import { clientSessionExtractor } from "../../cic-ingestion/src/extractors/clientSessionExtractor.js";
 import { processClientSession } from "../../cic-ingestion/src/harness/replayHarness.js";
@@ -117,6 +118,44 @@ async function dispatchToBackend(
   }
 }
 
+async function dispatchToCloud(
+  providerName: string,
+  req: UnifiedChatRequest
+): Promise<UnifiedChatResponse> {
+  const provider = getCloudProvider(providerName);
+  const cloudResponse = await provider.chat(req);
+
+  return {
+    id: `cloud-${Date.now()}`,
+    model: req.model || "cloud-unknown",
+    created: Date.now(),
+    usage: { prompt_tokens: 0, completion_tokens: cloudResponse.tokens, total_tokens: cloudResponse.tokens },
+    output: {
+      text: cloudResponse.text,
+      messages: [{ role: "assistant", content: cloudResponse.text }],
+    },
+    meta: {
+      backend: "mock",
+      latency_ms: cloudResponse.latencyMs,
+      offline: false,
+      source: req.context?.source ?? "direct",
+    },
+  };
+}
+
+function shouldDispatchToCloud(req: UnifiedChatRequest): string | null {
+  if (!req.routing?.allowCloud) {
+    return null;
+  }
+
+  const modelPrefix = req.model?.split(":")[0];
+  if (!modelPrefix || !cloudProviders[modelPrefix]) {
+    return null;
+  }
+
+  return modelPrefix;
+}
+
 // ---------- core unified endpoints ----------
 
 // POST /v1/chat
@@ -136,6 +175,22 @@ app.post("/v1/chat", async (req, res) => {
   };
 
   try {
+    const cloudProvider = shouldDispatchToCloud(unifiedReq);
+    if (cloudProvider) {
+      const response = await dispatchToCloud(cloudProvider, unifiedReq);
+      appendClientLog({
+        type: "client_session",
+        event_type: "chat_turn",
+        timestamp: Date.now(),
+        backend: "cloud",
+        provider: cloudProvider,
+        request: unifiedReq,
+        response,
+      });
+      res.json(response);
+      return;
+    }
+
     const backend = cicState.routingFrozen && cicState.frozenBackend
       ? cicState.frozenBackend
       : route(unifiedReq, cicState);
@@ -180,6 +235,22 @@ app.post("/v1/completion", async (req, res) => {
   };
 
   try {
+    const cloudProvider = shouldDispatchToCloud(unifiedReq);
+    if (cloudProvider) {
+      const response = await dispatchToCloud(cloudProvider, unifiedReq);
+      appendClientLog({
+        type: "client_session",
+        event_type: "completion_turn",
+        timestamp: Date.now(),
+        backend: "cloud",
+        provider: cloudProvider,
+        request: unifiedReq,
+        response,
+      });
+      res.json(response);
+      return;
+    }
+
     const backend = cicState.routingFrozen && cicState.frozenBackend
       ? cicState.frozenBackend
       : route(unifiedReq, cicState);
@@ -248,8 +319,8 @@ app.post("/v1/rag/query", async (req, res) => {
 });
 
 // GET /v1/models
-app.get("/v1/models", (_req, res) => {
-  const models = [
+app.get("/v1/models", (req, res) => {
+  const offlineModels = [
     { id: "ollama", provider: "ollama" },
     { id: "localai", provider: "localai" },
     { id: "gpt4all", provider: "gpt4all" },
@@ -258,16 +329,43 @@ app.get("/v1/models", (_req, res) => {
     { id: "anythingllm", provider: "anythingllm" },
     { id: "mock", provider: "mock" },
   ];
+
+  let models = offlineModels;
+
+  if (req.query.allowCloud === "true") {
+    const cloudModels = Object.values(cloudProviders).flatMap((provider) =>
+      provider.models.map((model) => ({
+        id: model,
+        provider: provider.name,
+      }))
+    );
+    models = [...offlineModels, ...cloudModels];
+  }
+
   res.json({ data: models });
 });
 
 // GET /v1/health
-app.get("/v1/health", (_req, res) => {
-  res.json({
+app.get("/v1/health", (req, res) => {
+  const health = {
     status: "ok",
     port: PORT,
     backends: ["ollama", "localai", "gpt4all", "llamafile", "koboldcpp", "anythingllm", "mock"],
-  });
+  };
+
+  if (req.query.allowCloud === "true") {
+    const cloudAuthStatus: Record<string, boolean> = {
+      openrouter: !!process.env.OPENROUTER_API_KEY,
+      huggingface: !!process.env.HUGGINGFACE_API_KEY,
+      groq: !!process.env.GROQ_API_KEY,
+      together: !!process.env.TOGETHER_API_KEY,
+      deepinfra: !!process.env.DEEPINFRA_API_KEY,
+      meituan: !!process.env.MEITUAN_API_KEY || process.env.NODE_ENV === "test",
+    };
+    (health as any).cloudProviders = cloudAuthStatus;
+  }
+
+  res.json(health);
 });
 
 // ---------- client routes (UX front-ends) ----------
@@ -289,6 +387,22 @@ app.post("/client/send", async (req, res) => {
   };
 
   try {
+    const cloudProvider = shouldDispatchToCloud(unifiedReq);
+    if (cloudProvider) {
+      const response = await dispatchToCloud(cloudProvider, unifiedReq);
+      appendClientLog({
+        type: "client_session",
+        event_type: "client_send",
+        timestamp: Date.now(),
+        backend: "cloud",
+        provider: cloudProvider,
+        request: unifiedReq,
+        response,
+      });
+      res.json(response);
+      return;
+    }
+
     const backend = cicState.routingFrozen && cicState.frozenBackend
       ? cicState.frozenBackend
       : route(unifiedReq, cicState);
