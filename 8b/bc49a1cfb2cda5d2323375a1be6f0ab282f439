@@ -1,0 +1,23 @@
+services/torquequery/src/shared/utils/embedding.ts
+  s_221e0e15286437::t_fa5bf2c83ad2a2 1
+  s_221e0e15286437::t_d648573dbce0d9 9-10
+  s_221e0e15286437::t_777942f397609c 2-4,6-8
+shared/embedding.ts
+  s_221e0e15286437::t_b20e1abe3dfbc0 1-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "8bbc49a1cfb2cda5d2323375a1be6f0ab282f439",
+  "prompts": {},
+  "sessions": {
+    "s_221e0e15286437": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3d4616f8-e928-4baa-ad90-d5cc01d545e6",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
