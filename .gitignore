@@ -61,6 +61,15 @@ cic/
 cic-ingestion/
 !cic-ingestion/src/ingestion/jobs/docsManager*.ts
 !cic-ingestion/src/ingestion/daemon.ts
+!cic-ingestion/src/services/torquequery/TorqueQueryV2Server.py
+!cic-ingestion/src/adapters/torqueQueryV2.ts
+!cic-ingestion/src/adapters/cloudProviderAdapter.ts
+!cic-ingestion/src/adapters/grokMcpAdapter.ts
+!cic-ingestion/src/adapters/grokRoutingAdapter.ts
+!cic-ingestion/src/config/cloudRoutingConfig.ts
+!cic-ingestion/src/tests/harnesses/maalRoutingReplay.ts
+!cic-ingestion/src/tests/harnesses/cicIngestionReplay.ts
+!cic-ingestion/src/tests/harnesses/driftScoringHarness.ts
 claude-configs/
 claude-skills/
 financeos/
