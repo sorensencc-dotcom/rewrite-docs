@@ -1,0 +1,19 @@
+CANARY_PHASE_A_PROD_DEPLOYMENT_CHECKLIST.md
+  s_df2e6afa516d1b::t_9a8587f1aeac67 1-261
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "50ad0cd5363aa15a6be8d903f7213c8bb61f89ee",
+  "prompts": {},
+  "sessions": {
+    "s_df2e6afa516d1b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4a2e1852-b897-4d5c-bdd0-12ea7d0cb831",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
