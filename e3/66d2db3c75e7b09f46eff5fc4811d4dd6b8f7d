@@ -1,0 +1,25 @@
+PHASE_5_TOKEN_ROI_ANALYSIS.md
+  s_df2e6afa516d1b::t_a2932354826fb9 1-301
+PHASE_5_CANARY_ROLLOUT_PLAN.md
+  s_df2e6afa516d1b::t_bcc62bd009c018 1-362
+.gitignore
+  s_df2e6afa516d1b::t_afe275a883072c 74
+cic-ingestion/src/tests/harnesses/runAllHarnesses.ts
+  s_df2e6afa516d1b::t_394760a9f0834c 1-181
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "e366d2db3c75e7b09f46eff5fc4811d4dd6b8f7d",
+  "prompts": {},
+  "sessions": {
+    "s_df2e6afa516d1b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4a2e1852-b897-4d5c-bdd0-12ea7d0cb831",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
