@@ -1,0 +1,29 @@
+src/tests/phase-c-integration.test.ts
+  s_cb9cc0072317a2::t_59057a6d316010 39-41
+  s_cb9cc0072317a2::t_08a609a2fef197 1-38,42-57,60-67,70-192,197-206,209-236,239-282
+  s_cb9cc0072317a2::t_e1d4b934f7ab46 58-59
+  s_cb9cc0072317a2::t_c85f70fbc48298 68-69
+  s_cb9cc0072317a2::t_86858ce24aca93 237-238
+  s_cb9cc0072317a2::t_b262e7673cf543 193-196,207-208
+PHASE_C_INTEGRATION_SUMMARY.md
+  s_cb9cc0072317a2::t_be02a06e508eea 1-414
+src/observability/resilientMetricsCollector.ts
+  s_cb9cc0072317a2::t_5ea6b52b19ced9 87,136-169
+  s_cb9cc0072317a2::t_0cf872456bd643 1-86,88-135,170-291
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "986ea3aa69f6b76a0b16f1e26c4dd1a45bebe389",
+  "prompts": {},
+  "sessions": {
+    "s_cb9cc0072317a2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b9e4418-e9b7-4f47-8b0a-fa70e19169d1",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
