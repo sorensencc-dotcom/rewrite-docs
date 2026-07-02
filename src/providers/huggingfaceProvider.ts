@@ -20,6 +20,11 @@ export const huggingfaceProvider: Provider = {
       throw new Error("model and input are required");
     }
 
+    const modelId = req.model.split("huggingface:")[1];
+    if (!modelId || !VALID_MODELS.includes(modelId)) {
+      throw new Error(`Model not found: ${req.model}`);
+    }
+
     const apiKey = process.env.HUGGINGFACE_API_KEY;
     validateAuthKey(apiKey, "HUGGINGFACE_API_KEY");
 
@@ -29,11 +34,6 @@ export const huggingfaceProvider: Provider = {
         latencyMs: 300,
         tokens: 12,
       };
-    }
-
-    const modelId = req.model.split("huggingface:")[1];
-    if (!modelId || !VALID_MODELS.includes(modelId)) {
-      throw new Error(`Model not found: ${req.model}`);
     }
 
     const startTime = Date.now();

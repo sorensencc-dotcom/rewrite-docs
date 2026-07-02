@@ -31,6 +31,11 @@ export const openrouterProvider: Provider = {
       throw new Error("model and input are required");
     }
 
+    const modelId = req.model.split(":")[1];
+    if (!modelId || !MODEL_MAPPING[modelId]) {
+      throw new Error(`Model not found: ${req.model}`);
+    }
+
     const apiKey = process.env.OPENROUTER_API_KEY;
     validateAuthKey(apiKey, "OPENROUTER_API_KEY");
 
@@ -40,11 +45,6 @@ export const openrouterProvider: Provider = {
         latencyMs: 250,
         tokens: 15,
       };
-    }
-
-    const modelId = req.model.split(":")[1];
-    if (!modelId || !MODEL_MAPPING[modelId]) {
-      throw new Error(`Model not found: ${req.model}`);
     }
 
     const mappedModel = MODEL_MAPPING[modelId];

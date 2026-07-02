@@ -18,6 +18,11 @@ export const groqProvider: Provider = {
       throw new Error("model and input are required");
     }
 
+    const modelId = req.model.split("groq:")[1];
+    if (!modelId || !VALID_MODELS.includes(modelId)) {
+      throw new Error(`Model not found: ${req.model}`);
+    }
+
     const apiKey = process.env.GROQ_API_KEY;
     validateAuthKey(apiKey, "GROQ_API_KEY");
 
@@ -27,11 +32,6 @@ export const groqProvider: Provider = {
         latencyMs: 100,
         tokens: 10,
       };
-    }
-
-    const modelId = req.model.split("groq:")[1];
-    if (!modelId || !VALID_MODELS.includes(modelId)) {
-      throw new Error(`Model not found: ${req.model}`);
     }
 
     const startTime = Date.now();

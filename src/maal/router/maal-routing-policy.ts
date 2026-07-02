@@ -13,6 +13,17 @@ export type BackendId =
   | "anythingllm"
   | "mock";
 
+// GUARD: Cloud dispatch isolation
+// Cloud requests must be handled at gateway layer, NOT in MAAL offline router
+function enforceCloudDispatchIsolation(request: UnifiedChatRequest): void {
+  if (request?.routing?.allowCloud) {
+    throw new Error(
+      "Cloud dispatch only at gateway layer, not in MAAL router. " +
+      "Request routing.allowCloud=true must be handled before reaching offline routing."
+    );
+  }
+}
+
 export interface CICState {
   drift: Record<BackendId, number>;
 }
@@ -51,6 +62,9 @@ function avoid(
 }
 
 export function route(request: UnifiedChatRequest, cic: CICState): BackendId {
+  // GUARD: Reject cloud dispatch requests (must be handled at gateway layer)
+  enforceCloudDispatchIsolation(request);
+
   const { routing, context, tools } = request;
   const slo = routing?.slo ?? {};
   let order: BackendId[] = [];

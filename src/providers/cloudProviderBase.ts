@@ -33,8 +33,8 @@ export async function fetchWithTimeout(
 }
 
 export function validateAuthKey(key: string | undefined, envVar: string): void {
-  if (!key && process.env.NODE_ENV !== "test") {
-    throw new Error(`${envVar} required`);
+  if (!key && process.env.NODE_ENV !== "test" && !process.env.MOCK_PROVIDERS) {
+    throw new Error(`${envVar} required for production. Set in .env or use NODE_ENV=test or MOCK_PROVIDERS=1`);
   }
 }
 

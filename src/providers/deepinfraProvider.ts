@@ -18,6 +18,11 @@ export const deepinfraProvider: Provider = {
       throw new Error("model and input are required");
     }
 
+    const modelId = req.model.split("deepinfra:")[1];
+    if (!modelId || !VALID_MODELS.includes(modelId)) {
+      throw new Error(`Model not found: ${req.model}`);
+    }
+
     const apiKey = process.env.DEEPINFRA_API_KEY;
     validateAuthKey(apiKey, "DEEPINFRA_API_KEY");
 
@@ -27,11 +32,6 @@ export const deepinfraProvider: Provider = {
         latencyMs: 320,
         tokens: 13,
       };
-    }
-
-    const modelId = req.model.split("deepinfra:")[1];
-    if (!modelId || !VALID_MODELS.includes(modelId)) {
-      throw new Error(`Model not found: ${req.model}`);
     }
 
     const startTime = Date.now();

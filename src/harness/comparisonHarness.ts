@@ -28,6 +28,11 @@ export interface ComparisonReport {
   };
 }
 
+export interface ComparisonHarnessConfig {
+  promptCount?: number;  // Override default 5 prompts per model
+  throttleMs?: number;   // Rate-limit (ms) between API calls to avoid rate limits
+}
+
 export class ComparisonHarness {
   private prompts: string[] = [
     "Explain domestic AI chips and their impact on training throughput.",
@@ -36,22 +41,37 @@ export class ComparisonHarness {
     "List advantages of open-source LLMs vs proprietary models.",
     "Explain quantization and its impact on model size and speed.",
   ];
+  private config: ComparisonHarnessConfig;
+
+  constructor(config?: ComparisonHarnessConfig) {
+    this.config = config || {};
+  }
 
   async runComparison(
     models: string[],
     prompts?: string[]
   ): Promise<ComparisonReport> {
     const testPrompts = prompts || this.prompts;
+    const promptCount = this.config.promptCount ?? testPrompts.length;
+    const throttleMs = this.config.throttleMs ?? 0;
+
+    const limitedPrompts = testPrompts.slice(0, promptCount);
     const runId = `comparison-${Date.now()}`;
     const results: ComparisonResult[] = [];
     let successCount = 0;
 
     for (const model of models) {
-      for (const prompt of testPrompts) {
+      for (let i = 0; i < limitedPrompts.length; i++) {
+        const prompt = limitedPrompts[i];
         const result = await this.runSingleTest(model, prompt);
         results.push(result);
         if (!result.error) {
           successCount++;
+        }
+
+        // Apply throttle between calls to prevent rate-limit errors
+        if (throttleMs > 0 && (i < limitedPrompts.length - 1 || model !== models[models.length - 1])) {
+          await new Promise((resolve) => setTimeout(resolve, throttleMs));
         }
       }
     }

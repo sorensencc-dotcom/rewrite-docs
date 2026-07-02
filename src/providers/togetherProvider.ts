@@ -19,6 +19,11 @@ export const togetherProvider: Provider = {
       throw new Error("model and input are required");
     }
 
+    const modelId = req.model.split("together:")[1];
+    if (!modelId || !VALID_MODELS.includes(modelId)) {
+      throw new Error(`Model not found: ${req.model}`);
+    }
+
     const apiKey = process.env.TOGETHER_API_KEY;
     validateAuthKey(apiKey, "TOGETHER_API_KEY");
 
@@ -28,11 +33,6 @@ export const togetherProvider: Provider = {
         latencyMs: 280,
         tokens: 14,
       };
-    }
-
-    const modelId = req.model.split("together:")[1];
-    if (!modelId || !VALID_MODELS.includes(modelId)) {
-      throw new Error(`Model not found: ${req.model}`);
     }
 
     const startTime = Date.now();

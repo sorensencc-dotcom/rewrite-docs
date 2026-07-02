@@ -11,6 +11,11 @@ export const meituanProvider: Provider = {
       throw new Error("model and input are required");
     }
 
+    const modelId = req.model.split("meituan:")[1];
+    if (modelId !== "meituan-llm-v1") {
+      throw new Error(`Model not found: ${req.model}`);
+    }
+
     const apiKey = process.env.MEITUAN_API_KEY;
 
     // Stub mode: test environment or MOCK_PROVIDERS=1
@@ -26,11 +31,6 @@ export const meituanProvider: Provider = {
     }
 
     validateAuthKey(apiKey, "MEITUAN_API_KEY");
-
-    const modelId = req.model.split("meituan:")[1];
-    if (modelId !== "meituan-llm-v1") {
-      throw new Error(`Model not found: ${req.model}`);
-    }
 
     const startTime = Date.now();
 
