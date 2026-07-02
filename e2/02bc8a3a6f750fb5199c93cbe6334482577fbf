@@ -1,0 +1,42 @@
+src/tests/hardening-phase-b.test.ts
+  s_cb9cc0072317a2::t_06a2bc0f2fe72a 1-299,301-304,306-308,310-432
+  s_cb9cc0072317a2::t_7cc7f1b28b7f44 300,305,309
+src/resilience/timeout.ts
+  s_cb9cc0072317a2::t_f3309ba2361b3d 1-65
+src/resilience/retry.ts
+  s_cb9cc0072317a2::t_3fb430dacb7374 1-151
+PHASE_B_HARDENING_SUMMARY.md
+  s_cb9cc0072317a2::t_0f6cea8c5f4991 1-457
+src/resilience/hardeningOrchestrator.ts
+  s_cb9cc0072317a2::t_5c1e4f70b7d06b 1-161
+src/resilience/fallbackChain.ts
+  s_e32c75eb6a74f3::t_8b6f731112a3ae 1-145
+.gitignore
+  s_cb9cc0072317a2::t_419e658c4f8849 64-72
+determinism-validation-checklist.md
+  s_cb9cc0072317a2::t_605a01f0d1bef7 1-226
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "e202bc8a3a6f750fb5199c93cbe6334482577fbf",
+  "prompts": {},
+  "sessions": {
+    "s_cb9cc0072317a2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b9e4418-e9b7-4f47-8b0a-fa70e19169d1",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_e32c75eb6a74f3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "04bd5bee-9616-4d3f-9434-239082885ed6",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
