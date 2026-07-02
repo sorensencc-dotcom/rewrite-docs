@@ -4,7 +4,6 @@ export interface RetryConfig {
   maxDelayMs?: number;
   backoffMultiplier?: number;
   name?: string;
-  retryableErrorCodes?: number[];
 }
 
 export interface RetryMetrics {
@@ -26,7 +25,6 @@ export class RetryHandler {
   private readonly maxDelayMs: number;
   private readonly backoffMultiplier: number;
   private readonly name: string;
-  private readonly retryableErrorCodes: Set<number>;
 
   private totalAttempts = 0;
   private retries = 0;
@@ -40,7 +38,6 @@ export class RetryHandler {
     this.maxDelayMs = config?.maxDelayMs ?? 5000;
     this.backoffMultiplier = config?.backoffMultiplier ?? 2;
     this.name = config?.name ?? "RetryHandler";
-    this.retryableErrorCodes = new Set(config?.retryableErrorCodes ?? [408, 429, 500, 502, 503, 504]);
   }
 
   async execute<T>(fn: () => Promise<T>): Promise<T> {

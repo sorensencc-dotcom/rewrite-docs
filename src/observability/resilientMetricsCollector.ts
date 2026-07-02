@@ -75,7 +75,7 @@ export class ResilientMetricsCollector {
    * Get current metrics snapshot.
    */
   getSnapshot(): ResilientMetricsSnapshot {
-    const hardeneingMetrics = this.hardeningRegistry.getAllMetrics();
+    const hardeningMetrics = this.hardeningRegistry.getAllMetrics();
     const providerMetrics: Record<string, ProviderMetrics> = {};
 
     let totalRequests = 0;
@@ -85,7 +85,7 @@ export class ResilientMetricsCollector {
     const latencies: number[] = [];
 
     // Add orchestrator metrics
-    for (const [providerName, metrics] of Object.entries(hardeneingMetrics)) {
+    for (const [providerName, metrics] of Object.entries(hardeningMetrics)) {
       const cbState = metrics.circuitBreaker.state;
       const cbMetrics = metrics.circuitBreaker;
       const rlMetrics = metrics.rateLimiter;
