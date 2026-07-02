@@ -1,0 +1,75 @@
+src/providers/meituanProvider.ts
+  s_cb9cc0072317a2::t_07815e44bf06a5 14-18
+src/providers/groqProvider.ts
+  s_cb9cc0072317a2::t_d1a4b31b19e780 21-25
+src/tests/openrouter-integration.test.ts
+  s_5d0c5e7843ce32::t_859a03855f795c 1-95
+src/tests/meituan-integration.test.ts
+  s_5d0c5e7843ce32::t_51ae3f6a7dc4a6 1-118
+src/server/adapterGatewayAPI-cloud-additions.ts
+  s_12a2526e904b32::t_a868268c0dbf33 46,48-49,54-56,59
+  s_12a2526e904b32::t_48e91383c692da 93-95
+  s_12a2526e904b32::t_d3d13aa64993a7 8-33,40-42
+  s_5d0c5e7843ce32::t_804c472c89e683 1-7,34-39,43-45,47,50-53,57-58,60-92,96-145
+src/server/cloudProviders.ts
+  s_5d0c5e7843ce32::t_380fb734231198 1-37
+src/providers/togetherProvider.ts
+  s_cb9cc0072317a2::t_2410632ed30d5b 22-26
+src/harness/comparisonHarness.ts
+  s_12a2526e904b32::t_6dc1c159ed5da1 31-35,44-48,55-58,64-65,71-74
+  s_5d0c5e7843ce32::t_3761e199a9ffdf 75
+src/providers/openrouterProvider.ts
+  s_cb9cc0072317a2::t_360922fb587178 34-38
+src/core/cloudModelSpecs.ts
+  s_5d0c5e7843ce32::t_7681b59c41e940 1-226
+src/tests/deepinfra-integration.test.ts
+  s_5d0c5e7843ce32::t_da656fd87492d5 1-95
+src/tests/groq-integration.test.ts
+  s_5d0c5e7843ce32::t_5ac2a7cbb6c102 1-94
+src/tests/huggingface-integration.test.ts
+  s_5d0c5e7843ce32::t_f5b8633909ab34 1-95
+src/providers/cloudProviderBase.ts
+  s_12a2526e904b32::t_f8188bbfbf94c7 36-37
+src/providers/huggingfaceProvider.ts
+  s_cb9cc0072317a2::t_c3e02f47892519 23-27
+src/providers/deepinfraProvider.ts
+  s_cb9cc0072317a2::t_735fe9393b61b8 21-25
+CLOUD_EXTENSION_IMPLEMENTATION_SUMMARY.md
+  s_12a2526e904b32::t_08d298e3968fdf 1-375
+src/maal/router/maal-routing-policy.ts
+  s_5d0c5e7843ce32::t_915e12f6e995b7 16-26,65-67
+src/tests/together-integration.test.ts
+  s_5d0c5e7843ce32::t_440a79a9208966 1-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "81c6769f7464e6e3be2fc306e151d19cc8034840",
+  "prompts": {},
+  "sessions": {
+    "s_12a2526e904b32": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7c8995b8-5e19-4fd6-a2ec-b1154c1eec34",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_5d0c5e7843ce32": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "13c90d8b-008b-4cd1-9cbc-a8e19f55c5d1",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_cb9cc0072317a2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b9e4418-e9b7-4f47-8b0a-fa70e19169d1",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
