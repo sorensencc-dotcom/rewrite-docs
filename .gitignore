@@ -71,6 +71,7 @@ cic-ingestion/
 !cic-ingestion/src/tests/harnesses/maalRoutingReplay.ts
 !cic-ingestion/src/tests/harnesses/cicIngestionReplay.ts
 !cic-ingestion/src/tests/harnesses/driftScoringHarness.ts
+!cic-ingestion/src/tests/harnesses/runAllHarnesses.ts
 claude-configs/
 claude-skills/
 financeos/
