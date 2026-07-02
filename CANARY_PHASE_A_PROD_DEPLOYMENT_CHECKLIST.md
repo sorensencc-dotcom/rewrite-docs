@@ -241,7 +241,9 @@ Action: INVESTIGATE OR EXTEND
 psql -h prod-db -U cic -d ingestion -c "UPDATE canary_routing_config SET use_v2 = false;"
 curl -X POST https://slack.com/api/chat.postMessage \
   -H "Content-Type: application/json" \
-  -d '{"channel":"#canary-alerts","text":"Auto-rollback triggered: Phase A failed"}'
+  -d @- <<EOF
+{"channel":"#canary-alerts","text":"Auto-rollback triggered: Phase A failed"}
+EOF
 ```
 
 ## Success Criteria Summary

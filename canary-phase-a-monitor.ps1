@@ -81,27 +81,27 @@ function Evaluate-Gates {
     $issues = @()
 
     # Gate 1: Adoption
-    if ($Checkpoint.adoption_pct -lt 30 -and $Checkpoint.minute -gt 5) {
+    if ($Checkpoint.adoption_pct -lt 30 -and $Checkpoint.minute -ge 5) {
         $gateStatus = "WARN"
-        $issues += "Adoption <30% (${adoption}%) - possible routing misconfiguration"
+        $issues += "Adoption <30% ($($Checkpoint.adoption_pct)%) - possible routing misconfiguration"
     }
 
     # Gate 2: Latency P99
     if ($Checkpoint.latency_p99_ms -gt 200) {
         $gateStatus = "FAIL"
-        $issues += "Latency P99 >200ms (${latencyP99}ms) - regression detected"
+        $issues += "Latency P99 >200ms ($($Checkpoint.latency_p99_ms)ms) - regression detected"
     }
 
     # Gate 3: Drift (CRITICAL)
     if ($Checkpoint.drift_score -gt 0.20) {
         $gateStatus = "CRITICAL"
-        $issues += "Drift >0.20 (${drift}) - auto-rollback trigger"
+        $issues += "Drift >0.20 ($($Checkpoint.drift_score)) - auto-rollback trigger"
     }
 
     # Gate 4: Error Rate
     if ($Checkpoint.error_rate_pct -gt 0.5) {
         $gateStatus = "CRITICAL"
-        $issues += "Error rate >0.5% (${errorRate}%) - auto-rollback trigger"
+        $issues += "Error rate >0.5% ($($Checkpoint.error_rate_pct)%) - auto-rollback trigger"
     }
 
     return @{
