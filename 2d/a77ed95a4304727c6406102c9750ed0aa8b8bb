@@ -1,0 +1,19 @@
+src/observability/resilientMetricsCollector.ts
+  s_cb9cc0072317a2::t_484269910fc804 78,88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "2da77ed95a4304727c6406102c9750ed0aa8b8bb",
+  "prompts": {},
+  "sessions": {
+    "s_cb9cc0072317a2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b9e4418-e9b7-4f47-8b0a-fa70e19169d1",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
