@@ -1,0 +1,21 @@
+CANARY_PHASE_A_DEPLOYMENT.md
+  s_df2e6afa516d1b::t_44d6f787a135e0 1-295
+canary-phase-a-monitor.ps1
+  s_df2e6afa516d1b::t_0e7819a9420b0c 1-235
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "73336d4f200c315260ea2668f5b65826de30e3ce",
+  "prompts": {},
+  "sessions": {
+    "s_df2e6afa516d1b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4a2e1852-b897-4d5c-bdd0-12ea7d0cb831",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
