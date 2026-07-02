@@ -1,0 +1,29 @@
+src/cache/ragCache.ts
+  s_cb9cc0072317a2::t_805229b9d0a34c 1-109
+src/tests/optimization-phase-a.test.ts
+  s_cb9cc0072317a2::t_cacdc607656dff 1-388
+src/resilience/rateLimiter.ts
+  s_cb9cc0072317a2::t_e0770cfe339102 1-153
+PHASE_A_OPTIMIZATION_SUMMARY.md
+  s_cb9cc0072317a2::t_832ec50c3a8e83 1-333
+src/benchmarks/providerLatency.ts
+  s_cb9cc0072317a2::t_9155701306a8a1 1-118
+src/resilience/circuitBreaker.ts
+  s_cb9cc0072317a2::t_293e42123d7876 1-204
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "0163778b818f9db49a630f1c8cc98df63db689c7",
+  "prompts": {},
+  "sessions": {
+    "s_cb9cc0072317a2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b9e4418-e9b7-4f47-8b0a-fa70e19169d1",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
