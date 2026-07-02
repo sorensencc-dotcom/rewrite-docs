@@ -1,0 +1,23 @@
+canary-phase-a-simulate-local.ps1
+  s_df2e6afa516d1b::t_a322efdcda76ac 1-179
+prometheus-mock-setup.ps1
+  s_df2e6afa516d1b::t_48d08f524305d8 1-79
+phase-5-canary-phase-a-checkpoints-simulated.jsonl
+  s_df2e6afa516d1b::t_a480866a264544 1-60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "ee18f59e4fa7fa17c2a196b13068536f7af9216f",
+  "prompts": {},
+  "sessions": {
+    "s_df2e6afa516d1b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4a2e1852-b897-4d5c-bdd0-12ea7d0cb831",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
