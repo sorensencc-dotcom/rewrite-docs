@@ -1,0 +1,129 @@
+docs/systems/index.md
+  s_59a6189aff6d68::t_a909d9ca7eaa1e 1-64
+docs/integration/index.md
+  s_59a6189aff6d68::t_7e178d901202ed 1-132
+mkdocs.yml
+  s_59a6189aff6d68::t_59c1ca29a1811f 39-43,52-54,58-72,104-108
+docs/reference/cic-rl-cross-reference.md
+  s_59a6189aff6d68::t_42b0da9f06bd24 1-199
+docs/rewrite-labs/index.md
+  s_59a6189aff6d68::t_bd8ed20e922208 1-114
+docs/cic/index.md
+  s_59a6189aff6d68::t_49024ea933b06a 1-125
+docs/cic/PHASE-1_ARCHITECTURE.md
+  s_e62e9e4eccc8a9::t_1052b4b42df25a 1-227
+docs/cic/PHASE-1_BRIDGE_ORCHESTRATOR.md
+  s_e62e9e4eccc8a9::t_74a5f84c54cf80 1-201
+docs/cic/PHASE-1_FILE_CONTRACT.md
+  s_e62e9e4eccc8a9::t_1e1378b11e3b94 1-372
+docs/cic/PHASE-1_IMPLEMENTATION_ORDER.md
+  s_e62e9e4eccc8a9::t_48c225dc4c7d0e 1-363
+docs/cic/PHASE-1_LEDGER_SUBSTRATE.md
+  s_e62e9e4eccc8a9::t_5606f4788f906e 1-295
+docs/cic/PHASE-1_MAAL_CORE.md
+  s_e62e9e4eccc8a9::t_e04d133dbbdbe5 1-259
+docs/cic/PHASE-1_OVERVIEW.md
+  s_e62e9e4eccc8a9::t_df62537f46ed4f 1-129
+docs/cic/PHASE-1_TESTING.md
+  s_e62e9e4eccc8a9::t_9bf059fd2535ef 1-407
+docs/cic/PHASE-2_ACTION_SPACE.md
+  s_e62e9e4eccc8a9::t_5b12e0fccdff8c 1-175
+docs/cic/PHASE-2_ARCHITECTURE.md
+  s_e62e9e4eccc8a9::t_30702368ffc5ca 1-269
+docs/cic/PHASE-2_EPISODE_TRAJECTORY.md
+  s_e62e9e4eccc8a9::t_de3501d5e5309e 1-218
+docs/cic/PHASE-2_INTEGRATION.md
+  s_e62e9e4eccc8a9::t_a81083add00c52 1-277
+docs/cic/PHASE-2_OVERVIEW.md
+  s_e62e9e4eccc8a9::t_8c36d704e0d965 1-178
+docs/cic/PHASE-2_POLICY_LEARNER.md
+  s_e62e9e4eccc8a9::t_8a17c10ab398e5 1-225
+docs/cic/PHASE-2_REWARD_FUNCTION.md
+  s_e62e9e4eccc8a9::t_d802d9bd4bfe49 1-208
+docs/cic/PHASE-2_SIMULATION_ENGINE.md
+  s_e62e9e4eccc8a9::t_16fbee4d815995 1-244
+docs/cic/PHASE-2_STATE_SPACE.md
+  s_e62e9e4eccc8a9::t_734cab8a92d552 1-223
+docs/cic/PHASE-2_TESTING.md
+  s_e62e9e4eccc8a9::t_3f0bca08a05107 1-306
+docs/cic/PHASE-2_TRAINING_LOOP.md
+  s_e62e9e4eccc8a9::t_33efdad16c699a 1-211
+docs/cic/SANDBOX-3_ALERTING.md
+  s_e62e9e4eccc8a9::t_c377b4aad2042d 1-26
+docs/cic/SANDBOX-3_ARCHITECTURE.md
+  s_e62e9e4eccc8a9::t_1449fc3b1c2f64 1-86
+docs/cic/SANDBOX-3_DEPLOYMENT.md
+  s_e62e9e4eccc8a9::t_918be4c9d929e5 1-27
+docs/cic/SANDBOX-3_DETERMINISM.md
+  s_e62e9e4eccc8a9::t_5369c17348d96a 1-121
+docs/cic/SANDBOX-3_FIRECRACKER.md
+  s_e62e9e4eccc8a9::t_770f81c67e6bf2 1-87
+docs/cic/SANDBOX-3_FIRECRACKER_NODEPOOL.md
+  s_e62e9e4eccc8a9::t_4679ab4d95681d 1-26
+docs/cic/SANDBOX-3_HARNESS_V3.md
+  s_e62e9e4eccc8a9::t_ff5a913be2f719 1-90
+docs/cic/SANDBOX-3_INCIDENT_RESPONSE.md
+  s_e62e9e4eccc8a9::t_f2ad29a0dc1f6d 1-27
+docs/cic/SANDBOX-3_K8S.md
+  s_e62e9e4eccc8a9::t_cce91e36536874 1-27
+docs/cic/SANDBOX-3_LATENCY.md
+  s_e62e9e4eccc8a9::t_b139926919ba5e 1-100
+docs/cic/SANDBOX-3_MAAL_INTEGRATION.md
+  s_e62e9e4eccc8a9::t_3f22bebd95fc8d 1-26
+docs/cic/SANDBOX-3_MONITORING.md
+  s_e62e9e4eccc8a9::t_65b2fc3146d834 1-26
+docs/cic/SANDBOX-3_NETWORK_TRACE.md
+  s_e62e9e4eccc8a9::t_c56894228421db 1-85
+docs/cic/SANDBOX-3_ONNX_SIDECAR.md
+  s_e62e9e4eccc8a9::t_df406f8f6c3375 1-26
+docs/cic/SANDBOX-3_OVERVIEW.md
+  s_e62e9e4eccc8a9::t_f1fb189fda219e 1-62
+docs/cic/SANDBOX-3_REPRODUCIBILITY.md
+  s_e62e9e4eccc8a9::t_ab7f85c6d19e38 1-173
+docs/cic/SANDBOX-3_ROUTING_V3.md
+  s_e62e9e4eccc8a9::t_b5feb5a9a855d4 1-26
+docs/cic/SANDBOX-3_RUNTIME.md
+  s_e62e9e4eccc8a9::t_28d1510a383b52 1-148
+docs/cic/SANDBOX-3_STABILITY_V3.md
+  s_e62e9e4eccc8a9::t_138bc5c7d8820b 1-53
+docs/cic/SANDBOX-3_SYSCALL_TRACE.md
+  s_e62e9e4eccc8a9::t_cc7bb9d30d1ec3 1-106
+docs/cic/SANDBOX-3_TRACING.md
+  s_e62e9e4eccc8a9::t_33c88bfcd9a760 1-90
+docs/cic/SANDBOX-3_VM_SNAPSHOTTING.md
+  s_e62e9e4eccc8a9::t_c359cbb406edc2 1-83
+docs/cic/driftEngine.md
+  s_e62e9e4eccc8a9::t_a4e6cd3cbb5390 1-46
+docs/cic/harvester.md
+  s_e62e9e4eccc8a9::t_a6de803f639855 1-55
+docs/cic/replayHarness.md
+  s_e62e9e4eccc8a9::t_84d3739cf5e70f 1-80
+docs/cic/research-skill/SKILL.md
+  s_e62e9e4eccc8a9::t_60f8a0b0014ca5 1-87
+.gitignore
+  s_59a6189aff6d68::t_2f0366e0452be9 60-61,63-66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "4cebbfa4f863c9328e77ae84e9d9bdecb84cd5ec",
+  "prompts": {},
+  "sessions": {
+    "s_59a6189aff6d68": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "edef6066-d2cd-44a3-ba86-577911f77d0d",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_e62e9e4eccc8a9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "364e34f8-c169-4845-8a19-418f94d74faa",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
