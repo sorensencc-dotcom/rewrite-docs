@@ -1,0 +1,47 @@
+mkdocs.yml
+  s_e62e9e4eccc8a9::t_ffe9049fed648f 108-115
+docs/meta/repo-cleanup-REVIEW.md
+  s_1a0b2d4c5a3d0a::t_09666c3161e87a 1-27
+docs/meta/GOVERNANCE_VALIDATION_SETUP.md
+  s_1a0b2d4c5a3d0a::t_0fdf0b320d8da4 1,3-5,7,9,11-214,216-228,230-232,234-266,268-313,315-431
+docs/meta/RULE_2_COMPLIANCE_FIX.md
+  s_d3640c043b3d74::t_75077acb3181cc 1,3-5,9-21,25,27-38,42,44-50,52,54-70,72-90,92-106,110,112-130,134-136,138-141,143-144,146-148,152-172,174,178-186,188,192-194
+docs/meta/KB_SYNC_IMPLEMENTATION_COMPLETE.md
+  s_1a0b2d4c5a3d0a::t_908f3afcd909f1 1-306
+docs/meta/REPOSITORY_GOVERNANCE_AUDIT.md
+  s_1a0b2d4c5a3d0a::t_546fed8e60f5e9 1,3-5,9,11,13-15,17,21-48,50,52,54,56,58-66,68-79,81-85,87,89,91,93-101,103-106,108,110,112,114,116-117,119-121,123,127,129,131-135,137-140,142-145,147-150,154,156,158,160-161,163-165,167-171,173,175-179,182,186-213,217,219-223,225-229,231-234,238-268,272,274,276-280,282,286,288-293,297,299,301-304,306,308,311-314
+toolforge
+  s_1a0b2d4c5a3d0a::t_72d6dff5ab7fba 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "dc04031c3fac6455078388af2d0b1380fa2c5335",
+  "prompts": {},
+  "sessions": {
+    "s_1a0b2d4c5a3d0a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dabad09c-d51b-4d48-8cfa-23d82621b26c",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d3640c043b3d74": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6a3bc7a-e5d5-4837-8509-3c2a67fc7c7d",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_e62e9e4eccc8a9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "364e34f8-c169-4845-8a19-418f94d74faa",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
