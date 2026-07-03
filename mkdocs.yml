@@ -103,6 +103,9 @@ nav:
       - Build Progress: meta/build-progress.md
       - Final Status: meta/final-status.md
       - Reorganization Plan: meta/reorganization.md
+      - Work Summarizer v2:
+          - Master Roadmap: meta/cic-master-roadmap.md
+          - Implementation Guide: meta/work-summarizer-implementation-guide.md
       - Execution Logs:
           - Phase 1 (Files Moved): meta/phase-1-execution.md
           - Phase 2 (Links Updated): meta/phase-2-completion.md

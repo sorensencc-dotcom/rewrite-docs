@@ -168,4 +168,3 @@ All three, staged:
 **Preconditions for Stage 3 build:**
 - Wait for Stage 2 (schema v3.0.0) to stabilize (few real daily runs monitored)
 - No new design decisions needed until Stage 4+
-
