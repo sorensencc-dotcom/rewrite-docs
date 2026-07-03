@@ -1,0 +1,19 @@
+prometheus.yml
+  s_cb9cc0072317a2::t_a726d06ac49572 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "0045904e4aa952cceda9a3bad2dc655cb2155e52",
+  "prompts": {},
+  "sessions": {
+    "s_cb9cc0072317a2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b9e4418-e9b7-4f47-8b0a-fa70e19169d1",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
