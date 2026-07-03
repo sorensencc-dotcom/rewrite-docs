@@ -1,0 +1,21 @@
+scripts/link-roadmaps.js
+  s_59a6189aff6d68::t_e2b131abc7097f 1-76
+scripts/roadmap-diff.js
+  s_59a6189aff6d68::t_ce81dbb1c5f355 1-62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "514a7e49d3923560d64ba166e6815bc7bf94f3db",
+  "prompts": {},
+  "sessions": {
+    "s_59a6189aff6d68": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "edef6066-d2cd-44a3-ba86-577911f77d0d",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
