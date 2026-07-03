@@ -95,19 +95,77 @@
 
 ---
 
-## Open Questions — Answer Before Stage 3 Build
+## 🔒 Locked Decisions (2026-07-03)
 
-1. **Drift taxonomy** (Stage 4): Is there a fixed list of drift categories, or should these be learned from transcripts?
+### 1. Drift Taxonomy (Stage 4) — LOCKED
 
-2. **Action codes** (Stage 5): Static mapping table (e.g. `{adopt: 1, rollback: 2, investigate: 3}`) or dynamic registry?
+Fixed enum + LLM secondary labels (metadata only, not gating).
 
-3. **Severity propagation** (Stage 6): Does a high-severity cross-repo impact cascade to downstream repos, or is each impact independent?
+```json
+{
+  "primary": ["schema-change", "perf-regression", "test-failure", "deprecation", "routing-drift", "ingestion-drift", "observability-gap"],
+  "secondary": "free-form LLM tags (metadata, not scoring)"
+}
+```
 
-4. **Ollama integration scope** (Stage 7): Should Ollama providers output the same schema as Claude, or simplified subset?
+### 2. Action Codes (Stage 5) — LOCKED
 
-5. **Trend analysis window** (Stage 8): Should window be configurable per operator, or fixed (e.g. last 2 weeks)?
+Static deterministic table. LLM outputs map to codes; no auto-growing registry.
 
-6. **Rising-risk anomaly detection** (Stage 8): Statistical method (z-score, Tukey fences, simple threshold)?
+```json
+{
+  "adopt": 1,
+  "rollback": 2,
+  "investigate": 3,
+  "defer": 4,
+  "monitor": 5,
+  "escalate": 6
+}
+```
 
-7. **Weekly report consumers**: Who uses the weekly summary (Slack notification, dashboard display, automated alert)?
+### 3. Severity Propagation (Stage 6) — LOCKED
+
+Each edge independent; severity attenuates along chain (no cascade escalation).
+
+- A→B high severity does NOT force B→C high
+- B→C gets medium at most, unless B itself impacted
+
+### 4. Ollama Provider Scope (Stage 7) — LOCKED
+
+Match Claude schema exactly. Initially impl `subsystem_impacts` only; stub rest.
+
+- Contract: same `ReasoningOutput` shape
+- MVP: `subsystem_impacts`; others empty or minimal
+
+### 5. Trend Window (Stage 8) — LOCKED
+
+Fixed 4-week window (last 4 weekly reports); operator-configurable override later via env/config.
+
+- Baseline: average over previous 3 weeks
+- Rising risk: current ≥ 2× baseline
+
+### 6. Rising-Risk Detection (Stage 8) — LOCKED
+
+Simple % change threshold rule: activity/severity > 2× baseline.
+
+- Advanced methods (z-score, Tukey fences) deferred
+- Explainable + fast
+
+### 7. Weekly Report Consumers — LOCKED
+
+All three, staged:
+
+1. Slack notification + channel post (immediate)
+2. Dashboard display new section (follow-up)
+3. Automated alerts to oncall (high/critical severity only)
+
+---
+
+## Implementation Readiness
+
+**Status:** All 7 design decisions locked. Ready for Stage 3+ implementation sprints.
+
+**Preconditions for Stage 3 build:**
+- Wait for Stage 2 (schema v3.0.0) to stabilize (few real daily runs monitored)
+- No new design decisions needed until Stage 4+
 
