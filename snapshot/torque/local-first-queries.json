@@ -1,0 +1,57 @@
+{
+  "queries": [
+    {
+      "id": "q-local-first-enabled",
+      "description": "Is CIC running in local-first mode?",
+      "type": "check_local_first",
+      "plan": {
+        "read": ["local-first/profile.json"],
+        "select": ["localFirstProfile.enabled"],
+        "expect": true
+      }
+    },
+    {
+      "id": "q-local-first-agents",
+      "description": "Which agents are active in local-first mode?",
+      "type": "list_agents",
+      "plan": {
+        "read": ["local-first/profile.json"],
+        "select": ["localFirstProfile.activeAgents"]
+      }
+    },
+    {
+      "id": "q-local-first-backends",
+      "description": "Which backends are preferred in local-first mode?",
+      "type": "list_backends",
+      "plan": {
+        "read": ["local-first/profile.json"],
+        "select": ["localFirstProfile.preferredBackends"]
+      }
+    },
+    {
+      "id": "q-local-first-snapshot",
+      "description": "Is the current snapshot marked local-first?",
+      "type": "check_snapshot",
+      "plan": {
+        "read": ["snapshot/world/world-state.json"],
+        "select": ["localFirst"],
+        "expect": true
+      }
+    },
+    {
+      "id": "q-local-first-certificate",
+      "description": "Is the final certificate local-first and sealed?",
+      "type": "check_certificate",
+      "plan": {
+        "read": ["final/local-first-certificate.json"],
+        "select": [
+          "cicLocalFirstCertificate.mode",
+          "cicLocalFirstCertificate.deterministic",
+          "cicLocalFirstCertificate.sealed",
+          "cicLocalFirstCertificate.offline"
+        ],
+        "expect": ["local-first", true, true, true]
+      }
+    }
+  ]
+}

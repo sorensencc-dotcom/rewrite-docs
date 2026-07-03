@@ -1,0 +1,20 @@
+{
+  "name": "gemini-2.0",
+  "provider": "google",
+  "type": "chat",
+  "version": "2.0",
+  "apiBase": "https://generativelanguage.googleapis.com",
+  "env": "GOOGLE_API_KEY",
+  "supports": {
+    "chat": true,
+    "toolCalls": false,
+    "streaming": true,
+    "vision": true,
+    "embeddings": false
+  },
+  "contextWindow": 1000000,
+  "costPer1kTokens": {
+    "input": 0.00075,
+    "output": 0.003
+  }
+}

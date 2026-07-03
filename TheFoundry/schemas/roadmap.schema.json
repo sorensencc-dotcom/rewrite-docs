@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Roadmap File Schema",
+  "description": "Schema for CIC roadmap markdown files",
+  "type": "object",
+  "properties": {
+    "phases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^(PHASE|RL)-[A-Z0-9.]+$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "in-progress", "completed", "blocked", "deprecated"]
+          }
+        },
+        "required": ["id", "title", "status"]
+      }
+    }
+  },
+  "required": ["phases"]
+}

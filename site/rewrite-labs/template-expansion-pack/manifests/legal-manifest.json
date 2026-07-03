@@ -1,0 +1,95 @@
+{
+  "version": "v1.0.0",
+  "generated_at": "2026-06-13T00:00:00Z",
+  "generator": "Rewrite Labs Template Expansion Pack",
+  "vertical": "legal",
+  "vertical_id": "legal",
+  "tone": "Authoritative, serious, trustworthy",
+  "description": "Law firm website template emphasizing practice areas, case results, and consultation CTAs",
+  "color_cluster": {
+    "primary": "#1B1B1B",
+    "secondary": "#2E3A59",
+    "accent": "#D4C7A1",
+    "neutral": "#FFFFFF"
+  },
+  "typography": {
+    "scale": [
+      { "role": "h1", "size": "48px", "weight": 700, "family": "serif" },
+      { "role": "h2", "size": "36px", "weight": 700, "family": "serif" },
+      { "role": "h3", "size": "28px", "weight": 600, "family": "sans-serif" },
+      { "role": "body", "size": "16px", "weight": 400, "family": "sans-serif" },
+      { "role": "small", "size": "14px", "weight": 400, "family": "sans-serif" }
+    ]
+  },
+  "hero_archetypes": [
+    {
+      "id": "attorney_portrait",
+      "name": "Attorney Portrait",
+      "description": "Professional headshot of lead attorney in office setting",
+      "cta": "Schedule Your Consultation"
+    },
+    {
+      "id": "courtroom_background",
+      "name": "Courtroom/Library",
+      "description": "Impressive courtroom or law library background conveying authority",
+      "cta": "Get Legal Help Now"
+    },
+    {
+      "id": "practice_areas",
+      "name": "Practice Areas Grid",
+      "description": "Visual grid showcasing primary practice areas with icons",
+      "cta": "Explore Our Practice"
+    }
+  ],
+  "components": [
+    "header_sticky",
+    "hero_with_cta",
+    "practice_area_grid",
+    "case_results_showcase",
+    "trust_badges",
+    "attorney_bios",
+    "consultation_form",
+    "testimonials",
+    "blog_section",
+    "footer_with_hours_map"
+  ],
+  "service_page_archetypes": [
+    "criminal_defense_page",
+    "family_law_page",
+    "business_law_page",
+    "personal_injury_page"
+  ],
+  "cta_patterns": [
+    {
+      "id": "consultation_cta",
+      "text": "Schedule Your Consultation",
+      "action": "contact_form",
+      "button_style": "primary_standard"
+    },
+    {
+      "id": "call_cta",
+      "text": "Call Our Office",
+      "action": "phone_link",
+      "button_style": "secondary"
+    },
+    {
+      "id": "urgent_cta",
+      "text": "Get Urgent Legal Help",
+      "action": "contact_form_urgent",
+      "button_style": "primary_urgent"
+    }
+  ],
+  "layout_grid": "12-column with 3-column practice grids",
+  "mobile_breakpoints": [
+    { "breakpoint": "1024px", "layout": "2-column grid" },
+    { "breakpoint": "768px", "layout": "1-column stacked" }
+  ],
+  "dependencies": [],
+  "seo_schema": [
+    "LocalBusiness",
+    "Attorney",
+    "Service",
+    "BreadcrumbList",
+    "FAQ"
+  ]
+}

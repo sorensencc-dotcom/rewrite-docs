@@ -1,0 +1,19 @@
+# Dockerfile for CIC Phase 3 testing
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY cic/package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy CIC source
+COPY cic/src ./src
+COPY cic/jest.config.js ./
+COPY cic/tsconfig.json ./
+
+# Run tests with coverage
+ENTRYPOINT ["npm", "test", "--"]
+CMD ["--coverage", "--testMatch=**/__tests__/**/*.test.ts"]

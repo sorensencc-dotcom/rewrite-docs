@@ -1,0 +1,6 @@
+{
+  "allowKeyCreation": true,
+  "allowKeyDeletion": false,
+  "allowKeyExport": false,
+  "requiredAlgorithm": "aes-256-gcm"
+}

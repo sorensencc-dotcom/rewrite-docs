@@ -1,0 +1,21 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+RUN apk add --no-cache git curl jq bash
+
+# Copy routing-validator service
+COPY routing-validator.js ./routing-validator.js
+
+ENV NODE_ENV=production
+ENV LOG_LEVEL=info
+ENV PORT=3103
+ENV OPA_ENABLED=true
+
+EXPOSE 3103
+
+HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost:3103/health || exit 1
+
+# Run routing-validator service
+CMD ["node", "routing-validator.js"]

@@ -1,0 +1,635 @@
+version: '3.8'
+
+services:
+  # ===== Phase 0.7: Build System =====
+  lineage-registry:
+    build:
+      context: .
+      dockerfile: build-system/docker/Dockerfile.lineage-registry
+    container_name: lineage-registry
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - PORT=3102
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=cic_lineage
+      - DB_USER=cic
+      - DB_PASSWORD=cic_dev_pass
+    ports:
+      - "3102:3102"
+    depends_on:
+      - postgres
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3102/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  routing-validator:
+    build:
+      context: .
+      dockerfile: build-system/docker/Dockerfile.routing-validator
+    container_name: routing-validator
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - PORT=3103
+      - OPA_ENABLED=true
+    ports:
+      - "3103:3103"
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3103/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  build-executor:
+    build:
+      context: .
+      dockerfile: build-system/docker/Dockerfile.build-executor
+    container_name: build-executor
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - BUILD_PHASE=0.7
+      - PORT=3101
+      - REDIS_URL=redis://redis:6379
+      - LINEAGE_URL=http://lineage-registry:3102
+      - ROUTING_URL=http://routing-validator:3103
+    ports:
+      - "3101:3101"
+    depends_on:
+      - lineage-registry
+      - routing-validator
+      - redis
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3101/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  build-orchestrator:
+    build:
+      context: .
+      dockerfile: build-system/docker/Dockerfile.orchestrator
+    container_name: build-orchestrator
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+      - LOG_LEVEL=debug
+      - BUILD_PHASE=0.7
+      - PORT=3104
+      - REDIS_URL=redis://redis:6379
+      - BUILD_EXECUTOR_URL=http://build-executor:3101
+      - LINEAGE_URL=http://lineage-registry:3102
+      - ROUTING_URL=http://routing-validator:3103
+      - PERFORMANCE_STORE_URL=http://performance-store:3105
+      - GIT_SHA=${GIT_SHA:-dev}
+    ports:
+      - "3104:3104"
+    depends_on:
+      - lineage-registry
+      - routing-validator
+      - build-executor
+      - redis
+      - performance-store
+    networks:
+      - cic-network
+    volumes:
+      - .:/app:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3104/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  # ===== Phase 0.8: Performance & Routing =====
+  performance-store:
+    build:
+      context: .
+      dockerfile: build-system/docker/Dockerfile.performance-store
+    container_name: performance-store
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - PORT=3105
+    ports:
+      - "3105:3105"
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3105/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  predictive-routing-engine:
+    build:
+      context: .
+      dockerfile: build-system/docker/Dockerfile.predictive-routing-engine
+    container_name: predictive-routing-engine
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - PORT=3106
+      - PERFORMANCE_STORE_URL=http://performance-store:3105
+    ports:
+      - "3106:3106"
+    depends_on:
+      - performance-store
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3106/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # ===== Phase 29-31: Knowledge & Memory =====
+  knowledge-graph:
+    build:
+      context: .
+      dockerfile: services/knowledge-graph/Dockerfile
+    container_name: knowledge-graph
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+      - LOG_LEVEL=info
+      - KG_PORT=3107
+    ports:
+      - "3107:3107"
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3107/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  torquequery:
+    build:
+      context: cic/torquequery
+      dockerfile: Dockerfile
+    container_name: torquequery
+    restart: unless-stopped
+    volumes:
+      - ./docs:/docs:ro
+      - ./mkdocs.yml:/mkdocs.yml:ro
+      - ./cic/torquequery/storage:/app/storage
+      - ./cic/torquequery/config:/app/config:ro
+      - ./cic/torquequery/src:/app/src:ro
+      - ${HOME}/.cache/huggingface:/root/.cache/huggingface:ro
+    environment:
+      - NODE_ENV=test
+      - LOG_LEVEL=info
+      - PORT=3110
+      - OLLAMA_HOST=http://host.docker.internal:11434
+      - HF_HUB_DISABLE_SYMLINKS_WARNING=1
+      - HF_HUB_OFFLINE=1
+      - TRANSFORMERS_OFFLINE=1
+      - CUDA_VISIBLE_DEVICES=
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "3110:3110"
+    networks:
+      - cic-network
+    command: ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "3110"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3110/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  vault:
+    build:
+      context: .
+      dockerfile: services/vault/Dockerfile
+    container_name: vault
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=test
+      - LOG_LEVEL=info
+      - PORT=3111
+      - VAULT_SECRET_KEY=dev-key-32-chars-minimum-xxx
+    ports:
+      - "3111:3111"
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3111/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # ===== Phase 4.4: Repo Analysis =====
+  repomix-ingestion:
+    build:
+      context: .
+      dockerfile: services/repomix-ingestion/Dockerfile
+    container_name: repomix-ingestion
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=test
+      - LOG_LEVEL=info
+      - PORT=3112
+    ports:
+      - "3112:3112"
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3112/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # ===== Phase 24: Governance =====
+  cic-governance:
+    build:
+      context: .
+      dockerfile: services/cic-governance/Dockerfile
+    container_name: cic-governance
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=test
+      - LOG_LEVEL=info
+      - PORT=3113
+    ports:
+      - "3113:3113"
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3113/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # ===== Phase 2: Planning =====
+  planning-engine:
+    build:
+      context: cic
+      dockerfile: Dockerfile.planning-engine
+    container_name: planning-engine
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=test
+      - LOG_LEVEL=info
+      - PORT=3114
+      - VAULT_URL=http://vault:3111
+      - MEMORY_STORE_URL=http://torquequery:3110
+    ports:
+      - "3114:3114"
+    depends_on:
+      - vault
+      - torquequery
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3114/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  harvester-v2:
+    build:
+      context: cic-ingestion
+      dockerfile: Dockerfile.harvester-v2
+    container_name: harvester-v2
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=test
+      - LOG_LEVEL=info
+      - PORT=3115
+      - VAULT_URL=http://vault:3111
+      - MEMORY_STORE_URL=http://torquequery:3110
+      - PLANNING_ENGINE_URL=http://planning-engine:3114
+    ports:
+      - "3115:3115"
+    depends_on:
+      - vault
+      - torquequery
+      - planning-engine
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3115/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # ===== Phase 2.5: Autonomy API =====
+  cic-ingestion:
+    build:
+      context: cic-ingestion
+      dockerfile: Dockerfile
+    container_name: cic-ingestion
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+      - LOG_LEVEL=info
+      - PORT=3000
+      - VAULT_URL=http://vault:3111
+      - MEMORY_STORE_URL=http://torquequery:3110
+      - QDRANT_URL=http://qdrant:6333
+    volumes:
+      - ./cic-ingestion/dist:/app/dist
+    ports:
+      - "3116:3000"
+    depends_on:
+      - vault
+      - torquequery
+      - qdrant
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # ===== API Gateway =====
+  unified-api:
+    build:
+      context: .
+      dockerfile: services/unified-api/Dockerfile
+    container_name: unified-api
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=test
+      - LOG_LEVEL=info
+      - UNIFIED_API_PORT=3100
+      - TORQUEQUERY_URL=http://torquequery:3110
+      - VAULT_URL=http://vault:3111
+      - REPOMIX_URL=http://repomix-ingestion:3112
+      - GOVERNANCE_URL=http://cic-governance:3113
+      - PLANNING_ENGINE_URL=http://planning-engine:3114
+      - HARVESTER_V2_URL=http://harvester-v2:3115
+      - PLANNING_CONSOLE_URL=http://planning-console:3000
+    ports:
+      - "3100:3100"
+    depends_on:
+      - torquequery
+      - vault
+      - repomix-ingestion
+      - cic-governance
+      - planning-engine
+      - harvester-v2
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3100/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  # ===== Planning Console v3 (Main Planning UI) =====
+  planning-console:
+    build:
+      context: rewrite-mcp
+      dockerfile: Dockerfile.planning-console
+    container_name: planning-console
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - PORT=3000
+      - UNIFIED_API_URL=http://unified-api:3100
+      - CIC_INGESTION_URL=http://cic-ingestion:3000
+      - GOVERNANCE_URL=http://cic-governance:3113
+      - VAULT_URL=http://vault:3111
+      - TORQUEQUERY_URL=http://torquequery:3110
+      - KNOWLEDGE_GRAPH_URL=http://knowledge-graph:3107
+      - PLANNING_ENGINE_URL=http://planning-engine:3114
+      - HARVESTER_V2_URL=http://harvester-v2:3115
+      - REACT_APP_UNIFIED_API_URL=http://localhost:3100
+      - REACT_APP_CICEINGESTION_URL=http://localhost:3116
+      - REACT_APP_GOVERNANCE_URL=http://localhost:3113
+      - REACT_APP_VAULT_URL=http://localhost:3111
+      - REACT_APP_TORQUEQUERY_URL=http://localhost:3110
+      - REACT_APP_KNOWLEDGE_GRAPH_URL=http://localhost:3107
+      - REACT_APP_PLANNING_ENGINE_URL=http://localhost:3114
+      - REACT_APP_HARVESTER_V2_URL=http://localhost:3115
+    ports:
+      - "3200:3000"
+    depends_on:
+      - unified-api
+      - cic-ingestion
+      - cic-governance
+      - vault
+      - torquequery
+      - knowledge-graph
+      - planning-engine
+      - harvester-v2
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # ===== CIC Operator Console v3 (Unified Console) =====
+  cic-operator-console:
+    build:
+      context: ./rewrite-mcp/projects/cic-operator-console
+      dockerfile: Dockerfile
+    container_name: cic-operator-console
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - VITE_CIC_API_URL=http://unified-api:3100
+      - VITE_GOVERNANCE_URL=http://cic-governance:3113
+      - VITE_VAULT_URL=http://vault:3111
+      - VITE_PLANNING_ENGINE_URL=http://planning-engine:3114
+    ports:
+      - "3201:5173"
+    depends_on:
+      - unified-api
+      - cic-governance
+      - vault
+      - planning-engine
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5173/"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # ===== Infrastructure: Data & Cache =====
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres-cic
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=cic_lineage
+      - POSTGRES_USER=cic
+      - POSTGRES_PASSWORD=cic_dev_pass
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./docker-init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cic"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis-cic
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: redis-server --appendonly yes
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant
+    restart: unless-stopped
+    environment:
+      - QDRANT_API_KEY=dev-key-unsafe
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    networks:
+      - cic-network
+    volumes:
+      - qdrant-storage:/qdrant/storage
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ===== Observability Stack =====
+  prometheus:
+    image: prom/prometheus:v2.54.0
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./cic-ingestion/config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9090/-/healthy"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  loki:
+    image: grafana/loki:3.1.0
+    container_name: loki
+    restart: unless-stopped
+    ports:
+      - "3099:3100"
+    volumes:
+      - ./cic-ingestion/config/loki-config.yml:/etc/loki/local-config.yml:ro
+      - loki-data:/loki
+    command: -config.file=/etc/loki/local-config.yml
+    networks:
+      - cic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3100/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  promtail:
+    # Log collector sidecar. No healthcheck: promtail has no HTTP health endpoint.
+    # Relies on depends_on loki for startup ordering. Logs eventually delivered via fluent push.
+    image: grafana/promtail:3.1.0
+    container_name: promtail
+    restart: unless-stopped
+    volumes:
+      - ./cic-ingestion/config/promtail-config.yml:/etc/promtail/config.yml:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: -config.file=/etc/promtail/config.yml
+    networks:
+      - cic-network
+    depends_on:
+      - loki
+
+  grafana:
+    image: grafana/grafana:11.1.0
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3002:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=cic-local
+      - GF_SECURITY_ADMIN_USER=admin
+    volumes:
+      - ./cic-ingestion/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./cic-ingestion/config/grafana-datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml:ro
+      - grafana-data:/var/lib/grafana
+    networks:
+      - cic-network
+    depends_on:
+      - prometheus
+      - loki
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  postgres-data:
+  qdrant-storage:
+  prometheus-data:
+  loki-data:
+  grafana-data:
+
+networks:
+  cic-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16

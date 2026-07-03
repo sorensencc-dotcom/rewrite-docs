@@ -1,0 +1,46 @@
+# RL-4.5: OutreachAgent
+# Week 9-11, depends on RL-4.3 and RL-4.4
+
+id: RL-4.5
+title: OutreachAgent (Automated Outreach Pipeline)
+owner: rewrite-labs
+container: REGISTRY/rewrite-labs/rl-4.5:latest
+command:
+  - npm
+  - run
+  - test:outreach
+
+env:
+  NODE_ENV: production
+  LOG_LEVEL: info
+  OUTREACH_API_KEY: ${OUTREACH_API_KEY}
+
+dependencies:
+  - RL-4.3
+  - RL-4.4
+
+success_gates:
+  - type: exit_code
+    value: 0
+  - type: metric
+    key: outreach_campaign_templates
+    op: ">="
+    value: 5
+  - type: metric
+    key: lead_qualification_accuracy
+    op: ">="
+    value: 0.85
+  - type: output
+    pattern: "✓.*OutreachAgent.*initialized"
+  - type: output
+    pattern: "✓.*campaign.*templates.*loaded"
+
+metadata:
+  deliverables:
+    - OutreachAgent (multi-channel outreach)
+    - Campaign template engine
+    - Lead qualification scoring
+    - Email + SMS delivery
+    - A/B test framework
+  testCoverage: ">= 80%"
+  estimatedDuration: "30m"

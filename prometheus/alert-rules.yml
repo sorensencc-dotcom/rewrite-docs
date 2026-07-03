@@ -1,0 +1,106 @@
+groups:
+  - name: phase_27_3_alerts
+    interval: 30s
+    rules:
+      # ========== CRITICAL ALERTS ==========
+
+      - alert: AdapterLatencySpike
+        expr: histogram_quantile(0.95, cic_adapter_duration_ms) > 1000
+        for: 2m
+        annotations:
+          summary: "{{ $labels.adapter }} latency > 1s for 2m"
+          description: "Adapter {{ $labels.adapter }} p95 latency exceeded 1000ms"
+          severity: critical
+        labels:
+          severity: critical
+          component: adapter
+
+      - alert: AdapterErrorSpike
+        expr: rate(cic_adapter_errors_total[5m]) > 0.1
+        for: 2m
+        annotations:
+          summary: "{{ $labels.adapter }} error rate > 10% for 2m"
+          description: "Error rate for {{ $labels.adapter }} exceeded 10% (0.1 errors/sec)"
+          severity: critical
+        labels:
+          severity: critical
+          component: adapter
+
+      - alert: PuppeteerCrashed
+        expr: increase(cic_adapter_errors_total{adapter="PuppeteerEngine", code="PUPPETEER_CRASHED"}[5m]) > 0
+        for: 1m
+        annotations:
+          summary: "PuppeteerEngine crashed in last 5m"
+          description: "Puppeteer detected crash markers in logs"
+          severity: critical
+        labels:
+          severity: critical
+          component: puppeteer
+
+      - alert: OrchestratorChainFailed
+        expr: rate(cic_orchestrator_chain_success_total{status="failure"}[5m]) > 0.05
+        for: 2m
+        annotations:
+          summary: "Orchestrator chain >5% failure rate for 2m"
+          description: "End-to-end orchestrator chain failure rate exceeded 5%"
+          severity: critical
+        labels:
+          severity: critical
+          component: orchestrator
+
+      # ========== WARNING ALERTS ==========
+
+      - alert: SchemaViolation
+        expr: increase(cic_adapter_schema_violations_total[5m]) > 0
+        for: 1m
+        annotations:
+          summary: "{{ $labels.adapter }} output schema drifted"
+          description: "Schema validation failed for {{ $labels.adapter }} on field {{ $labels.field }}"
+          severity: warning
+        labels:
+          severity: warning
+          component: adapter
+
+      - alert: GuardFunctionSlow
+        expr: histogram_quantile(0.95, cic_guard_duration_ms) > 100
+        for: 2m
+        annotations:
+          summary: "{{ $labels.guard }} guard >100ms for 2m"
+          description: "Guard {{ $labels.guard }} p95 latency exceeded 100ms"
+          severity: warning
+        labels:
+          severity: warning
+          component: guard
+
+      - alert: AdapterCallRateLow
+        expr: sum(rate(cic_adapter_calls_total[5m])) < 0.1
+        for: 5m
+        annotations:
+          summary: "Adapter call rate dropped below 0.1 calls/sec"
+          description: "Total adapter call volume is lower than expected (< 0.1 calls/sec)"
+          severity: warning
+        labels:
+          severity: warning
+          component: adapter
+
+      - alert: AvailabilitySLOAtRisk
+        expr: (sum(rate(cic_adapter_calls_total{status="success"}[1h])) / sum(rate(cic_adapter_calls_total[1h]))) < 0.995
+        for: 10m
+        annotations:
+          summary: "Availability SLO at risk (< 99.5% for 10m)"
+          description: "Hourly availability has dropped below SLO target"
+          severity: warning
+        labels:
+          severity: warning
+          component: slo
+
+      - alert: LatencySLOAtRisk
+        expr: histogram_quantile(0.95, sum(rate(cic_adapter_duration_ms[1h])) by (le)) > 500
+        for: 10m
+        annotations:
+          summary: "Latency SLO at risk (p95 > 500ms for 10m)"
+          description: "P95 latency has exceeded SLO target of 500ms"
+          severity: warning
+        labels:
+          severity: warning
+          component: slo

@@ -1,0 +1,8 @@
+{
+  "routes": {
+    "cic-api": ["cic-gateway"],
+    "sandbox": ["cic-api"],
+    "onnx": ["cic-api"],
+    "harness": ["cic-api"]
+  }
+}

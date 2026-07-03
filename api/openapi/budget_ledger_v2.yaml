@@ -1,0 +1,249 @@
+openapi: 3.0.3
+info:
+  title: Budget Ledger v2 API
+  description: Double-entry accounting system for cost tracking and SLO-driven budget allocation
+  version: 27.4.0
+  contact:
+    name: CIC Platform Team
+
+servers:
+  - url: https://ledger.cic.internal
+    description: Production
+  - url: http://budget-ledger:5000
+    description: Local Docker
+
+paths:
+  /transactions:
+    post:
+      summary: Create transaction (idempotent)
+      operationId: createTransaction
+      description: |
+        Create a ledger transaction with debit/credit entries.
+        Idempotent via txn_ref UUID key.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionCreate'
+      responses:
+        '201':
+          description: Transaction created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Transaction already exists (duplicate txn_ref)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /balance:
+    get:
+      summary: Get account balance
+      operationId: getBalance
+      parameters:
+        - in: query
+          name: accountId
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: Account UUID
+      responses:
+        '200':
+          description: Account balance retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Balance'
+        '404':
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /reconcile:
+    post:
+      summary: Trigger reconciliation
+      operationId: reconcile
+      description: Asynchronously reconcile transactions in time window
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReconcileRequest'
+      responses:
+        '202':
+          description: Reconciliation job started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReconcileResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /health:
+    get:
+      summary: Health check
+      operationId: health
+      responses:
+        '200':
+          description: Service healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+components:
+  schemas:
+    TransactionCreate:
+      type: object
+      required: [accountId, amount, direction, reason, txn_ref]
+      properties:
+        accountId:
+          type: string
+          format: uuid
+          description: Account UUID
+        amount:
+          type: number
+          format: double
+          minimum: 0
+          description: Transaction amount
+        direction:
+          type: string
+          enum: [DR, CR]
+          description: Debit or Credit
+        reason:
+          type: string
+          maxLength: 255
+          description: Transaction reason/description
+        txn_ref:
+          type: string
+          format: uuid
+          description: Idempotency key (UUID)
+
+    Transaction:
+      type: object
+      required: [id, accountId, amount, direction, createdAt]
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Transaction ID
+        accountId:
+          type: string
+          format: uuid
+          description: Account UUID
+        amount:
+          type: number
+          format: double
+          description: Transaction amount
+        direction:
+          type: string
+          enum: [DR, CR]
+          description: Debit or Credit
+        status:
+          type: string
+          enum: [pending, committed]
+          description: Transaction status
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation timestamp
+
+    Balance:
+      type: object
+      required: [accountId, balance, lastUpdateTs]
+      properties:
+        accountId:
+          type: string
+          format: uuid
+          description: Account UUID
+        balance:
+          type: number
+          format: double
+          description: Current account balance
+        lastUpdateTs:
+          type: string
+          format: date-time
+          description: Last update timestamp
+
+    ReconcileRequest:
+      type: object
+      required: [windowStart, windowEnd]
+      properties:
+        windowStart:
+          type: string
+          format: date-time
+          description: Window start (inclusive)
+        windowEnd:
+          type: string
+          format: date-time
+          description: Window end (exclusive)
+        maxDriftBytes:
+          type: number
+          format: double
+          default: 0
+          description: Acceptable drift threshold
+
+    ReconcileResponse:
+      type: object
+      required: [jobId, status]
+      properties:
+        jobId:
+          type: string
+          format: uuid
+          description: Reconciliation job ID
+        status:
+          type: string
+          enum: [started, running, complete]
+          description: Job status
+        windowStart:
+          type: string
+          format: date-time
+        windowEnd:
+          type: string
+          format: date-time
+
+    HealthResponse:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unhealthy]
+        timestamp:
+          type: string
+          format: date-time
+        database:
+          type: string
+          enum: [ok, error]
+
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+        details:
+          type: object
+          description: Additional error details

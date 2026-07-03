@@ -1,0 +1,73 @@
+================================================================================
+PHASE 5C PHASE B EXECUTION MANIFEST
+Date: 2026-06-19
+Operator: Claude Haiku 4.5
+Status: COMPLETE & VERIFIED
+================================================================================
+
+SNAPSHOTS CREATED:
+  1. planning-engine-snapshot-2026-06-19.tar.gz
+     - Size: 21 MB (21,234,688 bytes)
+     - Files: 2,980
+     - Location: c:\dev\snapshots\
+     - MD5: [Stored in tar archive]
+
+  2. cip-rewritelabs-snapshot-2026-06-19.tar.gz
+     - Size: 22 MB (23,027,035 bytes)
+     - Files: 583
+     - Location: c:\dev\snapshots\
+     - MD5: [Stored in tar archive]
+
+DELETIONS EXECUTED:
+  1. rewrite-mcp/planning-engine/ [WORKTREE]
+     - Command: git worktree remove --force planning-engine
+     - Worktree entry: .git/worktrees/planning-engine [CLEANED]
+     - Verification: CONFIRMED DELETED (ls returns "No such file or directory")
+
+  2. CIP/RewriteLabs/ [LEGACY DIRECTORY]
+     - Command: rm -rf CIP/RewriteLabs
+     - Status: Not previously tracked in git
+     - Verification: CONFIRMED DELETED (CIP/ now contains only CIC/)
+
+REFERENCE VERIFICATION:
+  ✅ docker-compose.yml: planning-engine service intact (uses cic/Dockerfile.planning-engine)
+  ✅ No broken Dockerfile references
+  ✅ No bootstrap/startup scripts reference deleted paths
+  ✅ No application imports from deleted directories
+  ✅ Grep scan: No references to "rewrite-mcp/planning-engine" in code
+  ✅ Grep scan: No references to "CIP/RewriteLabs/rewrite-mcp" in code
+
+GIT COMMIT:
+  Hash: 86d196b
+  Message: chore(5c): Snapshot + deprecate planning-engine/ + CIP/RewriteLabs/ legacy
+  Files: 4 changed
+    + PHASE_5B_IMPLEMENTATION_SUMMARY.md (298 lines)
+    + PHASE_5C_PHASE_B_COMPLETION.md (110 lines)
+    + snapshots/planning-engine-snapshot-2026-06-19.tar.gz (21 MB)
+    + snapshots/cip-rewritelabs-snapshot-2026-06-19.tar.gz (22 MB)
+
+RECOVERY INSTRUCTIONS:
+  # Restore planning-engine worktree:
+  cd c:\dev
+  tar -xzf snapshots/planning-engine-snapshot-2026-06-19.tar.gz
+
+  # Restore CIP/RewriteLabs:
+  cd c:\dev
+  tar -xzf snapshots/cip-rewritelabs-snapshot-2026-06-19.tar.gz
+
+PHASE 5C PROGRESS:
+  Phase A (Update docker-compose + Dockerfiles): ✅ COMPLETE [commit 2f1d1e1]
+  Phase B (Snapshot + delete planning-engine/ + CIP/RewriteLabs): ✅ COMPLETE [commit 86d196b]
+  Phase C (Memory-Spine + Operator-UI clones): READY FOR EXECUTION
+
+ACCEPTANCE CRITERIA: ALL MET
+  ✅ Snapshots created before deletion
+  ✅ planning-engine/ deleted via git worktree remove --force
+  ✅ CIP/RewriteLabs deleted via rm -rf
+  ✅ No broken references in codebase
+  ✅ docker-compose.yml service definitions intact
+  ✅ Phase B commit clean and verifiable
+  ✅ Archive recovery paths fully documented
+
+================================================================================
+END OF MANIFEST

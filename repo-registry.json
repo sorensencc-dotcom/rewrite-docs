@@ -1,0 +1,69 @@
+{
+  "version": "1.0.0",
+  "repos": [
+    {
+      "name": "cic",
+      "path": "C:\\dev\\cic",
+      "description": "Governance pipeline & audit services",
+      "git": true,
+      "ci-enabled": true,
+      "order": 1
+    },
+    {
+      "name": "cic-ingestion",
+      "path": "C:\\dev\\cic-ingestion",
+      "description": "Autonomy API server & memory retention",
+      "git": true,
+      "ci-enabled": true,
+      "order": 2
+    },
+    {
+      "name": "cic-runtime",
+      "path": "C:\\dev\\cic-runtime",
+      "description": "Runtime execution engine",
+      "git": true,
+      "ci-enabled": true,
+      "order": 3
+    },
+    {
+      "name": "cic-ui",
+      "path": "C:\\dev\\cic-ui",
+      "description": "Frontend dashboard",
+      "git": true,
+      "ci-enabled": true,
+      "order": 4
+    },
+    {
+      "name": "rewrite-mcp",
+      "path": "C:\\dev\\rewrite-mcp",
+      "description": "MCP servers & multi-tenant architecture",
+      "git": true,
+      "ci-enabled": true,
+      "order": 5
+    },
+    {
+      "name": "claude-skills",
+      "path": "C:\\dev\\claude-skills",
+      "description": "Skill definitions & validation",
+      "git": true,
+      "ci-enabled": true,
+      "order": 6
+    },
+    {
+      "name": "toolforge",
+      "path": "C:\\dev\\toolforge",
+      "description": "Automation infrastructure & phase implementations",
+      "git": true,
+      "ci-enabled": true,
+      "order": 7
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2026-06-28T00:00:00Z",
+    "totalRepos": 7,
+    "orchestrator": {
+      "ciPipeline": "C:\\dev\\toolforge\\ci-pipeline.ps1",
+      "logs": "C:\\dev\\toolforge\\logs\\orchestrator"
+    }
+  }
+}

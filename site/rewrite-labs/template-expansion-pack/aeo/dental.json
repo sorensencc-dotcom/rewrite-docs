@@ -1,0 +1,162 @@
+{
+  "version": "v1.0.0",
+  "generated_at": "2026-06-13T00:00:00Z",
+  "vertical": "dental",
+  "description": "AEO (Authoritativeness, Experience, Expertise) metadata for dental practices",
+  "schemas": {
+    "local_business": {
+      "@context": "https://schema.org",
+      "@type": "Dentist",
+      "name": "{{ practice_name }}",
+      "image": "{{ practice_logo }}",
+      "description": "{{ practice_description }}",
+      "url": "{{ site_url }}",
+      "telephone": "{{ phone }}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ street }}",
+        "addressLocality": "{{ city }}",
+        "addressRegion": "{{ state }}",
+        "postalCode": "{{ zip }}"
+      },
+      "areaServed": "{{ service_area }}",
+      "availableLanguage": ["en"],
+      "acceptsNewPatients": true,
+      "knowsAbout": ["Teeth Cleaning", "Cavity Filling", "Root Canal", "Teeth Whitening", "Dental Implants"]
+    },
+    "dentist_person": {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "{{ dentist_name }}",
+      "jobTitle": "Dentist",
+      "image": "{{ dentist_photo }}",
+      "description": "{{ dentist_bio }}",
+      "knowsAbout": ["General Dentistry", "Cosmetic Dentistry", "Orthodontics"],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "{{ practice_name }}"
+      },
+      "credential": "{{ licenses }}"
+    },
+    "service_offering": {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "{{ service_name }}",
+      "description": "{{ service_description }}",
+      "provider": {
+        "@type": "Dentist",
+        "name": "{{ practice_name }}"
+      },
+      "areaServed": "{{ service_area }}",
+      "offers": {
+        "@type": "Offer",
+        "price": "{{ starting_price }}",
+        "priceCurrency": "USD",
+        "availability": "ScheduledTime"
+      }
+    },
+    "faq": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How often should I visit the dentist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most dentists recommend visits every 6 months for regular check-ups and cleanings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I do if I have dental anxiety?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tell us about your anxiety. We offer sedation options and take time to explain procedures."
+          }
+        }
+      ]
+    },
+    "breadcrumb": {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ site_url }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "{{ site_url }}/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "{{ service_name }}",
+          "item": "{{ site_url }}/services/{{ service_slug }}"
+        }
+      ]
+    },
+    "image_object": {
+      "@context": "https://schema.org",
+      "@type": "ImageObject",
+      "url": "{{ image_url }}",
+      "name": "{{ image_alt_text }}",
+      "description": "{{ image_description }}",
+      "creditText": "{{ practice_name }}"
+    }
+  },
+  "expertise_signals": {
+    "author_credentials": [
+      "DDS (Doctor of Dental Surgery) or DMD (Doctor of Medical Dentistry)",
+      "Board certification in specialty (if applicable)",
+      "Years of experience in practice"
+    ],
+    "experience_markers": [
+      "Patient testimonials with before/after photos",
+      "Case studies of complex procedures",
+      "Staff bios with credentials",
+      "CE (Continuing Education) certifications"
+    ],
+    "trustworthiness_signals": [
+      "Clear pricing displayed on site",
+      "Insurance acceptance listed",
+      "Patient reviews on Google, Yelp, Healthgrades",
+      "Office accreditations (e.g., ADA)"
+    ]
+  },
+  "meta_tags": {
+    "title": "{{ practice_name }} | Dentist in {{ city }}, {{ state }}",
+    "description": "{{ practice_name }} offers comprehensive dental care including cleanings, fillings, root canals, and cosmetic dentistry. Book your appointment today.",
+    "keywords": ["dentist {{ city }}", "dental care", "teeth cleaning", "cosmetic dentistry"],
+    "canonical": "{{ site_url }}"
+  },
+  "implementation_checklist": {
+    "schema_markup": [
+      "✓ LocalBusiness schema on homepage",
+      "✓ Dentist person schema for each provider",
+      "✓ Service schema for each procedure",
+      "✓ FAQPage schema for common questions",
+      "✓ BreadcrumbList on service pages",
+      "✓ ImageObject for before/after photos"
+    ],
+    "content_signals": [
+      "✓ Unique, detailed descriptions for each service",
+      "✓ Patient testimonials with attribution",
+      "✓ Before/after galleries with alt text",
+      "✓ Staff bios with credentials",
+      "✓ FAQ section with natural language questions"
+    ],
+    "technical_seo": [
+      "✓ Mobile-responsive design",
+      "✓ Fast page load (< 3 seconds)",
+      "✓ HTTPS encryption",
+      "✓ Robots.txt and sitemap.xml configured",
+      "✓ Open Graph meta tags for social sharing"
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+# Dockerfile.redesign.gpu - Phase 0.7 Labs Redesign GPU Agent
+# GPU runtime base: nvidia/cuda with Node.js installed
+
+FROM nvidia/cuda:12.1.1-runtime-ubuntu22.04 AS runtime-base
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    NODE_ENV=production \
+    PORT=3203
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    git \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Node.js 20
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    node --version && npm --version
+
+# Build Stage
+FROM node:20-alpine AS builder
+
+WORKDIR /workspace
+
+# Install build dependencies
+RUN apk add --no-cache python3 make g++ git
+
+# Copy root dependency manifests
+COPY rewrite-mcp/package.json rewrite-mcp/package-lock.json rewrite-mcp/pnpm-workspace.yaml ./
+
+# Copy projects and packages specs
+COPY rewrite-mcp/packages/agents/package.json ./packages/agents/package.json
+COPY rewrite-mcp/packages/ir-toolkit/package.json ./packages/ir-toolkit/package.json
+
+# Install dependencies
+RUN npm ci
+
+# Copy full source code
+COPY rewrite-mcp/ ./
+
+# Build TypeScript projects
+RUN npm run build || true
+
+# Final GPU-Node Runtime Stage
+FROM runtime-base AS runtime
+
+WORKDIR /app
+
+# Copy production node_modules and built code from builder
+COPY --from=builder /workspace/node_modules ./node_modules
+COPY --from=builder /workspace/packages/agents/dist ./packages/agents/dist
+COPY --from=builder /workspace/packages/agents/package.json ./package.json
+
+EXPOSE 3203
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+  CMD curl -f http://localhost:3203/health || exit 1
+
+CMD ["node", "packages/agents/dist/redesign/index.js"]

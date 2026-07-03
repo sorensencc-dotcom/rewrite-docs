@@ -1,0 +1,47 @@
+# Dockerfile.outreach - Phase 0.7 Labs Outreach Agent
+# Multi-stage build: builder → runtime
+
+FROM node:20-alpine AS builder
+
+WORKDIR /workspace
+
+# Install build dependencies
+RUN apk add --no-cache python3 make g++ git
+
+# Copy root dependency manifests
+COPY rewrite-mcp/package.json rewrite-mcp/package-lock.json rewrite-mcp/pnpm-workspace.yaml ./
+
+# Copy projects and packages specs
+COPY rewrite-mcp/packages/agents/package.json ./packages/agents/package.json
+COPY rewrite-mcp/packages/ir-toolkit/package.json ./packages/ir-toolkit/package.json
+
+# Install dependencies
+RUN npm ci
+
+# Copy full source code
+COPY rewrite-mcp/ ./
+
+# Build TypeScript projects
+RUN npm run build || true
+
+# Runtime Stage
+FROM node:20-alpine AS runtime
+
+WORKDIR /app
+
+RUN apk add --no-cache curl bash
+
+# Copy production node_modules and built code
+COPY --from=builder /workspace/node_modules ./node_modules
+COPY --from=builder /workspace/packages/agents/dist ./packages/agents/dist
+COPY --from=builder /workspace/packages/agents/package.json ./package.json
+
+ENV NODE_ENV=production
+ENV PORT=3202
+
+EXPOSE 3202
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost:3202/health || exit 1
+
+CMD ["node", "packages/agents/dist/outreach/index.js"]

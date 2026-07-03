@@ -1,0 +1,46 @@
+# RL-4.2: SiteBundle + DeploymentAdapter + Delivery
+# Week 5-7, depends on RL-4.1
+
+id: RL-4.2
+title: SiteBundle + DeploymentAdapter + Delivery Infrastructure
+owner: rewrite-labs
+container: REGISTRY/rewrite-labs/rl-4.2:latest
+command:
+  - npm
+  - run
+  - test:delivery
+
+env:
+  NODE_ENV: production
+  LOG_LEVEL: info
+  CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID}
+  CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
+
+dependencies:
+  - RL-4.1
+
+success_gates:
+  - type: exit_code
+    value: 0
+  - type: metric
+    key: bundle_serialization_success_rate
+    op: ">="
+    value: 1.0
+  - type: metric
+    key: cloudflare_deployment_tests_passed
+    op: ">="
+    value: 5
+  - type: output
+    pattern: "✓.*SiteBundle.*serialized"
+  - type: output
+    pattern: "✓.*DeploymentAdapter.*Cloudflare"
+
+metadata:
+  deliverables:
+    - SiteBundle serializer (site → portable archive)
+    - Cloudflare Workers adapter
+    - R2 blob storage integration
+    - subdomain CNAME flow
+    - Badge injection toggle
+  testCoverage: ">= 85%"
+  estimatedDuration: "30m"

@@ -1,0 +1,25 @@
+{
+    "name":  "castironforge",
+    "private":  true,
+    "version":  "0.0.1",
+    "workspaces":  [
+                       "chat-frontend",
+                       "chat-agent",
+                       "torque-query",
+                       "cic-ingestion",
+                       "shared"
+                   ],
+    "scripts":  {
+                    "dev:frontend":  "pnpm --filter chat-frontend dev",
+                    "dev:agent":  "pnpm --filter chat-agent dev",
+                    "dev:torque":  "pnpm --filter torque-query dev",
+                    "dev:ingestion":  "pnpm --filter cic-ingestion dev",
+                    "dev:all":  "concurrently \"pnpm dev:frontend\" \"pnpm dev:agent\" \"pnpm dev:torque\" \"pnpm dev:ingestion\"",
+                    "review":  "node scripts/code-review.js",
+                    "generate-docs":  "node scripts/generate-docs.js"
+                },
+    "devDependencies":  {
+                            "concurrently":  "^8.2.2",
+                            "husky":  "^9.1.7"
+                        }
+}

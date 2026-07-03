@@ -1,0 +1,53 @@
+groups:
+  - name: resilience-sla
+    rules:
+
+      # Latency SLO: avg latency > 250ms for 5m
+      - alert: ResilienceLatencyHigh
+        expr: resilience_avg_latency_ms > 250
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Resilience avg latency high"
+          description: "Average latency exceeded 250ms for 5 minutes."
+
+      # Failure rate SLO: > 5% for 10m
+      - alert: ResilienceFailureRateHigh
+        expr: resilience_failure_rate > 0.05
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Failure rate elevated"
+          description: "Failure rate above 5% for 10 minutes."
+
+      # Rate limit rejection SLO: > 2% for 10m
+      - alert: ResilienceRateLimitRejectionsHigh
+        expr: resilience_rate_limit_rejection_rate > 0.02
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Rate limit rejection rate elevated"
+          description: "Rejection rate above 2% for 10 minutes."
+
+      # Circuit breaker: state != 0 (open or half-open)
+      - alert: CircuitBreakerOpen
+        expr: resilience_circuit_breaker_state != 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Circuit breaker open"
+          description: "Circuit breaker is open or half-open for more than 1 minute."
+
+      # Error ratio: errors / requests > 10% for 5m
+      - alert: ResilienceErrorRatioHigh
+        expr: resilience_summary_total_errors / resilience_summary_total_requests > 0.10
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error ratio"
+          description: "Error ratio exceeded 10% for 5 minutes."

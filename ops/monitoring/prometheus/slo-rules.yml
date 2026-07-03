@@ -1,0 +1,145 @@
+groups:
+  - name: slo-latency
+    interval: 30s
+    rules:
+      - alert: SLOLatencyP99High
+        expr: slo_latency_p99_ms > 120
+        for: 2m
+        labels:
+          severity: critical
+          domain: slo
+        annotations:
+          summary: "SLO latency p99 is above 120ms"
+          description: "p99 latency has exceeded the hard SLO limit for more than 2 minutes."
+
+      - alert: SLOLatencyP95High
+        expr: slo_latency_p95_ms > 80
+        for: 5m
+        labels:
+          severity: warning
+          domain: slo
+        annotations:
+          summary: "SLO latency p95 is above 80ms"
+          description: "p95 latency has exceeded the SLO target for more than 5 minutes."
+
+  - name: slo-error-rate
+    interval: 30s
+    rules:
+      - alert: SLOErrorRate1mHigh
+        expr: slo_error_rate_1m > 0.01
+        for: 1m
+        labels:
+          severity: critical
+          domain: slo
+        annotations:
+          summary: "1m error rate above 1%"
+          description: "Short-window error rate has exceeded the hard SLO limit."
+
+      - alert: SLOErrorRate5mHigh
+        expr: slo_error_rate_5m > 0.007
+        for: 5m
+        labels:
+          severity: warning
+          domain: slo
+        annotations:
+          summary: "5m error rate above 0.7%"
+          description: "Medium-window error rate has exceeded the SLO target."
+
+      - alert: SLOErrorRate30mHigh
+        expr: slo_error_rate_30m > 0.003
+        for: 30m
+        labels:
+          severity: warning
+          domain: slo
+        annotations:
+          summary: "30m error rate above 0.3%"
+          description: "Long-window error rate has exceeded the SLO target."
+
+  - name: slo-burn-rate
+    interval: 30s
+    rules:
+      - alert: BurnRate1mCritical
+        expr: slo_burn_rate_1m > 14
+        for: 5m
+        labels:
+          severity: critical
+          domain: slo
+        annotations:
+          summary: "1m burn rate above 14x"
+          description: "Fast-window burn rate indicates immediate SLO exhaustion risk."
+
+      - alert: BurnRate5mHigh
+        expr: slo_burn_rate_5m > 6
+        for: 10m
+        labels:
+          severity: critical
+          domain: slo
+        annotations:
+          summary: "5m burn rate above 6x"
+          description: "Medium-window burn rate indicates sustained SLO violation."
+
+      - alert: BurnRate30mElevated
+        expr: slo_burn_rate_30m > 3
+        for: 30m
+        labels:
+          severity: warning
+          domain: slo
+        annotations:
+          summary: "30m burn rate above 3x"
+          description: "Long-window burn rate indicates chronic SLO pressure."
+
+  - name: slo-saturation
+    interval: 30s
+    rules:
+      - alert: CPUSaturationHigh
+        expr: slo_cpu_usage > 0.9
+        for: 2m
+        labels:
+          severity: critical
+          domain: saturation
+        annotations:
+          summary: "CPU saturation above 90%"
+          description: "CPU usage has exceeded the hard saturation limit."
+
+      - alert: MemorySaturationHigh
+        expr: slo_memory_usage > 0.9
+        for: 2m
+        labels:
+          severity: critical
+          domain: saturation
+        annotations:
+          summary: "Memory saturation above 90%"
+          description: "Memory usage has exceeded the hard saturation limit."
+
+      - alert: QueueDepthHigh
+        expr: slo_queue_depth > 0.9
+        for: 5m
+        labels:
+          severity: warning
+          domain: saturation
+        annotations:
+          summary: "Queue depth above 90%"
+          description: "Request queue depth is above the safe threshold."
+
+  - name: slo-canary
+    interval: 30s
+    rules:
+      - alert: CanaryAbortTriggered
+        expr: increase(canary_abort_total[5m]) > 0
+        for: 0m
+        labels:
+          severity: info
+          domain: canary
+        annotations:
+          summary: "Canary abort triggered"
+          description: "At least one canary abort has occurred in the last 5 minutes."
+
+      - alert: CanaryRollbackSlow
+        expr: slo_canary_rollback_latency_ms_p99 > 300
+        for: 1m
+        labels:
+          severity: critical
+          domain: canary
+        annotations:
+          summary: "Canary rollback p99 latency above 300ms"
+          description: "Rollback latency exceeds the M2 hard limit."

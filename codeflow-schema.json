@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cic.internal/schemas/codeflow-analysis/1.0.0",
+  "title": "CodeFlow Analysis Result",
+  "description": "Complete static analysis result from CodeFlow analyzer. Frozen schema v1.0.0.",
+  "type": "object",
+  "required": ["success", "result", "metadata"],
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "const": true
+    },
+    "result": {
+      "type": "object",
+      "required": ["files", "edges", "security", "patterns", "blastRadius"],
+      "properties": {
+        "files": {
+          "type": "array",
+          "description": "All source files analyzed",
+          "items": {
+            "type": "object",
+            "required": ["path", "size"],
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "Relative path from repo root (forward slashes)"
+              },
+              "size": {
+                "type": "number",
+                "description": "File size in bytes",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "edges": {
+          "type": "array",
+          "description": "Dependency edges between files",
+          "items": {
+            "type": "object",
+            "required": ["from", "to", "type"],
+            "properties": {
+              "from": {
+                "type": "string",
+                "description": "Source file path"
+              },
+              "to": {
+                "type": "string",
+                "description": "Target file path"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["import", "require", "call", "reference"],
+                "description": "Type of dependency"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "security": {
+          "type": "array",
+          "description": "Security findings and vulnerabilities",
+          "items": {
+            "type": "object",
+            "required": ["file", "line", "type", "severity"],
+            "properties": {
+              "file": {
+                "type": "string",
+                "description": "File path"
+              },
+              "line": {
+                "type": "number",
+                "description": "Line number (1-indexed)",
+                "minimum": 1
+              },
+              "type": {
+                "type": "string",
+                "description": "Finding type (e.g., hardcoded_secret, eval_usage, sql_injection_risk)"
+              },
+              "severity": {
+                "type": "string",
+                "enum": ["low", "medium", "high", "critical"],
+                "description": "Severity level"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "patterns": {
+          "type": "array",
+          "description": "Code patterns detected",
+          "items": {
+            "type": "object",
+            "required": ["file", "line", "type"],
+            "properties": {
+              "file": {
+                "type": "string",
+                "description": "File path"
+              },
+              "line": {
+                "type": "number",
+                "description": "Line number (1-indexed)",
+                "minimum": 1
+              },
+              "type": {
+                "type": "string",
+                "description": "Pattern type (e.g., singleton, factory, react_hooks)"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "blastRadius": {
+          "type": "array",
+          "description": "Blast radius analysis: if file X changes, which files are affected",
+          "items": {
+            "type": "object",
+            "required": ["file", "affected"],
+            "properties": {
+              "file": {
+                "type": "string",
+                "description": "File that was changed"
+              },
+              "affected": {
+                "type": "array",
+                "description": "Files that depend (directly or transitively) on this file",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["duration_ms", "files_analyzed", "edges_found", "security_findings", "patterns_detected", "blast_radius_entries"],
+      "properties": {
+        "duration_ms": {
+          "type": "number",
+          "description": "Analysis duration in milliseconds",
+          "minimum": 0
+        },
+        "files_analyzed": {
+          "type": "number",
+          "description": "Total files scanned",
+          "minimum": 0
+        },
+        "edges_found": {
+          "type": "number",
+          "description": "Total dependency edges",
+          "minimum": 0
+        },
+        "security_findings": {
+          "type": "number",
+          "description": "Total security issues found",
+          "minimum": 0
+        },
+        "patterns_detected": {
+          "type": "number",
+          "description": "Total patterns detected",
+          "minimum": 0
+        },
+        "blast_radius_entries": {
+          "type": "number",
+          "description": "Total blast radius entries",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

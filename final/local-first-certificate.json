@@ -1,0 +1,13 @@
+{
+  "cicLocalFirstCertificate": {
+    "version": "1.0.0",
+    "mode": "local-first",
+    "deterministic": true,
+    "sealed": true,
+    "offline": true,
+    "snapshotHash": "<PLACEHOLDER>",
+    "finalSealHash": "<PLACEHOLDER>",
+    "activeAgents": ["cic-api", "sandbox", "onnx", "harness"],
+    "completed": "2026-06-29T00:00:00Z"
+  }
+}

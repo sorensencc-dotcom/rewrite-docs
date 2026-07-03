@@ -1,0 +1,22 @@
+version: "0.1.0-alpha"
+
+models:
+  llm: "llama3.1:8b"
+  embedding: "nomic-embed-text"
+  reranker: "BAAI/bge-reranker-v2-m3"
+
+paths:
+  docs_root: "../docs"
+  chroma_dir: "./storage/chroma"
+
+chunking:
+  chunk_size: 1024
+  chunk_overlap: 128
+
+retrieval:
+  top_k: 5
+  max_context_tokens: 8192
+
+api:
+  host: "127.0.0.1"
+  port: 8000

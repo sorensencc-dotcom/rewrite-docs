@@ -1,0 +1,51 @@
+# PHASE 0.9: TheFoundry (Deterministic Build Environment)
+# CIC-specific infrastructure, root dependency for all builds
+
+id: PHASE-0.9
+title: TheFoundry - Deterministic Build Environment
+owner: cic
+container: REGISTRY/cic/thefoundry:latest
+command:
+  - npm
+  - run
+  - test:thefoundry
+
+env:
+  NODE_ENV: production
+  LOG_LEVEL: info
+
+dependencies: []
+
+success_gates:
+  - type: exit_code
+    value: 0
+  - type: metric
+    key: reproducibility_score
+    op: ">="
+    value: 1.0
+  - type: metric
+    key: multi_stage_build_layers
+    op: ">="
+    value: 5
+  - type: output
+    pattern: "✓.*node-build.*reproducible"
+  - type: output
+    pattern: "✓.*node-runtime.*sealed"
+
+metadata:
+  deliverables:
+    - thefoundry-node-build (multi-stage base image)
+    - thefoundry-node-runtime (sealed runtime)
+    - Reproducibility guarantee
+    - Lineage tracking schema
+    - OPA/Conftest policy pack
+    - Agent registration spec
+    - CI/CD templates
+  status: "In Progress (M1 complete)"
+  milestones:
+    - M1: ✅ Core images built, reproducibility tested
+    - M2: ⏳ CI integration + Phase 24 adoption
+    - M3: ⏳ Deployment + scaling
+    - M4: ⏳ Documentation + knowledge transfer
+  testCoverage: ">= 90%"
+  estimatedDuration: "35m"

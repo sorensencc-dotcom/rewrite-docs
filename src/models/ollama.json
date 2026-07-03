@@ -1,0 +1,20 @@
+{
+  "env": "OLLAMA_API_KEY",
+  "supports": {
+    "chat": true,
+    "vision": true,
+    "embeddings": true,
+    "streaming": true,
+    "toolCalls": true
+  },
+  "costPer1kTokens": {
+    "output": 0,
+    "input": 0
+  },
+  "provider": "ollama",
+  "version": "1.0",
+  "contextWindow": 8192,
+  "apiBase": "http://localhost:11434",
+  "name": "ollama",
+  "type": "ollama"
+}

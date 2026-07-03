@@ -1,0 +1,87 @@
+{
+  "version": "v1.0.0",
+  "generated_at": "2026-06-13T00:00:00Z",
+  "vertical": "fitness",
+  "scope": "fitness_specific",
+  "extends": "components-universal.json",
+  "components": [
+    {
+      "id": "class_schedule_widget",
+      "name": "Class Schedule Widget",
+      "description": "Real-time fitness class schedule with instructor info",
+      "slots": {
+        "calendar_view": { "type": "string", "enum": ["week", "month"] },
+        "classes": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "name": { "type": "string" },
+              "instructor": { "type": "string" },
+              "time": { "type": "string" },
+              "duration": { "type": "number" },
+              "capacity": { "type": "number" },
+              "intensity": { "type": "string", "enum": ["beginner", "intermediate", "advanced"] }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "membership_tier_cards",
+      "name": "Membership Tier Cards",
+      "description": "Membership plans with pricing and features",
+      "slots": {
+        "tiers": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "name": { "type": "string" },
+              "price": { "type": "number" },
+              "billing_cycle": { "type": "string" },
+              "features": { "type": "array" },
+              "popular": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "trainer_profiles",
+      "name": "Trainer Profiles",
+      "description": "Personal trainer bios and specializations",
+      "slots": {
+        "trainers": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "name": { "type": "string" },
+              "specialties": { "type": "array" },
+              "certifications": { "type": "array" },
+              "bio": { "type": "string" },
+              "photo": { "type": "image" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "transformation_gallery",
+      "name": "Transformation Gallery",
+      "description": "Before/after member transformations",
+      "slots": {
+        "transformations": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "before_image": { "type": "image" },
+              "after_image": { "type": "image" },
+              "member_name": { "type": "string" },
+              "timeline": { "type": "string" },
+              "story": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

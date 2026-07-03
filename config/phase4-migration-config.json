@@ -1,0 +1,174 @@
+{
+  "phase4": {
+    "enabled": false,
+    "mode": "shadow",
+    "allow_structural": false,
+    "version": "v0.4.0-maal-codesign-canary-foundation",
+    "ci_gate_enforced": false,
+    "lint_enforced": false
+  },
+  "migration_phases": {
+    "phase_a": {
+      "name": "Shadow-Only Execution",
+      "enabled": false,
+      "description": "Phase 4 active but no structural changes; proposals logged, canary telemetry collected",
+      "requirements": [
+        "CI gate verified (10 rules)",
+        "Phase 1/3 immutability confirmed",
+        "All Phase 4 tests passing",
+        "Governance playbook signed"
+      ],
+      "mode": "shadow",
+      "allow_structural": false,
+      "allow_canary": false,
+      "allow_proposals": true,
+      "log_decisions": true,
+      "duration_days": 7
+    },
+    "phase_b": {
+      "name": "Canary Promotions (Minor Deltas)",
+      "enabled": false,
+      "description": "Allow canary growth for non-structural parameter adjustments only",
+      "requirements": [
+        "Phase A metrics healthy (divergence < 0.15)",
+        "On-call aware and monitoring",
+        "Dashboards established"
+      ],
+      "mode": "canary",
+      "allow_structural": false,
+      "allow_canary": true,
+      "allow_proposals": true,
+      "log_decisions": true,
+      "duration_days": 14
+    },
+    "phase_c": {
+      "name": "Full Structural Regime Evolution",
+      "enabled": false,
+      "description": "Allow structural proposals with governance approval",
+      "requirements": [
+        "Phase B metrics healthy (all thresholds OK)",
+        "Team sign-off on governance playbook",
+        "Rollback plan tested and ready"
+      ],
+      "mode": "full",
+      "allow_structural": true,
+      "allow_canary": true,
+      "allow_proposals": true,
+      "log_decisions": true,
+      "duration_days": null
+    }
+  },
+  "safety_guardrails": {
+    "immutability_checks": {
+      "phase_1_enabled": true,
+      "phase_3_enabled": true,
+      "fail_on_violation": true
+    },
+    "phase_4_metrics": {
+      "enabled": true,
+      "checks": {
+        "phase_1_3_divergence_threshold": 0.15,
+        "cost_delta_threshold": 0.10,
+        "latency_delta_threshold": 0.15,
+        "correctness_delta_threshold": 0.02,
+        "drift_threshold": 0.10,
+        "simulator_instability_threshold": 0.05
+      }
+    },
+    "phase_4_disable_conditions": [
+      "immutability_violation",
+      "phase_3_metrics_out_of_bounds",
+      "governance_approval_failure",
+      "telemetry_collection_failure"
+    ]
+  },
+  "rollback_plan": {
+    "trigger_conditions": [
+      {
+        "condition": "divergence_exceeds_threshold",
+        "threshold": 0.15,
+        "action": "soft_pause",
+        "duration_hours": 4
+      },
+      {
+        "condition": "cost_exceeds_threshold",
+        "threshold": 0.10,
+        "action": "soft_pause",
+        "duration_hours": 4
+      },
+      {
+        "condition": "latency_exceeds_threshold",
+        "threshold": 0.15,
+        "action": "soft_pause",
+        "duration_hours": 4
+      },
+      {
+        "condition": "correctness_violation",
+        "threshold": 0.02,
+        "action": "hard_rollback",
+        "immediate": true
+      },
+      {
+        "condition": "simulator_instability",
+        "threshold": 0.05,
+        "action": "hard_rollback",
+        "immediate": true
+      },
+      {
+        "condition": "governance_override",
+        "action": "hard_rollback",
+        "immediate": true
+      }
+    ],
+    "atomic_rollback": {
+      "state_machine": [
+        "ACTIVE",
+        "ROLLBACK_PENDING",
+        "ROLLBACK_APPLY",
+        "ROLLBACK_VERIFY",
+        "ACTIVE"
+      ],
+      "idempotent": true,
+      "no_partial_states": true,
+      "revert_to": "last_stable_regime"
+    },
+    "single_kill_switch": {
+      "key": "phase4.enabled",
+      "value": false,
+      "effect": [
+        "stop_new_proposals",
+        "stop_canary_growth",
+        "keep_logs_intact",
+        "revert_to_maal_only"
+      ]
+    }
+  },
+  "operational_checklist": {
+    "pre_phase_a": [
+      "{ item: 'CI gate verified (10 rules pass)', owner: 'ML eng', status: 'pending' }",
+      "{ item: 'Lint rules integrated on all branches', owner: 'ML eng', status: 'pending' }",
+      "{ item: 'Phase 1/3 immutability confirmed', owner: 'infra', status: 'pending' }",
+      "{ item: 'All Phase 4 tests passing', owner: 'ML eng', status: 'pending' }",
+      "{ item: 'Governance playbook signed by stakeholders', owner: 'ops', status: 'pending' }",
+      "{ item: 'On-call runbook updated (Phase 4 + rollback steps)', owner: 'ops', status: 'pending' }",
+      "{ item: 'Dashboards created for canary_gate_results, governance_approvals', owner: 'infra', status: 'pending' }",
+      "{ item: 'Phase 4 service account created + permissions', owner: 'infra', status: 'pending' }"
+    ],
+    "pre_phase_b": [
+      "{ item: 'Phase A metrics healthy (divergence, cost, latency all OK)', owner: 'ML eng', status: 'pending' }",
+      "{ item: 'Team sign-off to proceed to canary', owner: 'ops', status: 'pending' }",
+      "{ item: 'Canary growth parameters tuned', owner: 'ML eng', status: 'pending' }"
+    ],
+    "pre_phase_c": [
+      "{ item: 'Phase B metrics stable for 7 days', owner: 'ML eng', status: 'pending' }",
+      "{ item: 'Structural proposal process tested (E2E)', owner: 'ML eng', status: 'pending' }",
+      "{ item: 'Rollback plan drilled with ops team', owner: 'ops', status: 'pending' }",
+      "{ item: 'Team unanimously ready for structural evolution', owner: 'leadership', status: 'pending' }"
+    ],
+    "ongoing": [
+      "{ item: 'Weekly Phase 4 governance review', owner: 'ops', frequency: 'weekly' }",
+      "{ item: 'Monthly architecture review (Phase 4 impact)', owner: 'arch', frequency: 'monthly' }",
+      "{ item: 'Monthly Phase 4 incident report + lessons learned', owner: 'ops', frequency: 'monthly' }"
+    ]
+  }
+}

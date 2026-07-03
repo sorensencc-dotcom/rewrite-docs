@@ -1,0 +1,96 @@
+{
+  "version": "v1.0.0",
+  "generated_at": "2026-06-13T00:00:00Z",
+  "generator": "Rewrite Labs Template Expansion Pack",
+  "vertical": "landscaping",
+  "vertical_id": "landscaping",
+  "tone": "Natural, earthy, outdoor-focused",
+  "description": "Landscaping company website featuring project galleries, service offerings, and seasonal promotions",
+  "color_cluster": {
+    "primary": "#2E7D32",
+    "secondary": "#A5D6A7",
+    "accent": "#795548",
+    "neutral": "#FFFFFF"
+  },
+  "typography": {
+    "scale": [
+      { "role": "h1", "size": "48px", "weight": 600, "family": "sans-serif" },
+      { "role": "h2", "size": "36px", "weight": 600, "family": "sans-serif" },
+      { "role": "h3", "size": "28px", "weight": 600, "family": "sans-serif" },
+      { "role": "body", "size": "16px", "weight": 400, "family": "sans-serif" },
+      { "role": "small", "size": "14px", "weight": 400, "family": "sans-serif" }
+    ]
+  },
+  "hero_archetypes": [
+    {
+      "id": "lawn_hero",
+      "name": "Beautiful Lawn/Yard",
+      "description": "Stunning landscape project photo showcasing company work quality",
+      "cta": "See Our Work"
+    },
+    {
+      "id": "before_after",
+      "name": "Before/After Landscaping",
+      "description": "Side-by-side transformation showing landscape improvement",
+      "cta": "Transform Your Yard"
+    },
+    {
+      "id": "service_hero",
+      "name": "Service Showcase",
+      "description": "Multi-service hero highlighting mowing, hardscaping, irrigation",
+      "cta": "Get Free Quote"
+    }
+  ],
+  "components": [
+    "header_sticky",
+    "hero_with_cta",
+    "service_grid",
+    "project_gallery_carousel",
+    "seasonal_offers_banner",
+    "testimonials",
+    "quote_request_form",
+    "service_details",
+    "team_bios",
+    "footer_with_hours_map"
+  ],
+  "service_page_archetypes": [
+    "hardscaping_page",
+    "lawn_care_page",
+    "tree_services_page",
+    "irrigation_page",
+    "seasonal_cleanup_page"
+  ],
+  "cta_patterns": [
+    {
+      "id": "quote_cta",
+      "text": "Get Free Quote",
+      "action": "quote_request_form",
+      "button_style": "primary_rounded"
+    },
+    {
+      "id": "call_cta",
+      "text": "Call for Service",
+      "action": "phone_link",
+      "button_style": "secondary"
+    },
+    {
+      "id": "gallery_cta",
+      "text": "View Our Portfolio",
+      "action": "portfolio_link",
+      "button_style": "secondary"
+    }
+  ],
+  "layout_grid": "12-column with 3-column service grids",
+  "mobile_breakpoints": [
+    { "breakpoint": "1024px", "layout": "2-column grid" },
+    { "breakpoint": "768px", "layout": "1-column stacked" }
+  ],
+  "dependencies": [],
+  "seo_schema": [
+    "LocalBusiness",
+    "Service",
+    "ImageObject",
+    "BreadcrumbList",
+    "FAQ"
+  ]
+}

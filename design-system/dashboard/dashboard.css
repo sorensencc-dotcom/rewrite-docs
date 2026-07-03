@@ -1,0 +1,185 @@
+/* CIC Design System Dashboard */
+
+.cic-dashboard {
+  background: var(--cic-color-surface);
+  color: var(--cic-color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cic-dashboard-header {
+  background: var(--cic-color-surface);
+  border-bottom: 1px solid var(--cic-color-border);
+  padding: var(--cic-space-16);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.cic-dashboard-header-content {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cic-dashboard-header h1 {
+  font-size: var(--cic-type-heading-l);
+  font-weight: 600;
+  margin: 0;
+}
+
+.cic-theme-toggle {
+  background: var(--cic-color-accent);
+  color: white;
+  border: none;
+  padding: var(--cic-space-8) var(--cic-space-12);
+  border-radius: var(--cic-space-4);
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 120ms var(--cic-motion-ease);
+}
+
+.cic-theme-toggle:hover {
+  background: var(--cic-color-accent-hover);
+}
+
+/* Navigation */
+.cic-dashboard-nav {
+  background: var(--cic-color-surface);
+  border-bottom: 1px solid var(--cic-color-border);
+  display: flex;
+  padding: 0 var(--cic-space-16);
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  gap: var(--cic-space-8);
+}
+
+.cic-nav-item {
+  background: none;
+  border: none;
+  color: var(--cic-color-text);
+  padding: var(--cic-space-12) var(--cic-space-16);
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 2px solid transparent;
+  transition: all 120ms var(--cic-motion-ease);
+}
+
+.cic-nav-item:hover {
+  color: var(--cic-color-accent);
+}
+
+.cic-nav-item.active {
+  color: var(--cic-color-accent);
+  border-bottom-color: var(--cic-color-accent);
+}
+
+/* Content */
+.cic-dashboard-content {
+  flex: 1;
+  padding: var(--cic-space-24);
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Section Styles */
+.cic-section {
+  margin-bottom: var(--cic-space-32);
+}
+
+.cic-section-title {
+  font-size: var(--cic-type-heading-m);
+  font-weight: 600;
+  margin: 0 0 var(--cic-space-16) 0;
+}
+
+.cic-section-description {
+  font-size: 14px;
+  color: var(--cic-color-text-secondary);
+  margin: 0 0 var(--cic-space-16) 0;
+}
+
+/* Token Grid */
+.cic-token-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--cic-space-16);
+}
+
+.cic-token-preview {
+  background: var(--cic-color-surface-elevation-1);
+  border: 1px solid var(--cic-color-border);
+  border-radius: var(--cic-space-8);
+  padding: var(--cic-space-12);
+  cursor: pointer;
+  transition: all 120ms var(--cic-motion-ease);
+}
+
+.cic-token-preview:hover {
+  border-color: var(--cic-color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cic-token-swatch {
+  width: 100%;
+  height: 80px;
+  border-radius: var(--cic-space-4);
+  margin-bottom: var(--cic-space-8);
+}
+
+.cic-token-name {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: monospace;
+  margin: 0 0 var(--cic-space-4) 0;
+  word-break: break-all;
+}
+
+.cic-token-value {
+  font-size: 11px;
+  color: var(--cic-color-text-secondary);
+  font-family: monospace;
+  margin: 0;
+}
+
+.cic-token-copy {
+  margin-top: var(--cic-space-8);
+  padding: var(--cic-space-6) var(--cic-space-8);
+  background: var(--cic-color-accent);
+  color: white;
+  border: none;
+  border-radius: var(--cic-space-3);
+  cursor: pointer;
+  font-size: 11px;
+  width: 100%;
+  transition: background 120ms var(--cic-motion-ease);
+}
+
+.cic-token-copy:hover {
+  background: var(--cic-color-accent-hover);
+}
+
+/* Dark Mode */
+[data-theme="light"] .cic-dashboard {
+  background: var(--cic-color-surface-light);
+  color: var(--cic-color-text-light);
+}
+
+[data-theme="light"] .cic-dashboard-header {
+  border-bottom-color: var(--cic-color-border-light);
+}
+
+[data-theme="light"] .cic-dashboard-nav {
+  border-bottom-color: var(--cic-color-border-light);
+}
+
+[data-theme="light"] .cic-token-preview {
+  background: var(--cic-color-surface-light);
+  border-color: var(--cic-color-border-light);
+}

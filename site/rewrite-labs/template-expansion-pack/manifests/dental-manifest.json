@@ -1,0 +1,95 @@
+{
+  "version": "v1.0.0",
+  "generated_at": "2026-06-13T00:00:00Z",
+  "generator": "Rewrite Labs Template Expansion Pack",
+  "vertical": "dental",
+  "vertical_id": "dental",
+  "tone": "Clean, sterile, trustworthy",
+  "description": "Modern dental practice website template with emphasis on cleanliness, patient reassurance, and appointment CTAs",
+  "color_cluster": {
+    "primary": "#0A6FFF",
+    "secondary": "#E8F3FF",
+    "neutral": "#FFFFFF",
+    "dark": "#1A1A1A"
+  },
+  "typography": {
+    "scale": [
+      { "role": "h1", "size": "48px", "weight": 600, "family": "sans-serif" },
+      { "role": "h2", "size": "36px", "weight": 600, "family": "sans-serif" },
+      { "role": "h3", "size": "28px", "weight": 600, "family": "sans-serif" },
+      { "role": "body", "size": "16px", "weight": 400, "family": "sans-serif" },
+      { "role": "small", "size": "14px", "weight": 400, "family": "sans-serif" }
+    ]
+  },
+  "hero_archetypes": [
+    {
+      "id": "dentist_patient",
+      "name": "Dentist & Patient",
+      "description": "Professional headshot of dentist with patient in treatment setting",
+      "cta": "Schedule Your Appointment"
+    },
+    {
+      "id": "clinic_interior",
+      "name": "Clean Clinic Interior",
+      "description": "Bright, modern dental office with sterilization equipment visible",
+      "cta": "Book Your Visit"
+    },
+    {
+      "id": "smile_transformation",
+      "name": "Smile Transformation",
+      "description": "Before/after dental work with smiling patient",
+      "cta": "Get Your Perfect Smile"
+    }
+  ],
+  "components": [
+    "header_sticky",
+    "hero_with_cta",
+    "insurance_badge_strip",
+    "services_grid",
+    "before_after_gallery",
+    "appointment_booking_widget",
+    "testimonials",
+    "staff_bios",
+    "contact_form",
+    "footer_with_hours_map"
+  ],
+  "service_page_archetypes": [
+    "procedure_detail_page",
+    "staff_bio_page",
+    "insurance_info_page",
+    "patient_education_page"
+  ],
+  "cta_patterns": [
+    {
+      "id": "appointment_cta",
+      "text": "Schedule Your Appointment",
+      "action": "open_booking_widget",
+      "button_style": "primary_rounded"
+    },
+    {
+      "id": "call_cta",
+      "text": "Call Us Today",
+      "action": "phone_link",
+      "button_style": "secondary"
+    },
+    {
+      "id": "contact_cta",
+      "text": "Contact Our Office",
+      "action": "contact_form",
+      "button_style": "secondary"
+    }
+  ],
+  "layout_grid": "12-column with 3-column service grids",
+  "mobile_breakpoints": [
+    { "breakpoint": "1024px", "layout": "2-column grid" },
+    { "breakpoint": "768px", "layout": "1-column stacked" }
+  ],
+  "dependencies": [],
+  "seo_schema": [
+    "LocalBusiness",
+    "Dentist",
+    "Service",
+    "FAQ",
+    "ImageObject"
+  ]
+}

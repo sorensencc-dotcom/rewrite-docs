@@ -1,0 +1,20 @@
+{
+  "name": "gpt-4.1",
+  "provider": "openai",
+  "type": "chat",
+  "version": "4.1",
+  "apiBase": "https://api.openai.com/v1",
+  "env": "OPENAI_API_KEY",
+  "supports": {
+    "chat": true,
+    "toolCalls": true,
+    "streaming": true,
+    "vision": true,
+    "embeddings": false
+  },
+  "contextWindow": 128000,
+  "costPer1kTokens": {
+    "input": 0.003,
+    "output": 0.006
+  }
+}

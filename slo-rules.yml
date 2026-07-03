@@ -1,0 +1,125 @@
+# CIC SLO Tracking Rules
+# Generated: 2026-07-02
+# Source: ITEM-2-OBSERVABILITY-DASHBOARD-SPEC.md
+
+groups:
+  - name: CIC_SLO_Rules
+    interval: 60s
+    rules:
+
+      # SLO: Monthly Availability 99.5%
+      # Error budget: 21.6 minutes per month (30 days)
+      - alert: ErrorBudgetCritical
+        expr: (sum(increase(cic_adapter_errors_total[30d])) / sum(increase(cic_adapter_calls_total[30d]))) > 0.005
+        for: 5m
+        labels:
+          severity: critical
+          slo_type: availability
+        annotations:
+          summary: "Monthly error budget exhausted (>0.5% errors)"
+          description: "Error rate in last 30d: {{ $value | humanizePercentage }}. Freeze new deployments."
+          runbook: "https://runbooks.internal/cic/slo-breach"
+
+      # SLO Indicator: Monthly Availability (cumulative)
+      - alert: AvailabilitySLOTrack
+        expr: (sum(increase(cic_adapter_calls_total{status="success"}[30d])) / sum(increase(cic_adapter_calls_total[30d])))
+        for: 1m
+        labels:
+          severity: info
+          slo_type: availability
+          threshold: "0.995"
+        annotations:
+          summary: "Monthly availability tracker (target: 99.5%)"
+          description: "Current: {{ $value | humanizePercentage }} ({{ ($value * 30 * 24 * 60) | humanizeDuration }})"
+
+      # SLO: Latency P95 <100ms
+      - alert: LatencySLOBreach
+        expr: histogram_quantile(0.95, rate(cic_adapter_duration_ms[5m])) > 100
+        for: 10m
+        labels:
+          severity: warning
+          slo_type: latency
+          threshold: "100ms"
+        annotations:
+          summary: "Latency SLO breach: p95 >100ms for 10m"
+          description: "p95 latency: {{ $value | humanizeDuration }}ms. Review adapter performance."
+          runbook: "https://runbooks.internal/cic/latency-slo"
+
+      # SLO Indicator: Error Budget Remaining (minutes)
+      # 30 days = 43200 minutes; budget = 21.6 minutes (0.05%)
+      - alert: ErrorBudgetRemaining
+        expr: (21.6 * 60) - (sum(increase(cic_adapter_errors_total[30d])) / 1)
+        for: 1m
+        labels:
+          severity: info
+          slo_type: error_budget
+        annotations:
+          summary: "Error budget remaining for current month"
+          description: "Budget remaining: {{ $value | humanizeDuration }}. Reset on 1st UTC."
+
+      # SLO: Orchestrator Success >99.5%
+      - alert: OrchestratorSLOBreach
+        expr: (sum(rate(cic_orchestrator_chain_success_total{status="success"}[30d])) / sum(rate(cic_orchestrator_chain_success_total[30d]))) < 0.995
+        for: 5m
+        labels:
+          severity: warning
+          slo_type: reliability
+          threshold: "0.995"
+        annotations:
+          summary: "Orchestrator SLO breach: <99.5% success rate"
+          description: "Success rate: {{ $value | humanizePercentage }}. Investigate chain failures."
+          runbook: "https://runbooks.internal/cic/orchestrator-slo"
+
+      # SLO: Qdrant Context Store Availability >99.9%
+      - alert: QdrantAvailabilityBreach
+        expr: (sum(rate(qdrant_requests_total{status="success"}[30d])) / sum(rate(qdrant_requests_total[30d]))) < 0.999
+        for: 5m
+        labels:
+          severity: warning
+          slo_type: infrastructure
+          threshold: "0.999"
+        annotations:
+          summary: "Qdrant availability SLO breach: <99.9%"
+          description: "Availability: {{ $value | humanizePercentage }}. Check vector DB health."
+          runbook: "https://runbooks.internal/cic/qdrant-slo"
+
+      # SLO: PostgreSQL Query Latency P95 <50ms
+      - alert: PostgresSLOBreach
+        expr: histogram_quantile(0.95, rate(postgres_query_duration_seconds[5m])) > 0.050
+        for: 10m
+        labels:
+          severity: warning
+          slo_type: database
+          threshold: "50ms"
+        annotations:
+          summary: "PostgreSQL query latency SLO breach: p95 >50ms"
+          description: "p95 latency: {{ $value | humanizeDuration }}s. Check slow queries, indexes."
+          runbook: "https://runbooks.internal/cic/postgres-slo"
+
+  - name: CIC_SLO_Recording_Rules
+    interval: 30s
+    rules:
+
+      # Record: Monthly availability (rolling 30d window)
+      - record: slo:availability:monthly
+        expr: (sum(increase(cic_adapter_calls_total{status="success"}[30d])) / sum(increase(cic_adapter_calls_total[30d])))
+
+      # Record: Monthly error rate
+      - record: slo:error_rate:monthly
+        expr: (sum(increase(cic_adapter_errors_total[30d])) / sum(increase(cic_adapter_calls_total[30d])))
+
+      # Record: P95 latency (5m window)
+      - record: slo:latency:p95
+        expr: histogram_quantile(0.95, rate(cic_adapter_duration_ms[5m]))
+
+      # Record: Adapter success rate by component (5m window)
+      - record: slo:adapter_success:by_component
+        expr: (sum(rate(cic_adapter_calls_total{status="success"}[5m])) by (adapter)) / (sum(rate(cic_adapter_calls_total[5m])) by (adapter))
+
+      # Record: Error budget burn rate (% per day)
+      - record: slo:error_budget:burn_rate_daily
+        expr: (sum(increase(cic_adapter_errors_total[1d])) / sum(increase(cic_adapter_calls_total[1d]))) / 0.005 * 100
+
+      # Record: Orchestrator reliability (30d rolling)
+      - record: slo:orchestrator:reliability
+        expr: (sum(increase(cic_orchestrator_chain_success_total{status="success"}[30d])) / sum(increase(cic_orchestrator_chain_success_total[30d])))

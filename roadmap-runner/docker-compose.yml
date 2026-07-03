@@ -1,0 +1,76 @@
+version: '3.9'
+
+services:
+  # Roadmap scheduler service
+  roadmap-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: roadmap-runner
+    volumes:
+      # Mount Docker socket for docker-in-docker
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Mount state and logs
+      - ./state-store.json:/app/state-store.json
+      - ./logs:/app/logs
+      # Mount phases directory
+      - ./phases:/app/phases:ro
+    environment:
+      - REGISTRY=${REGISTRY:-docker.io}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - CLOUDFLARE_ACCOUNT_ID=${CLOUDFLARE_ACCOUNT_ID}
+      - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN}
+      - OUTREACH_API_KEY=${OUTREACH_API_KEY}
+      - QDRANT_URL=${QDRANT_URL:-http://qdrant:6333}
+    command: node scheduler.js --loop --interval 60
+    restart: unless-stopped
+    networks:
+      - roadmap-net
+    depends_on:
+      - qdrant
+
+  # Vector database (used by TorqueQuery, Phase 26)
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant-storage:/qdrant/storage
+    networks:
+      - roadmap-net
+    restart: unless-stopped
+
+  # Prometheus for metrics collection (optional)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-storage:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - roadmap-net
+    restart: unless-stopped
+
+  # Prometheus Push Gateway (for phase metrics)
+  prometheus-pushgateway:
+    image: prom/pushgateway:latest
+    container_name: prometheus-pushgateway
+    ports:
+      - "9091:9091"
+    networks:
+      - roadmap-net
+    restart: unless-stopped
+
+volumes:
+  qdrant-storage:
+  prometheus-storage:
+
+networks:
+  roadmap-net:
+    driver: bridge

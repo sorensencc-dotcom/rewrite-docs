@@ -1,0 +1,15 @@
+# Dockerfile for smoke tests
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY cic/package*.json ./
+RUN npm install
+
+COPY cic/src ./src
+COPY cic/smoke-test.ts ./
+COPY cic/jest.config.js ./
+COPY cic/tsconfig.json ./
+
+# Run smoke test
+ENTRYPOINT ["npx", "ts-node", "smoke-test.ts"]

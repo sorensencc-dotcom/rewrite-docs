@@ -1,0 +1,218 @@
+{
+  "main": {
+    "id": "8661a7d7f58e4893",
+    "type": "split",
+    "children": [
+      {
+        "id": "a21d78fef54ff1a6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "24bb9d4a10defbc2",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f9ca42782bffa6d0",
+    "type": "split",
+    "children": [
+      {
+        "id": "521de2ec17633bfd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a5129126363da622",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "607b9c3ba3972fa4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "8dca08c38520bb24",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "8f9eb55887ade1ab",
+    "type": "split",
+    "children": [
+      {
+        "id": "b67e96235553c105",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "be7577e0e04b67ca",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "3f6f4ed44cd23779",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "597388d20bd9c80d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "489d010d67789918",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "d8ac8c915c40f91d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "a5129126363da622",
+  "lastOpenFiles": [
+    "FINAL-STATUS-8-ITEMS.md",
+    "8-ITEM-PROGRESS.md.tmp.51672.1e5b69a1e7ba",
+    "outputs/MANIFEST.md",
+    "outputs/MANIFEST.md.tmp.51672.b39a612df845",
+    "outputs/README.md",
+    "outputs/README.md.tmp.51672.e2f5c39ab017",
+    "outputs/DELIVERY_SUMMARY.md",
+    "outputs/DELIVERY_SUMMARY.md.tmp.51672.e9c8b7b77763",
+    "outputs/package.json",
+    "outputs/INDEX.md",
+    "outputs/validate-graph.ts",
+    "outputs/QUICK_START.md",
+    "outputs/QUICK_START.md.tmp.51672.3b9e5d2e273c",
+    "outputs/SETUP_GUIDE.md",
+    "outputs/SETUP_GUIDE.md.tmp.51672.5bc7d989d2df",
+    "outputs/example-skill.ts",
+    "outputs/KNOWLEDGE_GRAPH_README.md",
+    "outputs/KNOWLEDGE_GRAPH_README.md.tmp.51672.123b740feefc",
+    "MANIFEST.md",
+    "00-EXECUTIVE-SUMMARY.md",
+    "SETUP-CHECKLIST.md",
+    "QUICK-REFERENCE.md",
+    "DELIVERABLES-SUMMARY.md",
+    "IMPLEMENTATION-SETUP.md",
+    "VAULT-SYNC-CONFIGURATION.md",
+    "8-ITEM-PROGRESS.md",
+    "PHASE_C_INTEGRATION_SUMMARY.md",
+    "PHASE_B_HARDENING_SUMMARY.md",
+    "rewrite-mcp/node_modules/utils-merge/README.md",
+    "rewrite-mcp/node_modules/unpipe/README.md",
+    "rewrite-mcp/node_modules/unpipe/HISTORY.md",
+    "rewrite-mcp/node_modules/math-intrinsics/README.md",
+    "rewrite-mcp/node_modules/math-intrinsics/CHANGELOG.md",
+    "cic-research/SKILL.md",
+    "PHASE_5_TORQUEQUERY_V2_DEPLOYMENT_GUIDE.md",
+    "VAULT-README.md"
+  ]
+}

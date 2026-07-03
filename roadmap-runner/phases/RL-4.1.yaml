@@ -1,0 +1,42 @@
+# RL-4.1: RedesignAgent + DesignVariantRenderer
+# Week 3-5, depends on RL-4.0
+
+id: RL-4.1
+title: RedesignAgent + DesignVariantRenderer
+owner: rewrite-labs
+container: REGISTRY/rewrite-labs/rl-4.1:latest
+command:
+  - npm
+  - run
+  - test:redesign
+
+env:
+  NODE_ENV: production
+  LOG_LEVEL: info
+
+dependencies:
+  - RL-4.0
+
+success_gates:
+  - type: exit_code
+    value: 0
+  - type: metric
+    key: redesign_variations_generated
+    op: ">="
+    value: 3
+  - type: metric
+    key: design_variant_render_success_rate
+    op: ">="
+    value: 0.9
+  - type: output
+    pattern: "✓.*RedesignAgent.*variations"
+  - type: output
+    pattern: "✓.*DesignVariantRenderer.*rendered"
+
+metadata:
+  deliverables:
+    - RedesignAgent (style transformation engine)
+    - DesignVariantRenderer (multi-variant output)
+    - Variant gallery JSON schema
+  testCoverage: ">= 80%"
+  estimatedDuration: "25m"

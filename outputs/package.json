@@ -1,0 +1,63 @@
+{
+  "name": "cic-knowledge-graph",
+  "version": "1.0.0",
+  "description": "Production-ready knowledge graph extraction and querying system for CIC vault documentation",
+  "main": "knowledge-graph-query.ts",
+  "types": "knowledge-graph-query.ts",
+  "scripts": {
+    "extract": "ts-node extract-backlinks.ts",
+    "extract:cic": "ts-node extract-backlinks.ts C:\\dev\\cic-ref C:\\dev\\outputs\\graph.json",
+    "validate": "ts-node validate-graph.ts graph.json",
+    "test:skill": "ts-node example-skill.ts",
+    "viewer": "echo 'Open graph-viewer.html in your browser'",
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit --skipLibCheck"
+  },
+  "keywords": [
+    "knowledge-graph",
+    "vault",
+    "markdown",
+    "backlinks",
+    "d3",
+    "visualization",
+    "query",
+    "api",
+    "cic"
+  ],
+  "author": "CIC Platform Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "typescript": "^4.9.0",
+    "ts-node": "^10.9.0"
+  },
+  "optionalDependencies": {
+    "d3": "^7.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/cic"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/cic/issues"
+  },
+  "homepage": "https://github.com/your-org/cic#knowledge-graph",
+  "engines": {
+    "node": ">=16.0.0",
+    "typescript": ">=4.9.0"
+  },
+  "files": [
+    "extract-backlinks.ts",
+    "knowledge-graph-query.ts",
+    "example-skill.ts",
+    "validate-graph.ts",
+    "graph-viewer.html",
+    "KNOWLEDGE_GRAPH_README.md",
+    "SETUP_GUIDE.md",
+    "QUICK_START.md",
+    "INDEX.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

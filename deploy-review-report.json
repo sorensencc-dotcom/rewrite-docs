@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-06-22T21:22:12Z",
+  "environment": "staging",
+  "result": "PASS",
+  "duration_seconds": 243,
+  "critical_failures": [],
+  "non_critical_failures": ["cic-runtime tests","cic-governance tests","e2e agent-deploy","e2e governance-proposal"],
+  "services_verified": 15,
+  "dry_run": 0,
+  "skip_tests": 0
+}

@@ -1,0 +1,25 @@
+[project]
+name = "torquequery"
+version = "0.1.0-alpha"
+description = "Local Knowledge Engine for CIC (Phase-26)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "llama-index-core>=0.10.40",
+    "llama-index-readers-file>=0.10.0",
+    "llama-index-llms-ollama>=0.1.2",
+    "llama-index-embeddings-ollama>=0.1.2",
+    "llama-index-vector-stores-chroma>=0.1.8",
+    "chromadb>=0.5.0",
+    "sentence-transformers>=2.7.0",
+    "tiktoken>=0.7.0",
+    "fastapi>=0.111.0",
+    "uvicorn>=0.30.0",
+    "pyyaml>=6.0.1",
+    "pydantic>=2.7.0",
+    "watchdog>=4.0.0"
+]
+
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"

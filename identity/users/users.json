@@ -1,0 +1,12 @@
+{
+  "admin": {
+    "id": "user-admin",
+    "roles": ["admin"],
+    "active": true
+  },
+  "operator": {
+    "id": "user-operator",
+    "roles": ["operator"],
+    "active": true
+  }
+}

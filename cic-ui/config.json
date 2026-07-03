@@ -1,0 +1,8 @@
+{
+  "componentDir": "src/components/cic",
+  "styleDir": "src/components/cic",
+  "storyDir": "src/stories/cic",
+  "testDir": "src/tests/cic",
+  "visualDir": "src/visual/cic",
+  "tokenMapDir": "docs/tokens/usage"
+}

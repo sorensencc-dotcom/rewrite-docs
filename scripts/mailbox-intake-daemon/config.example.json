@@ -1,0 +1,109 @@
+{
+  "mailpit": {
+    "baseUrl": "http://localhost:8025",
+    "timeout_ms": 30000,
+    "maxConnections": 5,
+    "maxRetries": 3,
+    "retryBackoffMs": 500,
+    "healthCheckIntervalMs": 30000,
+    "circuitBreakerThreshold": 5,
+    "circuitBreakerResetMs": 60000,
+    "pollIntervalMs": 5000,
+    "maxMessagesPerPoll": 50
+  },
+  "validation": {
+    "requireAttachments": true,
+    "maxAttachments": 100,
+    "maxTotalSizeMb": 500,
+    "maxAttachmentSizeMb": 100,
+    "blockedMimeTypes": [
+      "application/x-msdownload",
+      "application/x-exe",
+      "application/x-dll",
+      "application/x-msdos-program"
+    ],
+    "blockedFilePatterns": [
+      "\\.exe$",
+      "\\.dll$",
+      "\\.sys$",
+      "\\.bat$",
+      "\\.cmd$"
+    ],
+    "stagingRoot": "C:\\research-intake"
+  },
+  "classification": {
+    "tier1Patterns": [
+      "\\.jpg$",
+      "\\.jpeg$",
+      "\\.png$",
+      "\\.gif$",
+      "\\.bmp$",
+      "\\.webp$",
+      "\\.heic$",
+      "\\.heif$"
+    ],
+    "tier2Patterns": [
+      "\\.pdf$",
+      "\\.docx?$",
+      "\\.xlsx?$",
+      "\\.pptx?$",
+      "\\.txt$",
+      "\\.csv$"
+    ],
+    "tier3Patterns": [
+      "\\.log$",
+      "\\.tmp$",
+      "\\.bak$"
+    ]
+  },
+  "watcher": {
+    "watchDir": "C:\\research-intake",
+    "debounceMs": 500,
+    "enablePolling": true,
+    "pollingIntervalMs": 5000,
+    "ignorePatterns": [
+      "**/.*",
+      "**/*.tmp",
+      "**/desktop.ini"
+    ]
+  },
+  "routing": {
+    "tier1": {
+      "tier": "tier-1-images",
+      "destination": "FOLDER_ID_TIER_1_IMAGES",
+      "uploadMethod": "drive-api",
+      "maxRetries": 3
+    },
+    "tier2": {
+      "tier": "tier-2-research",
+      "destination": "FOLDER_ID_TIER_2_RESEARCH",
+      "uploadMethod": "drive-api",
+      "maxRetries": 3
+    },
+    "tier3": {
+      "tier": "tier-3-local",
+      "destination": "C:\\research-intake\\cold",
+      "uploadMethod": "local-copy",
+      "maxRetries": 1
+    },
+    "unmappedTier": {
+      "tier": "tier-3-local",
+      "destination": "C:\\research-intake\\cold",
+      "uploadMethod": "local-copy",
+      "maxRetries": 1
+    }
+  },
+  "drive": {
+    "clientId": "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com",
+    "clientSecret": "YOUR_GOOGLE_CLIENT_SECRET",
+    "refreshToken": "YOUR_REFRESH_TOKEN",
+    "maxConcurrentUploads": 3,
+    "chunkSizeMb": 100,
+    "timeoutMs": 300000
+  },
+  "monitoring": {
+    "checkStuckIntervalMinutes": 5,
+    "stuckThresholdMinutes": 30,
+    "archiveRotationDays": 90
+  }
+}

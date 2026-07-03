@@ -1,0 +1,626 @@
+[
+  {
+    "id": "11756465e668fe2343f8d21dd32cdd0a9ad57600df98e110eb0e08325739d3c9",
+    "type": "document",
+    "rawPath": "C:\\tmp\\phase2-test\\test-doc-2.txt",
+    "metadataHash": "d9e24b7b6aa82f26ae87091928744e418c528c21019e2a0a44bedaf10dcd652c",
+    "textLength": 23,
+    "embeddingDim": 768
+  },
+  {
+    "id": "cd38325c7582f1f88c2015e62e80d4975c9cafed3d21c6e9ed7df4ce3ed936a6",
+    "type": "document",
+    "rawPath": "C:\\tmp\\phase2-test\\test-doc-1.txt",
+    "metadataHash": "5b9d1c04dcdcf59b3a617a24a66dbd2b0351d6b84aa57cab517ca3af60997594",
+    "textLength": 23,
+    "embeddingDim": 768
+  },
+  {
+    "id": "11756465e668fe2343f8d21dd32cdd0a9ad57600df98e110eb0e08325739d3c9",
+    "type": "document",
+    "rawPath": "C:\\tmp\\phase2-test\\test-doc-2.txt",
+    "metadataHash": "d9e24b7b6aa82f26ae87091928744e418c528c21019e2a0a44bedaf10dcd652c",
+    "textLength": 23,
+    "embeddingDim": 768
+  },
+  {
+    "id": "cd38325c7582f1f88c2015e62e80d4975c9cafed3d21c6e9ed7df4ce3ed936a6",
+    "type": "document",
+    "rawPath": "C:\\tmp\\phase2-test\\test-doc-1.txt",
+    "metadataHash": "5b9d1c04dcdcf59b3a617a24a66dbd2b0351d6b84aa57cab517ca3af60997594",
+    "textLength": 23,
+    "embeddingDim": 768
+  },
+  {
+    "id": "3dabf77be8897484d2d129fd98d3b1d91a2e3b5b5666e54f8cec931fe8dff2d9",
+    "type": "image",
+    "rawPath": "images/img1.jpg",
+    "metadataHash": "4b67126ab6faad4f2c4bbf0cf2fe6c8c348f6c45b8fc5d26e933432dbc435fea",
+    "textLength": 0,
+    "embeddingDim": 768
+  },
+  {
+    "id": "656e52218b79d6f168bede2b2906e50ac853d428f3b1041445fc2db2ac604517",
+    "type": "document",
+    "rawPath": "docs/doc1.pdf",
+    "metadataHash": "ac5dbdfd9c76ccbf632e91b03a6a2e8021f3ddf15287cb4ed0243ee3d3aaf511",
+    "textLength": 39,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  },
+  {
+    "id": "68484630534ec812ccf40dc997ef288e70162353b78453e0fe48f2e52e5187e1",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-1.txt",
+    "metadataHash": "4eb5b5fcb387d17f8a86c1a8e55714611aaef143ebe378f7f5f67a473b77b91b",
+    "textLength": 46,
+    "embeddingDim": 768
+  },
+  {
+    "id": "df6e6fb2f41d227a8bb05a4fc189524698613c0cd09aac8fd90b4eb74c01a1d5",
+    "type": "document",
+    "rawPath": "c:\\dev\\temp-e2e-test-data\\test-doc-2.txt",
+    "metadataHash": "5961d1d47436fd9b1e92d87b0ae282e738f115cd92eab5263ed12899c9f967aa",
+    "textLength": 40,
+    "embeddingDim": 768
+  }
+]

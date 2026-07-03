@@ -1,0 +1,27 @@
+# State and logs
+state-store.json
+state-store.json.backup
+logs/
+*.log
+
+# Environment
+.env.local
+.env
+
+# Node
+node_modules/
+package-lock.json
+npm-debug.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.dockerignore

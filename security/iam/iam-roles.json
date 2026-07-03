@@ -1,0 +1,10 @@
+{
+  "roles": {
+    "cic-runtime": {
+      "policies": ["iam-policy.json"]
+    },
+    "cic-harness": {
+      "policies": ["iam-policy.json"]
+    }
+  }
+}

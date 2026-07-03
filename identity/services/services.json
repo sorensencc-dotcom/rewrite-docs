@@ -1,0 +1,18 @@
+{
+  "cic-api": {
+    "id": "svc-cic-api",
+    "roles": ["api", "runtime"]
+  },
+  "sandbox": {
+    "id": "svc-sandbox",
+    "roles": ["vm", "runtime"]
+  },
+  "onnx": {
+    "id": "svc-onnx",
+    "roles": ["inference"]
+  },
+  "harness": {
+    "id": "svc-harness",
+    "roles": ["validation"]
+  }
+}

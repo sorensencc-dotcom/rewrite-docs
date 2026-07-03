@@ -1,0 +1,5 @@
+{
+  "intervalHours": 24,
+  "maxKeyAgeHours": 48,
+  "retainOldKeys": true
+}

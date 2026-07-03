@@ -1,0 +1,56 @@
+# PHASE 26: TorqueQuery (Shared Ingestion & Search Engine)
+# Parallel track, depends on Phase 0.9 (TheFoundry)
+# Used by both CIC corpus ingestion and Rewrite Labs site capture
+
+id: PHASE-26
+title: TorqueQuery - Ingestion & Search Engine
+owner: shared-platform
+container: REGISTRY/cic/torquequery:latest
+command:
+  - npm
+  - run
+  - test:torquequery
+
+env:
+  NODE_ENV: production
+  LOG_LEVEL: info
+  QDRANT_URL: ${QDRANT_URL:-http://qdrant:6333}
+
+dependencies:
+  - PHASE-0.9
+
+success_gates:
+  - type: exit_code
+    value: 0
+  - type: metric
+    key: crawler_pages_indexed
+    op: ">="
+    value: 100
+  - type: metric
+    key: search_engine_latency_ms
+    op: "<="
+    value: 500
+  - type: metric
+    key: vector_search_recall
+    op: ">="
+    value: 0.92
+  - type: output
+    pattern: "✓.*Crawler.*pages.*indexed"
+  - type: output
+    pattern: "✓.*Search.*API.*ready"
+
+metadata:
+  deliverables:
+    - Crawler + Scraper + Mapper (URLs → documents)
+    - Parser + Proxy Layer
+    - Indexer + Hybrid Search (BM25 + vector)
+    - Actor Runtime (task execution)
+    - HTTP/GRPC API
+    - CIC adapter (corpus ingestion)
+    - Rewrite Labs adapter (site capture)
+  notes:
+    - Production-scale shared backbone
+    - Replaces RL-4.6 CrawlerEngine at scale
+    - Design RL-4.6 for easy swap to TorqueQuery
+  testCoverage: ">= 85%"
+  estimatedDuration: "45m"

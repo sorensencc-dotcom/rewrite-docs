@@ -1,0 +1,18 @@
+# Dockerfile for CIC UI Dashboard
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install dependencies
+COPY package.json .
+RUN npm install
+
+# Copy UI code
+COPY ui-dashboard.tsx .
+COPY ui-server.js .
+
+# Expose port
+EXPOSE 3002
+
+# Start server
+CMD ["node", "ui-server.js"]

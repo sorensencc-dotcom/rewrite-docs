@@ -1,0 +1,74 @@
+{
+  "timestamp": "2026-06-28T13:00:02.923Z",
+  "summary": {
+    "total": 7,
+    "ok": 7,
+    "stalled": 0,
+    "errors": 0
+  },
+  "results": [
+    {
+      "name": "rewrite-mcp",
+      "status": "ok",
+      "driftSummary": "normal",
+      "changes": [
+        "Tests directory present",
+        "Source code directory present"
+      ],
+      "lastModified": "2026-06-24T03:01:45.368Z"
+    },
+    {
+      "name": "cic-os",
+      "status": "ok",
+      "driftSummary": "normal",
+      "changes": [
+        "Directory modified in last 24 hours",
+        "Source code directory present"
+      ],
+      "lastModified": "2026-06-28T03:01:25.759Z"
+    },
+    {
+      "name": "charlie-deep-research",
+      "status": "ok",
+      "driftSummary": "normal",
+      "changes": [],
+      "lastModified": "2026-06-25T21:27:26.433Z"
+    },
+    {
+      "name": "castironforge",
+      "status": "ok",
+      "driftSummary": "normal",
+      "changes": [],
+      "lastModified": "2026-06-25T21:25:53.034Z"
+    },
+    {
+      "name": "cic-ingestion",
+      "status": "ok",
+      "driftSummary": "normal",
+      "changes": [
+        "Directory modified in last 24 hours",
+        "Tests directory present",
+        "Source code directory present"
+      ],
+      "lastModified": "2026-06-27T16:03:55.465Z"
+    },
+    {
+      "name": "castironcharlie",
+      "status": "ok",
+      "driftSummary": "repo directory not found",
+      "changes": [
+        "Path does not exist: C:\\dev\\castironcharlie"
+      ],
+      "lastModified": "n/a"
+    },
+    {
+      "name": "cic",
+      "status": "ok",
+      "driftSummary": "normal",
+      "changes": [
+        "Directory modified in last 24 hours"
+      ],
+      "lastModified": "2026-06-28T02:57:55.607Z"
+    }
+  ]
+}

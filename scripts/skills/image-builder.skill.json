@@ -1,0 +1,85 @@
+{
+  "name": "image-builder",
+  "version": "1.0.0",
+  "displayName": "Docker Image Builder",
+  "description": "Operator-grade Docker image builder with drift detection, parallel builds, and health verification",
+  "command": "/image-builder",
+  "entrypoint": "scripts/image-builder.js",
+  "language": "node",
+  "category": "deployment",
+  "arguments": [
+    {
+      "name": "env",
+      "type": "string",
+      "description": "Target environment (local, staging, prod)",
+      "default": "local",
+      "choices": ["local", "staging", "prod"]
+    },
+    {
+      "name": "parallel",
+      "type": "number",
+      "description": "Number of parallel build jobs",
+      "default": 6,
+      "min": 1,
+      "max": 16
+    },
+    {
+      "name": "skip-drift",
+      "type": "boolean",
+      "description": "Skip drift detection, rebuild all images",
+      "default": false
+    },
+    {
+      "name": "force-rebuild",
+      "type": "boolean",
+      "description": "Force rebuild all images even if fresh",
+      "default": false
+    }
+  ],
+  "triggers": [
+    {
+      "name": "post-docker-compose-change",
+      "description": "Auto-build after docker-compose.yml changes",
+      "enabled": false,
+      "command": "scripts/image-builder.sh --env local --skip-drift"
+    },
+    {
+      "name": "pre-deployment",
+      "description": "Verify all images before staging/prod",
+      "enabled": false
+    },
+    {
+      "name": "daily-drift-check",
+      "description": "Daily drift detection (watch mode)",
+      "enabled": false,
+      "cron": "0 2 * * *",
+      "command": "node scripts/docker-drift-detector.js --watch"
+    }
+  ],
+  "outputs": {
+    "report": "build-report.json",
+    "metrics": "build-metrics.jsonl",
+    "audit_log": "build-audit.log"
+  },
+  "gating": {
+    "block_on": ["build_failures"],
+    "require_approval": false,
+    "timeout_seconds": 600
+  },
+  "performance": {
+    "baseline_duration_seconds": 180,
+    "threshold_warn_seconds": 300,
+    "threshold_fail_seconds": 600
+  },
+  "permissions": {
+    "required": ["docker", "docker-compose", "node", "bash"],
+    "docker_socket": true,
+    "network_access": ["docker-registry"]
+  },
+  "integration": {
+    "ci_cd": ".github/workflows/build.yml",
+    "pre_commit": false,
+    "post_merge": false,
+    "pre_deployment": true
+  }
+}

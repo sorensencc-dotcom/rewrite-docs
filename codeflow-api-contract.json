@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "title": "CodeFlow Analyzer API Contract",
+  "description": "Versioned API contract for CodeFlow → CIC integration. Frozen schema ensures deterministic behavior.",
+  "endpoints": {
+    "GET /health": {
+      "description": "Service health check",
+      "response": {
+        "status": "ok"
+      }
+    },
+    "GET /metrics": {
+      "description": "Prometheus-compatible metrics endpoint",
+      "response": {
+        "timestamp": "ISO8601",
+        "analyzer": {
+          "total_analyses": "number",
+          "successful_analyses": "number",
+          "failed_analyses": "number",
+          "total_duration_ms": "number",
+          "total_files_analyzed": "number",
+          "avg_duration_ms": "number",
+          "success_rate": "string (percentage)",
+          "avg_files_per_analysis": "number"
+        }
+      }
+    },
+    "POST /analyze": {
+      "description": "Run static analysis on a repository",
+      "method": "POST",
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": ["repoPath"],
+              "properties": {
+                "repoPath": {
+                  "type": "string",
+                  "description": "Absolute filesystem path to repository"
+                }
+              }
+            }
+          }
+        }
+      },
+      "response": {
+        "$ref": "codeflow-schema.json#"
+      },
+      "errors": {
+        "400": "repoPath required",
+        "500": "analysis failed"
+      }
+    }
+  },
+  "guarantees": {
+    "deterministic": "Same repoPath → same output (for same commit)",
+    "idempotent": "Multiple calls with same input produce identical output",
+    "versioned": "Schema version in contract is canonical; API version matches",
+    "stateless": "No internal state; each request is independent"
+  }
+}

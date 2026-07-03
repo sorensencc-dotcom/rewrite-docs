@@ -1,0 +1,7 @@
+{
+  "paths": {
+    "graph": "identity/graph",
+    "users": "identity/users",
+    "services": "identity/services"
+  }
+}

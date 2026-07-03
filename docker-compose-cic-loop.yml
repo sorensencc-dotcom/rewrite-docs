@@ -1,0 +1,240 @@
+version: "3.8"
+
+services:
+  # CodeFlow Analyzer — headless static analysis engine
+  codeflow-analyzer:
+    build:
+      context: .
+      dockerfile: Dockerfile.codeflow
+    container_name: codeflow-analyzer
+    ports:
+      - "8080:8080"
+    environment:
+      NODE_ENV: production
+      PORT: 8080
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped
+    networks:
+      - cic-network
+
+  # CIC Update Monitor (Go) — polls GitHub for external repo changes
+  update-monitor:
+    build:
+      context: ./cic-update-monitor-go
+      dockerfile: Dockerfile
+    container_name: update-monitor
+    environment:
+      GITHUB_TOKEN: ${GITHUB_TOKEN:?}
+      ROADMAP_ENDPOINT: http://roadmap-service:3000/roadmap
+      DOCKER_PIPELINE_ENDPOINT: http://docker-ci:5000/build
+      LOG_LEVEL: info
+    volumes:
+      - ./repo-manifest.json:/app/repo-manifest.json
+      - ./state.json:/app/state.json
+    restart: unless-stopped
+    depends_on:
+      - roadmap-service
+    networks:
+      - cic-network
+
+  # Roadmap Service — receives auto-generated To-Dos/Ideas from Update Monitor
+  roadmap-service:
+    image: "cic/roadmap-service:latest" # existing CIC service
+    container_name: roadmap-service
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://cic:${DB_PASSWORD:?}@postgres:5432/cic_roadmap
+      NODE_ENV: production
+    depends_on:
+      - postgres
+    networks:
+      - cic-network
+    restart: unless-stopped
+
+  # Docker CI Pipeline — receives auto-build requests from Update Monitor
+  docker-ci:
+    image: "cic/docker-pipeline:latest" # existing CIC service
+    container_name: docker-ci
+    ports:
+      - "5000:5000"
+    environment:
+      DOCKER_HOST: unix:///var/run/docker.sock
+      REGISTRY_URL: ${REGISTRY_URL:?}
+      REGISTRY_USER: ${REGISTRY_USER:?}
+      REGISTRY_PASSWORD: ${REGISTRY_PASSWORD:?}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    networks:
+      - cic-network
+
+  # CIC Harvester — orchestrates extraction pipelines
+  harvester:
+    image: "cic/harvester:latest" # existing CIC service
+    container_name: harvester
+    ports:
+      - "4000:4000"
+    environment:
+      CODEFLOW_ANALYZER_URL: http://codeflow-analyzer:8080
+      DATABASE_URL: postgresql://cic:${DB_PASSWORD:?}@postgres:5432/cic_data
+      NODE_ENV: production
+    depends_on:
+      - codeflow-analyzer
+      - postgres
+    networks:
+      - cic-network
+    restart: unless-stopped
+
+  # CIC API — serves extraction results + observability
+  cic-api:
+    image: "cic/api:latest" # existing CIC service
+    container_name: cic-api
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: postgresql://cic:${DB_PASSWORD:?}@postgres:5432/cic_data
+      NODE_ENV: production
+    depends_on:
+      - postgres
+    networks:
+      - cic-network
+    restart: unless-stopped
+
+  # Prometheus — scrapes metrics from all services
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+    networks:
+      - cic-network
+    restart: unless-stopped
+
+  # Grafana — visualization of metrics
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3002:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin}
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+    depends_on:
+      - prometheus
+    networks:
+      - cic-network
+    restart: unless-stopped
+
+  # ============================================================================
+  # OPERATOR SURFACE (CLI, UI, Tests)
+  # ============================================================================
+
+  # CIC CLI — command-line interface for operators
+  cic-cli:
+    build:
+      context: .
+      dockerfile: Dockerfile.cli
+    container_name: cic-cli
+    environment:
+      UPDATE_MONITOR_URL: http://update-monitor:8000
+      HARVESTER_URL: http://harvester:4000
+      ROADMAP_URL: http://roadmap-service:3000
+    depends_on:
+      - update-monitor
+      - harvester
+      - roadmap-service
+    networks:
+      - cic-network
+    stdin_open: true
+    tty: true
+    entrypoint: /bin/sh
+    command: ["-c", "echo 'CIC CLI ready. Run: docker exec cic-cli ts-node cic-cli.ts <command>'"]
+
+  # CIC UI Dashboard — React dashboard for operator visualization
+  cic-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    container_name: cic-ui
+    ports:
+      - "3003:3002"
+    environment:
+      REACT_APP_ROADMAP_URL: http://roadmap-service:3000
+      REACT_APP_HARVESTER_URL: http://harvester:4000
+      NODE_ENV: production
+    depends_on:
+      - roadmap-service
+      - harvester
+    networks:
+      - cic-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3002/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Integration Test Suite — runs full end-to-end tests
+  integration-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    container_name: integration-tests
+    environment:
+      UPDATE_MONITOR_URL: http://update-monitor:8000
+      CODEFLOW_URL: http://codeflow-analyzer:8080
+      HARVESTER_URL: http://harvester:4000
+      ROADMAP_URL: http://roadmap-service:3000
+    depends_on:
+      - codeflow-analyzer
+      - update-monitor
+      - harvester
+      - roadmap-service
+      - prometheus
+      - grafana
+    networks:
+      - cic-network
+
+  # PostgreSQL — persists roadmap + extraction data
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_USER: cic
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?}
+      POSTGRES_INITDB_ARGS: "-c log_statement=all"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - cic-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cic"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  cic-network:
+    driver: bridge

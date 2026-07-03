@@ -1,0 +1,63 @@
+# policy-manifest.yaml - Enforceable rules for external repo adoption
+# Turns impact tags into must-adopt / optional with blocking semantics
+
+version: 1
+
+repos:
+  codeflow:
+    # Security updates must be adopted before next release
+    - match: "mandatory_update.security"
+      adoption: "must-adopt"
+      blocking: true
+      deadline: "before-next-release"
+      reason: "Security vulnerabilities must be patched immediately"
+
+    # Graph engine updates must be adopted (non-blocking)
+    - match: "mandatory_update.graph"
+      adoption: "must-adopt"
+      blocking: false
+      deadline: "within-2-weeks"
+      reason: "Dependency analysis accuracy is critical for impact assessment"
+
+    # Analyzer rule changes must be adopted
+    - match: "mandatory_update.analyzer"
+      adoption: "must-adopt"
+      blocking: false
+      deadline: "within-3-weeks"
+      reason: "Pattern and vulnerability detection improvements"
+
+    # Workflow improvements are optional
+    - match: "workflow_improvement.*"
+      adoption: "optional"
+      blocking: false
+      deadline: null
+      reason: "Nice-to-have enhancements"
+
+    # New feature ideas stay as ideas
+    - match: "roadmap_idea.*"
+      adoption: "optional"
+      blocking: false
+      deadline: null
+      reason: "Future consideration"
+
+# Global override: any security issue overrides everything
+global_rules:
+  - match: ".*security.*"
+    adoption: "must-adopt"
+    blocking: true
+    reason: "All security issues are blocking by default"
+
+# Release gates: what blocks a release?
+release_gates:
+  - name: "external-adoption-gate"
+    description: "All must-adopt blocking items must be active"
+    check: "SELECT COUNT(*) FROM roadmap_items WHERE policy='must-adopt' AND blocking=true AND state != 'active'"
+    fail_if: "> 0"
+    message: "Release blocked: {count} must-adopt blocking items pending"
+
+# Drift thresholds: when is drift severe?
+drift_thresholds:
+  missing_edges: 10          # If >10 edges missing, flag as severe drift
+  missing_security: 5        # If >5 security findings missing, flag as severe
+  missing_patterns: 20       # If >20 patterns missing, flag as severe
+  drift_age_hours: 24        # If drift persists >24h, escalate

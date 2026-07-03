@@ -1,0 +1,35 @@
+{
+  "executionTrace": {
+    "taskId": "",
+    "task": "",
+    "timestamp": 0,
+    "localFirst": true,
+    "fingerprint": {
+      "task": "",
+      "tokens": 0,
+      "latencyClass": "",
+      "regime": "",
+      "offlinePreferred": true
+    },
+    "regimeSelected": {
+      "name": "",
+      "agents": []
+    },
+    "backend": "",
+    "messages": [
+      {
+        "id": "",
+        "from": "",
+        "to": "",
+        "type": "",
+        "payloadHash": "",
+        "prevId": null,
+        "timestamp": 0
+      }
+    ],
+    "result": {
+      "payloadHash": "",
+      "snapshotHash": ""
+    }
+  }
+}

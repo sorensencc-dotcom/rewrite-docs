@@ -1,0 +1,21 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+RUN apk add --no-cache git curl jq bash
+
+# Copy predictive-routing-engine service
+COPY predictive-routing-engine.js ./predictive-routing-engine.js
+
+ENV NODE_ENV=production
+ENV LOG_LEVEL=info
+ENV PORT=3106
+ENV PERFORMANCE_STORE_URL=http://performance-store:3105
+
+EXPOSE 3106
+
+HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost:3106/health || exit 1
+
+# Run predictive-routing-engine service
+CMD ["node", "predictive-routing-engine.js"]

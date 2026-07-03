@@ -1,0 +1,77 @@
+{
+  "version": "v1.0.0",
+  "generated_at": "2026-06-13T00:00:00Z",
+  "vertical": "landscaping",
+  "scope": "landscaping_specific",
+  "extends": "components-universal.json",
+  "components": [
+    {
+      "id": "project_gallery",
+      "name": "Project Portfolio Gallery",
+      "description": "Showcasing completed landscaping projects",
+      "slots": {
+        "projects": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "title": { "type": "string" },
+              "before_image": { "type": "image" },
+              "after_image": { "type": "image" },
+              "services_used": { "type": "array" },
+              "location": { "type": "string" },
+              "completion_date": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "service_offerings",
+      "name": "Service Offerings Grid",
+      "description": "Grid of landscaping services (mowing, hardscaping, irrigation)",
+      "slots": {
+        "services": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "name": { "type": "string" },
+              "icon": { "type": "image" },
+              "description": { "type": "string" },
+              "price_range": { "type": "string" },
+              "url": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "seasonal_offers",
+      "name": "Seasonal Offers Banner",
+      "description": "Promote seasonal landscaping specials",
+      "slots": {
+        "current_season": { "type": "string" },
+        "offers": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "title": { "type": "string" },
+              "description": { "type": "string" },
+              "discount": { "type": "string" },
+              "valid_until": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "quote_request_form",
+      "name": "Free Quote Request Form",
+      "description": "Contact form for landscape design quotes",
+      "slots": {
+        "fields": { "type": "array" },
+        "project_type_options": { "type": "array" },
+        "property_size_range": { "type": "array" }
+      }
+    }
+  ]
+}

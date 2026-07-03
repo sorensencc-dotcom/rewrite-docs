@@ -1,0 +1,6 @@
+# Repos to skip during bootstrap
+# One full repo name per line: owner/repo
+
+# Example:
+# sorensencc-dotcom/old-repo
+# sorensencc-dotcom/experimental

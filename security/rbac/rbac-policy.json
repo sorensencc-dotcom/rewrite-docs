@@ -1,0 +1,5 @@
+{
+  "allowedVerbs": ["get", "list"],
+  "allowedResources": ["pods", "services", "deployments"],
+  "namespaceIsolation": true
+}

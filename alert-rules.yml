@@ -1,0 +1,108 @@
+# CIC Observability Alert Rules
+# Generated: 2026-07-02
+# Source: ITEM-2-OBSERVABILITY-DASHBOARD-SPEC.md
+
+groups:
+  - name: CIC_Critical_Alerts
+    interval: 30s
+    rules:
+
+      # Critical: Adapter Success Rate <95%
+      - alert: SystemHealthCritical
+        expr: (sum(rate(cic_adapter_calls_total{status="success"}[5m])) by (adapter)) / (sum(rate(cic_adapter_calls_total[5m])) by (adapter)) < 0.95
+        for: 2m
+        labels:
+          severity: critical
+          component: adapter
+        annotations:
+          summary: "Adapter {{ $labels.adapter }} success rate <95% for 2m"
+          description: "Adapter success rate is {{ $value | humanizePercentage }}. Check logs and error rates."
+          runbook: "https://runbooks.internal/cic/adapter-health"
+
+      # Critical: Orchestrator Chain Failure Rate >5%
+      - alert: OrchestratorChainFailure
+        expr: rate(cic_orchestrator_chain_success_total{status="failure"}[5m]) > 0.05
+        for: 2m
+        labels:
+          severity: critical
+          component: orchestrator
+        annotations:
+          summary: "Orchestrator chain failure rate >5% for 2m"
+          description: "Failure rate: {{ $value | humanizePercentage }}. Review chain execution logs."
+          runbook: "https://runbooks.internal/cic/orchestrator-chain"
+
+      # Critical: Latency Spike (p95 >1s)
+      - alert: LatencySpikeDetected
+        expr: histogram_quantile(0.95, rate(cic_adapter_duration_ms[5m])) > 1000
+        for: 2m
+        labels:
+          severity: critical
+          component: adapter
+        annotations:
+          summary: "Adapter p95 latency spike >1s"
+          description: "p95 latency: {{ $value | humanizeDuration }}ms. Profile adapter, check downstream services."
+          runbook: "https://runbooks.internal/cic/latency-spike"
+
+      # Critical: Token Budget Exceeded
+      - alert: CostBudgetExceeded
+        expr: (sum(increase(cic_anthropic_tokens_total[1d])) / 1000000) * 0.002 > on() group_left() (vector(MONTHLY_BUDGET_USD) / 30)
+        for: 5m
+        labels:
+          severity: critical
+          component: cost-tracking
+        annotations:
+          summary: "Token burn rate exceeds monthly budget pace"
+          description: "Daily burn: ${{ $value | humanize }}. Burn rate unsustainable. Review high-cost adapters."
+          runbook: "https://runbooks.internal/cic/cost-control"
+
+  - name: CIC_Warning_Alerts
+    interval: 30s
+    rules:
+
+      # Warning: Schema Violations Detected
+      - alert: SchemaViolationDetected
+        expr: increase(cic_adapter_schema_violations_total[5m]) > 0
+        for: 1m
+        labels:
+          severity: warning
+          component: adapter
+        annotations:
+          summary: "Adapter output schema violation detected"
+          description: "{{ $value | humanize }} schema violations in last 5m. Adapter output format may have drifted."
+          runbook: "https://runbooks.internal/cic/schema-violation"
+
+      # Warning: RL Ingestion Queue Backlog
+      - alert: QueueDepthIncreasing
+        expr: rate(rl_ingestion_queue_depth[10m]) > 0
+        for: 5m
+        labels:
+          severity: warning
+          component: rl-ingestion
+        annotations:
+          summary: "RL ingestion queue backlog building"
+          description: "Queue depth increasing at {{ $value | humanize }} items/min. May need to scale ingestion service."
+          runbook: "https://runbooks.internal/rl/ingestion-queue"
+
+      # Warning: Error Rate Elevated
+      - alert: ErrorRateElevated
+        expr: (sum(rate(cic_adapter_errors_total[5m])) by (adapter)) / (sum(rate(cic_adapter_calls_total[5m])) by (adapter)) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+          component: adapter
+        annotations:
+          summary: "Adapter {{ $labels.adapter }} error rate elevated (>5%)"
+          description: "Error rate: {{ $value | humanizePercentage }}. Review error logs for patterns."
+          runbook: "https://runbooks.internal/cic/error-analysis"
+
+      # Warning: P99 Latency Elevated
+      - alert: LatencyP99Elevated
+        expr: histogram_quantile(0.99, rate(cic_adapter_duration_ms[5m])) > 5000
+        for: 10m
+        labels:
+          severity: warning
+          component: adapter
+        annotations:
+          summary: "Adapter p99 latency elevated (>5s)"
+          description: "p99 latency: {{ $value | humanizeDuration }}ms. Performance degraded for tail requests."
+          runbook: "https://runbooks.internal/cic/latency-p99"

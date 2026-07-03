@@ -1,0 +1,8 @@
+{
+  "allowedHosts": ["cic.local"],
+  "tls": false,
+  "rateLimit": {
+    "enabled": true,
+    "rpm": 600
+  }
+}

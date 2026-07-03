@@ -1,0 +1,20 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+RUN apk add --no-cache git curl jq bash
+
+# Copy build executor service (Phase 0.8)
+COPY build-executor.js ./build-executor.js
+
+ENV NODE_ENV=production
+ENV LOG_LEVEL=info
+ENV PORT=3101
+
+EXPOSE 3101
+
+HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost:3101/health || exit 1
+
+# Run build executor service
+CMD ["node", "build-executor.js"]

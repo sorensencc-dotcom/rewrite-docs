@@ -1,0 +1,135 @@
+═══════════════════════════════════════════════════════════════════════════
+PHASE 5E V1 — TASKS 1-2 COMPLETION SUMMARY
+═══════════════════════════════════════════════════════════════════════════
+
+TASK 1: FIX DOCKER-COMPOSE PATHS ✓ COMPLETE (30 min)
+───────────────────────────────────────────────────────────────────────────
+
+Issue 1: planning-engine dockerfile reference (Line 497)
+  Before: dockerfile: ./Dockerfile
+  After:  dockerfile: Dockerfile.planning-engine
+  File:   c:\dev\cic\Dockerfile.planning-engine ✓ Verified
+  Output: cic-os-runtime-v1-full.yml ✓ Fixed
+
+Issue 2: harvester-v2 dockerfile reference (Line 531)
+  Before: dockerfile: Dockerfile
+  After:  dockerfile: Dockerfile.harvester-v2
+  File:   c:\dev\cic-ingestion\Dockerfile.harvester-v2 ✓ Verified
+  Output: cic-os-runtime-v1-full.yml ✓ Fixed
+
+───────────────────────────────────────────────────────────────────────────
+TASK 2: LOCATE SERVICE SOURCES ✓ COMPLETE (1 hour)
+───────────────────────────────────────────────────────────────────────────
+
+All 6 services located in: c:\dev\services
+
+Service Locations & Verification:
+├── vault (3111)
+│   ├── Path: c:\dev\services\vault
+│   ├── package.json: ✓ (entry: src/index.ts)
+│   └── Dockerfile: ✓ Exists
+│
+├── unified-api (3100)
+│   ├── Path: c:\dev\services\unified-api
+│   ├── package.json: ✓ (entry: dist/server.js)
+│   └── Dockerfile: ✓ Exists
+│
+├── torquequery (3110)
+│   ├── Path: c:\dev\services\torquequery
+│   ├── package.json: ✓ (entry: src/index.ts)
+│   └── Dockerfile: ✓ Exists
+│
+├── cic-governance (3113)
+│   ├── Path: c:\dev\services\cic-governance
+│   ├── package.json: ✓ (entry: src/index.ts)
+│   └── Dockerfile: ✓ Exists
+│
+├── repomix-ingestion (3112)
+│   ├── Path: c:\dev\services\repomix-ingestion
+│   ├── package.json: ✓ (entry: src/index.ts)
+│   └── Dockerfile: ✓ Exists
+│
+└── knowledge-graph (3107)
+    ├── Path: c:\dev\services\knowledge-graph
+    ├── package.json: ✓ (entry: build/src/index.js)
+    └── Dockerfile: ✓ Exists
+
+───────────────────────────────────────────────────────────────────────────
+DELIVERABLES (3 Files)
+───────────────────────────────────────────────────────────────────────────
+
+1. c:\dev\cic-os-runtime-v1-full.yml
+   - Full 20-service runtime with corrected paths
+   - Includes all Phase 5e v1 + Phase 6 deferred services
+   - Lines: 773 | Size: 28.1 KB
+   - ✓ Ready for future use
+
+2. c:\dev\cic-os-runtime-v1-core.yml
+   - Phase 5e v1 minimal: 10 core services only
+   - Omits Phase 6 services (build-system, planning-engine, harvester, knowledge-graph)
+   - Lines: 375 | Size: 13.1 KB
+   - ✓ Ready for immediate use (Task 3-5)
+
+3. c:\dev\PHASE-5E-V1-SERVICE-LOCATIONS.md
+   - Comprehensive service location map
+   - Verification details for all 6 services
+   - Docker-compose path references
+   - ✓ Complete documentation
+
+───────────────────────────────────────────────────────────────────────────
+PHASE 5E V1 CORE SERVICES (10)
+───────────────────────────────────────────────────────────────────────────
+
+Infrastructure (3):
+  ✓ postgres:15-alpine (5433)
+  ✓ redis:7-alpine (6380)
+  ✓ qdrant:latest (6333)
+
+Core Governance & Memory (2):
+  ✓ vault (3111) → ./services/vault
+  ✓ torquequery (3110) → ./services/torquequery
+
+Core Services (3):
+  ✓ cic-governance (3113) → ./services/cic-governance
+  ✓ cic-ingestion (3116) → ./cic-ingestion
+  ✓ repomix-ingestion (3112) → ./services/repomix-ingestion
+
+UI & Gateway (2):
+  ✓ planning-console (3000) → ./rewrite-mcp
+  ✓ unified-api (3100) → ./services/unified-api
+
+───────────────────────────────────────────────────────────────────────────
+DOCKER-COMPOSE COMMANDS (Ready for Task 3-5)
+───────────────────────────────────────────────────────────────────────────
+
+Build 10-service core:
+  cd c:\dev
+  docker-compose -f cic-os-runtime-v1-core.yml build --no-cache
+
+Start services:
+  docker-compose -f cic-os-runtime-v1-core.yml up -d
+
+Verify health:
+  docker-compose -f cic-os-runtime-v1-core.yml ps
+  curl http://localhost:3100/health    # unified-api
+  curl http://localhost:3111/health    # vault
+  curl http://localhost:3000           # planning-console UI
+
+───────────────────────────────────────────────────────────────────────────
+NEXT: TASK 3-5 (4.5 hours remaining)
+───────────────────────────────────────────────────────────────────────────
+
+Task 3 (2 hours): Create 6 Dockerfile Scaffolds
+  → All 6 Dockerfiles already verified ✓
+  → Ready to proceed immediately
+
+Task 4 (2.5 hours): Build + Test Core Services
+  → Build, start, health checks all 10 services
+  → Verify Console v3 at localhost:3000
+
+Task 5 (1 hour): Validation & Documentation
+  → Verify Tier 1 panels rendering live data
+  → Test 6 control endpoints
+  → Commit Phase 5e v1
+
+═══════════════════════════════════════════════════════════════════════════

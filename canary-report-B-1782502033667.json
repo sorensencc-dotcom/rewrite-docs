@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-06-26T19:27:13.666Z",
+  "workstream": "B",
+  "overallStatus": "pass",
+  "gates": [
+    {
+      "name": "B1: Burn-Rate Spike Gate",
+      "status": "pass",
+      "value": "Rollback: 0ms",
+      "threshold": "≤300ms",
+      "message": "✅ Abort triggered, rollback 0ms < 300ms"
+    },
+    {
+      "name": "B2: Latency Regression Gate",
+      "status": "pass",
+      "value": "Rollback: 0ms",
+      "threshold": "≤300ms",
+      "message": "✅ Abort triggered, rollback 0ms < 300ms"
+    },
+    {
+      "name": "B3: Error-Rate Drift Gate",
+      "status": "pass",
+      "value": "Rollback: 0ms",
+      "threshold": "≤300ms",
+      "message": "✅ Abort triggered, rollback 0ms < 300ms"
+    },
+    {
+      "name": "B4: Saturation Gate",
+      "status": "pass",
+      "value": "Rollback: 0ms",
+      "threshold": "≤300ms",
+      "message": "✅ Abort triggered, rollback 0ms < 300ms"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "warnings": 0
+  }
+}

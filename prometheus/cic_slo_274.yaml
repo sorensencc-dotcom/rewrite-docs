@@ -1,0 +1,90 @@
+groups:
+  - name: slo-001-availability
+    interval: 15s
+    rules:
+      - record: slo:availability:ratio
+        expr: 1 - (sum(rate(cic_requests_errors_total[5m])) by (slo_id) / sum(rate(cic_requests_total[5m])) by (slo_id))
+        labels:
+          slo_id: "SLO-001"
+
+      - record: slo:availability:burn_rate:fast
+        expr: (1 - slo:availability:ratio{slo_id="SLO-001"}) / (1 - 0.999)
+        labels:
+          slo_id: "SLO-001"
+
+      - record: slo:availability:burn_rate:slow
+        expr: (1 - (1 - (sum(rate(cic_requests_errors_total[1h])) by (slo_id) / sum(rate(cic_requests_total[1h])) by (slo_id)))) / (1 - 0.999)
+        labels:
+          slo_id: "SLO-001"
+
+  - name: slo-002-latency-p95
+    interval: 15s
+    rules:
+      - record: slo:latency_p95:ms
+        expr: histogram_quantile(0.95, sum(rate(cic_request_latency_seconds_bucket[5m])) by (le)) * 1000
+        labels:
+          slo_id: "SLO-002"
+
+      - record: slo:latency_p95:burn_rate:fast
+        expr: (slo:latency_p95:ms{slo_id="SLO-002"} > 500) * 1
+        labels:
+          slo_id: "SLO-002"
+
+      - record: slo:latency_p95:burn_rate:slow
+        expr: (slo:latency_p95:ms{slo_id="SLO-002"} > 500) * 0.5
+        labels:
+          slo_id: "SLO-002"
+
+  - name: slo-003-adapter-uptime
+    interval: 15s
+    rules:
+      - record: slo:adapter_uptime:ratio
+        expr: 1 - (sum(rate(cic_adapter_errors_total[5m])) by (slo_id) / sum(rate(cic_adapter_calls_total[5m])) by (slo_id))
+        labels:
+          slo_id: "SLO-003"
+
+      - record: slo:adapter_uptime:burn_rate:fast
+        expr: (1 - slo:adapter_uptime:ratio{slo_id="SLO-003"}) / (1 - 0.995)
+        labels:
+          slo_id: "SLO-003"
+
+      - record: slo:adapter_uptime:burn_rate:slow
+        expr: (1 - (1 - (sum(rate(cic_adapter_errors_total[1h])) by (slo_id) / sum(rate(cic_adapter_calls_total[1h])) by (slo_id)))) / (1 - 0.995)
+        labels:
+          slo_id: "SLO-003"
+
+  - name: slo-004-cost-accuracy
+    interval: 15s
+    rules:
+      - record: slo:cost_accuracy:ratio
+        expr: 1 - (sum(rate(cic_ledger_imbalances_total[5m])) by (slo_id) / sum(rate(cic_ledger_transactions_total[5m])) by (slo_id))
+        labels:
+          slo_id: "SLO-004"
+
+      - record: slo:cost_accuracy:burn_rate:fast
+        expr: (1 - slo:cost_accuracy:ratio{slo_id="SLO-004"}) / (1 - 0.9999)
+        labels:
+          slo_id: "SLO-004"
+
+      - record: slo:cost_accuracy:burn_rate:slow
+        expr: (1 - (1 - (sum(rate(cic_ledger_imbalances_total[1h])) by (slo_id) / sum(rate(cic_ledger_transactions_total[1h])) by (slo_id)))) / (1 - 0.9999)
+        labels:
+          slo_id: "SLO-004"
+
+  - name: slo-005-pipeline-freshness
+    interval: 15s
+    rules:
+      - record: slo:pipeline_freshness:minutes
+        expr: (time() - cic_pipeline_last_update_seconds) / 60
+        labels:
+          slo_id: "SLO-005"
+
+      - record: slo:pipeline_freshness:burn_rate:fast
+        expr: (slo:pipeline_freshness:minutes{slo_id="SLO-005"} > 5) * 1
+        labels:
+          slo_id: "SLO-005"
+
+      - record: slo:pipeline_freshness:burn_rate:slow
+        expr: (slo:pipeline_freshness:minutes{slo_id="SLO-005"} > 5) * 0.5
+        labels:
+          slo_id: "SLO-005"

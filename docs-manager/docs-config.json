@@ -1,0 +1,46 @@
+{
+  "rootDir": "c:\\dev",
+  "docsDir": "docs",
+  "mkdocsFile": "mkdocs.yml",
+  "codebasePatterns": {
+    "batches": "batch-*",
+    "apis": "src/**/*.ts",
+    "schemas": "**/*.json",
+    "tests": "**/*.test.ts"
+  },
+  "auditRules": [
+    "each batch (1-40) should have documentation",
+    "all exported functions should be documented",
+    "all TypeScript modules should have API reference",
+    "all JSON schemas should have documentation",
+    "all manifests should have documentation"
+  ],
+  "consolidationRules": [
+    "merge duplicate batch documentation",
+    "eliminate redundant API reference sections",
+    "consolidate similar operational guides",
+    "merge overlapping architecture docs",
+    "keep latest version of each document"
+  ],
+  "documentationRequirements": {
+    "batch": ["overview", "files", "components", "usage", "integration"],
+    "api": ["signature", "parameters", "returns", "example", "errors"],
+    "manifest": ["structure", "fields", "example", "usage"],
+    "schema": ["type definition", "example", "validation"]
+  },
+  "autoUpdateRules": {
+    "function_signatures": true,
+    "manifest_paths": true,
+    "version_numbers": true,
+    "api_endpoints": true
+  },
+  "ignorePaths": [
+    "node_modules",
+    ".git",
+    "dist",
+    "build",
+    ".env*",
+    "*.log"
+  ],
+  "outputDir": "docs-manager"
+}

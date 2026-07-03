@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="{{ site.description }}">
+    <title>{{ site.name }}</title>
+    <link rel="stylesheet" href="mobile.css">
+    <meta name="theme-color" content="{{ color_cluster.primary }}">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body class="mobile-view">
+    <!-- Mobile Header with Fixed Navigation -->
+    <header class="mobile-header">
+        <div class="mobile-header-top">
+            <div class="mobile-logo">
+                <img src="{{ site.logo }}" alt="{{ site.name }}">
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <nav class="mobile-nav" aria-hidden="true">
+            <ul class="mobile-nav-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-nav-cta">
+                <a href="#contact" class="cta-button primary">{{ cta.button_text }}</a>
+                <p class="nav-phone">
+                    <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>
+                </p>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Hero Section -->
+    <section class="mobile-hero" id="home">
+        <div class="mobile-hero-bg" style="background-image: url('{{ hero.image }}')"></div>
+        <div class="mobile-hero-content">
+            <h1>{{ hero.headline }}</h1>
+            <p>{{ hero.subheadline }}</p>
+            <a href="#cta" class="cta-button primary large">{{ hero.cta_text }}</a>
+        </div>
+    </section>
+
+    <!-- Mobile Services Section -->
+    <section class="mobile-services" id="services">
+        <h2>Our Services</h2>
+        <div class="mobile-services-list">
+            {{ #each services }}
+            <div class="mobile-service-item">
+                <div class="service-icon">
+                    <img src="{{ icon }}" alt="{{ name }}">
+                </div>
+                <div class="service-content">
+                    <h3>{{ name }}</h3>
+                    <p>{{ description }}</p>
+                    <a href="{{ detail_page_url }}" class="arrow-link">Learn More →</a>
+                </div>
+            </div>
+            {{ /each }}
+        </div>
+    </section>
+
+    <!-- Mobile Testimonials -->
+    <section class="mobile-testimonials">
+        <h2>Customer Reviews</h2>
+        <div class="mobile-testimonials-carousel">
+            {{ #each testimonials }}
+            <div class="mobile-testimonial">
+                <p class="testimonial-text">"{{ text }}"</p>
+                <p class="testimonial-author">— {{ author }}</p>
+                <div class="rating">
+                    {{ #each [1,2,3,4,5] }}
+                    <span class="star{{ #if . <= rating }} filled{{ /if }}">★</span>
+                    {{ /each }}
+                </div>
+            </div>
+            {{ /each }}
+        </div>
+    </section>
+
+    <!-- Mobile CTA Section -->
+    <section class="mobile-cta" id="cta">
+        <h2>{{ cta.headline }}</h2>
+        <p>{{ cta.description }}</p>
+        <a href="{{ cta.button_url }}" class="cta-button primary large full-width">{{ cta.button_text }}</a>
+    </section>
+
+    <!-- Mobile Contact Section -->
+    <section class="mobile-contact" id="contact">
+        <h2>Get In Touch</h2>
+
+        <!-- Quick Contact Options -->
+        <div class="mobile-contact-quick">
+            <a href="tel:{{ contact.phone }}" class="contact-quick-item">
+                <span class="icon">📞</span>
+                <span>Call Us</span>
+            </a>
+            <a href="mailto:{{ contact.email }}" class="contact-quick-item">
+                <span class="icon">📧</span>
+                <span>Email</span>
+            </a>
+            <a href="https://maps.google.com/?q={{ contact.latitude }},{{ contact.longitude }}" class="contact-quick-item">
+                <span class="icon">📍</span>
+                <span>Directions</span>
+            </a>
+        </div>
+
+        <!-- Contact Form -->
+        <form class="mobile-contact-form" method="POST" action="/api/contact">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" name="phone" placeholder="Phone Number">
+            </div>
+            <div class="form-group">
+                <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="cta-button primary full-width">Send Message</button>
+        </form>
+
+        <!-- Hours & Address -->
+        <div class="mobile-contact-info">
+            <h3>Business Hours</h3>
+            <p>{{ contact.hours }}</p>
+            <h3>Address</h3>
+            <p>
+                {{ contact.street }}<br>
+                {{ contact.city }}, {{ contact.state }} {{ contact.zip }}
+            </p>
+        </div>
+    </section>
+
+    <!-- Mobile Footer -->
+    <footer class="mobile-footer">
+        <div class="footer-content">
+            <h3>{{ site.name }}</h3>
+            <p>{{ site.description }}</p>
+            <div class="footer-social">
+                {{ #if social.facebook }}<a href="{{ social.facebook }}">f</a>{{ /if }}
+                {{ #if social.instagram }}<a href="{{ social.instagram }}">📷</a>{{ /if }}
+                {{ #if social.twitter }}<a href="{{ social.twitter }}">𝕏</a>{{ /if }}
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ year }} {{ site.name }}. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/privacy">Privacy</a> | <a href="/terms">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay"></div>
+
+    <script src="mobile.js"></script>
+</body>
+</html>

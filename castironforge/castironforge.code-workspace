@@ -1,0 +1,17 @@
+{
+  "folders": [
+    { "path": "." },
+    { "path": "chat-frontend" },
+    { "path": "chat-agent" },
+    { "path": "torque-query" },
+    { "path": "cic-ingestion" },
+    { "path": "shared" }
+  ],
+  "settings": {
+    "typescript.tsserver.maxTsServerMemory": 4096,
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/dist": true
+    }
+  }
+}

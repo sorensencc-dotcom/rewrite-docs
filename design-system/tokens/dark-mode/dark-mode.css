@@ -1,0 +1,87 @@
+/* Dark Mode v2.0 CSS */
+
+[data-theme='dark'] {
+  /* Surface layer tokens */
+  --cic-surface-layer-0: #0a0a0a;
+  --cic-surface-layer-1: #1a1a1a;
+  --cic-surface-layer-2: #262626;
+  --cic-surface-layer-3: #323232;
+
+  /* Text colors */
+  --cic-color-text: #f3f4f6;
+  --cic-color-text-secondary: #d1d5db;
+  --cic-color-text-tertiary: #9ca3af;
+  --cic-color-text-disabled: #6f7785;
+
+  /* Accent colors (brightened) */
+  --cic-color-accent-light: #60a5fa;
+  --cic-color-success-light: #34d399;
+  --cic-color-warning-light: #fbbf24;
+  --cic-color-error-light: #f87171;
+  --cic-color-info-light: #22d3ee;
+
+  /* Focus ring */
+  --cic-color-focus-ring: #93c5fd;
+
+  /* Borders */
+  --cic-color-border: #374151;
+  --cic-color-border-light: #4b5563;
+
+  /* Backdrop */
+  --cic-color-backdrop: rgba(0, 0, 0, 0.5);
+
+  /* Background and surface */
+  --cic-color-background: #0a0a0a;
+  --cic-color-surface: #1a1a1a;
+  --cic-color-surface-hover: #262626;
+}
+
+/* Component defaults for dark mode */
+[data-theme='dark'] .cic-sidebar {
+  background-color: var(--cic-surface-layer-1);
+}
+
+[data-theme='dark'] .cic-panel,
+[data-theme='dark'] .cic-card {
+  background-color: var(--cic-surface-layer-1);
+  border-color: var(--cic-color-border);
+}
+
+[data-theme='dark'] .cic-modal {
+  background-color: var(--cic-surface-layer-2);
+}
+
+[data-theme='dark'] .cic-dropdown,
+[data-theme='dark'] .cic-menu {
+  background-color: var(--cic-surface-layer-3);
+}
+
+[data-theme='dark'] .cic-button:focus,
+[data-theme='dark'] .cic-input:focus {
+  outline: 2px solid var(--cic-color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Text contrast */
+[data-theme='dark'] {
+  color: var(--cic-color-text);
+}
+
+[data-theme='dark'] .cic-text-secondary {
+  color: var(--cic-color-text-secondary);
+}
+
+[data-theme='dark'] .cic-text-tertiary {
+  color: var(--cic-color-text-tertiary);
+}
+
+[data-theme='dark'] .cic-text-disabled {
+  color: var(--cic-color-text-disabled);
+}
+
+/* Disabled state */
+[data-theme='dark'] [disabled],
+[data-theme='dark'] .cic-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

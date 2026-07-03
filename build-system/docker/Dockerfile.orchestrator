@@ -1,0 +1,25 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+RUN apk add --no-cache git curl jq bash
+
+# Copy orchestrator service and config
+COPY orchestrator.js ./orchestrator.js
+COPY phase0.7/ ./phase0.7/
+
+ENV NODE_ENV=production
+ENV LOG_LEVEL=info
+ENV BUILD_PHASE=0.7
+ENV PORT=3104
+ENV LINEAGE_URL=http://lineage-registry:3102
+ENV ROUTING_URL=http://routing-validator:3103
+ENV PERFORMANCE_STORE_URL=http://performance-store:3105
+
+EXPOSE 3104
+
+HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
+  CMD curl -f http://localhost:3104/health || exit 1
+
+# Run orchestrator service (uses only built-in Node modules)
+CMD ["node", "orchestrator.js"]

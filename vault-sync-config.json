@@ -1,0 +1,99 @@
+{
+  "vaults": [
+    {
+      "name": "CIC",
+      "description": "Cast Iron Charlie Reference Documentation",
+      "source": "CONFIGURE_ONEDRIVE_PATH",
+      "destination": "C:\\dev\\cic-ref",
+      "enabled": true,
+      "sourceType": "onedrive",
+      "patterns": [
+        "BUILD-SUMMARY.md",
+        "AGENTS.md",
+        "AGENTS_API.md",
+        "CIC_ENV_REFERENCE.md",
+        "CIC_RUNTIME_OBSERVABILITY_PLAN.md",
+        "CIC_TOKEN_PACK_v2_0_FULL_LIST.md",
+        "ROADMAP.md"
+      ],
+      "syncSchedule": "daily",
+      "lastSynced": "2026-07-02T10:42:39Z"
+    },
+    {
+      "name": "RewriteLabs",
+      "description": "Rewrite Labs Reference Documentation",
+      "source": "PENDING_CONFIRMATION",
+      "destination": "C:\\dev\\rl-ref",
+      "enabled": false,
+      "sourceType": "onedrive",
+      "patterns": [
+        "*.md"
+      ],
+      "syncSchedule": "daily",
+      "lastSynced": null,
+      "notes": "Awaiting confirmation of RL documentation source location"
+    }
+  ],
+  "architecture": {
+    "enabled": true,
+    "folders": [
+      {
+        "path": "C:\\dev\\architecture\\cic-patterns",
+        "description": "CIC architectural patterns and design decisions",
+        "createIfMissing": true
+      },
+      {
+        "path": "C:\\dev\\architecture\\rl-patterns",
+        "description": "Rewrite Labs architectural patterns and design decisions",
+        "createIfMissing": true
+      }
+    ]
+  },
+  "indexing": {
+    "mainIndex": "C:\\dev\\00-INDEX.md",
+    "dualSystemIndex": "C:\\dev\\00-RL-INDEX.md",
+    "setupGuide": "C:\\dev\\RL-VAULT-SETUP.md",
+    "updateOnSync": true,
+    "timestampFormat": "yyyy-MM-dd HH:mm:ss"
+  },
+  "logging": {
+    "enabled": true,
+    "logFile": "C:\\dev\\vault-sync.log",
+    "logLevel": "info",
+    "retentionDays": 30
+  },
+  "notifications": {
+    "enabled": false,
+    "onSuccess": false,
+    "onError": true,
+    "emailAddress": "sorensencc@gmail.com"
+  },
+  "syncSources": {
+    "onedrive": {
+      "enabled": true,
+      "apiVersion": "v1.0",
+      "requiresAuth": true,
+      "notes": "Requires Microsoft Graph API credentials"
+    },
+    "googledrive": {
+      "enabled": false,
+      "apiVersion": "v3",
+      "requiresAuth": true,
+      "notes": "Not yet configured"
+    },
+    "github": {
+      "enabled": false,
+      "notes": "For syncing from GitHub repositories"
+    },
+    "local": {
+      "enabled": true,
+      "notes": "For testing or manual sync from local paths"
+    }
+  },
+  "metadata": {
+    "created": "2026-07-02",
+    "lastModified": "2026-07-02",
+    "version": "1.0",
+    "description": "Dual-system vault configuration for CIC and Rewrite Labs reference documentation"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "localFirstProfile": {
+    "version": "1.0.0",
+    "enabled": true,
+    "allowRemote": false,
+    "deterministicRouting": true,
+    "deterministicMessaging": true,
+    "deterministicSnapshot": true,
+    "preferredBackends": ["llamafile", "ollama", "mock"],
+    "activeAgents": ["cic-api", "sandbox", "onnx", "harness"],
+    "sealed": true
+  }
+}

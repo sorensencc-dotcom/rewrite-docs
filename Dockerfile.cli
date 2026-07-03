@@ -1,0 +1,20 @@
+# Dockerfile for CIC CLI service
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install TypeScript and commander globally
+RUN npm install -g ts-node typescript
+
+# Copy package.json
+COPY package.json .
+RUN npm install
+
+# Copy CLI code
+COPY cic-cli.ts .
+
+# Make executable
+RUN chmod +x cic-cli.ts
+
+ENTRYPOINT ["ts-node", "cic-cli.ts"]
+CMD ["--help"]

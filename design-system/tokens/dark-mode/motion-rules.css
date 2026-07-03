@@ -1,0 +1,109 @@
+/* Dark mode motion rules */
+
+:root[data-theme='dark'] {
+  /* Motion timing (dark mode optimized) */
+  --cic-motion-fade: 120ms ease; /* Preserved from v1.0 */
+  --cic-motion-slide: 200ms ease; /* Reduced from 300ms */
+  --cic-motion-scale: 150ms ease; /* Reduced from 250ms */
+
+  /* Rationale: Dark backgrounds reduce perceived motion; shorter durations prevent lag */
+}
+
+/* Fade animations */
+@keyframes fade-in-dark {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out-dark {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Slide animations */
+@keyframes slide-up-dark {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down-dark {
+  from {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Scale animations */
+@keyframes scale-in-dark {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-out-dark {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+/* Utility classes for dark mode animations */
+.fade-in-dark {
+  animation: fade-in-dark var(--cic-motion-fade);
+}
+
+.fade-out-dark {
+  animation: fade-out-dark var(--cic-motion-fade);
+}
+
+.slide-up-dark {
+  animation: slide-up-dark var(--cic-motion-slide);
+}
+
+.slide-down-dark {
+  animation: slide-down-dark var(--cic-motion-slide);
+}
+
+.scale-in-dark {
+  animation: scale-in-dark var(--cic-motion-scale);
+}
+
+.scale-out-dark {
+  animation: scale-out-dark var(--cic-motion-scale);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme='dark'] {
+    --cic-motion-fade: 0ms ease;
+    --cic-motion-slide: 0ms ease;
+    --cic-motion-scale: 0ms ease;
+  }
+}

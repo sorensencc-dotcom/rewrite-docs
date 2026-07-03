@@ -1,0 +1,337 @@
+# Agents API Reference
+
+Agents API runs on port **3118** by default. Provides agent lifecycle management, monitoring, and execution tracking.
+
+## Server
+
+**File:** `src/server/agentsAPI.ts`  
+**Start:** `npm run agents-api:dev`  
+**Port:** `process.env.AGENTS_API_PORT` (default: 3118)  
+**Data:** In-memory agent state, initialized from mocks
+
+## Endpoints
+
+### List Agents
+```
+GET /api/agents
+```
+Returns array of agents with status and metrics.
+
+**Response:**
+```json
+{
+  "agents": [
+    {
+      "id": "agent-1",
+      "name": "PR Reviewer",
+      "status": "healthy|degraded|offline|starting",
+      "heartbeat": "2026-06-25T04:10:27.851Z",
+      "metrics": {
+        "executions24h": 142,
+        "errors24h": 2,
+        "cost24h": 3.47,
+        "latencyP95": 2850
+      },
+      "skills": ["review-code", "run-tests"]
+    }
+  ]
+}
+```
+
+### Get Agent Detail
+```
+GET /api/agents/{id}
+```
+Full agent state including config and system info.
+
+**Response:**
+```json
+{
+  "id": "agent-1",
+  "name": "PR Reviewer",
+  "status": "healthy",
+  "heartbeat": "2026-06-25T04:10:27.851Z",
+  "metrics": { ... },
+  "skills": [ ... ],
+  "config": {
+    "maxConcurrency": 4,
+    "warmPool": true,
+    "version": "2.1.3"
+  },
+  "system": {
+    "memoryMB": 512,
+    "lastRestart": "2026-06-23T04:12:12.626Z",
+    "restartReason": "scheduled-maintenance"
+  }
+}
+```
+
+### Get Agent Logs
+```
+GET /api/agents/{id}/logs?limit=100
+```
+Execution logs with level, timestamp, skill, correlationId.
+
+**Response:**
+```json
+{
+  "logs": [
+    {
+      "ts": "2026-06-25T04:10:22.851Z",
+      "level": "info|warn|error",
+      "message": "Execution completed successfully",
+      "skill": "review-code",
+      "correlationId": "corr-1"
+    }
+  ]
+}
+```
+
+### Get Agent Executions
+```
+GET /api/agents/{id}/executions?limit=100
+```
+Past skill invocations with duration, cost, status.
+
+**Response:**
+```json
+{
+  "executions": [
+    {
+      "id": "exec-1",
+      "skill": "review-code",
+      "durationMs": 12450,
+      "costUsd": 0.47,
+      "status": "success|error",
+      "startedAt": "2026-06-25T04:10:00.000Z"
+    }
+  ]
+}
+```
+
+### Invoke Skill
+```
+POST /api/agents/{id}/invoke
+Content-Type: application/json
+
+{
+  "skill": "review-code",
+  "payload": { ... }
+}
+```
+
+**Response:**
+```json
+{
+  "executionId": "exec-12345",
+  "skill": "review-code",
+  "status": "started"
+}
+```
+
+### Pause Agent
+```
+POST /api/agents/{id}/pause
+```
+Sets agent status to `offline`.
+
+**Response:**
+```json
+{
+  "status": "paused",
+  "agentId": "agent-1"
+}
+```
+
+### Restart Agent
+```
+POST /api/agents/{id}/restart
+```
+Sets agent status to `starting`, updates heartbeat.
+
+**Response:**
+```json
+{
+  "status": "restarting",
+  "agentId": "agent-1"
+}
+```
+
+### Snapshot Single Agent
+```
+POST /api/agents/{id}/snapshot
+```
+
+**Response:**
+```json
+{
+  "snapshotId": "snapshot-agent-1-1719298227851",
+  "agentId": "agent-1",
+  "timestamp": "2026-06-25T04:10:27.851Z"
+}
+```
+
+### Snapshot All Agents
+```
+POST /api/agents/snapshot
+```
+
+**Response:**
+```json
+{
+  "snapshotId": "snapshot-all-1719298227851",
+  "count": 5,
+  "timestamp": "2026-06-25T04:10:27.851Z"
+}
+```
+
+## Frontend Hooks
+
+### useAgentList
+
+Fetch and poll agent list. Auto-fallback to mocks on API error.
+
+```tsx
+const { agents, loading, error, refresh, snapshotAll } = useAgentList({
+  poll: true,      // Enable 5s polling
+  stream: true     // (TODO) WebSocket subscriptions
+});
+```
+
+**Properties:**
+- `agents`: AgentListItem[]
+- `loading`: boolean
+- `error`: Error | null
+- `refresh()`: Manually trigger GET /api/agents
+- `snapshotAll()`: POST /api/agents/snapshot, returns snapshotId
+
+**File:** `src/hooks/useAgentList.ts`
+
+### useAgent
+
+Fetch single agent detail, logs, executions. Action methods for pause/restart/invoke.
+
+```tsx
+const { agent, logs, executions, loading, error, actions } = useAgent(
+  agentId,
+  {
+    poll: true,      // 5s polling on agent detail
+    stream: true     // (TODO) WebSocket subscriptions
+  }
+);
+
+// Action methods
+await actions.invoke();      // POST /api/agents/{id}/invoke
+await actions.pause();       // POST /api/agents/{id}/pause + reload
+await actions.restart();     // POST /api/agents/{id}/restart + reload
+const snapId = await actions.snapshot();  // POST /api/agents/{id}/snapshot
+```
+
+**Properties:**
+- `agent`: AgentDetail | null
+- `logs`: LogEvent[]
+- `executions`: ExecutionRecord[]
+- `loading`: boolean
+- `error`: Error | null
+- `actions`: { invoke, pause, restart, snapshot }
+
+**File:** `src/hooks/useAgent.ts`
+
+## Configuration
+
+Set API endpoint via environment variable:
+
+```bash
+REACT_APP_AGENTS_ENDPOINT=http://localhost:3118 npm run storybook
+```
+
+Default: `http://localhost:3118`
+
+Fallback behavior: If API unreachable, hooks use mock data automatically (no UI breaking).
+
+## Types
+
+**File:** `src/types/agents.ts`
+
+```tsx
+interface AgentListItem {
+  id: string;
+  name: string;
+  status: "healthy" | "degraded" | "offline" | "starting";
+  heartbeat: string;
+  metrics: AgentMetrics;
+  skills: string[];
+}
+
+interface AgentDetail extends AgentListItem {
+  config: AgentConfig;
+  system: AgentSystem;
+}
+
+interface AgentMetrics {
+  executions24h: number;
+  errors24h: number;
+  cost24h: number;
+  latencyP95: number;
+}
+
+interface LogEvent {
+  ts: string;
+  level: "info" | "warn" | "error";
+  message: string;
+  skill?: string;
+  correlationId?: string;
+}
+
+interface ExecutionRecord {
+  id: string;
+  skill: string;
+  durationMs: number;
+  costUsd: number;
+  status: "success" | "error";
+  startedAt: string;
+}
+```
+
+## Integration Example
+
+```tsx
+import { useAgentList } from "@/hooks/useAgentList";
+import { AgentCard } from "@/components/agents/AgentCard";
+
+export const AgentsPanel = () => {
+  const { agents, loading, error, refresh } = useAgentList({ poll: true });
+
+  return (
+    <div>
+      {error && <Alert>Failed: {error.message}</Alert>}
+      {loading && <Spinner />}
+      <button onClick={refresh}>Refresh</button>
+      <div className="grid">
+        {agents.map(agent => (
+          <AgentCard key={agent.id} agent={agent} />
+        ))}
+      </div>
+    </div>
+  );
+};
+```
+
+## Error Handling
+
+All endpoints return 404 if agent not found:
+```json
+{ "error": "Agent not found" }
+```
+
+Frontend hooks gracefully degrade:
+- API unavailable → use mock data silently
+- Invalid agent ID → fallback to mocks
+- Network error → retry next poll cycle
+
+## Future
+
+- [ ] WebSocket subscriptions at `/ws/agents/status`, `/ws/agents/{id}/logs`, `/ws/agents/{id}/executions`
+- [ ] Database persistence (currently in-memory)
+- [ ] Real agent backend integration
+- [ ] Authentication/RBAC

@@ -1,0 +1,70 @@
+/* Storybook base styles */
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--cic-color-background, #ffffff);
+  color: var(--cic-color-text, #000000);
+}
+
+/* Theme previews */
+.theme-preview {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+  border: 1px solid var(--cic-color-border);
+  border-radius: 4px;
+  background: var(--cic-color-background);
+}
+
+.theme-preview-item {
+  flex: 1;
+  padding: 1rem;
+  border: 1px solid var(--cic-color-border);
+  border-radius: 4px;
+}
+
+/* Density previews */
+.density-preview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.density-preview-item {
+  border: 1px solid var(--cic-color-border);
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.density-preview-item::before {
+  content: attr(data-density);
+  display: block;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  color: var(--cic-color-text-muted);
+}
+
+/* Storybook overrides */
+.sbdocs-title {
+  font-weight: 600;
+  color: var(--cic-color-text);
+}
+
+.sbdocs {
+  font-family: inherit;
+  color: var(--cic-color-text);
+}

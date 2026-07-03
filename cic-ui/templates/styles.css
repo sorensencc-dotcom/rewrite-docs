@@ -1,0 +1,8 @@
+.cic-{{name}} {
+  background: var(--cic-color-surface);
+  border: 1px solid var(--cic-color-border);
+  padding: var(--cic-space-12);
+  border-radius: var(--cic-space-4);
+  color: var(--cic-color-text);
+  transition: background 120ms var(--cic-motion-ease);
+}

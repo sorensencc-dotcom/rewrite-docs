@@ -1,0 +1,5 @@
+{
+  "bundleVersion": "1.0.0",
+  "algorithm": "aes-256-gcm",
+  "sealed": true
+}

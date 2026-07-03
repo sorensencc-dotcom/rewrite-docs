@@ -1,0 +1,96 @@
+{
+  "version": "v1.0.0",
+  "generated_at": "2026-06-13T00:00:00Z",
+  "generator": "Rewrite Labs Template Expansion Pack",
+  "vertical": "salon/spa",
+  "vertical_id": "salon_spa",
+  "tone": "Soft, luxurious, feminine, elegant",
+  "description": "Salon/spa website featuring service menus, pricing, staff bios, and luxury booking experience",
+  "color_cluster": {
+    "primary": "#F7E7E7",
+    "secondary": "#C49BB4",
+    "neutral": "#FFFFFF",
+    "dark": "#333333"
+  },
+  "typography": {
+    "scale": [
+      { "role": "h1", "size": "48px", "weight": 400, "family": "serif" },
+      { "role": "h2", "size": "36px", "weight": 400, "family": "serif" },
+      { "role": "h3", "size": "28px", "weight": 500, "family": "sans-serif" },
+      { "role": "body", "size": "16px", "weight": 300, "family": "sans-serif" },
+      { "role": "small", "size": "14px", "weight": 300, "family": "sans-serif" }
+    ]
+  },
+  "hero_archetypes": [
+    {
+      "id": "spa_interior",
+      "name": "Spa Interior",
+      "description": "Serene spa environment with peaceful ambiance and luxury aesthetic",
+      "cta": "Book Your Appointment"
+    },
+    {
+      "id": "beauty_service",
+      "name": "Beauty Service Hero",
+      "description": "Close-up of professional beauty service being performed",
+      "cta": "Schedule Service"
+    },
+    {
+      "id": "transformation",
+      "name": "Before/After Transformation",
+      "description": "Hair, makeup, or skin transformation showcasing quality of work",
+      "cta": "Transform Your Look"
+    }
+  ],
+  "components": [
+    "header_sticky",
+    "hero_with_cta",
+    "service_menu",
+    "pricing_table",
+    "staff_gallery",
+    "staff_bios",
+    "booking_widget",
+    "testimonials",
+    "before_after_gallery",
+    "footer_with_hours_map"
+  ],
+  "service_page_archetypes": [
+    "hair_services_page",
+    "nail_services_page",
+    "massage_spa_page",
+    "skincare_page",
+    "makeup_page"
+  ],
+  "cta_patterns": [
+    {
+      "id": "booking_cta",
+      "text": "Book Your Appointment",
+      "action": "booking_widget",
+      "button_style": "primary_elegant"
+    },
+    {
+      "id": "gift_card_cta",
+      "text": "Purchase Gift Card",
+      "action": "gift_card_store",
+      "button_style": "secondary_elegant"
+    },
+    {
+      "id": "contact_cta",
+      "text": "Contact Us",
+      "action": "contact_form",
+      "button_style": "secondary"
+    }
+  ],
+  "layout_grid": "12-column with 3-column service grids",
+  "mobile_breakpoints": [
+    { "breakpoint": "1024px", "layout": "2-column grid" },
+    { "breakpoint": "768px", "layout": "1-column stacked" }
+  ],
+  "dependencies": [],
+  "seo_schema": [
+    "LocalBusiness",
+    "BeautifulnessService",
+    "Service",
+    "BreadcrumbList",
+    "FAQ"
+  ]
+}

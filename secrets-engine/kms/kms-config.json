@@ -1,0 +1,6 @@
+{
+  "provider": "local-kms",
+  "masterKeyId": "cic-master-key",
+  "algorithm": "aes-256-gcm",
+  "rotationIntervalHours": 24
+}

@@ -1,0 +1,16 @@
+{
+  "entities": {
+    "cic-api": { "type": "service", "roles": ["api", "runtime"] },
+    "sandbox": { "type": "service", "roles": ["vm", "runtime"] },
+    "onnx": { "type": "service", "roles": ["inference"] },
+    "harness": { "type": "service", "roles": ["validation"] },
+    "admin": { "type": "user", "roles": ["admin"] },
+    "operator": { "type": "user", "roles": ["operator"] }
+  },
+  "edges": [
+    { "from": "admin", "to": "cic-api", "permission": "manage" },
+    { "from": "operator", "to": "harness", "permission": "execute" },
+    { "from": "cic-api", "to": "onnx", "permission": "invoke" },
+    { "from": "cic-api", "to": "sandbox", "permission": "spawn" }
+  ]
+}

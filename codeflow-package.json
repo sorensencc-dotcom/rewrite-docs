@@ -1,0 +1,18 @@
+{
+  "name": "codeflow-analyzer-api",
+  "version": "1.0.0",
+  "description": "CodeFlow static analyzer as HTTP API for CIC integration",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "echo 'Run: curl -X POST http://localhost:8080/analyze -H \"Content-Type: application/json\" -d {\"repoPath\": \"/path/to/repo\"}'"
+  },
+  "dependencies": {
+    "express": "^4.19.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

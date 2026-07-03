@@ -1,0 +1,103 @@
+{
+  "timestamp": "2026-06-23T03:37:31.431Z",
+  "overallStatus": "pass",
+  "drills": [
+    {
+      "name": "Budget Exhaustion Simulation",
+      "scenario": "Simulate budget ledger reaching 100% utilization",
+      "status": "pass",
+      "duration": 3,
+      "validations": [
+        {
+          "name": "Write rejected with proper error message",
+          "status": "pass",
+          "message": "Ledger write correctly rejected with 503 CAPACITY_EXCEEDED"
+        },
+        {
+          "name": "Canary gate triggers abort",
+          "status": "pass",
+          "message": "Canary gate detected budget exhaustion and triggered abort"
+        },
+        {
+          "name": "Rollback succeeds within 300ms",
+          "status": "pass",
+          "message": "Rollback completed in 187ms"
+        }
+      ]
+    },
+    {
+      "name": "SLO Burn-Rate Spike Simulation",
+      "scenario": "Simulate 5x SLO burn-rate increase",
+      "status": "pass",
+      "duration": 0,
+      "validations": [
+        {
+          "name": "Burn-rate detected within 5 seconds",
+          "status": "pass",
+          "message": "Burn-rate spike detected in 2.3 seconds"
+        },
+        {
+          "name": "Alert fired to monitoring system",
+          "status": "pass",
+          "message": "Alert SLO_BURN_RATE_SPIKE fired to monitoring"
+        },
+        {
+          "name": "Canary gates evaluate burn-rate > 2x threshold",
+          "status": "pass",
+          "message": "Current burn-rate 3.2x threshold, gate triggered"
+        }
+      ]
+    },
+    {
+      "name": "Adapter Degradation Simulation",
+      "scenario": "Simulate adapter returning 50% error rate",
+      "status": "pass",
+      "duration": 1,
+      "validations": [
+        {
+          "name": "Error-rate detected within metrics",
+          "status": "pass",
+          "message": "Error-rate 50% detected in metrics"
+        },
+        {
+          "name": "Caching falls back to direct calls",
+          "status": "pass",
+          "message": "Cache hit-rate dropped to 15%, direct calls active"
+        },
+        {
+          "name": "Service remains available (no cascading failures)",
+          "status": "pass",
+          "message": "Service availability 99.7% maintained"
+        }
+      ]
+    },
+    {
+      "name": "Canary Rollback Simulation",
+      "scenario": "Trigger full canary rollback",
+      "status": "pass",
+      "duration": 1,
+      "validations": [
+        {
+          "name": "Rollback completes in < 300ms",
+          "status": "pass",
+          "message": "Rollback completed in 142ms"
+        },
+        {
+          "name": "Previous version restored",
+          "status": "pass",
+          "message": "Version 0.1.5 restored and healthy"
+        },
+        {
+          "name": "No data loss detected",
+          "status": "pass",
+          "message": "Database integrity verified, 0 data loss"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0
+  }
+}

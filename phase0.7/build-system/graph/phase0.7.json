@@ -1,0 +1,90 @@
+{
+  "version": "0.7.0",
+  "generated_at": "2026-06-11T23:03:00Z",
+  "description": "Unified CIC + Rewrite Labs + Nemotron/NIM build graph for Phase 0.7",
+  "nodes": [
+    {
+      "id": "code",
+      "type": "source",
+      "dockerfile": null,
+      "runtime": "none",
+      "depends_on": [],
+      "capabilities": ["source-root"]
+    },
+    {
+      "id": "cic.ingestion",
+      "type": "container",
+      "dockerfile": "build-system/docker/cic/Dockerfile.ingestion",
+      "runtime": "cpu",
+      "depends_on": ["code"],
+      "capabilities": ["ingest", "normalize", "validate"],
+      "policies": ["cic.docker", "cic.agent"]
+    },
+    {
+      "id": "cic.evolution",
+      "type": "container",
+      "dockerfile": "build-system/docker/cic/Dockerfile.evolution",
+      "runtime": "cpu",
+      "depends_on": ["code"],
+      "capabilities": ["evolve", "transform", "optimize"],
+      "policies": ["cic.docker", "cic.agent"]
+    },
+    {
+      "id": "labs.discovery",
+      "type": "container",
+      "dockerfile": "build-system/docker/labs/Dockerfile.discovery",
+      "runtime": "cpu",
+      "depends_on": ["code"],
+      "capabilities": ["crawl", "classify", "score"],
+      "policies": ["cic.docker", "cic.agent"]
+    },
+    {
+      "id": "labs.extractor",
+      "type": "container",
+      "dockerfile": "build-system/docker/labs/Dockerfile.extractor",
+      "runtime": "cpu",
+      "depends_on": ["labs.discovery"],
+      "capabilities": ["parse", "extract", "structure"],
+      "policies": ["cic.docker", "cic.agent"]
+    },
+    {
+      "id": "inference.nemotron",
+      "type": "container",
+      "dockerfile": "build-system/docker/inference/Dockerfile.nemotron-nano-30b",
+      "runtime": "gpu",
+      "depends_on": ["code"],
+      "capabilities": ["inference", "tokenize", "quantize"],
+      "policies": ["cic.docker", "cic.agent"]
+    },
+    {
+      "id": "labs.redesign.gpu",
+      "type": "container",
+      "dockerfile": "build-system/docker/labs/Dockerfile.redesign.gpu",
+      "runtime": "gpu",
+      "depends_on": ["labs.extractor", "inference.nemotron"],
+      "capabilities": ["redesign", "inference", "layout"],
+      "policies": ["cic.docker", "cic.agent"]
+    },
+    {
+      "id": "labs.outreach",
+      "type": "container",
+      "dockerfile": "build-system/docker/labs/Dockerfile.outreach",
+      "runtime": "cpu",
+      "depends_on": ["labs.redesign.gpu"],
+      "capabilities": ["generate", "personalize", "deliver"],
+      "policies": ["cic.docker", "cic.agent"]
+    }
+  ],
+  "sinks": [
+    {
+      "id": "cic.lineage",
+      "type": "registry",
+      "accepts": ["cic.ingestion", "cic.evolution", "labs.discovery", "labs.extractor", "labs.redesign.gpu", "labs.outreach", "inference.nemotron"]
+    },
+    {
+      "id": "cic.observability",
+      "type": "telemetry",
+      "accepts": ["*"]
+    }
+  ]
+}

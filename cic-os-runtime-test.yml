@@ -1,0 +1,397 @@
+version: '3.8'
+
+# ==============================================================================
+# CIC Unified OS Runtime v0.1.0 — Phase 5e Test (Simplified)
+# ==============================================================================
+#
+# Focused test configuration: core services only (infrastructure + core CIC)
+# Excludes: build-system services (missing Dockerfiles)
+# Includes: infrastructure, governance, autonomy stack, console, API gateway
+#
+
+networks:
+  cic-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+    driver: local
+  qdrant-storage:
+    driver: local
+  cic-logs:
+    driver: local
+  cic-snapshots:
+    driver: local
+
+services:
+
+  # ============================================================================
+  # TIER 0: Infrastructure (Wave 1)
+  # ============================================================================
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: cic-postgres-test
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-cic_lineage}
+      POSTGRES_USER: ${POSTGRES_USER:-cic}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cic_dev_pass}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./docker-init-db.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER:-cic}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - cic-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: cic-redis-test
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    networks:
+      - cic-network
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: cic-qdrant-test
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant-storage:/qdrant/storage
+    environment:
+      QDRANT__SERVICE__API_KEY: ${QDRANT_API_KEY:-dev-key-unsafe}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - cic-network
+
+  # ============================================================================
+  # TIER 1: Core Governance & Memory (Wave 2)
+  # ============================================================================
+
+  vault:
+    build:
+      context: ./services/vault
+      dockerfile: Dockerfile
+    container_name: cic-vault-test
+    restart: unless-stopped
+    ports:
+      - "3111:3111"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      PORT: "3111"
+      VAULT_SECRET_KEY: ${VAULT_SECRET_KEY:-dev-key-32-chars-minimum-xxxxx}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3111/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - cic-logs:/app/logs
+    networks:
+      - cic-network
+
+  torquequery:
+    build:
+      context: ./services/torquequery
+      dockerfile: Dockerfile
+    container_name: cic-torquequery-test
+    restart: unless-stopped
+    ports:
+      - "3110:3110"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      PORT: "3110"
+      OLLAMA_HOST: ${OLLAMA_HOST:-http://host.docker.internal:11434}
+      HF_HUB_DISABLE_SYMLINKS_WARNING: "1"
+      HF_HUB_OFFLINE: ${HF_HUB_OFFLINE:-1}
+      TRANSFORMERS_OFFLINE: ${TRANSFORMERS_OFFLINE:-1}
+    volumes:
+      - ./cic/torquequery/storage:/app/storage
+      - ./cic/torquequery/config:/app/config:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3110/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - cic-network
+
+  # ============================================================================
+  # TIER 5: CIC Core Services (Wave 6)
+  # ============================================================================
+
+  repomix-ingestion:
+    build:
+      context: ./services/repomix-ingestion
+      dockerfile: Dockerfile
+    container_name: cic-repomix-ingestion-test
+    restart: unless-stopped
+    ports:
+      - "3112:3112"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      PORT: "3112"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3112/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - cic-logs:/app/logs
+    networks:
+      - cic-network
+
+  cic-governance:
+    build:
+      context: ./services/cic-governance
+      dockerfile: Dockerfile
+    container_name: cic-governance-test
+    restart: unless-stopped
+    ports:
+      - "3113:3113"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      PORT: "3113"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3113/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - cic-logs:/app/logs
+    networks:
+      - cic-network
+
+  knowledge-graph:
+    build:
+      context: ./services/knowledge-graph
+      dockerfile: Dockerfile
+    container_name: cic-knowledge-graph-test
+    restart: unless-stopped
+    ports:
+      - "3107:3107"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      KG_PORT: "3107"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3107/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - cic-logs:/app/logs
+    networks:
+      - cic-network
+
+  planning-engine:
+    build:
+      context: ./cic
+      dockerfile: Dockerfile.planning-engine
+    container_name: cic-planning-engine-test
+    restart: unless-stopped
+    ports:
+      - "3114:3114"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      PORT: "3114"
+      VAULT_URL: http://vault:3111
+      MEMORY_STORE_URL: http://torquequery:3110
+    depends_on:
+      vault:
+        condition: service_healthy
+      torquequery:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3114/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - cic-logs:/app/logs
+    networks:
+      - cic-network
+
+  harvester-v2:
+    build:
+      context: ./cic-ingestion
+      dockerfile: Dockerfile.harvester-v2
+      args:
+        SERVICE_ENTRY: dist/src/harvester/v2/server.js
+    container_name: cic-harvester-v2-test
+    restart: unless-stopped
+    ports:
+      - "3115:3115"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      PORT: "3115"
+      VAULT_URL: http://vault:3111
+      MEMORY_STORE_URL: http://torquequery:3110
+      PLANNING_ENGINE_URL: http://planning-engine:3114
+    depends_on:
+      vault:
+        condition: service_healthy
+      torquequery:
+        condition: service_healthy
+      planning-engine:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3115/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - cic-logs:/app/logs
+    networks:
+      - cic-network
+
+  cic-ingestion:
+    build:
+      context: ./cic-ingestion
+      dockerfile: Dockerfile
+    container_name: cic-ingestion-test
+    restart: unless-stopped
+    ports:
+      - "3116:3116"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      PORT: "3116"
+      VAULT_URL: http://vault:3111
+      MEMORY_STORE_URL: http://torquequery:3110
+      QDRANT_URL: http://qdrant:6333
+      QDRANT_API_KEY: ${QDRANT_API_KEY:-dev-key-unsafe}
+    depends_on:
+      vault:
+        condition: service_healthy
+      torquequery:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3116/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    volumes:
+      - ./cic-ingestion/dist:/app/dist
+      - cic-logs:/app/logs
+      - cic-snapshots:/app/snapshots
+    networks:
+      - cic-network
+
+  planning-console:
+    build:
+      context: ./rewrite-mcp
+      dockerfile: Dockerfile.planning-console
+    container_name: cic-planning-console-test
+    restart: unless-stopped
+    ports:
+      - "3200:3000"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      REACT_APP_PLANNING_ENGINE_URL: ${REACT_APP_PLANNING_ENGINE_URL:-http://localhost:3114}
+      REACT_APP_GOVERNANCE_URL: ${REACT_APP_GOVERNANCE_URL:-http://localhost:3113}
+      REACT_APP_VAULT_URL: ${REACT_APP_VAULT_URL:-http://localhost:3111}
+    depends_on:
+      planning-engine:
+        condition: service_healthy
+      cic-governance:
+        condition: service_healthy
+      vault:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - cic-network
+
+  # ============================================================================
+  # TIER 7: API Gateway (Wave 8)
+  # ============================================================================
+
+  unified-api:
+    build:
+      context: ./services/unified-api
+      dockerfile: Dockerfile
+    container_name: cic-unified-api-test
+    restart: unless-stopped
+    ports:
+      - "3100:3100"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      UNIFIED_API_PORT: "3100"
+      TORQUEQUERY_URL: http://torquequery:3110
+      VAULT_URL: http://vault:3111
+      REPOMIX_URL: http://repomix-ingestion:3112
+      GOVERNANCE_URL: http://cic-governance:3113
+      PLANNING_ENGINE_URL: http://planning-engine:3114
+      HARVESTER_V2_URL: http://harvester-v2:3115
+      PLANNING_CONSOLE_URL: http://planning-console:3000
+    depends_on:
+      torquequery:
+        condition: service_healthy
+      vault:
+        condition: service_healthy
+      repomix-ingestion:
+        condition: service_healthy
+      cic-governance:
+        condition: service_healthy
+      planning-engine:
+        condition: service_healthy
+      harvester-v2:
+        condition: service_healthy
+      cic-ingestion:
+        condition: service_healthy
+      planning-console:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3100/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    volumes:
+      - cic-logs:/app/logs
+    networks:
+      - cic-network

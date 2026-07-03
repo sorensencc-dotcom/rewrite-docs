@@ -1,0 +1,212 @@
+{
+  "version": "1.0.0",
+  "generated": "2026-06-22T00:00:00Z",
+  "registry": "local",
+  "services": {
+    "aperture": {
+      "type": "external",
+      "port": 3117,
+      "dependencies": ["vault", "torquequery", "knowledge-graph"],
+      "health_check": "curl -f http://localhost:3117/health",
+      "priority": "critical"
+    },
+    "cic-runtime": {
+      "dockerfile": "cic-runtime/Dockerfile",
+      "context": ".",
+      "base_image": "node:20-alpine",
+      "port": 3118,
+      "build_time_sla_ms": 45000,
+      "size_limit_mb": 512,
+      "dependencies": ["postgres", "vault", "torquequery"],
+      "health_check": "curl -f http://localhost:3118/health",
+      "priority": "critical"
+    },
+    "cic-governance": {
+      "dockerfile": "services/cic-governance/Dockerfile",
+      "context": "services/cic-governance",
+      "base_image": "node:20-alpine",
+      "port": 3113,
+      "build_time_sla_ms": 45000,
+      "size_limit_mb": 512,
+      "dependencies": ["postgres", "redis"],
+      "health_check": "curl -f http://localhost:3113/health",
+      "priority": "critical"
+    },
+    "cic-ingestion": {
+      "dockerfile": "cic-ingestion/Dockerfile",
+      "context": "cic-ingestion",
+      "base_image": "node:20-alpine",
+      "port": 3116,
+      "build_time_sla_ms": 60000,
+      "size_limit_mb": 768,
+      "dependencies": ["postgres", "qdrant"],
+      "health_check": "curl -f http://localhost:3116/health",
+      "priority": "high"
+    },
+    "unified-api": {
+      "dockerfile": "services/unified-api/Dockerfile",
+      "context": "services/unified-api",
+      "base_image": "node:20-alpine",
+      "port": 3100,
+      "build_time_sla_ms": 30000,
+      "size_limit_mb": 256,
+      "dependencies": ["cic-runtime", "cic-governance"],
+      "health_check": "curl -f http://localhost:3100/health",
+      "priority": "critical"
+    },
+    "planning-console": {
+      "type": "external",
+      "port": 3000,
+      "dependencies": [],
+      "priority": "high"
+    },
+    "planning-engine": {
+      "type": "external",
+      "port": 3114,
+      "dependencies": ["redis", "postgres"],
+      "priority": "high"
+    },
+    "harvester-v2": {
+      "type": "external",
+      "port": 3115,
+      "dependencies": ["postgres"],
+      "priority": "high"
+    },
+    "repomix-ingestion": {
+      "dockerfile": "services/repomix-ingestion/Dockerfile",
+      "context": "services/repomix-ingestion",
+      "base_image": "node:20-alpine",
+      "port": 3112,
+      "build_time_sla_ms": 60000,
+      "size_limit_mb": 1024,
+      "dependencies": ["postgres", "qdrant"],
+      "health_check": "curl -f http://localhost:3112/health",
+      "priority": "medium"
+    },
+    "torquequery": {
+      "dockerfile": "services/torquequery/Dockerfile",
+      "context": "services/torquequery",
+      "base_image": "python:3.11-slim",
+      "port": 3110,
+      "build_time_sla_ms": 60000,
+      "size_limit_mb": 768,
+      "dependencies": ["qdrant", "redis"],
+      "health_check": "curl -f http://localhost:3110/health",
+      "priority": "high"
+    },
+    "vault": {
+      "dockerfile": "services/vault/Dockerfile",
+      "context": "services/vault",
+      "base_image": "node:20-alpine",
+      "port": 3111,
+      "build_time_sla_ms": 30000,
+      "size_limit_mb": 256,
+      "dependencies": ["redis"],
+      "health_check": "curl -f http://localhost:3111/health",
+      "priority": "critical"
+    },
+    "knowledge-graph": {
+      "dockerfile": "services/knowledge-graph/Dockerfile",
+      "context": "services/knowledge-graph",
+      "base_image": "node:20-alpine",
+      "port": 3107,
+      "build_time_sla_ms": 45000,
+      "size_limit_mb": 512,
+      "dependencies": ["postgres", "qdrant"],
+      "health_check": "curl -f http://localhost:3107/health",
+      "priority": "high"
+    },
+    "lineage-registry": {
+      "type": "external",
+      "port": 3102,
+      "dependencies": ["postgres"],
+      "priority": "medium"
+    },
+    "routing-validator": {
+      "type": "external",
+      "port": 3103,
+      "dependencies": [],
+      "priority": "medium"
+    },
+    "build-executor": {
+      "type": "external",
+      "port": 3101,
+      "dependencies": ["lineage-registry", "routing-validator", "redis"],
+      "priority": "high"
+    },
+    "build-orchestrator": {
+      "type": "external",
+      "port": 3104,
+      "dependencies": ["build-executor", "lineage-registry"],
+      "priority": "high"
+    },
+    "performance-store": {
+      "type": "external",
+      "port": 3108,
+      "dependencies": ["postgres"],
+      "priority": "medium"
+    },
+    "predictive-routing-engine": {
+      "type": "external",
+      "port": 3109,
+      "dependencies": ["performance-store", "redis"],
+      "priority": "medium"
+    },
+    "postgres": {
+      "type": "external",
+      "image": "postgres:16-alpine",
+      "port": 5432,
+      "priority": "critical",
+      "note": "Pre-built image, not built locally"
+    },
+    "qdrant": {
+      "type": "external",
+      "image": "qdrant/qdrant:latest",
+      "port": 6333,
+      "priority": "high",
+      "note": "Pre-built image, not built locally"
+    },
+    "redis": {
+      "type": "external",
+      "image": "redis:7-alpine",
+      "port": 6380,
+      "priority": "high",
+      "note": "Pre-built image, not built locally"
+    }
+  },
+  "build_order": [
+    "lineage-registry",
+    "routing-validator",
+    "build-executor",
+    "build-orchestrator",
+    "vault",
+    "planning-console",
+    "performance-store",
+    "knowledge-graph",
+    "repomix-ingestion",
+    "torquequery",
+    "cic-governance",
+    "harvester-v2",
+    "planning-engine",
+    "cic-ingestion",
+    "aperture",
+    "cic-runtime",
+    "unified-api",
+    "predictive-routing-engine"
+  ],
+  "cleanup": {
+    "dangling_images_prune_interval_days": 7,
+    "keep_last_n_builds": 5,
+    "auto_cleanup_enabled": true
+  },
+  "observability": {
+    "metrics_file": "build-metrics.jsonl",
+    "audit_log": "build-audit.log",
+    "prometheus_metrics": [
+      "docker_build_duration_seconds",
+      "docker_image_size_bytes",
+      "docker_layer_cache_hits",
+      "docker_build_failures_total"
+    ]
+  }
+}

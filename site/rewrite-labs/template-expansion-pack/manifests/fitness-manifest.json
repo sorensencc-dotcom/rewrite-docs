@@ -1,0 +1,95 @@
+{
+  "version": "v1.0.0",
+  "generated_at": "2026-06-13T00:00:00Z",
+  "generator": "Rewrite Labs Template Expansion Pack",
+  "vertical": "fitness",
+  "vertical_id": "fitness",
+  "tone": "Energetic, bold, high-contrast",
+  "description": "Fitness studio website with class schedules, membership tiers, and trainer spotlights",
+  "color_cluster": {
+    "primary": "#FF3B30",
+    "secondary": "#111111",
+    "neutral": "#F2F2F2",
+    "accent": "#00D084"
+  },
+  "typography": {
+    "scale": [
+      { "role": "h1", "size": "56px", "weight": 900, "family": "sans-serif" },
+      { "role": "h2", "size": "40px", "weight": 800, "family": "sans-serif" },
+      { "role": "h3", "size": "28px", "weight": 700, "family": "sans-serif" },
+      { "role": "body", "size": "16px", "weight": 500, "family": "sans-serif" },
+      { "role": "small", "size": "14px", "weight": 500, "family": "sans-serif" }
+    ]
+  },
+  "hero_archetypes": [
+    {
+      "id": "action_shot",
+      "name": "Gym Action Shot",
+      "description": "Dynamic image of athletes/members in action during workout",
+      "cta": "Join Now"
+    },
+    {
+      "id": "class_schedule",
+      "name": "Class Schedule Hero",
+      "description": "Bold hero with featured class schedule below",
+      "cta": "See Our Classes"
+    },
+    {
+      "id": "trainer_spotlight",
+      "name": "Trainer Spotlight",
+      "description": "Featured trainer image with credentials and CTA",
+      "cta": "Book a Session"
+    }
+  ],
+  "components": [
+    "header_sticky",
+    "hero_with_cta",
+    "class_timetable_widget",
+    "membership_tier_cards",
+    "trainer_bios",
+    "transformation_gallery",
+    "testimonials",
+    "schedule_booking_widget",
+    "blog_fitness_tips",
+    "footer_with_hours_map"
+  ],
+  "service_page_archetypes": [
+    "personal_training_page",
+    "group_classes_page",
+    "nutrition_coaching_page",
+    "membership_details_page"
+  ],
+  "cta_patterns": [
+    {
+      "id": "join_cta",
+      "text": "Join Now",
+      "action": "membership_signup",
+      "button_style": "primary_bold"
+    },
+    {
+      "id": "trial_cta",
+      "text": "Start Free Trial",
+      "action": "trial_signup",
+      "button_style": "secondary_bold"
+    },
+    {
+      "id": "contact_cta",
+      "text": "Contact Us",
+      "action": "contact_form",
+      "button_style": "secondary"
+    }
+  ],
+  "layout_grid": "12-column with 4-column class grids",
+  "mobile_breakpoints": [
+    { "breakpoint": "1024px", "layout": "2-column grid" },
+    { "breakpoint": "768px", "layout": "1-column stacked" }
+  ],
+  "dependencies": [],
+  "seo_schema": [
+    "LocalBusiness",
+    "HealthAndBeautyBusiness",
+    "Service",
+    "Schedule",
+    "FAQ"
+  ]
+}

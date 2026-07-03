@@ -1,0 +1,2 @@
+# Labs repos (experimental/development)
+# One full repo name per line: owner/repo

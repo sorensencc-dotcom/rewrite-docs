@@ -1,0 +1,11 @@
+{"timestamp": "2026-06-17T01:59:25Z", "operation": "/api/fs/metrics", "durationMs": 211, "metadata": {}}
+{"timestamp": "2026-06-17T01:59:55Z", "operation": "/api/fs/metrics", "durationMs": 21, "metadata": {}}
+{"timestamp": "2026-06-17T02:43:31Z", "operation": "/api/fs/metrics", "durationMs": 25, "metadata": {}}
+{"timestamp": "2026-06-17T02:43:31Z", "operation": "/api/fs/list", "durationMs": 226, "metadata": {}}
+{"timestamp": "2026-06-17T02:43:31Z", "operation": "/api/fs/search", "durationMs": 89, "metadata": {"mode": "exact", "pathPrefix": null, "matchesCount": 5}}
+{"timestamp": "2026-06-17T02:43:41Z", "operation": "/api/fs/metrics", "durationMs": 26, "metadata": {}}
+{"timestamp": "2026-06-17T02:46:23Z", "operation": "/api/fs/metrics", "durationMs": 26, "metadata": {}}
+{"timestamp": "2026-06-17T02:46:23Z", "operation": "/api/fs/list", "durationMs": 327, "metadata": {}}
+{"timestamp": "2026-06-17T02:46:23Z", "operation": "/api/fs/search", "durationMs": 169, "metadata": {"mode": "exact", "pathPrefix": null, "matchesCount": 5}}
+{"timestamp": "2026-06-17T02:46:28Z", "operation": "/api/fs/search", "durationMs": 4545, "metadata": {"mode": "semantic", "pathPrefix": null, "matchesCount": 0}}
+{"timestamp": "2026-06-17T02:46:28Z", "operation": "/api/fs/metrics", "durationMs": 30, "metadata": {}}

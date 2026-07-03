@@ -1,0 +1,31 @@
+{
+  "name": "knowledge-graph",
+  "version": "1.0.0",
+  "description": "Phase 29: Knowledge Graph - unified queryable store for CIC state",
+  "main": "build/src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.2.2",
+    "express": "^4.18.2",
+    "pg": "^8.11.2"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.5",
+    "@types/express": "^4.17.17",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "@types/pg": "^8.10.7",
+    "@types/supertest": "^2.0.16",
+    "jest": "^29.5.0",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  }
+}

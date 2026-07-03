@@ -1,0 +1,7 @@
+{
+  "paths": {
+    "rbac": "security/rbac",
+    "iam": "security/iam",
+    "secrets": "security/secrets"
+  }
+}

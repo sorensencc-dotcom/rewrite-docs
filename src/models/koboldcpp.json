@@ -1,0 +1,20 @@
+{
+  "env": "KOBOLDCPP_API_KEY",
+  "supports": {
+    "chat": true,
+    "vision": false,
+    "embeddings": false,
+    "streaming": true,
+    "toolCalls": true
+  },
+  "costPer1kTokens": {
+    "output": 0,
+    "input": 0
+  },
+  "provider": "koboldcpp",
+  "version": "1.0",
+  "contextWindow": 32768,
+  "apiBase": "http://localhost:5001/v1",
+  "name": "koboldcpp",
+  "type": "openai-compatible"
+}

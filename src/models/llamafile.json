@@ -1,0 +1,20 @@
+{
+  "env": "LLAMAFILE_API_KEY",
+  "supports": {
+    "chat": true,
+    "vision": false,
+    "embeddings": true,
+    "streaming": true,
+    "toolCalls": true
+  },
+  "costPer1kTokens": {
+    "output": 0,
+    "input": 0
+  },
+  "provider": "llamafile",
+  "version": "1.0",
+  "contextWindow": 8192,
+  "apiBase": "http://localhost:8080/v1",
+  "name": "llamafile",
+  "type": "openai-compatible"
+}

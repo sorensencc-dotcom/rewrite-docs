@@ -1,0 +1,5 @@
+# Core repos (maintained/critical)
+# One full repo name per line: owner/repo
+
+sorensencc-dotcom/castironforge
+sorensencc-dotcom/CIC

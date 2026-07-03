@@ -1,0 +1,123 @@
+{
+  "id": "deploy-review",
+  "name": "Deploy Review",
+  "description": "Automated verification of docker-compose stack before deployment. Checks service health, runs integration tests, verifies E2E flows, and gates based on risk assessment.",
+  "category": "deployment",
+  "icon": "🚀",
+  "command": "deploy-review",
+  "entrypoint": "scripts/deploy-review.sh",
+  "shell": "bash",
+  "args": [
+    {
+      "name": "env",
+      "flag": "--env",
+      "type": "choice",
+      "default": "local",
+      "description": "Target deployment environment",
+      "options": ["local", "staging", "prod"]
+    },
+    {
+      "name": "dry-run",
+      "flag": "--dry-run",
+      "type": "boolean",
+      "default": false,
+      "description": "Validate config without starting services"
+    },
+    {
+      "name": "skip-tests",
+      "flag": "--skip-tests",
+      "type": "boolean",
+      "default": false,
+      "description": "Skip integration test phase (faster, less thorough)"
+    }
+  ],
+  "triggers": [
+    {
+      "event": "post-build",
+      "description": "Automatically run after docker-compose build",
+      "enabled": false
+    },
+    {
+      "event": "pre-merge",
+      "description": "Automatically run before merging to main",
+      "enabled": false
+    },
+    {
+      "event": "pre-deployment",
+      "description": "Automatically run before staging/prod push",
+      "enabled": false
+    }
+  ],
+  "output": {
+    "format": "json",
+    "file": "deploy-review-report.json",
+    "includes": [
+      "timestamp",
+      "environment",
+      "result",
+      "duration_seconds",
+      "critical_failures",
+      "non_critical_failures",
+      "services_verified"
+    ]
+  },
+  "gates": {
+    "blocking": [
+      "critical_failures must be empty",
+      "all 12 critical services must pass health check",
+      "cic-runtime and cic-governance tests must pass"
+    ],
+    "advisory": [
+      "startup time > 60s: investigate slow service",
+      "test duration > 30s: investigate performance regression"
+    ]
+  },
+  "rollback": {
+    "enabled": true,
+    "on_failure": "docker-compose down",
+    "on_partial_failure": "docker-compose logs > failure-logs.txt && docker-compose down"
+  },
+  "permissions": [
+    "docker-compose config",
+    "docker-compose up",
+    "docker-compose logs",
+    "docker-compose exec",
+    "curl http://localhost:*"
+  ],
+  "dependencies": [
+    "docker",
+    "docker-compose",
+    "curl",
+    "jq"
+  ],
+  "examples": [
+    {
+      "description": "Local verify (full suite)",
+      "command": "/deploy-review --env local"
+    },
+    {
+      "description": "Staging dry-run (no startup)",
+      "command": "/deploy-review --env staging --dry-run"
+    },
+    {
+      "description": "Production check (skip long tests)",
+      "command": "/deploy-review --env prod --skip-tests"
+    }
+  ],
+  "metrics": {
+    "track": [
+      "startup_time_per_service",
+      "test_duration_per_service",
+      "health_check_attempts",
+      "phase_duration"
+    ],
+    "baseline": {
+      "total_startup_time": 45,
+      "test_suite_duration": 25,
+      "e2e_flow_time": 10
+    }
+  },
+  "version": "1.0.0",
+  "author": "[claude]",
+  "tags": ["deployment", "automation", "testing", "ci-cd"]
+}

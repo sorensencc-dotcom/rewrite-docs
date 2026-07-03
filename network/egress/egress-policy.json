@@ -1,0 +1,5 @@
+{
+  "allowedPorts": [443],
+  "allowedCIDRs": ["0.0.0.0/0"],
+  "blockInternal": true
+}

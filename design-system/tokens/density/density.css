@@ -1,0 +1,109 @@
+/* Density System CSS */
+
+/* Default: Cozy mode */
+:root {
+  --cic-density-factor: 1.0;
+  --cic-spacing-density: calc(12px * var(--cic-density-factor));
+
+  /* Cozy mode (default) */
+  --cic-button-padding-vertical: 12px;
+  --cic-button-padding-horizontal: 16px;
+  --cic-input-height: 40px;
+  --cic-input-padding-vertical: 10px;
+  --cic-input-padding-horizontal: 14px;
+  --cic-panel-padding: 12px;
+  --cic-row-padding-vertical: 8px;
+  --cic-table-row-height: 40px;
+  --cic-table-row-padding-vertical: 8px;
+  --cic-table-row-padding-horizontal: 12px;
+  --cic-scrollbar-thumb-width: 10px;
+}
+
+/* Compact mode */
+[data-density='compact'] {
+  --cic-density-factor: 0.8;
+  --cic-spacing-density: calc(12px * var(--cic-density-factor));
+
+  --cic-button-padding-vertical: 8px;
+  --cic-button-padding-horizontal: 12px;
+  --cic-input-height: 32px;
+  --cic-input-padding-vertical: 6px;
+  --cic-input-padding-horizontal: 10px;
+  --cic-panel-padding: 8px;
+  --cic-row-padding-vertical: 4px;
+  --cic-table-row-height: 32px;
+  --cic-table-row-padding-vertical: 4px;
+  --cic-table-row-padding-horizontal: 8px;
+  --cic-scrollbar-thumb-width: 8px;
+}
+
+/* Comfortable mode */
+[data-density='comfortable'] {
+  --cic-density-factor: 1.4;
+  --cic-spacing-density: calc(12px * var(--cic-density-factor));
+
+  --cic-button-padding-vertical: 16px;
+  --cic-button-padding-horizontal: 20px;
+  --cic-input-height: 48px;
+  --cic-input-padding-vertical: 14px;
+  --cic-input-padding-horizontal: 18px;
+  --cic-panel-padding: 16px;
+  --cic-row-padding-vertical: 12px;
+  --cic-table-row-height: 48px;
+  --cic-table-row-padding-vertical: 12px;
+  --cic-table-row-padding-horizontal: 16px;
+  --cic-scrollbar-thumb-width: 12px;
+}
+
+/* Component density adjustments */
+
+/* Buttons */
+.cic-button {
+  padding: var(--cic-button-padding-vertical) var(--cic-button-padding-horizontal);
+}
+
+/* Inputs */
+.cic-input {
+  height: var(--cic-input-height);
+  padding: var(--cic-input-padding-vertical) var(--cic-input-padding-horizontal);
+}
+
+/* Panels */
+.cic-panel,
+.cic-card {
+  padding: var(--cic-panel-padding);
+}
+
+/* Table rows */
+.cic-table-row {
+  height: var(--cic-table-row-height);
+  padding: var(--cic-table-row-padding-vertical) var(--cic-table-row-padding-horizontal);
+}
+
+/* Scrollbar (custom scrollbar styling) */
+::-webkit-scrollbar {
+  width: var(--cic-scrollbar-thumb-width);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cic-color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Ensure smooth transitions on density changes */
+* {
+  transition-property: padding, height, margin;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+
+/* Reduced motion: disable transitions */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

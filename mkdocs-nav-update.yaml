@@ -1,0 +1,125 @@
+# mkdocs.yml Navigation Update for 8-Item Deliverables
+# Add these sections to your mkdocs.yml under the 'nav:' key
+# Location: Integrate these entries into your existing navigation structure
+
+nav:
+  # ... existing entries ...
+
+  # NEW: CIC Documentation
+  - CIC:
+    - Overview: cic/index.md
+    - Research Skill:
+      - Overview: cic/research-skill/SKILL.md
+      - Test Results:
+        - Iteration 1 Grading: cic/research-skill/test-results/iteration-1-grading.md
+        - Iteration 2 Grading: cic/research-skill/test-results/iteration-2-grading.md
+        - Test Cases: cic/research-skill/test-results/test-cases.json
+    - Vault Analysis:
+      - Overview: cic/vault-analysis/index.md
+      - Gap Analysis: cic/vault-analysis/gap-analysis.md
+      - Topology Map: cic/vault-analysis/topology.mermaid
+      - Recommendations: cic/vault-analysis/recommendations.md
+
+  # NEW: Dashboard Documentation
+  - Dashboard:
+    - Overview: dashboard/index.md
+    - Specification:
+      - Architecture: dashboard/spec/specification.md
+      - UI & Wireframes: dashboard/spec/ui-wireframes.md
+      - Summary: dashboard/spec/summary.md
+    - Implementation:
+      - Implementation Guide: dashboard/implementation/implementation-guide.md
+
+  # NEW: Rewrite Labs Documentation
+  - Rewrite Labs:
+    - Overview: rewrite-labs/index.md
+    - Vault Mirror:
+      - Executive Summary: rewrite-labs/vault-mirror/executive-summary.md
+      - Setup Guide: rewrite-labs/vault-mirror/setup.md
+      - Configuration: rewrite-labs/vault-mirror/configuration.md
+      - RL-Specific Setup: rewrite-labs/vault-mirror/rl-setup.md
+
+  # NEW: Reference Layer
+  - Reference:
+    - Overview: reference/index.md
+    - Knowledge Graph:
+      - Overview: reference/knowledge-graph/index.md
+      - Implementation:
+        - Extract Backlinks: reference/knowledge-graph/implementation/extract-backlinks.ts
+        - Query Interface: reference/knowledge-graph/implementation/query-interface.ts
+      - Viewer: reference/knowledge-graph/viewer/index.html
+      - Examples: reference/knowledge-graph/examples/skill-integration.ts
+      - Validation: reference/knowledge-graph/validation/validate.ts
+    - Memory Governance:
+      - Overview: reference/memory-governance/overview.md
+      - Framework: reference/memory-governance/framework.md
+      - Checklist: reference/memory-governance/checklist.md
+      - CLAUDE.md Template: reference/memory-governance/CLAUDE-md-template.md
+      - Skill Template: reference/memory-governance/skill-template.md
+      - Session Manager: reference/memory-governance/session-manager.md
+      - Implementation: reference/memory-governance/implementation.md
+
+  # NEW: Build & Meta
+  - Build Documentation:
+    - Overview: meta/index.md
+    - 8-Items Complete: meta/8-items-complete.md
+    - Build Progress: meta/build-progress.md
+    - Final Status: meta/final-status.md
+    - Reorganization Plan: meta/reorganization.md
+
+  # NEW: Toolforge Skills (linked from docs)
+  - Toolforge Skills:
+    - Catalog: toolforge/skills/SKILLS-CATALOG.md
+    - Validation: toolforge/skills/VALIDATION-CHECKLIST.md
+    - Integration: toolforge/skills/INTEGRATION-GUIDE.md
+    - Individual Skills:
+      - Run CIC Phase: "https://github.com/[repo]/tree/main/toolforge/skills/run-cic-phase"
+      - Debug CIC Issue: "https://github.com/[repo]/tree/main/toolforge/skills/debug-cic-issue"
+      - Monitor Phase Health: "https://github.com/[repo]/tree/main/toolforge/skills/monitor-phase-health"
+      - Configure CIC Environment: "https://github.com/[repo]/tree/main/toolforge/skills/configure-cic-environment"
+      - Investigate Data Flow: "https://github.com/[repo]/tree/main/toolforge/skills/investigate-data-flow"
+      - Onboard New Extractor: "https://github.com/[repo]/tree/main/toolforge/skills/onboard-new-extractor"
+
+---
+
+## Instructions for Application
+
+1. **Locate your mkdocs.yml** in repo root
+2. **Find the `nav:` section** (usually starts around line 20-40)
+3. **Insert these entries** at appropriate level (typically top-level or under an existing section)
+4. **Adjust indentation** to match your existing structure (consistent 2-space indentation)
+5. **Update GitHub links** if you use external skill references (replace `[repo]` with actual repo name)
+6. **Run validation**: `mkdocs build --strict`
+
+## Key Notes
+
+- **Toolforge skills**: These are in `C:\dev\toolforge\skills\` which is outside the docs/ tree. Link to GitHub or create cross-refs.
+- **JSON/MERMAID files**: Include these in nav if mkdocs supports direct rendering (check your theme)
+- **Index files**: Create placeholder `index.md` files in category folders if they don't exist
+- **Hierarchy**: Adjust nesting depth based on your information architecture
+
+## Example Hierarchy
+
+```yaml
+nav:
+  - Home: index.md
+  - CIC:                          # Top level
+    - Research Skill:             # 2nd level
+      - SKILL.md                  # 3rd level (files)
+      - Test Results:             # 3rd level (folder)
+        - iteration-1.md          # 4th level (files)
+```
+
+---
+
+## Validation Checklist
+
+After applying this nav update:
+
+- [ ] mkdocs.yml has valid YAML syntax (use YAML validator)
+- [ ] All file paths exist and are relative to docs/ root
+- [ ] No circular references or broken links
+- [ ] Indentation is consistent (2 or 4 spaces, no tabs)
+- [ ] Run `mkdocs build --strict` - no errors
+- [ ] Run `mkdocs serve` - all links clickable in browser
+

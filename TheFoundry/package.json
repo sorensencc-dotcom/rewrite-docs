@@ -1,0 +1,19 @@
+{
+  "name": "thefoundry",
+  "version": "3.0.0",
+  "description": "Deterministic docs + roadmap compiler for CIC",
+  "main": "build.sh",
+  "scripts": {
+    "build": "bash build.sh",
+    "build:docs": "bash build-docs.sh",
+    "validate": "bash validate-docs.sh",
+    "manifest": "node generate-manifest.js"
+  },
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "js-yaml": "^4.1.0"
+  },
+  "engines": {
+    "node": ">= 18.0.0"
+  }
+}

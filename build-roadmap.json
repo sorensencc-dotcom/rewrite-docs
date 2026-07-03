@@ -1,0 +1,284 @@
+{
+    "roadmap":  [
+                    {
+                        "phase":  "Phase 28a",
+                        "status":  "complete",
+                        "priority":  1,
+                        "dependencies":  [
+
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 28b",
+                        "status":  "queued",
+                        "priority":  2,
+                        "dependencies":  [
+                                             "Phase 28a"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 24.5",
+                        "status":  "queued",
+                        "priority":  3,
+                        "dependencies":  [
+                                             "Phase 28b"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 23.2",
+                        "status":  "queued",
+                        "priority":  4,
+                        "dependencies":  [
+                                             "Phase 24.5"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 0.9 M2 (CI Integration)",
+                        "status":  "complete",
+                        "priority":  5,
+                        "dependencies":  [
+                                             "Phase 24.5"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 0.9 M3 (Deployment)",
+                        "status":  "in-progress",
+                        "priority":  5,
+                        "dependencies":  [
+                                             "Phase 0.9 M2 (CI Integration)"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 23.2 (Memory Query API)",
+                        "status":  "in-progress",
+                        "priority":  6,
+                        "dependencies":  [
+                                             "Phase 24.5"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 0.9.1",
+                        "status":  "queued",
+                        "priority":  7,
+                        "dependencies":  [
+                                             "Phase 23.2"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 31",
+                        "status":  "queued",
+                        "priority":  6,
+                        "dependencies":  [
+                                             "Phase 0.9.1"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 32",
+                        "status":  "queued",
+                        "priority":  7,
+                        "dependencies":  [
+                                             "Phase 31"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 33",
+                        "status":  "queued",
+                        "priority":  8,
+                        "dependencies":  [
+                                             "Phase 32"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 34",
+                        "status":  "queued",
+                        "priority":  9,
+                        "dependencies":  [
+                                             "Phase 33"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 35",
+                        "status":  "queued",
+                        "priority":  10,
+                        "dependencies":  [
+                                             "Phase 34"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 36",
+                        "status":  "queued",
+                        "priority":  11,
+                        "dependencies":  [
+                                             "Phase 35"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 37",
+                        "status":  "queued",
+                        "priority":  12,
+                        "dependencies":  [
+                                             "Phase 36"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 38",
+                        "status":  "queued",
+                        "priority":  13,
+                        "dependencies":  [
+                                             "Phase 37"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 39",
+                        "status":  "queued",
+                        "priority":  14,
+                        "dependencies":  [
+                                             "Phase 38"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 40",
+                        "status":  "queued",
+                        "priority":  15,
+                        "dependencies":  [
+                                             "Phase 39"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 41",
+                        "status":  "queued",
+                        "priority":  16,
+                        "dependencies":  [
+                                             "Phase 40"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 42",
+                        "status":  "queued",
+                        "priority":  17,
+                        "dependencies":  [
+                                             "Phase 41"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 43",
+                        "status":  "queued",
+                        "priority":  18,
+                        "dependencies":  [
+                                             "Phase 42"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 44",
+                        "status":  "queued",
+                        "priority":  19,
+                        "dependencies":  [
+                                             "Phase 43"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 45",
+                        "status":  "queued",
+                        "priority":  20,
+                        "dependencies":  [
+                                             "Phase 44"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 46",
+                        "status":  "queued",
+                        "priority":  21,
+                        "dependencies":  [
+                                             "Phase 45"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 47",
+                        "status":  "queued",
+                        "priority":  22,
+                        "dependencies":  [
+                                             "Phase 46"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 48",
+                        "status":  "queued",
+                        "priority":  23,
+                        "dependencies":  [
+                                             "Phase 47"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 49",
+                        "status":  "queued",
+                        "priority":  24,
+                        "dependencies":  [
+                                             "Phase 48"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 50",
+                        "status":  "queued",
+                        "priority":  25,
+                        "dependencies":  [
+                                             "Phase 49"
+                                         ],
+                        "tests":  true,
+                        "commit":  true
+                    }
+                ]
+}

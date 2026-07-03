@@ -1,0 +1,269 @@
+{
+  "version": "1.0.0",
+  "generated": "2026-07-02T19:40:00Z",
+  "source": "BUILD-SUMMARY.md + docker-compose.yml",
+  "architecture": {
+    "layers": [
+      {
+        "id": "1",
+        "name": "Source",
+        "description": "GitHub repo monitoring & polling",
+        "components": [
+          {
+            "name": "CodeFlow Repo Monitor",
+            "type": "polling_service",
+            "interval": "5m",
+            "config_file": "repo-manifest.json",
+            "outputs": ["commit_diffs", "impact_classification"]
+          }
+        ],
+        "dependencies": []
+      },
+      {
+        "id": "2",
+        "name": "Update Monitor",
+        "description": "Impact classification & roadmap generation",
+        "components": [
+          {
+            "name": "Classifier Service",
+            "type": "microservice",
+            "language": "go",
+            "entry_points": ["config.ts", "classifier.ts", "roadmap.ts"]
+          },
+          {
+            "name": "Docker Trigger",
+            "type": "orchestrator",
+            "triggers_on": "mandatory_update.*"
+          }
+        ],
+        "dependencies": ["Layer 1"]
+      },
+      {
+        "id": "3",
+        "name": "CodeFlow Analyzer",
+        "description": "Static analysis engine (containerized)",
+        "components": [
+          {
+            "name": "File Scanner",
+            "type": "analyzer",
+            "formats": [".js", ".ts", ".tsx", ".jsx", ".mjs", ".cjs"]
+          },
+          {
+            "name": "Dependency Graph Builder",
+            "type": "analyzer",
+            "outputs": ["edges", "blast_radius"]
+          },
+          {
+            "name": "Security Scanner",
+            "type": "analyzer",
+            "detects": ["secrets", "eval", "injection", "hardcoded_creds"]
+          },
+          {
+            "name": "Pattern Detector",
+            "type": "analyzer",
+            "patterns": ["Singleton", "Factory", "React Hooks", "async/await"]
+          }
+        ],
+        "docker_image": "codeflow-analyzer:latest",
+        "api_port": 5000,
+        "api_endpoint": "/analyze",
+        "dependencies": ["Layer 2"]
+      },
+      {
+        "id": "4",
+        "name": "CIC Extraction Pipeline",
+        "description": "Maps CodeFlow to CIC models",
+        "components": [
+          {
+            "name": "CodeFlow Client",
+            "type": "http_client",
+            "target": "Layer 3",
+            "port": 5000
+          },
+          {
+            "name": "CodeFlow Extractor",
+            "type": "mapper",
+            "input_format": "JSON (CodeFlow API)",
+            "output_format": "CIC Models"
+          },
+          {
+            "name": "Extractor Orchestrator",
+            "type": "orchestrator",
+            "coordinates": ["extraction_state", "model_mapping"]
+          },
+          {
+            "name": "CIC Models",
+            "type": "data_models",
+            "entities": ["nodes", "edges", "security_findings", "patterns"]
+          },
+          {
+            "name": "CIC Observability",
+            "type": "telemetry",
+            "metrics": ["latency", "throughput", "errors"],
+            "integrates_with": "Prometheus"
+          }
+        ],
+        "data_flow": "CodeFlow API → Extractor → CIC Store (PostgreSQL)",
+        "store": "PostgreSQL",
+        "dependencies": ["Layer 3"]
+      },
+      {
+        "id": "5",
+        "name": "Roadmap Automation",
+        "description": "Auto-generates To-Dos and Ideas from external changes",
+        "components": [
+          {
+            "name": "Roadmap Writer",
+            "type": "generator",
+            "rules": {
+              "mandatory_update": "High-priority To-Do",
+              "workflow_improvement": "Medium-priority To-Do",
+              "roadmap_idea": "New Idea item"
+            }
+          },
+          {
+            "name": "Link Builder",
+            "type": "metadata",
+            "links": ["repo_id", "commit_sha", "impact_tags", "timestamp"]
+          }
+        ],
+        "dependencies": ["Layer 2"]
+      },
+      {
+        "id": "6",
+        "name": "Docker Build Pipeline",
+        "description": "Auto-builds container images for mandatory updates",
+        "components": [
+          {
+            "name": "GitHub Actions Trigger",
+            "type": "ci_orchestrator",
+            "trigger_condition": "mandatory_update.* + autoDockerBuild=true"
+          },
+          {
+            "name": "Image Builder",
+            "type": "container_builder",
+            "tagging_scheme": "rewrite/<repo>-<sha>"
+          },
+          {
+            "name": "Registry Push",
+            "type": "artifact_store",
+            "registry": "docker_registry"
+          },
+          {
+            "name": "Roadmap Linker",
+            "type": "metadata",
+            "links_to": "Roadmap To-Do items"
+          }
+        ],
+        "dependencies": ["Layer 2"]
+      },
+      {
+        "id": "7",
+        "name": "Observability & Monitoring",
+        "description": "Metrics, logging, and alerting",
+        "components": [
+          {
+            "name": "Prometheus Server",
+            "type": "time_series_db",
+            "port": 9090,
+            "scrape_interval": "5s",
+            "retention": "7d"
+          },
+          {
+            "name": "Alert Manager",
+            "type": "alerter",
+            "rules_file": "alert-rules.yml",
+            "slo_rules_file": "slo-rules.yml"
+          },
+          {
+            "name": "Grafana",
+            "type": "dashboard",
+            "dashboards": [
+              "System Health (30s refresh)",
+              "Pipeline Deep Dive (60s refresh)",
+              "Cost & Usage (300s refresh)"
+            ],
+            "port": 3000
+          },
+          {
+            "name": "Structured Logging",
+            "type": "logger",
+            "format": "JSON",
+            "sink": "stdout / Loki"
+          },
+          {
+            "name": "Metrics Exporter",
+            "type": "exporter",
+            "metrics_port": 3100,
+            "endpoint": "/metrics",
+            "format": "Prometheus text"
+          }
+        ],
+        "dependencies": ["Layer 4"]
+      }
+    ],
+    "data_flow": {
+      "primary": "GitHub → Classifier → CodeFlow → CIC Models → PostgreSQL → Prometheus → Grafana",
+      "feedback": "Observability alerts → On-call → Roadmap updates → Phase progression"
+    },
+    "integration_points": [
+      {
+        "from": "Layer 3 (CodeFlow)",
+        "to": "Layer 4 (CIC Extractor)",
+        "protocol": "HTTP REST",
+        "port": 5000,
+        "format": "JSON"
+      },
+      {
+        "from": "Layer 4 (CIC Pipeline)",
+        "to": "PostgreSQL Store",
+        "protocol": "TCP/SQL",
+        "port": 5432
+      },
+      {
+        "from": "Layer 4 (CIC Pipeline)",
+        "to": "Qdrant Vector Store",
+        "protocol": "HTTP REST",
+        "port": 6333
+      },
+      {
+        "from": "Layer 4 (Observability)",
+        "to": "Prometheus",
+        "protocol": "HTTP REST",
+        "port": 9090,
+        "format": "Prometheus metrics"
+      },
+      {
+        "from": "Prometheus",
+        "to": "Grafana",
+        "protocol": "HTTP REST",
+        "port": 3000
+      }
+    ],
+    "runtime_topology": {
+      "docker_compose_services": [
+        "postgres_db",
+        "qdrant_vector_store",
+        "prometheus",
+        "alertmanager",
+        "grafana",
+        "codeflow_analyzer",
+        "cic_extractor",
+        "metrics_exporter"
+      ],
+      "external_integrations": [
+        "github.com (polling + webhooks)",
+        "docker_registry (image push)",
+        "slack (alerts)"
+      ]
+    }
+  },
+  "metrics": {
+    "total_layers": 7,
+    "total_components": 32,
+    "microservices": 8,
+    "data_stores": 3,
+    "alert_rules": 16,
+    "dashboards": 3
+  }
+}

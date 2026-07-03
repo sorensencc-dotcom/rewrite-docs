@@ -1,0 +1,44 @@
+# RL-4.6: CrawlerEngine v1
+# Week 1, parallel with RL-4.0
+
+id: RL-4.6
+title: CrawlerEngine v1 (Playwright Headless Crawler)
+owner: rewrite-labs
+container: REGISTRY/rewrite-labs/rl-4.6:latest
+command:
+  - npm
+  - run
+  - test:crawler
+
+env:
+  NODE_ENV: production
+  LOG_LEVEL: info
+
+dependencies: []
+
+success_gates:
+  - type: exit_code
+    value: 0
+  - type: metric
+    key: robots_txt_blocked_count
+    op: ">="
+    value: 8
+  - type: metric
+    key: dedup_accuracy
+    op: ">="
+    value: 0.99
+  - type: output
+    pattern: "✓.*robots.txt.*blocked"
+  - type: output
+    pattern: "✓.*timeout.*retry"
+
+metadata:
+  deliverables:
+    - Playwright headless Chromium integration
+    - robots.txt fetch + Disallow parsing
+    - Politeness: 1 req / 2s / domain
+    - URL dedup via bloom filter
+    - CrawlResult schema
+    - Error handling (timeout 30s, retry 2x)
+  testCoverage: ">= 80%"
+  estimatedDuration: "15m"

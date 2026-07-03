@@ -1,0 +1,46 @@
+# RL-4.4: SaaSPricingGate + EntitlementSet
+# Week 8-9, depends on RL-4.2 (parallel with RL-4.3)
+
+id: RL-4.4
+title: SaaSPricingGate + EntitlementSet
+owner: rewrite-labs
+container: REGISTRY/rewrite-labs/rl-4.4:latest
+command:
+  - npm
+  - run
+  - test:pricing-saas
+
+env:
+  NODE_ENV: production
+  LOG_LEVEL: info
+
+dependencies:
+  - RL-4.2
+
+success_gates:
+  - type: exit_code
+    value: 0
+  - type: metric
+    key: pricing_tiers_defined
+    op: ">="
+    value: 3
+  - type: metric
+    key: entitlement_validation_success_rate
+    op: ">="
+    value: 1.0
+  - type: output
+    pattern: "✓.*SaaS.*pricing.*tiers"
+  - type: output
+    pattern: "✓.*EntitlementSet.*validated"
+
+metadata:
+  deliverables:
+    - SaaSPricingGate (distinct from agency PricingEngine)
+    - EntitlementSet schema (feature access control)
+    - Subscription tier models
+    - Usage metering hooks
+  testCoverage: ">= 85%"
+  estimatedDuration: "20m"
+  notes:
+    - Do not refactor existing PricingEngine (agency quote model)
+    - Build SaaSPricingGate as separate system

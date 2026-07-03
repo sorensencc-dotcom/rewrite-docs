@@ -1,0 +1,37 @@
+{
+  "drift": {
+    "ollama": 0,
+    "localai": 0,
+    "gpt4all": 0,
+    "llamafile": 0,
+    "koboldcpp": 0,
+    "anythingllm": 0,
+    "mock": 0
+  },
+  "slaSettings": {
+    "maxLatencyMs": 1500,
+    "maxTokens": 3000,
+    "maxBacklog": 200,
+    "maxOscillations": 2
+  },
+  "slaMetrics": {
+    "avgLatencyMs": 0,
+    "totalTokens": 0,
+    "backlogCount": 0,
+    "routingChanges": 0,
+    "lastEvaluated": 1783037621702
+  },
+  "activePlaybooks": {
+    "driftSpike": false,
+    "routingStability": false,
+    "backendRecovery": false,
+    "ingestionRecovery": false,
+    "governanceLockdown": false,
+    "dashboardRecovery": false
+  },
+  "violations": [],
+  "routingFrozen": false,
+  "promotionsFrozen": false,
+  "rollbacksFrozen": false,
+  "governanceLockdown": false
+}

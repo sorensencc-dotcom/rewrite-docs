@@ -1,0 +1,45 @@
+# RL-4.0: Extraction Engine v1
+# Week 1-3, depends on RL-4.6
+
+id: RL-4.0
+title: Extraction Engine v1 (SiteExtractor + StyleMatchEngine)
+owner: rewrite-labs
+container: REGISTRY/rewrite-labs/rl-4.0:latest
+command:
+  - npm
+  - run
+  - test:extraction
+
+env:
+  NODE_ENV: production
+  LOG_LEVEL: info
+
+dependencies:
+  - RL-4.6
+
+success_gates:
+  - type: exit_code
+    value: 0
+  - type: metric
+    key: dom_parse_success_rate
+    op: ">="
+    value: 0.95
+  - type: metric
+    key: style_match_confidence_avg
+    op: ">="
+    value: 0.75
+  - type: output
+    pattern: "✓.*SiteExtractor.*DOM.*captured"
+  - type: output
+    pattern: "✓.*StyleMatch.*confidence.*threshold"
+
+metadata:
+  deliverables:
+    - SiteExtractor (Playwright DOM capture)
+    - CSS computed styles → DesignTokens
+    - SPA detection flag
+    - Screenshot per route (R2/S3 blob keys)
+    - IRPacket v1.1 schema update
+    - StyleMatchEngine (computed styles → confidence)
+  testCoverage: ">= 80%"
+  estimatedDuration: "20m"

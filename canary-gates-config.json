@@ -1,0 +1,195 @@
+{
+  "workstreams": {
+    "A": {
+      "name": "Budget Ledger DB Wiring",
+      "gates": [
+        {
+          "name": "Test Pass Rate",
+          "threshold": 98,
+          "unit": "%",
+          "critical": true,
+          "description": "Tests must pass at ≥98%"
+        },
+        {
+          "name": "Schema Validation",
+          "threshold": true,
+          "critical": true,
+          "description": "budget_ledger_v3 schema must exist and be valid"
+        },
+        {
+          "name": "Load Test P95 (Ledger)",
+          "threshold": 15,
+          "unit": "ms",
+          "critical": true,
+          "description": "Ledger write latency p95 must be < 15ms"
+        },
+        {
+          "name": "Governance Hook Latency",
+          "threshold": 50,
+          "unit": "ms",
+          "critical": true,
+          "description": "Governance hooks must fire within 50ms"
+        },
+        {
+          "name": "Write Success Rate",
+          "threshold": 99.5,
+          "unit": "%",
+          "critical": true,
+          "description": "Ledger writes must succeed at ≥99.5%"
+        },
+        {
+          "name": "Open Blockers",
+          "threshold": 0,
+          "critical": true,
+          "description": "No open blocker issues allowed"
+        }
+      ]
+    },
+    "B": {
+      "name": "SLO Controller + Prometheus Integration",
+      "gates": [
+        {
+          "name": "Test Pass Rate",
+          "threshold": 98,
+          "unit": "%",
+          "critical": true,
+          "description": "Tests must pass at ≥98%"
+        },
+        {
+          "name": "Prometheus Scrape Success",
+          "threshold": 100,
+          "unit": "%",
+          "critical": true,
+          "description": "Prometheus scrapes must succeed at 100%"
+        },
+        {
+          "name": "Burn-Rate Accuracy",
+          "threshold": 1,
+          "unit": "%",
+          "critical": true,
+          "description": "Burn-rate accuracy ±1%"
+        },
+        {
+          "name": "Canary Abort Latency",
+          "threshold": 200,
+          "unit": "ms",
+          "critical": true,
+          "description": "SLO violation must trigger canary abort within 200ms"
+        },
+        {
+          "name": "Open Blockers",
+          "threshold": 0,
+          "critical": true,
+          "description": "No open blocker issues allowed"
+        }
+      ]
+    },
+    "C": {
+      "name": "Adapter Gateway Caching",
+      "gates": [
+        {
+          "name": "Test Pass Rate",
+          "threshold": 98,
+          "unit": "%",
+          "critical": true,
+          "description": "Tests must pass at ≥98%"
+        },
+        {
+          "name": "Cache Hit Rate",
+          "threshold": 85,
+          "unit": "%",
+          "critical": true,
+          "description": "Cache hit-rate must be ≥85%"
+        },
+        {
+          "name": "Load Test P95 (Cache)",
+          "threshold": 40,
+          "unit": "ms",
+          "critical": true,
+          "description": "Cache latency p99 must be < 40ms"
+        },
+        {
+          "name": "Cache Stampede Prevention",
+          "threshold": true,
+          "critical": true,
+          "description": "No cache stampede incidents"
+        },
+        {
+          "name": "Stale Data Rate",
+          "threshold": 0,
+          "unit": "%",
+          "critical": true,
+          "description": "No stale data beyond TTL allowed"
+        },
+        {
+          "name": "Open Blockers",
+          "threshold": 0,
+          "critical": true,
+          "description": "No open blocker issues allowed"
+        }
+      ]
+    }
+  },
+  "globalGates": {
+    "testPassRate": {
+      "threshold": 98,
+      "unit": "%",
+      "critical": true
+    },
+    "schemaValidation": {
+      "threshold": true,
+      "critical": true
+    },
+    "blockerCount": {
+      "threshold": 0,
+      "critical": true
+    }
+  },
+  "firedrillScenarios": [
+    {
+      "name": "Budget Exhaustion",
+      "description": "Simulate budget ledger reaching 100% utilization",
+      "validation": [
+        "Writes rejected with proper error message",
+        "Canary gate triggers abort",
+        "Rollback succeeds within 300ms"
+      ]
+    },
+    {
+      "name": "SLO Burn Rate Spike",
+      "description": "Simulate 5x SLO burn-rate increase",
+      "validation": [
+        "Burn-rate detected within 5 seconds",
+        "Alert fired to monitoring",
+        "Canary gates evaluate burn-rate > 2x threshold"
+      ]
+    },
+    {
+      "name": "Adapter Degradation",
+      "description": "Simulate adapter returning 50% error rate",
+      "validation": [
+        "Error-rate detected",
+        "Caching falls back to direct calls",
+        "Service remains available"
+      ]
+    },
+    {
+      "name": "Rollback Simulation",
+      "description": "Trigger full canary rollback",
+      "validation": [
+        "Rollback completes in < 300ms",
+        "Previous version restored",
+        "No data loss"
+      ]
+    }
+  ],
+  "promotionCriteria": {
+    "M2": {
+      "allWorkstreamsPass": true,
+      "firedrillsPass": true,
+      "testPassRateMin": 98,
+      "blockerCountMax": 0,
+      "criticalGatesPass": true
+    }
+  }
+}

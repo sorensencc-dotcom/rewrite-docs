@@ -1,0 +1,47 @@
+{
+  "name": "cic-vscode-integration",
+  "displayName": "CIC Cockpit",
+  "version": "0.1.0",
+  "publisher": "rewrite-labs",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:cic.connect",
+    "onView:cicAgentsView"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "cic.connect",
+        "title": "Connect to CIC Daemon"
+      },
+      {
+        "command": "cic.openAgentsCockpit",
+        "title": "Open CIC Agents Cockpit"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "cicAgentsView",
+          "name": "CIC Agents"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "cic.backgroundSend",
+        "key": "alt+enter",
+        "when": "cicChatInputFocus"
+      },
+      {
+        "command": "cic.openSessionPicker",
+        "key": "ctrl+r",
+        "when": "cicAgentsViewVisible"
+      }
+    ]
+  },
+  "main": "./out/extension.js"
+}

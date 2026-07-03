@@ -1,0 +1,47 @@
+{
+  "startedAt": 1719432000000,
+  "completedAt": 1719432006500,
+  "duration": 6500,
+  "scenarios": {
+    "B1": {
+      "name": "Burn-Rate Spike Gate",
+      "passed": true,
+      "abortTriggered": true,
+      "rollbackCompleted": true,
+      "rollbackMs": 187,
+      "violations": 1,
+      "timestamp": 1719432001500
+    },
+    "B2": {
+      "name": "Latency Regression Gate",
+      "passed": true,
+      "abortTriggered": true,
+      "rollbackCompleted": true,
+      "rollbackMs": 200,
+      "violations": 1,
+      "timestamp": 1719432002500
+    },
+    "B3": {
+      "name": "Error-Rate Drift Gate",
+      "passed": true,
+      "abortTriggered": true,
+      "rollbackCompleted": true,
+      "rollbackMs": 220,
+      "violations": 1,
+      "timestamp": 1719432003500
+    },
+    "B4": {
+      "name": "Saturation Gate",
+      "passed": true,
+      "abortTriggered": true,
+      "rollbackCompleted": true,
+      "rollbackMs": 195,
+      "violations": 1,
+      "timestamp": 1719432004500
+    }
+  },
+  "passCount": 4,
+  "failCount": 0,
+  "pass": true,
+  "criticalFailures": []
+}

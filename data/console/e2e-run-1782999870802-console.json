@@ -1,0 +1,63 @@
+{
+  "operatorConsoleView": {
+    "runId": "e2e-run-1782999870802",
+    "mode": "local-first",
+    "status": "success",
+    "summary": {
+      "totalAssetsProcessed": 2,
+      "pipelineCount": 4,
+      "pipelineStatuses": {
+        "corpus": "success",
+        "modelTraining": "success",
+        "treatment": "success",
+        "rewriteLabs": "success"
+      },
+      "finalSealHash": "596c65eb2e91e1309a08543a8b39c0afea84dcc4e8dc0afc5a7da32dccf30557",
+      "snapshotHash": "911be7cce74f3c5cb934df97d592c41c8ac1af4a9675d24790929e2adde7af2f"
+    },
+    "pipelines": [
+      {
+        "name": "corpus",
+        "status": "success",
+        "assetCount": 2,
+        "messageCount": 0,
+        "hash": "67c2249a1c8c21bfd08733349c41ab0deae740b7d0aaf4508fecd7d6ffe225d6"
+      },
+      {
+        "name": "modelTraining",
+        "status": "success",
+        "assetCount": 2,
+        "messageCount": 0,
+        "hash": "460efce3dcbcf2ffad24eda93c42c9280bccfceed3925feb89b55592ee22b6fe"
+      },
+      {
+        "name": "treatment",
+        "status": "success",
+        "assetCount": 0,
+        "messageCount": 2,
+        "hash": "2d241e90274f515e394724df83a45d0e57d1d3fb471050abd4af0e74ba32590b"
+      },
+      {
+        "name": "rewriteLabs",
+        "status": "success",
+        "assetCount": 2,
+        "messageCount": 0,
+        "hash": "8c101359beb5fcabc47362f73772aae497c45656032b218fa2391219c7c6debb"
+      }
+    ],
+    "routing": {
+      "regime": "local-first",
+      "localFirstEnabled": true,
+      "backends": [
+        "ollama",
+        "llamafile",
+        "mock"
+      ]
+    },
+    "certificates": {
+      "localFirst": true,
+      "deterministic": true,
+      "sealed": true
+    }
+  }
+}

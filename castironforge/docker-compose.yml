@@ -1,0 +1,43 @@
+services:
+  chat-frontend:
+    build: ./chat-frontend
+    command: pnpm dev -- --port 5173
+    working_dir: /app
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_CHAT_AGENT_URL: http://chat-agent:8000
+      VITE_TORQUE_QUERY_URL: http://torque-query:9000
+    depends_on:
+      - chat-agent
+      - torque-query
+
+  chat-agent:
+    build: ./chat-agent
+    command: pnpm dev
+    working_dir: /app
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: 8000
+      TORQUE_QUERY_URL: http://torque-query:9000
+      INGESTION_URL: http://cic-ingestion:3000
+
+  torque-query:
+    build: ./torque-query
+    command: pnpm dev
+    working_dir: /app
+    ports:
+      - "9000:9000"
+    environment:
+      PORT: 9000
+
+  cic-ingestion:
+    build: ./cic-ingestion
+    command: pnpm dev
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      TORQUE_QUERY_URL: http://torque-query:9000

@@ -1,0 +1,43 @@
+# RL-4.3: ChatEditSession + DOMPatch
+# Week 7-9, depends on RL-4.2
+
+id: RL-4.3
+title: ChatEditSession + InstructionParser + DOMPatch
+owner: rewrite-labs
+container: REGISTRY/rewrite-labs/rl-4.3:latest
+command:
+  - npm
+  - run
+  - test:chat-editor
+
+env:
+  NODE_ENV: production
+  LOG_LEVEL: info
+
+dependencies:
+  - RL-4.2
+
+success_gates:
+  - type: exit_code
+    value: 0
+  - type: metric
+    key: instruction_parse_success_rate
+    op: ">="
+    value: 0.95
+  - type: metric
+    key: dom_patch_apply_success_rate
+    op: ">="
+    value: 0.98
+  - type: output
+    pattern: "✓.*ChatEditSession.*initialized"
+  - type: output
+    pattern: "✓.*DOMPatch.*applied"
+
+metadata:
+  deliverables:
+    - ChatEditSession state machine
+    - InstructionParser (conversation → DOM changes)
+    - DOMPatch applicator (bidirectional)
+    - Edit history + undo/redo
+  testCoverage: ">= 85%"
+  estimatedDuration: "25m"

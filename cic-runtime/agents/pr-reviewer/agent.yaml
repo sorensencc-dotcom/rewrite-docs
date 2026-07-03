@@ -1,0 +1,26 @@
+id: cic.rewrite.pr-reviewer
+metadata:
+  id: cic.rewrite.pr-reviewer
+  name: PR Reviewer Agent
+  version: 0.2.0
+  description: Reviews pull requests and provides feedback
+
+tools:
+  - name: github-pr-api
+    description: GitHub PR API access
+    config:
+      endpoint: https://api.github.com
+      token: ${GITHUB_TOKEN}
+
+channels:
+  - name: github-pr
+    type: webhook
+    config:
+      path: /webhooks/github-pr
+      events:
+        - pull_request
+
+schedules:
+  - name: nightly-build-health
+    cron: '3 * * * *'
+    description: Check nightly build health

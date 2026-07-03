@@ -1,0 +1,23 @@
+{
+  "skill_name": "cic-research",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I'm trying to understand how extractors fit into the CIC pipeline. What role do they play across the different phases, and how do they interact with the agent system?",
+      "expected_output": "Answer synthesizes from BUILD-SUMMARY (overall pipeline), AGENTS.md (extractor patterns), and ROADMAP (phase sequencing). Explains extractor role in each phase, describes agent interaction, cites vault docs explicitly, suggests next reads.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "What's the relationship between the Harvest and Sweep phases? How does the token pack system factor into this?",
+      "expected_output": "Answer checks vault docs for explicit Harvest/Sweep terminology. If not found: be honest about the gap ('These terms may not be standard CIC jargon; see ROADMAP for actual phase naming'). If found: synthesize relationship from ROADMAP.md. For token packs: cite CIC_TOKEN_PACK_v2_0_FULL_LIST.md or admit if connection to Harvest/Sweep isn't documented. Flags inferences vs. documented facts. Suggests where to find canonical answers.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I'm new to CIC and want to get up to speed on the architecture. What should I read first, and in what order, to build a mental model of how the system works?",
+      "expected_output": "Provides learning path: start with BUILD-SUMMARY for overview, then ROADMAP for phase flow, then deep dives (AGENTS, AGENTS_API, etc.). Explains why this order makes sense. References vault docs, suggests interconnections to pay attention to.",
+      "files": []
+    }
+  ]
+}

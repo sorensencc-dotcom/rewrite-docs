@@ -1,0 +1,81 @@
+{
+  "version": "v1.0.0",
+  "generated_at": "2026-06-13T00:00:00Z",
+  "vertical": "dental",
+  "scope": "dental_specific",
+  "description": "Dental practice-specific components",
+  "extends": "components-universal.json",
+  "components": [
+    {
+      "id": "insurance_badge_strip",
+      "name": "Insurance Badge Strip",
+      "description": "Display of accepted insurance providers",
+      "slots": {
+        "title": { "type": "string", "default": "We Accept These Insurance Plans" },
+        "insurers": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "name": { "type": "string" },
+              "logo": { "type": "image" },
+              "verified": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "before_after_gallery",
+      "name": "Before/After Dental Work Gallery",
+      "description": "Side-by-side patient transformation gallery",
+      "slots": {
+        "title": { "type": "string", "default": "Patient Transformations" },
+        "gallery_items": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "before_image": { "type": "image", "required": true },
+              "after_image": { "type": "image", "required": true },
+              "procedure": { "type": "string" },
+              "patient_name": { "type": "string" }
+            }
+          }
+        }
+      },
+      "accessibility": { "alt_text_required": true }
+    },
+    {
+      "id": "appointment_booking_widget",
+      "name": "Appointment Booking Widget",
+      "description": "Real-time appointment scheduling interface",
+      "slots": {
+        "calendar_view": { "type": "string", "enum": ["month", "week", "day"] },
+        "available_dentists": { "type": "array" },
+        "appointment_types": { "type": "array" },
+        "timezone": { "type": "string", "default": "America/Chicago" },
+        "confirmation_email": { "type": "boolean", "default": true }
+      }
+    },
+    {
+      "id": "staff_bios",
+      "name": "Staff Bios with Credentials",
+      "description": "Dentist and hygienist profiles with credentials",
+      "slots": {
+        "staff_members": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "name": { "type": "string", "required": true },
+              "title": { "type": "string" },
+              "credentials": { "type": "array" },
+              "bio": { "type": "string" },
+              "photo": { "type": "image" },
+              "specialties": { "type": "array" }
+            }
+          }
+        }
+      },
+      "seo": { "schema_type": "Person" }
+    }
+  ]
+}

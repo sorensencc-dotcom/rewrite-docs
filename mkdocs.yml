@@ -76,6 +76,37 @@ nav:
       - Verification: operations/verification.md
       - Monitoring: operations/monitoring.md
       - Troubleshooting: operations/troubleshooting.md
+  - Implementation:
+      - Cloud Extension Layer: implementation/cloud-extension-layer.md
+  - CIC Documentation:
+      - Research Skill:
+          - Overview: cic/research-skill/SKILL.md
+          - Test Results:
+              - Iteration 1: cic/research-skill/test-results/iteration-1-grading.md
+              - Iteration 2: cic/research-skill/test-results/iteration-2-grading.md
+      - Vault Analysis:
+          - Gap Analysis: cic/vault-analysis/gap-analysis.md
+  - Rewrite Labs:
+      - Vault Mirror:
+          - Overview: rewrite-labs/vault-mirror/executive-summary.md
+          - Setup: rewrite-labs/vault-mirror/setup.md
+          - Configuration: rewrite-labs/vault-mirror/configuration.md
+          - RL Setup: rewrite-labs/vault-mirror/rl-setup.md
+  - Knowledge Graph:
+      - Overview: reference/knowledge-graph/README.md
+      - Quick Start: reference/knowledge-graph/QUICK_START.md
+      - Setup Guide: reference/knowledge-graph/SETUP_GUIDE.md
+  - Memory Governance:
+      - Overview: reference/memory-governance/overview.md
+  - Build Documentation:
+      - 8-Items Complete: meta/8-items-complete.md
+      - Build Progress: meta/build-progress.md
+      - Final Status: meta/final-status.md
+      - Reorganization Plan: meta/reorganization.md
+      - Execution Logs:
+          - Phase 1 (Files Moved): meta/phase-1-execution.md
+          - Phase 2 (Links Updated): meta/phase-2-completion.md
+          - Phase 3 (Verification): meta/phase-3-completion.md
   - Reference:
       - Manifests: reference/manifests.md
       - Schemas: reference/schemas.md

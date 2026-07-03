@@ -1,0 +1,35 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'cic-roadmap'
+    service: 'roadmap-runner'
+
+scrape_configs:
+  # Qdrant vector database (Phase 26 TorqueQuery)
+  - job_name: 'qdrant'
+    static_configs:
+      - targets: ['qdrant:6333']
+    scrape_interval: 30s
+    metrics_path: '/metrics'
+
+  # Prometheus Push Gateway (phases push metrics here)
+  - job_name: 'pushgateway'
+    static_configs:
+      - targets: ['prometheus-pushgateway:9091']
+    scrape_interval: 15s
+
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+# Alerting rules (optional — add later)
+# rule_files:
+#   - 'rules/*.yml'
+
+# Alertmanager integration (optional)
+# alerting:
+#   alertmanagers:
+#     - static_configs:
+#         - targets: ['alertmanager:9093']

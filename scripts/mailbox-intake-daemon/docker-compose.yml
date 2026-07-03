@@ -1,0 +1,63 @@
+version: '3.9'
+
+services:
+  # Test service
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: test
+    image: mailbox-intake-daemon:test
+    container_name: mailbox-intake-daemon-test
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: test
+      CI: "true"
+    entrypoint: npm test -- --coverage --verbose --runInBand
+    healthcheck:
+      test: ["CMD", "test", "-f", "/app/dist/index.js"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Build service (verification)
+  build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    image: mailbox-intake-daemon:builder
+    container_name: mailbox-intake-daemon-build
+    volumes:
+      - .:/app
+      - /app/node_modules
+    entrypoint: /bin/sh -c "echo 'Build complete' && ls -lah /app/dist"
+    healthcheck:
+      test: ["CMD", "test", "-d", "/app/dist"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Runtime service (smoke test)
+  runtime:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: mailbox-intake-daemon:runtime
+    container_name: mailbox-intake-daemon-runtime
+    ports:
+      - "3100:3100"
+    environment:
+      NODE_ENV: production
+      CONFIG_PATH: /app/config.json
+    volumes:
+      - .:/app
+      - ./logs:/app/logs
+      - ./pending:/app/pending
+      - ./archive:/app/archive
+    depends_on:
+      build:
+        condition: service_healthy

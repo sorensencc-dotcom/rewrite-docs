@@ -1,0 +1,336 @@
+version: '3.8'
+
+# ==============================================================================
+# CIC Unified OS Runtime v1.0.0 — Phase 5e Core (10 Services)
+# ==============================================================================
+#
+# Entry point: docker-compose -f cic-os-runtime-v1-core.yml up
+#
+# Minimal runtime for Phase 5e development and testing (Core service stack only).
+# This file contains ONLY the 10 essential services needed for autonomous governance
+# and planning; Phase 6 build system and advanced features are EXCLUDED.
+#
+# Included Services (10 total):
+#   1. postgres (5433)          — Infrastructure
+#   2. redis (6380)             — Infrastructure (optional; only for future Wave 3+)
+#   3. qdrant (6333)            — Infrastructure / Vector DB
+#   4. vault (3111)             — Core governance
+#   5. unified-api (3100)       — Core API gateway
+#   6. torquequery (3110)       — Core memory
+#   7. cic-governance (3113)    — Core governance voting
+#   8. cic-ingestion (3116)     — Core autonomy API
+#   9. planning-console (3200)  — Core UI
+#  10. repomix-ingestion (3112) — Supporting repo ingestion
+#
+# EXCLUDED (Phase 6+):
+#   - build-executor (3101), lineage-registry (3102), routing-validator (3103)
+#   - build-orchestrator (3104), performance-store (3105), predictive-routing (3106)
+#   - knowledge-graph (3107)
+#   - planning-engine (3114), harvester-v2 (3115)
+#   - executive-intelligence, helm-server, prompt-telemetry (MCP sidecars)
+#
+# Startup verification (run after docker-compose up):
+#   curl http://localhost:3111/health  → vault
+#   curl http://localhost:3110/health  → torquequery
+#   curl http://localhost:3113/health  → cic-governance
+#   curl http://localhost:3116/health  → cic-ingestion
+#   curl http://localhost:3100/health  → unified-api
+#   curl http://localhost:3200/        → planning-console (UI)
+#
+# Graceful shutdown:
+#   docker-compose -f cic-os-runtime-v1-core.yml down
+#   (volumes preserved; data persists; add -v to also remove volumes)
+# ==============================================================================
+
+networks:
+  cic-network:
+    driver: bridge
+    # All services communicate via service-name DNS on this network.
+    # e.g. http://vault:3111, http://torquequery:3110, http://postgres:5432
+
+volumes:
+  # Persistent data volumes — survive docker-compose down
+  postgres-data:
+    driver: local
+  qdrant-storage:
+    driver: local
+  # Shared log and snapshot volumes across CIC services
+  cic-logs:
+    driver: local
+  cic-snapshots:
+    driver: local
+
+services:
+
+  # ============================================================================
+  # TIER 0: Infrastructure (Wave 1 — foundational services)
+  # ============================================================================
+
+  postgres:
+    # PostgreSQL: foundational data store (included for future Wave 3 expansion)
+    # Currently used by: (placeholder for Phase 6 lineage-registry)
+    image: postgres:15-alpine
+    container_name: cic-postgres
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-cic_lineage}
+      POSTGRES_USER: ${POSTGRES_USER:-cic}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cic_dev_pass}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - cic-network
+
+  redis:
+    # Redis: async message queue (included for future Phase 3+ expansion)
+    # Currently unused; reserved for build executor Wave 4
+    image: redis:7-alpine
+    container_name: cic-redis
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    networks:
+      - cic-network
+
+  qdrant:
+    # Qdrant: vector database for CIC memory indexing
+    # Blocks: cic-ingestion (Wave 2)
+    image: qdrant/qdrant:latest
+    container_name: cic-qdrant
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant-storage:/qdrant/storage
+    environment:
+      QDRANT__SERVICE__API_KEY: ${QDRANT_API_KEY:-dev-key-unsafe}
+    networks:
+      - cic-network
+
+  # ============================================================================
+  # TIER 1: Core Governance & Memory (Wave 2 — CIC foundation)
+  # ============================================================================
+
+  vault:
+    # Vault: immutable governance + evidence store (M3)
+    # Blocks: cic-ingestion (Wave 2)
+    build:
+      context: ./services/vault
+      dockerfile: Dockerfile
+    container_name: cic-vault
+    restart: unless-stopped
+    ports:
+      - "3111:3111"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      PORT: "3111"
+      VAULT_SECRET_KEY: ${VAULT_SECRET_KEY:-dev-key-32-chars-minimum-xxxxx}
+    volumes:
+      - cic-logs:/app/logs
+    networks:
+      - cic-network
+
+  torquequery:
+    # TorqueQuery: Python/FastAPI semantic memory indexing engine (Phase 26)
+    # Blocks: cic-ingestion, unified-api
+    build:
+      context: ./services/torquequery
+      dockerfile: Dockerfile
+    container_name: cic-torquequery
+    restart: unless-stopped
+    ports:
+      - "3110:3110"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      PORT: "3110"
+      OLLAMA_HOST: ${OLLAMA_HOST:-http://host.docker.internal:11434}
+      HF_HUB_DISABLE_SYMLINKS_WARNING: "1"
+      HF_HUB_OFFLINE: ${HF_HUB_OFFLINE:-1}
+      TRANSFORMERS_OFFLINE: ${TRANSFORMERS_OFFLINE:-1}
+      CUDA_VISIBLE_DEVICES: ${CUDA_VISIBLE_DEVICES:-}
+    volumes:
+      - ./cic/torquequery/storage:/app/storage
+      - ./cic/torquequery/config:/app/config:ro
+      - ./docs:/docs:ro
+      # HuggingFace model cache — bind-mount from host to avoid re-download
+      - ${HF_CACHE_DIR:-/tmp/hf-cache}:/root/.cache/huggingface:ro
+    networks:
+      - cic-network
+
+  # ============================================================================
+  # TIER 2: CIC Core Services (Wave 3 — parallel startup)
+  # ============================================================================
+
+  repomix-ingestion:
+    # Repomix Ingestion: deterministic repo snapshot ingestion (Phase 4.4)
+    # No upstream dependencies; feeds codeflow analysis
+    build:
+      context: ./services/repomix-ingestion
+      dockerfile: Dockerfile
+    container_name: cic-repomix-ingestion
+    restart: unless-stopped
+    ports:
+      - "3112:3112"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      PORT: "3112"
+    volumes:
+      - cic-logs:/app/logs
+    networks:
+      - cic-network
+
+  cic-governance:
+    # CIC Governance: council voting, policy rails, decision audit log (Phase 24)
+    # No upstream dependencies; wired into planning-console for operator approval gate
+    build:
+      context: ./services/cic-governance
+      dockerfile: Dockerfile
+    container_name: cic-governance
+    restart: unless-stopped
+    ports:
+      - "3113:3113"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      PORT: "3113"
+    volumes:
+      - cic-logs:/app/logs
+    networks:
+      - cic-network
+
+  # ============================================================================
+  # TIER 3: Autonomy & Integration (Wave 4)
+  # ============================================================================
+
+  cic-ingestion:
+    # CIC Ingestion (Autonomy API Server): AutonomyAPIServer.ts entry point (Phase 2.5)
+    # Depends: vault, torquequery, qdrant
+    # Autonomy routers: ENABLED (all routers active on startup)
+    build:
+      context: ./cic-ingestion
+      dockerfile: Dockerfile
+    container_name: cic-ingestion
+    restart: unless-stopped
+    ports:
+      - "3116:3116"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      PORT: "3116"
+      VAULT_URL: http://vault:3111
+      MEMORY_STORE_URL: http://torquequery:3110
+      QDRANT_URL: http://qdrant:6333
+      QDRANT_API_KEY: ${QDRANT_API_KEY:-dev-key-unsafe}
+    depends_on:
+      vault:
+        condition: service_started
+      torquequery:
+        condition: service_started
+      qdrant:
+        condition: service_started
+    volumes:
+      - ./cic-ingestion/dist:/app/dist
+      - cic-logs:/app/logs
+      - cic-snapshots:/app/snapshots
+    networks:
+      - cic-network
+
+  planning-console:
+    # Planning Console (React UI): canonical Console v3 host
+    # Hosted on port 3200 (maps to internal port 3000)
+    # Operator Console v3 available at: http://localhost:3200
+    # Source: rewrite-mcp/apps/operator-ui/ (CIC Command Center)
+    # Depends: cic-governance, vault
+    build:
+      context: ./rewrite-mcp
+      dockerfile: Dockerfile.planning-console
+    container_name: cic-planning-console
+    restart: unless-stopped
+    ports:
+      - "3200:3000"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      REACT_APP_GOVERNANCE_URL: ${REACT_APP_GOVERNANCE_URL:-http://localhost:3113}
+      REACT_APP_VAULT_URL: ${REACT_APP_VAULT_URL:-http://localhost:3111}
+    depends_on:
+      cic-governance:
+        condition: service_started
+      vault:
+        condition: service_started
+    networks:
+      - cic-network
+
+  # ============================================================================
+  # TIER 4: API Gateway (Wave 5 — starts last; aggregates core services)
+  # ============================================================================
+
+  unified-api:
+    # Unified API: single-entry API gateway for core CIC services (port 3100)
+    # Starts LAST — depends on all Wave 3+4 services being healthy
+    # Use this endpoint for external integrations and Console v3 backend calls
+    build:
+      context: ./services/unified-api
+      dockerfile: Dockerfile
+    container_name: cic-unified-api
+    restart: unless-stopped
+    ports:
+      - "3100:3100"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      UNIFIED_API_PORT: "3100"
+      TORQUEQUERY_URL: http://torquequery:3110
+      VAULT_URL: http://vault:3111
+      REPOMIX_URL: http://repomix-ingestion:3112
+      GOVERNANCE_URL: http://cic-governance:3113
+      PLANNING_CONSOLE_URL: http://planning-console:3000
+    depends_on:
+      torquequery:
+        condition: service_started
+      vault:
+        condition: service_started
+      repomix-ingestion:
+        condition: service_started
+      cic-governance:
+        condition: service_started
+      cic-ingestion:
+        condition: service_started
+      planning-console:
+        condition: service_started
+    volumes:
+      - cic-logs:/app/logs
+    networks:
+      - cic-network
+
+# ==============================================================================
+# STARTUP VERIFICATION CHECKLIST (Phase 5e Core — 10-point)
+# Run after: docker-compose -f cic-os-runtime-v1-core.yml up -d
+# ==============================================================================
+#
+# 1. Infrastructure
+#    [ ] postgres:  docker-compose exec postgres pg_isready -U cic
+#    [ ] redis:     docker-compose exec redis redis-cli ping  → PONG
+#    [ ] qdrant:    curl http://localhost:6333/health         → 200
+#
+# 2. Core governance & memory
+#    [ ] vault:     curl http://localhost:3111/health         → 200
+#    [ ] torquequery: curl http://localhost:3110/health       → 200
+#
+# 3. CIC core services
+#    [ ] repomix:   curl http://localhost:3112/health         → 200
+#    [ ] governance: curl http://localhost:3113/health        → 200
+#    [ ] ingestion:  curl http://localhost:3116/health        → 200
+#
+# 4. UI + API gateway
+#    [ ] console:   curl http://localhost:3200/               → 200
+#    [ ] unified-api: curl http://localhost:3100/health       → 200
+#
+# All 10 checks passing = Phase 5e core runtime healthy. Est. time: 45-60 seconds.
+# ==============================================================================
+

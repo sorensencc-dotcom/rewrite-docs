@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-06-23T02:52:30.662Z",
+  "workstream": "A",
+  "overallStatus": "pass",
+  "gates": [
+    {
+      "name": "Test Pass Rate",
+      "status": "fail",
+      "value": "0.00",
+      "threshold": 98,
+      "message": "0.00% >= 98%"
+    },
+    {
+      "name": "Schema Validation",
+      "status": "fail",
+      "value": false,
+      "threshold": true,
+      "message": "Schema missing"
+    },
+    {
+      "name": "Load Test P95 (Ledger)",
+      "status": "warn",
+      "value": "0ms",
+      "threshold": "15ms",
+      "message": "No results yet"
+    },
+    {
+      "name": "Load Test P95 (Cache)",
+      "status": "warn",
+      "value": "0ms",
+      "threshold": "40ms",
+      "message": "No results yet"
+    },
+    {
+      "name": "Prometheus Scrape Success",
+      "status": "fail",
+      "value": "0%",
+      "threshold": "100%",
+      "message": "0% success rate"
+    },
+    {
+      "name": "Governance Hook Latency",
+      "status": "warn",
+      "value": "0ms",
+      "threshold": "50ms",
+      "message": "No data yet"
+    },
+    {
+      "name": "Open Blockers",
+      "status": "pass",
+      "value": 0,
+      "threshold": 0,
+      "message": "No blockers"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 3,
+    "warnings": 3
+  }
+}

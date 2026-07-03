@@ -1,0 +1,139 @@
+version: '3.8'
+
+services:
+  torquequery:
+    build:
+      context: ..
+      dockerfile: services/torquequery/Dockerfile
+    container_name: torquequery-test
+    ports:
+      - "3110:3110"
+    environment:
+      - NODE_ENV=test
+      - PORT=3110
+    networks:
+      - services-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3110/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  vault:
+    build:
+      context: ..
+      dockerfile: services/vault/Dockerfile
+    container_name: vault-test
+    ports:
+      - "3111:3111"
+    environment:
+      - NODE_ENV=test
+      - PORT=3111
+    networks:
+      - services-network
+    depends_on:
+      torquequery:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3111/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  repomix-ingestion:
+    build:
+      context: ..
+      dockerfile: services/repomix-ingestion/Dockerfile
+    container_name: repomix-test
+    ports:
+      - "3112:3112"
+    environment:
+      - NODE_ENV=test
+      - PORT=3112
+    networks:
+      - services-network
+    depends_on:
+      vault:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3112/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  cic-governance:
+    build:
+      context: ..
+      dockerfile: services/cic-governance/Dockerfile
+    container_name: governance-test
+    ports:
+      - "3113:3113"
+    environment:
+      - NODE_ENV=test
+      - PORT=3113
+    networks:
+      - services-network
+    depends_on:
+      repomix-ingestion:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3113/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  unified-api:
+    build:
+      context: ..
+      dockerfile: services/unified-api/Dockerfile
+    container_name: unified-api-test
+    ports:
+      - "3100:3100"
+    environment:
+      - NODE_ENV=test
+      - PORT=3100
+      - TORQUEQUERY_URL=http://torquequery:3110
+      - VAULT_URL=http://vault:3111
+      - REPOMIX_URL=http://repomix-ingestion:3112
+      - GOVERNANCE_URL=http://cic-governance:3113
+    networks:
+      - services-network
+    depends_on:
+      cic-governance:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3100/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  knowledge-graph:
+    build:
+      context: ..
+      dockerfile: services/knowledge-graph/Dockerfile
+    container_name: knowledge-graph-test
+    ports:
+      - "3107:3107"
+    environment:
+      - NODE_ENV=test
+      - PORT=3107
+    networks:
+      - services-network
+    depends_on:
+      unified-api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3107/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+networks:
+  services-network:
+    driver: bridge

@@ -1,0 +1,20 @@
+{
+  "env": "GPT4ALL_API_KEY",
+  "supports": {
+    "chat": true,
+    "vision": false,
+    "embeddings": false,
+    "streaming": true,
+    "toolCalls": false
+  },
+  "costPer1kTokens": {
+    "output": 0,
+    "input": 0
+  },
+  "provider": "gpt4all",
+  "version": "1.0",
+  "contextWindow": 4096,
+  "apiBase": "http://localhost:4891/v1",
+  "name": "gpt4all",
+  "type": "openai-compatible"
+}

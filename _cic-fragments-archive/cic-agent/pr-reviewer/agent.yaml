@@ -1,0 +1,43 @@
+id: cic.rewrite.pr-reviewer
+name: PR Reviewer Agent
+description: Reviews pull requests for CIC, enforcing architecture, tests, and deterministic changes.
+
+model:
+  provider: anthropic
+  name: claude-3-opus
+  temperature: 0.2
+  max_tokens: 4096
+
+runtime:
+  sandbox: ${SANDBOX_IMAGE:-docker://cic-sandbox:latest}
+  persistence: ${DATABASE_URL:-postgresql://postgres:postgres@localhost:5432/cic_agents}
+  concurrency_limit: 4
+
+policies:
+  allow_code_changes: true
+  require_tests_on_changes: true
+  max_patch_size: 500
+  forbidden_paths:
+    - infra/production/
+    - secrets/
+    - .env
+
+skills:
+  - pr-review
+  - cic-architecture
+  - build-fixer
+
+channels:
+  - github-pr
+  - slack-notifications
+
+subagents:
+  - cic.rewrite.build-fixer
+
+schedules:
+  - nightly-build-health
+
+observability:
+  log_level: info
+  trace: true
+  metrics: true

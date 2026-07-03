@@ -1,0 +1,6 @@
+packages:
+  - "chat-frontend"
+  - "chat-agent"
+  - "torque-query"
+  - "cic-ingestion"
+  - "shared"

@@ -1,0 +1,121 @@
+{
+  "version": "v3.0",
+  "generated": "2026-06-14T17:23:05.237Z",
+  "description": "Compiled roadmap dependency graph. Source: MASTER_ROADMAP_v3.0.md, CIC_SUBROADMAP_v3.0.md, REWRITE_LABS_SUBROADMAP_v3.0.md",
+  "nodes": [
+    {
+      "id": "Phase",
+      "title": "Name",
+      "status": "status",
+      "track": "cic",
+      "category": "other"
+    },
+    {
+      "id": "Phase 1",
+      "title": "Archival Research",
+      "status": "in progress",
+      "track": "cic",
+      "category": "other"
+    },
+    {
+      "id": "Phase 2",
+      "title": "Narrative Development",
+      "status": "pending",
+      "track": "cic",
+      "category": "other"
+    },
+    {
+      "id": "Phase 3",
+      "title": "Pre-Production",
+      "status": "pending",
+      "track": "cic",
+      "category": "other"
+    },
+    {
+      "id": "Phase 4",
+      "title": "Production",
+      "status": "pending",
+      "track": "cic",
+      "category": "other"
+    },
+    {
+      "id": "Phase 5",
+      "title": "Post-Production",
+      "status": "pending",
+      "track": "cic",
+      "category": "other"
+    },
+    {
+      "id": "Phase 6",
+      "title": "Distribution",
+      "status": "pending",
+      "track": "cic",
+      "category": "other"
+    }
+  ],
+  "edges": [
+    {
+      "from": "PHASE-0.9",
+      "to": "PHASE-26",
+      "reason": "PHASE-26 depends on PHASE-0.9"
+    },
+    {
+      "from": "RL-4.6",
+      "to": "RL-4.0",
+      "reason": "RL-4.0 depends on RL-4.6"
+    },
+    {
+      "from": "RL-4.0",
+      "to": "RL-4.1",
+      "reason": "RL-4.1 depends on RL-4.0"
+    },
+    {
+      "from": "RL-4.1",
+      "to": "RL-4.2",
+      "reason": "RL-4.2 depends on RL-4.1"
+    },
+    {
+      "from": "RL-4.2",
+      "to": "RL-4.3",
+      "reason": "RL-4.3 depends on RL-4.2"
+    },
+    {
+      "from": "RL-4.2",
+      "to": "RL-4.4",
+      "reason": "RL-4.4 depends on RL-4.2"
+    },
+    {
+      "from": "RL-4.3",
+      "to": "RL-4.5",
+      "reason": "RL-4.5 depends on RL-4.3"
+    },
+    {
+      "from": "RL-4.4",
+      "to": "RL-4.5",
+      "reason": "RL-4.5 depends on RL-4.4"
+    }
+  ],
+  "criticalPath": [
+    "RL-4.6",
+    "RL-4.0",
+    "RL-4.1",
+    "RL-4.2",
+    "RL-4.3",
+    "RL-4.5"
+  ],
+  "parallelizable": [
+    [
+      "RL-4.3",
+      "RL-4.4"
+    ]
+  ],
+  "rootPhases": [
+    "Phase",
+    "Phase 1",
+    "Phase 2",
+    "Phase 3",
+    "Phase 4",
+    "Phase 5",
+    "Phase 6"
+  ]
+}

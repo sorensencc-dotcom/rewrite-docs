@@ -1,0 +1,25 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+RUN apk add --no-cache git curl jq bash postgresql-client
+
+# Copy lineage-registry service
+COPY lineage-registry.js ./lineage-registry.js
+
+ENV NODE_ENV=production
+ENV LOG_LEVEL=info
+ENV PORT=3102
+ENV DB_HOST=postgres
+ENV DB_PORT=5432
+ENV DB_NAME=cic_lineage
+ENV DB_USER=cic
+ENV DB_PASSWORD=cic_dev_pass
+
+EXPOSE 3102
+
+HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost:3102/health || exit 1
+
+# Run lineage-registry service
+CMD ["node", "lineage-registry.js"]

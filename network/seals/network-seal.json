@@ -1,0 +1,7 @@
+{
+  "paths": {
+    "ingress": "network/ingress",
+    "egress": "network/egress",
+    "mesh": "network/mesh"
+  }
+}

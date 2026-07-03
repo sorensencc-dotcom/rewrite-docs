@@ -1,0 +1,65 @@
+[
+  {
+    "id": "PHASE-0.9",
+    "title": "TheFoundry - Deterministic Build Environment",
+    "date": "2026-06-09",
+    "track": "cic",
+    "status": "in-progress"
+  },
+  {
+    "id": "PHASE-26",
+    "title": "TorqueQuery - Ingestion & Search Engine",
+    "date": "2026-06-15",
+    "track": "shared",
+    "status": "planned"
+  },
+  {
+    "id": "RL-4.6",
+    "title": "CrawlerEngine v1 (MVP single-site crawler)",
+    "date": "2026-06-15",
+    "track": "rewrite-labs",
+    "status": "planned"
+  },
+  {
+    "id": "RL-4.0",
+    "title": "Extraction Engine v1 (SiteExtractor + StyleMatchEngine)",
+    "date": "2026-06-18",
+    "track": "rewrite-labs",
+    "status": "planned"
+  },
+  {
+    "id": "RL-4.1",
+    "title": "RedesignAgent + DesignVariantRenderer",
+    "date": "2026-06-22",
+    "track": "rewrite-labs",
+    "status": "planned"
+  },
+  {
+    "id": "RL-4.2",
+    "title": "SiteBundle + DeploymentAdapter + Delivery Infrastructure",
+    "date": "2026-06-26",
+    "track": "rewrite-labs",
+    "status": "planned"
+  },
+  {
+    "id": "RL-4.3",
+    "title": "ChatEditSession + InstructionParser + DOMPatch",
+    "date": "2026-07-01",
+    "track": "rewrite-labs",
+    "status": "planned"
+  },
+  {
+    "id": "RL-4.4",
+    "title": "SaaSPricingGate + EntitlementSet",
+    "date": "2026-07-03",
+    "track": "rewrite-labs",
+    "status": "planned"
+  },
+  {
+    "id": "RL-4.5",
+    "title": "OutreachAgent (Automated Outreach Pipeline)",
+    "date": "2026-07-08",
+    "track": "rewrite-labs",
+    "status": "planned"
+  }
+]

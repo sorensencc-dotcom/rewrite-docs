@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "mode": "deterministic",
+  "retryPolicy": {
+    "attempts": 1,
+    "backoff": "none"
+  }
+}

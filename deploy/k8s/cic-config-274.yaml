@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cic-config-274
+  namespace: default
+data:
+  # SLO Thresholds
+  SLO_001_THRESHOLD: "99.9"
+  SLO_002_THRESHOLD: "500"  # ms
+  SLO_003_THRESHOLD: "99.5"
+  SLO_004_THRESHOLD: "99.99"
+  SLO_005_THRESHOLD: "5"  # minutes
+
+  # Burn Rate Thresholds
+  BURN_RATE_FAST_THRESHOLD: "14"
+  BURN_RATE_SLOW_THRESHOLD: "6"
+
+  # Budget Ledger Config
+  LEDGER_RECONCILIATION_WINDOW_MINUTES: "30"
+  LEDGER_IMBALANCE_THRESHOLD: "0.01"
+
+  # Adapter Degraded Mode
+  CIRCUIT_BREAKER_ERROR_THRESHOLD: "0.10"
+  CIRCUIT_BREAKER_LATENCY_THRESHOLD_MS: "500"
+  CIRCUIT_BREAKER_OPEN_DURATION_SECONDS: "30"
+
+  # Feature Flag
+  FEATURE_FLAG_LD_KEY: "sdk-placeholder"
+  DEGRADED_MODE_ROLLOUT_PERCENT: "10"
+
+  # Control Loop
+  CONTROL_LOOP_INTERVAL_SECONDS: "60"
+  FALLBACK_TIMEOUT_MS: "500"
+
+  # Observability
+  PROMETHEUS_URL: "http://prometheus:9090"
+  LOG_LEVEL: "info"
