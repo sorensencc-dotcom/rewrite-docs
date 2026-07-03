@@ -105,6 +105,14 @@ nav:
       - Reorganization Plan: meta/reorganization.md
       - Work Summarizer v2 Roadmap: ../TheFoundry/out/docs/roadmap/CIC_MASTER_ROADMAP.md
       - Work Summarizer v2 Implementation Guide: meta/work-summarizer-implementation-guide.md
+      - Governance:
+          - Governance Validation Setup: meta/GOVERNANCE_VALIDATION_SETUP.md
+          - Repository Governance Audit: meta/REPOSITORY_GOVERNANCE_AUDIT.md
+          - Rule 2 Compliance Fix: meta/RULE_2_COMPLIANCE_FIX.md
+      - Integration & Review:
+          - Repository Cleanup Review: meta/repo-cleanup-REVIEW.md
+          - KB Sync Implementation: meta/KB_SYNC_IMPLEMENTATION_COMPLETE.md
+          - Phase 5 Implementation Plan: meta/implementation_plan.md
       - Execution Logs:
           - Phase 1 (Files Moved): meta/phase-1-execution.md
           - Phase 2 (Links Updated): meta/phase-2-completion.md
