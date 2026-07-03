@@ -1,0 +1,29 @@
+docs/systems/index.md
+  s_59a6189aff6d68::t_d922f68f72c9c7 12
+scripts/verify-topology-docs.js
+  s_59a6189aff6d68::t_df945295cecedc 2-4,6-7
+  s_59a6189aff6d68::t_2928f0fa7233d6 40
+  s_59a6189aff6d68::t_cb7dffe09bf39e 1,5,8-25,27-39,41-46
+  s_59a6189aff6d68::t_8910125103fc6c 26
+scripts/verify-docs-content.js
+  s_59a6189aff6d68::t_aba86edef65f0b 2-4,6-8,15
+  s_59a6189aff6d68::t_d7df0b06b30ed8 1,5,9-14,16-78
+scripts/verify-all.js
+  s_59a6189aff6d68::t_e0b5878ab29824 1-37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "cf241886e37cc1fae85dcef30548371133fafb95",
+  "prompts": {},
+  "sessions": {
+    "s_59a6189aff6d68": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "edef6066-d2cd-44a3-ba86-577911f77d0d",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
