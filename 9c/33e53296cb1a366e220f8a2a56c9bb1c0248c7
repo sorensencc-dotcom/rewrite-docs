@@ -1,0 +1,21 @@
+phase-5-harness-report.json
+  s_df2e6afa516d1b::t_2c4b52b250df09 151
+  s_df2e6afa516d1b::t_2f496b203b7a54 121
+  s_df2e6afa516d1b::t_eb125f44231c94 143-144
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "9c33e53296cb1a366e220f8a2a56c9bb1c0248c7",
+  "prompts": {},
+  "sessions": {
+    "s_df2e6afa516d1b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4a2e1852-b897-4d5c-bdd0-12ea7d0cb831",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
