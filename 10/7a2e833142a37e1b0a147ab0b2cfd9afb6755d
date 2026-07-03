@@ -1,0 +1,31 @@
+docs/reference/skill-location-governance.md
+  s_748e5ab68ae704::t_674d32f4ec4228 1-151
+docs-manager/docs-audit-report.json
+  s_cb9cc0072317a2::t_a30dd6fb745228 2,34185-34205,34332-34352,34402-34415,49041-49043,49050
+Invoke-GeminiRepoScan.ps1
+  s_748e5ab68ae704::t_22623938a969c7 19,36,38,65-69,74-107,112-116,166,170-175,183-188,202-203,205-213,215,232,282-287
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "107a2e833142a37e1b0a147ab0b2cfd9afb6755d",
+  "prompts": {},
+  "sessions": {
+    "s_748e5ab68ae704": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "17f1198e-3730-4433-8b16-f492ccb56939",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_cb9cc0072317a2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b9e4418-e9b7-4f47-8b0a-fa70e19169d1",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
