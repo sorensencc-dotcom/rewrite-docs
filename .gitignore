@@ -44,7 +44,7 @@ temp/
 docker-compose.override.yml
 
 # Workspace config
-.github/
+.github/*
 !.github/workflows/
 .husky/
 

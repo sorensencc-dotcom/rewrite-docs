@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "description": "CIC + TorqueQuery ingestion pipeline stages",
+  "stages": [
+    {
+      "order": 1,
+      "name": "Crawler",
+      "type": "crawl",
+      "source": "seed_urls",
+      "target": "raw_html",
+      "timeout_sec": 300
+    },
+    {
+      "order": 2,
+      "name": "Scraper",
+      "type": "extract",
+      "source": "raw_html",
+      "target": "documents",
+      "timeout_sec": 600
+    },
+    {
+      "order": 3,
+      "name": "Mapper",
+      "type": "map",
+      "source": "documents",
+      "target": "IRPackets",
+      "timeout_sec": 300
+    },
+    {
+      "order": 4,
+      "name": "Indexer",
+      "type": "index",
+      "source": "IRPackets",
+      "target": "search_index",
+      "timeout_sec": 900
+    }
+  ],
+  "retry": {
+    "max_attempts": 3,
+    "backoff_sec": 30
+  }
+}

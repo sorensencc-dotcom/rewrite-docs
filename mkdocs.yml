@@ -84,7 +84,6 @@ nav:
           - Test Results:
               - Iteration 1: cic/research-skill/test-results/iteration-1-grading.md
               - Iteration 2: cic/research-skill/test-results/iteration-2-grading.md
-      - Vault Analysis:
   - Rewrite Labs:
       - Vault Mirror:
           - Overview: rewrite-labs/vault-mirror/executive-summary.md
@@ -95,7 +94,6 @@ nav:
       - Overview: reference/knowledge-graph/README.md
       - Quick Start: reference/knowledge-graph/QUICK_START.md
       - Setup Guide: reference/knowledge-graph/SETUP_GUIDE.md
-  - Memory Governance:
   - Build Documentation:
       - 8-Items Complete: meta/8-items-complete.md
       - Build Progress: meta/build-progress.md

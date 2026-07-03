@@ -1,0 +1,29 @@
+name: Topology Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run topology validator
+        run: node scripts/validate-topology.js
+
+      - name: Block on violation
+        if: failure()
+        run: |
+          echo "❌ Topology violation detected — fix required before merge."
+          exit 1
