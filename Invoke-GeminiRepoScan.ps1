@@ -16,7 +16,7 @@ param(
     [switch]$SkipGemini,
 
     [Parameter(Mandatory = $false)]
-    [string]$ReportPath = "$PSScriptRoot\gemini-scan-report.txt",
+    [string]$ReportPath = "",
 
     [Parameter(Mandatory = $false)]
     [long]$LargeFileThresholdBytes = 1MB
@@ -33,9 +33,9 @@ function Write-Sub($title) {
 }
 
 function Run-Git {
-    param([string]$RepoPath, [string[]]$Args)
+    param([string]$RepoPath, [string[]]$GitArgs)
     try {
-        $result = & git -C $RepoPath @Args 2>&1
+        $result = & git -C $RepoPath @GitArgs 2>&1
         return $result -join "`n"
     } catch { return "[git error: $_]" }
 }
@@ -62,15 +62,57 @@ function Find-GitRepos([string]$Root) {
     $repos = @()
     foreach ($gd in $gitDirs) {
         $repoPath = $gd.Parent.FullName
-        $isNested = $repos | Where-Object { $repoPath.StartsWith($_ + "\") }
-        if (-not $isNested) { $repos += $repoPath }
+        # Exclude temporary, worktree, backup, or meta directories
+        if ($repoPath -match '\\(\.claude|_artifact-fix|_cic-fragments-archive|\.ijfw)\b') {
+            continue
+        }
+        $repos += $repoPath
     }
     return $repos
+}
+
+function Get-RepoItems {
+    param([string]$FolderPath, [string]$RepoRoot)
+    $items = Get-ChildItem -LiteralPath $FolderPath -Force -ErrorAction SilentlyContinue
+    $result = @()
+    foreach ($item in $items) {
+        # Skip git meta files/directories
+        if ($item.Name -eq ".git") { continue }
+        
+        $result += $item
+        if ($item.PSIsContainer) {
+            # Skip hidden/meta directories starting with a dot (e.g. .claude, .idea, .vscode, .planning)
+            if ($item.Name -like ".*") { continue }
+
+            # Skip junctions and symlinks (reparse points) to prevent circular traversal and overflow
+            $isReparse = $false
+            try {
+                $isReparse = $item.Attributes.HasFlag([System.IO.FileAttributes]::ReparsePoint)
+            } catch {}
+            if ($isReparse) { continue }
+            
+            # Skip nested git repos
+            if (Test-Path -LiteralPath (Join-Path $item.FullName ".git") -ErrorAction SilentlyContinue) {
+                continue
+            }
+            # Skip common massive junk directories during deep traversal (we measure them individually if matched)
+            if ($item.Name -eq "node_modules" -or $item.Name -eq ".venv" -or $item.Name -eq "venv" -or $item.Name -eq ".next" -or $item.Name -eq "dist" -or $item.Name -eq "build" -or $item.Name -eq "out" -or $item.Name -eq "coverage" -or $item.Name -eq "playwright-report" -or $item.Name -eq "test-results") {
+                continue
+            }
+            $result += Get-RepoItems -FolderPath $item.FullName -RepoRoot $RepoRoot
+        }
+    }
+    return $result
 }
 
 function Inspect-Repo([string]$RepoPath) {
     $name = Split-Path $RepoPath -Leaf
     $report = Write-Sub "REPO: $name  |  $RepoPath"
+
+    Write-Host "  Scanning filesystem for: $name" -ForegroundColor Gray
+    $allItems = Get-RepoItems -FolderPath $RepoPath -RepoRoot $RepoPath
+    $dirs = $allItems | Where-Object { $_.PSIsContainer }
+    $files = $allItems | Where-Object { -not $_.PSIsContainer }
 
     $remote      = Run-Git $RepoPath @("remote", "-v")
     $branch      = Run-Git $RepoPath @("branch", "--show-current")
@@ -121,15 +163,16 @@ function Inspect-Repo([string]$RepoPath) {
     # Junk dirs
     $trackedJunk = @()
     foreach ($junkDir in $JunkDirs) {
-        $found = Get-ChildItem -Path $RepoPath -Recurse -Force -Directory `
-            -Filter $junkDir -ErrorAction SilentlyContinue |
-            Where-Object { $_.FullName -notmatch "\\\.git\\" }
+        $found = $dirs | Where-Object { $_.Name -eq $junkDir }
         foreach ($f in $found) {
             $relPath = $f.FullName.Replace($RepoPath + "\", "").Replace("\", "/")
             $tracked = Run-Git $RepoPath @("ls-files", "--error-unmatch", $relPath) 2>&1
-            $sizeMB  = [math]::Round((Get-ChildItem $f.FullName -Recurse -File `
-                -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum / 1MB, 1)
-            $state   = if ($tracked -notmatch "error") { "TRACKED IN GIT (WARNING) ${sizeMB}MB" } else { "local only - safe" }
+            $sizeMB = 0
+            try {
+                $sizeMB = [math]::Round((Get-ChildItem -LiteralPath $f.FullName -Recurse -File `
+                    -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum / 1MB, 1)
+            } catch {}
+            $state = if ($tracked -notmatch "error") { "TRACKED IN GIT (WARNING) ${sizeMB}MB" } else { "local only - safe" }
             $trackedJunk += "  $relPath  [$state]"
         }
     }
@@ -137,11 +180,12 @@ function Inspect-Repo([string]$RepoPath) {
 
     # Sensitive files
     $sensitiveHits = @()
-    foreach ($pattern in $SensitiveFilePatterns) {
-        $found = Get-ChildItem -Path $RepoPath -Recurse -Force -File `
-            -Filter $pattern -ErrorAction SilentlyContinue |
-            Where-Object { $_.FullName -notmatch "\\\.git\\" }
-        foreach ($f in $found) {
+    foreach ($f in $files) {
+        $matched = $false
+        foreach ($pattern in $SensitiveFilePatterns) {
+            if ($f.Name -like $pattern) { $matched = $true; break }
+        }
+        if ($matched) {
             $skip = $SensitiveExclusions | Where-Object { $f.Name -like $_ }
             if ($skip) { continue }
             $relPath  = $f.FullName.Replace($RepoPath + "\", "")
@@ -155,15 +199,20 @@ function Inspect-Repo([string]$RepoPath) {
 
     # Large tracked files
     $largeFiles = @()
-    $tracked = Run-Git $RepoPath @("ls-files", "-z", "--cached") -split "`0" | Where-Object { $_ }
+    $trackedRaw = Run-Git $RepoPath @("ls-files", "--cached")
+    $tracked = $trackedRaw -split "`r?`n" | Where-Object { $_.Trim() }
     foreach ($tf in $tracked) {
-        $fullPath = Join-Path $RepoPath ($tf.Replace("/", "\"))
-        if (Test-Path $fullPath) {
-            $size = (Get-Item $fullPath -ErrorAction SilentlyContinue).Length
-            if ($size -gt $LargeFileThresholdBytes) {
-                $largeFiles += "  $tf  [$([math]::Round($size/1MB,2))MB]"
+        $tfClean = $tf.Trim()
+        if (-not $tfClean) { continue }
+        $fullPath = Join-Path $RepoPath ($tfClean.Replace("/", "\"))
+        try {
+            if (Test-Path -LiteralPath $fullPath -ErrorAction SilentlyContinue) {
+                $size = (Get-Item -LiteralPath $fullPath -ErrorAction SilentlyContinue).Length
+                if ($size -gt $LargeFileThresholdBytes) {
+                    $largeFiles += "  $tfClean  [$([math]::Round($size/1MB,2))MB]"
+                }
             }
-        }
+        } catch {}
     }
     if ($largeFiles) {
         $report += "`n[LARGE FILES IN GIT (>$([math]::Round($LargeFileThresholdBytes/1MB,0))MB)]`n" + ($largeFiles -join "`n")
@@ -180,7 +229,7 @@ function Inspect-Repo([string]$RepoPath) {
     }
     if ($rootScripts.Count -gt 5) {
         $report += "`n[ROOT SCRIPT CLUTTER - $($rootScripts.Count) scripts at root]"
-        $rootScripts | ForEach-Object { $report += "`n  $($_.Name)" }
+        $rootScripts | ForEach-Object { $report += "`n  " + $_.Name }
     }
 
     # .gitignore quality
@@ -229,6 +278,12 @@ function Find-CrossRepoDuplicates([string[]]$RepoPaths) {
 }
 
 # ── Main ─────────────────────────────────────────────────────
+
+# Safe resolution of ReportPath
+if ([string]::IsNullOrEmpty($ReportPath)) {
+    $ReportPath = if ($PSScriptRoot) { Join-Path $PSScriptRoot "gemini-scan-report.txt" } else { ".\gemini-scan-report.txt" }
+}
+$ReportPath = [System.IO.Path]::GetFullPath($ReportPath)
 
 Write-Host "`n- Gemini Deep Repo Scanner`n" -ForegroundColor Green
 
