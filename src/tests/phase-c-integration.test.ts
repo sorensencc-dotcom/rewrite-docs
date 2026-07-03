@@ -144,6 +144,68 @@ describe("Phase C: Integration (A + B)", () => {
     });
   });
 
+  describe("Phase D: Fallback Metrics", () => {
+    it("should surface fallback metrics in snapshot", async () => {
+      const orch = hardeningRegistry.getOrCreate({
+        name: "fallback-provider",
+        timeoutMs: 5000,
+      });
+
+      orch.addFallbackProvider("fb1", async () => "fb1-result", 1);
+      orch.addFallbackProvider("fb2", async () => "fb2-result", 2);
+
+      const snapshot = metricsCollector.getSnapshot();
+      const provider = Object.values(snapshot.providers).find(p => p.name.includes("fallback-provider"));
+
+      expect(provider?.fallback).toBeDefined();
+      expect(provider?.fallback.hasProviders).toBe(true);
+      expect(provider?.fallback.providerStates).toBeDefined();
+      expect(Object.keys(provider?.fallback.providerStates || {})).toContain("fb1");
+      expect(Object.keys(provider?.fallback.providerStates || {})).toContain("fb2");
+    });
+
+    it("should track fallback provider states in metrics", async () => {
+      const orch = hardeningRegistry.getOrCreate({
+        name: "state-tracking",
+        circuitBreakerFailureThreshold: 1,
+        timeoutMs: 5000,
+      });
+
+      orch.addFallbackProvider(
+        "stable-fb",
+        async () => "ok",
+        1
+      );
+
+      // Trigger primary failure → try fallback
+      const result = await orch.execute(async () => {
+        throw new Error("primary fail");
+      });
+
+      const snapshot = metricsCollector.getSnapshot();
+      const provider = Object.values(snapshot.providers).find(p => p.name.includes("state-tracking"));
+
+      expect(provider?.fallback.totalAttempts).toBeGreaterThanOrEqual(0);
+      expect(provider?.fallback.successProvider).toBeDefined();
+    });
+
+    it("should populate fallback fields for providers without fallback", async () => {
+      const orch = hardeningRegistry.getOrCreate({
+        name: "no-fallback",
+        timeoutMs: 5000,
+      });
+
+      await orch.execute(async () => "ok");
+
+      const snapshot = metricsCollector.getSnapshot();
+      const provider = Object.values(snapshot.providers).find(p => p.name.includes("no-fallback"));
+
+      expect(provider?.fallback).toBeDefined();
+      expect(provider?.fallback.hasProviders).toBe(false);
+      expect(provider?.fallback.providerStates).toEqual({});
+    });
+  });
+
   describe("Prometheus Export", () => {
     it("should export metrics in Prometheus format", async () => {
       const orch = hardeningRegistry.getOrCreate({
@@ -163,6 +225,8 @@ describe("Phase C: Integration (A + B)", () => {
       expect(metrics).toContain("resilience_avg_latency_ms");
       expect(metrics).toContain("resilience_summary_total_requests");
       expect(metrics).toContain("resilience_summary_total_errors");
+      expect(metrics).toContain("resilience_fallback_provider_state");
+      expect(metrics).toContain("resilience_fallback_total_attempts");
     });
 
     it("should format circuit breaker state correctly", async () => {
@@ -180,6 +244,37 @@ describe("Phase C: Integration (A + B)", () => {
       const metrics = metricsCollector.getPrometheusMetrics();
       // State value 1 = OPEN
       expect(metrics).toMatch(/resilience_circuit_breaker_state.*1/);
+    });
+
+    it("should export fallback provider states in Prometheus format", async () => {
+      const orch = hardeningRegistry.getOrCreate({
+        name: "fallback-export",
+        timeoutMs: 5000,
+      });
+
+      orch.addFallbackProvider("alt-provider", async () => "alt", 1);
+
+      await orch.execute(async () => "ok");
+
+      const metrics = metricsCollector.getPrometheusMetrics();
+      expect(metrics).toContain("resilience_fallback_provider_state");
+      expect(metrics).toContain("fallback-export");
+      expect(metrics).toContain("alt-provider");
+      // State value 0 = CLOSED (default)
+      expect(metrics).toMatch(/resilience_fallback_provider_state.*0/);
+    });
+
+    it("should export fallback total attempts in Prometheus format", async () => {
+      const orch = hardeningRegistry.getOrCreate({
+        name: "fallback-attempts",
+        timeoutMs: 5000,
+      });
+
+      orch.addFallbackProvider("fb", async () => "ok", 1);
+
+      const metrics = metricsCollector.getPrometheusMetrics();
+      expect(metrics).toContain("resilience_fallback_total_attempts");
+      expect(metrics).toContain("fallback-attempts");
     });
   });
 

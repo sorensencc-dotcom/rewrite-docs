@@ -201,6 +201,174 @@ describe("Phase B: Hardening", () => {
       await chain.execute();
       expect(order).toEqual(["grok", "openrouter"]);
     });
+
+    it("should track per-provider state as CLOSED", async () => {
+      const chain = new FallbackChain({
+        providerFailureThreshold: 2,
+      });
+      chain.addProvider({
+        name: "p1",
+        execute: async () => "ok",
+        priority: 1,
+      });
+
+      await chain.execute();
+      const metrics = chain.getMetrics();
+      expect(metrics.providerStates.p1).toBe("CLOSED");
+    });
+
+    it("should transition provider CLOSED → OPEN after failure threshold", async () => {
+      const chain = new FallbackChain({
+        providerFailureThreshold: 2,
+        providerResetTimeoutMs: 100,
+      });
+      const order: string[] = [];
+
+      chain.addProvider({
+        name: "flaky",
+        execute: async () => {
+          order.push("flaky");
+          throw new Error("fail");
+        },
+        priority: 1,
+      });
+      chain.addProvider({
+        name: "stable",
+        execute: async () => {
+          order.push("stable");
+          return "ok";
+        },
+        priority: 2,
+      });
+
+      // First two failures of flaky trigger OPEN
+      for (let i = 0; i < 2; i++) {
+        await chain.execute().catch(() => {});
+      }
+
+      let metrics = chain.getMetrics();
+      expect(metrics.providerStates.flaky).toBe("OPEN");
+
+      // Third call should skip flaky (OPEN) and go straight to stable
+      order.length = 0;
+      await chain.execute();
+      expect(order).toEqual(["stable"]);
+
+      metrics = chain.getMetrics();
+      expect(metrics.providerStates.stable).toBe("CLOSED");
+    });
+
+    it("should transition OPEN → HALF_OPEN → CLOSED on probe success", async () => {
+      const chain = new FallbackChain({
+        providerFailureThreshold: 1,
+        providerResetTimeoutMs: 100,
+      });
+
+      chain.addProvider({
+        name: "p1",
+        execute: async () => {
+          throw new Error("fail");
+        },
+        priority: 1,
+      });
+      chain.addProvider({
+        name: "p2",
+        execute: async () => "ok",
+        priority: 2,
+      });
+
+      // Trigger OPEN
+      await chain.execute().catch(() => {});
+      let metrics = chain.getMetrics();
+      expect(metrics.providerStates.p1).toBe("OPEN");
+
+      // Wait for HALF_OPEN
+      await new Promise(r => setTimeout(r, 150));
+      metrics = chain.getMetrics();
+      expect(metrics.providerStates.p1).toBe("HALF_OPEN");
+
+      // Try again: p1 fails again in HALF_OPEN, so stays OPEN
+      await chain.execute().catch(() => {});
+      metrics = chain.getMetrics();
+      expect(metrics.providerStates.p1).toBe("OPEN");
+    });
+
+    it("should reset all provider states on reset()", async () => {
+      const chain = new FallbackChain({
+        providerFailureThreshold: 1,
+      });
+      chain.addProvider({
+        name: "p1",
+        execute: async () => {
+          throw new Error("fail");
+        },
+        priority: 1,
+      });
+      chain.addProvider({
+        name: "p2",
+        execute: async () => "ok",
+        priority: 2,
+      });
+
+      await chain.execute().catch(() => {});
+      let metrics = chain.getMetrics();
+      expect(metrics.providerStates.p1).toBe("OPEN");
+
+      chain.reset();
+      metrics = chain.getMetrics();
+      expect(metrics.providerStates.p1).toBe("CLOSED");
+      expect(metrics.totalAttempts).toBe(0);
+    });
+
+    it("should use last-resort fallthrough when all providers OPEN", async () => {
+      const chain = new FallbackChain({
+        providerFailureThreshold: 1,
+        providerResetTimeoutMs: 1000,
+      });
+      const order: string[] = [];
+
+      chain.addProvider({
+        name: "p1",
+        execute: async () => {
+          order.push("p1");
+          throw new Error("p1 fail");
+        },
+        priority: 1,
+      });
+      chain.addProvider({
+        name: "p2",
+        execute: async () => {
+          order.push("p2");
+          throw new Error("p2 fail");
+        },
+        priority: 2,
+      });
+
+      // Open both (each needs 1 failure since threshold=1)
+      await chain.execute().catch(() => {}); // p1 fails → OPEN, p2 not tried
+      await chain.execute().catch(() => {}); // p1 OPEN (skipped), p2 fails → OPEN
+
+      const metrics = chain.getMetrics();
+      expect(metrics.providerStates.p1).toBe("OPEN");
+      expect(metrics.providerStates.p2).toBe("OPEN");
+
+      // With both OPEN, should still try them (fallthrough to all)
+      order.length = 0;
+      await chain.execute().catch(() => {});
+      expect(order).toEqual(["p1", "p2"]); // Try both anyway (last resort)
+    });
+
+    it("should have hasProviders() method", () => {
+      const chain = new FallbackChain();
+      expect(chain.hasProviders()).toBe(false);
+
+      chain.addProvider({
+        name: "p1",
+        execute: async () => "ok",
+        priority: 1,
+      });
+      expect(chain.hasProviders()).toBe(true);
+    });
   });
 
   describe("Circuit Breaker", () => {
@@ -381,6 +549,78 @@ describe("Phase B: Hardening", () => {
       });
 
       expect(orch1).toBe(orch2);
+    });
+
+    it("should invoke fallback chain on primary failure when providers registered", async () => {
+      const orch = new HardeningOrchestrator({
+        name: "fallback-test",
+        circuitBreakerFailureThreshold: 1,
+        timeoutMs: 5000,
+        maxRetries: 1,
+        rateLimiterRequestsPerSecond: 100,
+      });
+
+      // Register fallback provider
+      orch.addFallbackProvider(
+        "fallback",
+        async () => "fallback result",
+        1
+      );
+
+      // Primary fails, triggers CB OPEN, then fallback succeeds
+      await orch.execute(async () => {
+        throw new Error("primary fail");
+      }).catch(() => {});
+
+      // Next call: CB is OPEN, fallback handles it
+      const result = await orch.execute(async () => {
+        throw new Error("primary fail");
+      });
+
+      expect(result).toBe("fallback result");
+      const metrics = orch.getMetrics();
+      expect(metrics.fallback.successProvider).toBe("fallback");
+    });
+
+    it("should throw original error if no fallback providers registered", async () => {
+      const orch = new HardeningOrchestrator({
+        name: "no-fallback-test",
+        circuitBreakerFailureThreshold: 1,
+        timeoutMs: 5000,
+        maxRetries: 1,
+        rateLimiterRequestsPerSecond: 100,
+      });
+
+      // Trigger CB OPEN
+      await orch.execute(async () => {
+        throw new Error("primary fail");
+      }).catch(() => {});
+
+      // Next call should throw OPEN error, not wrapped
+      await expect(
+        orch.execute(async () => {
+          throw new Error("should not reach");
+        })
+      ).rejects.toThrow("OPEN");
+    });
+
+    it("should populate fallback metrics in getMetrics()", async () => {
+      const orch = new HardeningOrchestrator({
+        name: "metrics-fallback-test",
+        timeoutMs: 5000,
+        maxRetries: 1,
+        rateLimiterRequestsPerSecond: 100,
+      });
+
+      orch.addFallbackProvider("fb1", async () => "fb1", 1);
+      orch.addFallbackProvider("fb2", async () => "fb2", 2);
+
+      const metrics = orch.getMetrics();
+      expect(metrics.fallback).toBeDefined();
+      expect(metrics.fallback.hasProviders).toBe(true);
+      expect(metrics.fallback.providerStates).toBeDefined();
+      expect(Object.keys(metrics.fallback.providerStates)).toContain("fb1");
+      expect(Object.keys(metrics.fallback.providerStates)).toContain("fb2");
     });
   });
 

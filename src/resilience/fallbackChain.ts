@@ -4,9 +4,13 @@ export interface FallbackProvider {
   priority: number; // Lower = higher priority
 }
 
+export type FallbackProviderState = "CLOSED" | "OPEN" | "HALF_OPEN";
+
 export interface FallbackChainConfig {
   name?: string;
   breakOnSuccess?: boolean; // Stop after first success (default: true)
+  providerFailureThreshold?: number; // Consecutive failures before opening (default: 3)
+  providerResetTimeoutMs?: number; // Time before OPEN → HALF_OPEN (default: 30000ms)
 }
 
 export interface FallbackChainMetrics {
@@ -17,10 +21,19 @@ export interface FallbackChainMetrics {
   failures: Record<string, number>;
   lastError?: string;
   successProvider?: string;
+  providerStates: Record<string, FallbackProviderState>;
+  hasProviders: boolean;
+}
+
+interface ProviderStateInternal {
+  state: FallbackProviderState;
+  consecutiveFailures: number;
+  resetTimer: NodeJS.Timeout | null;
 }
 
 /**
- * Fallback chain: try providers in order.
+ * Fallback chain: try providers in order, with per-provider health state machine.
+ * States: CLOSED (eligible) → OPEN (failing, skip) → HALF_OPEN (test) → CLOSED
  * Default: Grok → OpenRouter → Ollama
  * Falls through to next on failure.
  */
@@ -28,6 +41,8 @@ export class FallbackChain {
   private providers: FallbackProvider[] = [];
   private readonly name: string;
   private readonly breakOnSuccess: boolean;
+  private readonly providerFailureThreshold: number;
+  private readonly providerResetTimeoutMs: number;
 
   private totalAttempts = 0;
   private attempts: Record<string, number> = {};
@@ -36,9 +51,13 @@ export class FallbackChain {
   private lastError?: string;
   private successProvider?: string;
 
+  private providerStates: Map<string, ProviderStateInternal> = new Map();
+
   constructor(config?: FallbackChainConfig) {
     this.name = config?.name ?? "FallbackChain";
     this.breakOnSuccess = config?.breakOnSuccess ?? true;
+    this.providerFailureThreshold = config?.providerFailureThreshold ?? 3;
+    this.providerResetTimeoutMs = config?.providerResetTimeoutMs ?? 30000;
   }
 
   addProvider(provider: FallbackProvider): void {
@@ -49,6 +68,13 @@ export class FallbackChain {
     this.attempts[provider.name] = 0;
     this.successes[provider.name] = 0;
     this.failures[provider.name] = 0;
+
+    // Initialize provider state
+    this.providerStates.set(provider.name, {
+      state: "CLOSED",
+      consecutiveFailures: 0,
+      resetTimer: null,
+    });
   }
 
   async execute<T>(): Promise<T> {
@@ -58,12 +84,32 @@ export class FallbackChain {
 
     let lastError: Error | undefined;
 
-    for (const provider of this.providers) {
+    // Filter to non-OPEN providers first (CLOSED + HALF_OPEN)
+    const eligibleProviders = this.providers.filter((p) => {
+      const state = this.providerStates.get(p.name);
+      return state?.state !== "OPEN";
+    });
+
+    // Fall through to all providers if everything is OPEN (last-resort fallback)
+    const providersToTry = eligibleProviders.length > 0 ? eligibleProviders : this.providers;
+
+    for (const provider of providersToTry) {
+      const providerState = this.providerStates.get(provider.name)!;
+
       this.totalAttempts++;
       this.attempts[provider.name]++;
 
       try {
         const result = await provider.execute<T>();
+
+        // Success: reset state and counter
+        providerState.state = "CLOSED";
+        providerState.consecutiveFailures = 0;
+        if (providerState.resetTimer) {
+          clearTimeout(providerState.resetTimer);
+          providerState.resetTimer = null;
+        }
+
         this.successes[provider.name]++;
         this.successProvider = provider.name;
         return result;
@@ -71,6 +117,36 @@ export class FallbackChain {
         lastError = error instanceof Error ? error : new Error(String(error));
         this.lastError = lastError.message;
         this.failures[provider.name]++;
+
+        // Update provider state on failure
+        providerState.consecutiveFailures++;
+
+        if (
+          providerState.state === "CLOSED" &&
+          providerState.consecutiveFailures >= this.providerFailureThreshold
+        ) {
+          // Transition CLOSED → OPEN
+          providerState.state = "OPEN";
+
+          // Schedule reset timer (OPEN → HALF_OPEN)
+          if (providerState.resetTimer) {
+            clearTimeout(providerState.resetTimer);
+          }
+          providerState.resetTimer = setTimeout(() => {
+            providerState.state = "HALF_OPEN";
+            providerState.resetTimer = null;
+          }, this.providerResetTimeoutMs);
+        } else if (providerState.state === "HALF_OPEN") {
+          // Failure in HALF_OPEN: back to OPEN, restart cooldown
+          providerState.state = "OPEN";
+          if (providerState.resetTimer) {
+            clearTimeout(providerState.resetTimer);
+          }
+          providerState.resetTimer = setTimeout(() => {
+            providerState.state = "HALF_OPEN";
+            providerState.resetTimer = null;
+          }, this.providerResetTimeoutMs);
+        }
       }
     }
 
@@ -80,7 +156,16 @@ export class FallbackChain {
     );
   }
 
+  hasProviders(): boolean {
+    return this.providers.length > 0;
+  }
+
   getMetrics(): FallbackChainMetrics {
+    const providerStates: Record<string, FallbackProviderState> = {};
+    for (const [name, state] of this.providerStates) {
+      providerStates[name] = state.state;
+    }
+
     return {
       name: this.name,
       totalAttempts: this.totalAttempts,
@@ -89,6 +174,8 @@ export class FallbackChain {
       failures: { ...this.failures },
       lastError: this.lastError,
       successProvider: this.successProvider,
+      providerStates,
+      hasProviders: this.hasProviders(),
     };
   }
 
@@ -101,6 +188,16 @@ export class FallbackChain {
     }
     this.lastError = undefined;
     this.successProvider = undefined;
+
+    // Reset per-provider state
+    for (const [, state] of this.providerStates) {
+      if (state.resetTimer) {
+        clearTimeout(state.resetTimer);
+      }
+      state.state = "CLOSED";
+      state.consecutiveFailures = 0;
+      state.resetTimer = null;
+    }
   }
 }
 

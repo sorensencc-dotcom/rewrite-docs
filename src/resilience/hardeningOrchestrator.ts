@@ -69,13 +69,29 @@ export class HardeningOrchestrator {
       throw new Error(`${this.name} rate limit exceeded`);
     }
 
-    // Step 2: Circuit breaker
-    return this.circuitBreaker.execute<T>(async () => {
-      // Step 3: Retry with timeout
-      return this.retryHandler.execute<T>(async () => {
-        return this.timeoutHandler.execute<T>(fn);
+    // Step 2: Circuit breaker (with fallback on failure)
+    try {
+      return await this.circuitBreaker.execute<T>(async () => {
+        // Step 3: Retry with timeout
+        return this.retryHandler.execute<T>(async () => {
+          return this.timeoutHandler.execute<T>(fn);
+        });
       });
-    });
+    } catch (primaryError) {
+      // Step 4: Attempt fallback chain if providers registered
+      if (!this.fallbackChain.hasProviders()) {
+        throw primaryError;
+      }
+
+      try {
+        return await this.fallbackChain.execute<T>();
+      } catch (fallbackError) {
+        throw new Error(
+          `${this.name} primary and all fallback providers failed: ${(fallbackError as Error).message}`,
+          { cause: primaryError }
+        );
+      }
+    }
   }
 
   /**

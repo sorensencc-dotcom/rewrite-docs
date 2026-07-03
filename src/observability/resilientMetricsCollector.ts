@@ -27,6 +27,12 @@ export interface ProviderMetrics {
     rejectionRate: number;
     requestsPerSecond: number;
   };
+  fallback: {
+    hasProviders: boolean;
+    providerStates: Record<string, string>;
+    totalAttempts: number;
+    successProvider?: string;
+  };
   performance: {
     totalRequests: number;
     successCount: number;
@@ -113,6 +119,9 @@ export class ResilientMetricsCollector {
         latencies.push(...providerLatencies);
       }
 
+      const fbMetrics = metrics.fallback;
+      const hasProviders = Object.keys(fbMetrics.providerStates || {}).length > 0;
+
       providerMetrics[providerName] = {
         name: providerName,
         state,
@@ -125,6 +134,12 @@ export class ResilientMetricsCollector {
           tokensAvailable: rlMetrics.tokensAvailable,
           rejectionRate: rlMetrics.rejection_rate,
           requestsPerSecond: rlMetrics.requestsPerSecond,
+        },
+        fallback: {
+          hasProviders,
+          providerStates: fbMetrics.providerStates || {},
+          totalAttempts: fbMetrics.totalAttempts || 0,
+          successProvider: fbMetrics.successProvider,
         },
         performance: {
           totalRequests: cbMetrics.totalRequests,
@@ -158,6 +173,11 @@ export class ResilientMetricsCollector {
             tokensAvailable: 0,
             rejectionRate: 0,
             requestsPerSecond: 0,
+          },
+          fallback: {
+            hasProviders: false,
+            providerStates: {},
+            totalAttempts: 0,
           },
           performance: {
             totalRequests: 0,
@@ -230,6 +250,31 @@ export class ResilientMetricsCollector {
 
     for (const [name, metrics] of Object.entries(snapshot.providers)) {
       lines.push(`resilience_avg_latency_ms{provider="${name}"} ${metrics.performance.avgLatencyMs}`);
+    }
+
+    lines.push("");
+    lines.push("# HELP resilience_fallback_provider_state Fallback provider state (0=CLOSED, 1=OPEN, 2=HALF_OPEN)");
+    lines.push("# TYPE resilience_fallback_provider_state gauge");
+
+    for (const [name, metrics] of Object.entries(snapshot.providers)) {
+      if (metrics.fallback.hasProviders) {
+        for (const [fbProviderName, fbState] of Object.entries(metrics.fallback.providerStates)) {
+          const stateValue = {
+            CLOSED: 0,
+            OPEN: 1,
+            HALF_OPEN: 2,
+          }[fbState] || 0;
+          lines.push(`resilience_fallback_provider_state{provider="${name}",fallback_provider="${fbProviderName}"} ${stateValue}`);
+        }
+      }
+    }
+
+    lines.push("");
+    lines.push("# HELP resilience_fallback_total_attempts Total fallback attempts per provider");
+    lines.push("# TYPE resilience_fallback_total_attempts gauge");
+
+    for (const [name, metrics] of Object.entries(snapshot.providers)) {
+      lines.push(`resilience_fallback_total_attempts{provider="${name}"} ${metrics.fallback.totalAttempts}`);
     }
 
     lines.push("");
