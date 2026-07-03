@@ -9,7 +9,7 @@ Core autonomous agent learning framework with deterministic governance.
 
 - [MAAL Architecture](../cic/PHASE-1_OVERVIEW.md)
 - [Governance Framework](../cic/GOVERNANCE.md)
-- [Memory & State](../cic/PHASE_1_LEDGER_SUBSTRATE.md)
+- [Memory & State](../cic/PHASE-1_LEDGER_SUBSTRATE.md)
 
 ### 🔹 Routing & Federation
 Model routing, fallback chains, and multi-vendor federation.
