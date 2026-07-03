@@ -1,0 +1,20 @@
+CIC_MASTER_ROADMAP.md
+  s_748e5ab68ae704::t_d2ac1cb267fdf9 104-108,127,129,134,136,141,143,148,150,155,157
+  s_748e5ab68ae704::t_f5adfa9b373faa 98,100,102,109,111,113,115-124,126,128,130-133,135,137-140,142,144-147,149,151-154,156,158-170
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "f7964272bb5aa0b531b3f696e1aa9b759c7ac27e",
+  "prompts": {},
+  "sessions": {
+    "s_748e5ab68ae704": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "17f1198e-3730-4433-8b16-f492ccb56939",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
