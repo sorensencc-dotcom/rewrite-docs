@@ -36,6 +36,11 @@ nav:
       - Quickstart: quickstart/index.md
       - Installation: quickstart/installation.md
       - First Steps: quickstart/first-steps.md
+  - Systems (Unified):
+      - Overview: systems/index.md
+  - Integration:
+      - Overview: integration/index.md
+      - CIC ↔ RL Cross-Reference: reference/cic-rl-cross-reference.md
   - Architecture:
       - Overview: architecture/overview.md
       - System Design: architecture/design.md
@@ -44,13 +49,27 @@ nav:
       - Local-First Routing: architecture/routing.md
       - Drift Classification: architecture/drift.md
       - Ingestion & Trace: architecture/ingestion.md
-  - Gateway:
-      - API & State Store: gateway/adapterGatewayAPI.md
-      - Providers Configuration: gateway/providers.md
-  - CIC Subsystems:
+  - CIC Documentation:
+      - Index: cic/index.md
+      - Governance: cic/GOVERNANCE.md
       - CodeFlow Harvester: cic/harvester.md
       - Drift Engine: cic/driftEngine.md
       - Replay Harness: cic/replayHarness.md
+      - Research Skill:
+          - Overview: cic/research-skill/SKILL.md
+          - Test Results:
+              - Iteration 1: cic/research-skill/test-results/iteration-1-grading.md
+              - Iteration 2: cic/research-skill/test-results/iteration-2-grading.md
+  - Rewrite Labs:
+      - Index: rewrite-labs/index.md
+      - Vault Mirror:
+          - Overview: rewrite-labs/vault-mirror/executive-summary.md
+          - Setup: rewrite-labs/vault-mirror/setup.md
+          - Configuration: rewrite-labs/vault-mirror/configuration.md
+          - RL Setup: rewrite-labs/vault-mirror/rl-setup.md
+  - Gateway:
+      - API & State Store: gateway/adapterGatewayAPI.md
+      - Providers Configuration: gateway/providers.md
   - Dashboard:
       - Operator Dashboard: dashboard/dashboard.md
   - Test Matrices:
@@ -78,22 +97,15 @@ nav:
       - Troubleshooting: operations/troubleshooting.md
   - Implementation:
       - Cloud Extension Layer: implementation/cloud-extension-layer.md
-  - CIC Documentation:
-      - Research Skill:
-          - Overview: cic/research-skill/SKILL.md
-          - Test Results:
-              - Iteration 1: cic/research-skill/test-results/iteration-1-grading.md
-              - Iteration 2: cic/research-skill/test-results/iteration-2-grading.md
-  - Rewrite Labs:
-      - Vault Mirror:
-          - Overview: rewrite-labs/vault-mirror/executive-summary.md
-          - Setup: rewrite-labs/vault-mirror/setup.md
-          - Configuration: rewrite-labs/vault-mirror/configuration.md
-          - RL Setup: rewrite-labs/vault-mirror/rl-setup.md
   - Knowledge Graph:
       - Overview: reference/knowledge-graph/README.md
       - Quick Start: reference/knowledge-graph/QUICK_START.md
       - Setup Guide: reference/knowledge-graph/SETUP_GUIDE.md
+  - Reference:
+      - Manifests: reference/manifests.md
+      - Schemas: reference/schemas.md
+      - Environment: reference/environment.md
+      - CLI Commands: reference/cli.md
   - Build Documentation:
       - 8-Items Complete: meta/8-items-complete.md
       - Build Progress: meta/build-progress.md
@@ -112,11 +124,6 @@ nav:
           - Phase 1 (Files Moved): meta/phase-1-execution.md
           - Phase 2 (Links Updated): meta/phase-2-completion.md
           - Phase 3 (Verification): meta/phase-3-completion.md
-  - Reference:
-      - Manifests: reference/manifests.md
-      - Schemas: reference/schemas.md
-      - Environment: reference/environment.md
-      - CLI Commands: reference/cli.md
 
 plugins:
   - search

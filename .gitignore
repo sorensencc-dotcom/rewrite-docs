@@ -57,9 +57,13 @@ build-audit.log
 # Nested Git Repos (workspace projects)
 CIP/
 charlie-deep-research/
-cic/
-cic-ingestion/
+/cic/
+/cic-ingestion/
 !cic-ingestion/src/drift/driftEngine.ts
+
+# Documentation directories (tracked)
+!/docs/cic/
+!/docs/rewrite-labs/
 !cic-ingestion/src/ingestion/jobs/docsManager*.ts
 !cic-ingestion/src/ingestion/daemon.ts
 !cic-ingestion/src/services/torquequery/TorqueQueryV2Server.py
