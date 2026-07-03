@@ -1,0 +1,35 @@
+roadmap-runner/ingestion-config.json
+  s_59a6189aff6d68::t_7f4b9252050c94 1-42
+roadmap-runner/visualize.js
+  s_59a6189aff6d68::t_c39de99cefd6c0 1-127
+.github/workflows/topology-check.yml
+  s_59a6189aff6d68::t_7b38194a949282 1-29
+scripts/validate-topology.js
+  s_59a6189aff6d68::t_86cdd5ffc9eaa3 1-73
+.gitignore
+  s_cb9cc0072317a2::t_98fd6d437cba6e 47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b26310a37511761b18d6c9fb167f535d0ff15764",
+  "prompts": {},
+  "sessions": {
+    "s_59a6189aff6d68": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "edef6066-d2cd-44a3-ba86-577911f77d0d",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_cb9cc0072317a2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b9e4418-e9b7-4f47-8b0a-fa70e19169d1",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
