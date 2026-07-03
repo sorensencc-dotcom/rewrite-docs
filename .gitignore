@@ -76,3 +76,19 @@ claude-configs/
 claude-skills/
 financeos/
 rewrite-mcp/
+
+# Cleanup 2026-07-03: build/test/scan artifacts
+snapshots/
+playwright-report/
+test-results/
+__pycache__/
+.venv/
+*.log
+docs-manager/docs-audit-report.json
+docs-manager/docs-drift-report.json
+gemini-scan-report.txt
+
+# Env files: examples only
+.env.*
+!.env.example
+!.env.*.example
