@@ -1,3 +1,13 @@
+---
+title: "README"
+summary: "# CIC Vault Knowledge Graph"
+created: "2026-07-03T19:43:46.076Z"
+updated: "2026-07-03T19:43:46.076Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC Vault Knowledge Graph
 
 A production-ready knowledge graph extraction and querying system for the CIC (Conversational Intelligence Core) vault documentation. Build queryable concepts, track dependencies, visualize relationships, and enable intelligent skill composition.

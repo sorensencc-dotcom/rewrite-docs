@@ -1,3 +1,13 @@
+---
+title: "QUICK START"
+summary: "# Knowledge Graph: Quick Start"
+created: "2026-07-03T19:43:46.071Z"
+updated: "2026-07-03T19:43:46.071Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Knowledge Graph: Quick Start
 
 Extract → Visualize → Query in 5 minutes.

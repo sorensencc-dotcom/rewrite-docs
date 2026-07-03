@@ -1,5 +1,12 @@
 ---
 title: dashboard tests
+summary: ""
+created: "2026-07-03T19:44:38.108Z"
+updated: "2026-07-03T19:44:38.108Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Dashboard & Console View Test Matrix

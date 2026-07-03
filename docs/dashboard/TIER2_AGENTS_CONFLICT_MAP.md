@@ -1,3 +1,13 @@
+---
+title: "TIER2 AGENTS CONFLICT MAP"
+summary: "# TIER 2 AGENTS PANEL — CONFLICT AVOIDANCE MAP **Date:** 2026-06-20 **Purpose:** Parallel execution without merge hell **Scope:** UI track (10 components + 2 hooks) + Backend track (WS server) **Status:** Locked — teams execute within these boundaries"
+created: "2026-07-03T19:43:45.703Z"
+updated: "2026-07-03T19:43:45.703Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # TIER 2 AGENTS PANEL — CONFLICT AVOIDANCE MAP
 **Date:** 2026-06-20  
 **Purpose:** Parallel execution without merge hell  

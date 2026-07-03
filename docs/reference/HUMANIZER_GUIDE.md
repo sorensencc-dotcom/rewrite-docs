@@ -1,3 +1,13 @@
+---
+title: "HUMANIZER GUIDE"
+summary: "# Humanizer PostProcessor - Operator Guide"
+created: "2026-07-03T19:43:46.053Z"
+updated: "2026-07-03T19:43:46.053Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Humanizer PostProcessor - Operator Guide
 
 ## Overview

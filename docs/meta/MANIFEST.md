@@ -1,3 +1,13 @@
+---
+title: "MANIFEST"
+summary: "# CIC & Rewrite Labs Vault Infrastructure - Complete Manifest"
+created: "2026-07-03T19:43:45.859Z"
+updated: "2026-07-03T19:43:45.859Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC & Rewrite Labs Vault Infrastructure - Complete Manifest
 
 **Date:** 2026-07-02  

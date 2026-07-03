@@ -1,3 +1,13 @@
+---
+title: "DRY RUN REPORT"
+summary: "# Reorganization Dry-Run Report **Generated:** 2026-07-02 **Status:** VALIDATED ✓"
+created: "2026-07-03T19:43:45.826Z"
+updated: "2026-07-03T19:43:45.826Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Reorganization Dry-Run Report
 **Generated:** 2026-07-02  
 **Status:** VALIDATED ✓

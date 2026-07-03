@@ -1,3 +1,13 @@
+---
+title: "CIC TOKEN PACK V2 0 FULL LIST"
+summary: "# CIC Design System v2.0 — Complete Token List **Date:** 2026-06-21 **Total Tokens:** 61 new + 79 existing = 140 complete system **Target File:** `rewrite-mcp/apps/operator-ui/css/tokens.css`"
+created: "2026-07-03T19:43:45.355Z"
+updated: "2026-07-03T19:43:45.355Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC Design System v2.0 — Complete Token List
 **Date:** 2026-06-21  
 **Total Tokens:** 61 new + 79 existing = 140 complete system  

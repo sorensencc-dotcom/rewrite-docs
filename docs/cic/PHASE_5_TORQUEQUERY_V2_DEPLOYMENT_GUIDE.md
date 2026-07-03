@@ -3,6 +3,13 @@ title: Phase 5 TorqueQuery v2 + Cloud Gateway Deployment Guide
 date: 2026-07-02
 version: 1.0.0
 status: Operator-Ready
+summary: ""
+created: "2026-07-03T19:44:37.780Z"
+updated: "2026-07-03T19:44:37.780Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Phase 5: TorqueQuery v2 + Unified Cloud Gateway Deployment

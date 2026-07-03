@@ -1,5 +1,12 @@
 ---
 title: snapshot layer
+summary: ""
+created: "2026-07-03T19:44:37.607Z"
+updated: "2026-07-03T19:44:37.607Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Snapshot Layer API

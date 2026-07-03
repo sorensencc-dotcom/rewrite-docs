@@ -1,3 +1,13 @@
+---
+title: "DOCKER COMPOSE BUILD PATHS"
+summary: "# Docker-Compose Build Paths Reference"
+created: "2026-07-03T19:43:46.026Z"
+updated: "2026-07-03T19:43:46.026Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Docker-Compose Build Paths Reference
 
 ## Phase 5e v1 — 10 Core Services

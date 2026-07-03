@@ -1,5 +1,12 @@
 ---
 title: drift
+summary: ""
+created: "2026-07-03T19:44:37.617Z"
+updated: "2026-07-03T19:44:37.617Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Drift Classification Models

@@ -1,3 +1,13 @@
+---
+title: "WS B C SCAFFOLD"
+summary: "# Workstream B & C Scaffolds"
+created: "2026-07-03T19:43:45.672Z"
+updated: "2026-07-03T19:43:45.672Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Workstream B & C Scaffolds
 
 M2 execution framework with skeleton implementations for WS-B and WS-C.

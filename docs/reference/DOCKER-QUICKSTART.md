@@ -1,3 +1,13 @@
+---
+title: "DOCKER QUICKSTART"
+summary: "# CIC Docker — Quick Reference"
+created: "2026-07-03T19:43:46.029Z"
+updated: "2026-07-03T19:43:46.029Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC Docker — Quick Reference
 
 ## One-Minute Start

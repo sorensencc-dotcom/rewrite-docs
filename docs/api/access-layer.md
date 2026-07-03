@@ -1,5 +1,12 @@
 ---
 title: access layer
+summary: ""
+created: "2026-07-03T19:44:37.584Z"
+updated: "2026-07-03T19:44:37.586Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Access Layer API

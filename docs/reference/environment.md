@@ -1,5 +1,12 @@
 ---
 title: environment
+summary: ""
+created: "2026-07-03T19:44:38.082Z"
+updated: "2026-07-03T19:44:38.082Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Environment Configuration

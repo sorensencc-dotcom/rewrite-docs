@@ -1,3 +1,13 @@
+---
+title: "Repo Cleanup REVIEW"
+summary: "# Review: repo-cleanup session work (backups, key checklist, fds removal, cleanup plan)"
+created: "2026-07-03T19:43:45.902Z"
+updated: "2026-07-03T19:43:45.902Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Review: repo-cleanup session work (backups, key checklist, fds removal, cleanup plan)
 
 Reviewed: 2026-07-03T00:55:00-04:00

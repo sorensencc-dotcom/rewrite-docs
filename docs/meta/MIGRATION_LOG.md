@@ -1,3 +1,13 @@
+---
+title: "MIGRATION LOG"
+summary: "# PC Migration Log: Old Machine (soren) → New Machine (THE_FOREMAN / ccsor)"
+created: "2026-07-03T19:43:45.865Z"
+updated: "2026-07-03T19:43:45.865Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # PC Migration Log: Old Machine (soren) → New Machine (THE_FOREMAN / ccsor)
 
 **Date:** 2026-06-10 | **Status:** In Progress (pending SSH/gh auth on new machine)

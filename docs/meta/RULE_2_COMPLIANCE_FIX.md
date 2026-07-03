@@ -1,3 +1,13 @@
+---
+title: "RULE 2 COMPLIANCE FIX"
+summary: "# RULE 2 Compliance Fix — kb-sync-nightly Skill"
+created: "2026-07-03T19:43:45.937Z"
+updated: "2026-07-03T19:43:45.937Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # RULE 2 Compliance Fix — kb-sync-nightly Skill
 
 **Date:** 2026-07-02  

@@ -1,5 +1,12 @@
 ---
 title: index
+summary: ""
+created: "2026-07-03T19:44:37.637Z"
+updated: "2026-07-03T19:44:37.637Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Batch Catalog
@@ -141,7 +148,7 @@ Components:
 
 ## Master Manifest
 
-See [BATCHES_MANIFEST.json](../../BATCHES_MANIFEST.json) for:
+See `BATCHES_MANIFEST.json` for:
 - All 40 batch definitions
 - All 25 layer paths
 - Execution order

@@ -1,3 +1,13 @@
+---
+title: "PHASE 5C REMOVAL PLAN"
+summary: "# Phase 5c Removal Execution Plan"
+created: "2026-07-03T19:43:45.545Z"
+updated: "2026-07-03T19:43:45.545Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Phase 5c Removal Execution Plan
 
 **Date:** 2026-06-19  

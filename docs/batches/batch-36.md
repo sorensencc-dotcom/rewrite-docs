@@ -1,5 +1,12 @@
 ---
 title: batch 36
+summary: ""
+created: "2026-07-03T19:44:37.630Z"
+updated: "2026-07-03T19:44:37.630Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Batch 36: Deterministic Access Layer

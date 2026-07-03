@@ -1,3 +1,13 @@
+---
+title: "GOVERNANCE VALIDATION SETUP"
+summary: "# Governance Validation Setup Guide"
+created: "2026-07-03T19:43:45.838Z"
+updated: "2026-07-03T19:43:45.838Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Governance Validation Setup Guide
 
 **Date:** 2026-07-02  

@@ -1,3 +1,13 @@
+---
+title: "PHASE4 SPEC LOCKED"
+summary: "# Phase 4 Specification LOCKED ## v0.4.0-maal-codesign-canary-foundation"
+created: "2026-07-03T19:43:45.467Z"
+updated: "2026-07-03T19:43:45.467Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Phase 4 Specification LOCKED
 ## v0.4.0-maal-codesign-canary-foundation
 

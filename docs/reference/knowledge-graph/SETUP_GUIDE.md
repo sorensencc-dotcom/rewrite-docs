@@ -1,3 +1,13 @@
+---
+title: "SETUP GUIDE"
+summary: "# Knowledge Graph Setup & Integration Guide"
+created: "2026-07-03T19:43:46.080Z"
+updated: "2026-07-03T19:43:46.080Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Knowledge Graph Setup & Integration Guide
 
 Quick start for extracting, querying, and visualizing your CIC vault knowledge graph.

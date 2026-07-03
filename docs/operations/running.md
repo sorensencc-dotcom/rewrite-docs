@@ -1,5 +1,12 @@
 ---
 title: running
+summary: ""
+created: "2026-07-03T19:44:38.055Z"
+updated: "2026-07-03T19:44:38.055Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Running the System

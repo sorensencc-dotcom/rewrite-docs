@@ -1,3 +1,13 @@
+---
+title: "PHASE 23 6 MEMORY EXPLORER UI"
+summary: "# Phase 23.6: Memory Explorer Web UI"
+created: "2026-07-03T19:43:45.413Z"
+updated: "2026-07-03T19:43:45.413Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Phase 23.6: Memory Explorer Web UI
 
 **Status:** Roadmap  

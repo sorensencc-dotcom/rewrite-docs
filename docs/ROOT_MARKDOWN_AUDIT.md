@@ -1,3 +1,13 @@
+---
+title: "ROOT MARKDOWN AUDIT"
+summary: "# Root-Level Markdown Audit — Files to Relocate"
+created: "2026-07-03T19:43:46.147Z"
+updated: "2026-07-03T19:43:46.147Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Root-Level Markdown Audit — Files to Relocate
 
 **Audit date:** 2026-07-01  

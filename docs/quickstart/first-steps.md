@@ -1,5 +1,12 @@
 ---
 title: first steps
+summary: ""
+created: "2026-07-03T19:44:38.062Z"
+updated: "2026-07-03T19:44:38.062Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # First Steps

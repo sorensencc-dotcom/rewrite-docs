@@ -1,3 +1,13 @@
+---
+title: "PHASE 30 MVP SPEC"
+summary: "# PHASE 30 — CAUSAL ENGINE (MVP FULL DROP-IN) ## Complete implementation skeleton + tests + API + rules + counterfactuals"
+created: "2026-07-03T19:43:45.442Z"
+updated: "2026-07-03T19:43:45.442Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # PHASE 30 — CAUSAL ENGINE (MVP FULL DROP-IN)
 ## Complete implementation skeleton + tests + API + rules + counterfactuals
 

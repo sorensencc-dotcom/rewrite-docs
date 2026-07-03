@@ -1,3 +1,13 @@
+---
+title: "00 RL INDEX"
+summary: "# CIC & Rewrite Labs Integrated Reference Vault"
+created: "2026-07-03T19:43:46.103Z"
+updated: "2026-07-03T19:43:46.103Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC & Rewrite Labs Integrated Reference Vault
 
 **Dual-system read-only reference layer.** Source of truth: OneDrive/Drive living docs for both CIC and RL.

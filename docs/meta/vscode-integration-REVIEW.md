@@ -1,3 +1,13 @@
+---
+title: "Vscode Integration REVIEW"
+summary: "# Review: CIC ↔ VS Code Integration Layer"
+created: "2026-07-03T19:43:45.949Z"
+updated: "2026-07-03T19:43:45.949Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Review: CIC ↔ VS Code Integration Layer
 
 **Reviewed:** 2026-06-14T03:45:00Z  

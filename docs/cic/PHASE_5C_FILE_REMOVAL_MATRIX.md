@@ -1,3 +1,13 @@
+---
+title: "PHASE 5C FILE REMOVAL MATRIX"
+summary: "# Phase 5c File Removal Matrix"
+created: "2026-07-03T19:43:45.530Z"
+updated: "2026-07-03T19:43:45.530Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Phase 5c File Removal Matrix
 
 **Purpose:** Complete list of files/directories to remove during Phase 5c deprecation  

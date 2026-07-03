@@ -1,3 +1,13 @@
+---
+title: "PHASE 8 SPEC"
+summary: "# Phase 8: Cost Optimization + Dynamic Model Selection"
+created: "2026-07-03T19:43:45.557Z"
+updated: "2026-07-03T19:43:45.557Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Phase 8: Cost Optimization + Dynamic Model Selection
 
 **Status:** Spec locked (2026-06-23)  

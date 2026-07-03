@@ -1,3 +1,13 @@
+---
+title: "MKDOCS STRUCTURE MAP"
+summary: "# MkDocs Structure Map — Documentation Organization"
+created: "2026-07-03T19:43:45.958Z"
+updated: "2026-07-03T19:43:45.958Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # MkDocs Structure Map — Documentation Organization
 
 **Last updated:** 2026-07-01  

@@ -1,3 +1,13 @@
+---
+title: "Skill Location Governance"
+summary: "# Skill-Location Governance (Phase 2)"
+created: "2026-07-03T19:43:46.100Z"
+updated: "2026-07-03T19:43:46.100Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Skill-Location Governance (Phase 2)
 
 **Policy:** All skills must live in `C:\dev\toolforge\skills\{skill-name}/`

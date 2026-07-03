@@ -1,5 +1,12 @@
 ---
 title: overview
+summary: ""
+created: "2026-07-03T19:44:37.626Z"
+updated: "2026-07-03T19:44:37.626Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Architecture Overview

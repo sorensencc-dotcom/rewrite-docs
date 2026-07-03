@@ -1,3 +1,13 @@
+---
+title: "TORQUEQUERY EXECUTIVE SUMMARY"
+summary: "# TorqueQuery: Executive Summary"
+created: "2026-07-03T19:43:45.649Z"
+updated: "2026-07-03T19:43:45.649Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # TorqueQuery: Executive Summary
 
 **Project:** CIC Substrate Service + TorqueQuery MCP Server  

@@ -1,3 +1,13 @@
+---
+title: "CANARY PHASE A PROD DEPLOYMENT CHECKLIST"
+summary: "# Phase A Production Deployment (Option 2)"
+created: "2026-07-03T19:43:45.339Z"
+updated: "2026-07-03T19:43:45.339Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Phase A Production Deployment (Option 2)
 
 **Goal**: Run actual Phase A on production infrastructure (10% TorqueQuery v2 traffic, 1h, real monitoring)

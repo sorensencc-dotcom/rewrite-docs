@@ -1,3 +1,13 @@
+---
+title: "00 INDEX"
+summary: "# CIC & Rewrite Labs Reference"
+created: "2026-07-03T19:43:45.773Z"
+updated: "2026-07-03T19:43:45.773Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC & Rewrite Labs Reference
 
 **Read-only reference layer.** Source of truth: OneDrive/Drive living docs.

@@ -1,3 +1,13 @@
+---
+title: "PHASE 5C DEPRECATION INVENTORY"
+summary: "# Phase 5c Deprecation Inventory: Memory-Spine Service & Operator-UI Clones"
+created: "2026-07-03T19:43:45.527Z"
+updated: "2026-07-03T19:43:45.527Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Phase 5c Deprecation Inventory: Memory-Spine Service & Operator-UI Clones
 
 **Phase:** 5c (Repo Sweep — Consolidation Prep)  

@@ -1,3 +1,13 @@
+---
+title: "DOCKER"
+summary: "# CIC Docker Setup"
+created: "2026-07-03T19:43:46.036Z"
+updated: "2026-07-03T19:43:46.036Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC Docker Setup
 
 Deterministic Docker build infrastructure for CIC. All scripts are idempotent, safe, and tested.

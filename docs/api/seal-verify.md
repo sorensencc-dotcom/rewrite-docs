@@ -1,5 +1,12 @@
 ---
 title: seal verify
+summary: ""
+created: "2026-07-03T19:44:37.604Z"
+updated: "2026-07-03T19:44:37.604Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Seal & Verify API

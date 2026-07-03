@@ -1,5 +1,12 @@
 ---
 title: verification
+summary: ""
+created: "2026-07-03T19:44:38.061Z"
+updated: "2026-07-03T19:44:38.061Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Verification

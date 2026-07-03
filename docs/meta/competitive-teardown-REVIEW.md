@@ -1,3 +1,13 @@
+---
+title: "Competitive Teardown REVIEW"
+summary: "# Review: Competitive Teardown — Repaint vs Rewrite Labs"
+created: "2026-07-03T19:43:45.815Z"
+updated: "2026-07-03T19:43:45.815Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Review: Competitive Teardown — Repaint vs Rewrite Labs
 
 Reviewed: 2026-06-13T00:00:00Z

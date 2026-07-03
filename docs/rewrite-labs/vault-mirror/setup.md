@@ -1,3 +1,13 @@
+---
+title: "Setup"
+summary: "# Vault Implementation Setup Instructions"
+created: "2026-07-03T19:43:46.136Z"
+updated: "2026-07-03T19:43:46.136Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Vault Implementation Setup Instructions
 
 ## Status: Ready to Deploy

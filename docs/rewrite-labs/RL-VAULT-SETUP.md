@@ -1,3 +1,13 @@
+---
+title: "RL VAULT SETUP"
+summary: "# Rewrite Labs Reference Vault Setup"
+created: "2026-07-03T19:43:46.116Z"
+updated: "2026-07-03T19:43:46.116Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Rewrite Labs Reference Vault Setup
 
 ## Status: Ready for RL Documentation Sync

@@ -1,3 +1,13 @@
+---
+title: "SETUP CHECKLIST"
+summary: "# Vault Mirror Setup - Master Checklist"
+created: "2026-07-03T19:43:46.096Z"
+updated: "2026-07-03T19:43:46.096Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Vault Mirror Setup - Master Checklist
 
 **Rewrite Labs Vault Infrastructure**  

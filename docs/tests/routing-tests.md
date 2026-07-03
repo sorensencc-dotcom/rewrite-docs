@@ -1,5 +1,12 @@
 ---
 title: routing tests
+summary: ""
+created: "2026-07-03T19:44:38.113Z"
+updated: "2026-07-03T19:44:38.113Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Routing Test Matrix

@@ -1,5 +1,12 @@
 ---
 title: batches 1 35
+summary: ""
+created: "2026-07-03T19:44:37.635Z"
+updated: "2026-07-03T19:44:37.635Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Batches 1-35: Foundation & Prior Phases

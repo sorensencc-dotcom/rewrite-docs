@@ -1,5 +1,12 @@
 ---
 title: ingestion
+summary: ""
+created: "2026-07-03T19:44:37.624Z"
+updated: "2026-07-03T19:44:37.624Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Multi-Pipeline Ingestion & Ingestion Trace

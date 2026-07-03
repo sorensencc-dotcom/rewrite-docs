@@ -1,3 +1,13 @@
+---
+title: "AGENTS API"
+summary: "# Agents API Reference"
+created: "2026-07-03T19:43:45.999Z"
+updated: "2026-07-03T19:43:45.999Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Agents API Reference
 
 Agents API runs on port **3118** by default. Provides agent lifecycle management, monitoring, and execution tracking.

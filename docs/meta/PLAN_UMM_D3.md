@@ -1,3 +1,13 @@
+---
+title: "PLAN UMM D3"
+summary: "# UNIFIED MEMORY MODEL (UMM) — D3 EXECUTION PLAN"
+created: "2026-07-03T19:43:45.889Z"
+updated: "2026-07-03T19:43:45.889Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # UNIFIED MEMORY MODEL (UMM) — D3 EXECUTION PLAN
 
 **Status:** Phase planning locked  

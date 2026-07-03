@@ -1,3 +1,13 @@
+---
+title: "Work Summarizer Implementation Guide"
+summary: "# Work Summarizer v2 Upgrade — Implementation Guide (Stages 3–8)"
+created: "2026-07-03T19:43:45.953Z"
+updated: "2026-07-03T19:43:45.953Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Work Summarizer v2 Upgrade — Implementation Guide (Stages 3–8)
 
 **Target audience:** Builder agent or developer implementing Stages 3–8

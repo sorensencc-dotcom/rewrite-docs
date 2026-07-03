@@ -1,5 +1,12 @@
 ---
 title: troubleshooting
+summary: ""
+created: "2026-07-03T19:44:38.058Z"
+updated: "2026-07-03T19:44:38.058Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Troubleshooting

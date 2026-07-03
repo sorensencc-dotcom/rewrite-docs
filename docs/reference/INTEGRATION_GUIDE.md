@@ -1,3 +1,13 @@
+---
+title: "INTEGRATION GUIDE"
+summary: "# CIC v3.0 Integration Guide"
+created: "2026-07-03T19:43:46.065Z"
+updated: "2026-07-03T19:43:46.065Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC v3.0 Integration Guide
 
 **Date:** 2026-06-13  

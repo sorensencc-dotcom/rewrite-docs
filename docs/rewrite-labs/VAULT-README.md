@@ -1,3 +1,13 @@
+---
+title: "VAULT README"
+summary: "# Obsidian Vault Setup"
+created: "2026-07-03T19:43:46.141Z"
+updated: "2026-07-03T19:43:46.141Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Obsidian Vault Setup
 
 ## Architecture

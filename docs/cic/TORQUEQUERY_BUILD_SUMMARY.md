@@ -1,3 +1,13 @@
+---
+title: "TORQUEQUERY BUILD SUMMARY"
+summary: "# TorqueQuery Build Summary"
+created: "2026-07-03T19:43:45.643Z"
+updated: "2026-07-03T19:43:45.643Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # TorqueQuery Build Summary
 
 **Date:** 2026-06-24  

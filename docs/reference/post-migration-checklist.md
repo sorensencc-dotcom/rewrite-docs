@@ -1,3 +1,13 @@
+---
+title: "Post Migration Checklist"
+summary: "# Post-Migration Verification Checklist"
+created: "2026-07-03T19:43:46.088Z"
+updated: "2026-07-03T19:43:46.088Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Post-Migration Verification Checklist
 
 **Purpose:** Comprehensive validation after 8-Item Reorganization  

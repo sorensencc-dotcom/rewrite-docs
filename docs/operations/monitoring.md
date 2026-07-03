@@ -1,5 +1,12 @@
 ---
 title: monitoring
+summary: ""
+created: "2026-07-03T19:44:38.052Z"
+updated: "2026-07-03T19:44:38.052Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Monitoring

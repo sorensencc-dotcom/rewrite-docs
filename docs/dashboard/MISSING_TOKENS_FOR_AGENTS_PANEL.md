@@ -1,3 +1,13 @@
+---
+title: "MISSING TOKENS FOR AGENTS PANEL"
+summary: "# Missing Design System Tokens — Agents Panel (Phase 1.5) **Date:** 2026-06-21 **Target:** CIC Design System v1.2.0 **Scope:** Add 28 missing tokens required for Tier-1 compliance"
+created: "2026-07-03T19:43:45.695Z"
+updated: "2026-07-03T19:43:45.695Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Missing Design System Tokens — Agents Panel (Phase 1.5)
 **Date:** 2026-06-21  
 **Target:** CIC Design System v1.2.0  

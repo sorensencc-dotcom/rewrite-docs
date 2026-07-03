@@ -1,5 +1,12 @@
 ---
 title: batch 40
+summary: ""
+created: "2026-07-03T19:44:37.634Z"
+updated: "2026-07-03T19:44:37.634Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Batch 40: Final Deterministic Seal

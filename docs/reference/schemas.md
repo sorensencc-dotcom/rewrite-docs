@@ -1,5 +1,12 @@
 ---
 title: schemas
+summary: ""
+created: "2026-07-03T19:44:38.096Z"
+updated: "2026-07-03T19:44:38.096Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Schemas

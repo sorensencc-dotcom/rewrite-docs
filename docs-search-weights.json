@@ -1,0 +1,998 @@
+[
+  {
+    "path": "docs/00-EIGHT-ITEM-BUILD-PLAN.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/api/access-layer.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/api/federation-layer.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/api/overview.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/api/seal-verify.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/api/snapshot-layer.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/architecture/data-flow.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/architecture/design.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/architecture/deterministic-stack.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/architecture/drift.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/architecture/ingestion.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/architecture/overview.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/architecture/routing.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/batches/batch-36.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/batches/batch-37.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/batches/batch-39.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/batches/batch-40.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/batches/batches-1-35.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/batches/index.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/CANARY_GATES.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/CANARY_PHASE_A_DEPLOYMENT.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/CANARY_PHASE_A_PROD_DEPLOYMENT_CHECKLIST.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/cic_maal_audit_overview.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/CIC_RUNTIME_OBSERVABILITY_PLAN.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/CIC_TOKEN_PACK_v2_0_COMPONENT_PATCHES.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/CIC_TOKEN_PACK_v2_0_FULL_LIST.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/CIC_TOKEN_PACK_v2_0_IMPLEMENTATION_GUIDE.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/driftEngine.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/EXECUTION-POLICY-PHASE-A-B-SUMMARY.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/EXECUTION-STATUS.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/GOVERNANCE.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/harvester.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/KB_INTEGRATION_SUMMARY.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/MEMORY_V1_STAGING_ACTIVATION.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/P1_IMPLEMENTATION_COMPLETE.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/PHASE-1-EXECUTION-LOG.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-1_ARCHITECTURE.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-1_BRIDGE_ORCHESTRATOR.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-1_FILE_CONTRACT.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-1_IMPLEMENTATION_ORDER.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-1_LEDGER_SUBSTRATE.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-1_MAAL_CORE.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-1_OVERVIEW.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-1_TESTING.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-2-COMPLETION-LOG.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-23-6-MEMORY-EXPLORER-UI.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-28a-SCP-COMPLETION.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-2_ACTION_SPACE.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-2_ARCHITECTURE.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-2_EPISODE_TRAJECTORY.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-2_INTEGRATION.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-2_OVERVIEW.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-2_POLICY_LEARNER.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-2_REWARD_FUNCTION.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-2_SIMULATION_ENGINE.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-2_STATE_SPACE.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-2_TESTING.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-2_TRAINING_LOOP.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-3-6-SETUP-COMPLETE.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-3-COMPLETION-LOG.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-30-MVP-SPEC-REVIEW.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-30-MVP-SPEC.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-5a-COMMIT-SUMMARY.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-5a-EXECUTIVE-SUMMARY.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-5a-QUICK-START.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-5a-VERIFICATION.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE-5E-V1-SERVICE-LOCATIONS.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE27_3_EXECUTION_PLAN.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE27_3_PR_CHECKLIST.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE4-SPEC-LOCKED.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE6-IMPLEMENTATION-SUMMARY.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_27_4_DISPATCH.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_27_4_SKELETON_SUMMARY.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_27_FILES_GENERATED.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_27_STEP3_COMPLETE.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_2_COMPLETION.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_2_ROLLOUT.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_2_STATUS.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_3_COMPLETION.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_4_MIGRATION_STATUS.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_4_SCAFFOLDING_COMPLETE.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_5B_IMPLEMENTATION_SUMMARY.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_5B_VERIFICATION_REPORT.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_5C_DEPRECATION_INVENTORY.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_5C_FILE_REMOVAL_MATRIX.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_5C_PHASE_B_COMPLETION.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_5C_REMOVAL_PLAN.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_5E_EXECUTION_SUMMARY.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_5_CANARY_ROLLOUT_PLAN.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_5_TOKEN_ROI_ANALYSIS.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_5_TORQUEQUERY_V2_DEPLOYMENT_GUIDE.md",
+    "weight": 1.7000000000000002
+  },
+  {
+    "path": "docs/cic/PHASE_8_SPEC.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_8_TEST_MATRICES.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_A_OPTIMIZATION_SUMMARY.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_B_HARDENING_SUMMARY.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PHASE_C_INTEGRATION_SUMMARY.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/PROMETHEUS_INTEGRATION_STATUS.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/replayHarness.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/research-skill/SKILL.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/research-skill/test-results/iteration-1-grading.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/research-skill/test-results/iteration-2-grading.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3-PHASES-1-7-COMPLETE.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/SANDBOX-3-PROGRESS.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_ALERTING.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_ARCHITECTURE.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_DEPLOYMENT.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_DETERMINISM.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_FIRECRACKER.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_FIRECRACKER_NODEPOOL.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_HARNESS_V3.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_INCIDENT_RESPONSE.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_K8S.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_LATENCY.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_MAAL_INTEGRATION.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_MONITORING.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_NETWORK_TRACE.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_ONNX_SIDECAR.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_OVERVIEW.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_REPRODUCIBILITY.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_ROUTING_V3.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_RUNTIME.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_STABILITY_V3.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_SYSCALL_TRACE.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_TRACING.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_VM_SNAPSHOTTING.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/TOKEN_AUDIT_REPORT.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/TOKEN_COVERAGE_MATRIX.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/cic/TOKEN_COVERAGE_MATRIX_PHASE_ROADMAP.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/cic/TORQUEQUERY_BUILD_SUMMARY.md",
+    "weight": 1.4
+  },
+  {
+    "path": "docs/cic/TORQUEQUERY_DELIVERY_CHECKLIST.md",
+    "weight": 1.4
+  },
+  {
+    "path": "docs/cic/TORQUEQUERY_EXECUTIVE_SUMMARY.md",
+    "weight": 1.4
+  },
+  {
+    "path": "docs/cic/TORQUEQUERY_INDEX.md",
+    "weight": 1.4
+  },
+  {
+    "path": "docs/cic/TORQUEQUERY_MCP_REFERENCE.md",
+    "weight": 1.4
+  },
+  {
+    "path": "docs/cic/TORQUEQUERY_QUICKSTART.md",
+    "weight": 1.4
+  },
+  {
+    "path": "docs/cic/WS-B-C-SCAFFOLD.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/dashboard/8-ITEM-PROGRESS.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/dashboard/8-ITEMS-COMPLETE-FINAL.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/dashboard/COMMAND-CENTER-PRIORITY-MATRIX.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/dashboard/DARK_MODE_COMPLETION_REPORT.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/dashboard/DARK_MODE_V2_IMPLEMENTATION.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/dashboard/dashboard.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/dashboard/FINAL-STATUS-8-ITEMS.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/dashboard/MISSING_TOKENS_FOR_AGENTS_PANEL.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/dashboard/MISSING_TOKENS_FOR_AGENTS_PANEL_PHASE_PROGRESS.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/dashboard/TIER2_AGENTS_CONFLICT_MAP.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/gateway/adapterGatewayAPI.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/gateway/providers.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/implementation/cloud-extension-layer.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/implementation/phase-26/architecture-decision-log.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/implementation/phase-26/deployment-checklist.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/implementation/phase-26/summary.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/implementation/phase-26/test-verification-report.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/index.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/ITEM-2-OBSERVABILITY-DASHBOARD-SPEC.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/ITEM-3-VAULT-EXTRACTION-SYSTEM-MAP.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/ITEM-5-SKILL-GENERATOR.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/ITEM-6-KNOWLEDGE-GRAPH.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/ITEM-7-MEMORY-GOVERNANCE-FRAMEWORK.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/ITEM-8-AUDIT-TRAIL.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/00-EXECUTIVE-SUMMARY.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/00-INDEX.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/2026-06-27.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/8-items-complete.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/ARTIFACTS-SUMMARY.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/build-executor-REVIEW.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/build-progress.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/BUILD-SUMMARY.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/CLOUD_EXTENSION_IMPLEMENTATION_SUMMARY.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/competitive-teardown-REVIEW.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/cross-reference-audit.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/DELIVERABLES-SUMMARY.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/DRY-RUN-REPORT.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/final-status.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/GIT-REMEDIATION-REVIEW.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/GIT-REVIEW.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/GOVERNANCE_VALIDATION_SETUP.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/implementation_plan.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/KB_SYNC_IMPLEMENTATION_COMPLETE.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/MANIFEST.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/MIGRATION_LOG.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/phase-1-execution.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/meta/phase-2-completion.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/meta/phase-3-completion.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/meta/PLAN.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/PLAN_PHASE_6.md",
+    "weight": 1.3
+  },
+  {
+    "path": "docs/meta/PLAN_UMM_D3.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/PROJECT.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/REORGANIZATION-PLAN.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/reorganization.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/repo-cleanup-REVIEW.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/REPOSITORY_GOVERNANCE_AUDIT.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/REVIEW-28a2.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/REVIEW-28a5.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/REVIEW.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/RULE_2_COMPLIANCE_FIX.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/SYNC_ANALYSIS.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/TEMPLATE-EXPANSION-REVIEW.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/TEST.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/vscode-integration-REVIEW.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/meta/work-summarizer-implementation-guide.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/MKDOCS_STRUCTURE_MAP.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/observability/DASHBOARDS_INTEGRATION.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/operations/monitoring.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/operations/running.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/operations/sealing.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/operations/troubleshooting.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/operations/verification.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/quickstart/first-steps.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/quickstart/index.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/quickstart/installation.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/AGENTS_API.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/CIC_ENV_REFERENCE.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/cli.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/DEPLOYMENT.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/DEPLOYMENT_FIXES_COMPLETED.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/DEPLOY_PLAN_UNDEPLOYED_SYSTEMS.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/DEPLOY_SUMMARY.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/determinism-validation-checklist.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/DOCKER-BUILD-SUMMARY.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/DOCKER-COMPOSE-BUILD-PATHS.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/DOCKER-QUICKSTART.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/DOCKER-UPDATED.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/DOCKER.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/environment.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/GITHUB-ACTIONS-PROCESS.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/HUMANIZER_GUIDE.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/IMPLEMENTATION-SETUP.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/INTEGRATION_GUIDE.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/knowledge-graph/QUICK_START.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/knowledge-graph/README.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/knowledge-graph/SETUP_GUIDE.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/manifests.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/post-migration-checklist.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/QUICK-REFERENCE.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/schemas.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/SETUP-CHECKLIST.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/reference/skill-location-governance.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/rewrite-labs/00-RL-INDEX.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/rewrite-labs/RL-VAULT-SETUP.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/rewrite-labs/vault-mirror/configuration.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/rewrite-labs/vault-mirror/executive-summary.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/rewrite-labs/vault-mirror/rl-setup.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/rewrite-labs/vault-mirror/setup.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/rewrite-labs/VAULT-README.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/rewrite-labs/VAULT-SYNC-CONFIGURATION.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/ROOT_MARKDOWN_AUDIT.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/tests/dashboard-tests.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/tests/feedback-loop-tests.md",
+    "weight": 1
+  },
+  {
+    "path": "docs/tests/routing-tests.md",
+    "weight": 1
+  }
+]

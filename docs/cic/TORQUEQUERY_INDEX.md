@@ -1,3 +1,13 @@
+---
+title: "TORQUEQUERY INDEX"
+summary: "# TorqueQuery Delivery Index"
+created: "2026-07-03T19:43:45.661Z"
+updated: "2026-07-03T19:43:45.661Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # TorqueQuery Delivery Index
 
 Complete handoff documentation for CIC Substrate Service + TorqueQuery MCP server.

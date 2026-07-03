@@ -1,5 +1,12 @@
 ---
 title: feedback loop tests
+summary: ""
+created: "2026-07-03T19:44:38.110Z"
+updated: "2026-07-03T19:44:38.110Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Feedback Loop & Playbook Test Matrix

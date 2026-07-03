@@ -1,3 +1,13 @@
+---
+title: "CIC ENV REFERENCE"
+summary: "# CIC Cost & Usage System — Environment Variables"
+created: "2026-07-03T19:43:46.002Z"
+updated: "2026-07-03T19:43:46.002Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC Cost & Usage System — Environment Variables
 
 Reference for operators configuring cost tracking, reporting, and alerts.

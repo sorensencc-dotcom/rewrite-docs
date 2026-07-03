@@ -1,3 +1,13 @@
+---
+title: "PHASE 5a QUICK START"
+summary: "# Phase 5a — Quick Start Guide"
+created: "2026-07-03T19:43:45.452Z"
+updated: "2026-07-03T19:43:45.452Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Phase 5a — Quick Start Guide
 
 ## Start Planning Console v3

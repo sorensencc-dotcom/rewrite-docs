@@ -1,3 +1,13 @@
+---
+title: "PHASE27 3 PR CHECKLIST"
+summary: "# PHASE 27.3 — PR MERGE CHECKLIST **Feature:** Output Validation Implementation Sweep (Adapters) **Files:** 8 core + 3 test files **Test count:** 90+ unit + 35+ integration tests **Definition of ready:** All boxes checked before merge to master"
+created: "2026-07-03T19:43:45.463Z"
+updated: "2026-07-03T19:43:45.463Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # PHASE 27.3 — PR MERGE CHECKLIST
 **Feature:** Output Validation Implementation Sweep (Adapters)  
 **Files:** 8 core + 3 test files  

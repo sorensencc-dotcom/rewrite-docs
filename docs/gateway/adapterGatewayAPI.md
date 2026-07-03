@@ -1,5 +1,12 @@
 ---
 title: adapterGatewayAPI
+summary: ""
+created: "2026-07-03T19:44:37.916Z"
+updated: "2026-07-03T19:44:37.916Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Adapter Gateway API & State Store

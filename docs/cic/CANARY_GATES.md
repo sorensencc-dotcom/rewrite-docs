@@ -1,3 +1,13 @@
+---
+title: "CANARY GATES"
+summary: "# Canary Gates & Fire Drills — M2 Execution"
+created: "2026-07-03T19:43:45.327Z"
+updated: "2026-07-03T19:43:45.327Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Canary Gates & Fire Drills — M2 Execution
 
 Complete validation framework for M2 workstreams (A, B, C) before promotion to production.

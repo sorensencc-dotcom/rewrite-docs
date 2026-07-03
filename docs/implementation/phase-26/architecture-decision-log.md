@@ -1,3 +1,13 @@
+---
+title: "Architecture Decision Log"
+summary: "# Phase 26 — Architecture Decision Log (ADL)"
+created: "2026-07-03T19:43:45.734Z"
+updated: "2026-07-03T19:43:45.734Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Phase 26 — Architecture Decision Log (ADL)
 
 **Version:** 1.0.0  

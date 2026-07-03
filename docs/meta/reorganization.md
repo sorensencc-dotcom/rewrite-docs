@@ -1,3 +1,13 @@
+---
+title: "Reorganization"
+summary: "# 8-Item Deliverables Reorganization Plan"
+created: "2026-07-03T19:43:45.897Z"
+updated: "2026-07-03T19:43:45.897Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # 8-Item Deliverables Reorganization Plan
 
 **Goal:** Move all deliverables from C:\dev\ root to proper mkdocs + toolforge structure  

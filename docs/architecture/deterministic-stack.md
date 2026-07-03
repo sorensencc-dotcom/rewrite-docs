@@ -1,5 +1,12 @@
 ---
 title: deterministic stack
+summary: ""
+created: "2026-07-03T19:44:37.614Z"
+updated: "2026-07-03T19:44:37.614Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Deterministic Stack

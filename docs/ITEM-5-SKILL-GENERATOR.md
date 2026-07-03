@@ -1,3 +1,13 @@
+---
+title: "ITEM 5 SKILL GENERATOR"
+summary: "# ITEM 5: SKILL GENERATOR **Date:** 2026-07-02 **Purpose:** Vault + ENV_REFERENCE → runbook skills **Status:** Implementation-ready"
+created: "2026-07-03T19:43:45.756Z"
+updated: "2026-07-03T19:43:45.756Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # ITEM 5: SKILL GENERATOR
 **Date:** 2026-07-02  
 **Purpose:** Vault + ENV_REFERENCE → runbook skills  

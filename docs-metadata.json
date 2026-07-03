@@ -1,0 +1,2004 @@
+[
+  {
+    "path": "docs/00-EIGHT-ITEM-BUILD-PLAN.md",
+    "title": "\"00 EIGHT ITEM BUILD PLAN\"",
+    "summary": "\"# 8-Item Build Plan — Complete **Status:** ✅ COMPLETE **Date:** 2026-07-02 **All Deliverables:** Deployed to C:\\dev\\docs/\"",
+    "created": "\"2026-07-03T19:43:45.269Z\"",
+    "updated": "\"2026-07-03T19:43:45.293Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/api/access-layer.md",
+    "title": "access layer",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.584Z\"",
+    "updated": "\"2026-07-03T19:44:37.586Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/api/federation-layer.md",
+    "title": "federation layer",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.599Z\"",
+    "updated": "\"2026-07-03T19:44:37.599Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/api/overview.md",
+    "title": "overview",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.601Z\"",
+    "updated": "\"2026-07-03T19:44:37.601Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/api/seal-verify.md",
+    "title": "seal verify",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.604Z\"",
+    "updated": "\"2026-07-03T19:44:37.604Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/api/snapshot-layer.md",
+    "title": "snapshot layer",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.607Z\"",
+    "updated": "\"2026-07-03T19:44:37.607Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/architecture/data-flow.md",
+    "title": "data flow",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.609Z\"",
+    "updated": "\"2026-07-03T19:44:37.609Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/architecture/design.md",
+    "title": "design",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.612Z\"",
+    "updated": "\"2026-07-03T19:44:37.612Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/architecture/deterministic-stack.md",
+    "title": "deterministic stack",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.614Z\"",
+    "updated": "\"2026-07-03T19:44:37.614Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/architecture/drift.md",
+    "title": "drift",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.617Z\"",
+    "updated": "\"2026-07-03T19:44:37.617Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/architecture/ingestion.md",
+    "title": "ingestion",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.624Z\"",
+    "updated": "\"2026-07-03T19:44:37.624Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/architecture/overview.md",
+    "title": "overview",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.626Z\"",
+    "updated": "\"2026-07-03T19:44:37.626Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/architecture/routing.md",
+    "title": "routing",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.628Z\"",
+    "updated": "\"2026-07-03T19:44:37.628Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/batches/batch-36.md",
+    "title": "batch 36",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.630Z\"",
+    "updated": "\"2026-07-03T19:44:37.630Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/batches/batch-37.md",
+    "title": "batch 37",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.631Z\"",
+    "updated": "\"2026-07-03T19:44:37.631Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/batches/batch-39.md",
+    "title": "batch 39",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.633Z\"",
+    "updated": "\"2026-07-03T19:44:37.633Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/batches/batch-40.md",
+    "title": "batch 40",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.634Z\"",
+    "updated": "\"2026-07-03T19:44:37.634Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/batches/batches-1-35.md",
+    "title": "batches 1 35",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.635Z\"",
+    "updated": "\"2026-07-03T19:44:37.635Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/batches/index.md",
+    "title": "index",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.637Z\"",
+    "updated": "\"2026-07-03T19:44:37.637Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/CANARY_GATES.md",
+    "title": "\"CANARY GATES\"",
+    "summary": "\"# Canary Gates & Fire Drills — M2 Execution\"",
+    "created": "\"2026-07-03T19:43:45.327Z\"",
+    "updated": "\"2026-07-03T19:43:45.327Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/CANARY_PHASE_A_DEPLOYMENT.md",
+    "title": "\"CANARY PHASE A DEPLOYMENT\"",
+    "summary": "\"# Canary Phase A Deployment (10% Traffic, 1h Duration)\"",
+    "created": "\"2026-07-03T19:43:45.333Z\"",
+    "updated": "\"2026-07-03T19:43:45.333Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/CANARY_PHASE_A_PROD_DEPLOYMENT_CHECKLIST.md",
+    "title": "\"CANARY PHASE A PROD DEPLOYMENT CHECKLIST\"",
+    "summary": "\"# Phase A Production Deployment (Option 2)\"",
+    "created": "\"2026-07-03T19:43:45.339Z\"",
+    "updated": "\"2026-07-03T19:43:45.339Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/cic_maal_audit_overview.md",
+    "title": "\"Cic Maal Audit Overview\"",
+    "summary": "\"# CIC/MAAL Routing & Drift Feedback Loop Audit Guide\"",
+    "created": "\"2026-07-03T19:43:45.343Z\"",
+    "updated": "\"2026-07-03T19:43:45.343Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/CIC_RUNTIME_OBSERVABILITY_PLAN.md",
+    "title": "\"CIC RUNTIME OBSERVABILITY PLAN\"",
+    "summary": "\"# CIC RUNTIME OBSERVABILITY PLAN **Phase:** 27.3 Parallel Track **Duration:** 2-3 hours (parallel with adapter testing) **Outcome:** Prometheus metrics + Grafana dashboards + alert rules live\"",
+    "created": "\"2026-07-03T19:43:45.346Z\"",
+    "updated": "\"2026-07-03T19:43:45.346Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/CIC_TOKEN_PACK_v2_0_COMPONENT_PATCHES.md",
+    "title": "\"CIC TOKEN PACK V2 0 COMPONENT PATCHES\"",
+    "summary": "\"# CIC Token Pack v2.0 — Component Patches **Date:** 2026-06-21 **Target:** Update 8 component files to use new tokens **Impact:** 87% reduction in hardcoded values\"",
+    "created": "\"2026-07-03T19:43:45.352Z\"",
+    "updated": "\"2026-07-03T19:43:45.352Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/CIC_TOKEN_PACK_v2_0_FULL_LIST.md",
+    "title": "\"CIC TOKEN PACK V2 0 FULL LIST\"",
+    "summary": "\"# CIC Design System v2.0 — Complete Token List **Date:** 2026-06-21 **Total Tokens:** 61 new + 79 existing = 140 complete system **Target File:** `rewrite-mcp/apps/operator-ui/css/tokens.css`\"",
+    "created": "\"2026-07-03T19:43:45.355Z\"",
+    "updated": "\"2026-07-03T19:43:45.355Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/CIC_TOKEN_PACK_v2_0_IMPLEMENTATION_GUIDE.md",
+    "title": "\"CIC TOKEN PACK V2 0 IMPLEMENTATION GUIDE\"",
+    "summary": "\"# CIC Token Pack v2.0 — Implementation Guide **Date:** 2026-06-21 **Status:** Phase 1 (CRITICAL) ready to execute **Timeline:** 30 min (Phase 1) + 1 hr (Phase 2) + 1.5 hr (Phase 3) = **2.5 hours total**\"",
+    "created": "\"2026-07-03T19:43:45.358Z\"",
+    "updated": "\"2026-07-03T19:43:45.358Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/driftEngine.md",
+    "title": "driftEngine",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.647Z\"",
+    "updated": "\"2026-07-03T19:44:37.647Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/EXECUTION-POLICY-PHASE-A-B-SUMMARY.md",
+    "title": "\"EXECUTION POLICY PHASE A B SUMMARY\"",
+    "summary": "\"# Execution Policy System: Phase A + B Complete\"",
+    "created": "\"2026-07-03T19:43:45.363Z\"",
+    "updated": "\"2026-07-03T19:43:45.363Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/EXECUTION-STATUS.md",
+    "title": "\"EXECUTION STATUS\"",
+    "summary": "\"# Reorganization Execution Status **Date:** 2026-07-02 **Status:** DRY-RUN VALIDATION COMPLETE **Readiness:** 75% READY TO EXECUTE\"",
+    "created": "\"2026-07-03T19:43:45.366Z\"",
+    "updated": "\"2026-07-03T19:43:45.366Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/GOVERNANCE.md",
+    "title": "\"GOVERNANCE\"",
+    "summary": "\"# CIC Governance Layer\"",
+    "created": "\"2026-07-03T19:43:45.373Z\"",
+    "updated": "\"2026-07-03T19:43:45.373Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/harvester.md",
+    "title": "harvester",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.652Z\"",
+    "updated": "\"2026-07-03T19:44:37.652Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/KB_INTEGRATION_SUMMARY.md",
+    "title": "\"KB INTEGRATION SUMMARY\"",
+    "summary": "\"# KB Integration — What's Built\"",
+    "created": "\"2026-07-03T19:43:45.388Z\"",
+    "updated": "\"2026-07-03T19:43:45.388Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/MEMORY_V1_STAGING_ACTIVATION.md",
+    "title": "\"MEMORY V1 STAGING ACTIVATION\"",
+    "summary": "\"# Memory-v1 Staging Activation — 2026-06-19\"",
+    "created": "\"2026-07-03T19:43:45.392Z\"",
+    "updated": "\"2026-07-03T19:43:45.392Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/P1_IMPLEMENTATION_COMPLETE.md",
+    "title": "\"P1 IMPLEMENTATION COMPLETE\"",
+    "summary": "\"# P1 — Agents Panel Implementation Complete\"",
+    "created": "\"2026-07-03T19:43:45.395Z\"",
+    "updated": "\"2026-07-03T19:43:45.395Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-1-EXECUTION-LOG.md",
+    "title": "\"PHASE 1 EXECUTION LOG\"",
+    "summary": "\"# Phase 1 Execution Log **Date:** 2026-07-02 **Status:** ✅ COMPLETE **Files Moved:** 20 **Directories Created:** 9\"",
+    "created": "\"2026-07-03T19:43:45.398Z\"",
+    "updated": "\"2026-07-03T19:43:45.398Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-1_ARCHITECTURE.md",
+    "title": "PHASE 1 ARCHITECTURE",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.661Z\"",
+    "updated": "\"2026-07-03T19:44:37.661Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-1_BRIDGE_ORCHESTRATOR.md",
+    "title": "PHASE 1 BRIDGE ORCHESTRATOR",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.673Z\"",
+    "updated": "\"2026-07-03T19:44:37.673Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-1_FILE_CONTRACT.md",
+    "title": "PHASE 1 FILE CONTRACT",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.688Z\"",
+    "updated": "\"2026-07-03T19:44:37.688Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-1_IMPLEMENTATION_ORDER.md",
+    "title": "PHASE 1 IMPLEMENTATION ORDER",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.691Z\"",
+    "updated": "\"2026-07-03T19:44:37.691Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-1_LEDGER_SUBSTRATE.md",
+    "title": "PHASE 1 LEDGER SUBSTRATE",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.692Z\"",
+    "updated": "\"2026-07-03T19:44:37.692Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-1_MAAL_CORE.md",
+    "title": "PHASE 1 MAAL CORE",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.694Z\"",
+    "updated": "\"2026-07-03T19:44:37.694Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-1_OVERVIEW.md",
+    "title": "PHASE 1 OVERVIEW",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.695Z\"",
+    "updated": "\"2026-07-03T19:44:37.695Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-1_TESTING.md",
+    "title": "PHASE 1 TESTING",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.697Z\"",
+    "updated": "\"2026-07-03T19:44:37.697Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-2-COMPLETION-LOG.md",
+    "title": "\"PHASE 2 COMPLETION LOG\"",
+    "summary": "\"# Phase 2 Completion Log **Date:** 2026-07-02 **Status:** ✅ COMPLETE **Tasks:** Cross-references reviewed, mkdocs.yml updated\"",
+    "created": "\"2026-07-03T19:43:45.409Z\"",
+    "updated": "\"2026-07-03T19:43:45.409Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-23-6-MEMORY-EXPLORER-UI.md",
+    "title": "\"PHASE 23 6 MEMORY EXPLORER UI\"",
+    "summary": "\"# Phase 23.6: Memory Explorer Web UI\"",
+    "created": "\"2026-07-03T19:43:45.413Z\"",
+    "updated": "\"2026-07-03T19:43:45.413Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-28a-SCP-COMPLETION.md",
+    "title": "\"PHASE 28a SCP COMPLETION\"",
+    "summary": "\"# Phase 28a: Skill Contribution Pipeline — MVP Completion Summary\"",
+    "created": "\"2026-07-03T19:43:45.416Z\"",
+    "updated": "\"2026-07-03T19:43:45.416Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-2_ACTION_SPACE.md",
+    "title": "PHASE 2 ACTION SPACE",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.703Z\"",
+    "updated": "\"2026-07-03T19:44:37.703Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-2_ARCHITECTURE.md",
+    "title": "PHASE 2 ARCHITECTURE",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.704Z\"",
+    "updated": "\"2026-07-03T19:44:37.705Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-2_EPISODE_TRAJECTORY.md",
+    "title": "PHASE 2 EPISODE TRAJECTORY",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.706Z\"",
+    "updated": "\"2026-07-03T19:44:37.706Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-2_INTEGRATION.md",
+    "title": "PHASE 2 INTEGRATION",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.707Z\"",
+    "updated": "\"2026-07-03T19:44:37.707Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-2_OVERVIEW.md",
+    "title": "PHASE 2 OVERVIEW",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.709Z\"",
+    "updated": "\"2026-07-03T19:44:37.709Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-2_POLICY_LEARNER.md",
+    "title": "PHASE 2 POLICY LEARNER",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.710Z\"",
+    "updated": "\"2026-07-03T19:44:37.710Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-2_REWARD_FUNCTION.md",
+    "title": "PHASE 2 REWARD FUNCTION",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.711Z\"",
+    "updated": "\"2026-07-03T19:44:37.711Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-2_SIMULATION_ENGINE.md",
+    "title": "PHASE 2 SIMULATION ENGINE",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.712Z\"",
+    "updated": "\"2026-07-03T19:44:37.712Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-2_STATE_SPACE.md",
+    "title": "PHASE 2 STATE SPACE",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.713Z\"",
+    "updated": "\"2026-07-03T19:44:37.713Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-2_TESTING.md",
+    "title": "PHASE 2 TESTING",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.715Z\"",
+    "updated": "\"2026-07-03T19:44:37.715Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-2_TRAINING_LOOP.md",
+    "title": "PHASE 2 TRAINING LOOP",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.716Z\"",
+    "updated": "\"2026-07-03T19:44:37.716Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-3-6-SETUP-COMPLETE.md",
+    "title": "\"PHASE 3 6 SETUP COMPLETE\"",
+    "summary": "\"# Phase 3.6 ConsoleV3 Setup Complete\"",
+    "created": "\"2026-07-03T19:43:45.428Z\"",
+    "updated": "\"2026-07-03T19:43:45.428Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-3-COMPLETION-LOG.md",
+    "title": "\"PHASE 3 COMPLETION LOG\"",
+    "summary": "\"# Phase 3 Completion Log: Post-Migration Verification **Date:** 2026-07-02 **Status:** ✅ ALL 8 PHASES PASSED **Verification Time:** Complete\"",
+    "created": "\"2026-07-03T19:43:45.431Z\"",
+    "updated": "\"2026-07-03T19:43:45.431Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-30-MVP-SPEC-REVIEW.md",
+    "title": "\"PHASE 30 MVP SPEC REVIEW\"",
+    "summary": "\"# Review: PHASE-30-MVP-SPEC.md\"",
+    "created": "\"2026-07-03T19:43:45.438Z\"",
+    "updated": "\"2026-07-03T19:43:45.438Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-30-MVP-SPEC.md",
+    "title": "\"PHASE 30 MVP SPEC\"",
+    "summary": "\"# PHASE 30 — CAUSAL ENGINE (MVP FULL DROP-IN) ## Complete implementation skeleton + tests + API + rules + counterfactuals\"",
+    "created": "\"2026-07-03T19:43:45.442Z\"",
+    "updated": "\"2026-07-03T19:43:45.442Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-5a-COMMIT-SUMMARY.md",
+    "title": "\"PHASE 5a COMMIT SUMMARY\"",
+    "summary": "\"# Phase 5a Implementation Complete: Planning Console v3 HTTP Wiring\"",
+    "created": "\"2026-07-03T19:43:45.445Z\"",
+    "updated": "\"2026-07-03T19:43:45.445Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-5a-EXECUTIVE-SUMMARY.md",
+    "title": "\"PHASE 5a EXECUTIVE SUMMARY\"",
+    "summary": "\"# Phase 5a: Executive Summary — Planning Console v3 Wiring Complete\"",
+    "created": "\"2026-07-03T19:43:45.449Z\"",
+    "updated": "\"2026-07-03T19:43:45.449Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-5a-QUICK-START.md",
+    "title": "\"PHASE 5a QUICK START\"",
+    "summary": "\"# Phase 5a — Quick Start Guide\"",
+    "created": "\"2026-07-03T19:43:45.452Z\"",
+    "updated": "\"2026-07-03T19:43:45.452Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-5a-VERIFICATION.md",
+    "title": "\"PHASE 5a VERIFICATION\"",
+    "summary": "\"# Phase 5a Verification Report\"",
+    "created": "\"2026-07-03T19:43:45.455Z\"",
+    "updated": "\"2026-07-03T19:43:45.455Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE-5E-V1-SERVICE-LOCATIONS.md",
+    "title": "\"PHASE 5E V1 SERVICE LOCATIONS\"",
+    "summary": "\"# Phase 5e v1: Service Location Map & Task 1-2 Completion Report\"",
+    "created": "\"2026-07-03T19:43:45.457Z\"",
+    "updated": "\"2026-07-03T19:43:45.457Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE27_3_EXECUTION_PLAN.md",
+    "title": "\"PHASE27 3 EXECUTION PLAN\"",
+    "summary": "\"# PHASE 27.3 EXECUTION PLAN **Status:** Ready to execute (parallel with observability) **Duration:** 2-3 hours **Output:** 5 adapters + validation layer + test suite\"",
+    "created": "\"2026-07-03T19:43:45.459Z\"",
+    "updated": "\"2026-07-03T19:43:45.459Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE27_3_PR_CHECKLIST.md",
+    "title": "\"PHASE27 3 PR CHECKLIST\"",
+    "summary": "\"# PHASE 27.3 — PR MERGE CHECKLIST **Feature:** Output Validation Implementation Sweep (Adapters) **Files:** 8 core + 3 test files **Test count:** 90+ unit + 35+ integration tests **Definition of ready:** All boxes checked before merge to master\"",
+    "created": "\"2026-07-03T19:43:45.463Z\"",
+    "updated": "\"2026-07-03T19:43:45.463Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE4-SPEC-LOCKED.md",
+    "title": "\"PHASE4 SPEC LOCKED\"",
+    "summary": "\"# Phase 4 Specification LOCKED ## v0.4.0-maal-codesign-canary-foundation\"",
+    "created": "\"2026-07-03T19:43:45.467Z\"",
+    "updated": "\"2026-07-03T19:43:45.467Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE6-IMPLEMENTATION-SUMMARY.md",
+    "title": "\"PHASE6 IMPLEMENTATION SUMMARY\"",
+    "summary": "\"# Phase 6 Implementation Summary\"",
+    "created": "\"2026-07-03T19:43:45.470Z\"",
+    "updated": "\"2026-07-03T19:43:45.470Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_27_4_DISPATCH.md",
+    "title": "\"PHASE 27 4 DISPATCH\"",
+    "summary": "\"# Phase 27.4 Skeleton Implementation — Team Dispatch\"",
+    "created": "\"2026-07-03T19:43:45.473Z\"",
+    "updated": "\"2026-07-03T19:43:45.473Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_27_4_SKELETON_SUMMARY.md",
+    "title": "\"PHASE 27 4 SKELETON SUMMARY\"",
+    "summary": "\"# Phase 27.4 Skeleton Implementation Summary\"",
+    "created": "\"2026-07-03T19:43:45.475Z\"",
+    "updated": "\"2026-07-03T19:43:45.475Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_27_FILES_GENERATED.md",
+    "title": "\"PHASE 27 FILES GENERATED\"",
+    "summary": "\"# Phase 27 CIC Integration — Complete File Generation Summary\"",
+    "created": "\"2026-07-03T19:43:45.478Z\"",
+    "updated": "\"2026-07-03T19:43:45.478Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_27_STEP3_COMPLETE.md",
+    "title": "\"PHASE 27 STEP3 COMPLETE\"",
+    "summary": "\"# Phase 27 Step 3 — SLO Violation Webhook Integration ✅\"",
+    "created": "\"2026-07-03T19:43:45.494Z\"",
+    "updated": "\"2026-07-03T19:43:45.494Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_2_COMPLETION.md",
+    "title": "\"PHASE 2 COMPLETION\"",
+    "summary": "\"# Phase 2 Tier 2 Components — Completion Report\"",
+    "created": "\"2026-07-03T19:43:45.496Z\"",
+    "updated": "\"2026-07-03T19:43:45.496Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_2_ROLLOUT.md",
+    "title": "\"PHASE 2 ROLLOUT\"",
+    "summary": "\"# Phase 2: TorqueQuery → Console v3 Integration Rollout\"",
+    "created": "\"2026-07-03T19:43:45.506Z\"",
+    "updated": "\"2026-07-03T19:43:45.506Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_2_STATUS.md",
+    "title": "\"PHASE 2 STATUS\"",
+    "summary": "\"# Phase 2 — Cleanup & OneDrive Ingestion — Status Report\"",
+    "created": "\"2026-07-03T19:43:45.510Z\"",
+    "updated": "\"2026-07-03T19:43:45.510Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_3_COMPLETION.md",
+    "title": "\"PHASE 3 COMPLETION\"",
+    "summary": "\"# Phase 3 Completion: SPL Integration Foundation\"",
+    "created": "\"2026-07-03T19:43:45.513Z\"",
+    "updated": "\"2026-07-03T19:43:45.513Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_4_MIGRATION_STATUS.md",
+    "title": "\"PHASE 4 MIGRATION STATUS\"",
+    "summary": "\"# Phase 4 SQL Schema Migration\"",
+    "created": "\"2026-07-03T19:43:45.516Z\"",
+    "updated": "\"2026-07-03T19:43:45.516Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_4_SCAFFOLDING_COMPLETE.md",
+    "title": "\"PHASE 4 SCAFFOLDING COMPLETE\"",
+    "summary": "\"# Phase 4 Scaffolding Complete ## v0.4.0-maal-codesign-canary-foundation\"",
+    "created": "\"2026-07-03T19:43:45.519Z\"",
+    "updated": "\"2026-07-03T19:43:45.519Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_5B_IMPLEMENTATION_SUMMARY.md",
+    "title": "\"PHASE 5B IMPLEMENTATION SUMMARY\"",
+    "summary": "\"# Phase 5b Implementation: Enable Memory + Governance Routers\"",
+    "created": "\"2026-07-03T19:43:45.523Z\"",
+    "updated": "\"2026-07-03T19:43:45.523Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_5B_VERIFICATION_REPORT.md",
+    "title": "\"PHASE 5B VERIFICATION REPORT\"",
+    "summary": "\"# Phase 5b Verification Report: Enable Memory + Governance Routers\"",
+    "created": "\"2026-07-03T19:43:45.525Z\"",
+    "updated": "\"2026-07-03T19:43:45.525Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_5C_DEPRECATION_INVENTORY.md",
+    "title": "\"PHASE 5C DEPRECATION INVENTORY\"",
+    "summary": "\"# Phase 5c Deprecation Inventory: Memory-Spine Service & Operator-UI Clones\"",
+    "created": "\"2026-07-03T19:43:45.527Z\"",
+    "updated": "\"2026-07-03T19:43:45.527Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_5C_FILE_REMOVAL_MATRIX.md",
+    "title": "\"PHASE 5C FILE REMOVAL MATRIX\"",
+    "summary": "\"# Phase 5c File Removal Matrix\"",
+    "created": "\"2026-07-03T19:43:45.530Z\"",
+    "updated": "\"2026-07-03T19:43:45.530Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_5C_PHASE_B_COMPLETION.md",
+    "title": "\"PHASE 5C PHASE B COMPLETION\"",
+    "summary": "\"# Phase 5c Phase B Completion Report\"",
+    "created": "\"2026-07-03T19:43:45.534Z\"",
+    "updated": "\"2026-07-03T19:43:45.534Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_5C_REMOVAL_PLAN.md",
+    "title": "\"PHASE 5C REMOVAL PLAN\"",
+    "summary": "\"# Phase 5c Removal Execution Plan\"",
+    "created": "\"2026-07-03T19:43:45.545Z\"",
+    "updated": "\"2026-07-03T19:43:45.545Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_5E_EXECUTION_SUMMARY.md",
+    "title": "\"PHASE 5E EXECUTION SUMMARY\"",
+    "summary": "\"# Phase 5e Execution Summary ## Test Unified Runtime with docker-compose **Date:** 2026-06-19 **Status:** INFRASTRUCTURE SPECIFICATION COMPLETE — Build Execution Blocked\"",
+    "created": "\"2026-07-03T19:43:45.548Z\"",
+    "updated": "\"2026-07-03T19:43:45.548Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_5_CANARY_ROLLOUT_PLAN.md",
+    "title": "Phase 5 Canary Rollout Plan",
+    "date": "2026-07-02",
+    "version": "1.0.0",
+    "status": "Production-Ready",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.771Z\"",
+    "updated": "\"2026-07-03T19:44:37.771Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_5_TOKEN_ROI_ANALYSIS.md",
+    "title": "Phase 5 Token ROI Analysis",
+    "date": "2026-07-02",
+    "status": "Template (Fill Post-Deployment)",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.776Z\"",
+    "updated": "\"2026-07-03T19:44:37.777Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_5_TORQUEQUERY_V2_DEPLOYMENT_GUIDE.md",
+    "title": "Phase 5 TorqueQuery v2 + Cloud Gateway Deployment Guide",
+    "date": "2026-07-02",
+    "version": "1.0.0",
+    "status": "Operator-Ready",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.780Z\"",
+    "updated": "\"2026-07-03T19:44:37.780Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_8_SPEC.md",
+    "title": "\"PHASE 8 SPEC\"",
+    "summary": "\"# Phase 8: Cost Optimization + Dynamic Model Selection\"",
+    "created": "\"2026-07-03T19:43:45.557Z\"",
+    "updated": "\"2026-07-03T19:43:45.557Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_8_TEST_MATRICES.md",
+    "title": "\"PHASE 8 TEST MATRICES\"",
+    "summary": "\"# Phase 8: Test Matrices\"",
+    "created": "\"2026-07-03T19:43:45.559Z\"",
+    "updated": "\"2026-07-03T19:43:45.559Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_A_OPTIMIZATION_SUMMARY.md",
+    "title": "\"PHASE A OPTIMIZATION SUMMARY\"",
+    "summary": "\"# Phase A: Optimization — Complete Implementation\"",
+    "created": "\"2026-07-03T19:43:45.562Z\"",
+    "updated": "\"2026-07-03T19:43:45.562Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_B_HARDENING_SUMMARY.md",
+    "title": "\"PHASE B HARDENING SUMMARY\"",
+    "summary": "\"# Phase B: Hardening — Complete Implementation\"",
+    "created": "\"2026-07-03T19:43:45.568Z\"",
+    "updated": "\"2026-07-03T19:43:45.568Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PHASE_C_INTEGRATION_SUMMARY.md",
+    "title": "\"PHASE C INTEGRATION SUMMARY\"",
+    "summary": "\"# Phase C: Integration — Complete Implementation\"",
+    "created": "\"2026-07-03T19:43:45.573Z\"",
+    "updated": "\"2026-07-03T19:43:45.573Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/PROMETHEUS_INTEGRATION_STATUS.md",
+    "title": "\"PROMETHEUS INTEGRATION STATUS\"",
+    "summary": "\"# Item 2 Phase 2 — Prometheus Metrics Integration Status\"",
+    "created": "\"2026-07-03T19:43:45.577Z\"",
+    "updated": "\"2026-07-03T19:43:45.577Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/replayHarness.md",
+    "title": "replayHarness",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.788Z\"",
+    "updated": "\"2026-07-03T19:44:37.788Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/research-skill/SKILL.md",
+    "name": "cic-research",
+    "description": "|",
+    "title": "\"\"",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.790Z\"",
+    "updated": "\"2026-07-03T19:44:37.790Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/research-skill/test-results/iteration-1-grading.md",
+    "title": "\"Iteration 1 Grading\"",
+    "summary": "\"# CIC Research Skill - Evaluation Results\"",
+    "created": "\"2026-07-03T19:43:45.584Z\"",
+    "updated": "\"2026-07-03T19:43:45.584Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/research-skill/test-results/iteration-2-grading.md",
+    "title": "\"Iteration 2 Grading\"",
+    "summary": "\"# CIC Research Skill - Iteration 2 Results\"",
+    "created": "\"2026-07-03T19:43:45.588Z\"",
+    "updated": "\"2026-07-03T19:43:45.588Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3-PHASES-1-7-COMPLETE.md",
+    "title": "\"SANDBOX 3 PHASES 1 7 COMPLETE\"",
+    "summary": "\"# Phase Sandbox-3: Verifiable Compute Substrate — Batches 1-7 Complete\"",
+    "created": "\"2026-07-03T19:43:45.592Z\"",
+    "updated": "\"2026-07-03T19:43:45.592Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3-PROGRESS.md",
+    "title": "\"SANDBOX 3 PROGRESS\"",
+    "summary": "\"# Phase Sandbox-3: Verifiable Compute Substrate ## Batches 1-3 Completion Summary\"",
+    "created": "\"2026-07-03T19:43:45.602Z\"",
+    "updated": "\"2026-07-03T19:43:45.602Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_ALERTING.md",
+    "title": "SANDBOX 3 ALERTING",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.796Z\"",
+    "updated": "\"2026-07-03T19:44:37.796Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_ARCHITECTURE.md",
+    "title": "SANDBOX 3 ARCHITECTURE",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.797Z\"",
+    "updated": "\"2026-07-03T19:44:37.798Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_DEPLOYMENT.md",
+    "title": "SANDBOX 3 DEPLOYMENT",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.799Z\"",
+    "updated": "\"2026-07-03T19:44:37.799Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_DETERMINISM.md",
+    "title": "SANDBOX 3 DETERMINISM",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.801Z\"",
+    "updated": "\"2026-07-03T19:44:37.801Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_FIRECRACKER.md",
+    "title": "SANDBOX 3 FIRECRACKER",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.808Z\"",
+    "updated": "\"2026-07-03T19:44:37.808Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_FIRECRACKER_NODEPOOL.md",
+    "title": "SANDBOX 3 FIRECRACKER NODEPOOL",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.814Z\"",
+    "updated": "\"2026-07-03T19:44:37.814Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_HARNESS_V3.md",
+    "title": "SANDBOX 3 HARNESS V3",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.819Z\"",
+    "updated": "\"2026-07-03T19:44:37.819Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_INCIDENT_RESPONSE.md",
+    "title": "SANDBOX 3 INCIDENT RESPONSE",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.822Z\"",
+    "updated": "\"2026-07-03T19:44:37.822Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_K8S.md",
+    "title": "SANDBOX 3 K8S",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.825Z\"",
+    "updated": "\"2026-07-03T19:44:37.825Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_LATENCY.md",
+    "title": "SANDBOX 3 LATENCY",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.828Z\"",
+    "updated": "\"2026-07-03T19:44:37.828Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_MAAL_INTEGRATION.md",
+    "title": "SANDBOX 3 MAAL INTEGRATION",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.829Z\"",
+    "updated": "\"2026-07-03T19:44:37.829Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_MONITORING.md",
+    "title": "SANDBOX 3 MONITORING",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.831Z\"",
+    "updated": "\"2026-07-03T19:44:37.831Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_NETWORK_TRACE.md",
+    "title": "SANDBOX 3 NETWORK TRACE",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.836Z\"",
+    "updated": "\"2026-07-03T19:44:37.836Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_ONNX_SIDECAR.md",
+    "title": "SANDBOX 3 ONNX SIDECAR",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.838Z\"",
+    "updated": "\"2026-07-03T19:44:37.838Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_OVERVIEW.md",
+    "title": "SANDBOX 3 OVERVIEW",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.839Z\"",
+    "updated": "\"2026-07-03T19:44:37.839Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_REPRODUCIBILITY.md",
+    "title": "SANDBOX 3 REPRODUCIBILITY",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.841Z\"",
+    "updated": "\"2026-07-03T19:44:37.841Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_ROUTING_V3.md",
+    "title": "SANDBOX 3 ROUTING V3",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.843Z\"",
+    "updated": "\"2026-07-03T19:44:37.843Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_RUNTIME.md",
+    "title": "SANDBOX 3 RUNTIME",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.844Z\"",
+    "updated": "\"2026-07-03T19:44:37.844Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_STABILITY_V3.md",
+    "title": "SANDBOX 3 STABILITY V3",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.845Z\"",
+    "updated": "\"2026-07-03T19:44:37.845Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_SYSCALL_TRACE.md",
+    "title": "SANDBOX 3 SYSCALL TRACE",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.847Z\"",
+    "updated": "\"2026-07-03T19:44:37.847Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_TRACING.md",
+    "title": "SANDBOX 3 TRACING",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.849Z\"",
+    "updated": "\"2026-07-03T19:44:37.849Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/SANDBOX-3_VM_SNAPSHOTTING.md",
+    "title": "SANDBOX 3 VM SNAPSHOTTING",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.851Z\"",
+    "updated": "\"2026-07-03T19:44:37.851Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/TOKEN_AUDIT_REPORT.md",
+    "title": "\"TOKEN AUDIT REPORT\"",
+    "summary": "\"# Design System Token Audit Report **Date:** 2026-06-21 **Scope:** CIC Tier-1 Design System Colors, Spacing, Typography **Status:** 🟡 **75% Complete — Critical Gaps Identified**\"",
+    "created": "\"2026-07-03T19:43:45.629Z\"",
+    "updated": "\"2026-07-03T19:43:45.629Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/TOKEN_COVERAGE_MATRIX.md",
+    "title": "\"TOKEN COVERAGE MATRIX\"",
+    "summary": "\"# Design System Token Coverage Matrix **Tier-1 Agents Panel — Color, Spacing, Typography Compliance**\"",
+    "created": "\"2026-07-03T19:43:45.637Z\"",
+    "updated": "\"2026-07-03T19:43:45.637Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/TOKEN_COVERAGE_MATRIX_PHASE_ROADMAP.md",
+    "title": "\"TOKEN COVERAGE MATRIX PHASE ROADMAP\"",
+    "summary": "\"# Token Coverage Matrix — Phase Roadmap **Date:** 2026-06-21 **Current:** Phase 1 Complete ✅ | Phase 2/3 Staged **Goal:** 100% Tier-1 compliance by end of Phase 3\"",
+    "created": "\"2026-07-03T19:43:45.641Z\"",
+    "updated": "\"2026-07-03T19:43:45.641Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/TORQUEQUERY_BUILD_SUMMARY.md",
+    "title": "\"TORQUEQUERY BUILD SUMMARY\"",
+    "summary": "\"# TorqueQuery Build Summary\"",
+    "created": "\"2026-07-03T19:43:45.643Z\"",
+    "updated": "\"2026-07-03T19:43:45.643Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/TORQUEQUERY_DELIVERY_CHECKLIST.md",
+    "title": "\"TORQUEQUERY DELIVERY CHECKLIST\"",
+    "summary": "\"# TorqueQuery Delivery Checklist\"",
+    "created": "\"2026-07-03T19:43:45.646Z\"",
+    "updated": "\"2026-07-03T19:43:45.646Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/TORQUEQUERY_EXECUTIVE_SUMMARY.md",
+    "title": "\"TORQUEQUERY EXECUTIVE SUMMARY\"",
+    "summary": "\"# TorqueQuery: Executive Summary\"",
+    "created": "\"2026-07-03T19:43:45.649Z\"",
+    "updated": "\"2026-07-03T19:43:45.649Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/TORQUEQUERY_INDEX.md",
+    "title": "\"TORQUEQUERY INDEX\"",
+    "summary": "\"# TorqueQuery Delivery Index\"",
+    "created": "\"2026-07-03T19:43:45.661Z\"",
+    "updated": "\"2026-07-03T19:43:45.661Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/TORQUEQUERY_MCP_REFERENCE.md",
+    "title": "\"TORQUEQUERY MCP REFERENCE\"",
+    "summary": "\"# TorqueQuery MCP Tools Reference\"",
+    "created": "\"2026-07-03T19:43:45.665Z\"",
+    "updated": "\"2026-07-03T19:43:45.665Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/TORQUEQUERY_QUICKSTART.md",
+    "title": "\"TORQUEQUERY QUICKSTART\"",
+    "summary": "\"# TorqueQuery Quick Start\"",
+    "created": "\"2026-07-03T19:43:45.667Z\"",
+    "updated": "\"2026-07-03T19:43:45.667Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/cic/WS-B-C-SCAFFOLD.md",
+    "title": "\"WS B C SCAFFOLD\"",
+    "summary": "\"# Workstream B & C Scaffolds\"",
+    "created": "\"2026-07-03T19:43:45.672Z\"",
+    "updated": "\"2026-07-03T19:43:45.672Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/dashboard/8-ITEM-PROGRESS.md",
+    "title": "\"8 ITEM PROGRESS\"",
+    "summary": "\"# 8-Item Build Plan — Progress Summary\"",
+    "created": "\"2026-07-03T19:43:45.675Z\"",
+    "updated": "\"2026-07-03T19:43:45.675Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/dashboard/8-ITEMS-COMPLETE-FINAL.md",
+    "title": "\"8 ITEMS COMPLETE FINAL\"",
+    "summary": "\"# 8-Item Build Complete ✅\"",
+    "created": "\"2026-07-03T19:43:45.678Z\"",
+    "updated": "\"2026-07-03T19:43:45.678Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/dashboard/COMMAND-CENTER-PRIORITY-MATRIX.md",
+    "title": "\"COMMAND CENTER PRIORITY MATRIX\"",
+    "summary": "\"# CIC Command Center — Priority Matrix\"",
+    "created": "\"2026-07-03T19:43:45.682Z\"",
+    "updated": "\"2026-07-03T19:43:45.682Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/dashboard/DARK_MODE_COMPLETION_REPORT.md",
+    "title": "\"DARK MODE COMPLETION REPORT\"",
+    "summary": "\"# Tier 1 Component Library v2.0 — Dark Mode Complete\"",
+    "created": "\"2026-07-03T19:43:45.685Z\"",
+    "updated": "\"2026-07-03T19:43:45.685Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/dashboard/DARK_MODE_V2_IMPLEMENTATION.md",
+    "title": "\"DARK MODE V2 IMPLEMENTATION\"",
+    "summary": "\"# Dark Mode v2.0 — Implementation Complete\"",
+    "created": "\"2026-07-03T19:43:45.688Z\"",
+    "updated": "\"2026-07-03T19:43:45.688Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/dashboard/dashboard.md",
+    "title": "dashboard",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.910Z\"",
+    "updated": "\"2026-07-03T19:44:37.910Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/dashboard/FINAL-STATUS-8-ITEMS.md",
+    "title": "\"FINAL STATUS 8 ITEMS\"",
+    "summary": "\"# 8-Item Build Complete Summary\"",
+    "created": "\"2026-07-03T19:43:45.692Z\"",
+    "updated": "\"2026-07-03T19:43:45.692Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/dashboard/MISSING_TOKENS_FOR_AGENTS_PANEL.md",
+    "title": "\"MISSING TOKENS FOR AGENTS PANEL\"",
+    "summary": "\"# Missing Design System Tokens — Agents Panel (Phase 1.5) **Date:** 2026-06-21 **Target:** CIC Design System v1.2.0 **Scope:** Add 28 missing tokens required for Tier-1 compliance\"",
+    "created": "\"2026-07-03T19:43:45.695Z\"",
+    "updated": "\"2026-07-03T19:43:45.695Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/dashboard/MISSING_TOKENS_FOR_AGENTS_PANEL_PHASE_PROGRESS.md",
+    "title": "\"MISSING TOKENS FOR AGENTS PANEL PHASE PROGRESS\"",
+    "summary": "\"# Missing Tokens for Agents Panel — Phase Progress **Date:** 2026-06-21 **Status:** Phase 1 COMPLETE ✅ | Phase 2 READY | Phase 3 READY **Coverage:** 40% (audit) → 75% (Phase 1) → 95% (Phase 2) → 100% (Phase 3)\"",
+    "created": "\"2026-07-03T19:43:45.700Z\"",
+    "updated": "\"2026-07-03T19:43:45.700Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/dashboard/TIER2_AGENTS_CONFLICT_MAP.md",
+    "title": "\"TIER2 AGENTS CONFLICT MAP\"",
+    "summary": "\"# TIER 2 AGENTS PANEL — CONFLICT AVOIDANCE MAP **Date:** 2026-06-20 **Purpose:** Parallel execution without merge hell **Scope:** UI track (10 components + 2 hooks) + Backend track (WS server) **Status:** Locked — teams execute within these boundaries\"",
+    "created": "\"2026-07-03T19:43:45.703Z\"",
+    "updated": "\"2026-07-03T19:43:45.703Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/gateway/adapterGatewayAPI.md",
+    "title": "adapterGatewayAPI",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.916Z\"",
+    "updated": "\"2026-07-03T19:44:37.916Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/gateway/providers.md",
+    "title": "providers",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.918Z\"",
+    "updated": "\"2026-07-03T19:44:37.918Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/implementation/cloud-extension-layer.md",
+    "title": "\"Cloud Extension Layer\"",
+    "summary": "\"# Cloud Extension Layer — Implementation Summary\"",
+    "created": "\"2026-07-03T19:43:45.730Z\"",
+    "updated": "\"2026-07-03T19:43:45.730Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/implementation/phase-26/architecture-decision-log.md",
+    "title": "\"Architecture Decision Log\"",
+    "summary": "\"# Phase 26 — Architecture Decision Log (ADL)\"",
+    "created": "\"2026-07-03T19:43:45.734Z\"",
+    "updated": "\"2026-07-03T19:43:45.734Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/implementation/phase-26/deployment-checklist.md",
+    "title": "\"Deployment Checklist\"",
+    "summary": "\"# Phase 26 — Deployment Checklist\"",
+    "created": "\"2026-07-03T19:43:45.738Z\"",
+    "updated": "\"2026-07-03T19:43:45.738Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/implementation/phase-26/summary.md",
+    "title": "\"Summary\"",
+    "summary": "\"# Phase 26 — xAI Docs MCP Integration Summary\"",
+    "created": "\"2026-07-03T19:43:45.741Z\"",
+    "updated": "\"2026-07-03T19:43:45.741Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/implementation/phase-26/test-verification-report.md",
+    "title": "\"Test Verification Report\"",
+    "summary": "\"# Phase 26 — Test Verification Report\"",
+    "created": "\"2026-07-03T19:43:45.744Z\"",
+    "updated": "\"2026-07-03T19:43:45.744Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/index.md",
+    "title": "index",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:37.930Z\"",
+    "updated": "\"2026-07-03T19:44:37.930Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/ITEM-2-OBSERVABILITY-DASHBOARD-SPEC.md",
+    "title": "\"ITEM 2 OBSERVABILITY DASHBOARD SPEC\"",
+    "summary": "\"# ITEM 2: OBSERVABILITY DASHBOARD SPEC **Date:** 2026-07-02 **Scope:** CIC + RL unified observability platform **Status:** Implementation-ready\"",
+    "created": "\"2026-07-03T19:43:45.750Z\"",
+    "updated": "\"2026-07-03T19:43:45.750Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/ITEM-3-VAULT-EXTRACTION-SYSTEM-MAP.md",
+    "title": "\"ITEM 3 VAULT EXTRACTION SYSTEM MAP\"",
+    "summary": "\"# ITEM 3: VAULT EXTRACTION & SYSTEM MAP **Date:** 2026-07-02 **Purpose:** Extract vault backlinks → queryable system dependency map **Status:** Ready to implement\"",
+    "created": "\"2026-07-03T19:43:45.753Z\"",
+    "updated": "\"2026-07-03T19:43:45.753Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/ITEM-5-SKILL-GENERATOR.md",
+    "title": "\"ITEM 5 SKILL GENERATOR\"",
+    "summary": "\"# ITEM 5: SKILL GENERATOR **Date:** 2026-07-02 **Purpose:** Vault + ENV_REFERENCE → runbook skills **Status:** Implementation-ready\"",
+    "created": "\"2026-07-03T19:43:45.756Z\"",
+    "updated": "\"2026-07-03T19:43:45.756Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/ITEM-6-KNOWLEDGE-GRAPH.md",
+    "title": "\"ITEM 6 KNOWLEDGE GRAPH\"",
+    "summary": "\"# ITEM 6: KNOWLEDGE GRAPH **Date:** 2026-07-02 **Purpose:** Vault backlinks → queryable dependency map (extend Item 3) **Status:** Implementation-ready\"",
+    "created": "\"2026-07-03T19:43:45.759Z\"",
+    "updated": "\"2026-07-03T19:43:45.759Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/ITEM-7-MEMORY-GOVERNANCE-FRAMEWORK.md",
+    "title": "\"ITEM 7 MEMORY GOVERNANCE FRAMEWORK\"",
+    "summary": "\"# ITEM 7: MEMORY + VAULT FUSION GOVERNANCE FRAMEWORK **Date:** 2026-07-02 **Applies to:** CIC + Rewrite Labs dual project system **Status:** Implementation-ready\"",
+    "created": "\"2026-07-03T19:43:45.762Z\"",
+    "updated": "\"2026-07-03T19:43:45.762Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/ITEM-8-AUDIT-TRAIL.md",
+    "title": "\"ITEM 8 AUDIT TRAIL\"",
+    "summary": "\"# ITEM 8: AUDIT TRAIL **Date:** 2026-07-02 **Purpose:** Track doc changes + correlate with CIC events **Status:** Implementation-ready\"",
+    "created": "\"2026-07-03T19:43:45.766Z\"",
+    "updated": "\"2026-07-03T19:43:45.766Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/00-EXECUTIVE-SUMMARY.md",
+    "title": "\"00 EXECUTIVE SUMMARY\"",
+    "summary": "\"# Rewrite Labs Vault Mirror - Executive Summary\"",
+    "created": "\"2026-07-03T19:43:45.771Z\"",
+    "updated": "\"2026-07-03T19:43:45.771Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/00-INDEX.md",
+    "title": "\"00 INDEX\"",
+    "summary": "\"# CIC & Rewrite Labs Reference\"",
+    "created": "\"2026-07-03T19:43:45.773Z\"",
+    "updated": "\"2026-07-03T19:43:45.773Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/2026-06-27.md",
+    "title": "\"2026 06 27\"",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:43:45.794Z\"",
+    "updated": "\"2026-07-03T19:43:45.794Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/8-items-complete.md",
+    "title": "\"8 Items Complete\"",
+    "summary": "\"# 8-Item Build Complete ✅\"",
+    "created": "\"2026-07-03T19:43:45.797Z\"",
+    "updated": "\"2026-07-03T19:43:45.797Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/ARTIFACTS-SUMMARY.md",
+    "title": "\"ARTIFACTS SUMMARY\"",
+    "summary": "\"# Reorganization Artifacts Summary\"",
+    "created": "\"2026-07-03T19:43:45.800Z\"",
+    "updated": "\"2026-07-03T19:43:45.800Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/build-executor-REVIEW.md",
+    "title": "\"Build Executor REVIEW\"",
+    "summary": "\"# Review: Phase 0.8 Build Executor Implementation\"",
+    "created": "\"2026-07-03T19:43:45.803Z\"",
+    "updated": "\"2026-07-03T19:43:45.803Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/build-progress.md",
+    "title": "\"Build Progress\"",
+    "summary": "\"# 8-Item Build Plan — Progress Summary\"",
+    "created": "\"2026-07-03T19:43:45.807Z\"",
+    "updated": "\"2026-07-03T19:43:45.807Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/BUILD-SUMMARY.md",
+    "title": "\"BUILD SUMMARY\"",
+    "summary": "\"# CIC: Complete Build Summary\"",
+    "created": "\"2026-07-03T19:43:45.810Z\"",
+    "updated": "\"2026-07-03T19:43:45.810Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/CLOUD_EXTENSION_IMPLEMENTATION_SUMMARY.md",
+    "title": "\"CLOUD EXTENSION IMPLEMENTATION SUMMARY\"",
+    "summary": "\"# Cloud Extension Layer — Implementation Summary\"",
+    "created": "\"2026-07-03T19:43:45.813Z\"",
+    "updated": "\"2026-07-03T19:43:45.813Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/competitive-teardown-REVIEW.md",
+    "title": "\"Competitive Teardown REVIEW\"",
+    "summary": "\"# Review: Competitive Teardown — Repaint vs Rewrite Labs\"",
+    "created": "\"2026-07-03T19:43:45.815Z\"",
+    "updated": "\"2026-07-03T19:43:45.815Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/cross-reference-audit.md",
+    "title": "\"Cross Reference Audit\"",
+    "summary": "\"# Cross-Reference Audit: 8-Item Reorganization\"",
+    "created": "\"2026-07-03T19:43:45.818Z\"",
+    "updated": "\"2026-07-03T19:43:45.818Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/DELIVERABLES-SUMMARY.md",
+    "title": "\"DELIVERABLES SUMMARY\"",
+    "summary": "\"# Rewrite Labs Vault Mirror - Deliverables Summary\"",
+    "created": "\"2026-07-03T19:43:45.823Z\"",
+    "updated": "\"2026-07-03T19:43:45.823Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/DRY-RUN-REPORT.md",
+    "title": "\"DRY RUN REPORT\"",
+    "summary": "\"# Reorganization Dry-Run Report **Generated:** 2026-07-02 **Status:** VALIDATED ✓\"",
+    "created": "\"2026-07-03T19:43:45.826Z\"",
+    "updated": "\"2026-07-03T19:43:45.826Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/final-status.md",
+    "title": "\"Final Status\"",
+    "summary": "\"# 8-Item Build Complete Summary\"",
+    "created": "\"2026-07-03T19:43:45.830Z\"",
+    "updated": "\"2026-07-03T19:43:45.830Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/GIT-REMEDIATION-REVIEW.md",
+    "title": "\"GIT REMEDIATION REVIEW\"",
+    "summary": "\"# Review: Git Repository Remediation\"",
+    "created": "\"2026-07-03T19:43:45.833Z\"",
+    "updated": "\"2026-07-03T19:43:45.833Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/GIT-REVIEW.md",
+    "title": "\"GIT REVIEW\"",
+    "summary": "\"# Review: Git Repository State\"",
+    "created": "\"2026-07-03T19:43:45.835Z\"",
+    "updated": "\"2026-07-03T19:43:45.835Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/GOVERNANCE_VALIDATION_SETUP.md",
+    "title": "\"GOVERNANCE VALIDATION SETUP\"",
+    "summary": "\"# Governance Validation Setup Guide\"",
+    "created": "\"2026-07-03T19:43:45.838Z\"",
+    "updated": "\"2026-07-03T19:43:45.838Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/implementation_plan.md",
+    "title": "\"Implementation Plan\"",
+    "summary": "\"# Implementation Plan — Phase 5: Operational Playbooks, Runbooks & SLA Enforcement\"",
+    "created": "\"2026-07-03T19:43:45.850Z\"",
+    "updated": "\"2026-07-03T19:43:45.850Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/KB_SYNC_IMPLEMENTATION_COMPLETE.md",
+    "title": "\"KB SYNC IMPLEMENTATION COMPLETE\"",
+    "summary": "\"# Knowledge Base Sync Implementation — Complete ✅\"",
+    "created": "\"2026-07-03T19:43:45.854Z\"",
+    "updated": "\"2026-07-03T19:43:45.855Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/MANIFEST.md",
+    "title": "\"MANIFEST\"",
+    "summary": "\"# CIC & Rewrite Labs Vault Infrastructure - Complete Manifest\"",
+    "created": "\"2026-07-03T19:43:45.859Z\"",
+    "updated": "\"2026-07-03T19:43:45.859Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/MIGRATION_LOG.md",
+    "title": "\"MIGRATION LOG\"",
+    "summary": "\"# PC Migration Log: Old Machine (soren) → New Machine (THE_FOREMAN / ccsor)\"",
+    "created": "\"2026-07-03T19:43:45.865Z\"",
+    "updated": "\"2026-07-03T19:43:45.865Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/phase-1-execution.md",
+    "title": "\"Phase 1 Execution\"",
+    "summary": "\"# Phase 1 Execution Log **Date:** 2026-07-02 **Status:** ✅ COMPLETE **Files Moved:** 20 **Directories Created:** 9\"",
+    "created": "\"2026-07-03T19:43:45.869Z\"",
+    "updated": "\"2026-07-03T19:43:45.869Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/phase-2-completion.md",
+    "title": "\"Phase 2 Completion\"",
+    "summary": "\"# Phase 2 Completion Log **Date:** 2026-07-02 **Status:** ✅ COMPLETE **Tasks:** Cross-references reviewed, mkdocs.yml updated\"",
+    "created": "\"2026-07-03T19:43:45.874Z\"",
+    "updated": "\"2026-07-03T19:43:45.874Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/phase-3-completion.md",
+    "title": "\"Phase 3 Completion\"",
+    "summary": "\"# Phase 3 Completion Log: Post-Migration Verification **Date:** 2026-07-02 **Status:** ✅ ALL 8 PHASES PASSED **Verification Time:** Complete\"",
+    "created": "\"2026-07-03T19:43:45.878Z\"",
+    "updated": "\"2026-07-03T19:43:45.878Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/PLAN.md",
+    "title": "\"PLAN\"",
+    "summary": "\"# PHASE 8 — COST OPTIMIZATION + DYNAMIC MODEL SELECTION\"",
+    "created": "\"2026-07-03T19:43:45.881Z\"",
+    "updated": "\"2026-07-03T19:43:45.881Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/PLAN_PHASE_6.md",
+    "title": "\"PLAN PHASE 6\"",
+    "summary": "\"# Phase 6: Autonomous Cross-Orchestrated Operation — Execution Plan\"",
+    "created": "\"2026-07-03T19:43:45.884Z\"",
+    "updated": "\"2026-07-03T19:43:45.884Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/PLAN_UMM_D3.md",
+    "title": "\"PLAN UMM D3\"",
+    "summary": "\"# UNIFIED MEMORY MODEL (UMM) — D3 EXECUTION PLAN\"",
+    "created": "\"2026-07-03T19:43:45.889Z\"",
+    "updated": "\"2026-07-03T19:43:45.889Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/PROJECT.md",
+    "title": "\"PROJECT\"",
+    "summary": "\"# CIC Project Overview\"",
+    "created": "\"2026-07-03T19:43:45.891Z\"",
+    "updated": "\"2026-07-03T19:43:45.891Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/REORGANIZATION-PLAN.md",
+    "title": "\"REORGANIZATION PLAN\"",
+    "summary": "\"# 8-Item Deliverables Reorganization Plan\"",
+    "created": "\"2026-07-03T19:43:45.894Z\"",
+    "updated": "\"2026-07-03T19:43:45.894Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/reorganization.md",
+    "title": "\"Reorganization\"",
+    "summary": "\"# 8-Item Deliverables Reorganization Plan\"",
+    "created": "\"2026-07-03T19:43:45.897Z\"",
+    "updated": "\"2026-07-03T19:43:45.897Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/repo-cleanup-REVIEW.md",
+    "title": "\"Repo Cleanup REVIEW\"",
+    "summary": "\"# Review: repo-cleanup session work (backups, key checklist, fds removal, cleanup plan)\"",
+    "created": "\"2026-07-03T19:43:45.902Z\"",
+    "updated": "\"2026-07-03T19:43:45.902Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/REPOSITORY_GOVERNANCE_AUDIT.md",
+    "title": "\"REPOSITORY GOVERNANCE AUDIT\"",
+    "summary": "\"# Repository Governance Audit Report\"",
+    "created": "\"2026-07-03T19:43:45.923Z\"",
+    "updated": "\"2026-07-03T19:43:45.923Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/REVIEW-28a2.md",
+    "title": "\"REVIEW 28a2\"",
+    "summary": "\"# Review: Phase 28a.2 Manifest + CLI Implementation\"",
+    "created": "\"2026-07-03T19:43:45.926Z\"",
+    "updated": "\"2026-07-03T19:43:45.926Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/REVIEW-28a5.md",
+    "title": "\"REVIEW 28a5\"",
+    "summary": "\"# Review: Phase 28a.5 Status Tracker\"",
+    "created": "\"2026-07-03T19:43:45.928Z\"",
+    "updated": "\"2026-07-03T19:43:45.928Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/REVIEW.md",
+    "title": "\"REVIEW\"",
+    "summary": "\"# Review: CIC Repository — Full Codebase Audit\"",
+    "created": "\"2026-07-03T19:43:45.934Z\"",
+    "updated": "\"2026-07-03T19:43:45.934Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/RULE_2_COMPLIANCE_FIX.md",
+    "title": "\"RULE 2 COMPLIANCE FIX\"",
+    "summary": "\"# RULE 2 Compliance Fix — kb-sync-nightly Skill\"",
+    "created": "\"2026-07-03T19:43:45.937Z\"",
+    "updated": "\"2026-07-03T19:43:45.937Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/SYNC_ANALYSIS.md",
+    "title": "\"SYNC ANALYSIS\"",
+    "summary": "\"# Sync Ecosystem Analysis: Current State & Gaps\"",
+    "created": "\"2026-07-03T19:43:45.941Z\"",
+    "updated": "\"2026-07-03T19:43:45.941Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/TEMPLATE-EXPANSION-REVIEW.md",
+    "title": "\"TEMPLATE EXPANSION REVIEW\"",
+    "summary": "\"# Review: Template Expansion Pack Plan vs Repository State\"",
+    "created": "\"2026-07-03T19:43:45.943Z\"",
+    "updated": "\"2026-07-03T19:43:45.943Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/TEST.md",
+    "title": "\"TEST\"",
+    "summary": "\"Test workflow validation\"",
+    "created": "\"2026-07-03T19:43:45.946Z\"",
+    "updated": "\"2026-07-03T19:43:45.946Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/vscode-integration-REVIEW.md",
+    "title": "\"Vscode Integration REVIEW\"",
+    "summary": "\"# Review: CIC ↔ VS Code Integration Layer\"",
+    "created": "\"2026-07-03T19:43:45.949Z\"",
+    "updated": "\"2026-07-03T19:43:45.949Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/meta/work-summarizer-implementation-guide.md",
+    "title": "\"Work Summarizer Implementation Guide\"",
+    "summary": "\"# Work Summarizer v2 Upgrade — Implementation Guide (Stages 3–8)\"",
+    "created": "\"2026-07-03T19:43:45.953Z\"",
+    "updated": "\"2026-07-03T19:43:45.953Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/MKDOCS_STRUCTURE_MAP.md",
+    "title": "\"MKDOCS STRUCTURE MAP\"",
+    "summary": "\"# MkDocs Structure Map — Documentation Organization\"",
+    "created": "\"2026-07-03T19:43:45.958Z\"",
+    "updated": "\"2026-07-03T19:43:45.958Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/observability/DASHBOARDS_INTEGRATION.md",
+    "title": "\"DASHBOARDS INTEGRATION\"",
+    "summary": "\"# Grafana Dashboards Integration Guide\"",
+    "created": "\"2026-07-03T19:43:45.962Z\"",
+    "updated": "\"2026-07-03T19:43:45.963Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/operations/monitoring.md",
+    "title": "monitoring",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.052Z\"",
+    "updated": "\"2026-07-03T19:44:38.052Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/operations/running.md",
+    "title": "running",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.055Z\"",
+    "updated": "\"2026-07-03T19:44:38.055Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/operations/sealing.md",
+    "title": "sealing",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.057Z\"",
+    "updated": "\"2026-07-03T19:44:38.057Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/operations/troubleshooting.md",
+    "title": "troubleshooting",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.058Z\"",
+    "updated": "\"2026-07-03T19:44:38.058Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/operations/verification.md",
+    "title": "verification",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.061Z\"",
+    "updated": "\"2026-07-03T19:44:38.061Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/quickstart/first-steps.md",
+    "title": "first steps",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.062Z\"",
+    "updated": "\"2026-07-03T19:44:38.062Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/quickstart/index.md",
+    "title": "index",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.064Z\"",
+    "updated": "\"2026-07-03T19:44:38.064Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/quickstart/installation.md",
+    "title": "installation",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.066Z\"",
+    "updated": "\"2026-07-03T19:44:38.066Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/AGENTS_API.md",
+    "title": "\"AGENTS API\"",
+    "summary": "\"# Agents API Reference\"",
+    "created": "\"2026-07-03T19:43:45.999Z\"",
+    "updated": "\"2026-07-03T19:43:45.999Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/CIC_ENV_REFERENCE.md",
+    "title": "\"CIC ENV REFERENCE\"",
+    "summary": "\"# CIC Cost & Usage System — Environment Variables\"",
+    "created": "\"2026-07-03T19:43:46.002Z\"",
+    "updated": "\"2026-07-03T19:43:46.002Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/cli.md",
+    "title": "cli",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.070Z\"",
+    "updated": "\"2026-07-03T19:44:38.070Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/DEPLOYMENT.md",
+    "title": "\"DEPLOYMENT\"",
+    "summary": "\"# CIC Update-Monitor: Full Deployment Guide\"",
+    "created": "\"2026-07-03T19:43:46.006Z\"",
+    "updated": "\"2026-07-03T19:43:46.006Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/DEPLOYMENT_FIXES_COMPLETED.md",
+    "title": "\"DEPLOYMENT FIXES COMPLETED\"",
+    "summary": "\"# Deployment Fixes: 4 Production-Ready Systems — ALL COMPLETE\"",
+    "created": "\"2026-07-03T19:43:46.009Z\"",
+    "updated": "\"2026-07-03T19:43:46.009Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/DEPLOY_PLAN_UNDEPLOYED_SYSTEMS.md",
+    "title": "\"DEPLOY PLAN UNDEPLOYED SYSTEMS\"",
+    "summary": "\"# Deploy Plan: 4 Production-Ready Systems (Undeployed)\"",
+    "created": "\"2026-07-03T19:43:46.012Z\"",
+    "updated": "\"2026-07-03T19:43:46.012Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/DEPLOY_SUMMARY.md",
+    "title": "\"DEPLOY SUMMARY\"",
+    "summary": "\"# CIC v3.0 Roadmap Automation — Deploy Summary (Updated)\"",
+    "created": "\"2026-07-03T19:43:46.014Z\"",
+    "updated": "\"2026-07-03T19:43:46.014Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/determinism-validation-checklist.md",
+    "title": "\"Determinism Validation Checklist\"",
+    "summary": "\"# Determinism Validation — Phase 5 Optimization Layers\"",
+    "created": "\"2026-07-03T19:43:46.016Z\"",
+    "updated": "\"2026-07-03T19:43:46.016Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/DOCKER-BUILD-SUMMARY.md",
+    "title": "\"DOCKER BUILD SUMMARY\"",
+    "summary": "\"# CIC Docker Build Summary\"",
+    "created": "\"2026-07-03T19:43:46.020Z\"",
+    "updated": "\"2026-07-03T19:43:46.020Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/DOCKER-COMPOSE-BUILD-PATHS.md",
+    "title": "\"DOCKER COMPOSE BUILD PATHS\"",
+    "summary": "\"# Docker-Compose Build Paths Reference\"",
+    "created": "\"2026-07-03T19:43:46.026Z\"",
+    "updated": "\"2026-07-03T19:43:46.026Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/DOCKER-QUICKSTART.md",
+    "title": "\"DOCKER QUICKSTART\"",
+    "summary": "\"# CIC Docker — Quick Reference\"",
+    "created": "\"2026-07-03T19:43:46.029Z\"",
+    "updated": "\"2026-07-03T19:43:46.029Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/DOCKER-UPDATED.md",
+    "title": "\"DOCKER UPDATED\"",
+    "summary": "\"# Docker Infrastructure — Updated Documentation\"",
+    "created": "\"2026-07-03T19:43:46.032Z\"",
+    "updated": "\"2026-07-03T19:43:46.032Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/DOCKER.md",
+    "title": "\"DOCKER\"",
+    "summary": "\"# CIC Docker Setup\"",
+    "created": "\"2026-07-03T19:43:46.036Z\"",
+    "updated": "\"2026-07-03T19:43:46.036Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/environment.md",
+    "title": "environment",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.082Z\"",
+    "updated": "\"2026-07-03T19:44:38.082Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/GITHUB-ACTIONS-PROCESS.md",
+    "title": "\"GITHUB ACTIONS PROCESS\"",
+    "summary": "\"# GitHub Actions Process\"",
+    "created": "\"2026-07-03T19:43:46.040Z\"",
+    "updated": "\"2026-07-03T19:43:46.040Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/HUMANIZER_GUIDE.md",
+    "title": "\"HUMANIZER GUIDE\"",
+    "summary": "\"# Humanizer PostProcessor - Operator Guide\"",
+    "created": "\"2026-07-03T19:43:46.053Z\"",
+    "updated": "\"2026-07-03T19:43:46.053Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/IMPLEMENTATION-SETUP.md",
+    "title": "\"IMPLEMENTATION SETUP\"",
+    "summary": "\"# Vault Implementation Setup Instructions\"",
+    "created": "\"2026-07-03T19:43:46.058Z\"",
+    "updated": "\"2026-07-03T19:43:46.058Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/INTEGRATION_GUIDE.md",
+    "title": "\"INTEGRATION GUIDE\"",
+    "summary": "\"# CIC v3.0 Integration Guide\"",
+    "created": "\"2026-07-03T19:43:46.065Z\"",
+    "updated": "\"2026-07-03T19:43:46.065Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/knowledge-graph/QUICK_START.md",
+    "title": "\"QUICK START\"",
+    "summary": "\"# Knowledge Graph: Quick Start\"",
+    "created": "\"2026-07-03T19:43:46.071Z\"",
+    "updated": "\"2026-07-03T19:43:46.071Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/knowledge-graph/README.md",
+    "title": "\"README\"",
+    "summary": "\"# CIC Vault Knowledge Graph\"",
+    "created": "\"2026-07-03T19:43:46.076Z\"",
+    "updated": "\"2026-07-03T19:43:46.076Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/knowledge-graph/SETUP_GUIDE.md",
+    "title": "\"SETUP GUIDE\"",
+    "summary": "\"# Knowledge Graph Setup & Integration Guide\"",
+    "created": "\"2026-07-03T19:43:46.080Z\"",
+    "updated": "\"2026-07-03T19:43:46.080Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/manifests.md",
+    "title": "manifests",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.093Z\"",
+    "updated": "\"2026-07-03T19:44:38.093Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/post-migration-checklist.md",
+    "title": "\"Post Migration Checklist\"",
+    "summary": "\"# Post-Migration Verification Checklist\"",
+    "created": "\"2026-07-03T19:43:46.088Z\"",
+    "updated": "\"2026-07-03T19:43:46.088Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/QUICK-REFERENCE.md",
+    "title": "\"QUICK REFERENCE\"",
+    "summary": "\"# Vault Quick Reference Card\"",
+    "created": "\"2026-07-03T19:43:46.091Z\"",
+    "updated": "\"2026-07-03T19:43:46.091Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/schemas.md",
+    "title": "schemas",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.096Z\"",
+    "updated": "\"2026-07-03T19:44:38.096Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/SETUP-CHECKLIST.md",
+    "title": "\"SETUP CHECKLIST\"",
+    "summary": "\"# Vault Mirror Setup - Master Checklist\"",
+    "created": "\"2026-07-03T19:43:46.096Z\"",
+    "updated": "\"2026-07-03T19:43:46.096Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/reference/skill-location-governance.md",
+    "title": "\"Skill Location Governance\"",
+    "summary": "\"# Skill-Location Governance (Phase 2)\"",
+    "created": "\"2026-07-03T19:43:46.100Z\"",
+    "updated": "\"2026-07-03T19:43:46.100Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/rewrite-labs/00-RL-INDEX.md",
+    "title": "\"00 RL INDEX\"",
+    "summary": "\"# CIC & Rewrite Labs Integrated Reference Vault\"",
+    "created": "\"2026-07-03T19:43:46.103Z\"",
+    "updated": "\"2026-07-03T19:43:46.103Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/rewrite-labs/RL-VAULT-SETUP.md",
+    "title": "\"RL VAULT SETUP\"",
+    "summary": "\"# Rewrite Labs Reference Vault Setup\"",
+    "created": "\"2026-07-03T19:43:46.116Z\"",
+    "updated": "\"2026-07-03T19:43:46.116Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/rewrite-labs/vault-mirror/configuration.md",
+    "title": "\"Configuration\"",
+    "summary": "\"# Vault Sync Configuration Guide\"",
+    "created": "\"2026-07-03T19:43:46.124Z\"",
+    "updated": "\"2026-07-03T19:43:46.124Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/rewrite-labs/vault-mirror/executive-summary.md",
+    "title": "\"Executive Summary\"",
+    "summary": "\"# Rewrite Labs Vault Mirror - Executive Summary\"",
+    "created": "\"2026-07-03T19:43:46.128Z\"",
+    "updated": "\"2026-07-03T19:43:46.128Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/rewrite-labs/vault-mirror/rl-setup.md",
+    "title": "\"Rl Setup\"",
+    "summary": "\"# Rewrite Labs Reference Vault Setup\"",
+    "created": "\"2026-07-03T19:43:46.131Z\"",
+    "updated": "\"2026-07-03T19:43:46.131Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/rewrite-labs/vault-mirror/setup.md",
+    "title": "\"Setup\"",
+    "summary": "\"# Vault Implementation Setup Instructions\"",
+    "created": "\"2026-07-03T19:43:46.136Z\"",
+    "updated": "\"2026-07-03T19:43:46.136Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/rewrite-labs/VAULT-README.md",
+    "title": "\"VAULT README\"",
+    "summary": "\"# Obsidian Vault Setup\"",
+    "created": "\"2026-07-03T19:43:46.141Z\"",
+    "updated": "\"2026-07-03T19:43:46.141Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/rewrite-labs/VAULT-SYNC-CONFIGURATION.md",
+    "title": "\"VAULT SYNC CONFIGURATION\"",
+    "summary": "\"# Vault Sync Configuration Guide\"",
+    "created": "\"2026-07-03T19:43:46.144Z\"",
+    "updated": "\"2026-07-03T19:43:46.144Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/ROOT_MARKDOWN_AUDIT.md",
+    "title": "\"ROOT MARKDOWN AUDIT\"",
+    "summary": "\"# Root-Level Markdown Audit — Files to Relocate\"",
+    "created": "\"2026-07-03T19:43:46.147Z\"",
+    "updated": "\"2026-07-03T19:43:46.147Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/tests/dashboard-tests.md",
+    "title": "dashboard tests",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.108Z\"",
+    "updated": "\"2026-07-03T19:44:38.108Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/tests/feedback-loop-tests.md",
+    "title": "feedback loop tests",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.110Z\"",
+    "updated": "\"2026-07-03T19:44:38.110Z\"",
+    "tags": ""
+  },
+  {
+    "path": "docs/tests/routing-tests.md",
+    "title": "routing tests",
+    "summary": "\"\"",
+    "created": "\"2026-07-03T19:44:38.113Z\"",
+    "updated": "\"2026-07-03T19:44:38.113Z\"",
+    "tags": ""
+  }
+]

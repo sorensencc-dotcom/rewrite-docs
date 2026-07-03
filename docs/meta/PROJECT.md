@@ -1,3 +1,13 @@
+---
+title: "PROJECT"
+summary: "# CIC Project Overview"
+created: "2026-07-03T19:43:45.891Z"
+updated: "2026-07-03T19:43:45.891Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC Project Overview
 
 **Project:** Governance + Integration Platform (v0.8.0)  

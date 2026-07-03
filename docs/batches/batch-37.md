@@ -1,5 +1,12 @@
 ---
 title: batch 37
+summary: ""
+created: "2026-07-03T19:44:37.631Z"
+updated: "2026-07-03T19:44:37.631Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Batch 37: Deterministic Federation Layer

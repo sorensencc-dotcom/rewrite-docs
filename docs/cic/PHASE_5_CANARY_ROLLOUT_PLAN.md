@@ -3,6 +3,13 @@ title: Phase 5 Canary Rollout Plan
 date: 2026-07-02
 version: 1.0.0
 status: Production-Ready
+summary: ""
+created: "2026-07-03T19:44:37.771Z"
+updated: "2026-07-03T19:44:37.771Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Phase 5: TorqueQuery v2 Canary Rollout & Monitoring

@@ -1,3 +1,13 @@
+---
+title: "DASHBOARDS INTEGRATION"
+summary: "# Grafana Dashboards Integration Guide"
+created: "2026-07-03T19:43:45.962Z"
+updated: "2026-07-03T19:43:45.963Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Grafana Dashboards Integration Guide
 
 ## Overview

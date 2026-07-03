@@ -1,3 +1,13 @@
+---
+title: "CIC TOKEN PACK V2 0 IMPLEMENTATION GUIDE"
+summary: "# CIC Token Pack v2.0 — Implementation Guide **Date:** 2026-06-21 **Status:** Phase 1 (CRITICAL) ready to execute **Timeline:** 30 min (Phase 1) + 1 hr (Phase 2) + 1.5 hr (Phase 3) = **2.5 hours total**"
+created: "2026-07-03T19:43:45.358Z"
+updated: "2026-07-03T19:43:45.358Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC Token Pack v2.0 — Implementation Guide
 **Date:** 2026-06-21  
 **Status:** Phase 1 (CRITICAL) ready to execute  

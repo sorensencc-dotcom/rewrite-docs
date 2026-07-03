@@ -1,3 +1,13 @@
+---
+title: "VAULT SYNC CONFIGURATION"
+summary: "# Vault Sync Configuration Guide"
+created: "2026-07-03T19:43:46.144Z"
+updated: "2026-07-03T19:43:46.144Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Vault Sync Configuration Guide
 
 ## Overview

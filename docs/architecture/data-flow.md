@@ -1,5 +1,12 @@
 ---
 title: data flow
+summary: ""
+created: "2026-07-03T19:44:37.609Z"
+updated: "2026-07-03T19:44:37.609Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Data Flow

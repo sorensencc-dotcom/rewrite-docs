@@ -1,5 +1,12 @@
 ---
 title: index
+summary: ""
+created: "2026-07-03T19:44:37.930Z"
+updated: "2026-07-03T19:44:37.930Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # MAAL Sandbox System

@@ -1,3 +1,13 @@
+---
+title: "TEMPLATE EXPANSION REVIEW"
+summary: "# Review: Template Expansion Pack Plan vs Repository State"
+created: "2026-07-03T19:43:45.943Z"
+updated: "2026-07-03T19:43:45.943Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Review: Template Expansion Pack Plan vs Repository State
 
 **Reviewed:** 2026-06-13T00:00:00Z  

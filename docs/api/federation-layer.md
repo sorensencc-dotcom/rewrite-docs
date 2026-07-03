@@ -1,5 +1,12 @@
 ---
 title: federation layer
+summary: ""
+created: "2026-07-03T19:44:37.599Z"
+updated: "2026-07-03T19:44:37.599Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Federation Layer API

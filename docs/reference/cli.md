@@ -1,5 +1,12 @@
 ---
 title: cli
+summary: ""
+created: "2026-07-03T19:44:38.070Z"
+updated: "2026-07-03T19:44:38.070Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # CLI Commands

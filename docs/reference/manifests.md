@@ -1,5 +1,12 @@
 ---
 title: manifests
+summary: ""
+created: "2026-07-03T19:44:38.093Z"
+updated: "2026-07-03T19:44:38.093Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Manifests
@@ -12,7 +19,7 @@ Complete reference of all manifests in the MAAL Sandbox system.
 
 Top-level index of all 40 batches and 25 layers.
 
-[View BATCHES_MANIFEST.json](../../BATCHES_MANIFEST.json)
+`View BATCHES_MANIFEST.json`
 
 Structure:
 ```json

@@ -1,3 +1,13 @@
+---
+title: "REVIEW 28a2"
+summary: "# Review: Phase 28a.2 Manifest + CLI Implementation"
+created: "2026-07-03T19:43:45.926Z"
+updated: "2026-07-03T19:43:45.926Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Review: Phase 28a.2 Manifest + CLI Implementation
 
 Reviewed: 2026-06-11T16:30:00Z

@@ -1,5 +1,12 @@
 ---
 title: index
+summary: ""
+created: "2026-07-03T19:44:38.064Z"
+updated: "2026-07-03T19:44:38.064Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # Quickstart Guide

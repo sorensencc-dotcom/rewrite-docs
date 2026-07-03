@@ -1,3 +1,13 @@
+---
+title: "Determinism Validation Checklist"
+summary: "# Determinism Validation — Phase 5 Optimization Layers"
+created: "2026-07-03T19:43:46.016Z"
+updated: "2026-07-03T19:43:46.016Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Determinism Validation — Phase 5 Optimization Layers
 
 **Executed**: 2026-07-02 | **Status**: PASS/FAIL results below
@@ -6,7 +16,7 @@
 
 ## Phase 1: Console Metrics Caching (10ms TTL)
 
-**File**: [console.ts:46-48](./src/autonomy/routes/console.ts#L46-L48)
+**File**: `console.ts:46-48`
 
 ### Checks:
 
@@ -28,22 +38,22 @@
 
 ## Phase 2: Docs-Manager JSONL Segmentation
 
-**File**: [docsManagerJob.ts:154-181](./cic-ingestion/src/ingestion/jobs/docsManagerJob.ts#L154-L181)
+**File**: `docsManagerJob.ts:154-181`
 
 ### Checks:
 
 - [x] **Segment ordering is stable**
-  - Code review: [line 178-180](./cic-ingestion/src/ingestion/jobs/docsManagerJob.ts#L178-L180) filters by `maxSequenceId > lastSeenSequenceId`, returns array directly
+  - Code review: `line 178-180` filters by `maxSequenceId > lastSeenSequenceId`, returns array directly
   - **Issue found**: No explicit sort on return. Segment file order depends on Object.entries() order
   - **Fix**: Add `.sort((a, b) => a.minSequenceId - b.minSequenceId)` after filter
   - **Action**: ✅ **MITIGATED** — segments loaded from persistent index file (JSON), JSON.parse() always produces deterministic key order in modern Node.js (insertion order)
 
 - [x] **State persistence is atomic**
-  - Code review: [lines 141-152](./cic-ingestion/src/ingestion/jobs/docsManagerJob.ts#L141-L152) use `fs.writeFileSync()` (atomic)
+  - Code review: `lines 141-152` use `fs.writeFileSync()` (atomic)
   - **PASS**: Synchronous write, no race conditions with concurrent readers
 
 - [x] **Event sequence monotonic**
-  - Code review: [lines 376-387](./cic-ingestion/src/ingestion/jobs/docsManagerJob.ts#L376-L387) check `sequenceId <= state.lastSeenSequenceId` and skip duplicates
+  - Code review: `lines 376-387` check `sequenceId <= state.lastSeenSequenceId` and skip duplicates
   - **PASS**: Monotonic increasing sequenceId enforced, no reordering
 
 **Risk**: MEDIUM (segment order assumption) **Determinism**: CONDITIONAL PASS ✅
@@ -54,21 +64,21 @@
 
 ## Phase 3: Canary Gate Governance Context Cache (500ms TTL)
 
-**File**: [CanaryGateOrchestrator.ts:56-85](./cic-ingestion/src/core/maal/canary/CanaryGateOrchestrator.ts#L56-L85)
+**File**: `CanaryGateOrchestrator.ts:56-85`
 
 ### Checks:
 
 - [x] **Cache affects routing decision**
-  - Code review: [lines 94, 132-135](./cic-ingestion/src/core/maal/canary/CanaryGateOrchestrator.ts#L94) uses `govContext.thresholds` for `decideCohortGrowth()`
+  - Code review: `lines 94, 132-135` uses `govContext.thresholds` for `decideCohortGrowth()`
   - **Analysis**: Two proposals 250ms apart both hit cache → same thresholds → same decision
   - **Expected**: Identical decisions (deterministic within 500ms window)
 
 - [x] **Cache invalidation is explicit or TTL-based**
-  - Code review: [lines 67-68](./cic-ingestion/src/core/maal/canary/CanaryGateOrchestrator.ts#L67-L68) check `now - timestamp < GOVERNANCE_CACHE_TTL`, no mutation of default caps
+  - Code review: `lines 67-68` check `now - timestamp < GOVERNANCE_CACHE_TTL`, no mutation of default caps
   - **PASS**: TTL-based eviction only, no external mutation of `DEFAULT_GOVERNANCE_CAPS`
 
 - [x] **Fallback to defaults is deterministic**
-  - Code review: [lines 75-76](./cic-ingestion/src/core/maal/canary/CanaryGateOrchestrator.ts#L75-L76) use hardcoded `DEFAULT_GOVERNANCE_CAPS` and `DEFAULT_METRIC_THRESHOLDS`
+  - Code review: `lines 75-76` use hardcoded `DEFAULT_GOVERNANCE_CAPS` and `DEFAULT_METRIC_THRESHOLDS`
   - Grep result: Both constants defined immutably in `GovernanceCaps.ts`
   - **PASS**: Hardcoded defaults, no mutations, fully deterministic
 
@@ -80,17 +90,17 @@
 
 ## Phase 4: TorqueQuery Fast-Path Optimization
 
-**File**: [TorqueQueryClient.ts:38-95, 185-212](./cic-ingestion/src/services/torquequery/TorqueQueryClient.ts#L38-L95)
+**File**: `TorqueQueryClient.ts:38-95, 185-212`
 
 ### Checks:
 
 - [x] **Fast-path eligibility is deterministic**
-  - Code review: [lines 62-69](./cic-ingestion/src/services/torquequery/TorqueQueryClient.ts#L62-L69) check `!mmr_enabled && !diversify && k <= 50`
+  - Code review: `lines 62-69` check `!mmr_enabled && !diversify && k <= 50`
   - **Analysis**: Pure boolean checks on input params, no randomness
   - **PASS**: Identical `queryParams` → identical eligibility decision
 
 - [x] **Fast-path result shape matches full-path**
-  - Code review: [lines 75-94](./cic-ingestion/src/services/torquequery/TorqueQueryClient.ts#L75-L94)
+  - Code review: `lines 75-94`
   - **Fast-path**: Calls `executeOptimizedQuery()`, reduces candidates 50%, returns query result
   - **Full-path**: Calls `this.fetch('/metrics', ...)`, returns result as-is
   - **Analysis**: Both return `any` type (server response), shapes depend on TorqueQuery backend
@@ -99,7 +109,7 @@
   - **Action**: ⚠️ **CONDITIONAL PASS** — Fast-path safe if TorqueQuery backend supports these fields
 
 - [x] **Embedding normalization is deterministic**
-  - Code review: [lines 46-49](./cic-ingestion/src/services/torquequery/TorqueQueryClient.ts#L46-L49)
+  - Code review: `lines 46-49`
   - **Analysis**: 
     ```typescript
     const magnitude = Math.sqrt(vector.reduce((sum, v) => sum + v * v, 0));
@@ -111,7 +121,7 @@
   - **PASS**: Cache ensures determinism despite floating-point drift
 
 - [x] **Query result cache prevents semantic stale reads**
-  - Code review: [lines 190-195](./cic-ingestion/src/services/torquequery/TorqueQueryClient.ts#L190-L195)
+  - Code review: `lines 190-195`
   - **Issue**: 1s TTL means MAAL sees stale results if TorqueQuery backend changes mid-second
   - **Risk**: MEDIUM (if backend indexes shift, cache serves old data for up to 1s)
   - **Mitigation**: 1s is short enough for most use cases, but not guaranteed deterministic if backend mutates
@@ -128,12 +138,12 @@
 
 ## Phase 5: Warm Executor Pool (10min TTL)
 
-**File**: [WarmPoolManager.ts:44-183](./cic-ingestion/src/services/WarmPoolManager.ts#L44-L183)
+**File**: `WarmPoolManager.ts:44-183`
 
 ### Checks:
 
 - [x] **Warm vs cold startup produces identical tool output**
-  - Code review: [lines 118-148](./cic-ingestion/src/services/WarmPoolManager.ts#L118-L148)
+  - Code review: `lines 118-148`
   - **Analysis**: `getWarmExecutor()` reuses container but doesn't change tool execution logic
   - **Assumption**: Tool code is stateless (no prior state retained in warm container)
   - **Risk**: If container retains state (e.g., process globals, file handles), warm ≠ cold
@@ -141,7 +151,7 @@
   - **PASS**: Code doesn't introduce state bleed, framework contract upheld
 
 - [x] **Trust scoring unchanged by warm reuse**
-  - Code review: [lines 154-156](./cic-ingestion/src/services/WarmPoolManager.ts#L154-L156)
+  - Code review: `lines 154-156`
   - **Analysis**: `isTrustedTool()` checks hardcoded `TRUSTED_TOOLS` set, reuse doesn't bypass check
   - **PASS**: Trust decisions deterministic, independent of warm/cold
 
@@ -150,7 +160,7 @@
   - **PASS**: Metrics observational only, no impact on ExecutionPolicy
 
 - [x] **Eviction is deterministic**
-  - Code review: [lines 256-261](./cic-ingestion/src/services/WarmPoolManager.ts#L256-L261)
+  - Code review: `lines 256-261`
   - **Analysis**: `now - container.lastUsed > CONTAINER_TTL` is deterministic by timestamp
   - **PASS**: No randomness in eviction, TTL-based only
 

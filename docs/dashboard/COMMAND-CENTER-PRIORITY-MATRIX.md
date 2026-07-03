@@ -1,3 +1,13 @@
+---
+title: "COMMAND CENTER PRIORITY MATRIX"
+summary: "# CIC Command Center — Priority Matrix"
+created: "2026-07-03T19:43:45.682Z"
+updated: "2026-07-03T19:43:45.682Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC Command Center — Priority Matrix
 
 **Scope:** All major systems (Governance, Memory, Autonomy, TorqueQuery, Extractors, Skills, ARL)  

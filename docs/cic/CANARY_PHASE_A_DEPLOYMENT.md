@@ -1,3 +1,13 @@
+---
+title: "CANARY PHASE A DEPLOYMENT"
+summary: "# Canary Phase A Deployment (10% Traffic, 1h Duration)"
+created: "2026-07-03T19:43:45.333Z"
+updated: "2026-07-03T19:43:45.333Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Canary Phase A Deployment (10% Traffic, 1h Duration)
 
 **Start**: 2026-07-02 ~17:30 UTC  

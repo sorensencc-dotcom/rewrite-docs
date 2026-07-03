@@ -1,5 +1,12 @@
 ---
 title: design
+summary: ""
+created: "2026-07-03T19:44:37.612Z"
+updated: "2026-07-03T19:44:37.612Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
 ---
 
 # System Design
