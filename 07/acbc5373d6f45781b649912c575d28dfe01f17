@@ -1,0 +1,21 @@
+.gitignore
+  s_d3640c043b3d74::t_4af08d74a133a8 79-94
+.gitmodules
+  s_d3640c043b3d74::t_533b2c8a571aa2 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "07acbc5373d6f45781b649912c575d28dfe01f17",
+  "prompts": {},
+  "sessions": {
+    "s_d3640c043b3d74": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6a3bc7a-e5d5-4837-8509-3c2a67fc7c7d",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
