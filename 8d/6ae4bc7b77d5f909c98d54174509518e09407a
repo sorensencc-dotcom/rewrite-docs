@@ -1,0 +1,19 @@
+WORK_SUMMARIZER_IMPLEMENTATION_GUIDE.md
+  s_748e5ab68ae704::t_d671131a04c222 1-912
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "8d6ae4bc7b77d5f909c98d54174509518e09407a",
+  "prompts": {},
+  "sessions": {
+    "s_748e5ab68ae704": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "17f1198e-3730-4433-8b16-f492ccb56939",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
