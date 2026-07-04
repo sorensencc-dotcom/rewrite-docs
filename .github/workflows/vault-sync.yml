@@ -1,0 +1,96 @@
+name: Vault Sync
+
+on:
+  schedule:
+    - cron: "0 9 * * *"  # 09:00 UTC daily
+  workflow_dispatch:
+    inputs:
+      system:
+        description: "System to sync (all, cic, rl)"
+        required: false
+        default: "all"
+        type: choice
+        options:
+          - all
+          - cic
+          - rl
+      verbose:
+        description: "Enable verbose logging"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  sync:
+    name: Sync Vaults
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config --local user.email "vault-sync@bot.local"
+          git config --local user.name "Vault Sync Bot"
+
+      - name: Run vault sync
+        shell: pwsh
+        run: |
+          $system = "${{ github.event.inputs.system || 'all' }}"
+          $verbose = "${{ github.event.inputs.verbose }}" -eq "true"
+
+          $args = @("-System", $system)
+          if ($verbose) { $args += "-Verbose" }
+
+          Write-Host "⏱️  Starting vault sync: system=$system, verbose=$verbose" -ForegroundColor Cyan
+          & .\sync-vault.ps1 @args
+
+          if ($LASTEXITCODE -ne 0) {
+            Write-Host "❌ Sync failed with exit code $LASTEXITCODE" -ForegroundColor Red
+            exit $LASTEXITCODE
+          }
+          Write-Host "✅ Sync completed successfully" -ForegroundColor Green
+
+      - name: Check for changes
+        id: changes
+        shell: pwsh
+        run: |
+          $status = git status --short
+          if ($status) {
+            Write-Host "📋 Changes detected:" -ForegroundColor Cyan
+            Write-Host $status
+            "has_changes=true" >> $env:GITHUB_OUTPUT
+          } else {
+            Write-Host "✅ No changes to commit" -ForegroundColor Green
+            "has_changes=false" >> $env:GITHUB_OUTPUT
+          }
+
+      - name: Commit and push changes
+        if: steps.changes.outputs.has_changes == 'true'
+        shell: pwsh
+        run: |
+          git add -A
+          $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+          git commit -m "chore: sync vaults [$timestamp]"
+          git push
+          Write-Host "✅ Changes committed and pushed" -ForegroundColor Green
+
+      - name: Upload sync logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vault-sync-logs-${{ github.run_id }}
+          path: vault-sync.log
+          if-no-files-found: ignore
+
+      - name: Notify on failure
+        if: failure()
+        shell: pwsh
+        run: |
+          Write-Host "❌ Vault sync workflow failed" -ForegroundColor Red
+          Write-Host "Workflow: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" -ForegroundColor Yellow
