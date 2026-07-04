@@ -1,0 +1,123 @@
+docs/roadmaps/tickets/batch-2/index.md
+  s_f7e5394d4435eb::t_f5964af643ebf9 27
+generate-phases-31-50.cjs
+  s_f7e5394d4435eb::t_bca62529c81022 1-155
+unified/phases-31-50-dependency-graph.json
+  s_f7e5394d4435eb::t_c876a0518ae609 1-235
+docs/cic/PHASE-31.md
+  s_f8a8ab5aa44b74::t_c9a56300a5e832 1-42
+docs/cic/PHASE-32.md
+  s_f8a8ab5aa44b74::t_8bb42d2412768c 1-42
+docs/cic/PHASE-33.md
+  s_f8a8ab5aa44b74::t_8c7d204eda0ed3 1-42
+docs/cic/PHASE-34.md
+  s_f8a8ab5aa44b74::t_f0e6f2e1aee26e 1-42
+docs/cic/PHASE-35.md
+  s_f8a8ab5aa44b74::t_633581af87be97 1-42
+docs/cic/PHASE-36.md
+  s_f8a8ab5aa44b74::t_609996c95f1924 1-42
+docs/cic/PHASE-37.md
+  s_f8a8ab5aa44b74::t_46456d36b05ab8 1-42
+docs/cic/PHASE-38.md
+  s_f8a8ab5aa44b74::t_e6ea38d9992062 1-42
+docs/cic/PHASE-39.md
+  s_f8a8ab5aa44b74::t_53fe2530d3f3bc 1-42
+docs/cic/PHASE-40.md
+  s_f8a8ab5aa44b74::t_773cdee0ea433b 1-42
+docs/cic/PHASE-41.md
+  s_f8a8ab5aa44b74::t_e9489f07fdb97d 1-42
+docs/cic/PHASE-42.md
+  s_f8a8ab5aa44b74::t_9d40478709e23d 1-42
+docs/cic/PHASE-43.md
+  s_f8a8ab5aa44b74::t_405f807e431d7d 1-42
+docs/cic/PHASE-44.md
+  s_f8a8ab5aa44b74::t_4fb8c8fc2bb769 1-42
+docs/cic/PHASE-45.md
+  s_f8a8ab5aa44b74::t_f7a4ee4d930114 1-42
+docs/cic/PHASE-46.md
+  s_f8a8ab5aa44b74::t_bd322dda5851e4 1-42
+docs/cic/PHASE-47.md
+  s_f8a8ab5aa44b74::t_0496aef9222366 1-42
+docs/cic/PHASE-48.md
+  s_f8a8ab5aa44b74::t_b63ee04bf165b8 1-42
+docs/cic/PHASE-49.md
+  s_f8a8ab5aa44b74::t_b7242fc3b00ef2 1-42
+docs/cic/PHASE-50.md
+  s_f8a8ab5aa44b74::t_8748897c4b9f09 1-42
+roadmap-runner/phases/PHASE-31.yaml
+  s_f8a8ab5aa44b74::t_d95f41cd514b4e 1-38
+roadmap-runner/phases/PHASE-32.yaml
+  s_f8a8ab5aa44b74::t_1d3423626f24f8 1-38
+roadmap-runner/phases/PHASE-33.yaml
+  s_f8a8ab5aa44b74::t_020765f1aeb183 1-38
+roadmap-runner/phases/PHASE-34.yaml
+  s_f8a8ab5aa44b74::t_2beaa58c28cf12 1-38
+roadmap-runner/phases/PHASE-35.yaml
+  s_f8a8ab5aa44b74::t_863f7000de5b06 1-38
+roadmap-runner/phases/PHASE-36.yaml
+  s_f8a8ab5aa44b74::t_63e399412d5ad4 1-38
+roadmap-runner/phases/PHASE-37.yaml
+  s_f8a8ab5aa44b74::t_bcae473e1bd4fb 1-38
+roadmap-runner/phases/PHASE-38.yaml
+  s_f8a8ab5aa44b74::t_cdf4b38502b0e5 1-38
+roadmap-runner/phases/PHASE-39.yaml
+  s_f8a8ab5aa44b74::t_6ef0b98a1a8a7b 1-38
+roadmap-runner/phases/PHASE-40.yaml
+  s_f8a8ab5aa44b74::t_890bf73cc054b2 1-38
+roadmap-runner/phases/PHASE-41.yaml
+  s_f8a8ab5aa44b74::t_afe6afcbbebdeb 1-38
+roadmap-runner/phases/PHASE-42.yaml
+  s_f8a8ab5aa44b74::t_ea66d6431571a5 1-38
+roadmap-runner/phases/PHASE-43.yaml
+  s_f8a8ab5aa44b74::t_d795db9ee46766 1-38
+roadmap-runner/phases/PHASE-44.yaml
+  s_f8a8ab5aa44b74::t_d841057b04f6a7 1-38
+roadmap-runner/phases/PHASE-45.yaml
+  s_f8a8ab5aa44b74::t_0676aba54505cc 1-38
+roadmap-runner/phases/PHASE-46.yaml
+  s_f8a8ab5aa44b74::t_dc053e8d0c1471 1-38
+roadmap-runner/phases/PHASE-47.yaml
+  s_f8a8ab5aa44b74::t_4250945323a09b 1-38
+roadmap-runner/phases/PHASE-48.yaml
+  s_f8a8ab5aa44b74::t_960a58c72b76e8 1-38
+roadmap-runner/phases/PHASE-49.yaml
+  s_f8a8ab5aa44b74::t_822add8f4dafa8 1-38
+roadmap-runner/phases/PHASE-50.yaml
+  s_f8a8ab5aa44b74::t_25f940cc42d2b0 1-38
+mkdocs.yml
+  s_f7e5394d4435eb::t_b1d134d7fd617e 138-158
+roadmap-runner/phases/PHASE-26.yaml
+  s_ba7881dc85f037::t_562b6117e6a820 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "fe505747fe9ca98617806e859f41af181952baeb",
+  "prompts": {},
+  "sessions": {
+    "s_ba7881dc85f037": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e00ee7f9-6395-4540-bb93-3693150b37bd",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_f7e5394d4435eb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1e447551-8433-4264-aa04-628ecdb991dd",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_f8a8ab5aa44b74": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8f8d292c-cd68-4ce2-afb6-5a164334be87",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
