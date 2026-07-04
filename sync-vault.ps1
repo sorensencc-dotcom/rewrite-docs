@@ -137,8 +137,40 @@ function Sync-VaultContent {
             return $false
         }
         "github" {
-            Write-Log "GitHub sync not yet implemented. Manual sync required." -Level Warning
-            return $false
+            Write-Log "Syncing from GitHub: $Source" -Level Info
+            try {
+                $scriptPath = Join-Path $PSScriptRoot "scripts\rl-vault-sync.js"
+                if (-not (Test-Path $scriptPath)) {
+                    Write-Log "Sync script not found: $scriptPath" -Level Error
+                    return $false
+                }
+
+                $syncArgs = @()
+                if ($Verbose) { $syncArgs += "--verbose" }
+                if ($DryRun) { $syncArgs += "--dry-run" }
+                # --pull is default; add if needed
+
+                Write-Log "Running: node $scriptPath $($syncArgs -join ' ')" -Level Info
+                if (-not $DryRun) {
+                    & node $scriptPath @syncArgs
+                    if ($LASTEXITCODE -eq 0) {
+                        Write-Log "$VaultName sync via GitHub completed" -Level Success
+                        return $true
+                    }
+                    else {
+                        Write-Log "$VaultName sync failed with exit code $LASTEXITCODE" -Level Error
+                        return $false
+                    }
+                }
+                else {
+                    Write-Log "[DRY-RUN] Would run: node $scriptPath $($syncArgs -join ' ')" -Level Info
+                    return $true
+                }
+            }
+            catch {
+                Write-Log "GitHub sync error: $_" -Level Error
+                return $false
+            }
         }
         "local" {
             if (-not (Test-Path $Source)) {
@@ -178,7 +210,7 @@ function Update-VaultIndex {
 }
 
 function Create-ArchitectureStructure {
-    param([hashtable]$Architecture)
+    param($Architecture)
 
     if (-not $Architecture.enabled) {
         Write-Log "Architecture folders disabled. Skipping." -Level Info
@@ -187,7 +219,16 @@ function Create-ArchitectureStructure {
 
     Write-Log "Setting up architecture folder structure" -Level Info
 
-    @($Architecture.cic_patterns, $Architecture.rl_patterns) | ForEach-Object {
+    # Handle both old format (direct properties) and new format (folders array)
+    $foldersToCreate = @()
+    if ($Architecture.folders) {
+        $foldersToCreate = @($Architecture.folders | ForEach-Object { $_.path })
+    }
+    else {
+        $foldersToCreate = @($Architecture.cic_patterns, $Architecture.rl_patterns) | Where-Object { $_ }
+    }
+
+    $foldersToCreate | ForEach-Object {
         if (-not (Test-Path $_)) {
             Write-Log "Creating architecture folder: $_" -Level Info
             if (-not $DryRun) {
@@ -223,7 +264,7 @@ Reference these patterns in cross-system analysis queries.
 }
 
 function Get-SyncStatus {
-    param([hashtable]$Config)
+    param($Config)
 
     Write-Log "=== Vault Sync Status ===" -Level Info
 
@@ -258,9 +299,11 @@ function Main {
     }
 
     foreach ($vault in $vaultsToSync) {
+        Write-Log "Processing vault: $($vault.name)" -Level Info
         Test-VaultStructure -VaultPath $vault.destination -VaultName $vault.name | Out-Null
 
         if ($vault.enabled) {
+            Write-Log "Syncing $($vault.name) from $($vault.sourceType): $($vault.source)" -Level Info
             $result = Sync-VaultContent -VaultName $vault.name `
                 -Source $vault.source `
                 -Destination $vault.destination `

@@ -22,16 +22,16 @@
     {
       "name": "RewriteLabs",
       "description": "Rewrite Labs Reference Documentation",
-      "source": "PENDING_CONFIRMATION",
+      "source": "https://github.com/sorensencc-dotcom/rewrite-mcp.git",
+      "branch": "main",
       "destination": "C:\\dev\\rl-ref",
-      "enabled": false,
-      "sourceType": "onedrive",
-      "patterns": [
-        "*.md"
-      ],
+      "enabled": true,
+      "sourceType": "github",
+      "manifest": "docs/rewrite-labs/rl-vault-manifest.json",
+      "syncScript": "node scripts/rl-vault-sync.js",
       "syncSchedule": "daily",
-      "lastSynced": null,
-      "notes": "Awaiting confirmation of RL documentation source location"
+      "lastSynced": "2026-07-04T01:53:54Z",
+      "notes": "GitHub source confirmed 2026-07-03. Uses manifest-driven sync (docs/rewrite-labs/rl-vault-manifest.json). See RL-VAULT-SETUP.md."
     }
   ],
   "architecture": {
