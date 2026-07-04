@@ -1,0 +1,163 @@
+docs/roadmaps/tickets/batch-5/multi-agent-orchestration-v1.md
+  s_2586c08438e338::t_8294ec2d8affb0 1-25
+docs/roadmaps/tickets/batch-3/cic-ingestion-hardening-v3.md
+  s_942cb716f0eaee::t_6341339344f7a9 1-27
+docs/roadmaps/tickets/batch-5/index.md
+  s_2586c08438e338::t_c991a600c271d0 1-55
+docs/roadmaps/tickets/batch-3/index.md
+  s_942cb716f0eaee::t_1a190512ed57e4 1-54
+docs/roadmaps/tickets/batch-4/fusion-engine-runner.md
+  s_d2e7085c5a9570::t_e17d93b5979c08 1-24
+docs/roadmaps/tickets/batch-4/tq-v3-hybrid-engine.md
+  s_d2e7085c5a9570::t_0600778e6db175 1-25
+mkdocs.yml
+  s_d2e7085c5a9570::t_53404963381425 80-97
+  s_2586c08438e338::t_1736c4001057a5 98-115
+  s_942cb716f0eaee::t_e3b023173adc6e 61-79
+docs/roadmaps/tickets/batch-5/autonomous-governance-v3.md
+  s_2586c08438e338::t_3b772019a59521 1-25
+docs/roadmaps/tickets/batch-4/rl-crawler-v2-adapters.md
+  s_d2e7085c5a9570::t_549f36daeea00e 1-25
+docs/roadmaps/tickets/batch-5/cic-runtime-v5-auto-governance.md
+  s_2586c08438e338::t_55ae9dc960c8f3 1-25
+docs/roadmaps/tickets/batch-5/world-corpus-v3-auto-indexer.md
+  s_2586c08438e338::t_25750c04fbe772 1-25
+docs/roadmaps/tickets/batch-5/autonomous-governance-runner.md
+  s_2586c08438e338::t_0b19f138d3c2b5 1-24
+docs/roadmaps/tickets/batch-5/world-corpus-v3-architecture.md
+  s_2586c08438e338::t_3012932b414892 1-26
+docs/roadmaps/tickets/batch-4/tq-v3-architecture.md
+  s_d2e7085c5a9570::t_4c4e622b48b904 1-27
+docs/roadmaps/tickets/batch-4/runtime-orchestrator-execution-graph.md
+  s_d2e7085c5a9570::t_ddb038c569e28d 1-25
+docs/roadmaps/tickets/batch-5/cic-runtime-v5-architecture.md
+  s_2586c08438e338::t_ecd574f28ffabd 1-27
+docs/roadmaps/tickets/batch-4/world-search-v2-pipeline.md
+  s_d2e7085c5a9570::t_f32505ac91af0b 1-25
+docs/roadmaps/tickets/batch-3/cic-evolution-engine-v1.md
+  s_942cb716f0eaee::t_e6debb4f875207 1-25
+docs/roadmaps/tickets/batch-4/fusion-engine-v3.md
+  s_d2e7085c5a9570::t_cd50b099ff3298 1-25
+docs/roadmaps/tickets/batch-4/index.md
+  s_d2e7085c5a9570::t_c819c79d464f24 1-55
+docs/roadmaps/tickets/batch-4/runtime-orchestrator-v4.md
+  s_d2e7085c5a9570::t_029a2ae0a3c85d 1-25
+docs/roadmaps/tickets/batch-5/rl-6x-autonomous-redesign.md
+  s_2586c08438e338::t_07f2522cce1281 1-25
+docs/roadmaps/tickets/batch-4/rl-crawler-v2-runner.md
+  s_d2e7085c5a9570::t_678a04d05ca157 1-24
+docs/roadmaps/tickets/batch-5/cic-runtime-v5-self-healing.md
+  s_2586c08438e338::t_8b71e560112db9 1-25
+docs/roadmaps/tickets/batch-3/rl-5x-spec-generator.md
+  s_942cb716f0eaee::t_eb001eb4f6c0b7 1-26
+docs/roadmaps/tickets/batch-3/governance-automation-v2.md
+  s_942cb716f0eaee::t_e997a040ce4673 1-27
+docs/roadmaps/tickets/batch-5/multi-agent-orchestration-v1-runner.md
+  s_2586c08438e338::t_ba4fb0ff5508b4 1-24
+docs/roadmaps/tickets/batch-4/foundry-cicd-pipeline.md
+  s_d2e7085c5a9570::t_dd62c766a2813c 1-25
+docs/roadmaps/tickets/batch-4/tq-v3-semantic-pipeline.md
+  s_d2e7085c5a9570::t_dc8a4a184f65a6 1-25
+docs/roadmaps/tickets/batch-4/rl-crawler-v2-core.md
+  s_d2e7085c5a9570::t_6c6021a7a5cccc 1-25
+docs/roadmaps/tickets/batch-5/cic-evolution-engine-v2.md
+  s_2586c08438e338::t_a903a130cb1ef4 1-25
+docs/roadmaps/tickets/batch-3/runner-orchestration-v3.md
+  s_942cb716f0eaee::t_706d56a79f4d25 1-27
+docs/roadmaps/tickets/batch-4/world-search-v2-architecture.md
+  s_d2e7085c5a9570::t_d98c886a8aa60a 1-25
+docs/roadmaps/tickets/batch-3/rl-5x-arch-patterns.md
+  s_942cb716f0eaee::t_2696bd0faf6b76 1-24
+docs/roadmaps/tickets/batch-5/rl-6x-auto-outreach.md
+  s_2586c08438e338::t_f0ef85e728a553 1-25
+docs/roadmaps/tickets/batch-4/cic-runtime-v4-core.md
+  s_d2e7085c5a9570::t_a3aea52df3c6f8 1-26
+docs/roadmaps/tickets/batch-4/cic-runtime-v4-adapters.md
+  s_d2e7085c5a9570::t_13577279493603 1-25
+docs/roadmaps/tickets/batch-5/cic-evolution-runner-v2.md
+  s_2586c08438e338::t_cb33b42d8478c1 1-24
+docs/roadmaps/tickets/batch-5/autonomous-fusion-v4.md
+  s_2586c08438e338::t_677bb50f5b3328 1-25
+docs/roadmaps/tickets/batch-3/fusion-layer-v1.md
+  s_942cb716f0eaee::t_5aa8ce3e6144c3 1-27
+docs/roadmaps/tickets/batch-3/kd-engine-v1.md
+  s_942cb716f0eaee::t_968422bbcbce1d 1-26
+docs/roadmaps/tickets/batch-4/cic-runtime-v4-sandbox.md
+  s_d2e7085c5a9570::t_342fc16db0e4f0 1-25
+docs/roadmaps/tickets/batch-3/world-corpus-pipeline-v1.md
+  s_942cb716f0eaee::t_daa578bcaed984 1-28
+docs/roadmaps/tickets/batch-5/rl-6x-spec-generator.md
+  s_2586c08438e338::t_44b7b122b86681 1-26
+docs/roadmaps/tickets/batch-5/world-corpus-v3-auto-ingestion.md
+  s_2586c08438e338::t_3223cd29bcdd65 1-25
+docs/roadmaps/tickets/batch-4/foundry-cicd-v1.md
+  s_d2e7085c5a9570::t_f8e089a77d91f6 1-26
+docs/roadmaps/tickets/batch-3/world-corpus-indexer.md
+  s_942cb716f0eaee::t_3a1c2b9b67923d 1-25
+docs/roadmaps/tickets/batch-3/cic-evolution-runner.md
+  s_ba7881dc85f037::t_c46e6dd5c173bd 1-25
+docs/roadmaps/tickets/batch-3/cic-ingestion-multi-source.md
+  s_942cb716f0eaee::t_07231d06078155 1-25
+docs/roadmaps/tickets/batch-3/fusion-layer-integration.md
+  s_942cb716f0eaee::t_b4735274ca359a 1-26
+docs/roadmaps/tickets/batch-3/governance-runner-hooks.md
+  s_942cb716f0eaee::t_e093ec40a9c212 1-24
+docs/roadmaps/tickets/batch-3/rl-cic-fusion-v2.md
+  s_942cb716f0eaee::t_d042a609dc362b 1-24
+docs/roadmaps/tickets/batch-3/runner-execution-graph-integration.md
+  s_942cb716f0eaee::t_5b714ad21de4e7 1-25
+docs/roadmaps/tickets/batch-3/tq-search-engine-v2.md
+  s_942cb716f0eaee::t_43853c835bf29a 1-27
+docs/roadmaps/tickets/batch-3/tq-shared-ingestion-v2.md
+  s_942cb716f0eaee::t_f4c48aa50bd8c0 1-32
+docs/roadmaps/tickets/batch-5/autonomous-fusion-runner.md
+  s_4e6550832e2b51::t_42b5ce3fe2161f 1-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "40505484edc14df6d38f0862d0ae41779401c2e1",
+  "prompts": {},
+  "sessions": {
+    "s_2586c08438e338": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9ca09cf3-1fea-40c9-b4cb-adf851e38f27",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_4e6550832e2b51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3dc4e968-5918-4920-abac-fb18557321da",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_942cb716f0eaee": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b42fa858-d972-41bf-81b6-97082f073fb5",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_ba7881dc85f037": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e00ee7f9-6395-4540-bb93-3693150b37bd",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d2e7085c5a9570": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1d2d8688-1e76-4159-9598-5ad3adf9a8ac",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
