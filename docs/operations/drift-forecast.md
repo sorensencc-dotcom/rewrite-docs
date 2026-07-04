@@ -1,3 +1,13 @@
+---
+title: "Weekly Drift Forecast"
+summary: "# Weekly Drift Forecast"
+created: "2026-07-04T01:46:48.704Z"
+updated: "2026-07-04T01:46:48.704Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Weekly Drift Forecast
 
 Narrative forecast of where documentation, roadmaps, and systems are most likely to diverge in the coming weeks. Updated as part of the [Weekly Sync Procedure](weekly-sync.md).

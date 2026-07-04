@@ -1,3 +1,13 @@
+---
+title: "Rewrite Labs Roadmap"
+summary: "# Rewrite Labs Roadmap"
+created: "2026-07-04T01:46:48.704Z"
+updated: "2026-07-04T01:46:48.704Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Rewrite Labs Roadmap
 
 Canonical status roadmap for Rewrite Labs (RL) phases. Compiled from `roadmap-runner/phases/RL-4.*.yaml`, `roadmap-runner/state-store.json`, and the [Deploy Summary](../reference/DEPLOY_SUMMARY.md).

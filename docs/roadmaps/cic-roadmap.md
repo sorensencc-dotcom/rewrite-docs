@@ -1,3 +1,13 @@
+---
+title: "CIC Roadmap"
+summary: "# CIC Roadmap"
+created: "2026-07-04T01:46:48.704Z"
+updated: "2026-07-04T01:46:48.704Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC Roadmap
 
 Canonical status roadmap for all CIC phases. Compiled from `docs/cic/index.md`, `build-roadmap.json`, `.planning/ROADMAP.md`, and per-phase completion documents.

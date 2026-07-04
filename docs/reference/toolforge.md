@@ -1,3 +1,13 @@
+---
+title: "Toolforge Reference"
+summary: "# Toolforge Reference"
+created: "2026-07-04T01:46:48.704Z"
+updated: "2026-07-04T01:46:48.704Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Toolforge Reference
 
 Toolforge is the operational skill platform at `c:\dev\toolforge\`. Its own roadmap is `toolforge/ROADMAP.md` (note: `cic/ROADMAP.md` carries a `<!-- SYNC:TOOLFORGE -->` marker — it is a synced copy of the Toolforge roadmap, **not** the CIC phase roadmap; CIC phases live in the [CIC Roadmap](../roadmaps/cic-roadmap.md)).

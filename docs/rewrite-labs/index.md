@@ -1,3 +1,13 @@
+---
+title: "Rewrite Labs Documentation Index"
+summary: "# Rewrite Labs Documentation Index"
+created: "2026-07-04T01:46:48.704Z"
+updated: "2026-07-04T01:46:48.704Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Rewrite Labs Documentation Index
 
 Complete reference for Rewrite Labs (RL) vault system, extraction, and integration with CIC.

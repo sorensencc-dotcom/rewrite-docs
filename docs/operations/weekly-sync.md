@@ -1,3 +1,13 @@
+---
+title: "Weekly Sync Procedure"
+summary: "# Weekly Sync Procedure"
+created: "2026-07-04T01:46:48.704Z"
+updated: "2026-07-04T01:46:48.704Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Weekly Sync Procedure
 
 One weekly pass that keeps roadmaps, ingestion, governance, drift, cost, and docs aligned across CIC and Rewrite Labs. Every step uses tools that already exist in the repo. Estimated time: 30–45 minutes.

@@ -1,3 +1,13 @@
+---
+title: "Unified CIC + Rewrite Labs Roadmap"
+summary: "# Unified CIC + Rewrite Labs Roadmap"
+created: "2026-07-04T01:46:48.704Z"
+updated: "2026-07-04T01:46:48.704Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Unified CIC + Rewrite Labs Roadmap
 
 Cross-system alignment view: how CIC phases and Rewrite Labs phases share infrastructure, and where each system stands. Detail lives in the [CIC Roadmap](cic-roadmap.md) and [Rewrite Labs Roadmap](rewrite-labs-roadmap.md).

@@ -1,3 +1,13 @@
+---
+title: "Services Reference"
+summary: "# Services Reference"
+created: "2026-07-04T01:46:48.704Z"
+updated: "2026-07-04T01:46:48.704Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Services Reference
 
 Agentic experience services at `c:\dev\services\`. Two services exist; both are code-present and integration-stage (🔄).

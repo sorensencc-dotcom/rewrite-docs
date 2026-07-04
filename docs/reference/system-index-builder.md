@@ -1,3 +1,13 @@
+---
+title: "System Index Builder — 💡 Planned (not implemented)"
+summary: "# System Index Builder — 💡 Planned (not implemented)"
+created: "2026-07-04T01:46:48.704Z"
+updated: "2026-07-04T01:46:48.704Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # System Index Builder — 💡 Planned (not implemented)
 
 > **No code exists for this system.** Searches for `system-index`, `index-builder`, and `systemIndex` across `scripts/`, `toolforge/`, and `cic-ingestion/` return nothing. This page is a **spec-only proposal**. The nearest existing artifact is the *dual-system reference index* — a hand-maintained markdown file at [docs/rewrite-labs/00-RL-INDEX.md](../rewrite-labs/00-RL-INDEX.md).

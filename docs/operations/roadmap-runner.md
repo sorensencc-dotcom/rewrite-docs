@@ -1,3 +1,13 @@
+---
+title: "Roadmap Runner"
+summary: "# Roadmap Runner"
+created: "2026-07-04T01:46:48.704Z"
+updated: "2026-07-04T01:46:48.704Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Roadmap Runner
 
 Phase execution engine at `c:\dev\roadmap-runner\`. Loads the compiled roadmap dependency graph, resolves runnable phases, executes them in Docker containers, validates success gates, and tracks state. Repo-level docs: `roadmap-runner/README.md` and `roadmap-runner/STARTUP_CHECKLIST.md` (summarized here, not duplicated).

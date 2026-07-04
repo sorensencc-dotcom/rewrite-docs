@@ -1,3 +1,13 @@
+---
+title: "CIC Documentation Index"
+summary: "# CIC Documentation Index"
+created: "2026-07-04T01:46:48.704Z"
+updated: "2026-07-04T01:46:48.704Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC Documentation Index
 
 Complete reference for CIC (Computational Intelligence Core) phases, components, and implementation.

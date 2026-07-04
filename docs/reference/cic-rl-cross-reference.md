@@ -1,3 +1,13 @@
+---
+title: "CIC ↔ RL Cross-Reference Map"
+summary: "# CIC ↔ RL Cross-Reference Map"
+created: "2026-07-04T01:46:48.704Z"
+updated: "2026-07-04T01:46:48.704Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # CIC ↔ RL Cross-Reference Map
 
 Detailed mapping of all integration points between CIC and Rewrite Labs systems.

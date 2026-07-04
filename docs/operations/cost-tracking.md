@@ -1,3 +1,13 @@
+---
+title: "Cost Tracking & Notifications"
+summary: "# Cost Tracking & Notifications"
+created: "2026-07-04T01:46:48.704Z"
+updated: "2026-07-04T01:46:48.704Z"
+tags:
+  - cic
+  - rewrite-labs
+  - roadmap
+---
 # Cost Tracking & Notifications
 
 The real CIC cost system lives in `src/lib/` — **not** in standalone CLI scripts. (No `scripts/cost-notifier.js` or `scripts/token-cost-report.js` exists; anything referencing those paths is stale.)
