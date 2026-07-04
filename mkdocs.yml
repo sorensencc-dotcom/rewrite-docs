@@ -42,6 +42,7 @@ nav:
       - CIC Roadmap: roadmaps/cic-roadmap.md
       - Rewrite Labs Roadmap: roadmaps/rewrite-labs-roadmap.md
       - Unified Roadmap: roadmaps/unified-roadmap.md
+      - Batch Map 1-40: cic/BATCH-MAP-1-40-STATUS.md
       - Tickets:
           - Batch 2 Index: roadmaps/tickets/batch-2/index.md
           - CIC Phase 8 Spec Finalization: roadmaps/tickets/batch-2/cic-phase-8-spec-finalization.md
@@ -195,6 +196,11 @@ nav:
       - Cost Tracking: operations/cost-tracking.md
       - Weekly Sync: operations/weekly-sync.md
       - Drift Forecast: operations/drift-forecast.md
+      - Deployment:
+          - Reproducible Dockerfiles: deployment/reproducible-dockerfiles.md
+          - Registry Configuration: deployment/registry-config.md
+          - Air-Gapped Import: deployment/airgapped-import.md
+          - Convergence Trace: deployment/convergence-trace.md
   - Implementation:
       - Cloud Extension Layer: implementation/cloud-extension-layer.md
   - Knowledge Graph:
