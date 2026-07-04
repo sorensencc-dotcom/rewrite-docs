@@ -42,6 +42,22 @@ nav:
       - CIC Roadmap: roadmaps/cic-roadmap.md
       - Rewrite Labs Roadmap: roadmaps/rewrite-labs-roadmap.md
       - Unified Roadmap: roadmaps/unified-roadmap.md
+      - Tickets:
+          - Batch 2 Index: roadmaps/tickets/batch-2/index.md
+          - CIC Phase 8 Spec Finalization: roadmaps/tickets/batch-2/cic-phase-8-spec-finalization.md
+          - CIC Phase 8 Implementation Stubs: roadmaps/tickets/batch-2/cic-phase-8-implementation-stubs.md
+          - CIC Phase 30 MVP Expansion: roadmaps/tickets/batch-2/cic-phase-30-mvp-expansion.md
+          - CIC Phases 31-50 Spec Generator: roadmaps/tickets/batch-2/cic-phase-31-50-spec-generator.md
+          - RL Patterns Generator: roadmaps/tickets/batch-2/rl-patterns-generator.md
+          - Foundry Expansion M2-M3: roadmaps/tickets/batch-2/foundry-expansion-m2-m3.md
+          - Runner Hardening V2: roadmaps/tickets/batch-2/runner-hardening-v2.md
+          - Unified Execution Graph Generator: roadmaps/tickets/batch-2/unified-execution-graph-generator.md
+          - Services Layer Expansion: roadmaps/tickets/batch-2/services-layer-expansion.md
+          - Routing Engine V2: roadmaps/tickets/batch-2/routing-engine-v2.md
+          - Drift Detector Integration V2: roadmaps/tickets/batch-2/drift-detector-integration-v2.md
+          - Cost Attribution Engine: roadmaps/tickets/batch-2/cost-attribution-engine.md
+          - Repo Cleanup V3: roadmaps/tickets/batch-2/repo-cleanup-v3.md
+          - Observability V3: roadmaps/tickets/batch-2/observability-v3.md
   - Integration:
       - Overview: integration/index.md
       - CIC ↔ RL Cross-Reference: reference/cic-rl-cross-reference.md
