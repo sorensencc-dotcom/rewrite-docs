@@ -1,0 +1,76 @@
+docs/systems/index.md
+  s_d5a7157c855996::t_514243b46590ba 5-8,11-13,19-21,27-29,35-37,43-69,78-84
+docs/cic/GOVERNANCE.md
+  s_d5a7157c855996::t_cc7756db64ded3 17-19
+  s_d5a7157c855996::t_c2df86a2796676 20-22
+  s_d5a7157c855996::t_1468cac27d5883 23-35
+docs/roadmaps/cic-roadmap.md
+  s_d5a7157c855996::t_a9ae8708f3bffa 1-98
+docs/rewrite-labs/00-RL-INDEX.md
+  s_d5a7157c855996::t_f55fb99de73ce0 36,38,40,42-44
+docs/architecture/routing.md
+  s_d5a7157c855996::t_618d6ed8afb2c4 59-78
+docs/architecture/ingestion.md
+  s_d5a7157c855996::t_172cc5cc60f815 16-21
+docs/roadmaps/unified-roadmap.md
+  s_d5a7157c855996::t_a1868eb7e85f11 1-72
+docs/reference/services.md
+  s_d5a7157c855996::t_6f7c8fe74bd8be 1-44
+docs/reference/system-index-builder.md
+  s_d5a7157c855996::t_2d2a66f3a29983 1-37
+mkdocs.yml
+  s_d5a7157c855996::t_843fb54e490418 41-44
+  s_d5a7157c855996::t_8b6d3476fe9b97 117-119
+  s_d5a7157c855996::t_03d746922d142a 102-105
+docs/reference/cic-rl-cross-reference.md
+  s_d5a7157c855996::t_3fdad5735df5a4 5-22
+docs/architecture/drift.md
+  s_d5a7157c855996::t_8e71aa2f288b8b 16-38
+docs/cic/driftEngine.md
+  s_d5a7157c855996::t_9b6831cb2febb1 16-19
+docs/reference/toolforge.md
+  s_d5a7157c855996::t_4a11c861f07e0e 1-45
+docs/roadmaps/rewrite-labs-roadmap.md
+  s_d5a7157c855996::t_b1b5f9d551073e 1-69
+docs/architecture/design.md
+  s_d5a7157c855996::t_23b4ca006cec70 16-17
+docs/operations/cost-tracking.md
+  s_d5a7157c855996::t_27ea03839a531f 1-38
+docs/cic/index.md
+  s_d5a7157c855996::t_f08fea297b46f1 51,59-78
+  s_d5a7157c855996::t_98ffb670ce5101 5-8,11
+  s_d5a7157c855996::t_94488e7efa8119 39-40
+docs/operations/roadmap-runner.md
+  s_d5a7157c855996::t_b8f90eb4ce2c2d 1-47
+docs/rewrite-labs/index.md
+  s_d5a7157c855996::t_4ce285fd0c47fb 5-6,11-28
+  s_d5a7157c855996::t_021d5d3c0c104f 133-135
+docs/architecture/overview.md
+  s_d5a7157c855996::t_9a9537743f5d47 16-42
+docs/operations/weekly-sync.md
+  s_d5a7157c855996::t_d5d8d8d62b7ee2 1-59
+docs/integration/index.md
+  s_d5a7157c855996::t_be652f24951b83 5-6,9,11,14,16,22-24,26,38,42-43,45,51-59
+  s_d5a7157c855996::t_0d3c029671254f 87-96
+  s_d5a7157c855996::t_6b5531e0a54c94 60
+docs/operations/drift-forecast.md
+  s_d5a7157c855996::t_e1647e31df080b 1-30
+docs/reference/INTEGRATION_GUIDE.md
+  s_d5a7157c855996::t_0cc904130c7527 33-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "28f1650d77e0b2f011655b8d0b4f241c3d7b8977",
+  "prompts": {},
+  "sessions": {
+    "s_d5a7157c855996": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02774e76-c5bb-430c-be4c-f423df328859",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
