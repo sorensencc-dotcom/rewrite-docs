@@ -13,6 +13,33 @@ tags:
 
 The MAAL Sandbox System is built on a **deterministic, layered architecture** where each layer is sealed with SHA256 hashing for reproducibility.
 
+## CIC-OS System Layout (real repo structure)
+
+CIC-OS is **not a monolithic codebase** — there is no `cic-os/` module tree (that directory holds only a personal-knowledge-base stub). Functionality is distributed:
+
+| Concern | Location | Notes |
+|---------|----------|-------|
+| Routing engine | `src/cic-runtime/routing/` | 5 routers — see [Routing](routing.md) |
+| Resilience / fallback | `src/resilience/fallbackChain.ts` | Circuit-breaker fallback chain |
+| Notify / report / cost | `src/lib/` (`notify/`, `report/`, `cost/`, `usage/`, `charts/`, `skills/`) | See [Cost Tracking](../operations/cost-tracking.md) |
+| Ingestion | `cic-ingestion/src/` (`harvester/`, `drift/`, ingestion modules) | Stage config in `roadmap-runner/ingestion-config.json` |
+| Governance | `governance/` (orchestrator, approval-gate, promotion-rollback, audit-policy) | Runtime state: `governance/cicState.json` |
+| Phase execution | `roadmap-runner/` | See [Roadmap Runner](../operations/roadmap-runner.md) |
+| Services | `services/` (gemini-coach, antigravity-ide) | See [Services](../reference/services.md) |
+| Skills platform | `toolforge/` | See [Toolforge](../reference/toolforge.md) |
+| Analyzers | archive only (`_cic-fragments-archive/`, `rewrite-mcp/castironforge/`) | No active analyzer module — historical code |
+
+### Governance state machine (`governance/cicState.json`)
+
+Single live state file coordinating drift, SLA, and safety freezes:
+
+- **drift** — per-provider drift scores (ollama, localai, gpt4all, llamafile, koboldcpp, anythingllm, mock)
+- **slaSettings / slaMetrics** — latency, token, backlog, oscillation limits vs live values
+- **activePlaybooks** — driftSpike, routingStability, backendRecovery, ingestionRecovery, governanceLockdown, dashboardRecovery
+- **violations** + freeze flags — `routingFrozen`, `promotionsFrozen`, `rollbacksFrozen`, `governanceLockdown`
+
+Drift scores feed routing decisions ([Routing](routing.md)) and decay per the [Drift Engine](../cic/driftEngine.md) algorithms.
+
 ## System Diagram
 
 ```

@@ -14,6 +14,25 @@ Adds **policy enforcement**, **approval gates**, and **drift detection** to the 
 
 ---
 
+## Implementation (real code, `governance/`)
+
+| File | Role |
+|------|------|
+| `governance/governance-orchestrator.ts` | Orchestrates approval gates, audits, and promotion/rollback flows (`orchestratePromotion`, GovernanceFlow phases: approval → audit → promotion/rollback → complete) |
+| `governance/approval-gate.ts` | Approval gate creation/validation, approval collection |
+| `governance/promotion-rollback.ts` | Promotion path validation, rollback safety checks, promotion/rollback records |
+| `governance/audit-policy.ts` | Audit events, minimum-approval and test-result checks |
+| `governance/audit-log.json` | Append-only audit trail |
+| `governance/cicState.json` | Live runtime state: per-provider drift scores, SLA settings/metrics, active playbooks, violations, freeze flags (`routingFrozen`, `promotionsFrozen`, `rollbacksFrozen`, `governanceLockdown`) |
+
+**Governance CI:** `.github/workflows/governance-validation.yml` + [Governance Validation Setup](../meta/GOVERNANCE_VALIDATION_SETUP.md).
+
+**Evidence vault:** council voting + evidence vault shipped with Phase 24 (Autonomous Governance); Phase 24.5 extends it with build-lineage linking — status in the [CIC Roadmap](../roadmaps/cic-roadmap.md).
+
+💡 *Potential:* a dedicated `governance/deploy-review/` module does not exist. A **deploy-review skill** (5-phase verification) exists in the skills catalog instead.
+
+---
+
 ## Three Layers
 
 ### 1. Policy Engine

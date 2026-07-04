@@ -13,6 +13,12 @@ tags:
 
 The Ingestion layer is responsible for taking raw assets (documents, images), normalizing them, and fanning them out into four deterministic pipelines: Corpus, Model Training Prep, Treatment, and Rewrite Labs Redesign.
 
+## Where ingestion lives (real paths)
+
+- **Stage config:** `roadmap-runner/ingestion-config.json` defines the CIC + TorqueQuery pipeline as four named stages — **Crawler** (seed_urls → raw_html, 300s), **Scraper** (raw_html → documents, 600s), **Mapper** (documents → IRPackets, 300s), **Indexer** (IRPackets → search_index, 900s) — with retry (3 attempts, 30s backoff). These are *config stage names*, not code directories.
+- **Code:** `cic-ingestion/src/` — `harvester/` (extraction, incl. v2), `drift/` (drift engines fed by ingestion), plus adapters/extractors/vector modules.
+- **Downstream flows:** ingestion output feeds governance drift scoring (`governance/cicState.json`), the [roadmap runner](../operations/roadmap-runner.md) ingestion phases, and the knowledge graph.
+
 ## Ingestion Architecture
 
 ```mermaid

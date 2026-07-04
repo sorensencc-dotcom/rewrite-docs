@@ -2,10 +2,30 @@
 
 Complete reference for Rewrite Labs (RL) vault system, extraction, and integration with CIC.
 
+**Status legend:** ✅ Done · 🔄 In Progress · 📋 Planned · 💡 Potential · ⛔ Deprecated
+
 ## Overview
 
 - [RL Index](00-RL-INDEX.md)
 - [Vault README](VAULT-README.md)
+- [Rewrite Labs Roadmap](../roadmaps/rewrite-labs-roadmap.md) — full RL-4.x status
+- [Unified Roadmap](../roadmaps/unified-roadmap.md) — CIC ↔ RL alignment
+
+## RL-4.x Phase Status
+
+All seven RL-4.x phases have locked configs in `roadmap-runner/phases/`; the runner (`roadmap-runner/state-store.json`) records **zero runs** — execution awaits real phase Docker images.
+
+| Phase | Title | Build | Runner |
+|-------|-------|-------|--------|
+| RL-4.6 | CrawlerEngine v1 | ✅ | ⏸ pending |
+| RL-4.0 | Extraction Engine v1 | ✅ | ⏸ pending |
+| RL-4.1 | RedesignAgent + DesignVariantRenderer | ✅ | ⏸ pending |
+| RL-4.2 | SiteBundle + DeploymentAdapter | ✅ | ⏸ pending |
+| RL-4.3 | ChatEditSession + DOMPatch | ✅ | ⏸ pending |
+| RL-4.4 | SaaSPricingGate + EntitlementSet | ✅ | ⏸ pending |
+| RL-4.5 | OutreachAgent | ✅ | ⏸ pending |
+
+Details + dependency graph: [Rewrite Labs Roadmap](../roadmaps/rewrite-labs-roadmap.md).
 
 ## Vault Mirror System
 
@@ -110,5 +130,6 @@ rewrite-labs/
 
 - Current version: 1.0
 - Last updated: 2026-07-03
-- Integration status: ✓ Complete
-- See [CIC ↔ RL Integration](../reference/cic-rl-cross-reference.md) for detailed status
+- Doc/vault integration: ✅ complete (CIC-side); RL reference vault (`rl-ref/`) 📋 pending source-location confirmation
+- Runner execution of RL-4.x wave: ⏸ pending (zero recorded runs)
+- Full status: [Rewrite Labs Roadmap](../roadmaps/rewrite-labs-roadmap.md) · [CIC ↔ RL Cross-Reference](../reference/cic-rl-cross-reference.md)

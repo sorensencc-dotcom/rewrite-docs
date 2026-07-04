@@ -38,6 +38,10 @@ nav:
       - First Steps: quickstart/first-steps.md
   - Systems (Unified):
       - Overview: systems/index.md
+  - Roadmaps:
+      - CIC Roadmap: roadmaps/cic-roadmap.md
+      - Rewrite Labs Roadmap: roadmaps/rewrite-labs-roadmap.md
+      - Unified Roadmap: roadmaps/unified-roadmap.md
   - Integration:
       - Overview: integration/index.md
       - CIC ↔ RL Cross-Reference: reference/cic-rl-cross-reference.md
@@ -95,6 +99,10 @@ nav:
       - Verification: operations/verification.md
       - Monitoring: operations/monitoring.md
       - Troubleshooting: operations/troubleshooting.md
+      - Roadmap Runner: operations/roadmap-runner.md
+      - Cost Tracking: operations/cost-tracking.md
+      - Weekly Sync: operations/weekly-sync.md
+      - Drift Forecast: operations/drift-forecast.md
   - Implementation:
       - Cloud Extension Layer: implementation/cloud-extension-layer.md
   - Knowledge Graph:
@@ -106,6 +114,9 @@ nav:
       - Schemas: reference/schemas.md
       - Environment: reference/environment.md
       - CLI Commands: reference/cli.md
+      - Toolforge: reference/toolforge.md
+      - Services: reference/services.md
+      - System Index Builder (Planned): reference/system-index-builder.md
   - Build Documentation:
       - 8-Items Complete: meta/8-items-complete.md
       - Build Progress: meta/build-progress.md

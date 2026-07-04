@@ -30,6 +30,8 @@ You now have three integrated systems:
 
 Together: **Deterministic, reproducible, drift-free roadmap execution**.
 
+> **Status caveat (2026-07-03):** the RL-4.x examples in this guide run against **stub Docker images**; `roadmap-runner/state-store.json` records zero completed runs. See [Roadmap Runner](../operations/roadmap-runner.md) for current component reference and the [Rewrite Labs Roadmap](../roadmaps/rewrite-labs-roadmap.md) for phase status.
+
 ---
 
 # Architecture

@@ -13,6 +13,8 @@ tags:
 
 Detailed design of the MAAL Sandbox deterministic architecture.
 
+> For the wider CIC-OS repository layout (routing, governance, ingestion, services, toolforge — all distributed, no monolithic `cic-os/` tree), see the [Architecture Overview](overview.md#cic-os-system-layout-real-repo-structure).
+
 ## Design Goals
 
 1. **Reproducibility** — Any seal can be re-run and produce identical hash

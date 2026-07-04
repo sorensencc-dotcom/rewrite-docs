@@ -2,24 +2,28 @@
 
 Cross-system dependencies, data flow, and unified patterns.
 
+**Status legend:** ✅ Done · 🔄 In Progress · 📋 Planned · 💡 Potential · ⛔ Deprecated
+
 ## Integration Layers
 
-### 1️⃣ Governance Integration
+### 1️⃣ Governance Integration — ✅
 
-Both CIC and RL are governed by the same framework:
+Both CIC and RL are governed by the same framework (`governance/`):
 
 - **Memory System**: Unified across both (MAAL ledger)
-- **State Store**: Shared artifact vault
+- **State Store**: Shared artifact vault; live runtime state in `governance/cicState.json`
 - **Drift Detection**: Common classification schema
-- **Validation Gates**: Shared canary + rollback
+- **Validation Gates**: Shared canary + rollback (`governance/approval-gate.ts`, `governance/promotion-rollback.ts`)
 
 **Files**:
 - [CIC Governance](../cic/GOVERNANCE.md)
 - [Governance Validation Setup](../meta/GOVERNANCE_VALIDATION_SETUP.md)
 
-### 2️⃣ Ingestion Pipeline
+### 2️⃣ Ingestion Pipeline — ✅
 
-Data flows: Crawl → Extract → Map → Index
+Data flows through four config-defined stages (`roadmap-runner/ingestion-config.json`): **Crawler** (seed_urls → raw_html) → **Scraper** (raw_html → documents) → **Mapper** (documents → IRPackets) → **Indexer** (IRPackets → search_index), with retry (3 attempts, 30s backoff).
+
+Note: Crawler/Scraper/Mapper/Indexer are *pipeline stage names* in config, not code directories. Implementing code lives in `cic-ingestion/src/` (`harvester/`, `drift/`, ingestion modules).
 
 - **Source**: RL Vault (GitHub, docs, manifests)
 - **Extraction**: CodeFlow Harvester (CIC)
@@ -31,18 +35,28 @@ Data flows: Crawl → Extract → Map → Index
 - [RL Vault Setup](../rewrite-labs/VAULT-README.md)
 - [CodeFlow Harvester](../cic/harvester.md)
 
-### 3️⃣ Routing Integration
+### 3️⃣ Routing Integration — ✅
 
 Model selection rules apply across both systems:
 
-- **Primary Chain**: CIC routing (local-first)
-- **Fallback Chain**: RL provider fallbacks
+- **Primary Chain**: CIC routing (local-first) — `src/cic-runtime/routing/`
+- **Fallback Chain**: `src/resilience/fallbackChain.ts` (CLOSED/OPEN/HALF_OPEN circuit states)
 - **Federation**: Multi-vendor selection
-- **Cost Governance**: Shared token economy
+- **Cost Governance**: Shared token economy — see [Cost Tracking](../operations/cost-tracking.md)
 
 **Files**:
 - [Routing Architecture](../architecture/routing.md)
 - [Provider Configuration](../gateway/providers.md)
+
+#### Drift → Routing → Cost governance loop
+
+Live state in `governance/cicState.json` closes the loop:
+
+1. **Drift scoring** — per-provider drift scores (ollama, localai, gpt4all, llamafile, koboldcpp, anythingllm, mock) updated from SLA breaches; decayed 5% per 30s cycle.
+2. **SLA settings/metrics** — `maxLatencyMs`, `maxTokens`, `maxBacklog`, `maxOscillations` vs live averages.
+3. **Playbooks** — driftSpike, routingStability, backendRecovery, ingestionRecovery, governanceLockdown, dashboardRecovery toggle on threshold breach.
+4. **Freezes** — `routingFrozen`, `promotionsFrozen`, `rollbacksFrozen`, `governanceLockdown` gate all promotion/rollback actions.
+5. **Cost feedback** — token usage feeds drift penalties and the daily cost digest ([Cost Tracking](../operations/cost-tracking.md)).
 
 ### 4️⃣ Knowledge Graph
 
@@ -69,6 +83,16 @@ Both systems share the same ops stack:
 - [Operations Guide](../operations/running.md)
 - [Sandbox-3 Overview](../cic/SANDBOX-3_OVERVIEW.md)
 - [Monitoring](../operations/monitoring.md)
+
+### 6️⃣ Services Layer — 🔄
+
+Agentic experience services (`services/`) integrate on top of CIC routing:
+
+- **Gemini Coach** (`services/gemini-coach/`) — routing engine + messaging + CIC hooks (src modules: routing, messaging, cic-hooks, ide, mcp, skills)
+- **Antigravity IDE** (`services/antigravity-ide/`) — IDE integration layer consuming Gemini Coach's routing engine (`integration.ts`, `wsClient.ts`, `patches.ts`, `applyFixesFlow.ts`)
+
+**Files**:
+- [Services Reference](../reference/services.md)
 
 ## Data Flow Diagrams
 

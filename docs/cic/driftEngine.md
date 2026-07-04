@@ -13,6 +13,10 @@ tags:
 
 The Drift Engine tracks quality degradation across providers and models, ensuring that drift scores reflect recent performance and stabilize over time.
 
+**Implementation:** `cic-ingestion/src/drift/driftEngine.ts` (penalty/decay, audit-trail integration via `governance/audit-policy`), `cic-ingestion/src/drift/DriftDetectorEngine.ts` (DB-backed impact/violation/stability/risk alerts), `cic-ingestion/src/drift/grok-drift.ts` (corpus-hash drift). CIC-vs-CodeFlow lag detection lives in the root `drift-detector.ts`. Note: drift events are system-generated autonomous operations, not policy-governance decisions — they audit metric updates without human approval gates.
+
+Three other unrelated drift detectors exist (visual, Docker image, work-summarizer) — see the disambiguation table in [Drift Classification](../architecture/drift.md).
+
 ---
 
 ## 🧮 1. Penalty Scoring Matrix

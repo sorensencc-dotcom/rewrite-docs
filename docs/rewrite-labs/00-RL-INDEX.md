@@ -33,13 +33,15 @@ tags:
 
 ## Rewrite Labs Reference Architecture
 
-### Status: Configuration Ready
+### Status: 📋 Configuration Ready — awaiting sync
 
-RL reference vault is configured and awaiting document synchronization.
+RL reference vault is configured and awaiting document synchronization. (Status legend: ✅ Done · 🔄 In Progress · 📋 Planned · 💡 Potential · ⛔ Deprecated)
 
-**Source Location:** To be confirmed  
+**Source Location:** 📋 To be confirmed (OneDrive / Google Drive / GitHub)  
 **Local Destination:** `C:\dev\rl-ref\`  
-**Sync Status:** Pending RL docs location confirmation  
+**Sync Status:** 📋 Pending RL docs location confirmation  
+
+> RL-4.x phase status (build vs runner) is tracked in the [Rewrite Labs Roadmap](../roadmaps/rewrite-labs-roadmap.md).
 
 ### Planned Sections
 - **RL System Overview** — Generation architecture and workflow

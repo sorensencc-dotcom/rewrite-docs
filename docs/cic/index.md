@@ -2,9 +2,13 @@
 
 Complete reference for CIC (Computational Intelligence Core) phases, components, and implementation.
 
+**Status legend:** ✅ Done · 🔄 In Progress · 📋 Planned · 💡 Potential (no code exists) · ⛔ Deprecated
+
+> Full status tables with evidence links: [CIC Roadmap](../roadmaps/cic-roadmap.md) · [Unified Roadmap](../roadmaps/unified-roadmap.md)
+
 ## Phases
 
-### Foundation (1–4)
+### Foundation (1–4) — ✅ Done
 
 - [Phase 1: MAAL Core](PHASE-1_OVERVIEW.md)
   - [Architecture](PHASE-1_ARCHITECTURE.md)
@@ -32,6 +36,8 @@ Complete reference for CIC (Computational Intelligence Core) phases, components,
 
 ### Core Components (5–8)
 
+Phase 5 ✅ · Phase 6 ✅ · Phase 8 📋 (spec locked, no completion log)
+
 - [Phase 5: TorqueQuery](TORQUEQUERY_EXECUTIVE_SUMMARY.md)
   - [Build Summary](TORQUEQUERY_BUILD_SUMMARY.md)
   - [Quickstart](TORQUEQUERY_QUICKSTART.md)
@@ -42,7 +48,7 @@ Complete reference for CIC (Computational Intelligence Core) phases, components,
 
 - Phase 8: [Spec](PHASE_8_SPEC.md) | [Test Matrices](PHASE_8_TEST_MATRICES.md)
 
-### Optimization & Hardening (A–C)
+### Optimization & Hardening (A–C) — ✅ Done
 
 - [Phase A: Optimization](PHASE_A_OPTIMIZATION_SUMMARY.md)
 - [Phase B: Hardening](PHASE_B_HARDENING_SUMMARY.md)
@@ -50,11 +56,26 @@ Complete reference for CIC (Computational Intelligence Core) phases, components,
 
 ### Advanced Phases (23–30)
 
-- [Phase 23](PHASE-23-6-MEMORY-EXPLORER-UI.md)
-- [Phase 26: Implementation](../implementation/phase-26/summary.md)
-- [Phase 27.3](PHASE27_3_EXECUTION_PLAN.md) | [Phase 27.4](PHASE_27_4_DISPATCH.md)
-- [Phase 28a: SCP Completion](PHASE-28a-SCP-COMPLETION.md)
-- [Phase 30: MVP Spec](PHASE-30-MVP-SPEC.md)
+- [Phase 23](PHASE-23-6-MEMORY-EXPLORER-UI.md) ✅ (23.2 Memory Query API 🔄)
+- Phase 24: Autonomous Governance ✅ (24.5 Build Governance 📋 — see [roadmap](../roadmaps/cic-roadmap.md))
+- [Phase 26: Implementation](../implementation/phase-26/summary.md) — Build ✅ / Runner ⏸ pending
+- [Phase 27.3](PHASE27_3_EXECUTION_PLAN.md) ✅ | [Phase 27.4](PHASE_27_4_DISPATCH.md) ✅
+- [Phase 28a: SCP Completion](PHASE-28a-SCP-COMPLETION.md) ✅ (28b 📋 queued)
+- [Phase 30: MVP Spec](PHASE-30-MVP-SPEC.md) 📋
+
+### ⛔ Deprecated
+
+Per the [Phase 5c Deprecation Inventory](PHASE_5C_DEPRECATION_INVENTORY.md):
+
+- Memory-Spine service (dormant; superseded by TorqueQuery)
+- Operator-UI clones (5 duplicates; canonical promoted to Console v3)
+- `planning-engine/` full-repo clone of `rewrite-mcp/`
+
+### 💡 Potential (proposals only — no code exists)
+
+- [System Index Builder](../reference/system-index-builder.md) — spec only
+- Toolforge agents (`toolforge/agents/`) — see [Toolforge reference](../reference/toolforge.md)
+- Governance deploy-review module (a deploy-review *skill* exists; no `governance/` module)
 
 ## Core Subsystems
 

@@ -2,6 +2,24 @@
 
 Detailed mapping of all integration points between CIC and Rewrite Labs systems.
 
+**Status legend:** ✅ Done · 🔄 In Progress · 📋 Planned · 💡 Potential · ⛔ Deprecated
+
+## RL-4.x → CIC Phase Mapping
+
+Functional alignment between RL phases and CIC phases/subsystems. Build status = phase config locked + deliverables per roadmap docs; Runner status = execution recorded in `roadmap-runner/state-store.json` (currently **zero runs for all phases**).
+
+| RL Phase | RL Deliverable | Aligned CIC Phase/Subsystem | Build | Runner | Config |
+|----------|----------------|-----------------------------|-------|--------|--------|
+| RL-4.0 | Extraction Engine v1 | Phase 23 | ✅ | ⏸ pending | `roadmap-runner/phases/RL-4.0.yaml` |
+| RL-4.1 | RedesignAgent + DesignVariantRenderer | Phase 23 | ✅ | ⏸ pending | `roadmap-runner/phases/RL-4.1.yaml` |
+| RL-4.2 | SiteBundle + DeploymentAdapter | Phase 24 (autonomous governance) | ✅ | ⏸ pending | `roadmap-runner/phases/RL-4.2.yaml` |
+| RL-4.3 | ChatEditSession + DOMPatch | Phase 26 (TorqueQuery) | ✅ | ⏸ pending | `roadmap-runner/phases/RL-4.3.yaml` |
+| RL-4.4 | SaaSPricingGate + EntitlementSet | Governance layer (`governance/`) | ✅ | ⏸ pending | `roadmap-runner/phases/RL-4.4.yaml` |
+| RL-4.5 | OutreachAgent | Phase 26 | ✅ | ⏸ pending | `roadmap-runner/phases/RL-4.5.yaml` |
+| RL-4.6 | CrawlerEngine v1 | Ingestion pipeline (`cic-ingestion/`) | ✅ | ⏸ pending | `roadmap-runner/phases/RL-4.6.yaml` |
+
+Full phase details: [Rewrite Labs Roadmap](../roadmaps/rewrite-labs-roadmap.md) · [CIC Roadmap](../roadmaps/cic-roadmap.md) · [Unified Roadmap](../roadmaps/unified-roadmap.md)
+
 ## Namespace Mapping
 
 ### Governance & State
