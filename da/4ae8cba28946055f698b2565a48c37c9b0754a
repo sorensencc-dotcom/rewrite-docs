@@ -1,0 +1,47 @@
+src/cic/phase-8/index.ts
+  s_e2a12a974c4dec::t_027d171d8eb07c 1-22
+src/cic/phase-8/cost/cost_telemetry_collector.ts
+  s_e2a12a974c4dec::t_0cbb231b063f50 1-42
+src/cic/phase-8/cost/cost_model.ts
+  s_e2a12a974c4dec::t_fe734ccf6ac2a0 1-73
+src/cic/phase-8/cost/cost_forecast_engine.ts
+  s_e2a12a974c4dec::t_c954fc6241f480 1-53
+src/cic/phase-8/models/dynamic_model_router.ts
+  s_e2a12a974c4dec::t_7bb0f3b9acb722 1-113
+src/cic/phase-8/integration/cic_integration_adapter_phase8.ts
+  s_e2a12a974c4dec::t_afd80d74be44f3 1-177
+src/cic/phase-8/cost/cost_policy_engine.ts
+  s_e2a12a974c4dec::t_ca814fd5343204 1-71
+src/cic/phase-8/models/model_capability_registry.ts
+  s_e2a12a974c4dec::t_a9ebd9f234f9dc 1-80
+src/cic/phase-8/types/cost_event.ts
+  s_e27e2f20824514::t_a8b223eee58f63 1-91
+src/cic/phase-8/types/model_descriptor.ts
+  s_e2a12a974c4dec::t_90333b287cd5ab 1-62
+src/cic/phase-8/types/request_context.ts
+  s_e2a12a974c4dec::t_536acbf859c5f7 1-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "da4ae8cba28946055f698b2565a48c37c9b0754a",
+  "prompts": {},
+  "sessions": {
+    "s_e27e2f20824514": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6dff16be-f826-4552-987a-e216480a567e",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_e2a12a974c4dec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ad4a2a83-aa52-4668-88d3-0b572f49df60",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
