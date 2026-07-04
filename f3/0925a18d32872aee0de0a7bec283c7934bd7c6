@@ -1,0 +1,57 @@
+docs/roadmaps/tickets/batch-2/cic-phase-8-spec-finalization.md
+  s_4e6550832e2b51::t_c1d9f703ed5b03 1-33
+docs/roadmaps/tickets/batch-2/drift-detector-integration-v2.md
+  s_4e6550832e2b51::t_6d791769cd2ec3 1-26
+docs/roadmaps/tickets/batch-2/index.md
+  s_4e6550832e2b51::t_3d74b742505587 1-43
+docs/roadmaps/tickets/batch-2/services-layer-expansion.md
+  s_4e6550832e2b51::t_93ae94288be326 1-27
+docs/roadmaps/tickets/batch-2/repo-cleanup-v3.md
+  s_4e6550832e2b51::t_efdfa0509ef38e 1-26
+docs/roadmaps/tickets/batch-2/cost-attribution-engine.md
+  s_4e6550832e2b51::t_1126728dcc73ed 1-26
+docs/roadmaps/tickets/batch-2/routing-engine-v2.md
+  s_4e6550832e2b51::t_8f55d8be966a9a 1-25
+docs/roadmaps/tickets/batch-2/unified-execution-graph-generator.md
+  s_4e6550832e2b51::t_e0645d1bb0b7cc 1-28
+docs/roadmaps/tickets/batch-2/cic-phase-31-50-spec-generator.md
+  s_4e6550832e2b51::t_0cd11ecc044031 1-27
+mkdocs.yml
+  s_4e6550832e2b51::t_0fb493c724bee6 45-60
+docs/roadmaps/tickets/batch-2/observability-v3.md
+  s_4e6550832e2b51::t_a96cddb89fc180 1-27
+docs/roadmaps/tickets/batch-2/runner-hardening-v2.md
+  s_4e6550832e2b51::t_6fa9975453487e 1-27
+docs/roadmaps/tickets/batch-2/cic-phase-8-implementation-stubs.md
+  s_4e6550832e2b51::t_07f36449b4a148 1-26
+docs/roadmaps/tickets/batch-2/foundry-expansion-m2-m3.md
+  s_4e6550832e2b51::t_7adca7a29710b0 1-27
+docs/roadmaps/tickets/batch-2/rl-patterns-generator.md
+  s_4e6550832e2b51::t_c636c2bfea4552 1-26
+docs/roadmaps/tickets/batch-2/cic-phase-30-mvp-expansion.md
+  s_d3640c043b3d74::t_f8594834257498 1-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f30925a18d32872aee0de0a7bec283c7934bd7c6",
+  "prompts": {},
+  "sessions": {
+    "s_4e6550832e2b51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3dc4e968-5918-4920-abac-fb18557321da",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d3640c043b3d74": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6a3bc7a-e5d5-4837-8509-3c2a67fc7c7d",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
