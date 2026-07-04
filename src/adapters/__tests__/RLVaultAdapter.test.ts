@@ -225,9 +225,10 @@ Test content here.`;
     test("pipeline metadata is correct", async () => {
       const result = await adapter.run("ingest", {});
       expect(result.ok).toBe(true);
-      expect(result.data.discovered).toBeGreaterThanOrEqual(result.data.chunked);
-      expect(result.data.chunked).toBeGreaterThanOrEqual(result.data.embedded);
-      expect(result.data.embedded).toBe(result.data.indexed + result.data.failed);
+      expect(result.data.discovered).toBeGreaterThan(0);
+      expect(result.data.chunked).toBeGreaterThanOrEqual(result.data.discovered);
+      expect(result.data.embedded).toBe(result.data.chunked);
+      expect(result.data.indexed + result.data.failed).toBe(result.data.embedded);
     });
 
     test("unknown action returns error", async () => {
