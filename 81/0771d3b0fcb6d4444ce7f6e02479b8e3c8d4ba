@@ -1,0 +1,48 @@
+src/lib/drift.ts
+  s_f8a8ab5aa44b74::t_ef19e642fb5fde 5,8,12,15,23-118
+  s_f8a8ab5aa44b74::t_056da002d51b1b 119
+  s_f8a8ab5aa44b74::t_0a3c0a5db763d5 2-4
+  s_f8a8ab5aa44b74::t_aee856e7bb0111 6-7
+  s_f8a8ab5aa44b74::t_03f4207791a68e 9-11
+  s_f8a8ab5aa44b74::t_a75030796b9043 13-14
+  s_f8a8ab5aa44b74::t_c50788a67f6750 16-18,20-22
+  s_4e6550832e2b51::t_eee34140e55267 1,19
+docs/reference/rl-vault-adapter-implementation.md
+  s_f8a8ab5aa44b74::t_2347afecdd80ad 1-264
+src/lib/drift.test.ts
+  s_f8a8ab5aa44b74::t_72bca94ab9204a 1-176
+src/adapters/__tests__/RLVaultAdapter.test.ts
+  s_f8a8ab5aa44b74::t_2c10ea929a25ac 1-238
+docs/operations/weekly-sync.md
+  s_f8a8ab5aa44b74::t_2f307923455ccb 65-73
+src/adapters/RLVaultAdapter.ts
+  s_f8a8ab5aa44b74::t_0bf1851862b66c 1-389
+roadmap-runner/ingestion-config.json
+  s_f8a8ab5aa44b74::t_068dbb9e1932c1 38-56
+src/adapters/index.ts
+  s_f8a8ab5aa44b74::t_fb0d6f3f07ed0c 7,14-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "810771d3b0fcb6d4444ce7f6e02479b8e3c8d4ba",
+  "prompts": {},
+  "sessions": {
+    "s_4e6550832e2b51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3dc4e968-5918-4920-abac-fb18557321da",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_f8a8ab5aa44b74": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8f8d292c-cd68-4ce2-afb6-5a164334be87",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
