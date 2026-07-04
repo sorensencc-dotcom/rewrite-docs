@@ -2,6 +2,7 @@ import { GraphContext } from './GraphContext.js';
 import { TrueCodeAdapter } from './adapters/TrueCodeAdapter.js';
 import { GitNexusAdapter } from './adapters/GitNexusAdapter.js';
 import { GraphifyAdapter } from './adapters/GraphifyAdapter.js';
+import { Phase8Adapter } from './adapters/Phase8Adapter.js';
 
 export class GraphRouter {
   static async route(
@@ -47,6 +48,12 @@ export class GraphRouter {
         } else {
           context.knowledge = await GraphifyAdapter.getDesignIntent(service);
         }
+      })());
+    }
+
+    if (engines.includes('Phase8')) {
+      promises.push((async () => {
+        context.cost = await Phase8Adapter.getCostOptimizationSignals(service);
       })());
     }
 

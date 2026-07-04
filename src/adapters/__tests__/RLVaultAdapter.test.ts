@@ -58,8 +58,9 @@ describe("RLVaultAdapter", () => {
       });
 
       test("fails if manifest is missing", () => {
-        const badAdapter = new RLVaultAdapter(testVaultPath, "/nonexistent/manifest.json");
-        expect(() => badAdapter).toThrow();
+        expect(() => {
+          new RLVaultAdapter(testVaultPath, "/nonexistent/manifest.json");
+        }).toThrow();
       });
 
       test("fails if vault file is missing", async () => {

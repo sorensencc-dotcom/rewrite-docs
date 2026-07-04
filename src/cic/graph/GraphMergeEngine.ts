@@ -1,4 +1,4 @@
-import { GraphContext, CodeGraphSlice, RepoHistorySlice, KnowledgeGraphSlice } from './GraphContext.js';
+import { GraphContext, CodeGraphSlice, RepoHistorySlice, KnowledgeGraphSlice, CostOptimizationSlice } from './GraphContext.js';
 
 export class GraphMergeEngine {
   static merge(
@@ -7,7 +7,7 @@ export class GraphMergeEngine {
     req: { repo?: string; service?: string }
   ): GraphContext {
     const generatedAt = new Date().toISOString();
-    
+
     // ISO8601 validation
     const iso8601Regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})?$/;
     if (!iso8601Regex.test(generatedAt)) {
@@ -30,7 +30,7 @@ export class GraphMergeEngine {
       adr: []
     };
 
-    return {
+    const context: GraphContext = {
       code,
       history,
       knowledge,
@@ -41,5 +41,12 @@ export class GraphMergeEngine {
         service: req.service
       }
     };
+
+    // Include cost slice if present (Phase 8)
+    if (partials.cost) {
+      context.cost = partials.cost;
+    }
+
+    return context;
   }
 }

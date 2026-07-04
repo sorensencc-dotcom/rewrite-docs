@@ -1,8 +1,21 @@
+export interface CostOptimizationSlice {
+  runtimeSignals: {
+    costPressureLevel: 'normal' | 'warning' | 'critical';
+    budgetStatus: 'healthy' | 'approaching' | 'soft_ceiling' | 'hard_ceiling';
+    anomalyScore: number;
+    degradationState: 'active' | 'recovery' | 'normal';
+  };
+  selectedModel?: string;
+  estimatedCostUsd?: number;
+  costForecastUsd?: number;
+}
+
 export interface GraphContext {
   code: CodeGraphSlice;
   history: RepoHistorySlice;
   knowledge: KnowledgeGraphSlice;
   meta: ContextMeta;
+  cost?: CostOptimizationSlice;
 }
 
 export interface SymbolNode {
