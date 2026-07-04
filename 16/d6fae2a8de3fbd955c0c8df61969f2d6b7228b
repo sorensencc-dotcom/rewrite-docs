@@ -1,0 +1,20 @@
+src/adapters/__tests__/RLVaultAdapter.test.ts
+  s_2ed42d4c549bda::t_ff4f1e3a87cc66 94-97,102-104
+  s_2ed42d4c549bda::t_4677790a8f21cf 120-123,127-129
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "16d6fae2a8de3fbd955c0c8df61969f2d6b7228b",
+  "prompts": {},
+  "sessions": {
+    "s_2ed42d4c549bda": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1bf46979-bb69-46f3-a200-8cc7c71f4064",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
