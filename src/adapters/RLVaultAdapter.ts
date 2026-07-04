@@ -11,6 +11,9 @@ import { createHash } from "crypto";
 import { adapterLogger } from "../logging/adapterLogger";
 import { metricsExporter } from "../metrics/MetricsExporter";
 import { makeSuccess, makeError, AdapterResponse } from "../validation/envelope";
+import { getEmbeddingModel } from "../cic-runtime/drift/embedding-model";
+import { qdrantClient } from "../vector/qdrantClient";
+import { vaultStatusService } from "../vector/vaultStatusService";
 
 interface VaultFile {
   path: string;
@@ -90,7 +93,7 @@ export class RLVaultAdapter {
    */
   private async discover(): Promise<VaultFile[]> {
     adapterLogger.info({ adapter: "rl-vault", stage: "discover" });
-    metricsExporter.increment("rl_vault_discover_total");
+    metricsExporter.increment("rl_vault_discover_total", { adapter: "rl-vault" });
 
     const files: VaultFile[] = [];
     const missing: string[] = [];
@@ -118,7 +121,7 @@ export class RLVaultAdapter {
     }
 
     adapterLogger.info({ adapter: "rl-vault", stage: "discover", filesFound: files.length });
-    metricsExporter.observe("rl_vault_files_discovered", files.length);
+    metricsExporter.observe("rl_vault_files_discovered", files.length, { adapter: "rl-vault" });
 
     return files;
   }
@@ -129,7 +132,7 @@ export class RLVaultAdapter {
    */
   private async harvest(files: VaultFile[]): Promise<VaultFile[]> {
     adapterLogger.info({ adapter: "rl-vault", stage: "harvest", fileCount: files.length });
-    metricsExporter.increment("rl_vault_harvest_total");
+    metricsExporter.increment("rl_vault_harvest_total", { adapter: "rl-vault" });
 
     const harvested: VaultFile[] = [];
 
@@ -187,7 +190,7 @@ export class RLVaultAdapter {
    */
   private async normalize(files: VaultFile[]): Promise<VaultFile[]> {
     adapterLogger.info({ adapter: "rl-vault", stage: "normalize", fileCount: files.length });
-    metricsExporter.increment("rl_vault_normalize_total");
+    metricsExporter.increment("rl_vault_normalize_total", { adapter: "rl-vault" });
 
     const normalized: VaultFile[] = [];
 
@@ -230,7 +233,7 @@ export class RLVaultAdapter {
    */
   private async chunk(files: VaultFile[]): Promise<Chunk[]> {
     adapterLogger.info({ adapter: "rl-vault", stage: "chunk", fileCount: files.length });
-    metricsExporter.increment("rl_vault_chunk_total");
+    metricsExporter.increment("rl_vault_chunk_total", { adapter: "rl-vault" });
 
     const MAX_CHUNK_SIZE = 1200;
     const OVERLAP_SIZE = 120;
@@ -272,74 +275,95 @@ export class RLVaultAdapter {
     }
 
     adapterLogger.info({ adapter: "rl-vault", stage: "chunk", chunksProduced: chunks.length });
-    metricsExporter.observe("rl_vault_chunks_produced", chunks.length);
+    metricsExporter.observe("rl_vault_chunks_produced", chunks.length, { adapter: "rl-vault" });
 
     return chunks;
   }
 
   /**
    * Stage 5: Embed
-   * Use CIC's embedding pipeline (stub for now).
-   * Real implementation would call TorqueQuery's embedding service.
+   * Call TorqueQuery embedding service with deterministic seed.
+   * Uses LocalEmbeddingModel with fixed seed (42) for reproducibility.
    */
   private async embed(chunks: Chunk[]): Promise<EmbeddingResult[]> {
     adapterLogger.info({ adapter: "rl-vault", stage: "embed", chunkCount: chunks.length });
-    metricsExporter.increment("rl_vault_embed_total");
+    metricsExporter.increment("rl_vault_embed_total", { adapter: "rl-vault" });
 
-    // Stub: return mock embeddings (in production, call actual embedding service)
+    const embeddingModel = await getEmbeddingModel(42); // Fixed seed for determinism
     const embeddings: EmbeddingResult[] = [];
 
     for (const chunk of chunks) {
-      // Deterministic mock embedding based on chunk ID
-      const seed = parseInt(createHash("md5").update(chunk.id).digest("hex").substring(0, 8), 16);
-      const mockVector = Array.from({ length: 384 }, (_, i) =>
-        Math.sin((seed + i) / 100) * Math.cos((seed - i) / 100)
-      );
+      try {
+        const vector = await embeddingModel.embed(chunk.text);
 
-      embeddings.push({
-        chunk,
-        vector: mockVector,
-        tokens: Math.ceil(chunk.text.length / 4), // Rough token estimate
-      });
+        embeddings.push({
+          chunk,
+          vector,
+          tokens: Math.ceil(chunk.text.length / 4), // Rough token estimate
+        });
+      } catch (err) {
+        adapterLogger.error({
+          adapter: "rl-vault",
+          stage: "embed",
+          chunkId: chunk.id,
+          error: err,
+        });
+        throw err;
+      }
     }
 
     adapterLogger.info({ adapter: "rl-vault", stage: "embed", embeddingsProduced: embeddings.length });
+    metricsExporter.observe("rl_vault_embeddings_produced", embeddings.length, { adapter: "rl-vault" });
     return embeddings;
   }
 
   /**
    * Stage 6: Index
-   * Push into TorqueQuery (stub for now).
-   * Real implementation would call Qdrant vector index.
+   * Store vectors in Qdrant "rl-vault" collection.
+   * Makes embeddings queryable by TorqueQuery.
    */
   private async index(embeddings: EmbeddingResult[]): Promise<{ indexed: number; failed: number }> {
     adapterLogger.info({ adapter: "rl-vault", stage: "index", embeddingCount: embeddings.length });
-    metricsExporter.increment("rl_vault_index_total");
+    metricsExporter.increment("rl_vault_index_total", { adapter: "rl-vault" });
 
-    // Stub: in production, push to Qdrant with:
-    // - collection: "rl-vault"
-    // - vectors + metadata
-    // - deterministic IDs
+    try {
+      // Ensure collection exists
+      await qdrantClient.ensureCollection("rl-vault", 384);
 
-    let indexed = 0;
-    let failed = 0;
+      // Map embeddings to Qdrant points
+      const points = embeddings.map(result => ({
+        id: result.chunk.id,
+        vector: result.vector,
+        payload: {
+          id: result.chunk.id,
+          path: result.chunk.path,
+          section: result.chunk.section,
+          source: "rl-vault",
+          title: result.chunk.metadata?.title,
+          chunkIndex: result.chunk.index,
+          text: result.chunk.text.substring(0, 500), // Store snippet for context
+        },
+      }));
 
-    for (const result of embeddings) {
-      try {
-        // Mock indexing logic
-        adapterLogger.debug({ adapter: "rl-vault", stage: "index", chunkId: result.chunk.id });
-        indexed++;
-      } catch (err) {
-        adapterLogger.error({ adapter: "rl-vault", stage: "index", chunkId: result.chunk.id, error: err });
-        failed++;
-      }
+      // Upsert all points
+      await qdrantClient.upsertPoints("rl-vault", points);
+
+      adapterLogger.info({
+        adapter: "rl-vault",
+        stage: "index",
+        indexed: points.length,
+        failed: 0,
+      });
+
+      metricsExporter.observe("rl_vault_indexed", points.length, { adapter: "rl-vault" });
+      metricsExporter.observe("rl_vault_index_failed", 0, { adapter: "rl-vault" });
+
+      return { indexed: points.length, failed: 0 };
+    } catch (err) {
+      adapterLogger.error({ adapter: "rl-vault", stage: "index", error: err });
+      metricsExporter.observe("rl_vault_index_failed", embeddings.length, { adapter: "rl-vault" });
+      throw err;
     }
-
-    adapterLogger.info({ adapter: "rl-vault", stage: "index", indexed, failed });
-    metricsExporter.observe("rl_vault_indexed", indexed);
-    metricsExporter.observe("rl_vault_index_failed", failed);
-
-    return { indexed, failed };
   }
 
   /**
@@ -349,35 +373,49 @@ export class RLVaultAdapter {
     adapterLogger.info({ adapter: "rl-vault", pipeline: "start" });
     const pipelineStart = Date.now();
 
-    const discovered = await this.discover();
-    const harvested = await this.harvest(discovered);
-    const normalized = await this.normalize(harvested);
-    const chunked = await this.chunk(normalized);
-    const embedded = await this.embed(chunked);
-    const indexed = await this.index(embedded);
+    try {
+      const discovered = await this.discover();
+      const harvested = await this.harvest(discovered);
+      const normalized = await this.normalize(harvested);
+      const chunked = await this.chunk(normalized);
+      const embedded = await this.embed(chunked);
+      const indexed = await this.index(embedded);
 
-    const duration = Date.now() - pipelineStart;
-    adapterLogger.info({
-      adapter: "rl-vault",
-      pipeline: "complete",
-      discovered: discovered.length,
-      chunked: chunked.length,
-      embedded: embedded.length,
-      indexed: indexed.indexed,
-      durationMs: duration,
-    });
+      const duration = Date.now() - pipelineStart;
+      adapterLogger.info({
+        adapter: "rl-vault",
+        pipeline: "complete",
+        discovered: discovered.length,
+        chunked: chunked.length,
+        embedded: embedded.length,
+        indexed: indexed.indexed,
+        durationMs: duration,
+      });
 
-    metricsExporter.observe("rl_vault_pipeline_duration_ms", duration);
+      metricsExporter.observe("rl_vault_pipeline_duration_ms", duration, { adapter: "rl-vault" });
 
-    return {
-      stage: "ingest",
-      discovered: discovered.length,
-      chunked: chunked.length,
-      embedded: embedded.length,
-      indexed: indexed.indexed,
-      failed: indexed.failed,
-      durationMs: duration,
-    };
+      // Update vault status
+      await vaultStatusService.markOnline({
+        fileCount: discovered.length,
+        chunkCount: chunked.length,
+        embeddingCount: embedded.length,
+        indexedCount: indexed.indexed,
+        driftScore: 0, // To be computed by drift detector
+      });
+
+      return {
+        stage: "ingest",
+        discovered: discovered.length,
+        chunked: chunked.length,
+        embedded: embedded.length,
+        indexed: indexed.indexed,
+        failed: indexed.failed,
+        durationMs: duration,
+      };
+    } catch (err: any) {
+      await vaultStatusService.markDown(err.message);
+      throw err;
+    }
   }
 
   private loadManifest(): any {

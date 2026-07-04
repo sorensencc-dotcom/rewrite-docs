@@ -1,6 +1,6 @@
 // src/cic-runtime/drift/embedding-model.ts
 
-import crypto from "crypto";
+import * as crypto from "crypto";
 
 /**
  * Minimal local embedding model wrapper.
@@ -25,7 +25,7 @@ class LocalEmbeddingModel {
       .digest();
 
     // Convert hash bytes → float vector
-    const vector = Array.from(hash).map(b => (b / 255) * 2 - 1);
+    const vector = Array.from(hash).map((b: number) => (b / 255) * 2 - 1);
 
     return vector;
   }

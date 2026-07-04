@@ -10,6 +10,7 @@ import { createFireDrillRouter } from "./routes/firedrills";
 import { UsageLedger } from "../lib/usage/UsageLedger";
 import { generateCicCostComputeReport } from "../lib/report/CicCostComputeReport";
 import { CostNotifier } from "../lib/notify/CostNotifier";
+import { dashboardPollingService } from "../cic-dashboard/services/dashboard-polling-service";
 
 export interface AutonomyAPIServerConfig {
   port?: number;
@@ -207,12 +208,18 @@ export class AutonomyAPIServer {
         // Setup cron jobs before starting server
         this.setupCronSchedules();
 
+        // Start dashboard polling service
+        dashboardPollingService.start();
+
         this.server = this.app.listen(
           this.config.port!,
           this.config.host!,
           () => {
             console.log(
               `[${new Date().toISOString()}] Autonomy API Server started on http://${this.config.host}:${this.config.port}`
+            );
+            console.log(
+              `[${new Date().toISOString()}] Dashboard polling service started`
             );
             resolve();
           }
@@ -234,6 +241,10 @@ export class AutonomyAPIServer {
       this.cronJobs.forEach(job => job.stop());
       this.cronJobs = [];
       console.log(`[${new Date().toISOString()}] Cron jobs stopped`);
+
+      // Stop dashboard polling service
+      dashboardPollingService.stop();
+      console.log(`[${new Date().toISOString()}] Dashboard polling service stopped`);
 
       if (!this.server) {
         resolve();

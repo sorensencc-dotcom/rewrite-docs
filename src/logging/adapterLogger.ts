@@ -4,7 +4,15 @@ import { adapterLogger as baseLogger } from '../metrics/AdapterLogger.js';
 type SinkFn = (entry: any) => void;
 let currentSink: SinkFn | null = null;
 
-export const adapterLogger = {
+interface AdapterLogger {
+  _setSink(sink: SinkFn | null): void;
+  info(entry: any): void;
+  warn(entry: any): void;
+  debug(entry: any): void;
+  error(entry: any): void;
+}
+
+export const adapterLogger: AdapterLogger = {
   _setSink(sink: SinkFn | null) {
     currentSink = sink;
   },
@@ -16,6 +24,34 @@ export const adapterLogger = {
       currentSink(logEntry);
     }
     baseLogger.info({
+      component: entry.adapter || 'unknown',
+      action: entry.operation || 'call',
+      status: 'success',
+      meta: entry
+    });
+  },
+
+  warn(entry: any) {
+    const timestamp = new Date().toISOString();
+    const logEntry = { timestamp, level: 'warn', ...entry };
+    if (currentSink) {
+      currentSink(logEntry);
+    }
+    baseLogger.warn({
+      component: entry.adapter || 'unknown',
+      action: entry.operation || 'call',
+      status: 'success',
+      meta: entry
+    });
+  },
+
+  debug(entry: any) {
+    const timestamp = new Date().toISOString();
+    const logEntry = { timestamp, level: 'debug', ...entry };
+    if (currentSink) {
+      currentSink(logEntry);
+    }
+    baseLogger.debug({
       component: entry.adapter || 'unknown',
       action: entry.operation || 'call',
       status: 'success',
