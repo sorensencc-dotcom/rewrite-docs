@@ -1,0 +1,26 @@
+sync-vault.ps1
+  s_d5a7157c855996::t_5951d5db6c8288 213
+  s_d5a7157c855996::t_1319fea8e9c331 222-231
+  s_d5a7157c855996::t_6574f508806707 148-150,153,155,166
+  s_d5a7157c855996::t_0f49784624abc2 267
+  s_d5a7157c855996::t_e3e302e47ae00b 140-147,151-152,154,156-165,167-173
+  s_d5a7157c855996::t_1aab59720c88e8 302,306
+vault-sync-config.json
+  s_d5a7157c855996::t_b92d5be6f5a0e7 25-26,28-31,33-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "0d0f6209d78ba00690d0996c37e3d6a199f0f576",
+  "prompts": {},
+  "sessions": {
+    "s_d5a7157c855996": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02774e76-c5bb-430c-be4c-f423df328859",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
