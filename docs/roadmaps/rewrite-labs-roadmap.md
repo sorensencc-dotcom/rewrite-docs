@@ -55,12 +55,12 @@ RL-4.6 (CrawlerEngine)
 |-----------|--------|----------|
 | Vault Mirror extraction + sync | ✅ Done | [Executive Summary](../rewrite-labs/vault-mirror/executive-summary.md), [Setup](../rewrite-labs/vault-mirror/setup.md) |
 | CIC reference vault sync (`cic-ref/`) | ✅ Done | Last synced 2026-07-02 per [RL Index](../rewrite-labs/00-RL-INDEX.md) |
-| RL reference vault sync (`rl-ref/`) | 📋 Planned | Awaiting source-location confirmation (OneDrive/Drive/GitHub) — see [RL Index](../rewrite-labs/00-RL-INDEX.md) |
+| RL reference vault sync (`rl-ref/`) | 📋 Planned | Source confirmed 2026-07-03: GitHub `sorensencc-dotcom/rewrite-mcp` (main); first sync pending — see [RL Index](../rewrite-labs/00-RL-INDEX.md) |
 
 ## 📋 Planned / Next
 
 - **Runner execution of RL-4.6 → RL-4.5 wave** — configs and gates locked; blocked on real phase Docker images replacing stubs.
-- **RL reference vault population** (`rl-ref/`) — blocked on source-location confirmation.
+- **RL reference vault population** (`rl-ref/`) — source confirmed (GitHub `sorensencc-dotcom/rewrite-mcp`); blocked on sync-pattern selection + first test sync.
 - **Architecture pattern folders** (`architecture/rl-patterns/`) — planned per [RL Index](../rewrite-labs/00-RL-INDEX.md).
 
 ## 💡 Potential

@@ -49,10 +49,10 @@ C:\dev\
 - Local Mirror: `C:\dev\cic-ref\`
 - Last Synced: 2026-07-02 10:42:39
 
-### Rewrite Labs Documents (Pending)
-- Source: To be determined (OneDrive/Drive/GitHub/local)
+### Rewrite Labs Documents (Source Confirmed 2026-07-03)
+- Source: GitHub — `https://github.com/sorensencc-dotcom/rewrite-mcp.git` (branch `main`)
 - Local Mirror: `C:\dev\rl-ref\`
-- Status: Awaiting RL documentation location
+- Status: 📋 Source confirmed; sync configuration + first run pending (adjust file patterns to the repo's doc layout on first sync)
 
 ### Architecture/Design Patterns (Manual)
 - Location: `C:\dev\architecture\`
@@ -91,11 +91,11 @@ sync_targets:
       - "ROADMAP.md"
     
   - name: "Rewrite Labs Reference"
-    source: "{{ RL_DOCS_SOURCE }}"  # Configure with actual location
+    source: "https://github.com/sorensencc-dotcom/rewrite-mcp.git#main"
     destination: "C:\\dev\\rl-ref"
     patterns:
-      - "*.md"  # Adjust based on RL documentation structure
-    enabled: false  # Enable when source is confirmed
+      - "*.md"  # Adjust to the repo's doc layout on first sync (e.g. ROADMAP.md, docs/**)
+    enabled: false  # Flip to true after first successful test sync
 ```
 
 ## Common Cross-System Queries
@@ -120,10 +120,9 @@ The vault structure enables queries like:
 
 ## Next Steps
 
-1. **Identify RL Documentation Source**
-   - Confirm location: OneDrive, Google Drive, GitHub, or local
-   - Get access/permissions if needed
-   - Document the source path
+1. **Identify RL Documentation Source** ✅ (2026-07-03)
+   - Confirmed: GitHub repo `sorensencc-dotcom/rewrite-mcp`, branch `main` (local clone: `c:\dev\rewrite-mcp`)
+   - Remaining: pick which paths in the repo constitute the RL living docs (adjust sync patterns)
 
 2. **Update RL-Specific Configuration**
    - Create sync.py or shell script modifications
@@ -161,8 +160,8 @@ CIC_DOCS_SOURCE="onedrive://CIC-folder-id"
 CIC_DOCS_DEST="C:\dev\cic-ref"
 CIC_SYNC_ENABLED=true
 
-# Rewrite Labs Settings (To be Configured)
-RL_DOCS_SOURCE="[TBD]"
+# Rewrite Labs Settings (source confirmed 2026-07-03; enable after test sync)
+RL_DOCS_SOURCE="github://sorensencc-dotcom/rewrite-mcp#main"
 RL_DOCS_DEST="C:\dev\rl-ref"
 RL_SYNC_ENABLED=false
 ```

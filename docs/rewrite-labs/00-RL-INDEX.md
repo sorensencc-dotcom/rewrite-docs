@@ -33,13 +33,13 @@ tags:
 
 ## Rewrite Labs Reference Architecture
 
-### Status: 📋 Configuration Ready — awaiting sync
+### Status: 📋 Source confirmed — first sync pending
 
-RL reference vault is configured and awaiting document synchronization. (Status legend: ✅ Done · 🔄 In Progress · 📋 Planned · 💡 Potential · ⛔ Deprecated)
+RL reference vault is configured; source confirmed 2026-07-03, awaiting first synchronization run. (Status legend: ✅ Done · 🔄 In Progress · 📋 Planned · 💡 Potential · ⛔ Deprecated)
 
-**Source Location:** 📋 To be confirmed (OneDrive / Google Drive / GitHub)  
+**Source Location:** ✅ GitHub — `sorensencc-dotcom/rewrite-mcp` (branch `main`; local clone `c:\dev\rewrite-mcp`)  
 **Local Destination:** `C:\dev\rl-ref\`  
-**Sync Status:** 📋 Pending RL docs location confirmation  
+**Sync Status:** 📋 Pending sync-pattern selection + first test sync (see `RL-VAULT-SETUP.md`)  
 
 > RL-4.x phase status (build vs runner) is tracked in the [Rewrite Labs Roadmap](../roadmaps/rewrite-labs-roadmap.md).
 
