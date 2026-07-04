@@ -1,0 +1,25 @@
+docs/roadmaps/tickets/batch-2/index.md
+  8ba63daf3137ccd2 30
+docs/roadmaps/tickets/batch-5/index.md
+  8ba63daf3137ccd2 54
+docs/rewrite-labs/00-RL-INDEX.md
+  8ba63daf3137ccd2 36,38,41-42,46-53
+scripts/rl-vault-sync.js
+  8ba63daf3137ccd2 1-92
+docs/rewrite-labs/RL-VAULT-SETUP.md
+  8ba63daf3137ccd2 52-53,55-57,98-100,129-132,165,168-169
+docs/operations/weekly-sync.md
+  8ba63daf3137ccd2 61-62
+docs/rewrite-labs/rl-vault-manifest.json
+  8ba63daf3137ccd2 1-60
+docs/roadmaps/rewrite-labs-roadmap.md
+  8ba63daf3137ccd2 58,63
+docs/operations/drift-forecast.md
+  8ba63daf3137ccd2 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "d4dfa9170343a7c3a00cde8549779651b470a691",
+  "prompts": {}
+}
