@@ -1,0 +1,24 @@
+src/cic/phase-8/graph/phase8_cost_context.ts
+  s_e2a12a974c4dec::t_9eb22afdd6d17a 1-127
+src/cic/phase-8/graph/phase8_graph_binding.ts
+  s_e2a12a974c4dec::t_9a52a3e5afafed 1-122
+src/cic/graph/GraphContextBuilder.ts
+  s_e2a12a974c4dec::t_657a599e3f623a 6-10,28-32
+  s_e2a12a974c4dec::t_6355d234c1a16e 33-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "68bf069fc60e6d494e7e329599a73f257c047ca8",
+  "prompts": {},
+  "sessions": {
+    "s_e2a12a974c4dec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ad4a2a83-aa52-4668-88d3-0b572f49df60",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
