@@ -1,0 +1,77 @@
+src/cic-dashboard/services/dashboard-polling-service.ts
+  s_2ed42d4c549bda::t_d8e86bf8abe3cf 1-87,89-148
+  s_2ed42d4c549bda::t_a707e9fbf3580d 88
+src/adapters/RLVaultAdapter.ts
+  s_2ed42d4c549bda::t_a8f196dd735b89 135
+  s_2ed42d4c549bda::t_3fbe36014fa18c 358-359
+  s_2ed42d4c549bda::t_4a31ee64934231 14-16
+  s_2ed42d4c549bda::t_7f114464a4ce7d 364
+  s_2ed42d4c549bda::t_83b50cc5872297 322-323,329-356,361-363,365
+  s_2ed42d4c549bda::t_38ffa3c7760b30 124
+  s_2ed42d4c549bda::t_cbe35cde22216b 96
+  s_2ed42d4c549bda::t_d54fdab06dfc0c 285-286,292,296-312
+  s_2ed42d4c549bda::t_3c6d36986b312b 290
+  s_2ed42d4c549bda::t_b5ea7cf955b4af 193
+  s_2ed42d4c549bda::t_95005b96df6718 376-394,396-418
+  s_2ed42d4c549bda::t_7b44cd659061f7 316
+  s_2ed42d4c549bda::t_64f8a1aaa5f8bf 395
+  s_2ed42d4c549bda::t_5bbabc25f4ca02 236
+  s_2ed42d4c549bda::t_d7609c8e92f8d8 278
+  s_2ed42d4c549bda::t_b1c11b23f8172d 327
+src/cic-dashboard/nodes/rl-vault-node.ts
+  s_2ed42d4c549bda::t_16c67d71716598 1-47
+src/logging/adapterLogger.ts
+  s_2ed42d4c549bda::t_510b4c2468c010 10-15,34-37,49,51
+  s_2ed42d4c549bda::t_68261b1b9da9ac 7-9
+  s_2ed42d4c549bda::t_bdc740c75d1836 38-40,46-48
+  s_2ed42d4c549bda::t_f0ee4d1523b742 50
+  s_2ed42d4c549bda::t_d9fc437d8cd1a4 52-54
+  s_e27e2f20824514::t_8a292510e96d05 41-45,55-61
+src/vector/qdrantClient.ts
+  s_2ed42d4c549bda::t_77a64dd8f031dd 1-147
+src/vector/vaultStatusService.ts
+  s_2ed42d4c549bda::t_39cdf3182d95ce 1-6,8-94,96-117,119-135
+  s_2ed42d4c549bda::t_9d3f9204da0bee 7
+  s_2ed42d4c549bda::t_389199263fabb7 118
+  s_2ed42d4c549bda::t_e129a7424b0339 95
+src/cic-dashboard/api/dashboard-router.ts
+  s_2ed42d4c549bda::t_93da9b06fd5f5f 6,14-21,28,33
+  s_2ed42d4c549bda::t_8935ce9ae8945a 22-27
+  s_2ed42d4c549bda::t_cd2a5c8d7d396d 29-32
+src/autonomy/AutonomyAPIServer.ts
+  s_2ed42d4c549bda::t_4020d86d2ecf29 13,211-213,221-223,245-248
+src/cic-runtime/drift/embedding-model.ts
+  s_d5a7157c855996::t_a68da3423eeb85 3,28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b06be9c84717e281ecf5aba5107b4bd342550be1",
+  "prompts": {},
+  "sessions": {
+    "s_2ed42d4c549bda": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1bf46979-bb69-46f3-a200-8cc7c71f4064",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d5a7157c855996": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02774e76-c5bb-430c-be4c-f423df328859",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_e27e2f20824514": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6dff16be-f826-4552-987a-e216480a567e",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
