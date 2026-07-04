@@ -1,0 +1,19 @@
+governance/cicState.json
+  s_d5a7157c855996::t_dbc9053a8e08d7 22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "56c2abaa73fa808c417055c565ac84066378f615",
+  "prompts": {},
+  "sessions": {
+    "s_d5a7157c855996": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02774e76-c5bb-430c-be4c-f423df328859",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
