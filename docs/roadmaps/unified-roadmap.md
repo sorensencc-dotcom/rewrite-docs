@@ -40,7 +40,7 @@ The same table with per-phase links lives in the [CIC ↔ RL Cross-Reference](..
 |--------|---------------|-------------|------------|--------|
 | Governance orchestration | `governance/` (orchestrator, approval-gate, promotion-rollback, audit-policy, audit-log, cicState.json) | ✅ | ✅ (RL-4.4 gates) | ✅ Done |
 | Ingestion pipeline stages | `roadmap-runner/ingestion-config.json` (Crawler → Scraper → Mapper → Indexer) + `cic-ingestion/src/` | ✅ | ✅ (RL-4.6 crawl feeds it) | ✅ Done (config); code in `cic-ingestion/src/harvester/`, `src/drift/` |
-| Roadmap runner | `roadmap-runner/` (scheduler, docker-runner, gates, state-store) | ✅ (PHASE-0.9, PHASE-26) | ✅ (RL-4.0→4.6) | Build ✅ / Runner ⏸ (all phases pending) |
+| Roadmap runner | `roadmap-runner/` (scheduler, docker-runner, gates, state-store) | ✅ (PHASE-0.9, PHASE-26) | ✅ (RL-4.0→4.6) | Phase A ✅: graph path, env substitution, log persistence, --network. PHASE-0.9 image ✅ (reproducible). RL pattern proven. PHASE-26 blocked on cic-ingestion pkg.json. RL-4.3/4/5 no impl → auto-blocked. |
 | Routing engine | `src/cic-runtime/routing/` (5 routers) | ✅ | via shared fallback (`src/resilience/fallbackChain.ts`) | ✅ Done |
 | Drift detection | 4 systems — see [Drift Classification](../architecture/drift.md) | ✅ | ✅ (vault/metadata drift) | ✅ Done |
 | Cost & notification | `src/lib/notify/CostNotifier.ts`, `src/lib/report/CicCostComputeReport.ts` | ✅ | shared token economy | ✅ Done |
@@ -73,6 +73,24 @@ Stage names and timeouts are defined in `roadmap-runner/ingestion-config.json`; 
 | CIC runtime | v0.8.0 ✅ | v0.9.0 Adaptive Memory 📋 | — |
 | RL | configs locked ✅ | runner execution of RL-4.6→4.5 wave 📋 (blocked on real images) | post-4.5 phases 💡 |
 | Shared infra | governance + routing + cost ✅ | System Index Builder 💡 ([spec](../reference/system-index-builder.md)) | — |
+| **Repo cleanup** | **History + hooks ✅** | **3 manual items pending** | — |
+
+## Cleanup Pending (2026-07-03)
+
+Deep repo cleanup phase completed 2026-07-03. Backups + secret-scan enforcement live. Manual action items:
+
+1. **Credentials rotation** — 5 API keys exposed in rewrite-mcp history (now purged from tracking). Checklist: `C:\dev-backups\2026-07-03\KEY-ROTATION-CHECKLIST.md`
+   - Google AIza key (1)
+   - OpenAI/Anthropic sk- keys (3)
+   - Finnhub/Memos/Joplin JWT tokens (1 each)
+   - Action: Rotate at provider consoles, update local .env files
+
+2. **GitHub repo deletion** — `fds.fx.reporting` (personal account)
+   - Run: `gh auth refresh -h github.com -s delete_repo` → copy device code to github.com/login/device
+   - Then: `gh repo delete sorensencc-dotcom/fds.fx.reporting --yes`
+
+3. **Archive decision** — `_cic-fragments-archive/cic` (5372 dirty, 15 unpushed)
+   - Keep in cold backup or delete from C:\dev? User decision pending.
 
 ## Related
 

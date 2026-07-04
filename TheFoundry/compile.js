@@ -37,8 +37,9 @@ function parseRoadmapFile(filePath) {
         const title = parts[2] || '';
         const status = parts[3] || 'pending';
 
-        // Skip header rows
-        if (!phaseId.match(/^(Phase|PHASE|RL-)/i)) continue;
+        // Only accept canonical runnable phase ids (PHASE-x.y / RL-x.y);
+        // loose prefixes match prose table rows like "Phase 1"
+        if (!phaseId.match(/^(PHASE-[\d.]+|RL-\d+\.\d+)$/)) continue;
 
         phases.push({
           id: phaseId,
@@ -122,11 +123,43 @@ function main() {
     }
   }
 
+  // Ensure every phase in the dependency map exists as a node, even when
+  // roadmap markdown parsing misses it (runner needs a node per runnable phase)
+  const KNOWN_PHASES = [
+    'PHASE-0.9',
+    'PHASE-26',
+    'RL-4.6',
+    'RL-4.0',
+    'RL-4.1',
+    'RL-4.2',
+    'RL-4.3',
+    'RL-4.4',
+    'RL-4.5',
+  ];
+  for (const id of KNOWN_PHASES) {
+    if (!phaseSet.has(id)) {
+      phases.push({
+        id,
+        title: id,
+        status: 'pending',
+        track: classifyTrack(id),
+        category: classifyCategory(id),
+      });
+      phaseSet.add(id);
+    }
+  }
+
   const edges = buildEdges(phases);
+
+  // SOURCE_DATE_EPOCH (reproducible-builds.org) pins the timestamp so
+  // repeated builds produce byte-identical output
+  const generated = process.env.SOURCE_DATE_EPOCH
+    ? new Date(parseInt(process.env.SOURCE_DATE_EPOCH, 10) * 1000).toISOString()
+    : new Date().toISOString();
 
   const graph = {
     version: 'v3.0',
-    generated: new Date().toISOString(),
+    generated,
     description:
       'Compiled roadmap dependency graph. Source: MASTER_ROADMAP_v3.0.md, CIC_SUBROADMAP_v3.0.md, REWRITE_LABS_SUBROADMAP_v3.0.md',
     nodes: phases,

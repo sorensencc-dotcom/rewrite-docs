@@ -8,9 +8,15 @@
 const fs = require('fs');
 const path = require('path');
 
+// SOURCE_DATE_EPOCH (reproducible-builds.org) pins the timestamp so
+// repeated builds produce byte-identical output
+const generatedAt = process.env.SOURCE_DATE_EPOCH
+  ? new Date(parseInt(process.env.SOURCE_DATE_EPOCH, 10) * 1000).toISOString()
+  : new Date().toISOString();
+
 const manifest = {
   version: 'v3.0',
-  generated_at: new Date().toISOString(),
+  generated_at: generatedAt,
   foundry_version: '3.0.0',
   docs: getDocs(),
   roadmap_graph: 'out/roadmap/ROADMAP_DEPENDENCY_GRAPH.json',

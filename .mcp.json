@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "truecode": {
+      "command": "truecode",
+      "args": ["serve", "--stdio"]
+    },
+    "gitnexus": {
+      "command": "gitnexus",
+      "args": ["serve", "--stdio"]
+    },
+    "graphify": {
+      "command": "graphify",
+      "args": ["serve", "--stdio"]
+    }
+  }
+}

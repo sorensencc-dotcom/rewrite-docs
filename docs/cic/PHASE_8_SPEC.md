@@ -2,17 +2,21 @@
 title: "PHASE 8 SPEC"
 summary: "# Phase 8: Cost Optimization + Dynamic Model Selection"
 created: "2026-07-03T19:43:45.557Z"
-updated: "2026-07-03T19:43:45.557Z"
+updated: "2026-07-04T00:00:00.000Z"
+status: "finalized"
 tags:
   - cic
   - rewrite-labs
   - roadmap
+  - phase-8
 ---
 # Phase 8: Cost Optimization + Dynamic Model Selection
 
-**Status:** Spec locked (2026-06-23)  
+**Status:** ✅ Spec finalized (2026-07-04)  
+**Locked:** 2026-06-23  
 **Scope:** 10 files, 3-day implementation (D1–D3)  
 **Integration:** Phase 7 state machine + Prometheus telemetry + audit governance  
+**Runner Config:** `roadmap-runner/phases/PHASE-8.yaml` (see Section 11)  
 
 ---
 
@@ -614,7 +618,9 @@ Phase 7's recovery loop remains unchanged; cost recovery follows same pattern:
 
 ---
 
-## 8. Success Criteria
+## 8. Success Criteria (Spec Finalization — COMPLETE ✅)
+
+**This spec is implementation-ready. The following criteria apply to Phase 8 implementation, not spec finalization:**
 
 - [ ] All 10 files implement contracts in PHASE_8_SPEC.md (this document)
 - [ ] 150+ unit tests pass (edge cases + happy paths)
@@ -624,6 +630,16 @@ Phase 7's recovery loop remains unchanged; cost recovery follows same pattern:
 - [ ] Routing decisions logged in PHASE_8_TEST_MATRICES.md
 - [ ] Cost model queries match Phase 7 state machine ticks
 - [ ] Phase 7 integration tests pass with Phase 8 signals
+
+**Spec finalization criteria (LOCKED):**
+- ✅ All 10 file contracts defined with interface signatures + behavior specs
+- ✅ All type definitions complete (RequestContext, ModelDescriptor, CostEvent, etc.)
+- ✅ All state transitions specified (5 types: COST_DEGRADATION_ENTERED, COST_HARD_CEILING_ENFORCED, etc.)
+- ✅ All 11 Prometheus metrics defined with label sets
+- ✅ All 5 audit event schemas defined with payload structures
+- ✅ Integration points with Phase 7 documented (3 entry points)
+- ✅ Test matrix structure documented (3 matrices covering 45+ test cases)
+- ✅ Success gates defined for runner (see Section 11)
 
 ---
 
@@ -655,6 +671,129 @@ interface AuditSink {
 ```
 
 Implementations: Prometheus remote write, InfluxDB, in-memory ring buffer (tests).
+
+---
+
+## 10. Error Handling & Fallback Behavior
+
+### 10.1 Cost calculation failures
+- **Missing model cost data:** Use hardcoded fallback cost (e.g., $0.01/1M input tokens)
+- **Token count parse failure:** Round token estimates to nearest 1000
+- **Cost sink unavailable:** Buffer cost events in memory (max 1000 events) or discard with warning
+
+### 10.2 Model routing failures
+- **No candidates pass filter:** Use fallback model (defined in config)
+- **Selected model unavailable:** Re-route with DOWNGRADE policy
+- **Policy override conflict:** Prioritize CRITICAL priority > cost policy
+
+### 10.3 Phase 7 signal unavailable
+- **Missing driftScore:** Assume 0.3 (neutral)
+- **Missing SLA metrics:** Assume p95=200ms, errorRate=0.01
+- **Missing circuitBreakerState:** Assume CLOSED
+
+### 10.4 Deterministic recovery
+- **Cost sink recovery:** Flush buffered events when sink available
+- **Model registry refresh:** Hot-swap descriptors without stopping request loop
+- **Anomaly score spike:** Cap anomaly score at 0.95 to prevent hard-reset; allow gradual decay
+
+---
+
+## 11. Runner Config (PHASE-8.yaml)
+
+**File:** `roadmap-runner/phases/PHASE-8.yaml`
+
+```yaml
+phase: PHASE-8
+title: "CIC Cost Optimization + Dynamic Model Selection"
+version: 1.0.0
+status: placeholder
+
+# Docker container for Phase 8 implementation
+container:
+  image: cic:phase-8
+  build:
+    context: cic-ingestion
+    dockerfile: Dockerfile.phase8
+  ports:
+    - "3108:3000"  # CIC Integration Adapter
+  env:
+    - PHASE_ID=PHASE-8
+    - COST_SINK=prometheus
+    - AUDIT_SINK=elasticsearch
+    - LOG_LEVEL=debug
+
+# Success gates evaluate implementation correctness
+success_gates:
+  # Gate 1: Integration adapter initializes without error
+  - type: exit_code
+    value: 0
+    description: "Container starts and Phase 8 initialization completes"
+  
+  # Gate 2: Prometheus metrics registered
+  - type: output
+    pattern: "cic_cost_total_usd|cic_cost_request_usd|cic_cost_policy_decisions_total"
+    description: "All 11 Prometheus metrics registered and available"
+  
+  # Gate 3: Phase 7 integration wired
+  - type: output
+    pattern: "Extended RuntimeSignals with costPressureLevel, budgetStatus, anomalyScore"
+    description: "Phase 7 signals merged into request handling"
+  
+  # Gate 4: Test suite passes
+  - type: metric
+    key: test_pass_rate
+    op: ">="
+    value: 0.95
+    description: "At least 95% of Phase 8 tests pass"
+  
+  # Gate 5: Unit test count minimum
+  - type: metric
+    key: unit_tests_count
+    op: ">="
+    value: 150
+    description: "At least 150 unit tests for Phase 8 modules"
+  
+  # Gate 6: Integration test count minimum
+  - type: metric
+    key: integration_tests_count
+    op: ">="
+    value: 20
+    description: "At least 20 Phase 8 + Phase 7 integration tests"
+  
+  # Gate 7: Code coverage
+  - type: metric
+    key: code_coverage
+    op: ">="
+    value: 0.80
+    description: "At least 80% code coverage for Phase 8"
+
+# Dependencies: Phase 7 must be deployed
+dependencies:
+  - PHASE-7
+
+# Timeline
+timeline:
+  d1_types: 2h
+  d1p_telemetry: 3h
+  d2_forecast: 2h
+  d2p_routing: 3h
+  d3_integration: 4h
+  total: "14 hours"
+
+# Metrics expected to publish
+metrics:
+  - cic_cost_total_usd
+  - cic_cost_request_usd
+  - cic_cost_input_tokens
+  - cic_cost_output_tokens
+  - cic_cost_daily_spend_usd
+  - cic_cost_budget_soft_ceiling_active
+  - cic_cost_budget_hard_ceiling_active
+  - cic_cost_policy_decisions_total
+  - cic_cost_anomaly_score
+  - cic_cost_model_selection_changes_total
+  - cic_cost_downgrade_events_total
+```
 
 ---
 

@@ -1,0 +1,41 @@
+{
+  "topic_patterns": {
+    "api": ["api", "endpoint", "function", "interface", "method", "call", "request", "response"],
+    "agent": ["agent", "agents", "actor", "service", "worker", "task", "execution"],
+    "batch": ["batch", "batches", "phase", "stage", "processing", "item"],
+    "pipeline": ["pipeline", "flow", "workflow", "process", "orchestration", "orchestrate"],
+    "data": ["data", "database", "storage", "schema", "table", "field", "record", "query"],
+    "auth": ["auth", "authentication", "authorization", "oauth", "login", "permission", "access"],
+    "error": ["error", "exception", "fail", "failure", "catch", "throw", "exception", "warning"],
+    "testing": ["test", "testing", "unit test", "integration test", "assert", "mock"],
+    "config": ["config", "configuration", "settings", "option", "parameter", "env"],
+    "performance": ["performance", "optimize", "optimization", "speed", "latency", "cache", "pool"],
+    "logging": ["log", "logging", "trace", "debug", "info", "warn", "error", "metric"],
+    "security": ["security", "encrypt", "cipher", "ssl", "tls", "https", "hash", "sign"]
+  },
+  "cross_reference_rules": {
+    "min_topic_overlap": 2,
+    "min_similarity_score": 0.3,
+    "description": "Minimum of 2 common topics OR 30% similarity score to create cross-reference. Lower values = more matches."
+  },
+  "exclude_patterns": [
+    "_archive",
+    "node_modules",
+    "coverage",
+    ".git",
+    ".venv",
+    "__pycache__",
+    "dist",
+    "build"
+  ],
+  "output_paths": {
+    "unified_index": "wiki/index-unified.md",
+    "cross_refs": "_integration/cross-refs.json",
+    "report": "_integration/report.json"
+  },
+  "metadata": {
+    "created": "2026-06-30",
+    "version": "1.0",
+    "description": "Configuration for Knowledge Base Integration Layer. Edit topic_patterns to improve cross-reference accuracy."
+  }
+}

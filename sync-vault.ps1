@@ -291,11 +291,13 @@ function Main {
     $config = Get-VaultConfig
 
     # Process vaults
+    $systemMap = @{ 'cic' = 'CIC'; 'rl' = 'RewriteLabs' }
     $vaultsToSync = if ($System -eq 'all') {
         $config.vaults
     }
     else {
-        $config.vaults | Where-Object { $_.name -eq $System }
+        $targetName = $systemMap[$System]
+        $config.vaults | Where-Object { $_.name -ieq $targetName }
     }
 
     foreach ($vault in $vaultsToSync) {

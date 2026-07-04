@@ -96,3 +96,6 @@ gemini-scan-report.txt
 .env.*
 !.env.example
 !.env.*.example
+
+# Local development engines
+engines/

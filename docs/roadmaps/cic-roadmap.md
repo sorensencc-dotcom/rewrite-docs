@@ -41,7 +41,7 @@ Runner-managed phases carry a dual status: **Build** (engineering work, per comp
 |-------|-------|--------|----------|
 | 5 | TorqueQuery | ✅ Done | [Executive Summary](../cic/TORQUEQUERY_EXECUTIVE_SUMMARY.md), [Build Summary](../cic/TORQUEQUERY_BUILD_SUMMARY.md) |
 | 6 | Implementation | ✅ Done | [Implementation Summary](../cic/PHASE6-IMPLEMENTATION-SUMMARY.md) |
-| 8 | Spec + Test Matrices | 📋 Planned | [Spec](../cic/PHASE_8_SPEC.md), [Test Matrices](../cic/PHASE_8_TEST_MATRICES.md) — spec locked, no completion log |
+| 8 | Cost Optimization + Dynamic Model Selection | 📋 Spec Finalized ✅ | [Spec](../cic/PHASE_8_SPEC.md), [Test Matrices](../cic/PHASE_8_TEST_MATRICES.md), [Runner Config](../../roadmap-runner/phases/PHASE-8.yaml), [Test JSON](../../phase-8/test-matrices.json) — spec locked 2026-06-23, finalized 2026-07-04 |
 
 ## Optimization & Hardening (Phases A–C)
 
@@ -58,7 +58,7 @@ Runner-managed phases carry a dual status: **Build** (engineering work, per comp
 | 23 | Memory Explorer UI (23.6) | ✅ Done | [Phase 23.6](../cic/PHASE-23-6-MEMORY-EXPLORER-UI.md) |
 | 23.2 | Memory Query API | 🔄 In Progress | `build-roadmap.json` (in-progress, depends on 24.5) |
 | 24 | Autonomous Governance (council voting + evidence vault) | ✅ Done | Referenced as integration target by [Phase 28a](../cic/PHASE-28a-SCP-COMPLETION.md) |
-| 24.5 | Build Governance (vault lineage linking) | 📋 Planned | `build-roadmap.json` lists it queued (depends on 28b); [Phase 28a](../cic/PHASE-28a-SCP-COMPLETION.md) documents its integration surface as complete — reconcile at next weekly sync |
+| 24.5 | AG-Trace Example (RPI→CIC execution trace) | 📋 Planned | [CIC_MASTER_ROADMAP.md](../reference/CIC_MASTER_ROADMAP.md#24-5--full-rpicic-execution-trace-ag-trace); PHASE-28a-SCP-COMPLETION.md documents a different "governance integration" (not yet built, different deliverable). Phase 23.2 blocked on this. |
 | 26 | TorqueQuery — Shared Ingestion & Search Engine | Build: ✅ / Runner: ⏸ pending | [Implementation Summary](../implementation/phase-26/summary.md); `roadmap-runner/phases/PHASE-26.yaml`; zero runs in state-store |
 | 27.3 | Execution Plan | ✅ Done | [Execution Plan](../cic/PHASE27_3_EXECUTION_PLAN.md) |
 | 27.4 | Dispatch | ✅ Done | [Dispatch](../cic/PHASE_27_4_DISPATCH.md) |

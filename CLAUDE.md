@@ -27,7 +27,7 @@ GitHub Actions for CI/CD: docker build, test, deploy (`.github/workflows/`)
 ## Key Files
 
 cic/package.json — Governance, version 1.0.0, root for monorepo
-cic-ingestion/package.json — Autonomy/memory, entry: AutonomyAPIServer.js
+cic-ingestion/package.json — Autonomy/memory (NOTE: missing — to be reconstructed for Phase 26 image build)
 jest.config.js — Root jest config, ts-jest preset, 30s timeout
 docker-compose.yml — Single CIC dev container, port 3100 (MCP)
 Dockerfile — Multi-stage Ubuntu build, Node 20+, Claude Code CLI pre-installed

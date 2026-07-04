@@ -1,0 +1,90 @@
+phase: PHASE-8
+title: "CIC Cost Optimization + Dynamic Model Selection"
+version: 1.0.0
+status: placeholder
+
+# Docker container for Phase 8 implementation
+container:
+  image: cic:phase-8
+  build:
+    context: cic-ingestion
+    dockerfile: Dockerfile.phase8
+  ports:
+    - "3108:3000"  # CIC Integration Adapter
+  env:
+    - PHASE_ID=PHASE-8
+    - COST_SINK=prometheus
+    - AUDIT_SINK=elasticsearch
+    - LOG_LEVEL=debug
+
+# Success gates evaluate implementation correctness
+success_gates:
+  # Gate 1: Integration adapter initializes without error
+  - type: exit_code
+    value: 0
+    description: "Container starts and Phase 8 initialization completes"
+
+  # Gate 2: Prometheus metrics registered
+  - type: output
+    pattern: "cic_cost_total_usd|cic_cost_request_usd|cic_cost_policy_decisions_total"
+    description: "All 11 Prometheus metrics registered and available"
+
+  # Gate 3: Phase 7 integration wired
+  - type: output
+    pattern: "Extended RuntimeSignals with costPressureLevel, budgetStatus, anomalyScore"
+    description: "Phase 7 signals merged into request handling"
+
+  # Gate 4: Test suite passes
+  - type: metric
+    key: test_pass_rate
+    op: ">="
+    value: 0.95
+    description: "At least 95% of Phase 8 tests pass"
+
+  # Gate 5: Unit test count minimum
+  - type: metric
+    key: unit_tests_count
+    op: ">="
+    value: 150
+    description: "At least 150 unit tests for Phase 8 modules"
+
+  # Gate 6: Integration test count minimum
+  - type: metric
+    key: integration_tests_count
+    op: ">="
+    value: 20
+    description: "At least 20 Phase 8 + Phase 7 integration tests"
+
+  # Gate 7: Code coverage
+  - type: metric
+    key: code_coverage
+    op: ">="
+    value: 0.80
+    description: "At least 80% code coverage for Phase 8"
+
+# Dependencies: Phase 7 must be deployed
+dependencies:
+  - PHASE-7
+
+# Timeline
+timeline:
+  d1_types: 2h
+  d1p_telemetry: 3h
+  d2_forecast: 2h
+  d2p_routing: 3h
+  d3_integration: 4h
+  total: "14 hours"
+
+# Metrics expected to publish
+metrics:
+  - cic_cost_total_usd
+  - cic_cost_request_usd
+  - cic_cost_input_tokens
+  - cic_cost_output_tokens
+  - cic_cost_daily_spend_usd
+  - cic_cost_budget_soft_ceiling_active
+  - cic_cost_budget_hard_ceiling_active
+  - cic_cost_policy_decisions_total
+  - cic_cost_anomaly_score
+  - cic_cost_model_selection_changes_total
+  - cic_cost_downgrade_events_total

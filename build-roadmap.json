@@ -45,7 +45,6 @@
                         "status":  "complete",
                         "priority":  5,
                         "dependencies":  [
-                                             "Phase 24.5"
                                          ],
                         "tests":  true,
                         "commit":  true
@@ -79,6 +78,19 @@
                                          ],
                         "tests":  true,
                         "commit":  true
+                    },
+                    {
+                        "phase":  "Phase 8 (Cost Optimization + Dynamic Model Selection)",
+                        "status":  "spec-locked",
+                        "priority":  5,
+                        "dependencies":  [
+                                             "Phase 7"
+                                         ],
+                        "tests":  true,
+                        "commit":  true,
+                        "spec":  "docs/cic/PHASE_8_SPEC.md",
+                        "test_matrices":  "phase-8/test-matrices.json",
+                        "runner_config":  "roadmap-runner/phases/PHASE-8.yaml"
                     },
                     {
                         "phase":  "Phase 31",

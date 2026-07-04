@@ -1,161 +1,32 @@
-{
-  "timestamp": "2026-07-02T16:30:00Z",
-  "phase": "Phase 5 (TorqueQuery v2 + Cloud Gateway)",
-  "harness_results": {
-    "maalRouting": {
-      "tasks": [
-        {
-          "taskId": "t-001",
-          "query": "governance caps for tool invocation",
-          "driftScore": 0.0842,
-          "topMatch": true,
-          "verdict": "PASS"
-        },
-        {
-          "taskId": "t-002",
-          "query": "docs ingestion pipeline architecture",
-          "driftScore": 0.1156,
-          "topMatch": true,
-          "verdict": "PASS"
-        },
-        {
-          "taskId": "t-003",
-          "query": "semantic search baseline performance",
-          "driftScore": 0.0934,
-          "topMatch": true,
-          "verdict": "PASS"
-        },
-        {
-          "taskId": "t-004",
-          "query": "MAAL routing state machine",
-          "driftScore": 0.1087,
-          "topMatch": true,
-          "verdict": "PASS"
-        },
-        {
-          "taskId": "t-005",
-          "query": "canary gate promotion criteria",
-          "driftScore": 0.0756,
-          "topMatch": true,
-          "verdict": "PASS"
-        }
-      ]
-    },
-    "cicIngestion": {
-      "documents": [
-        {
-          "docId": "doc-001",
-          "collection": "architecture",
-          "topMatch": true,
-          "slowLatency": 156.4,
-          "fastLatency": 92.3,
-          "latencyDiff": -64.1
-        },
-        {
-          "docId": "doc-002",
-          "collection": "search",
-          "topMatch": true,
-          "slowLatency": 203.7,
-          "fastLatency": 118.5,
-          "latencyDiff": -85.2
-        },
-        {
-          "docId": "doc-003",
-          "collection": "routing",
-          "topMatch": true,
-          "slowLatency": 187.2,
-          "fastLatency": 104.6,
-          "latencyDiff": -82.6
-        },
-        {
-          "docId": "doc-004",
-          "collection": "governance",
-          "topMatch": true,
-          "slowLatency": 172.8,
-          "fastLatency": 97.1,
-          "latencyDiff": -75.7
-        },
-        {
-          "docId": "doc-005",
-          "collection": "execution",
-          "topMatch": true,
-          "slowLatency": 195.3,
-          "fastLatency": 110.8,
-          "latencyDiff": -84.5
-        }
-      ]
-    },
-    "driftScoring": {
-      "testCases": [
-        {
-          "caseId": "drift-001",
-          "query": "domestic chip optimization strategies",
-          "driftScore": 0.0876,
-          "threshold": 0.1,
-          "verdict": "PASS"
-        },
-        {
-          "caseId": "drift-002",
-          "query": "training throughput improvements",
-          "driftScore": 0.1423,
-          "threshold": 0.15,
-          "verdict": "PASS"
-        },
-        {
-          "caseId": "drift-003",
-          "query": "hardware stack alignment",
-          "driftScore": 0.0934,
-          "threshold": 0.1,
-          "verdict": "PASS"
-        },
-        {
-          "caseId": "drift-004",
-          "query": "semantic routing baseline performance",
-          "driftScore": 0.1156,
-          "threshold": 0.12,
-          "verdict": "PASS"
-        },
-        {
-          "caseId": "drift-005",
-          "query": "governance approval workflow",
-          "driftScore": 0.0745,
-          "threshold": 0.08,
-          "verdict": "PASS"
-        }
-      ]
-    }
-  },
-  "summary": {
-    "maalRouting": {
-      "passCount": 5,
-      "failCount": 0,
-      "avgDriftScore": 0.0955,
-      "verdict": "PASS"
-    },
-    "cicIngestion": {
-      "docCount": 5,
-      "topMatchCount": 5,
-      "fastPathWins": 5,
-      "avgLatencyReduction": 78.42,
-      "verdict": "PASS"
-    },
-    "driftScoring": {
-      "passCount": 5,
-      "warnCount": 0,
-      "failCount": 0,
-      "verdict": "PASS"
-    }
-  },
-  "canaryGate": {
-    "approved": true,
-    "reason": "All harnesses PASS. Phase 4 schema valid, determinism verified (avg drift 0.0955 < 0.15), latency improved 78.4% avg. CIC ingestion: 5/5 top-result match, 5/5 fast-path faster. Drift scoring: 5/5 PASS (all cases within thresholds).",
-    "nextStep": "Proceed to Canary A (10% traffic, 1h) with monitoring gates. Monitor: fast-path adoption ≥40%, latency P99 ≤150ms, drift <0.10, error rate ≤0.2%."
-  },
-  "metrics": {
-    "torqueQueryHealth": "OK",
-    "torqueQueryVersion": "2.0.0",
-    "harnessDuration": 65,
-    "totalRequests": 15,
-    "successRate": 1.0
-  }
+﻿{
+    "phase":  "Phase 5 (TorqueQuery v2 + Cloud Gateway)",
+    "canaryGate":  {
+                       "approved":  false,
+                       "reason":  "Failures: MAAL=FAIL, CIC=PASS, Drift=PASS. Investigate before canary.",
+                       "nextStep":  "Fix failing harnesses, re-run validation."
+                   },
+    "timestamp":  "2026-07-02T16:26:23.8534853-04:00",
+    "summary":  {
+                    "maalRouting":  {
+                                        "failCount":  0,
+                                        "avgDriftScore":  1,
+                                        "verdict":  "FAIL",
+                                        "passCount":  0
+                                    },
+                    "cicIngestion":  {
+                                         "docCount":  0,
+                                         "topMatchCount":  0,
+                                         "verdict":  "PASS",
+                                         "fastPathWins":  0
+                                     },
+                    "driftScoring":  {
+                                         "failCount":  0,
+                                         "verdict":  "PASS",
+                                         "warnCount":  0,
+                                         "passCount":  0
+                                     }
+                },
+    "harness_results":  [
+
+                        ]
 }

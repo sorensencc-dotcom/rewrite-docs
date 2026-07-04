@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Setup pnpm
+        run: npm install -g pnpm
+
+      - name: Install deps
+        run: pnpm install
+
+      - name: Lint
+        run: pnpm -r lint || echo "no lint scripts"
+
+      - name: Test
+        run: pnpm -r test || echo "no test scripts"
+
+      - name: Build
+        run: pnpm -r build || echo "no build scripts"

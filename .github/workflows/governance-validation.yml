@@ -1,0 +1,74 @@
+name: Governance Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  validate-governance:
+    runs-on: windows-latest
+    name: Check Repository Governance
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up PowerShell
+        shell: powershell
+        run: |
+          Write-Host "PowerShell version:" $PSVersionTable.PSVersion
+
+      - name: Run governance validation
+        shell: powershell
+        run: |
+          # Run validation script
+          & ".\validate-governance.ps1" -Verbose
+
+          if ($LASTEXITCODE -ne 0) {
+            Write-Host "❌ Governance validation failed"
+            exit 1
+          }
+
+          Write-Host "✅ Governance validation passed"
+          exit 0
+
+      - name: Generate compliance report
+        if: always()
+        shell: powershell
+        run: |
+          & ".\validate-governance.ps1" -Report
+
+      - name: Upload compliance report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: governance-report
+          path: C:\dev\GOVERNANCE_VALIDATION_REPORT.json
+          retention-days: 30
+
+      - name: Comment PR with results
+        if: github.event_name == 'pull_request' && always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('GOVERNANCE_VALIDATION_REPORT.json', 'utf8'));
+
+            let comment = '## Governance Validation Results\n\n';
+            comment += `- RULE 1 (Markdown files): ${report.Rule1}\n`;
+            comment += `- RULE 2 (Toolforge skills): ${report.Rule2}\n`;
+            comment += `- RULE 3 (Code/Config): ${report.Rule3}\n`;
+            comment += `\nTotal violations: ${report.TotalViolations}\n`;
+
+            if (report.TotalViolations > 0) {
+              comment += '\n⚠️ **Review violations in REPOSITORY_GOVERNANCE_AUDIT.md**\n';
+            }
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
