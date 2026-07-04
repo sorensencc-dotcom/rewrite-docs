@@ -58,6 +58,61 @@ nav:
           - Cost Attribution Engine: roadmaps/tickets/batch-2/cost-attribution-engine.md
           - Repo Cleanup V3: roadmaps/tickets/batch-2/repo-cleanup-v3.md
           - Observability V3: roadmaps/tickets/batch-2/observability-v3.md
+          - Batch 3 Index: roadmaps/tickets/batch-3/index.md
+          - TQ Shared Ingestion V2: roadmaps/tickets/batch-3/tq-shared-ingestion-v2.md
+          - TQ Search Engine V2: roadmaps/tickets/batch-3/tq-search-engine-v2.md
+          - CIC Ingestion Hardening V3: roadmaps/tickets/batch-3/cic-ingestion-hardening-v3.md
+          - CIC Ingestion Multi-Source: roadmaps/tickets/batch-3/cic-ingestion-multi-source.md
+          - RL-5.x Spec Generator: roadmaps/tickets/batch-3/rl-5x-spec-generator.md
+          - RL-5.x Architecture Patterns: roadmaps/tickets/batch-3/rl-5x-arch-patterns.md
+          - Governance Automation V2: roadmaps/tickets/batch-3/governance-automation-v2.md
+          - Governance Runner Hooks: roadmaps/tickets/batch-3/governance-runner-hooks.md
+          - Runner Orchestration V3: roadmaps/tickets/batch-3/runner-orchestration-v3.md
+          - Runner Execution Graph Integration: roadmaps/tickets/batch-3/runner-execution-graph-integration.md
+          - World-Corpus Pipeline V1: roadmaps/tickets/batch-3/world-corpus-pipeline-v1.md
+          - World-Corpus Indexer: roadmaps/tickets/batch-3/world-corpus-indexer.md
+          - Fusion Layer V1: roadmaps/tickets/batch-3/fusion-layer-v1.md
+          - Fusion Layer Integration: roadmaps/tickets/batch-3/fusion-layer-integration.md
+          - CIC Evolution Engine V1: roadmaps/tickets/batch-3/cic-evolution-engine-v1.md
+          - CIC Evolution Runner: roadmaps/tickets/batch-3/cic-evolution-runner.md
+          - KD Engine V1: roadmaps/tickets/batch-3/kd-engine-v1.md
+          - RL-CIC Fusion V2: roadmaps/tickets/batch-3/rl-cic-fusion-v2.md
+          - Batch 4 Index: roadmaps/tickets/batch-4/index.md
+          - TQ V3 Architecture: roadmaps/tickets/batch-4/tq-v3-architecture.md
+          - TQ V3 Semantic Pipeline: roadmaps/tickets/batch-4/tq-v3-semantic-pipeline.md
+          - TQ V3 Hybrid Engine: roadmaps/tickets/batch-4/tq-v3-hybrid-engine.md
+          - CIC Runtime V4 Core: roadmaps/tickets/batch-4/cic-runtime-v4-core.md
+          - CIC Runtime V4 Sandbox: roadmaps/tickets/batch-4/cic-runtime-v4-sandbox.md
+          - CIC Runtime V4 Adapters: roadmaps/tickets/batch-4/cic-runtime-v4-adapters.md
+          - RL Crawler V2 Core: roadmaps/tickets/batch-4/rl-crawler-v2-core.md
+          - RL Crawler V2 Adapters: roadmaps/tickets/batch-4/rl-crawler-v2-adapters.md
+          - RL Crawler V2 Runner: roadmaps/tickets/batch-4/rl-crawler-v2-runner.md
+          - World Search V2 Architecture: roadmaps/tickets/batch-4/world-search-v2-architecture.md
+          - World Search V2 Pipeline: roadmaps/tickets/batch-4/world-search-v2-pipeline.md
+          - Foundry CICD V1: roadmaps/tickets/batch-4/foundry-cicd-v1.md
+          - Foundry CICD Pipeline: roadmaps/tickets/batch-4/foundry-cicd-pipeline.md
+          - Runtime Orchestrator V4: roadmaps/tickets/batch-4/runtime-orchestrator-v4.md
+          - Runtime Orchestrator Execution Graph: roadmaps/tickets/batch-4/runtime-orchestrator-execution-graph.md
+          - Fusion Engine V3: roadmaps/tickets/batch-4/fusion-engine-v3.md
+          - Fusion Engine Runner: roadmaps/tickets/batch-4/fusion-engine-runner.md
+          - Batch 5 Index: roadmaps/tickets/batch-5/index.md
+          - CIC Runtime V5 Architecture: roadmaps/tickets/batch-5/cic-runtime-v5-architecture.md
+          - CIC Runtime V5 Self-Healing: roadmaps/tickets/batch-5/cic-runtime-v5-self-healing.md
+          - CIC Runtime V5 Auto-Governance: roadmaps/tickets/batch-5/cic-runtime-v5-auto-governance.md
+          - RL-6.x Spec Generator: roadmaps/tickets/batch-5/rl-6x-spec-generator.md
+          - RL-6.x Autonomous Redesign: roadmaps/tickets/batch-5/rl-6x-autonomous-redesign.md
+          - RL-6.x Auto-Outreach: roadmaps/tickets/batch-5/rl-6x-auto-outreach.md
+          - World-Corpus V3 Architecture: roadmaps/tickets/batch-5/world-corpus-v3-architecture.md
+          - World-Corpus V3 Auto-Ingestion: roadmaps/tickets/batch-5/world-corpus-v3-auto-ingestion.md
+          - World-Corpus V3 Auto-Indexer: roadmaps/tickets/batch-5/world-corpus-v3-auto-indexer.md
+          - Multi-Agent Orchestration V1: roadmaps/tickets/batch-5/multi-agent-orchestration-v1.md
+          - Multi-Agent Orchestration Runner: roadmaps/tickets/batch-5/multi-agent-orchestration-v1-runner.md
+          - Autonomous Governance V3: roadmaps/tickets/batch-5/autonomous-governance-v3.md
+          - Autonomous Governance Runner: roadmaps/tickets/batch-5/autonomous-governance-runner.md
+          - Autonomous Fusion V4: roadmaps/tickets/batch-5/autonomous-fusion-v4.md
+          - Autonomous Fusion Runner: roadmaps/tickets/batch-5/autonomous-fusion-runner.md
+          - CIC Evolution Engine V2: roadmaps/tickets/batch-5/cic-evolution-engine-v2.md
+          - CIC Evolution Runner V2: roadmaps/tickets/batch-5/cic-evolution-runner-v2.md
   - Integration:
       - Overview: integration/index.md
       - CIC ↔ RL Cross-Reference: reference/cic-rl-cross-reference.md
