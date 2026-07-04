@@ -58,7 +58,8 @@ One weekly pass that keeps roadmaps, ingestion, governance, drift, cost, and doc
 ## 8. CIC ↔ RL alignment sync
 
 - Re-generate the cross-system dependency map: `node scripts/link-roadmaps.js`.
-- Check RL reference vault status in [00-RL-INDEX](../rewrite-labs/00-RL-INDEX.md) — still pending source-location confirmation? CIC vault last-synced date fresh?
+- Refresh the RL reference vault: `node scripts/rl-vault-sync.js --pull` (manifest: `docs/rewrite-labs/rl-vault-manifest.json`; exit 2 = manifest lists paths missing at source — fix manifest). Check `C:\dev\rl-ref\index.md` last-sync stamp.
+- CIC vault (`cic-ref/`) last-synced date fresh?
 - Confirm the RL-4.x → Phase mapping in the [Cross-Reference](../reference/cic-rl-cross-reference.md) still matches phase YAML dependencies.
 
 ## 9. Close out

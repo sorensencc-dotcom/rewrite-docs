@@ -27,7 +27,7 @@ CIC Phase 8, CIC Phase 30, CIC Phases 31-50, RL architecture patterns, Foundry e
 | 9 | CIC-PHASE-31-50-SPEC-GENERATOR | [cic-phase-31-50-spec-generator.md](cic-phase-31-50-spec-generator.md) | Open |
 | 10 | RL-PATTERNS-GENERATOR | [rl-patterns-generator.md](rl-patterns-generator.md) | Open |
 | 11 | FOUNDRY-EXPANSION-M2-M3 | [foundry-expansion-m2-m3.md](foundry-expansion-m2-m3.md) | Open |
-| 12 | RUNNER-HARDENING-V2 | [runner-hardening-v2.md](runner-hardening-v2.md) | Open |
+| 12 | RUNNER-HARDENING-V2 | [runner-hardening-v2.md](runner-hardening-v2.md) | Done (058b037) |
 | 13 | UNIFIED-EXECUTION-GRAPH-GENERATOR | [unified-execution-graph-generator.md](unified-execution-graph-generator.md) | Open |
 | 14 | SERVICES-LAYER-EXPANSION | [services-layer-expansion.md](services-layer-expansion.md) | Open |
 | 15 | ROUTING-ENGINE-V2 | [routing-engine-v2.md](routing-engine-v2.md) | Open |

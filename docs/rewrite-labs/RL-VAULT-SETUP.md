@@ -49,10 +49,12 @@ C:\dev\
 - Local Mirror: `C:\dev\cic-ref\`
 - Last Synced: 2026-07-02 10:42:39
 
-### Rewrite Labs Documents (Source Confirmed 2026-07-03)
-- Source: GitHub — `https://github.com/sorensencc-dotcom/rewrite-mcp.git` (branch `main`)
+### Rewrite Labs Documents (Synced)
+- Source: GitHub — `https://github.com/sorensencc-dotcom/rewrite-mcp.git` (branch `main`; local clone `C:\dev\rewrite-mcp`)
 - Local Mirror: `C:\dev\rl-ref\`
-- Status: 📋 Source confirmed; sync configuration + first run pending (adjust file patterns to the repo's doc layout on first sync)
+- Manifest: `docs/rewrite-labs/rl-vault-manifest.json` (14 docs, 5 sections; verified against real repo layout)
+- Sync command: `node scripts/rl-vault-sync.js` (`--pull` to fetch latest first, `--dry-run` to preview)
+- Status: ✅ First sync complete 2026-07-04 (14/14); index generated at `C:\dev\rl-ref\index.md`
 
 ### Architecture/Design Patterns (Manual)
 - Location: `C:\dev\architecture\`
@@ -93,9 +95,9 @@ sync_targets:
   - name: "Rewrite Labs Reference"
     source: "https://github.com/sorensencc-dotcom/rewrite-mcp.git#main"
     destination: "C:\\dev\\rl-ref"
-    patterns:
-      - "*.md"  # Adjust to the repo's doc layout on first sync (e.g. ROADMAP.md, docs/**)
-    enabled: false  # Flip to true after first successful test sync
+    manifest: "docs/rewrite-labs/rl-vault-manifest.json"  # explicit file list — authoritative
+    script: "node scripts/rl-vault-sync.js"
+    enabled: true  # first sync completed 2026-07-04
 ```
 
 ## Common Cross-System Queries
@@ -124,10 +126,10 @@ The vault structure enables queries like:
    - Confirmed: GitHub repo `sorensencc-dotcom/rewrite-mcp`, branch `main` (local clone: `c:\dev\rewrite-mcp`)
    - Remaining: pick which paths in the repo constitute the RL living docs (adjust sync patterns)
 
-2. **Update RL-Specific Configuration**
-   - Create sync.py or shell script modifications
-   - Configure RL patterns and destination
-   - Add RL vault to automated sync pipeline
+2. **Update RL-Specific Configuration** ✅ (2026-07-04)
+   - Manifest: `docs/rewrite-labs/rl-vault-manifest.json` (14 docs, 5 sections)
+   - Sync script: `scripts/rl-vault-sync.js` (reads manifest, copies, generates `rl-ref/index.md`)
+   - Remaining: add `node scripts/rl-vault-sync.js --pull` to the weekly sync / scheduled automation
 
 3. **Populate Architecture Folders**
    - `architecture/cic-patterns/` - CIC design decisions
@@ -160,10 +162,11 @@ CIC_DOCS_SOURCE="onedrive://CIC-folder-id"
 CIC_DOCS_DEST="C:\dev\cic-ref"
 CIC_SYNC_ENABLED=true
 
-# Rewrite Labs Settings (source confirmed 2026-07-03; enable after test sync)
+# Rewrite Labs Settings (first sync completed 2026-07-04)
 RL_DOCS_SOURCE="github://sorensencc-dotcom/rewrite-mcp#main"
 RL_DOCS_DEST="C:\dev\rl-ref"
-RL_SYNC_ENABLED=false
+RL_SYNC_ENABLED=true
+RL_SYNC_MANIFEST="docs/rewrite-labs/rl-vault-manifest.json"
 ```
 
 ## Documentation References

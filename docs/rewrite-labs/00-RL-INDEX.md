@@ -33,22 +33,24 @@ tags:
 
 ## Rewrite Labs Reference Architecture
 
-### Status: 📋 Source confirmed — first sync pending
+### Status: ✅ Synced (first sync 2026-07-04)
 
-RL reference vault is configured; source confirmed 2026-07-03, awaiting first synchronization run. (Status legend: ✅ Done · 🔄 In Progress · 📋 Planned · 💡 Potential · ⛔ Deprecated)
+RL reference vault is populated from the confirmed source. (Status legend: ✅ Done · 🔄 In Progress · 📋 Planned · 💡 Potential · ⛔ Deprecated)
 
 **Source Location:** ✅ GitHub — `sorensencc-dotcom/rewrite-mcp` (branch `main`; local clone `c:\dev\rewrite-mcp`)  
-**Local Destination:** `C:\dev\rl-ref\`  
-**Sync Status:** 📋 Pending sync-pattern selection + first test sync (see `RL-VAULT-SETUP.md`)  
+**Local Destination:** `C:\dev\rl-ref\` (14 docs, 5 sections)  
+**Sync Status:** ✅ First sync complete; manifest-driven (`rl-vault-manifest.json` + `scripts/rl-vault-sync.js`); canonical index at `C:\dev\rl-ref\index.md`  
 
 > RL-4.x phase status (build vs runner) is tracked in the [Rewrite Labs Roadmap](../roadmaps/rewrite-labs-roadmap.md).
 
-### Planned Sections
-- **RL System Overview** — Generation architecture and workflow
-- **RL Agents** — Agent types and behaviors
-- **RL Observability** — Monitoring and metrics
-- **RL Roadmap** — Feature and phase planning
-- **RL Environment** — Configuration and deployment
+### Synced Sections (see `rl-ref/index.md` for the full generated list)
+- **Roadmaps** — `rl-ref/docs/rewrite-labs/REWRITE_LABS_ROADMAP.md`, `rl-ref/docs/roadmaps/master-roadmap.md`
+- **RL System Overview** — `rl-ref/docs/internal/rewrite_labs_overview.md` (pipeline: Discovery → Harvester → Redesign → Outreach → Delivery)
+- **Architecture** — `rl-ref/docs/architecture/` (overview, drift, ingestion, routing, analyzer integration)
+- **CIC Integration** — `rl-ref/docs/cic/rewrite_labs_cic_fusion_layer.md`, repomix-harvester integration
+- **UI Pipeline** — `rl-ref/docs/rewrite/` (blueprint + release checklist)
+
+📋 Still unsynced (no source docs exist yet): RL Agents deep-dive, RL Observability, RL Environment — add to the manifest when written in rewrite-mcp.
 
 **Setup Guide:** See [[RL-VAULT-SETUP|RL Vault Setup Documentation]]
 

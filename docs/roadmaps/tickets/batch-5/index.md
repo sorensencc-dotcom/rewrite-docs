@@ -51,5 +51,5 @@ Dependent (wave 2): CIC-RUNTIME-V5-SELF-HEALING, CIC-RUNTIME-V5-AUTO-GOVERNANCE,
 - Tickets are independent unless noted in a ticket's Dependencies section.
 - Runner tickets create *-v-variant* PHASE yaml files alongside existing ones — never overwrite existing PHASE configs.
 - Update the Status column when a ticket ships (Open → In Progress → Done, with commit hash).
-- Related batches: [Batch 3 Index](../batch-3/index.md), Batch 4 (no index yet — `../batch-4/`)
+- Related batches: [Batch 3 Index](../batch-3/index.md), [Batch 4 Index](../batch-4/index.md)
 - Related roadmap: [Unified Roadmap](../../unified-roadmap.md)
