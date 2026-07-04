@@ -1,0 +1,25 @@
+unified/execution-graph.dot
+  s_4e6550832e2b51::t_f30c7d97aad8fb 1-16
+unified/execution-graph.json
+  s_4e6550832e2b51::t_e402a2cfad00b9 1-89
+unified/generate-execution-graph.cjs
+  s_4e6550832e2b51::t_425f5238f0ea06 1-349
+unified/visualizer/index.html
+  s_4e6550832e2b51::t_65b4c8232a01ff 1-62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "9944ee10dbaff1c01e9236161127f12a7e8ef667",
+  "prompts": {},
+  "sessions": {
+    "s_4e6550832e2b51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3dc4e968-5918-4920-abac-fb18557321da",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
