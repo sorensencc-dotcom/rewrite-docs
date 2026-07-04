@@ -24,7 +24,7 @@ CIC Phase 8, CIC Phase 30, CIC Phases 31-50, RL architecture patterns, Foundry e
 | 7 | CIC-PHASE-8-SPEC-FINALIZATION | [cic-phase-8-spec-finalization.md](cic-phase-8-spec-finalization.md) | Open |
 | 7 | CIC-PHASE-8-IMPLEMENTATION-STUBS | [cic-phase-8-implementation-stubs.md](cic-phase-8-implementation-stubs.md) | Open |
 | 8 | CIC-PHASE-30-MVP-EXPANSION | [cic-phase-30-mvp-expansion.md](cic-phase-30-mvp-expansion.md) | Open |
-| 9 | CIC-PHASE-31-50-SPEC-GENERATOR | [cic-phase-31-50-spec-generator.md](cic-phase-31-50-spec-generator.md) | Open |
+| 9 | CIC-PHASE-31-50-SPEC-GENERATOR | [cic-phase-31-50-spec-generator.md](cic-phase-31-50-spec-generator.md) | Done |
 | 10 | RL-PATTERNS-GENERATOR | [rl-patterns-generator.md](rl-patterns-generator.md) | Open |
 | 11 | FOUNDRY-EXPANSION-M2-M3 | [foundry-expansion-m2-m3.md](foundry-expansion-m2-m3.md) | Open |
 | 12 | RUNNER-HARDENING-V2 | [runner-hardening-v2.md](runner-hardening-v2.md) | Done (058b037) |

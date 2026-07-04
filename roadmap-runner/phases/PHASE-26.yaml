@@ -6,6 +6,7 @@ id: PHASE-26
 title: TorqueQuery - Ingestion & Search Engine
 owner: shared-platform
 container: REGISTRY/cic/torquequery:latest
+network: roadmap-runner_roadmap-net
 command:
   - npm
   - run

@@ -135,6 +135,27 @@ nav:
           - Test Results:
               - Iteration 1: cic/research-skill/test-results/iteration-1-grading.md
               - Iteration 2: cic/research-skill/test-results/iteration-2-grading.md
+      - Phases 31-50 (Placeholder Chain):
+          - Phase 31: cic/PHASE-31.md
+          - Phase 32: cic/PHASE-32.md
+          - Phase 33: cic/PHASE-33.md
+          - Phase 34: cic/PHASE-34.md
+          - Phase 35: cic/PHASE-35.md
+          - Phase 36: cic/PHASE-36.md
+          - Phase 37: cic/PHASE-37.md
+          - Phase 38: cic/PHASE-38.md
+          - Phase 39: cic/PHASE-39.md
+          - Phase 40: cic/PHASE-40.md
+          - Phase 41: cic/PHASE-41.md
+          - Phase 42: cic/PHASE-42.md
+          - Phase 43: cic/PHASE-43.md
+          - Phase 44: cic/PHASE-44.md
+          - Phase 45: cic/PHASE-45.md
+          - Phase 46: cic/PHASE-46.md
+          - Phase 47: cic/PHASE-47.md
+          - Phase 48: cic/PHASE-48.md
+          - Phase 49: cic/PHASE-49.md
+          - Phase 50: cic/PHASE-50.md
   - Rewrite Labs:
       - Index: rewrite-labs/index.md
       - Vault Mirror:

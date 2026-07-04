@@ -1,0 +1,38 @@
+# PHASE 45: Knowledge Synthesis v1
+# Placeholder runner configuration
+# Full implementation pending
+
+id: PHASE-45
+title: Knowledge Synthesis v1
+owner: cic-platform
+container: REGISTRY/cic/phase-45:latest
+network: roadmap-runner_roadmap-net
+command:
+  - npm
+  - run
+  - test:phase-45
+
+env:
+  NODE_ENV: production
+  LOG_LEVEL: info
+  PHASE_NUM: "45"
+
+dependencies:
+  - PHASE-44
+
+success_gates:
+  - type: exit_code
+    value: 0
+  - type: output
+    pattern: "✓.*tests?.*pass"
+
+metadata:
+  deliverables:
+    - Core implementation
+    - Test suite
+    - Documentation
+  notes:
+    - Placeholder phase in sequential chain
+    - Detailed spec pending
+  testCoverage: ">= 80%"
+  estimatedDuration: "45m"

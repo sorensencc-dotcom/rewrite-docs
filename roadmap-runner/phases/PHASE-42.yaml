@@ -1,0 +1,38 @@
+# PHASE 42: Autonomous Fusion v2
+# Placeholder runner configuration
+# Full implementation pending
+
+id: PHASE-42
+title: Autonomous Fusion v2
+owner: cic-platform
+container: REGISTRY/cic/phase-42:latest
+network: roadmap-runner_roadmap-net
+command:
+  - npm
+  - run
+  - test:phase-42
+
+env:
+  NODE_ENV: production
+  LOG_LEVEL: info
+  PHASE_NUM: "42"
+
+dependencies:
+  - PHASE-41
+
+success_gates:
+  - type: exit_code
+    value: 0
+  - type: output
+    pattern: "✓.*tests?.*pass"
+
+metadata:
+  deliverables:
+    - Core implementation
+    - Test suite
+    - Documentation
+  notes:
+    - Placeholder phase in sequential chain
+    - Detailed spec pending
+  testCoverage: ">= 80%"
+  estimatedDuration: "45m"
