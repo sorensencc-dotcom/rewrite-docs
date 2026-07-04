@@ -1,0 +1,68 @@
+src/cic/phase8/types/model_descriptor.ts
+  s_e27e2f20824514::t_af5a79e282015d 1-44
+src/cic/phase8/cost/cost_forecast_engine.ts
+  s_e27e2f20824514::t_0f130c599d9257 1-70
+src/cic/phase8/integration/cic_integration_adapter_phase8.ts
+  s_e27e2f20824514::t_6983c4a986a8d6 1-207
+src/cic/phase8/models/model_capability_registry.ts
+  s_e27e2f20824514::t_96b76439535371 1-111
+src/cic/graph/policies/CostPolicy.ts
+  s_e27e2f20824514::t_749e554c54f553 1-11
+src/cic/graph/GraphPolicyEngine.ts
+  s_e27e2f20824514::t_00fe691e7fbfc1 4,7,15-16
+src/cic/phase8/models/dynamic_model_router.ts
+  s_e27e2f20824514::t_ca6b4d52096f08 1-143
+src/cic/phase8/cost/cost_telemetry_collector.ts
+  s_e27e2f20824514::t_0831760488af74 19
+  s_e27e2f20824514::t_2d0a91d5a098ca 16-18
+  s_e27e2f20824514::t_39767e03882a00 20-22
+  s_e27e2f20824514::t_fe6cdf6781f110 1-15,23-129
+src/cic/graph/adapters/Phase8Adapter.ts
+  s_e27e2f20824514::t_7afa7ddee9690d 8-9
+  s_e27e2f20824514::t_420585ec24576d 1-7,10-110
+src/tests/cic/phase8.integration.test.ts
+  s_e27e2f20824514::t_c63cd4253fed13 1-70,72-103
+  s_e27e2f20824514::t_9f345d292f3f99 71
+src/cic/graph/GraphMergeEngine.ts
+  s_e27e2f20824514::t_806890952890f3 1,10,33,44-50
+src/cic/phase8/index.ts
+  s_e27e2f20824514::t_9c97cbff8e6982 1-36
+src/cic/phase8/types/request_context.ts
+  s_e27e2f20824514::t_78c2a18ac9004a 1-40
+src/adapters/__tests__/RLVaultAdapter.test.ts
+  s_2ed42d4c549bda::t_fd603d04396e50 61-63
+src/cic/graph/GraphContext.ts
+  s_e27e2f20824514::t_623a0c9e208e6d 1-12,18
+src/cic/graph/GraphRouter.ts
+  s_e27e2f20824514::t_79b9a6b64f15f3 5,54-59
+src/cic/phase8/cost/cost_model.ts
+  s_e27e2f20824514::t_b2261e59a1eaca 1-101
+src/cic/phase8/cost/cost_policy_engine.ts
+  s_e27e2f20824514::t_6b57fa1d169ba0 1-95
+src/cic/phase8/types/cost_event.ts
+  s_2ed42d4c549bda::t_8355531aa53afa 1-63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "e00c03a138c58146d9249c7882db1162841294f4",
+  "prompts": {},
+  "sessions": {
+    "s_2ed42d4c549bda": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1bf46979-bb69-46f3-a200-8cc7c71f4064",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_e27e2f20824514": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6dff16be-f826-4552-987a-e216480a567e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
