@@ -1,0 +1,66 @@
+roadmap-runner/lib/logger.js
+  s_4e6550832e2b51::t_8fd2411ab05f0b 1-39
+roadmap-runner/tests/retry.test.js
+  s_4e6550832e2b51::t_dd02acc7e6d3b2 1-116
+roadmap-runner/tests/docker-runner.test.js
+  s_4e6550832e2b51::t_d1041937347c73 1-68
+roadmap-runner/docker-runner.js
+  s_4e6550832e2b51::t_ea877aaa9dbb81 4,9-61,65,75,80-82,84,92-103,118,125,130,136,165
+roadmap-runner/lib/runner-metrics.js
+  s_4e6550832e2b51::t_14a6a299a9950d 1-61
+roadmap-runner/tests/runner-metrics.test.js
+  s_4e6550832e2b51::t_99c0ddbedaa7ec 1-77
+roadmap-runner/tests/logger.test.js
+  s_4e6550832e2b51::t_5e0f31842276b2 1-45
+roadmap-runner/scheduler.js
+  s_ba7881dc85f037::t_7adeecea79d957 183
+  s_4e6550832e2b51::t_01b294ec903f40 24,28,47,89-122,128-136,217,231,261,288,295-296,366
+  s_ba7881dc85f037::t_d8ad9288c51da2 80-83
+  s_ba7881dc85f037::t_b2d13d6f11c9e3 34-36
+  s_4e6550832e2b51::t_728cf4963a12f7 21-23
+  s_4e6550832e2b51::t_2be688457ff004 25-27
+  s_4e6550832e2b51::t_c0efa5bc01f9b1 48-50
+  s_4e6550832e2b51::t_70a9b922e64f01 214-216
+  s_4e6550832e2b51::t_55da9e371c7576 228-230
+  s_4e6550832e2b51::t_445be0d7396248 232-234,258-260
+  s_4e6550832e2b51::t_c8c871e1eef16c 285-287
+  s_4e6550832e2b51::t_b8c28f9c229799 292-294
+  s_4e6550832e2b51::t_00021796a59393 363-365
+  s_4e6550832e2b51::t_057284e9624850 18-19,29-33,37-46,51-54,84-88,187,206-208,210,212-213,219-227,235-257,263-284,290-291,298,301,361-362,368
+roadmap-runner/.gitignore
+  s_ba7881dc85f037::t_6a14883512d4f7 6
+roadmap-runner/README.md
+  s_d5a7157c855996::t_f9f758954d5d1f 178-182,217-218,223-229,245-258
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "058b03783f60028324fc7b9f39248028ff485a06",
+  "prompts": {},
+  "sessions": {
+    "s_4e6550832e2b51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3dc4e968-5918-4920-abac-fb18557321da",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_ba7881dc85f037": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e00ee7f9-6395-4540-bb93-3693150b37bd",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d5a7157c855996": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02774e76-c5bb-430c-be4c-f423df328859",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
