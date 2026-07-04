@@ -1,0 +1,1107 @@
+docs/cic/PHASE_8_SPEC.md
+  s_e2a12a974c4dec::t_1b337a474407d8 5-6,19
+  s_e2a12a974c4dec::t_6b4aeb31e5ce42 11,15-16
+  s_e2a12a974c4dec::t_d6279ea2902b0c 621-623,634-643,677-799
+docs/roadmaps/unified-roadmap.md
+  s_ba7881dc85f037::t_4e3a564e19247a 43
+  s_ba7881dc85f037::t_db0a75da7ebd04 76-93
+roadmap-runner/docker/phases/RL-4.6/Dockerfile
+  s_ba7881dc85f037::t_af8aacc0dec16d 15-16
+  s_ba7881dc85f037::t_c54f85a6cf1cfa 2,5,11-13,18-22,27-29,31,34-36
+  s_ba7881dc85f037::t_6fe5bebe5cb8ee 1,3-4,6-10,14,17,23-26,30,32-33,37-38
+TheFoundry/Dockerfile
+  s_ba7881dc85f037::t_a613d05b4a32f3 25-26
+  s_ba7881dc85f037::t_29c05487cc6e6b 27-29
+  s_ba7881dc85f037::t_810583bf5913f0 1-10,30-40,42-44,46
+RL-VAULT-SETUP.md
+  s_f6cb7aa404ec09::t_33f70f3df86e39 1-159
+roadmap-runner/docker/phases/RL-4.6/harness.mjs
+  s_ba7881dc85f037::t_36655993beba28 1-127
+generate-phases-31-50.js
+  s_f7e5394d4435eb::t_5082761dfa6cf9 1-155
+phase-8/test-matrices.json
+  s_e2a12a974c4dec::t_4e8fcd304ac3d5 1-572
+sync-vault.ps1
+  s_f6cb7aa404ec09::t_4ade4f9e0c80ce 294,299-300
+docs/roadmaps/cic-roadmap.md
+  s_ba7881dc85f037::t_f7e9505c33d2de 61
+  s_e2a12a974c4dec::t_732a95af2fe5a5 44
+roadmap-runner/phases/PHASE-8.yaml
+  s_e2a12a974c4dec::t_e41d05a3d974b5 1-90
+governance/audit-log.json
+  s_62ab85d7a21222::t_ac510f1da13c13 3629-3979,3982-3983,3985
+phase-5-harness-report.json
+  s_d3640c043b3d74::t_5ded973a589cb7 1-31
+.github/workflows/governance-validation.yml
+  s_1a0b2d4c5a3d0a::t_5ee9a92d1fbdd6 1-74
+.gitignore
+  s_59a6189aff6d68::t_57c837fdc3b7df 99-101
+CLAUDE.md
+  s_ba7881dc85f037::t_908933562b6191 30
+PRE-COMMIT-HOOK.sh
+  s_1a0b2d4c5a3d0a::t_332a8cd0b2c4fa 1-33
+TheFoundry/.dockerignore
+  s_ba7881dc85f037::t_5b958a9b47d39e 1-3
+TheFoundry/compile.js
+  s_ba7881dc85f037::t_256c5491a5aff9 40-42,126-151,154-159,162
+TheFoundry/generate-manifest.js
+  s_d2e7085c5a9570::t_bbc39c8de72cd6 11-16,19
+TheFoundry/package.json
+  s_d5a7157c855996::t_df87519944b99b 10-11
+TheFoundry/roadmap-harness/harness.sh
+  s_ba7881dc85f037::t_e5f8899dc38a62 1-74
+_artifact-fix/CIC
+  s_df2e6afa516d1b::t_4d98d78a7b21ac 1
+_artifact-fix/CIC-DAG
+  s_df2e6afa516d1b::t_a504c21924f561 1
+_artifact-fix/castironcharlie
+  s_df2e6afa516d1b::t_d6c1792832af4f 1
+_artifact-fix/rewritelabs.io
+  s_df2e6afa516d1b::t_09ba39114fea25 1
+architecture/cic-patterns/README.md
+  s_e27e2f20824514::t_02f91cc755369a 1-13
+architecture/rl-patterns/README.md
+  s_e27e2f20824514::t_282be0f9e0218a 1-13
+build-roadmap.json
+  s_e2a12a974c4dec::t_0815b821a034ae 82-94
+cic-os/personal-knowledge-base/INTEGRATION_GUIDE.md
+  s_1a0b2d4c5a3d0a::t_71a31cfba6c0c1 1-305
+data/rl-vault-status.json
+  s_e2a12a974c4dec::t_a9357f262b0dd0 1-9
+governance/cicState.json
+  s_d5a7157c855996::t_9a9b1003437b39 22
+rl-ref/docs/architecture/cic-phase3-analyzer-integration.md
+  s_4e6550832e2b51::t_d39b591084255f 1-308
+rl-ref/docs/architecture/drift.md
+  s_4e6550832e2b51::t_fc119b9a967c3d 1-62
+rl-ref/docs/architecture/ingestion.md
+  s_4e6550832e2b51::t_35ec8496867464 1-104
+rl-ref/docs/architecture/overview.md
+  s_4e6550832e2b51::t_af891da107523a 1-69
+rl-ref/docs/architecture/routing.md
+  s_4e6550832e2b51::t_a5237b860efc18 1-92
+rl-ref/docs/cic/rewrite_labs_cic_fusion_layer.md
+  s_4e6550832e2b51::t_de2763dc22ae60 1-91
+rl-ref/docs/index.md
+  s_4e6550832e2b51::t_c7d3b99c15a1fc 1-83
+rl-ref/docs/internal/cic_overview.md
+  s_4e6550832e2b51::t_c693c44a682c79 1-27
+rl-ref/docs/internal/rewrite_labs_overview.md
+  s_4e6550832e2b51::t_66a606162d9cec 1-18
+rl-ref/docs/rewrite-labs-repomix-harvester-integration.md
+  s_4e6550832e2b51::t_bcacc81f64df07 1-571
+rl-ref/docs/rewrite-labs/REWRITE_LABS_ROADMAP.md
+  s_4e6550832e2b51::t_3819322d56e9e0 1-256
+rl-ref/docs/rewrite/cic-ui-pipeline-blueprint.md
+  s_4e6550832e2b51::t_f4d63a7d8c6b5d 1-96
+rl-ref/docs/rewrite/cic-ui-release-checklist-v2.0.md
+  s_4e6550832e2b51::t_731611998140dc 1-65
+rl-ref/docs/roadmaps/master-roadmap.md
+  s_4e6550832e2b51::t_62334ba33cdd87 1-233
+rl-ref/index.md
+  s_4e6550832e2b51::t_f86e40ee011138 1-36
+roadmap-runner/success-gate-validator.js
+  s_ba7881dc85f037::t_0186281be99176 29,36-37,40-41,44,48,51,56,66-73,82,88,92
+site/cic/PHASE-1_TESTING/index.html
+  s_f8a8ab5aa44b74::t_edaa9a317bd453 1-279
+site/cic/PHASE-2-COMPLETION-LOG/index.html
+  s_f8a8ab5aa44b74::t_25fa4f9970006e 1-43
+site/cic/PHASE-23-6-MEMORY-EXPLORER-UI/index.html
+  s_f8a8ab5aa44b74::t_c4d1891d3bcc09 1-217
+site/cic/PHASE-28a-SCP-COMPLETION/index.html
+  s_f8a8ab5aa44b74::t_c8df954c452663 1-77
+site/cic/PHASE-2_ACTION_SPACE/index.html
+  s_f8a8ab5aa44b74::t_45d995e002c0a1 1-76
+site/cic/PHASE-2_ARCHITECTURE/index.html
+  s_f8a8ab5aa44b74::t_2c6cc7fabc3b2e 1-170
+site/cic/PHASE-2_EPISODE_TRAJECTORY/index.html
+  s_f8a8ab5aa44b74::t_43109e686e697b 1-133
+site/cic/PHASE-2_INTEGRATION/index.html
+  s_f8a8ab5aa44b74::t_6c9c461de52e80 1-217
+site/cic/PHASE-2_OVERVIEW/index.html
+  s_f8a8ab5aa44b74::t_e5a394c50f4741 1-70
+site/cic/PHASE-2_POLICY_LEARNER/index.html
+  s_f8a8ab5aa44b74::t_2a87d11f178e11 1-156
+site/cic/PHASE-2_REWARD_FUNCTION/index.html
+  s_f8a8ab5aa44b74::t_859936d52c36be 1-100
+site/cic/PHASE-2_SIMULATION_ENGINE/index.html
+  s_f8a8ab5aa44b74::t_1e033f13d77f49 1-188
+site/cic/PHASE-2_STATE_SPACE/index.html
+  s_f8a8ab5aa44b74::t_b964c666fc5fa7 1-153
+site/cic/PHASE-2_TESTING/index.html
+  s_f8a8ab5aa44b74::t_2d7fb27df8832d 1-217
+site/cic/PHASE-2_TRAINING_LOOP/index.html
+  s_f8a8ab5aa44b74::t_973843e4695022 1-156
+site/cic/PHASE-3-6-SETUP-COMPLETE/index.html
+  s_f8a8ab5aa44b74::t_a19ad20dbb3079 1-21
+site/cic/PHASE-3-COMPLETION-LOG/index.html
+  s_f8a8ab5aa44b74::t_0f92b5a97dfc24 1-93
+site/cic/PHASE-30-MVP-SPEC-REVIEW/index.html
+  s_f8a8ab5aa44b74::t_714ac13f2551df 1-6
+site/cic/PHASE-30-MVP-SPEC/index.html
+  s_f8a8ab5aa44b74::t_9fbb89eb39de33 1-1634
+site/cic/PHASE-31/index.html
+  s_f8a8ab5aa44b74::t_589411ff67c9da 1
+site/cic/PHASE-32/index.html
+  s_f8a8ab5aa44b74::t_35a26756e04406 1
+site/cic/PHASE-33/index.html
+  s_f8a8ab5aa44b74::t_362364df2f283c 1
+site/cic/PHASE-34/index.html
+  s_f8a8ab5aa44b74::t_6d87b9bf85fb78 1
+site/cic/PHASE-35/index.html
+  s_f8a8ab5aa44b74::t_7c55e4d0dcb939 1
+site/cic/PHASE-36/index.html
+  s_f8a8ab5aa44b74::t_8719a935c536f3 1
+site/cic/PHASE-37/index.html
+  s_f8a8ab5aa44b74::t_895dcee42447d3 1
+site/cic/PHASE-38/index.html
+  s_f8a8ab5aa44b74::t_0af9b05d4a43f0 1
+site/cic/PHASE-39/index.html
+  s_f8a8ab5aa44b74::t_2b9f8f52c9e504 1
+site/cic/PHASE-40/index.html
+  s_f8a8ab5aa44b74::t_4787f55ed99595 1
+site/cic/PHASE-41/index.html
+  s_f8a8ab5aa44b74::t_887866466201d2 1
+site/cic/PHASE-42/index.html
+  s_f8a8ab5aa44b74::t_c4a08aa893e4f1 1
+site/cic/PHASE-43/index.html
+  s_f8a8ab5aa44b74::t_e90c4fe2df640d 1
+site/cic/PHASE-44/index.html
+  s_f8a8ab5aa44b74::t_1b6987aec8be82 1
+site/cic/PHASE-45/index.html
+  s_f8a8ab5aa44b74::t_ad4c7e546bfa03 1
+site/cic/PHASE-46/index.html
+  s_f8a8ab5aa44b74::t_82230f97220f3d 1
+site/cic/PHASE-47/index.html
+  s_f8a8ab5aa44b74::t_ff184c6281c415 1
+site/cic/PHASE-48/index.html
+  s_f8a8ab5aa44b74::t_3f9a9c56022e92 1
+site/cic/PHASE-49/index.html
+  s_f8a8ab5aa44b74::t_f69a56e16f2b39 1
+site/cic/PHASE-50/index.html
+  s_f8a8ab5aa44b74::t_0b6e9cb2577fbf 1
+site/cic/PHASE-5E-V1-SERVICE-LOCATIONS/index.html
+  s_f8a8ab5aa44b74::t_3ee066b25f032b 1-28
+site/cic/PHASE-5a-COMMIT-SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_2b1847b83ec232 1-94
+site/cic/PHASE-5a-EXECUTIVE-SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_4a9fd6740b0d0c 1-26
+site/cic/PHASE-5a-QUICK-START/index.html
+  s_f8a8ab5aa44b74::t_593e801fb716b5 1-35
+site/cic/PHASE-5a-VERIFICATION/index.html
+  s_f8a8ab5aa44b74::t_904376cebeb499 1-32
+site/cic/PHASE27_3_EXECUTION_PLAN/index.html
+  s_f8a8ab5aa44b74::t_dab85e82cfdeec 1-15
+site/cic/PHASE27_3_PR_CHECKLIST/index.html
+  s_f8a8ab5aa44b74::t_0f338d643d4322 1
+site/cic/PHASE4-SPEC-LOCKED/index.html
+  s_f8a8ab5aa44b74::t_32ddacb12e1460 1
+site/cic/PHASE6-IMPLEMENTATION-SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_13e19fd12365d3 1-41
+site/cic/PHASE_27_4_DISPATCH/index.html
+  s_f8a8ab5aa44b74::t_37b46659fa3a2b 1-6
+site/cic/PHASE_27_4_SKELETON_SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_1849dce27b60f2 1-54
+site/cic/PHASE_27_FILES_GENERATED/index.html
+  s_f8a8ab5aa44b74::t_ade515a3e20613 1-59
+site/cic/PHASE_27_STEP3_COMPLETE/index.html
+  s_f8a8ab5aa44b74::t_d52ebbbbff21a3 1-52
+site/cic/PHASE_2_COMPLETION/index.html
+  s_f8a8ab5aa44b74::t_27058fa56c8d54 1-43
+site/cic/PHASE_2_ROLLOUT/index.html
+  s_f8a8ab5aa44b74::t_20285af836c323 1-23
+site/cic/PHASE_2_STATUS/index.html
+  s_f8a8ab5aa44b74::t_3b3e14969e4ebd 1-87
+site/cic/PHASE_3_COMPLETION/index.html
+  s_f8a8ab5aa44b74::t_ce0c334f5c3a4e 1-58
+site/cic/PHASE_4_MIGRATION_STATUS/index.html
+  s_f8a8ab5aa44b74::t_345d0b448c7cda 1
+site/cic/PHASE_4_SCAFFOLDING_COMPLETE/index.html
+  s_f8a8ab5aa44b74::t_a53735c3b02db6 1-91
+site/cic/PHASE_5B_IMPLEMENTATION_SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_c231531bb098e8 1-52
+site/cic/PHASE_5B_VERIFICATION_REPORT/index.html
+  s_f8a8ab5aa44b74::t_a2a14ecd215b96 1-78
+site/cic/PHASE_5C_DEPRECATION_INVENTORY/index.html
+  s_f8a8ab5aa44b74::t_e7db7b277e56cc 1-135
+site/cic/PHASE_5C_FILE_REMOVAL_MATRIX/index.html
+  s_f8a8ab5aa44b74::t_67ef6b6663d3fe 1-211
+site/cic/PHASE_5C_PHASE_B_COMPLETION/index.html
+  s_f8a8ab5aa44b74::t_f97312dca9371d 1-16
+site/cic/PHASE_5C_REMOVAL_PLAN/index.html
+  s_f8a8ab5aa44b74::t_75c69f98415b53 1-149
+site/cic/PHASE_5E_EXECUTION_SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_8bba28c5f89a42 1
+site/cic/PHASE_5_CANARY_ROLLOUT_PLAN/index.html
+  s_f8a8ab5aa44b74::t_c44db6db7f88c2 1-73
+site/cic/PHASE_5_TOKEN_ROI_ANALYSIS/index.html
+  s_f8a8ab5aa44b74::t_fac36227f88635 1-19
+site/cic/PHASE_5_TORQUEQUERY_V2_DEPLOYMENT_GUIDE/index.html
+  s_f8a8ab5aa44b74::t_8977014397da2e 1-86
+site/cic/PHASE_8_SPEC/index.html
+  s_f8a8ab5aa44b74::t_08417866e58865 1-357
+site/cic/PHASE_8_TEST_MATRICES/index.html
+  s_f8a8ab5aa44b74::t_041abf8607105a 1-35
+site/cic/PHASE_A_OPTIMIZATION_SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_14507cb5d9f8ee 1-100
+site/cic/PHASE_B_HARDENING_SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_240037e4b7c80f 1-189
+site/cic/PHASE_C_INTEGRATION_SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_9f4d92d53d9c87 1-160
+site/cic/PROMETHEUS_INTEGRATION_STATUS/index.html
+  s_f8a8ab5aa44b74::t_b1c57005b556ff 1-16
+site/cic/SANDBOX-3-PHASES-1-7-COMPLETE/index.html
+  s_f8a8ab5aa44b74::t_2af6af6f8d3c00 1-37
+site/cic/SANDBOX-3-PROGRESS/index.html
+  s_f8a8ab5aa44b74::t_8e7a8d1c8574c8 1-22
+site/cic/SANDBOX-3_ALERTING/index.html
+  s_f8a8ab5aa44b74::t_7d74e8eb7bb770 1
+site/cic/SANDBOX-3_ARCHITECTURE/index.html
+  s_f8a8ab5aa44b74::t_9e2b079ca0a9cf 1-15
+site/cic/SANDBOX-3_DEPLOYMENT/index.html
+  s_f8a8ab5aa44b74::t_6c586303aea301 1
+site/cic/SANDBOX-3_DETERMINISM/index.html
+  s_f8a8ab5aa44b74::t_a71a76416ac3d3 1-40
+site/cic/SANDBOX-3_FIRECRACKER/index.html
+  s_f8a8ab5aa44b74::t_b539b830e869d5 1-28
+site/cic/SANDBOX-3_FIRECRACKER_NODEPOOL/index.html
+  s_f8a8ab5aa44b74::t_8a7e631eeb16d5 1
+site/cic/SANDBOX-3_HARNESS_V3/index.html
+  s_f8a8ab5aa44b74::t_c8f0b134021160 1-33
+site/cic/SANDBOX-3_INCIDENT_RESPONSE/index.html
+  s_f8a8ab5aa44b74::t_1460faf45e9a37 1
+site/cic/SANDBOX-3_K8S/index.html
+  s_f8a8ab5aa44b74::t_877c9510651eca 1
+site/cic/SANDBOX-3_LATENCY/index.html
+  s_f8a8ab5aa44b74::t_d9193f79a0d254 1-29
+site/cic/SANDBOX-3_MAAL_INTEGRATION/index.html
+  s_f8a8ab5aa44b74::t_16968b477557ec 1
+site/cic/SANDBOX-3_MONITORING/index.html
+  s_f8a8ab5aa44b74::t_54b37e5f4bc0d2 1
+site/cic/SANDBOX-3_NETWORK_TRACE/index.html
+  s_f8a8ab5aa44b74::t_19ff997ff4eddd 1-31
+site/cic/SANDBOX-3_ONNX_SIDECAR/index.html
+  s_f8a8ab5aa44b74::t_a6f68a8924dc86 1
+site/cic/SANDBOX-3_OVERVIEW/index.html
+  s_f8a8ab5aa44b74::t_1d821691691d09 1
+site/cic/SANDBOX-3_REPRODUCIBILITY/index.html
+  s_f8a8ab5aa44b74::t_d5dcb2f240b931 1-53
+site/cic/SANDBOX-3_ROUTING_V3/index.html
+  s_f8a8ab5aa44b74::t_108208a8fa7374 1
+site/cic/SANDBOX-3_RUNTIME/index.html
+  s_f8a8ab5aa44b74::t_6ff9793a366d73 1-47
+site/cic/SANDBOX-3_STABILITY_V3/index.html
+  s_f8a8ab5aa44b74::t_1381f6d08ed11a 1-8
+site/cic/SANDBOX-3_SYSCALL_TRACE/index.html
+  s_f8a8ab5aa44b74::t_b7bf9141448856 1-37
+site/cic/SANDBOX-3_TRACING/index.html
+  s_f8a8ab5aa44b74::t_eaba6250312855 1-15
+site/roadmaps/tickets/batch-5/rl-6x-autonomous-redesign/index.html
+  s_f7e5394d4435eb::t_bef60cbd21d22a 1
+site/roadmaps/tickets/batch-5/rl-6x-spec-generator/index.html
+  s_f7e5394d4435eb::t_8bd5e5181c1953 1
+site/roadmaps/tickets/batch-5/world-corpus-v3-architecture/index.html
+  s_f7e5394d4435eb::t_d14cf51cfe0136 1
+site/roadmaps/tickets/batch-5/world-corpus-v3-auto-indexer/index.html
+  s_f7e5394d4435eb::t_050860cfafa8d5 1
+site/roadmaps/tickets/batch-5/world-corpus-v3-auto-ingestion/index.html
+  s_f7e5394d4435eb::t_05c6f05c53a769 1
+site/search/search_index.json
+  s_f7e5394d4435eb::t_be0d71842a8974 1
+site/systems/index.html
+  s_f7e5394d4435eb::t_9b664f38640092 1
+site/tests/dashboard-tests/index.html
+  s_f7e5394d4435eb::t_6336e2630658ea 1
+site/tests/feedback-loop-tests/index.html
+  s_f7e5394d4435eb::t_7145535c1149ff 1
+site/tests/routing-tests/index.html
+  s_f7e5394d4435eb::t_cd373c186748f0 1
+src/cic/graph/GraphContext.ts
+  s_4e6550832e2b51::t_623fe3e72cce45 1-149
+src/cic/graph/GraphContextBuilder.ts
+  s_4e6550832e2b51::t_fc967bc93918e0 1-26
+src/cic/graph/GraphMergeEngine.ts
+  s_4e6550832e2b51::t_7cdb76ea432b5d 1-45
+src/cic/graph/GraphRouter.ts
+  s_f8a8ab5aa44b74::t_317e422cecbfd6 1-56
+src/cic/graph/adapters/GitNexusAdapter.ts
+  s_f8a8ab5aa44b74::t_6e5c168c2ebec9 1-23
+src/cic/graph/adapters/GraphifyAdapter.ts
+  s_f8a8ab5aa44b74::t_bbfe7a66dad02c 1-34
+src/cic/graph/adapters/TrueCodeAdapter.ts
+  s_f8a8ab5aa44b74::t_ed2e08f6d07233 1-23
+src/cic/graph/policies/DriftPolicy.ts
+  s_4e6550832e2b51::t_6d70bb368c42c0 1-7
+src/cic/graph/policies/RefactorPolicy.ts
+  s_4e6550832e2b51::t_bb4f83b2e4ad41 1-7
+src/discovery/index.ts
+  s_f8a8ab5aa44b74::t_1992e8a298d515 1-17
+src/harvester/index.ts
+  s_f8a8ab5aa44b74::t_7d0057f52f541f 1-18
+src/schemas/index.ts
+  s_4e6550832e2b51::t_4bf173eb413fef 1-14
+src/scripts/reportProgress.ts
+  s_f8a8ab5aa44b74::t_c1dab5ba0720a6 1-30
+src/tests/cic/graphContext.test.ts
+  s_4e6550832e2b51::t_6f48b2d8fbb103 1-127
+.mcp.json
+  s_f8a8ab5aa44b74::t_aeb389726e21ae 1-16
+_artifact-fix/CIC_MEDIA_LIBRARY
+  s_f8a8ab5aa44b74::t_4002b1e0591e4b 1
+_artifact-fix/cic-ingestion
+  s_f8a8ab5aa44b74::t_447981da96ded4 1
+_cic-fragments-archive/cic
+  s_f8a8ab5aa44b74::t_530438c1008323 1
+castironforge/.github/workflows/ci.yml
+  s_f8a8ab5aa44b74::t_17cee1a98f4b5d 1-36
+castironforge/cic-ingestion
+  s_f8a8ab5aa44b74::t_f98c5f27c4ed04 1
+cic-os/personal-knowledge-base/SKILL.md
+  s_f8a8ab5aa44b74::t_d669ce2d463177 1-222
+cic-os/personal-knowledge-base/integrate.py
+  s_f8a8ab5aa44b74::t_f27b5e31010692 1-344
+cic-os/personal-knowledge-base/integration-config.json
+  s_f8a8ab5aa44b74::t_7837933ff99301 1-41
+cic-os/personal-knowledge-base/sync-all.py
+  s_f8a8ab5aa44b74::t_6633fa17e05a3e 1-70
+claude-config-backup
+  s_f8a8ab5aa44b74::t_5acc0ecb81db76 1
+docs/reference/roadmap-staging-structure.md
+  s_f8a8ab5aa44b74::t_e4eaa074c1bb1c 1-319
+projects/cic/docs/CIC_MASTER_ROADMAP.md
+  s_f8a8ab5aa44b74::t_28dc7f68261c9b 1-4584
+site/00-EIGHT-ITEM-BUILD-PLAN/index.html
+  s_f8a8ab5aa44b74::t_654837d9de3c51 1-31
+site/404.html
+  s_f8a8ab5aa44b74::t_a5961b7a0ca51e 1
+site/ITEM-2-OBSERVABILITY-DASHBOARD-SPEC/index.html
+  s_f8a8ab5aa44b74::t_d497b5a2360d3b 1-218
+site/ITEM-3-VAULT-EXTRACTION-SYSTEM-MAP/index.html
+  s_f8a8ab5aa44b74::t_b5bbeacf391d52 1-185
+site/ITEM-5-SKILL-GENERATOR/index.html
+  s_f8a8ab5aa44b74::t_37b2df9139c39b 1-202
+site/ITEM-6-KNOWLEDGE-GRAPH/index.html
+  s_f8a8ab5aa44b74::t_4607915ed827e3 1-271
+site/ITEM-7-MEMORY-GOVERNANCE-FRAMEWORK/index.html
+  s_f8a8ab5aa44b74::t_e0bb614a2e0c99 1-98
+site/ITEM-8-AUDIT-TRAIL/index.html
+  s_f8a8ab5aa44b74::t_bfa19c620a5bf9 1-288
+site/MKDOCS_STRUCTURE_MAP/index.html
+  s_f8a8ab5aa44b74::t_23cd4f36d9c20d 1-126
+site/ROOT_MARKDOWN_AUDIT/index.html
+  s_f8a8ab5aa44b74::t_94b5f41089a1db 1-72
+site/api/access-layer/index.html
+  s_f8a8ab5aa44b74::t_77f4a5c4e43f74 1-79
+site/api/federation-layer/index.html
+  s_f8a8ab5aa44b74::t_a2591a1bac38f7 1-120
+site/api/overview/index.html
+  s_f8a8ab5aa44b74::t_5d52d8ac84ce35 1-73
+site/api/seal-verify/index.html
+  s_f8a8ab5aa44b74::t_b7bb489bb7c2d4 1-150
+site/api/snapshot-layer/index.html
+  s_f8a8ab5aa44b74::t_49dabaecb85c0b 1-96
+site/architecture/data-flow/index.html
+  s_f8a8ab5aa44b74::t_4966f382825892 1-284
+site/architecture/design/index.html
+  s_f8a8ab5aa44b74::t_4cf7cf389c5c9d 1-119
+site/architecture/deterministic-stack/index.html
+  s_f8a8ab5aa44b74::t_9505ac3de817d5 1-125
+site/architecture/drift/index.html
+  s_f8a8ab5aa44b74::t_5ca5cda45bfb8e 1-13
+site/architecture/ingestion/index.html
+  s_f8a8ab5aa44b74::t_e538a8d73d9ea6 1-114
+site/architecture/overview/index.html
+  s_f8a8ab5aa44b74::t_f9a53d9f891132 1-78
+site/architecture/routing/index.html
+  s_f8a8ab5aa44b74::t_bb9d123cca3a5d 1-13
+site/assets/javascripts/bundle.79ae519e.min.js
+  s_f8a8ab5aa44b74::t_d482b482865682 1-16
+site/assets/javascripts/bundle.79ae519e.min.js.map
+  s_f8a8ab5aa44b74::t_ad1d824b734b97 1-7
+site/assets/javascripts/lunr/min/lunr.ar.min.js
+  s_f8a8ab5aa44b74::t_bc7d914bfeb131 1
+site/assets/javascripts/lunr/min/lunr.da.min.js
+  s_f8a8ab5aa44b74::t_8ed746aab22c6e 1-18
+site/assets/javascripts/lunr/min/lunr.de.min.js
+  s_f8a8ab5aa44b74::t_4db1a460e4bf4c 1-18
+site/assets/javascripts/lunr/min/lunr.du.min.js
+  s_f8a8ab5aa44b74::t_904453d70c67c3 1-18
+site/assets/javascripts/lunr/min/lunr.el.min.js
+  s_f8a8ab5aa44b74::t_c1e9b3e3c595c7 1
+site/assets/javascripts/lunr/min/lunr.es.min.js
+  s_f8a8ab5aa44b74::t_13cd402e60090e 1-18
+site/assets/javascripts/lunr/min/lunr.fi.min.js
+  s_f8a8ab5aa44b74::t_41930117c3632c 1-18
+site/assets/javascripts/lunr/min/lunr.fr.min.js
+  s_f8a8ab5aa44b74::t_173f62110e8116 1-18
+site/assets/javascripts/lunr/min/lunr.he.min.js
+  s_f8a8ab5aa44b74::t_e2007999f2d88f 1
+site/assets/javascripts/lunr/min/lunr.hi.min.js
+  s_f8a8ab5aa44b74::t_3450cee67f1299 1
+site/assets/javascripts/lunr/min/lunr.hu.min.js
+  s_f8a8ab5aa44b74::t_f8c6aa91cb3abb 1-18
+site/assets/javascripts/lunr/min/lunr.hy.min.js
+  s_f8a8ab5aa44b74::t_795e90908e79c4 1
+site/assets/javascripts/lunr/min/lunr.it.min.js
+  s_f8a8ab5aa44b74::t_7f8d310eaaf763 1-18
+site/assets/javascripts/lunr/min/lunr.ja.min.js
+  s_f8a8ab5aa44b74::t_810b7179578675 1
+site/assets/javascripts/lunr/min/lunr.jp.min.js
+  s_f8a8ab5aa44b74::t_d545903de28e5f 1
+site/assets/javascripts/lunr/min/lunr.kn.min.js
+  s_f8a8ab5aa44b74::t_50c5b12ea52ce9 1
+site/assets/javascripts/lunr/min/lunr.ko.min.js
+  s_f8a8ab5aa44b74::t_6ca0722f71bc34 1
+site/assets/javascripts/lunr/min/lunr.multi.min.js
+  s_f8a8ab5aa44b74::t_b93c381c919e2b 1
+site/assets/javascripts/lunr/min/lunr.nl.min.js
+  s_f8a8ab5aa44b74::t_4d7bdcb6281945 1-18
+site/assets/javascripts/lunr/min/lunr.no.min.js
+  s_f8a8ab5aa44b74::t_a1d6133d39d5f5 1-18
+site/assets/javascripts/lunr/min/lunr.pt.min.js
+  s_f8a8ab5aa44b74::t_7519cd659f7ea4 1-18
+site/assets/javascripts/lunr/min/lunr.ro.min.js
+  s_f8a8ab5aa44b74::t_3912ad23a2bfcd 1-18
+site/assets/javascripts/lunr/min/lunr.ru.min.js
+  s_f8a8ab5aa44b74::t_8f74af9a6db962 1-18
+site/assets/javascripts/lunr/min/lunr.sa.min.js
+  s_f8a8ab5aa44b74::t_0224a9cfe09490 1
+site/assets/javascripts/lunr/min/lunr.stemmer.support.min.js
+  s_f8a8ab5aa44b74::t_3d65bb27e71197 1
+site/assets/javascripts/lunr/min/lunr.sv.min.js
+  s_f8a8ab5aa44b74::t_ae594b6efe8d6b 1-18
+site/assets/javascripts/lunr/min/lunr.ta.min.js
+  s_f8a8ab5aa44b74::t_a5a652cba771be 1
+site/assets/javascripts/lunr/min/lunr.te.min.js
+  s_f8a8ab5aa44b74::t_85c73d93c0b058 1
+site/assets/javascripts/lunr/min/lunr.th.min.js
+  s_f8a8ab5aa44b74::t_bde79e6059dc85 1
+site/assets/javascripts/lunr/min/lunr.tr.min.js
+  s_f8a8ab5aa44b74::t_97440c57c7eb1b 1-18
+site/assets/javascripts/lunr/min/lunr.vi.min.js
+  s_f8a8ab5aa44b74::t_a9cdf4ad5ba79f 1
+site/assets/javascripts/lunr/min/lunr.zh.min.js
+  s_f8a8ab5aa44b74::t_ff1d311f65c68d 1
+site/assets/javascripts/lunr/tinyseg.js
+  s_f8a8ab5aa44b74::t_2e8f07a7fa0c93 1-206
+site/assets/javascripts/lunr/wordcut.js
+  s_f8a8ab5aa44b74::t_0fb5f95eb267a2 1-6708
+site/assets/javascripts/workers/search.2c215733.min.js
+  s_f8a8ab5aa44b74::t_20ae1218cbc844 1-42
+site/assets/javascripts/workers/search.2c215733.min.js.map
+  s_f8a8ab5aa44b74::t_2a41da19d30b4a 1-7
+site/assets/stylesheets/main.484c7ddc.min.css
+  s_f8a8ab5aa44b74::t_050da47178c9ed 1
+site/assets/stylesheets/main.484c7ddc.min.css.map
+  s_f8a8ab5aa44b74::t_fa8c267a427154 1
+site/assets/stylesheets/palette.ab4e12ef.min.css
+  s_f8a8ab5aa44b74::t_2e71ea5f1a9774 1
+site/assets/stylesheets/palette.ab4e12ef.min.css.map
+  s_f8a8ab5aa44b74::t_143b9c592f4b3e 1
+site/batches/batch-36/index.html
+  s_f8a8ab5aa44b74::t_fe7f994d3a3c8b 1-74
+site/batches/batch-37/index.html
+  s_f8a8ab5aa44b74::t_bd004491ebece2 1-96
+site/batches/batch-39/index.html
+  s_f8a8ab5aa44b74::t_71cb64c536bd50 1-103
+site/batches/batch-40/index.html
+  s_f8a8ab5aa44b74::t_ceb0b5553376ca 1-133
+site/batches/batches-1-35/index.html
+  s_f8a8ab5aa44b74::t_6d2bf461d42a58 1-10
+site/batches/index.html
+  s_f8a8ab5aa44b74::t_5c750686438673 1-16
+site/cic/CANARY_GATES/index.html
+  s_f8a8ab5aa44b74::t_82cd5841e4583a 1-132
+site/cic/CANARY_PHASE_A_DEPLOYMENT/index.html
+  s_f8a8ab5aa44b74::t_ef6397f653a244 1-116
+site/cic/CANARY_PHASE_A_PROD_DEPLOYMENT_CHECKLIST/index.html
+  s_f8a8ab5aa44b74::t_0cffaf3bd83c90 1-89
+site/cic/CIC_RUNTIME_OBSERVABILITY_PLAN/index.html
+  s_f8a8ab5aa44b74::t_781b45c8c3c829 1-107
+site/cic/CIC_TOKEN_PACK_v2_0_COMPONENT_PATCHES/index.html
+  s_f8a8ab5aa44b74::t_2577463d4888df 1-364
+site/cic/CIC_TOKEN_PACK_v2_0_FULL_LIST/index.html
+  s_f8a8ab5aa44b74::t_098a8625954967 1-276
+site/cic/CIC_TOKEN_PACK_v2_0_IMPLEMENTATION_GUIDE/index.html
+  s_f8a8ab5aa44b74::t_4abccd59633d14 1-97
+site/cic/EXECUTION-POLICY-PHASE-A-B-SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_2ff6ffba0cc35b 1-41
+site/cic/EXECUTION-STATUS/index.html
+  s_f8a8ab5aa44b74::t_58bf31615ac807 1-9
+site/cic/GOVERNANCE/index.html
+  s_f8a8ab5aa44b74::t_5222d279a793e5 1-172
+site/cic/KB_INTEGRATION_SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_2d508a2a567252 1-43
+site/cic/MEMORY_V1_STAGING_ACTIVATION/index.html
+  s_f8a8ab5aa44b74::t_7f2e3a68f0db54 1-37
+site/cic/P1_IMPLEMENTATION_COMPLETE/index.html
+  s_f8a8ab5aa44b74::t_7faf3eafdac607 1-49
+site/cic/PHASE-1-EXECUTION-LOG/index.html
+  s_f8a8ab5aa44b74::t_ebb976f8bbd6ab 1-64
+site/cic/PHASE-1_ARCHITECTURE/index.html
+  s_f8a8ab5aa44b74::t_2e8b1c40ce1fd3 1-95
+site/cic/PHASE-1_BRIDGE_ORCHESTRATOR/index.html
+  s_f8a8ab5aa44b74::t_80fe22d2ceb2e8 1-96
+site/cic/PHASE-1_FILE_CONTRACT/index.html
+  s_f8a8ab5aa44b74::t_088acb2bbe7b26 1-191
+site/cic/PHASE-1_IMPLEMENTATION_ORDER/index.html
+  s_f8a8ab5aa44b74::t_9a07eacd535a8c 1-175
+site/cic/PHASE-1_LEDGER_SUBSTRATE/index.html
+  s_f8a8ab5aa44b74::t_c589f33fde4d97 1-126
+site/cic/PHASE-1_MAAL_CORE/index.html
+  s_f8a8ab5aa44b74::t_bce5d44f834be2 1-100
+site/cic/PHASE-1_OVERVIEW/index.html
+  s_f8a8ab5aa44b74::t_a796b48fc0149e 1-48
+site/cic/SANDBOX-3_VM_SNAPSHOTTING/index.html
+  s_f8a8ab5aa44b74::t_030542ad99c3aa 1-14
+site/cic/TOKEN_AUDIT_REPORT/index.html
+  s_f8a8ab5aa44b74::t_9420e09c9e41c5 1-219
+site/cic/TOKEN_COVERAGE_MATRIX/index.html
+  s_f8a8ab5aa44b74::t_a44d2298d2f9e1 1-187
+site/cic/TOKEN_COVERAGE_MATRIX_PHASE_ROADMAP/index.html
+  s_f8a8ab5aa44b74::t_b7240e9a40c2b5 1-25
+site/cic/TORQUEQUERY_BUILD_SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_bed6d28d13f215 1-124
+site/cic/TORQUEQUERY_DELIVERY_CHECKLIST/index.html
+  s_f8a8ab5aa44b74::t_4a977b4c26805e 1-5
+site/cic/TORQUEQUERY_EXECUTIVE_SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_90d288138bb67f 1-71
+site/cic/TORQUEQUERY_INDEX/index.html
+  s_f8a8ab5aa44b74::t_7632cdcba70e88 1-90
+site/cic/TORQUEQUERY_MCP_REFERENCE/index.html
+  s_f8a8ab5aa44b74::t_937465695a1702 1-304
+site/cic/TORQUEQUERY_QUICKSTART/index.html
+  s_f8a8ab5aa44b74::t_d3a8ff07b561e2 1-143
+site/cic/WS-B-C-SCAFFOLD/index.html
+  s_f8a8ab5aa44b74::t_451467c2ae9e1a 1-49
+site/cic/cic_maal_audit_overview/index.html
+  s_f8a8ab5aa44b74::t_51630a2da29a42 1-16
+site/cic/driftEngine/index.html
+  s_f8a8ab5aa44b74::t_17ebfb9198542e 1
+site/cic/harvester/index.html
+  s_f8a8ab5aa44b74::t_92084cd4990445 1-19
+site/cic/index.html
+  s_f8a8ab5aa44b74::t_7c677b6d5b1b65 1
+site/cic/replayHarness/index.html
+  s_f8a8ab5aa44b74::t_f2907a124b2eba 1-53
+site/cic/research-skill/SKILL/index.html
+  s_f8a8ab5aa44b74::t_5773f41e9b2b94 1-2
+site/dashboard/8-ITEM-PROGRESS/index.html
+  s_f8a8ab5aa44b74::t_435efa89601db1 1-13
+site/dashboard/8-ITEMS-COMPLETE-FINAL/index.html
+  s_f8a8ab5aa44b74::t_ebc68ea1c57d2d 1
+site/dashboard/COMMAND-CENTER-PRIORITY-MATRIX/index.html
+  s_f8a8ab5aa44b74::t_453247a0c4f1ac 1-96
+site/dashboard/DARK_MODE_COMPLETION_REPORT/index.html
+  s_f8a8ab5aa44b74::t_d7e8f743314485 1-108
+site/dashboard/DARK_MODE_V2_IMPLEMENTATION/index.html
+  s_f8a8ab5aa44b74::t_20c3816f33efbf 1-113
+site/dashboard/FINAL-STATUS-8-ITEMS/index.html
+  s_f8a8ab5aa44b74::t_e46c3bab5bcf50 1
+site/dashboard/MISSING_TOKENS_FOR_AGENTS_PANEL/index.html
+  s_f8a8ab5aa44b74::t_e675e8de3a65c9 1-195
+site/dashboard/MISSING_TOKENS_FOR_AGENTS_PANEL_PHASE_PROGRESS/index.html
+  s_f8a8ab5aa44b74::t_74503eb6a91226 1-85
+site/dashboard/TIER2_AGENTS_CONFLICT_MAP/index.html
+  s_f8a8ab5aa44b74::t_09a0350bd00c4f 1-80
+site/dashboard/dashboard/index.html
+  s_f8a8ab5aa44b74::t_aac0196a55abb8 1-95
+site/gateway/adapterGatewayAPI/index.html
+  s_f8a8ab5aa44b74::t_78b6fb3c61b6b2 1-31
+site/gateway/providers/index.html
+  s_f8a8ab5aa44b74::t_ea15d92137267f 1
+site/implementation/cloud-extension-layer/index.html
+  s_f8a8ab5aa44b74::t_95e418c97b4fce 1-97
+site/implementation/phase-26/architecture-decision-log/index.html
+  s_f8a8ab5aa44b74::t_99c71847ba5612 1-21
+site/implementation/phase-26/deployment-checklist/index.html
+  s_f8a8ab5aa44b74::t_7d0f3a8b9e7cb0 1-112
+site/implementation/phase-26/summary/index.html
+  s_f8a8ab5aa44b74::t_e8ee194af31a41 1
+site/implementation/phase-26/test-verification-report/index.html
+  s_f8a8ab5aa44b74::t_7d910a4285a3af 1-71
+site/index.html
+  s_f8a8ab5aa44b74::t_3dabd81b1b1fe4 1-6
+site/integration/index.html
+  s_f8a8ab5aa44b74::t_3fa5c96d6a25e0 1-24
+site/meta/00-EXECUTIVE-SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_d49d53adf5c2d3 1-17
+site/meta/00-INDEX/index.html
+  s_f8a8ab5aa44b74::t_d5cac9b2f701e5 1
+site/meta/2026-06-27/index.html
+  s_f8a8ab5aa44b74::t_3228ebef147fe4 1
+site/meta/8-items-complete/index.html
+  s_f8a8ab5aa44b74::t_0d87cd1f23fca3 1
+site/meta/ARTIFACTS-SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_a513de1dc81b2f 1-15
+site/meta/BUILD-SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_3cefbc3af55589 1-52
+site/meta/CLOUD_EXTENSION_IMPLEMENTATION_SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_254cb7da31c2f1 1-117
+site/meta/DELIVERABLES-SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_91afd104619a85 1-25
+site/meta/DRY-RUN-REPORT/index.html
+  s_f8a8ab5aa44b74::t_e7204a562c88d0 1-13
+site/meta/GIT-REMEDIATION-REVIEW/index.html
+  s_f8a8ab5aa44b74::t_ab91f2e5ff1a1a 1
+site/meta/GIT-REVIEW/index.html
+  s_f8a8ab5aa44b74::t_8916f15a13ad8f 1
+site/meta/GOVERNANCE_VALIDATION_SETUP/index.html
+  s_f8a8ab5aa44b74::t_6209bfebd58a21 1-128
+site/meta/KB_SYNC_IMPLEMENTATION_COMPLETE/index.html
+  s_f8a8ab5aa44b74::t_cc6fc14251d5e8 1-72
+site/meta/MANIFEST/index.html
+  s_f8a8ab5aa44b74::t_7accd3ff2c153c 1-56
+site/meta/MIGRATION_LOG/index.html
+  s_f8a8ab5aa44b74::t_5f3f28935584a4 1-139
+site/meta/PLAN/index.html
+  s_f8a8ab5aa44b74::t_8ed2319f9703b4 1
+site/meta/PLAN_PHASE_6/index.html
+  s_f8a8ab5aa44b74::t_d5281d346441a0 1-29
+site/meta/PLAN_UMM_D3/index.html
+  s_f8a8ab5aa44b74::t_6ce658a812277d 1-6
+site/meta/PROJECT/index.html
+  s_f8a8ab5aa44b74::t_50e244d8c81954 1-12
+site/meta/REORGANIZATION-PLAN/index.html
+  s_f8a8ab5aa44b74::t_01a43ea31496b2 1
+site/meta/REPOSITORY_GOVERNANCE_AUDIT/index.html
+  s_f8a8ab5aa44b74::t_3fd067d4822169 1-53
+site/meta/REVIEW-28a2/index.html
+  s_f8a8ab5aa44b74::t_bda563233eb884 1
+site/meta/REVIEW-28a5/index.html
+  s_f8a8ab5aa44b74::t_afb81a4d78ba1a 1
+site/meta/REVIEW/index.html
+  s_f8a8ab5aa44b74::t_5820d70e2284ea 1-23
+site/meta/RULE_2_COMPLIANCE_FIX/index.html
+  s_f8a8ab5aa44b74::t_5de2975f6c8d6a 1-57
+site/meta/SYNC_ANALYSIS/index.html
+  s_f8a8ab5aa44b74::t_f1e9a16a289afc 1-50
+site/meta/TEMPLATE-EXPANSION-REVIEW/index.html
+  s_f8a8ab5aa44b74::t_fea733ad35e148 1-28
+site/meta/TEST/index.html
+  s_f8a8ab5aa44b74::t_0cf777e43bfe8c 1
+site/meta/build-executor-REVIEW/index.html
+  s_f8a8ab5aa44b74::t_3cd929c6968d34 1
+site/meta/build-progress/index.html
+  s_f8a8ab5aa44b74::t_fee6283c23ef9c 1-13
+site/meta/competitive-teardown-REVIEW/index.html
+  s_f8a8ab5aa44b74::t_c102f22f509d6c 1
+site/meta/cross-reference-audit/index.html
+  s_f8a8ab5aa44b74::t_b2fc56f6d5c9b7 1-87
+site/meta/final-status/index.html
+  s_f8a8ab5aa44b74::t_16f76c0948f88f 1
+site/meta/implementation_plan/index.html
+  s_f8a8ab5aa44b74::t_15a6ca1bed7800 1-3
+site/meta/phase-1-execution/index.html
+  s_f8a8ab5aa44b74::t_0206320b22de8f 1-64
+site/meta/phase-2-completion/index.html
+  s_f8a8ab5aa44b74::t_cec69c587851ef 1-43
+site/meta/phase-3-completion/index.html
+  s_f8a8ab5aa44b74::t_a027659cc8992f 1-93
+site/meta/reorganization/index.html
+  s_f8a8ab5aa44b74::t_bb470fde494e06 1
+site/meta/repo-cleanup-REVIEW/index.html
+  s_f8a8ab5aa44b74::t_3d15f0a0c390b3 1
+site/meta/vscode-integration-REVIEW/index.html
+  s_f8a8ab5aa44b74::t_0b0d367ffe65e4 1-19
+site/meta/work-summarizer-implementation-guide/index.html
+  s_f8a8ab5aa44b74::t_5c70dc2343077e 1-626
+site/observability/DASHBOARDS_INTEGRATION/index.html
+  s_f8a8ab5aa44b74::t_ba566924439712 1-10
+site/observability/dashboards/operations-dashboard.json
+  s_f8a8ab5aa44b74::t_c95fda38cd6cc4 1-404
+site/observability/dashboards/slo-dashboard.json
+  s_f8a8ab5aa44b74::t_b952f9630cdc44 1-412
+site/observability/dashboards/system-health-dashboard.json
+  s_f8a8ab5aa44b74::t_23b05c1f23126c 1-434
+site/operations/cost-tracking/index.html
+  s_f8a8ab5aa44b74::t_4d51de53197b5b 1
+site/operations/drift-forecast/index.html
+  s_f8a8ab5aa44b74::t_8c96b9a3194bff 1
+site/operations/monitoring/index.html
+  s_f8a8ab5aa44b74::t_19ee9bdb42d07b 1-150
+site/operations/roadmap-runner/index.html
+  s_f8a8ab5aa44b74::t_5a75922f7498bf 1
+site/operations/running/index.html
+  s_f8a8ab5aa44b74::t_c9e6956d01478a 1-70
+site/operations/sealing/index.html
+  s_f8a8ab5aa44b74::t_0d56c1eab5e955 1-114
+site/operations/troubleshooting/index.html
+  s_f8a8ab5aa44b74::t_6531cd8e3a2827 1-138
+site/operations/verification/index.html
+  s_f8a8ab5aa44b74::t_265f7f252ce877 1-109
+site/operations/weekly-sync/index.html
+  s_f8a8ab5aa44b74::t_6767e2ea89f699 1
+site/quickstart/first-steps/index.html
+  s_f8a8ab5aa44b74::t_1c7a4040faae28 1-70
+site/quickstart/index.html
+  s_f8a8ab5aa44b74::t_6b00e27ffc07ca 1-21
+site/quickstart/installation/index.html
+  s_f8a8ab5aa44b74::t_1c5679e85df605 1-24
+site/reference/AGENTS_API/index.html
+  s_f8a8ab5aa44b74::t_ba60291a9b1b49 1-172
+site/reference/CIC_ENV_REFERENCE/index.html
+  s_f8a8ab5aa44b74::t_c8822b0dd067bb 1-20
+site/reference/DEPLOYMENT/index.html
+  s_f8a8ab5aa44b74::t_25733cd8bf0cd2 1-137
+site/reference/DEPLOYMENT_FIXES_COMPLETED/index.html
+  s_f8a8ab5aa44b74::t_84a9180bea40c8 1-51
+site/reference/DEPLOY_PLAN_UNDEPLOYED_SYSTEMS/index.html
+  s_f8a8ab5aa44b74::t_492e94ec5e752b 1-137
+site/reference/DEPLOY_SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_36503bada38753 1-97
+site/reference/DOCKER-BUILD-SUMMARY/index.html
+  s_f8a8ab5aa44b74::t_fb1e77678ce919 1-28
+site/reference/DOCKER-COMPOSE-BUILD-PATHS/index.html
+  s_f8a8ab5aa44b74::t_bcc61a1f230d5f 1-150
+site/reference/DOCKER-QUICKSTART/index.html
+  s_f8a8ab5aa44b74::t_2f81c38aaf3637 1-47
+site/reference/DOCKER-UPDATED/index.html
+  s_f8a8ab5aa44b74::t_953c991496d51a 1
+site/reference/DOCKER/index.html
+  s_f8a8ab5aa44b74::t_7c19c5af40a89c 1-53
+site/reference/GITHUB-ACTIONS-PROCESS/index.html
+  s_f8a8ab5aa44b74::t_a0e34b88cc5203 1-11
+site/reference/HUMANIZER_GUIDE/index.html
+  s_f8a8ab5aa44b74::t_34427f80d59d49 1-38
+site/reference/IMPLEMENTATION-SETUP/index.html
+  s_f8a8ab5aa44b74::t_da7a9d27c109b4 1-132
+site/reference/INTEGRATION_GUIDE/index.html
+  s_f8a8ab5aa44b74::t_33520a92f03c94 1-69
+site/reference/QUICK-REFERENCE/index.html
+  s_f8a8ab5aa44b74::t_d3ea22ecf9e12a 1-103
+site/reference/SETUP-CHECKLIST/index.html
+  s_f8a8ab5aa44b74::t_d0e3f74d651038 1-196
+site/reference/cic-rl-cross-reference/index.html
+  s_f8a8ab5aa44b74::t_f79ba4f3d4d230 1-54
+site/reference/cli/index.html
+  s_f8a8ab5aa44b74::t_8b3659944293ed 1-86
+site/reference/determinism-validation-checklist/index.html
+  s_f8a8ab5aa44b74::t_e0c53bab47d0b4 1-3
+site/reference/environment/index.html
+  s_f8a8ab5aa44b74::t_a66edf23c503c2 1-138
+site/reference/knowledge-graph/QUICK_START/index.html
+  s_f8a8ab5aa44b74::t_914c8af21c04b0 1-123
+site/reference/knowledge-graph/SETUP_GUIDE/index.html
+  s_f8a8ab5aa44b74::t_c132073d11f343 1-255
+site/reference/knowledge-graph/examples/skill-integration.ts
+  s_f8a8ab5aa44b74::t_48e6b25e556666 1-167
+site/reference/knowledge-graph/implementation/extract-backlinks.ts
+  s_f8a8ab5aa44b74::t_a179a5cfbf675f 1-342
+site/reference/knowledge-graph/implementation/query-interface.ts
+  s_f8a8ab5aa44b74::t_1e6a7ed591b3e0 1-348
+site/reference/knowledge-graph/index.html
+  s_f8a8ab5aa44b74::t_ffe8dafd620ba7 1-230
+site/reference/knowledge-graph/validation/validate.ts
+  s_f8a8ab5aa44b74::t_6df60a71244748 1-503
+site/reference/knowledge-graph/viewer/index.html
+  s_f8a8ab5aa44b74::t_128e77d47f40d0 1-776
+site/reference/manifests/index.html
+  s_f8a8ab5aa44b74::t_46ee9316c0ae43 1-174
+site/reference/post-migration-checklist/index.html
+  s_f8a8ab5aa44b74::t_41b36a2e44e60a 1-42
+site/reference/rl-vault-adapter-implementation/index.html
+  s_f8a8ab5aa44b74::t_5b795c50fd1e6e 1-45
+site/reference/roadmap-staging-structure/index.html
+  s_f8a8ab5aa44b74::t_1191fc49161ba2 1-119
+site/reference/schemas/index.html
+  s_f8a8ab5aa44b74::t_88c84f5473e629 1-231
+site/reference/services/index.html
+  s_f8a8ab5aa44b74::t_7f787ca169a05f 1
+site/reference/skill-location-governance/index.html
+  s_f8a8ab5aa44b74::t_7c6a2f3f91731c 1-58
+site/reference/system-index-builder/index.html
+  s_f8a8ab5aa44b74::t_08ade49b04723b 1
+site/reference/toolforge/index.html
+  s_f8a8ab5aa44b74::t_b83eaf0baa0560 1
+site/rewrite-labs/00-RL-INDEX/index.html
+  s_f8a8ab5aa44b74::t_cbb7e8b77e8027 1-18
+site/rewrite-labs/RL-VAULT-SETUP/index.html
+  s_f8a8ab5aa44b74::t_aa84decbc26738 1-48
+site/rewrite-labs/VAULT-README/index.html
+  s_f8a8ab5aa44b74::t_e511074fe80c8f 1-5
+site/rewrite-labs/VAULT-SYNC-CONFIGURATION/index.html
+  s_f8a8ab5aa44b74::t_316674f146dafa 1-131
+site/rewrite-labs/index.html
+  s_f8a8ab5aa44b74::t_60c32626a0216e 1-6
+site/rewrite-labs/rl-vault-manifest.json
+  s_f8a8ab5aa44b74::t_afa3c74d827667 1-60
+site/rewrite-labs/vault-mirror/configuration/index.html
+  s_f8a8ab5aa44b74::t_cb970d2e90109a 1-131
+site/rewrite-labs/vault-mirror/executive-summary/index.html
+  s_f8a8ab5aa44b74::t_3a8c3a166541a3 1-17
+site/rewrite-labs/vault-mirror/rl-setup/index.html
+  s_f8a8ab5aa44b74::t_644ed467cc53f0 1-47
+site/rewrite-labs/vault-mirror/setup/index.html
+  s_f8a8ab5aa44b74::t_6e40d6d34f9b2d 1-132
+site/roadmaps/cic-roadmap/index.html
+  s_f8a8ab5aa44b74::t_dc6ba57a7f3cfd 1
+site/roadmaps/rewrite-labs-roadmap/index.html
+  s_f8a8ab5aa44b74::t_acfa3349006ea9 1-5
+site/roadmaps/tickets/batch-2/cic-phase-30-mvp-expansion/index.html
+  s_f8a8ab5aa44b74::t_115f7a348f7f16 1
+site/roadmaps/tickets/batch-2/cic-phase-31-50-spec-generator/index.html
+  s_f8a8ab5aa44b74::t_275ed6303af1a8 1
+site/roadmaps/tickets/batch-2/cic-phase-8-implementation-stubs/index.html
+  s_f8a8ab5aa44b74::t_4ada14754dfdb2 1
+site/roadmaps/tickets/batch-2/cic-phase-8-spec-finalization/index.html
+  s_f8a8ab5aa44b74::t_0ea4f9f447f3ef 1
+site/roadmaps/tickets/batch-2/cost-attribution-engine/index.html
+  s_f8a8ab5aa44b74::t_a2086584333077 1
+site/roadmaps/tickets/batch-2/drift-detector-integration-v2/index.html
+  s_f8a8ab5aa44b74::t_b32a8a32de7965 1
+site/roadmaps/tickets/batch-2/foundry-expansion-m2-m3/index.html
+  s_f8a8ab5aa44b74::t_febef4d521f2cc 1
+site/roadmaps/tickets/batch-2/index.html
+  s_f8a8ab5aa44b74::t_82739998dce148 1
+site/roadmaps/tickets/batch-2/observability-v3/index.html
+  s_f8a8ab5aa44b74::t_7e0e3252e51ec9 1
+site/roadmaps/tickets/batch-2/repo-cleanup-v3/index.html
+  s_f8a8ab5aa44b74::t_6bac27840e75ad 1
+site/roadmaps/tickets/batch-2/rl-patterns-generator/index.html
+  s_f8a8ab5aa44b74::t_9b49abb53586be 1
+site/roadmaps/tickets/batch-2/routing-engine-v2/index.html
+  s_f8a8ab5aa44b74::t_ca28322bc0b1c1 1
+site/roadmaps/tickets/batch-2/runner-hardening-v2/index.html
+  s_f8a8ab5aa44b74::t_028878b87f1696 1
+site/roadmaps/tickets/batch-2/services-layer-expansion/index.html
+  s_f8a8ab5aa44b74::t_860b24c7fe359e 1
+site/roadmaps/tickets/batch-2/unified-execution-graph-generator/index.html
+  s_f8a8ab5aa44b74::t_94db4a6419d292 1
+site/roadmaps/tickets/batch-3/cic-evolution-engine-v1/index.html
+  s_f8a8ab5aa44b74::t_ae2503f33896d7 1
+site/roadmaps/tickets/batch-3/cic-evolution-runner/index.html
+  s_f8a8ab5aa44b74::t_c51105965156c4 1
+site/roadmaps/tickets/batch-3/cic-ingestion-hardening-v3/index.html
+  s_f8a8ab5aa44b74::t_ff109a2082dce6 1
+site/roadmaps/tickets/batch-3/cic-ingestion-multi-source/index.html
+  s_f8a8ab5aa44b74::t_476e90e05a3cb8 1
+site/roadmaps/tickets/batch-3/fusion-layer-integration/index.html
+  s_f8a8ab5aa44b74::t_2a4b5cc0e2e5ff 1
+site/roadmaps/tickets/batch-3/fusion-layer-v1/index.html
+  s_f8a8ab5aa44b74::t_2d7d9402faf280 1
+site/roadmaps/tickets/batch-3/governance-automation-v2/index.html
+  s_f8a8ab5aa44b74::t_d480c36228ae29 1
+site/roadmaps/tickets/batch-3/governance-runner-hooks/index.html
+  s_f8a8ab5aa44b74::t_6cbd8e4d6c3a4e 1
+site/roadmaps/tickets/batch-3/index.html
+  s_f8a8ab5aa44b74::t_dcfc68afb1bf1b 1
+site/roadmaps/tickets/batch-3/kd-engine-v1/index.html
+  s_f8a8ab5aa44b74::t_be043dd1e5b82e 1
+site/roadmaps/tickets/batch-3/rl-5x-arch-patterns/index.html
+  s_f8a8ab5aa44b74::t_b1a47126cd48e4 1
+site/roadmaps/tickets/batch-3/rl-5x-spec-generator/index.html
+  s_f8a8ab5aa44b74::t_caf719b1c6774f 1
+site/roadmaps/tickets/batch-3/rl-cic-fusion-v2/index.html
+  s_f8a8ab5aa44b74::t_2d4fb770117316 1
+site/roadmaps/tickets/batch-3/runner-execution-graph-integration/index.html
+  s_f8a8ab5aa44b74::t_792151fbd0b002 1
+site/roadmaps/tickets/batch-3/runner-orchestration-v3/index.html
+  s_f8a8ab5aa44b74::t_47e5bdeeea9f82 1
+site/roadmaps/tickets/batch-3/tq-search-engine-v2/index.html
+  s_f8a8ab5aa44b74::t_29c5ce87c5d284 1
+site/roadmaps/tickets/batch-3/tq-shared-ingestion-v2/index.html
+  s_f8a8ab5aa44b74::t_7429343fcef0c4 1
+site/roadmaps/tickets/batch-3/world-corpus-indexer/index.html
+  s_f8a8ab5aa44b74::t_796931560ccf3a 1
+site/roadmaps/tickets/batch-3/world-corpus-pipeline-v1/index.html
+  s_f8a8ab5aa44b74::t_659d938379311f 1
+site/roadmaps/tickets/batch-4/cic-runtime-v4-adapters/index.html
+  s_f8a8ab5aa44b74::t_afce495b23f42c 1
+site/roadmaps/tickets/batch-4/cic-runtime-v4-core/index.html
+  s_f8a8ab5aa44b74::t_1f769a38bb4ec9 1
+site/roadmaps/tickets/batch-4/cic-runtime-v4-sandbox/index.html
+  s_f8a8ab5aa44b74::t_3562d5425e4ca9 1
+site/roadmaps/tickets/batch-4/foundry-cicd-pipeline/index.html
+  s_f8a8ab5aa44b74::t_692872347ce88a 1
+site/roadmaps/tickets/batch-4/foundry-cicd-v1/index.html
+  s_f8a8ab5aa44b74::t_56467abb0d7f6c 1
+site/roadmaps/tickets/batch-4/fusion-engine-runner/index.html
+  s_f8a8ab5aa44b74::t_69f9cd68aa4255 1
+site/roadmaps/tickets/batch-4/fusion-engine-v3/index.html
+  s_f8a8ab5aa44b74::t_2071884bd2d94e 1
+site/roadmaps/tickets/batch-4/index.html
+  s_f8a8ab5aa44b74::t_6b342d2fe4bb11 1
+site/roadmaps/tickets/batch-4/rl-crawler-v2-adapters/index.html
+  s_f8a8ab5aa44b74::t_9d6f6c8c36def5 1
+site/roadmaps/tickets/batch-4/rl-crawler-v2-core/index.html
+  s_f8a8ab5aa44b74::t_d0de500786ae20 1
+site/roadmaps/tickets/batch-4/rl-crawler-v2-runner/index.html
+  s_f8a8ab5aa44b74::t_562fe4822e671e 1
+site/roadmaps/tickets/batch-4/runtime-orchestrator-execution-graph/index.html
+  s_f8a8ab5aa44b74::t_22dab9e775a3e8 1
+site/roadmaps/tickets/batch-4/runtime-orchestrator-v4/index.html
+  s_f8a8ab5aa44b74::t_0929350ae953d5 1
+site/roadmaps/tickets/batch-4/tq-v3-architecture/index.html
+  s_f8a8ab5aa44b74::t_361fa88e44ffb4 1
+site/roadmaps/tickets/batch-4/tq-v3-hybrid-engine/index.html
+  s_f8a8ab5aa44b74::t_ebc6fe7955f392 1
+site/roadmaps/tickets/batch-4/tq-v3-semantic-pipeline/index.html
+  s_f8a8ab5aa44b74::t_41b9c7f027a34e 1
+site/roadmaps/tickets/batch-4/world-search-v2-architecture/index.html
+  s_f8a8ab5aa44b74::t_da2cc5aa88b6ff 1
+site/roadmaps/tickets/batch-4/world-search-v2-pipeline/index.html
+  s_f8a8ab5aa44b74::t_1f7372b10e54ba 1
+site/roadmaps/tickets/batch-5/autonomous-fusion-runner/index.html
+  s_f8a8ab5aa44b74::t_33bc041ddd8f42 1
+site/roadmaps/tickets/batch-5/autonomous-fusion-v4/index.html
+  s_f8a8ab5aa44b74::t_cb79d626872fb4 1
+site/roadmaps/tickets/batch-5/autonomous-governance-runner/index.html
+  s_f8a8ab5aa44b74::t_3042da5664035b 1
+site/roadmaps/tickets/batch-5/autonomous-governance-v3/index.html
+  s_f8a8ab5aa44b74::t_8dbbf4571c22d9 1
+site/roadmaps/tickets/batch-5/cic-evolution-engine-v2/index.html
+  s_f8a8ab5aa44b74::t_b81243cd21d7fe 1
+site/roadmaps/tickets/batch-5/cic-evolution-runner-v2/index.html
+  s_f8a8ab5aa44b74::t_0507f9535bfbf8 1
+site/roadmaps/tickets/batch-5/cic-runtime-v5-architecture/index.html
+  s_f8a8ab5aa44b74::t_0e0127193e6d9b 1
+site/roadmaps/tickets/batch-5/cic-runtime-v5-auto-governance/index.html
+  s_f8a8ab5aa44b74::t_c59099304a02dc 1
+site/roadmaps/tickets/batch-5/cic-runtime-v5-self-healing/index.html
+  s_f8a8ab5aa44b74::t_2cb7ea34cd6201 1
+site/roadmaps/tickets/batch-5/index.html
+  s_f8a8ab5aa44b74::t_cef6c804ff5cf4 1
+site/roadmaps/tickets/batch-5/multi-agent-orchestration-v1-runner/index.html
+  s_f8a8ab5aa44b74::t_3208eddac0ddd9 1
+site/roadmaps/tickets/batch-5/multi-agent-orchestration-v1/index.html
+  s_f8a8ab5aa44b74::t_10bad595d1972a 1
+site/roadmaps/tickets/batch-5/rl-6x-auto-outreach/index.html
+  s_f8a8ab5aa44b74::t_33a8dfef02dcc9 1
+site/roadmaps/unified-roadmap/index.html
+  s_f8a8ab5aa44b74::t_b743532acc8953 1-7
+site/sitemap.xml
+  s_f8a8ab5aa44b74::t_ae6d2d890e9bb9 1-1427
+src/cic/graph/GraphPolicyEngine.ts
+  s_f8a8ab5aa44b74::t_8eb9297bb47692 1-18
+src/cic/graph/adapters/McpClientRunner.ts
+  s_f8a8ab5aa44b74::t_1279632d37af5f 1-142
+src/cic/graph/adapters/mocks/GitNexusMock.ts
+  s_f8a8ab5aa44b74::t_201a220a1628dc 1-27
+src/cic/graph/adapters/mocks/GraphifyMock.ts
+  s_f8a8ab5aa44b74::t_ed8194d9f49e40 1-28
+src/cic/graph/adapters/mocks/TrueCodeMock.ts
+  s_f8a8ab5aa44b74::t_37f5392b049bb1 1-25
+src/cic/graph/policies/DiscoveryPolicy.ts
+  s_f8a8ab5aa44b74::t_143b8a0a6ef2f6 1-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "dea4d61857bea04c29b6df4aacdd59a819e058cc",
+  "prompts": {},
+  "sessions": {
+    "s_1a0b2d4c5a3d0a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dabad09c-d51b-4d48-8cfa-23d82621b26c",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_4e6550832e2b51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3dc4e968-5918-4920-abac-fb18557321da",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_59a6189aff6d68": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "edef6066-d2cd-44a3-ba86-577911f77d0d",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_62ab85d7a21222": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4e203350-bc20-46f6-a14e-f0545f73a12a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_ba7881dc85f037": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e00ee7f9-6395-4540-bb93-3693150b37bd",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d2e7085c5a9570": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1d2d8688-1e76-4159-9598-5ad3adf9a8ac",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d3640c043b3d74": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6a3bc7a-e5d5-4837-8509-3c2a67fc7c7d",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d5a7157c855996": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02774e76-c5bb-430c-be4c-f423df328859",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_df2e6afa516d1b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4a2e1852-b897-4d5c-bdd0-12ea7d0cb831",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_e27e2f20824514": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6dff16be-f826-4552-987a-e216480a567e",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_e2a12a974c4dec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ad4a2a83-aa52-4668-88d3-0b572f49df60",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_f6cb7aa404ec09": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1553d0db-a31f-4b86-9499-fa528e956eb3",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_f7e5394d4435eb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1e447551-8433-4264-aa04-628ecdb991dd",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_f8a8ab5aa44b74": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8f8d292c-cd68-4ce2-afb6-5a164334be87",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
