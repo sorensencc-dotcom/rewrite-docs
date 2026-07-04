@@ -62,7 +62,15 @@ One weekly pass that keeps roadmaps, ingestion, governance, drift, cost, and doc
 - CIC vault (`cic-ref/`) last-synced date fresh?
 - Confirm the RL-4.x → Phase mapping in the [Cross-Reference](../reference/cic-rl-cross-reference.md) still matches phase YAML dependencies.
 
-## 9. Close out
+## 9. RL vault ingestion
+
+- Run the full RLVaultAdapter ingestion pipeline: vault → TorqueQuery index.
+- Command: `node -e "const {RLVaultAdapter} = require('./src/adapters/RLVaultAdapter'); new RLVaultAdapter().run('ingest', {})"` (or via roadmap-runner task).
+- Verify indexed chunk count matches expected (should be ≥ 14 files, typically 50–100 chunks depending on file sizes).
+- Check metrics: `rl_vault_indexed` counter should increment.
+- Drift domain `rl-vault` now active for monthly drift forecasts.
+
+## 10. Close out
 
 - Write/update this week's [Drift Forecast](drift-forecast.md) with findings and predictions.
 - File roadmap-status corrections as edits to `docs/roadmaps/*` in the same commit.

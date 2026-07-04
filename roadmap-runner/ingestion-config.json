@@ -35,6 +35,25 @@
       "timeout_sec": 900
     }
   ],
+  "ingestion_sources": [
+    {
+      "id": "rl-vault",
+      "name": "Rewrite Labs Vault",
+      "enabled": true,
+      "adapter": "rl-vault",
+      "stages": [
+        "discover",
+        "harvest",
+        "normalize",
+        "chunk",
+        "embed",
+        "index"
+      ],
+      "source": "C:/dev/rl-ref",
+      "patterns": ["**/*.md"],
+      "exclude": ["**/ROADMAP.md"]
+    }
+  ],
   "retry": {
     "max_attempts": 3,
     "backoff_sec": 30
