@@ -1,0 +1,38 @@
+docs/deployment/registry-config.md
+  s_24531e0f82e936::t_21e6d561cc2de5 1-144
+mkdocs.yml
+  s_3a964b4e8845d2::t_0534dd5979efcd 45
+  s_24531e0f82e936::t_03733715b62241 199-203
+docs/deployment/convergence-trace.md
+  s_24531e0f82e936::t_4467f837f3d056 1-286
+docs/deployment/reproducible-dockerfiles.md
+  s_24531e0f82e936::t_179882a80cb083 1-95
+docs/deployment/airgapped-import.md
+  s_24531e0f82e936::t_719ee0ae2f46f1 1-119
+scripts/build-deterministic.sh
+  s_24531e0f82e936::t_de42a70a675e7d 1-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "28b8a343484e1638c48caf7fc7c6d6dc413de097",
+  "prompts": {},
+  "sessions": {
+    "s_24531e0f82e936": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c6043ef0-b3d2-41c0-8516-888507c4bdef",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_3a964b4e8845d2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6ce0f47d-fb5d-43bc-8a28-4b05ea6a24f3",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
