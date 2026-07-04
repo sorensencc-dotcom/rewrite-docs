@@ -58,6 +58,9 @@ build-audit.log
 CIP/
 charlie-deep-research/
 /cic/
+!/cic/src/
+!/cic/src/**/*.ts
+!/cic/src/**/*.test.ts
 /cic-ingestion/
 !cic-ingestion/src/drift/driftEngine.ts
 
