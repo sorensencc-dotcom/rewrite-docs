@@ -1,0 +1,29 @@
+docs/operations/drift-forecast.md
+  s_d5a7157c855996::t_366352a7fa840a 23
+docs/roadmaps/rewrite-labs-roadmap.md
+  s_d5a7157c855996::t_5c95aa25a969db 63
+  s_d5a7157c855996::t_f1fb71a1a44c5c 58
+docs/rewrite-labs/RL-VAULT-SETUP.md
+  s_d5a7157c855996::t_d7e72e8f09b19e 52-53,55
+  s_d5a7157c855996::t_aa81bbd0350846 94,97-98
+  s_d5a7157c855996::t_475a2245d7ed6f 123-125
+  s_d5a7157c855996::t_9166cfadf5644d 163-164
+docs/rewrite-labs/00-RL-INDEX.md
+  s_d5a7157c855996::t_b2a71ee2f4419e 36,38,40,42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "d6a9f4d7b2d69f9e5fed51233b3391467fe76d5f",
+  "prompts": {},
+  "sessions": {
+    "s_d5a7157c855996": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02774e76-c5bb-430c-be4c-f423df328859",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
