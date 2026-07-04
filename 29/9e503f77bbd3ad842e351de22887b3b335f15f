@@ -1,0 +1,45 @@
+.github/workflows/vault-sync.yml
+  s_f6cb7aa404ec09::t_07539be91eda7c 1-96
+VAULT-AUTOMATION-SETUP.md
+  s_f6cb7aa404ec09::t_574bcc4c720d47 1-200
+governance/audit-log.json
+  s_62ab85d7a21222::t_a1a7163ff30a09 3980-4564,4567-4568,4570
+PHASE_8_IMPLEMENTATION_SUMMARY.md
+  s_e27e2f20824514::t_51e1bbeebde8e6 1-164
+data/rl-vault-status.json
+  s_e27e2f20824514::t_5cddbb2d5e916c 3
+scripts/register-vault-sync-task.ps1
+  s_e27e2f20824514::t_4588a5fc14cdc9 1-93
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "299e503f77bbd3ad842e351de22887b3b335f15f",
+  "prompts": {},
+  "sessions": {
+    "s_62ab85d7a21222": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4e203350-bc20-46f6-a14e-f0545f73a12a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_e27e2f20824514": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6dff16be-f826-4552-987a-e216480a567e",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_f6cb7aa404ec09": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1553d0db-a31f-4b86-9499-fa528e956eb3",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
