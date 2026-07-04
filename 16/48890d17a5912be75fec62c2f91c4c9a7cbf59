@@ -1,0 +1,19 @@
+docs/roadmaps/tickets/batch-2/index.md
+  s_4e6550832e2b51::t_786a0b5fbc589a 31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "1648890d17a5912be75fec62c2f91c4c9a7cbf59",
+  "prompts": {},
+  "sessions": {
+    "s_4e6550832e2b51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3dc4e968-5918-4920-abac-fb18557321da",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
