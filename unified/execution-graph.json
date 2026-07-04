@@ -1,0 +1,89 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-07-04T12:30:32.694Z",
+  "nodes": [
+    {
+      "id": "RL-4.0",
+      "type": "rl",
+      "phase": "RL-4.0",
+      "deliverable": "Extraction Engine v1",
+      "alignedCic": "Phase 23 (memory/exploration surface)",
+      "srcFile": "Unified Roadmap"
+    },
+    {
+      "id": "RL-4.1",
+      "type": "rl",
+      "phase": "RL-4.1",
+      "deliverable": "RedesignAgent + variants",
+      "alignedCic": "Phase 23",
+      "srcFile": "Unified Roadmap"
+    },
+    {
+      "id": "RL-4.2",
+      "type": "rl",
+      "phase": "RL-4.2",
+      "deliverable": "SiteBundle + Delivery",
+      "alignedCic": "Phase 24 (autonomous governance approvals)",
+      "srcFile": "Unified Roadmap"
+    },
+    {
+      "id": "RL-4.3",
+      "type": "rl",
+      "phase": "RL-4.3",
+      "deliverable": "ChatEditSession + DOMPatch",
+      "alignedCic": "Phase 26 (TorqueQuery shared ingestion/search)",
+      "srcFile": "Unified Roadmap"
+    },
+    {
+      "id": "RL-4.4",
+      "type": "rl",
+      "phase": "RL-4.4",
+      "deliverable": "SaaSPricingGate + EntitlementSet",
+      "alignedCic": "Governance layer (`governance/`)",
+      "srcFile": "Unified Roadmap"
+    },
+    {
+      "id": "RL-4.5",
+      "type": "rl",
+      "phase": "RL-4.5",
+      "deliverable": "OutreachAgent",
+      "alignedCic": "Phase 26",
+      "srcFile": "Unified Roadmap"
+    },
+    {
+      "id": "RL-4.6",
+      "type": "rl",
+      "phase": "RL-4.6",
+      "deliverable": "CrawlerEngine v1",
+      "alignedCic": "Ingestion pipeline (`cic-ingestion/`, `roadmap-runner/ingestion-config.json`)",
+      "srcFile": "Unified Roadmap"
+    }
+  ],
+  "edges": [
+    {
+      "from": "PHASE-23",
+      "to": "RL-4.0",
+      "label": "feeds"
+    },
+    {
+      "from": "PHASE-23",
+      "to": "RL-4.1",
+      "label": "feeds"
+    },
+    {
+      "from": "PHASE-24",
+      "to": "RL-4.2",
+      "label": "feeds"
+    },
+    {
+      "from": "PHASE-26",
+      "to": "RL-4.3",
+      "label": "feeds"
+    },
+    {
+      "from": "PHASE-26",
+      "to": "RL-4.5",
+      "label": "feeds"
+    }
+  ]
+}

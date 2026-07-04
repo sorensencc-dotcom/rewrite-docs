@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unified Execution Graph</title>
+  <style>
+    body { font-family: sans-serif; margin: 20px; background: #f5f5f5; }
+    h1, h2 { color: #333; }
+    table { border-collapse: collapse; background: white; margin: 20px 0; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+    th { background: #1976d2; color: white; }
+    tr:nth-child(even) { background: #f9f9f9; }
+    .cic-box { background: #e1f5ff; padding: 10px; margin: 10px 0; border-left: 4px solid #1976d2; }
+    .rl-box { background: #f3e5f5; padding: 10px; margin: 10px 0; border-left: 4px solid #7b1fa2; }
+    .meta { color: #666; font-size: 0.9em; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h1>Unified Roadmap Execution Graph</h1>
+  <div class="meta">Generated: 2026-07-04T12:30:32.732Z</div>
+  <p>
+    <span class="cic-box" style="display:inline-block;width:auto;">CIC Phases</span>
+    <span class="rl-box" style="display:inline-block;width:auto;">Rewrite Labs Phases</span>
+  </p>
+
+  <h2>CIC Phases (0)</h2>
+  <table>
+    <tr><th>ID</th><th>Title</th><th>Status</th></tr>
+    
+  </table>
+
+  <h2>Rewrite Labs Phases (7)</h2>
+  <table>
+    <tr><th>ID</th><th>Deliverable</th><th>Aligned CIC Phase</th></tr>
+    <tr><td>RL-4.0</td><td>Extraction Engine v1</td><td>Phase 23 (memory/exploration surface)</td></tr>
+    <tr><td>RL-4.1</td><td>RedesignAgent + variants</td><td>Phase 23</td></tr>
+    <tr><td>RL-4.2</td><td>SiteBundle + Delivery</td><td>Phase 24 (autonomous governance approvals)</td></tr>
+    <tr><td>RL-4.3</td><td>ChatEditSession + DOMPatch</td><td>Phase 26 (TorqueQuery shared ingestion/search)</td></tr>
+    <tr><td>RL-4.4</td><td>SaaSPricingGate + EntitlementSet</td><td>Governance layer (`governance/`)</td></tr>
+    <tr><td>RL-4.5</td><td>OutreachAgent</td><td>Phase 26</td></tr>
+    <tr><td>RL-4.6</td><td>CrawlerEngine v1</td><td>Ingestion pipeline (`cic-ingestion/`, `roadmap-runner/ingestion-config.json`)</td></tr>
+  </table>
+
+  <h2>Dependencies (5)</h2>
+  <table>
+    <tr><th>From</th><th>Relation</th><th>To</th></tr>
+    <tr><td>PHASE-23</td><td>feeds</td><td>RL-4.0</td></tr>
+    <tr><td>PHASE-23</td><td>feeds</td><td>RL-4.1</td></tr>
+    <tr><td>PHASE-24</td><td>feeds</td><td>RL-4.2</td></tr>
+    <tr><td>PHASE-26</td><td>feeds</td><td>RL-4.3</td></tr>
+    <tr><td>PHASE-26</td><td>feeds</td><td>RL-4.5</td></tr>
+  </table>
+
+  <h2>Export Formats</h2>
+  <ul>
+    <li><a href="execution-graph.json">execution-graph.json</a> (JSON)</li>
+    <li><a href="execution-graph.dot">execution-graph.dot</a> (Graphviz DOT)</li>
+  </ul>
+  <p><small>To visualize the DOT file: <code>dot -Tsvg execution-graph.dot -o graph.svg</code></small></p>
+</body>
+</html>

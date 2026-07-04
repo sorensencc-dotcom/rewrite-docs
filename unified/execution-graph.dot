@@ -1,0 +1,16 @@
+digraph unified_roadmap {
+  rankdir=LR;
+  node [shape=box];
+  "RL-4.0" [label="RL-4.0\nExtraction Engine v1", fillcolor="#f3e5f5", style=filled];
+  "RL-4.1" [label="RL-4.1\nRedesignAgent + variants", fillcolor="#f3e5f5", style=filled];
+  "RL-4.2" [label="RL-4.2\nSiteBundle + Delivery", fillcolor="#f3e5f5", style=filled];
+  "RL-4.3" [label="RL-4.3\nChatEditSession + DOMPatch", fillcolor="#f3e5f5", style=filled];
+  "RL-4.4" [label="RL-4.4\nSaaSPricingGate + EntitlementSet", fillcolor="#f3e5f5", style=filled];
+  "RL-4.5" [label="RL-4.5\nOutreachAgent", fillcolor="#f3e5f5", style=filled];
+  "RL-4.6" [label="RL-4.6\nCrawlerEngine v1", fillcolor="#f3e5f5", style=filled];
+  "PHASE-23" -> "RL-4.0" [label="feeds"];
+  "PHASE-23" -> "RL-4.1" [label="feeds"];
+  "PHASE-24" -> "RL-4.2" [label="feeds"];
+  "PHASE-26" -> "RL-4.3" [label="feeds"];
+  "PHASE-26" -> "RL-4.5" [label="feeds"];
+}
