@@ -15,10 +15,43 @@ const path = require('path');
 const { parseArgs } = require('util');
 const { runPhase } = require('./docker-runner');
 const { validateSuccessGates } = require('./success-gate-validator');
+const log = require('./lib/logger');
+const runnerMetrics = require('./lib/runner-metrics');
 
-const GRAPH_PATH = path.join(__dirname, '..', 'docs', 'roadmap', 'ROADMAP_DEPENDENCY_GRAPH.json');
-const STATE_PATH = path.join(__dirname, 'state-store.json');
-const PHASES_DIR = path.join(__dirname, 'phases');
+const DEFAULT_MAX_ATTEMPTS = 2;
+const DEFAULT_BACKOFF_SECONDS = 10;
+
+/**
+ * Retry policy for a phase: phase.retry.{max_attempts,backoff_seconds},
+ * then RUNNER_MAX_ATTEMPTS / RUNNER_BACKOFF_SECONDS, then defaults (2, 10).
+ * Backoff is exponential: backoff * 2^(attempt-1).
+ */
+function resolveRetryPolicy(phaseConfig) {
+  const retry = (phaseConfig && phaseConfig.retry) || {};
+  const envAttempts = parseInt(process.env.RUNNER_MAX_ATTEMPTS || '', 10);
+  const envBackoff = parseInt(process.env.RUNNER_BACKOFF_SECONDS || '', 10);
+  return {
+    maxAttempts:
+      typeof retry.max_attempts === 'number'
+        ? retry.max_attempts
+        : !Number.isNaN(envAttempts)
+          ? envAttempts
+          : DEFAULT_MAX_ATTEMPTS,
+    backoffSeconds:
+      typeof retry.backoff_seconds === 'number'
+        ? retry.backoff_seconds
+        : !Number.isNaN(envBackoff)
+          ? envBackoff
+          : DEFAULT_BACKOFF_SECONDS,
+  };
+}
+
+const GRAPH_PATH =
+  process.env.ROADMAP_GRAPH_PATH ||
+  path.join(__dirname, '..', 'TheFoundry', 'out', 'roadmap', 'ROADMAP_DEPENDENCY_GRAPH.json');
+const STATE_PATH = process.env.RUNNER_STATE_PATH || path.join(__dirname, 'state-store.json');
+const PHASES_DIR = process.env.RUNNER_PHASES_DIR || path.join(__dirname, 'phases');
+const LOGS_DIR = process.env.RUNNER_LOGS_DIR || path.join(__dirname, 'logs');
 
 function loadGraph() {
   try {
@@ -44,12 +77,63 @@ function saveState(state) {
   fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2), 'utf8');
 }
 
+function loadEnvLocal() {
+  const env = {};
+  const envPath = path.join(__dirname, '.env.local');
+  try {
+    const content = fs.readFileSync(envPath, 'utf8');
+    for (const line of content.split('\n')) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) continue;
+      const eq = trimmed.indexOf('=');
+      if (eq === -1) continue;
+      env[trimmed.slice(0, eq).trim()] = trimmed.slice(eq + 1).trim();
+    }
+  } catch {
+    // no .env.local — process.env only
+  }
+  return { ...env, ...process.env };
+}
+
+/**
+ * Resolve env placeholders in phase config strings.
+ * Handles ${VAR} / ${VAR:-default} anywhere, and the bare REGISTRY/ prefix
+ * in container refs (REGISTRY empty → plain local tag).
+ */
+function substituteEnv(value, env) {
+  if (typeof value === 'string') {
+    let out = value.replace(/\$\{(\w+)(?::-([^}]*))?\}/g, (_, name, def) =>
+      env[name] !== undefined && env[name] !== '' ? env[name] : (def || '')
+    );
+    return out;
+  }
+  if (Array.isArray(value)) {
+    return value.map((v) => substituteEnv(v, env));
+  }
+  if (value && typeof value === 'object') {
+    const out = {};
+    for (const [k, v] of Object.entries(value)) {
+      out[k] = substituteEnv(v, env);
+    }
+    return out;
+  }
+  return value;
+}
+
 function loadPhaseConfig(id) {
   const yaml = require('js-yaml');
   const filePath = path.join(PHASES_DIR, `${id}.yaml`);
   try {
     const content = fs.readFileSync(filePath, 'utf8');
-    return yaml.load(content);
+    const env = loadEnvLocal();
+    const config = substituteEnv(yaml.load(content), env);
+    if (config && typeof config.container === 'string' && config.container.startsWith('REGISTRY/')) {
+      const registry = env.REGISTRY;
+      config.container = registry
+        ? `${registry}/${config.container.slice('REGISTRY/'.length)}`
+        : config.container.slice('REGISTRY/'.length);
+    }
+    return config;
   } catch (e) {
     console.error(`[ERROR] Failed to load phase config ${id}: ${e.message}`);
     return null;
@@ -96,11 +180,11 @@ function getRunnablePhases(graph, state) {
 }
 
 async function executePhase(phaseId, graph, state) {
-  console.log(`\n[EXEC] Starting phase: ${phaseId}`);
+  log.info('exec', { phase: phaseId });
 
   const phaseConfig = loadPhaseConfig(phaseId);
   if (!phaseConfig) {
-    console.error(`[FAIL] No phase config found for ${phaseId}`);
+    log.error('fail', { phase: phaseId, reason: 'No phase config' });
     state.phases[phaseId] = {
       status: 'failed',
       lastRunAt: new Date().toISOString(),
@@ -119,49 +203,103 @@ async function executePhase(phaseId, graph, state) {
     return;
   }
 
-  const startTime = Date.now();
-  const startedAt = new Date().toISOString();
+  const { maxAttempts, backoffSeconds } = resolveRetryPolicy(phaseConfig);
+  state.phases[phaseId] = state.phases[phaseId] || { status: 'pending', runs: [] };
+  state.phases[phaseId].runs = state.phases[phaseId].runs || [];
 
-  let result;
-  try {
-    state.phases[phaseId] = state.phases[phaseId] || { status: 'pending', runs: [] };
-    state.phases[phaseId].status = 'running';
-    saveState(state);
+  let success = false;
 
-    result = await runPhase(phaseConfig);
-  } catch (e) {
-    console.error(`[ERROR] Phase execution error: ${e.message}`);
-    result = { exitCode: 1, stdout: '', stderr: e.message, metrics: {} };
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    if (attempt > 1) {
+      const delaySeconds = backoffSeconds * Math.pow(2, attempt - 2);
+      log.warn('retry', { phase: phaseId, attempt, of: maxAttempts, backoffSeconds: delaySeconds });
+      await new Promise((r) => setTimeout(r, delaySeconds * 1000));
+    }
+
+    const startTime = Date.now();
+    const startedAt = new Date().toISOString();
+
+    let result;
+    try {
+      state.phases[phaseId].status = 'running';
+      saveState(state);
+
+      result = await runPhase(phaseConfig);
+    } catch (e) {
+      log.error('exec_error', { phase: phaseId, attempt, error: e.message });
+      result = { exitCode: 1, stdout: '', stderr: e.message, metrics: {}, timedOut: false };
+    }
+
+    const finishedAt = new Date().toISOString();
+    const duration = ((Date.now() - startTime) / 1000).toFixed(1);
+
+    const { passed, gates } = await validateSuccessGates(phaseConfig, result);
+    success = passed;
+
+    log.info(success ? 'ok' : 'fail', {
+      phase: phaseId,
+      attempt,
+      exit: result.exitCode,
+      durationSeconds: parseFloat(duration),
+      timedOut: !!result.timedOut,
+      gates: success,
+    });
+
+    // Persist run artifacts: logs/<phaseId>/<timestamp>/{stdout.log,stderr.log,metrics.json,gates.json}
+    let logDir = null;
+    try {
+      const ts = startedAt.replace(/[:.]/g, '-');
+      logDir = path.join(LOGS_DIR, phaseId, ts);
+      fs.mkdirSync(logDir, { recursive: true });
+      fs.writeFileSync(path.join(logDir, 'stdout.log'), result.stdout, 'utf8');
+      fs.writeFileSync(path.join(logDir, 'stderr.log'), result.stderr, 'utf8');
+      fs.writeFileSync(path.join(logDir, 'metrics.json'), JSON.stringify(result.metrics, null, 2), 'utf8');
+      fs.writeFileSync(path.join(logDir, 'gates.json'), JSON.stringify({ success, gates }, null, 2), 'utf8');
+    } catch (e) {
+      log.warn('log_persist_failed', { phase: phaseId, error: e.message });
+      logDir = null;
+    }
+
+    state.phases[phaseId].runs.push({
+      startedAt,
+      finishedAt,
+      exitCode: result.exitCode,
+      success,
+      attempt,
+      timedOut: !!result.timedOut,
+      duration: parseFloat(duration),
+      metrics: result.metrics,
+      logDir: logDir ? path.relative(__dirname, logDir) : null,
+    });
+
+    try {
+      runnerMetrics.recordRun({
+        phaseId,
+        attempt,
+        success,
+        exitCode: result.exitCode,
+        durationSeconds: parseFloat(duration),
+        timedOut: !!result.timedOut,
+        startedAt,
+        finishedAt,
+      });
+    } catch (e) {
+      log.warn('metrics_record_failed', { phase: phaseId, error: e.message });
+    }
+
+    if (success) {
+      state.phases[phaseId].status = 'succeeded';
+      state.phases[phaseId].lastRunAt = finishedAt;
+      saveState(state);
+      break;
+    }
   }
 
-  const finishedAt = new Date().toISOString();
-  const duration = ((Date.now() - startTime) / 1000).toFixed(1);
-
-  const success = await validateSuccessGates(phaseConfig, result);
-
-  console.log(
-    `[${success ? 'OK' : 'FAIL'}] Phase ${phaseId} | exit=${result.exitCode} | duration=${duration}s | gates=${success}`
-  );
-
-  if (success) {
-    state.phases[phaseId].status = 'succeeded';
-    state.phases[phaseId].lastRunAt = finishedAt;
-  } else {
+  if (!success) {
     state.phases[phaseId].status = 'failed';
     markDependentsBlocked(phaseId, graph, state);
+    saveState(state);
   }
-
-  state.phases[phaseId].runs = state.phases[phaseId].runs || [];
-  state.phases[phaseId].runs.push({
-    startedAt,
-    finishedAt,
-    exitCode: result.exitCode,
-    success,
-    duration: parseFloat(duration),
-    metrics: result.metrics,
-  });
-
-  saveState(state);
 }
 
 function markDependentsBlocked(failedPhaseId, graph, state) {
@@ -220,9 +358,11 @@ async function main() {
   console.log(`\n[END] Scheduler completed at ${new Date().toISOString()}`);
 }
 
-main().catch((e) => {
-  console.error(`[FATAL] ${e.message}`);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch((e) => {
+    console.error(`[FATAL] ${e.message}`);
+    process.exit(1);
+  });
+}
 
-module.exports = { main };
+module.exports = { main, loadPhaseConfig, loadGraph, substituteEnv, executePhase, resolveRetryPolicy };

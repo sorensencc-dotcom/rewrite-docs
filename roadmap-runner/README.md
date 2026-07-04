@@ -175,6 +175,11 @@ Loaded from `.env.local` (created by `make setup`):
 | `OUTREACH_API_KEY` | RL-4.5 outreach | `key_xxx` |
 | `QDRANT_URL` | Vector DB (Phase 26) | `http://qdrant:6333` |
 | `LOG_LEVEL` | Scheduler verbosity | `info`, `debug`, `warn` |
+| `RUNNER_PHASE_TIMEOUT_SECONDS` | Per-phase timeout (0 disables) | `1800` (default) |
+| `RUNNER_MAX_ATTEMPTS` | Attempts per phase incl. retries | `2` (default) |
+| `RUNNER_BACKOFF_SECONDS` | Base retry backoff (exponential) | `10` (default) |
+| `RUNNER_LOG_FILE` | Structured JSONL log path | `logs/runner.jsonl` (default) |
+| `RUNNER_METRICS_DIR` | Runner metrics output dir | `runner-metrics/` (default) |
 
 ---
 
@@ -209,10 +214,18 @@ Tracks phase execution history:
 ```
 
 ### Logs
-Streamed to stdout in real-time + stored in Docker logs.
+Streamed to stdout in real-time + stored in Docker logs. Structured JSON lines
+(one event per line: `ts`, `level`, `event`, fields) appended to `logs/runner.jsonl`.
 
 ### Metrics
 Pushed to Prometheus Push Gateway (for integration with observability dashboard).
+
+### runner-metrics/
+
+Runner-level execution metrics:
+
+- `runs.jsonl` — one event per phase attempt (`phaseId`, `attempt`, `success`, `exitCode`, `durationSeconds`, `timedOut`)
+- `summary.json` — per-phase aggregates (runs, successes, failures, timeouts, retries, avg duration)
 
 ---
 
@@ -229,7 +242,20 @@ Pushed to Prometheus Push Gateway (for integration with observability dashboard)
 
 ## Failure Handling
 
-**Retry Logic:** 1 retry with 60s backoff (locked defaults).
+**Retry Logic:** 2 attempts per phase with 10s exponential backoff by default.
+Override per phase in `phase.yaml`:
+
+```yaml
+retry:
+  max_attempts: 3
+  backoff_seconds: 30
+```
+
+Or globally via `RUNNER_MAX_ATTEMPTS` / `RUNNER_BACKOFF_SECONDS`.
+
+**Timeouts:** Each phase container is killed after `timeout_seconds` (phase.yaml)
+or `RUNNER_PHASE_TIMEOUT_SECONDS` (default 1800s). Timed-out runs are recorded
+with `timedOut: true` and count toward retry attempts.
 
 **Blocked Phases:** If a phase fails, all dependents are marked as `blocked` until you manually reset or rerun the phase.
 

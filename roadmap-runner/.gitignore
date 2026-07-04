@@ -3,6 +3,7 @@ state-store.json
 state-store.json.backup
 logs/
 *.log
+runner-metrics/
 
 # Environment
 .env.local
