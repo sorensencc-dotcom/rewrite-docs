@@ -16,19 +16,19 @@ class FakeQdrantClient extends QdrantClient {
     this.#results = results;
   }
 
-  override async query(_vector: number[], limit: number) {
+  async query(_vector: number[], limit: number) {
     return this.#results.slice(0, limit);
   }
 
-  override collectionName() {
+  collectionName() {
     return this.#name;
   }
 
-  override async health() {
+  async health() {
     return true;
   }
 
-  override async stats() {
+  async stats() {
     return { points_count: this.#results.length, indexing: "ready" };
   }
 }
