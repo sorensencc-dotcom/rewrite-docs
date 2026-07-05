@@ -1,0 +1,27 @@
+.gitignore
+  s_38d1f14026a375::t_0107937328f163 65-67
+cic-ingestion/.gitignore
+  s_38d1f14026a375::t_1b76c1962ac2f8 1-4
+cic-ingestion/tsconfig.json
+  s_38d1f14026a375::t_ee08a9f531a07c 1-29
+cic-ingestion/package.json
+  s_38d1f14026a375::t_983cf5edded3e6 1-21
+toolforge
+  s_38d1f14026a375::t_298e714320f7cf 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "af8c2f76e1d6b312001839bc43fb21a9e695896c",
+  "prompts": {},
+  "sessions": {
+    "s_38d1f14026a375": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "007a8e6d-b554-4ca7-b28a-8ec8c6d80cb4",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
