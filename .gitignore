@@ -62,6 +62,9 @@ charlie-deep-research/
 !/cic/src/**/*.ts
 !/cic/src/**/*.test.ts
 /cic-ingestion/
+!cic-ingestion/tsconfig.json
+!cic-ingestion/package.json
+!cic-ingestion/.gitignore
 !cic-ingestion/src/drift/driftEngine.ts
 
 # Documentation directories (tracked)
