@@ -1,6 +1,6 @@
-import { ChatPayload, ChatResult, ResponseValidator } from "../../core/modelRouter.js";
-import { ModelSpec } from "../../core/modelSpec.js";
-import { MockProvider } from "../mocks/mockProvider.js";
+import { ChatPayload, ChatResult, ResponseValidator } from "../../core/modelRouter";
+import { ModelSpec } from "../../core/modelSpec";
+import { MockProvider } from "../mocks/mockProvider";
 
 export interface FireDrillResult {
   name: string;

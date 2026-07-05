@@ -1,5 +1,5 @@
-import { ModelSpec } from "../../core/modelSpec.js";
-import { ChatPayload, ChatResult, Provider } from "../../core/modelRouter.js";
+import { ModelSpec } from "../../core/modelSpec";
+import { ChatPayload, ChatResult, Provider } from "../../core/modelRouter";
 
 export type MockFailureMode =
   | "500"
