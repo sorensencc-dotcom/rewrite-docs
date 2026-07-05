@@ -1,0 +1,57 @@
+scripts/locate-ts-rot.sh
+  s_edd631ff5518e4::t_7ce8c81ef85ef9 1-22
+src/autonomy/services/MemoryService.ts
+  s_edd631ff5518e4::t_8d5999c5375be8 297
+  s_edd631ff5518e4::t_536c42daed7d41 315
+src/interfaces/phase-26-stubs.ts
+  s_edd631ff5518e4::t_a2d3e8011f206a 1-97
+src/autonomy/__tests__/e2e-test-harness.ts
+  s_edd631ff5518e4::t_89e24c8995fefb 273
+  s_edd631ff5518e4::t_79ad41f52138af 349
+  s_edd631ff5518e4::t_7cb39094b8ed81 335
+  s_edd631ff5518e4::t_956866473ea857 415
+  s_edd631ff5518e4::t_04ab0a6d1545bf 320
+  s_edd631ff5518e4::t_da2d6a2a448989 293
+package.json
+  s_1654a121839170::t_774f557acd9209 44,74-77,80
+src/resilience/hardeningOrchestrator.d.ts.map
+  s_c3b9df2a569410::t_6174f9d4fcd079 1
+src/resilience/hardeningOrchestrator.js
+  s_c3b9df2a569410::t_2788b7d4211746 69-71
+src/resilience/hardeningOrchestrator.js.map
+  s_c3b9df2a569410::t_015ddb69913512 1
+tsconfig.json
+  s_edd631ff5518e4::t_e7e7b3ff24c51c 21-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "ad4bb24710013e3ca076791e91cfed18f9bcc64b",
+  "prompts": {},
+  "sessions": {
+    "s_1654a121839170": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d8f4a923-b276-4326-b1ef-3173066dd673",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_c3b9df2a569410": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e3c6cf21-d702-4d09-8a39-0e14a78ebebc",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_edd631ff5518e4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6e5614b6-8cbc-45a7-bc36-e7370292bfa7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
