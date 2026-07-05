@@ -1,0 +1,54 @@
+src/server/adapterGatewayAPI-cloud-additions.ts
+  s_1654a121839170::t_2f3c3dff9e6081 43
+  s_1654a121839170::t_28d761a6651a7e 76
+src/resilience/hardeningOrchestrator.ts
+  s_1654a121839170::t_9ef8ed4e3d0d54 89-90,92-93
+.storybook/main.ts
+  s_1654a121839170::t_dbee744e3c6bf5 1
+src/adapter-gateway-cache/cache-engine/l1-memory-cache.ts
+  s_1654a121839170::t_513959b4f6a727 32-36
+src/autonomy/AutonomyAPIServer.ts
+  s_1654a121839170::t_b81e6dced1e506 162,184
+src/autonomy/firedrills/scenario-b-burnrate-spike.ts
+  s_c3b9df2a569410::t_fa3c5506a6d3d2 59-60
+src/autonomy/firedrills/wsb-runner.ts
+  s_1654a121839170::t_46bf51ee5722fe 56,64,72,80
+src/build-system/prom-metrics.ts
+  s_1654a121839170::t_4e845297e8b633 72,79,86,93,100,107
+src/cic-runtime/cic-execution-harness-v2.ts
+  s_1654a121839170::t_1dbbf132b50928 70
+src/cic-runtime/cic-execution-harness.ts
+  s_1654a121839170::t_257758639a3e5d 65-68,180
+src/extractors/browser/CloakBrowserAdapter.WarmPool.ts
+  s_1654a121839170::t_884b8f77fcfac0 44,56
+src/maal/router/route-with-sandbox.ts
+  s_1654a121839170::t_f8d007c1e93e68 123-124
+src/slo-controller/enforcement-integration.ts
+  s_1654a121839170::t_ad94bbc333b2a8 52-53
+src/stories/cic/Grid.stories.tsx
+  s_1654a121839170::t_432dad68c804af 132
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "4f5ecf29565ebdade573f460012242408171fa95",
+  "prompts": {},
+  "sessions": {
+    "s_1654a121839170": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d8f4a923-b276-4326-b1ef-3173066dd673",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_c3b9df2a569410": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e3c6cf21-d702-4d09-8a39-0e14a78ebebc",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
