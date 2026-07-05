@@ -1,0 +1,1 @@
+{"version":3,"file":"latency-slo-manager.d.ts","sourceRoot":"","sources":["latency-slo-manager.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,SAAS;IACxB,QAAQ,EAAE,OAAO,CAAC;IAClB,YAAY,EAAE,MAAM,CAAC;CACtB;AAED,qBAAa,iBAAiB;IAChB,OAAO,CAAC,QAAQ;gBAAR,QAAQ,EAAE,MAAM;IAEpC,OAAO,CAAC,SAAS,EAAE,MAAM,GAAG,SAAS;CAMtC"}

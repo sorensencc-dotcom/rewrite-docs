@@ -1,0 +1,1 @@
+{"version":3,"file":"auditor.d.ts","sourceRoot":"","sources":["auditor.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAE,aAAa,EAAE,MAAM,6BAA6B,CAAC;AAEzE,qBAAa,YAAa,YAAW,aAAa;IAChD,IAAI,SAAa;IAEX,OAAO,CAAC,QAAQ,EAAE,WAAW,EAAE,GAAG,OAAO,CAAC,WAAW,EAAE,CAAC;CAI/D"}

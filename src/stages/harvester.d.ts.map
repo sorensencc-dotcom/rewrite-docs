@@ -1,0 +1,1 @@
+{"version":3,"file":"harvester.d.ts","sourceRoot":"","sources":["harvester.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAE,aAAa,EAAE,MAAM,6BAA6B,CAAC;AAEzE,qBAAa,cAAe,YAAW,aAAa;IAClD,IAAI,SAAe;IAEb,OAAO,CAAC,QAAQ,EAAE,WAAW,EAAE,GAAG,OAAO,CAAC,WAAW,EAAE,CAAC;CAI/D"}

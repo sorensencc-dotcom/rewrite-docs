@@ -1,0 +1,56 @@
+import { TrueCodeAdapter } from './adapters/TrueCodeAdapter.js';
+import { GitNexusAdapter } from './adapters/GitNexusAdapter.js';
+import { GraphifyAdapter } from './adapters/GraphifyAdapter.js';
+import { Phase8Adapter } from './adapters/Phase8Adapter.js';
+export class GraphRouter {
+    static async route(policy, req) {
+        const context = {};
+        const engines = [...policy.require, ...(policy.optional || [])];
+        const repo = req.repo || 'default-repo';
+        const files = req.files || [];
+        const service = req.service || 'default-service';
+        const promises = [];
+        if (engines.includes('TrueCode')) {
+            promises.push((async () => {
+                if (req.files) {
+                    context.code = await TrueCodeAdapter.getStructuralGraph(repo, files);
+                }
+                else {
+                    context.code = await TrueCodeAdapter.getServiceStructure(repo, service);
+                }
+            })());
+        }
+        if (engines.includes('GitNexus')) {
+            promises.push((async () => {
+                if (req.files) {
+                    const blastRadius = await GitNexusAdapter.getBlastRadius(repo, files, 30);
+                    context.history = { commits: [], authors: [], blastRadius };
+                }
+                else {
+                    context.history = await GitNexusAdapter.getServiceHistory(repo, service);
+                }
+            })());
+        }
+        if (engines.includes('Graphify')) {
+            promises.push((async () => {
+                if (policy.name === 'CIC.Discovery') {
+                    context.knowledge = await GraphifyAdapter.getDiscoveryOverview(service);
+                }
+                else if (policy.name === 'CIC.Drift') {
+                    context.knowledge = await GraphifyAdapter.getDocumentedArchitecture(service);
+                }
+                else {
+                    context.knowledge = await GraphifyAdapter.getDesignIntent(service);
+                }
+            })());
+        }
+        if (engines.includes('Phase8')) {
+            promises.push((async () => {
+                context.cost = await Phase8Adapter.getCostOptimizationSignals(service);
+            })());
+        }
+        await Promise.all(promises);
+        return context;
+    }
+}
+//# sourceMappingURL=GraphRouter.js.map

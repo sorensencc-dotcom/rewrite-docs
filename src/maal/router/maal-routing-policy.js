@@ -1,0 +1,104 @@
+// src/maal/router/maal-routing-policy.ts
+// semver: 0.1.0
+// date: 2026-06-29
+// GUARD: Cloud dispatch isolation
+// Cloud requests must be handled at gateway layer, NOT in MAAL offline router
+function enforceCloudDispatchIsolation(request) {
+    if (request?.routing?.allowCloud) {
+        throw new Error("Cloud dispatch only at gateway layer, not in MAAL router. " +
+            "Request routing.allowCloud=true must be handled before reaching offline routing.");
+    }
+}
+const DRIFT_THRESHOLD = 0.7;
+function hasTag(request, tag) {
+    return (request.context?.tags ?? []).includes(tag);
+}
+function toolsInclude(request, type) {
+    return (request.tools ?? []).some(t => t.name === type || t.type === type);
+}
+function prefer(candidates, reason, current) {
+    const set = new Set(current);
+    for (const c of candidates) {
+        if (!set.has(c)) {
+            current.push(c);
+            set.add(c);
+        }
+    }
+    return current;
+}
+function avoid(backend, reason, current) {
+    return current.filter(b => b !== backend);
+}
+export function route(request, cic) {
+    // GUARD: Reject cloud dispatch requests (must be handled at gateway layer)
+    enforceCloudDispatchIsolation(request);
+    const { routing, context, tools } = request;
+    const slo = routing?.slo ?? {};
+    let order = [];
+    // 1. Offline-required
+    if (slo.offline_required) {
+        order = prefer(["ollama", "localai", "gpt4all", "llamafile", "mock"], "offline-required", order);
+    }
+    // 2. Cost = 0 (offline-first)
+    if (slo.cost_ceiling === 0) {
+        order = prefer(["ollama", "gpt4all", "koboldcpp", "llamafile", "mock"], "cost-zero", order);
+    }
+    // 3. Low-latency
+    if (typeof slo.latency_ms === "number" && slo.latency_ms < 1000) {
+        order = prefer(["ollama", "localai", "mock"], "low-latency", order);
+    }
+    // 4. Long-context
+    if (typeof slo.min_context_length === "number" && slo.min_context_length > 8000) {
+        order = prefer(["koboldcpp", "ollama"], "long-context", order);
+    }
+    // 5. RAG-required
+    if (toolsInclude(request, "rag")) {
+        order = prefer(["anythingllm"], "rag-required", order);
+        order = prefer(["ollama", "mock"], "rag-generation", order);
+    }
+    // 6. Deterministic replay
+    if (context && hasTag(request, "deterministic-replay")) {
+        order = prefer(["llamafile", "mock"], "deterministic-replay", order);
+    }
+    // 7. Sandbox mode
+    if (context && hasTag(request, "sandbox")) {
+        order = prefer(["ollama", "llamafile", "mock"], "sandbox-mode", order);
+    }
+    // 8. UX source
+    if (context?.source) {
+        switch (context.source) {
+            case "lm-studio":
+                order = prefer(["ollama", "mock"], "ux-lm-studio", order);
+                break;
+            case "jan":
+                order = prefer(["localai", "mock"], "ux-jan", order);
+                break;
+            case "msty":
+                order = prefer(["gpt4all", "mock"], "ux-msty", order);
+                break;
+            case "open-webui":
+                order = prefer(["ollama", "mock"], "ux-open-webui", order);
+                break;
+            default:
+                break;
+        }
+    }
+    // 9. Default safety net if nothing selected yet
+    if (order.length === 0) {
+        order = ["ollama", "localai", "gpt4all", "koboldcpp", "llamafile", "anythingllm", "mock"];
+    }
+    // 10. Drift-aware pruning (CIC feedback)
+    for (const backend of [...order]) {
+        const driftScore = cic.drift[backend] ?? 0;
+        if (driftScore >= DRIFT_THRESHOLD) {
+            order = avoid(backend, "drift-detected", order);
+        }
+    }
+    // 11. Final selection
+    if (order.length === 0) {
+        return Object.entries(cic.drift)
+            .sort(([, a], [, b]) => a - b)[0]?.[0] ?? "mock";
+    }
+    return order[0];
+}
+//# sourceMappingURL=maal-routing-policy.js.map

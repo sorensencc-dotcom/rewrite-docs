@@ -1,0 +1,1 @@
+{"version":3,"file":"TrueCodeAdapter.d.ts","sourceRoot":"","sources":["TrueCodeAdapter.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,oBAAoB,CAAC;AAIpD,qBAAa,eAAe;WACb,kBAAkB,CAAC,IAAI,EAAE,MAAM,EAAE,KAAK,CAAC,EAAE,MAAM,EAAE,GAAG,OAAO,CAAC,cAAc,CAAC;WAS3E,mBAAmB,CAAC,IAAI,EAAE,MAAM,EAAE,OAAO,EAAE,MAAM,GAAG,OAAO,CAAC,cAAc,CAAC;CAQzF"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"rollback-timing-harness.d.ts","sourceRoot":"","sources":["rollback-timing-harness.ts"],"names":[],"mappings":"AAGA,MAAM,WAAW,oBAAoB;IACnC,cAAc,EAAE,MAAM,CAAC;IACvB,iBAAiB,EAAE,MAAM,CAAC;IAC1B,OAAO,EAAE,MAAM,CAAC;IAChB,YAAY,EAAE,OAAO,CAAC;CACvB;AAID,wBAAsB,2BAA2B,CAC/C,cAAc,EAAE,GAAG,EACnB,UAAU,EAAE,MAAM,OAAO,CAAC,IAAI,CAAC,GAC9B,OAAO,CAAC,oBAAoB,CAAC,CAoC/B"}

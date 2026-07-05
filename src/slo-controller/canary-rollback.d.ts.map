@@ -1,0 +1,1 @@
+{"version":3,"file":"canary-rollback.d.ts","sourceRoot":"","sources":["canary-rollback.ts"],"names":[],"mappings":"AAGA,MAAM,WAAW,cAAc;IAC7B,OAAO,EAAE,OAAO,CAAC;IACjB,eAAe,EAAE,MAAM,GAAG,IAAI,CAAC;IAC/B,UAAU,EAAE,MAAM,CAAC;IACnB,YAAY,EAAE,MAAM,CAAC;IACrB,KAAK,CAAC,EAAE,MAAM,CAAC;CAChB;AAED,wBAAsB,qBAAqB,CAAC,UAAU,EAAE,MAAM,GAAG,OAAO,CAAC,cAAc,CAAC,CAuDvF"}

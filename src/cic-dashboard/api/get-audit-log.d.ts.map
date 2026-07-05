@@ -1,0 +1,1 @@
+{"version":3,"file":"get-audit-log.d.ts","sourceRoot":"","sources":["get-audit-log.ts"],"names":[],"mappings":"AAIA;;GAEG;AACH,wBAAsB,WAAW,CAAC,OAAO,EAAE;IACzC,OAAO,CAAC,EAAE,MAAM,CAAC;IACjB,WAAW,CAAC,EAAE,MAAM,CAAC;IACrB,QAAQ,CAAC,EAAE,MAAM,CAAC;IAClB,QAAQ,CAAC,EAAE,MAAM,CAAC;CACnB,gBAgDA"}

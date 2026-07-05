@@ -2,7 +2,7 @@ export default {
   preset: "ts-jest",
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
-  roots: ["<rootDir>/src", "<rootDir>/cic-runtime", "<rootDir>/cic-ingestion", "<rootDir>/cic-ui", "<rootDir>/cic-os"],
+  roots: ["<rootDir>/src", "<rootDir>/cic", "<rootDir>/cic-runtime", "<rootDir>/cic-ingestion", "<rootDir>/cic-ui", "<rootDir>/cic-os"],
   testMatch: ["**/*.test.ts", "**/*.test.tsx"],
   testPathIgnorePatterns: [
     "/cic-runtime/integration\\.test\\.ts",

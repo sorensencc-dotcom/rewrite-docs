@@ -1,0 +1,1 @@
+{"version":3,"file":"BrowserNavigateAdapter.d.ts","sourceRoot":"","sources":["BrowserNavigateAdapter.ts"],"names":[],"mappings":"AAAA;;;GAGG;AAEH,OAAO,EAA0B,eAAe,EAAE,MAAM,wBAAwB,CAAC;AAEjF,OAAO,EAAwB,cAAc,EAAE,MAAM,uBAAuB,CAAC;AAG7E,qBAAa,sBAAsB;IAC3B,GAAG,CAAC,GAAG,EAAE,MAAM,EAAE,OAAO,GAAE,MAAc,GAAG,OAAO,CAAC,eAAe,CAAC,cAAc,CAAC,CAAC;CA+D1F"}

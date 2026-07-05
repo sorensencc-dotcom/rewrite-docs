@@ -178,4 +178,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     });
 }
 
-export { HarnessReport };
+export type { HarnessReport };

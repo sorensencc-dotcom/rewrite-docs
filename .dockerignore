@@ -8,6 +8,7 @@ coverage
 .pytest_cache
 __pycache__
 *.pyc
+rewrite-mcp/projects/*/node_modules
 
 # Temporary & transient files
 .venv
@@ -15,6 +16,7 @@ __pycache__
 venv
 logs
 data/temp
+charlie-deep-research
 
 # IDE & workspace metadata
 .ijfw

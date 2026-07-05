@@ -1,0 +1,1 @@
+{"version":3,"file":"GraphifyAdapter.d.ts","sourceRoot":"","sources":["GraphifyAdapter.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,mBAAmB,EAAE,MAAM,oBAAoB,CAAC;AAIzD,qBAAa,eAAe;WACb,eAAe,CAAC,OAAO,EAAE,MAAM,GAAG,OAAO,CAAC,mBAAmB,CAAC;WAU9D,yBAAyB,CAAC,OAAO,EAAE,MAAM,GAAG,OAAO,CAAC,mBAAmB,CAAC;WAUxE,oBAAoB,CAAC,OAAO,EAAE,MAAM,GAAG,OAAO,CAAC,mBAAmB,CAAC;CAQjF"}

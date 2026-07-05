@@ -1,0 +1,1 @@
+{"version":3,"file":"GpuAmortization.d.ts","sourceRoot":"","sources":["GpuAmortization.ts"],"names":[],"mappings":"AAAA;;;GAGG;AAEH,MAAM,WAAW,aAAa;IAC5B,aAAa,EAAE,MAAM,CAAC;IACtB,YAAY,EAAE,MAAM,CAAC;IACrB,eAAe,EAAE,MAAM,CAAC;CACzB;AAoBD,wBAAgB,eAAe,CAAC,QAAQ,SAAS,GAAG,MAAM,CAYzD"}

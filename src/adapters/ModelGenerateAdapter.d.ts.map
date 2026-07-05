@@ -1,0 +1,1 @@
+{"version":3,"file":"ModelGenerateAdapter.d.ts","sourceRoot":"","sources":["ModelGenerateAdapter.ts"],"names":[],"mappings":"AAAA;;;GAGG;AAEH,OAAO,EAA0B,eAAe,EAAE,MAAM,wBAAwB,CAAC;AAEjF,OAAO,EAA6B,mBAAmB,EAAE,MAAM,uBAAuB,CAAC;AAGvF,qBAAa,oBAAoB;IACzB,GAAG,CACP,MAAM,EAAE,MAAM,EACd,OAAO,CAAC,EAAE;QAAE,UAAU,CAAC,EAAE,OAAO,CAAA;KAAE,GACjC,OAAO,CAAC,eAAe,CAAC,mBAAmB,CAAC,CAAC;CAqFjD"}

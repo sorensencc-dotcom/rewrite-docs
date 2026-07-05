@@ -1,0 +1,1 @@
+{"version":3,"file":"embedding-model-onnx.d.ts","sourceRoot":"","sources":["embedding-model-onnx.ts"],"names":[],"mappings":"AAKA,qBAAa,kBAAkB;IAC7B,OAAO,CAAC,OAAO,CAAiC;IAChD,OAAO,CAAC,QAAQ,CAAqB;IAE/B,IAAI,CAAC,IAAI,CAAC,EAAE,MAAM;IAwBlB,KAAK,CAAC,IAAI,EAAE,MAAM,EAAE,IAAI,CAAC,EAAE,MAAM,GAAG,OAAO,CAAC,MAAM,EAAE,CAAC;CAO5D"}
