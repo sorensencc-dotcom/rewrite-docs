@@ -86,7 +86,7 @@ export class CanaryStateMachine {
       [proposalId]
     );
 
-    return rows.map((row) => ({
+    return rows.map((row: any) => ({
       proposalId,
       fromState: null, // Reconstructed from sequence
       toState: row.state as CanaryGovernanceState,

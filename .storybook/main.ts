@@ -15,7 +15,7 @@ const config: StorybookConfig = {
     check: false,
     checkOptions: {},
   },
-  webpackFinal: async (config) => {
+  webpackFinal: async (config: any) => {
     config.module = config.module || { rules: [] };
     config.module.rules = config.module.rules || [];
 

@@ -15,6 +15,7 @@ type Story = StoryObj<typeof meta>;
 
 // Golden path
 export const Default: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Panel>Panel content</Panel>
@@ -23,6 +24,7 @@ export const Default: Story = {
 };
 
 export const WithHeader: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Panel header="Panel Title">Content goes here</Panel>
@@ -31,6 +33,7 @@ export const WithHeader: Story = {
 };
 
 export const WithFooter: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Panel footer="Footer text">Main content</Panel>
@@ -39,6 +42,7 @@ export const WithFooter: Story = {
 };
 
 export const WithHeaderAndFooter: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Panel header="Title" footer="Footer">
@@ -50,6 +54,7 @@ export const WithHeaderAndFooter: Story = {
 
 // Edge cases
 export const NoPadding: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Panel padding="none">No padding</Panel>
@@ -58,6 +63,7 @@ export const NoPadding: Story = {
 };
 
 export const NoElevation: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Panel elevation="none">Flat panel</Panel>
@@ -66,6 +72,7 @@ export const NoElevation: Story = {
 };
 
 export const Loading: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Panel loading>Content loading...</Panel>
@@ -74,6 +81,7 @@ export const Loading: Story = {
 };
 
 export const LongContent: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Panel header="Long Content" style={{ maxWidth: '400px' }}>
@@ -87,6 +95,7 @@ export const LongContent: Story = {
 
 // Density testing
 export const Density: Story = {
+  args: {},
   render: () => (
     <DensityWrapper>
       <Panel>Density test</Panel>
@@ -96,6 +105,7 @@ export const Density: Story = {
 
 // Responsive test wrapper
 export const ResponsiveTest: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <div style={{ width: '100%', maxWidth: '600px' }}>

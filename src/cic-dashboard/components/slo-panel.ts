@@ -13,7 +13,7 @@ export async function SLOPanel(modelId?: string) {
       <h2>SLO Violation Rates</h2>
       ${stats
         .map(
-          row => `
+          (row: any) => `
         <div class="slo-row">
           <h3>${row.sandbox_tier}</h3>
           <p>Violation Rate: ${(row.slo_violation_rate * 100).toFixed(2)}%</p>

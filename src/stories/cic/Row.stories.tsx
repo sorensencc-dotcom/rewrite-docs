@@ -15,6 +15,7 @@ type Story = StoryObj<typeof meta>;
 
 // Golden path
 export const Default: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Row>Row content</Row>
@@ -23,6 +24,7 @@ export const Default: Story = {
 };
 
 export const Selected: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Row selected>Selected row</Row>
@@ -31,6 +33,7 @@ export const Selected: Story = {
 };
 
 export const MultipleCells: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Row>
@@ -44,6 +47,7 @@ export const MultipleCells: Story = {
 
 // Edge cases
 export const LongContent: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Row style={{ maxWidth: '400px' }}>
@@ -55,6 +59,7 @@ export const LongContent: Story = {
 };
 
 export const Interactive: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Row onClick={() => {}} className="hover:bg-gray-100 cursor-pointer">
@@ -65,6 +70,7 @@ export const Interactive: Story = {
 };
 
 export const SelectedWithContent: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Row selected>
@@ -76,6 +82,7 @@ export const SelectedWithContent: Story = {
 };
 
 export const MinimalContent: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Row>X</Row>
@@ -85,6 +92,7 @@ export const MinimalContent: Story = {
 
 // Density testing
 export const Density: Story = {
+  args: {},
   render: () => (
     <DensityWrapper>
       <Row>Density test</Row>
@@ -94,6 +102,7 @@ export const Density: Story = {
 
 // Series of rows
 export const RowSeries: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <div>
@@ -108,6 +117,7 @@ export const RowSeries: Story = {
 
 // Keyboard interaction
 export const KeyboardFocusable: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Row tabIndex={0}>

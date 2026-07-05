@@ -15,6 +15,7 @@ type Story = StoryObj<typeof meta>;
 
 // Golden path
 export const Default: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Card>Default card</Card>
@@ -23,6 +24,7 @@ export const Default: Story = {
 };
 
 export const Subtle: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Card variant="subtle">Subtle card</Card>
@@ -31,6 +33,7 @@ export const Subtle: Story = {
 };
 
 export const WithTitle: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Card>
@@ -43,6 +46,7 @@ export const WithTitle: Story = {
 
 // Edge cases
 export const Interactive: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Card className="hover:shadow-lg cursor-pointer">
@@ -55,6 +59,7 @@ export const Interactive: Story = {
 };
 
 export const MultipleChildren: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Card>
@@ -67,6 +72,7 @@ export const MultipleChildren: Story = {
 };
 
 export const NestedContent: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Card>
@@ -79,6 +85,7 @@ export const NestedContent: Story = {
 };
 
 export const LongText: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Card style={{ maxWidth: '300px' }}>
@@ -91,6 +98,7 @@ export const LongText: Story = {
 
 // Density testing
 export const Density: Story = {
+  args: {},
   render: () => (
     <DensityWrapper>
       <Card>Density test</Card>
@@ -100,6 +108,7 @@ export const Density: Story = {
 
 // Dark mode variations
 export const DefaultDark: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Card>Default in dark mode</Card>
@@ -108,6 +117,7 @@ export const DefaultDark: Story = {
 };
 
 export const SubtleDark: Story = {
+  args: {},
   render: () => (
     <DarkModeWrapper>
       <Card variant="subtle">Subtle in dark mode</Card>

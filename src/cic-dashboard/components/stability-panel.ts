@@ -9,7 +9,7 @@ import { getStabilityStats } from "../api/get-stability-stats";
 export async function StabilityPanel(modelId?: string) {
   const stats = await getStabilityStats(modelId);
 
-  const rows = stats.map(row => {
+  const rows = stats.map((row: any) => {
     const normalizedDrift = Math.min(row.avg_drift_score / 2, 1); // drift ∈ [0,2]
     const stabilityScore =
       (1 - row.slo_violation_rate) * (1 - normalizedDrift);
@@ -27,7 +27,7 @@ export async function StabilityPanel(modelId?: string) {
       <h2>Stability Score</h2>
       ${rows
         .map(
-          r => `
+          (r: any) => `
         <div class="stability-row">
           <h3>${r.tier}</h3>
           <p>Stability Score: ${r.stabilityScore.toFixed(3)}</p>
