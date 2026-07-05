@@ -27,6 +27,52 @@ Make CIC economically intelligent about memory. Reuse past reasoning when safe, 
 
 ## Infrastructure & Compliance
 
+### Operator Image Build Verification (PHASE-26)
+
+**Status:** ⏳ VERIFICATION PENDING (scheduled run 2026-07-05 02:00 UTC)
+
+Autonomous deterministic Docker build system (harness-v3, onnx-sidecar) deployed. First scheduled run tomorrow. Critical path items before trusting production:
+
+- [ ] **Monitor first scheduled run (2026-07-05 after 02:00 UTC)**
+  - Check log: `C:\dev\tasks\operator-image-build-*.log`
+  - Verify task actually executed (file exists and has timestamps)
+  - Review for success or failure status + error messages
+
+- [ ] **Verify Docker/npm accessible in Task Scheduler context**
+  - Manually test: `docker --version` in scheduled task context
+  - Verify npm can install packages (check lock file, registry access)
+  - Test containerd for import action (if used)
+
+- [ ] **Verify registry.internal:5000 reachable from Task Scheduler user**
+  - `curl -s registry.internal:5000/v2/_catalog` must work
+  - If VPN or auth required, ensure credentials available to unattended context
+  - Test push/pull permissions (not just connectivity)
+
+- [ ] **Verify Slack webhook configured**
+  - Confirm `$env:SLACK_WEBHOOK` set in Task Scheduler environment
+  - Manual test: `Invoke-RestMethod` with test payload
+  - Verify notifications actually send (or adjust silent failure handling)
+
+- [ ] **Investigate submodule state changes**
+  - Check dirty: `castironforge/cic-ingestion` and `toolforge`
+  - Determine if real work or artifact artifacts
+  - Commit or discard before production deploy
+
+- [ ] **Build actual Docker images for end-to-end test**
+  - Create harness-v3 and onnx-sidecar images with correct Dockerfiles
+  - Test full pipeline: build → tag → push → verify → import
+  - Verify SOURCE_DATE_EPOCH reproducibility (layer hashes match)
+
+**Docs:**
+
+- C:\dev\docs\operations\autonomous-image-builds.md — Scheduling reference
+- C:\dev\docs\operations\environment-optimization.md — Filesystem troubleshooting
+- C:\dev\toolforge\skills\operator-image-build\docs\USAGE.md — CLI reference
+
+**Risk:** Highest risk is registry unreachable or docker/npm missing in unattended context. Task will retry 3x over 15min, then fail silently unless logs checked.
+
+---
+
 ### NVIDIA API Deprecation (Sep 30, 2026 Deadline)
 
 **Status:** ✅ COMPLIANT — Audit complete, validation tests ready, monitoring in place
