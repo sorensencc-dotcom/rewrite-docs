@@ -1,0 +1,143 @@
+mkdocs.yml
+  s_24531e0f82e936::t_9c682f8104dd66 204
+toolforge
+  s_24531e0f82e936::t_7ca15f3e582fc2 1
+cic-ingestion/src/core/maal/MAALRouter.ts
+  s_73dd6234326c0c::t_80e0d05ddcd808 1-9
+cic-ingestion/src/core/maal/codesign/Proposal.ts
+  s_38d1f14026a375::t_b7b17fa45f6e90 1-2,4
+cic-ingestion/src/learning/policy/PolicyNetwork.ts
+  s_c3b9df2a569410::t_9b180dbcbe59ef 1-3
+cic-ingestion/src/learning/reward/RouteOutcome.ts
+  s_c3b9df2a569410::t_51c145ce4ebf39 1-4
+cic-ingestion/src/learning/state/RouteState.ts
+  s_c3b9df2a569410::t_b0ffa2a32347c2 1-4
+cic-ingestion/src/lib/log.ts
+  s_c3b9df2a569410::t_3d976f28e308ee 1-11
+cic-ingestion/src/tests/harnesses/runAllHarnesses.ts
+  s_c3b9df2a569410::t_e9ec13d97e5d71 49
+cic-ingestion/src/vector/qdrantClient.ts
+  s_73dd6234326c0c::t_487e9a3a226fa4 1-19
+cic-ingestion/src/vector/torqueQueryPlanner.ts
+  s_c3b9df2a569410::t_6096c2087dd1f9 1-14
+cic-ingestion/src/wayland/wayland-adapter-registry.ts
+  s_73dd6234326c0c::t_f0577eb40727d6 1-9
+cic-ingestion/src/wayland/wayland-security-policy.ts
+  s_73dd6234326c0c::t_bb460af5a9af28 1-15
+docs/operations/environment-optimization.md
+  s_24531e0f82e936::t_d047d7250e745d 1-153
+cic-ingestion/src/core/maal/CI_GATE_RULES.md
+  s_24531e0f82e936::t_6dba34b947c3ad 1-165
+cic-ingestion/src/core/maal/LINT_RULES.md
+  s_24531e0f82e936::t_ffd6fc0f02f77e 1-341
+cic-ingestion/src/core/maal/canary/CanaryAssignment.ts
+  s_24531e0f82e936::t_3dee4dffa02c73 1-41
+cic-ingestion/src/core/maal/canary/CanaryCohortController.ts
+  s_24531e0f82e936::t_fc409a90283ecc 1-136
+cic-ingestion/src/core/maal/canary/CanaryError.ts
+  s_24531e0f82e936::t_aa448b0f9e212c 1-18
+cic-ingestion/src/core/maal/canary/CanaryGrowthConfig.ts
+  s_24531e0f82e936::t_dd1aa7999dc051 1-46
+cic-ingestion/src/core/maal/canary/CanaryTelemetry.ts
+  s_24531e0f82e936::t_7ad2c282831432 1-22
+cic-ingestion/src/core/maal/codesign/GlobalRoutingBounds.ts
+  s_24531e0f82e936::t_4f6e21665ea99e 1-19
+cic-ingestion/src/core/maal/codesign/ProposalParser.ts
+  s_24531e0f82e936::t_bb5f7d8db517cd 1-230
+cic-ingestion/src/core/maal/codesign/ProposalTypes.ts
+  s_24531e0f82e936::t_fd77db7886f647 1-96
+cic-ingestion/src/core/maal/codesign/ProposalValidationEngine.ts
+  s_24531e0f82e936::t_da9c50776aeec0 1-19
+cic-ingestion/src/core/maal/codesign/ProposalValidationEngineImpl.ts
+  s_24531e0f82e936::t_de3ef5115e2d7d 1-184
+cic-ingestion/src/core/maal/governance/GovernanceCaps.ts
+  s_24531e0f82e936::t_3af8ef1a92f4c1 1-33
+cic-ingestion/src/core/maal/governance/GovernanceDecisions.ts
+  s_24531e0f82e936::t_4ce09be9ca4cdf 1-34
+cic-ingestion/src/core/maal/governance/GovernanceReview.ts
+  s_24531e0f82e936::t_ce7a04bddb4695 1-123
+cic-ingestion/src/core/maal/support/ImmutabilityGuard.ts
+  s_24531e0f82e936::t_f4958809ea3059 1-58
+cic-ingestion/src/core/maal/support/Phase4Types.ts
+  s_24531e0f82e936::t_c64ee6a64b1cc8 1-61
+cic-ingestion/src/core/maal/support/Result.ts
+  s_24531e0f82e936::t_288d093344ebe0 1-64
+cic-ingestion/src/core/maal/support/ValidationResult.ts
+  s_24531e0f82e936::t_4c0956f4e42205 1-45
+cic-ingestion/src/learning/LedgerEventConsumer.ts
+  s_24531e0f82e936::t_22115b8feb4030 1-11
+cic-ingestion/src/learning/OfflineLearningService.ts
+  s_24531e0f82e936::t_ac7e474944a537 1-14
+cic-ingestion/src/lib/charts/CostCharts.ts
+  s_24531e0f82e936::t_37bebcbc867db5 1-206
+cic-ingestion/src/lib/cost/GpuAmortization.ts
+  s_24531e0f82e936::t_9e9ac35017d4ba 1-42
+cic-ingestion/src/lib/cost/modelPricing.ts
+  s_24531e0f82e936::t_0d40b37f5e634d 1-20
+cic-ingestion/src/lib/report/CicCostComputeReport.ts
+  s_24531e0f82e936::t_44cd22a60b54b1 1-97
+cic-ingestion/src/lib/report/htmlToPdf.ts
+  s_24531e0f82e936::t_3eff0d79fba2b9 1-97
+cic-ingestion/src/lib/report/renderReportHtml.ts
+  s_24531e0f82e936::t_eb9f7b2509bd08 1-280
+cic-ingestion/src/lib/skills/cicCostComputeSkill.ts
+  s_24531e0f82e936::t_8a7388ae9298e9 1-102
+cic-ingestion/src/lib/usage/UsageLedger.ts
+  s_24531e0f82e936::t_4f20cb0a1552d0 1-136
+cic-ingestion/src/orchestrator/BridgeOrchestrator.ts
+  s_24531e0f82e936::t_071fa26fe962d6 1-4,17,36,52,66,80,92,125
+cic-ingestion/src/orchestrator/__tests__/routingCostSignals.test.ts
+  s_24531e0f82e936::t_ea36ab9fc462c0 1-211
+cic-ingestion/src/orchestrator/routingCostSignals.ts
+  s_24531e0f82e936::t_39febc3fa10d36 1-66
+cic-ingestion/src/services/WarmPoolManager.ts
+  s_24531e0f82e936::t_24b7410aef3dfa 1-274
+cic-ingestion/src/tests/adapter-integration.test.ts
+  s_24531e0f82e936::t_843f12ace06ee9 189
+cic-ingestion/src/vector/goldenQueries.json
+  s_24531e0f82e936::t_fe00ab6c42783d 1-9
+cic-ingestion/src/vector/vectorLayer.ts
+  s_24531e0f82e936::t_25db6083864830 1-15
+cic-ingestion/src/wayland/__tests__/wayland-adapter-registry.test.ts
+  s_24531e0f82e936::t_a7d065f11c1255 1-520
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "4d482f51ab94f7351441f94b25609c56e4bfca66",
+  "prompts": {},
+  "sessions": {
+    "s_24531e0f82e936": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c6043ef0-b3d2-41c0-8516-888507c4bdef",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_38d1f14026a375": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "007a8e6d-b554-4ca7-b28a-8ec8c6d80cb4",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_73dd6234326c0c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8ed91774-4707-4f64-8180-e6601008ef76",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_c3b9df2a569410": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e3c6cf21-d702-4d09-8a39-0e14a78ebebc",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
