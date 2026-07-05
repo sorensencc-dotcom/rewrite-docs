@@ -4,9 +4,65 @@
 **Execution Started:** 2026-07-08 (target)  
 **Commit:** ef41123
 
+## 🔴 CRITICAL BLOCKERS (Fix Before Week 1)
+
+### 1. Memory + Governance Routes Not Mounted
+
+**Status:** BLOCKER  
+**File:** `src/autonomy/AutonomyAPIServer.ts`  
+
+**Action:**
+
+```typescript
+// Add to imports (line ~9)
+import { createMemoryRouter } from "./routes/memory";
+import { createGovernanceRouter } from "./routes/governance";
+
+// Add to setupRoutes() after line 120
+const memoryRouter = createMemoryRouter();
+const governanceRouter = createGovernanceRouter();
+
+this.app.use("/autonomy", memoryRouter);
+this.app.use("/autonomy", governanceRouter);
+```
+
+**Impact:** Phase 23-24 APIs offline without this. Tests pass locally but endpoints unreachable in service.
+
+### 2. Phase 26 TorqueQuery Contract Mismatch
+
+**Status:** BLOCKER  
+**Evidence:** Actual TQ has `GET /torquequery/memory/by-agent/:agentId` (exact-match); spec assumes `POST /search/query` (semantic search)  
+
+**Action Options:**
+
+- **A (Week 1):** Rewrite Phase 26 ingest bridge to use actual TQ exact-match endpoints (reduces scope)
+- **B (Week 3):** Implement semantic search in TorqueQuery (delays Phase 27 counterfactual work)
+- **C (Now):** Clarify whether TQ is a stub or committed service; if stub, define real contract
+
+**Impact:** Phase 26 ingest bridges won't compile/run. Phase 27 counterfactual can't do semantic state replay without vector search.
+
+### 3. TorqueQuery Missing Semantic Search + Vector Embeddings
+
+**Status:** BLOCKER FOR PHASE 27  
+**Current:** TQ is exact-match query only (by-type, by-agent, by-correlation, by-signal)  
+**Needed:** Full-text search, semantic vector similarity (1536-dim embeddings), batch ingest with metadata  
+
+**Action:**
+
+- Decide: Is TQ Week 1 scope (Phase 26.1-26.2) or defer to Week 3 (Phase 26.3+)?
+- If defer: Phase 27 (counterfactual reasoning) waits for TQ semantic search
+- If Week 1: Allocate engineering for semantic search implementation
+
+---
+
 ## Summary
 
-7 of 10 critical/high-priority risk mitigations implemented. All **CRITICAL** blockers now have code. **HIGH** risks partially addressed with tests and services. Ready for Week 1 execution.
+7 of 10 risk mitigations implemented. **3 CRITICAL blockers blocking Week 1 execution:**
+1. Routes not wired (5-min fix)
+2. TQ contract mismatch (scope decision)
+3. TQ semantic search missing (design decision)
+
+All **CRITICAL** risk code complete. **HIGH** risks addressed. **Ready after blockers resolved.**
 
 ---
 
