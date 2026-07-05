@@ -1,0 +1,21 @@
+Dockerfile
+  s_edd631ff5518e4::t_9d91b3ebe1e7e9 4,7,9-16,18-19,21-22,25,27-29,33,36-38,42,45
+  s_edd631ff5518e4::t_8a865c736dd305 2-3,6,17,20,23,26,30-32,34-35
+  s_edd631ff5518e4::t_e69aaa058aea97 52,68-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f09f4c7b0d3ad7ac059e08787d04e09b6be500f9",
+  "prompts": {},
+  "sessions": {
+    "s_edd631ff5518e4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6e5614b6-8cbc-45a7-bc36-e7370292bfa7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
