@@ -1,0 +1,45 @@
+governance/cicState.json
+  s_1654a121839170::t_98586dcd927b3a 22
+src/stories/cic/Button.stories.tsx
+  s_1654a121839170::t_d448dbe736e22e 25,36,45
+src/stories/cic/Card.stories.tsx
+  s_1654a121839170::t_84e3844fd3312f 18,27,36,49,62,75,88,101,111,120
+src/stories/cic/Grid.stories.tsx
+  s_1654a121839170::t_223f30c71642ed 19,35,51,65,77,91,104,129,141,161,183
+src/stories/cic/Panel.stories.tsx
+  s_1654a121839170::t_cd8fb87f648ac9 18,27,36,45,57,66,75,84,98,108
+src/stories/cic/Row.stories.tsx
+  s_1654a121839170::t_be3f08f3d8eb66 18,27,36,50,62,73,85,95,105,120
+src/tests/c-phase/stress-determinism.ts
+  s_1654a121839170::t_842679cfafa7f9 13-16,29,32
+src/ui/console-v3/ConsoleV3.tsx
+  s_1654a121839170::t_c48359a71eb154 147,158,166-167,174,186,200,206,209-213
+src/tests/d-phase/fire-drill-harness.d.ts
+  s_1654a121839170::t_3c1a64e1a53403 1-2
+src/tests/d-phase/fire-drill-harness.d.ts.map
+  s_1654a121839170::t_b11df6ffde91f8 1
+src/tests/d-phase/fire-drill-harness.js
+  s_1654a121839170::t_2e6764ead62780 1
+src/tests/d-phase/fire-drill-harness.js.map
+  s_1654a121839170::t_f95ebfca586d4c 1
+src/tests/mocks/mockProvider.d.ts
+  s_1654a121839170::t_066b7f3682db35 1-2
+src/tests/mocks/mockProvider.d.ts.map
+  s_1654a121839170::t_9bcfd43efc7c03 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "23dc5d01ad8410e2d03761bee8f5a837c9c6f82c",
+  "prompts": {},
+  "sessions": {
+    "s_1654a121839170": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d8f4a923-b276-4326-b1ef-3173066dd673",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
