@@ -1,0 +1,19 @@
+docs/roadmaps/phase-23-27-mitigation-status.md
+  s_c3b9df2a569410::t_a420a76fd4f605 1-209
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "1074cadc0bd849cbfef5208e09bdf7a8b7dd8887",
+  "prompts": {},
+  "sessions": {
+    "s_c3b9df2a569410": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e3c6cf21-d702-4d09-8a39-0e14a78ebebc",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
