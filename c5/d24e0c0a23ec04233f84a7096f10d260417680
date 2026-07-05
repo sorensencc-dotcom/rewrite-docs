@@ -1,0 +1,20 @@
+CI-CD-ROOT-CAUSE-FINDINGS.md
+  s_73dd6234326c0c::t_e2ec15370e704a 1-173,223-277
+  s_73dd6234326c0c::t_406a8e33793e1e 174-222
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "c5d24e0c0a23ec04233f84a7096f10d260417680",
+  "prompts": {},
+  "sessions": {
+    "s_73dd6234326c0c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8ed91774-4707-4f64-8180-e6601008ef76",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
