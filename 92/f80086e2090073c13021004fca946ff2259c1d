@@ -1,0 +1,19 @@
+Dockerfile
+  s_edd631ff5518e4::t_75eb0565e5999a 19-20,25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "92f80086e2090073c13021004fca946ff2259c1d",
+  "prompts": {},
+  "sessions": {
+    "s_edd631ff5518e4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6e5614b6-8cbc-45a7-bc36-e7370292bfa7",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
