@@ -1,0 +1,29 @@
+PHASE-26.yaml
+  s_edd631ff5518e4::t_340673f30ed175 1-154
+scheduler.js
+  s_73dd6234326c0c::t_3190a28b1bc658 1-140
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "8219838e0b294ad3338e8c0447bc070f1b55aee7",
+  "prompts": {},
+  "sessions": {
+    "s_73dd6234326c0c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8ed91774-4707-4f64-8180-e6601008ef76",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_edd631ff5518e4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6e5614b6-8cbc-45a7-bc36-e7370292bfa7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
