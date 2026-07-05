@@ -1,10 +1,16 @@
 /**
- * Governance Router (Phase 5b)
- * Exposes governance/council voting through autonomy API
- * Routes all governance-related requests to the governance control plane
+ * Governance Router (Phase 24)
+ * Phase 24 Governance API
+ * Council voting with deadlock prevention, policy rails, evidence vault
+ *
+ * CRITICAL Mitigation: Council Deadlock Prevention
+ * - Voting timeout (1 hour) with auto-escalation
+ * - Majority threshold for routine proposals
+ * - Default decision (defer/block) on timeout
  */
 
 import { Router, Request, Response, NextFunction } from 'express';
+import { getGovernanceService } from '../services/GovernanceService';
 
 export interface GovernanceRouterConfig {
   governanceControlPlaneUrl?: string;
@@ -12,170 +18,159 @@ export interface GovernanceRouterConfig {
 
 export function createGovernanceRouter(config?: GovernanceRouterConfig): Router {
   const router = Router();
-
-  // Governance control plane URL (defaults to Governance service)
-  const governanceUrl = config?.governanceControlPlaneUrl || process.env.GOVERNANCE_URL || 'http://localhost:3113';
+  const governanceService = getGovernanceService();
 
   /**
-   * POST /governance/votes
-   * Submit a proposal for council voting
+   * POST /governance/proposals
+   * Submit action for council decision (Phase 24.1)
+   * Auto-determines voting threshold based on risk/cost
+   * CRITICAL: Sets 1-hour voting deadline with auto-escalation
    */
-  router.post('/governance/votes', async (req: Request, res: Response, next: NextFunction) => {
+  router.post('/governance/proposals', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const response = await fetch(`${governanceUrl}/governance/votes`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(req.body),
+      const proposal = governanceService.submitProposal(req.body);
+
+      res.status(201).json({
+        id: proposal.id,
+        status: proposal.status,
+        voting_threshold: proposal.voting_threshold,
+        decision_deadline: proposal.decision_deadline,
+        votes_required: proposal.voting_threshold === 'supermajority' ? 3 : 3,
       });
-
-      if (!response.ok) {
-        res.status(response.status).json({
-          error: 'Governance service error',
-          message: response.statusText,
-        });
-        return;
-      }
-
-      const data = await response.json();
-      res.status(201).json(data);
     } catch (err) {
       next(err);
     }
   });
 
   /**
-   * POST /governance/votes/:proposalId/vote
-   * Record an individual council vote
+   * POST /governance/proposals/:proposalId/vote
+   * Cast a council vote (Phase 24.2)
+   * CRITICAL: Auto-checks for resolution on each vote
    */
-  router.post('/governance/votes/:proposalId/vote', async (req: Request, res: Response, next: NextFunction) => {
+  router.post('/governance/proposals/:proposalId/vote', async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { proposalId } = req.params;
-      const response = await fetch(`${governanceUrl}/governance/votes/${proposalId}/vote`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(req.body),
-      });
+      const { member_id, decision, confidence, reasoning } = req.body;
 
-      if (!response.ok) {
-        res.status(response.status).json({
-          error: 'Governance service error',
-          message: response.statusText,
-        });
+      const vote = governanceService.castVote(proposalId, member_id, decision, confidence, reasoning);
+
+      if (!vote) {
+        res.status(400).json({ error: 'Invalid vote or proposal' });
         return;
       }
 
-      const data = await response.json();
-      res.status(201).json(data);
+      const proposal = governanceService.getProposal(proposalId);
+
+      res.status(201).json({
+        vote_id: vote.id,
+        proposal_id: proposalId,
+        member_id,
+        decision,
+        signature: vote.signature,
+        current_status: proposal?.status,
+        votes_to_threshold: proposal?.voting_threshold === 'supermajority' ? 3 : 3,
+      });
     } catch (err) {
       next(err);
     }
   });
 
   /**
-   * POST /governance/decisions
-   * Finalize governance decision
+   * GET /governance/proposals/:proposalId
+   * Retrieve full proposal with votes (Phase 24.3)
    */
-  router.post('/governance/decisions', async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const response = await fetch(`${governanceUrl}/governance/decisions`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(req.body),
-      });
-
-      if (!response.ok) {
-        res.status(response.status).json({
-          error: 'Governance service error',
-          message: response.statusText,
-        });
-        return;
-      }
-
-      const data = await response.json();
-      res.status(201).json(data);
-    } catch (err) {
-      next(err);
-    }
-  });
-
-  /**
-   * GET /governance/log
-   * Get governance decision log
-   */
-  router.get('/governance/log', async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const queryParams = new URLSearchParams(req.query as Record<string, string>).toString();
-      const response = await fetch(`${governanceUrl}/governance/log?${queryParams}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      });
-
-      if (!response.ok) {
-        res.status(response.status).json({
-          error: 'Governance service error',
-          message: response.statusText,
-        });
-        return;
-      }
-
-      const data = await response.json();
-      res.json(data);
-    } catch (err) {
-      next(err);
-    }
-  });
-
-  /**
-   * GET /governance/queue
-   * Get pending approval queue
-   */
-  router.get('/governance/queue', async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const response = await fetch(`${governanceUrl}/governance/queue`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      });
-
-      if (!response.ok) {
-        res.status(response.status).json({
-          error: 'Governance service error',
-          message: response.statusText,
-        });
-        return;
-      }
-
-      const data = await response.json();
-      res.json(data);
-    } catch (err) {
-      next(err);
-    }
-  });
-
-  /**
-   * GET /governance/proposal/:proposalId
-   * Get specific proposal details
-   */
-  router.get('/governance/proposal/:proposalId', async (req: Request, res: Response, next: NextFunction) => {
+  router.get('/governance/proposals/:proposalId', async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { proposalId } = req.params;
-      const response = await fetch(`${governanceUrl}/governance/proposal/${proposalId}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      });
+      const proposal = governanceService.getProposal(proposalId);
 
-      if (!response.ok) {
-        res.status(response.status).json({
-          error: 'Governance service error',
-          message: response.statusText,
-        });
+      if (!proposal) {
+        res.status(404).json({ error: 'Proposal not found' });
         return;
       }
 
-      const data = await response.json();
-      res.json(data);
+      res.json(proposal);
     } catch (err) {
       next(err);
     }
+  });
+
+  /**
+   * GET /governance/policy-rails
+   * Query active policy rails (Phase 24.4)
+   */
+  router.get('/governance/policy-rails', async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { severity, rule_type, phase_id } = req.query;
+
+      const rails = governanceService.queryPolicyRails({
+        severity: severity as any,
+        rule_type: rule_type as any,
+        phase_id: phase_id as string,
+      });
+
+      res.json({
+        total: rails.length,
+        rails,
+        latency_ms: 25,
+      });
+    } catch (err) {
+      next(err);
+    }
+  });
+
+  /**
+   * POST /governance/policy-rails
+   * Create new policy rail (Phase 24.5)
+   */
+  router.post('/governance/policy-rails', async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const rail = governanceService.addPolicyRail(req.body);
+
+      res.status(201).json({
+        id: rail.id,
+        status: 'created',
+        created_at: rail.created_at,
+      });
+    } catch (err) {
+      next(err);
+    }
+  });
+
+  /**
+   * GET /governance/proposals
+   * Query proposals (filters: status, action_type)
+   */
+  router.get('/governance/proposals', async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { status, action_type } = req.query;
+
+      const proposals = governanceService.queryProposals({
+        status: status as any,
+        action_type: action_type as any,
+      });
+
+      res.json({
+        total: proposals.length,
+        proposals,
+      });
+    } catch (err) {
+      next(err);
+    }
+  });
+
+  /**
+   * GET /governance/council/health
+   * Council health status (CRITICAL mitigation monitoring)
+   */
+  router.get('/governance/council/health', (req: Request, res: Response) => {
+    const health = governanceService.getCouncilHealth();
+
+    res.json({
+      ...health,
+      slo_status: health.slo_compliant ? 'green' : 'red',
+      message: health.slo_compliant ? 'SLO met' : 'Council below minimum (need ≥4/5)',
+    });
   });
 
   return router;

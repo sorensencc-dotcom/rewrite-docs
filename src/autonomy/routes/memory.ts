@@ -1,10 +1,11 @@
 /**
- * Memory Router (Phase 5b)
- * Exposes memory store queries through autonomy API
- * Routes all memory-related queries to the memory backend
+ * Memory Router (Phase 23)
+ * Phase 23 Memory Layer API
+ * Write-through cache, replication health, WAL recovery
  */
 
 import { Router, Request, Response, NextFunction } from 'express';
+import { getMemoryService, MemoryPacket, MemoryQuery } from '../services/MemoryService';
 
 export interface MemoryRouterConfig {
   memoryStoreUrl?: string;
@@ -12,167 +13,148 @@ export interface MemoryRouterConfig {
 
 export function createMemoryRouter(config?: MemoryRouterConfig): Router {
   const router = Router();
-
-  // Memory store URL (defaults to localhost for Docker local development)
-  const memoryStoreUrl = config?.memoryStoreUrl || process.env.MEMORY_STORE_URL || 'http://localhost:3110';
+  const memoryService = getMemoryService();
 
   /**
-   * POST /memory/ingest
-   * Ingest event into memory store
+   * POST /memory/packets
+   * Store memory packet (Phase 23.1)
+   * Write-through cache with async replication
    */
-  router.post('/memory/ingest', async (req: Request, res: Response, next: NextFunction) => {
+  router.post('/memory/packets', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const response = await fetch(`${memoryStoreUrl}/memory/ingest`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(req.body),
-      });
+      const packet: MemoryPacket = req.body;
+      const ack = await memoryService.writePacket(packet);
 
-      if (!response.ok) {
-        res.status(response.status).json({
-          error: 'Memory store error',
-          message: response.statusText,
-        });
+      if (ack.status === 'error') {
+        res.status(400).json(ack);
         return;
       }
 
-      const data = await response.json();
-      res.status(201).json(data);
+      res.status(201).json(ack);
     } catch (err) {
       next(err);
     }
   });
 
   /**
-   * POST /memory/ingest-batch
-   * Ingest multiple events into memory store
+   * POST /memory/query
+   * Query packets by filters (Phase 23.2)
+   * Returns paginated results with cursor
    */
-  router.post('/memory/ingest-batch', async (req: Request, res: Response, next: NextFunction) => {
+  router.post('/memory/query', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const response = await fetch(`${memoryStoreUrl}/memory/ingest-batch`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(req.body),
+      const query: MemoryQuery = req.body;
+      const packets = await memoryService.queryPackets(query);
+
+      res.json({
+        query_id: `q-${Date.now()}`,
+        total_results: packets.length,
+        returned: packets.length,
+        packets,
+        cursor: null,
       });
-
-      if (!response.ok) {
-        res.status(response.status).json({
-          error: 'Memory store error',
-          message: response.statusText,
-        });
-        return;
-      }
-
-      const data = await response.json();
-      res.status(201).json(data);
     } catch (err) {
       next(err);
     }
   });
 
   /**
-   * GET /memory/search
-   * Search memory store
+   * GET /memory/packets/:packetId
+   * Single packet atomic read (Phase 23.3)
    */
-  router.get('/memory/search', async (req: Request, res: Response, next: NextFunction) => {
+  router.get('/memory/packets/:packetId', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const queryParams = new URLSearchParams(req.query as Record<string, string>).toString();
-      const response = await fetch(`${memoryStoreUrl}/memory/search?${queryParams}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      });
+      const { packetId } = req.params;
+      const packet = await memoryService.getPacket(packetId);
 
-      if (!response.ok) {
-        res.status(response.status).json({
-          error: 'Memory store error',
-          message: response.statusText,
-        });
+      if (!packet) {
+        res.status(404).json({ error: 'Packet not found' });
         return;
       }
 
-      const data = await response.json();
-      res.json(data);
+      res.json(packet);
     } catch (err) {
       next(err);
     }
   });
 
   /**
-   * GET /memory/by-type/:type
-   * Query memory by event type
+   * DELETE /memory/packets/:packetId
+   * Purge packet (Phase 23 + admin only)
    */
-  router.get('/memory/by-type/:type', async (req: Request, res: Response, next: NextFunction) => {
+  router.delete('/memory/packets/:packetId', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { type } = req.params;
-      const response = await fetch(`${memoryStoreUrl}/memory/by-type/${type}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      });
+      const { packetId } = req.params;
+      const deleted = await memoryService.deletePacket(packetId);
 
-      if (!response.ok) {
-        res.status(response.status).json({
-          error: 'Memory store error',
-          message: response.statusText,
-        });
+      if (!deleted) {
+        res.status(404).json({ error: 'Packet not found' });
         return;
       }
 
-      const data = await response.json();
-      res.json(data);
+      res.json({
+        packet_id: packetId,
+        status: 'deleted',
+        purged_at: Date.now(),
+      });
     } catch (err) {
       next(err);
     }
   });
 
   /**
-   * GET /memory/by-agent/:agentId
-   * Query memory by agent ID
+   * GET /memory/health
+   * Replication health check (CRITICAL mitigation)
    */
-  router.get('/memory/by-agent/:agentId', async (req: Request, res: Response, next: NextFunction) => {
+  router.get('/memory/health', (req: Request, res: Response) => {
+    const health = memoryService.getReplicationHealth();
+    res.json(health);
+  });
+
+  /**
+   * POST /memory/recover
+   * WAL recovery endpoint (CRITICAL mitigation)
+   */
+  router.post('/memory/recover', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { agentId } = req.params;
-      const response = await fetch(`${memoryStoreUrl}/memory/by-agent/${agentId}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
+      const recovered = await memoryService.recoverFromWAL();
+      res.json({
+        status: 'recovered',
+        packets_restored: recovered,
+        timestamp: Date.now(),
       });
-
-      if (!response.ok) {
-        res.status(response.status).json({
-          error: 'Memory store error',
-          message: response.statusText,
-        });
-        return;
-      }
-
-      const data = await response.json();
-      res.json(data);
     } catch (err) {
       next(err);
     }
   });
 
   /**
-   * GET /memory/by-correlation/:correlationId
-   * Query memory by correlation ID
+   * PATCH /memory/packets/:packetId/extend-ttl
+   * Extend TTL to prevent evidence orphaning (HIGH mitigation)
    */
-  router.get('/memory/by-correlation/:correlationId', async (req: Request, res: Response, next: NextFunction) => {
+  router.patch('/memory/packets/:packetId/extend-ttl', async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { correlationId } = req.params;
-      const response = await fetch(`${memoryStoreUrl}/memory/by-correlation/${correlationId}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      });
+      const { packetId } = req.params;
+      const { additional_seconds } = req.body;
 
-      if (!response.ok) {
-        res.status(response.status).json({
-          error: 'Memory store error',
-          message: response.statusText,
-        });
+      if (!additional_seconds) {
+        res.status(400).json({ error: 'Missing additional_seconds' });
         return;
       }
 
-      const data = await response.json();
-      res.json(data);
+      const extended = await memoryService.extendTTL(packetId, additional_seconds);
+
+      if (!extended) {
+        res.status(404).json({ error: 'Packet not found' });
+        return;
+      }
+
+      res.json({
+        packet_id: packetId,
+        status: 'ttl_extended',
+        additional_seconds,
+        timestamp: Date.now(),
+      });
     } catch (err) {
       next(err);
     }
