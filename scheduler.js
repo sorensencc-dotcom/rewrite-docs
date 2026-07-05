@@ -6,8 +6,12 @@
  * Usage: node scheduler.js [--once] [--interval 5000]
  */
 
-const path = require('path');
-const fs = require('fs');
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Configuration
 const CONFIG = {
@@ -130,11 +134,7 @@ async function main() {
   await executor.run(continuous);
 }
 
-if (require.main === module) {
-  main().catch(err => {
-    console.error(`Fatal error: ${err.message}`);
-    process.exit(1);
-  });
-}
-
-module.exports = WaveExecutor;
+main().catch(err => {
+  console.error(`Fatal error: ${err.message}`);
+  process.exit(1);
+});
