@@ -1,0 +1,43 @@
+tsconfig.base.json
+  s_70712c71d05636::t_4eff5059a3f9f6 1-12
+harvester-bridge/tsconfig.json
+  s_70712c71d05636::t_f2609a5062a9f0 1-12
+scripts/tsconfig.json
+  s_70712c71d05636::t_6e74c5500621f2 1-12
+services/antigravity-ide/tsconfig.json
+  s_70712c71d05636::t_5e1699a86fed37 1-12
+ingestion/tsconfig.json
+  s_70712c71d05636::t_bbcf58830c4013 1-12
+scripts/execute-cleanup.cjs
+  s_70712c71d05636::t_c54259316f4744 1-180
+routing/tsconfig.json
+  s_70712c71d05636::t_d73e9c8a6110cc 1-12
+services/gemini-coach/tsconfig.json
+  s_70712c71d05636::t_58f7b1c4efee3a 1-12
+runtime/tsconfig.json
+  s_70712c71d05636::t_d102c9ffed7067 1-12
+messaging/tsconfig.json
+  s_70712c71d05636::t_c055b0ebc3a72b 1-12
+governance/tsconfig.json
+  s_70712c71d05636::t_8e46dd3c6b80f9 1-12
+tests/tsconfig.json
+  s_70712c71d05636::t_8909b4d29ffcdc 1-12
+cic-ingestion/.gitignore
+  s_70712c71d05636::t_103d3afffd310f 14-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a43aafeaafb40af9e84f109b99bb6f994f726716",
+  "prompts": {},
+  "sessions": {
+    "s_70712c71d05636": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6bf11aa7-16f2-4b98-a9ac-6cb6ac90b0b8",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
