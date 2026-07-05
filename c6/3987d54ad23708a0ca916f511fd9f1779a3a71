@@ -1,0 +1,66 @@
+docs/roadmaps/phase-26-torque-adapter-api-spec.yaml
+  s_c3b9df2a569410::t_8056826957e900 1-463
+src/sandbox/preprocessing.ts
+  s_676dd03368ef66::t_a7becffb4de78e 1-8
+src/sandbox/onnx.ts
+  s_1654a121839170::t_8d624c1d1051b3 15
+  s_676dd03368ef66::t_921200f2c8c533 1-2,4-13,16-18
+  s_24531e0f82e936::t_062bb5deefa451 14
+css.d.ts
+  s_676dd03368ef66::t_bee4fcf44754d6 1-9
+docs/roadmaps/risk-register-phases-23-27.md
+  s_c3b9df2a569410::t_13261298671ddc 1-544
+docs/roadmaps/phase-23-memory-api-spec.yaml
+  s_c3b9df2a569410::t_04b75649607b30 1-34,38-295
+  s_c3b9df2a569410::t_ef6729099e91e3 35-37
+docs/roadmaps/execution-blueprint-phases-23-27.md
+  s_c3b9df2a569410::t_ea6c64fb806d00 1-225
+docs/roadmaps/phase-24-governance-api-spec.yaml
+  s_c3b9df2a569410::t_b82eab6e231ec1 1-460
+src/routing/regimeSelector.ts
+  s_676dd03368ef66::t_610a7a952ff5a0 1-2,4-7
+mkdocs.yml
+  s_c3b9df2a569410::t_805101cddd19d4 43-48
+src/autonomy/FireDrillManager.ts
+  s_676dd03368ef66::t_dce4cfd336bd64 7-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "c63987d54ad23708a0ca916f511fd9f1779a3a71",
+  "prompts": {},
+  "sessions": {
+    "s_1654a121839170": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d8f4a923-b276-4326-b1ef-3173066dd673",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_24531e0f82e936": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c6043ef0-b3d2-41c0-8516-888507c4bdef",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_676dd03368ef66": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1283a435-52b8-49a7-bf46-8636c8d1678d",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_c3b9df2a569410": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e3c6cf21-d702-4d09-8a39-0e14a78ebebc",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
