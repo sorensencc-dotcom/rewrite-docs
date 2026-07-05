@@ -16,13 +16,13 @@ RUN apk add --no-cache \
     make \
     g++
 
-# Copy only dependency files
-COPY package*.json ./
+# Copy only dependency files (skip node_modules)
+COPY package*.json tsconfig.json ./
 
 # Install production dependencies
 RUN npm ci --omit=dev
 
-# Copy source code
+# Copy source code (exclude node_modules via .dockerignore)
 COPY . .
 
 # Build TypeScript
