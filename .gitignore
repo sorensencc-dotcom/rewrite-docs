@@ -82,6 +82,9 @@ charlie-deep-research/
 !cic-ingestion/src/tests/harnesses/cicIngestionReplay.ts
 !cic-ingestion/src/tests/harnesses/driftScoringHarness.ts
 !cic-ingestion/src/tests/harnesses/runAllHarnesses.ts
+!cic-ingestion/src/autonomy/AutonomyAPIServer.ts
+!cic-ingestion/src/autonomy/routes/memory.ts
+!cic-ingestion/src/autonomy/routes/governance.ts
 claude-configs/
 claude-skills/
 financeos/
