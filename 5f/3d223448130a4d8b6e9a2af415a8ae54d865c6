@@ -1,0 +1,81 @@
+scripts/mkdocs-validate-nav.cjs
+  s_70712c71d05636::t_d496b0ffbe0a6a 1-95
+src/governance/audit/__tests__/index.test.js
+  s_70712c71d05636::t_5f923c6425b7de 85,164-167
+  s_70712c71d05636::t_a3709ed3d091a7 133
+  s_70712c71d05636::t_64440da7fe9073 82-84
+  s_70712c71d05636::t_1d2f55862ce418 86-88,130-132
+  s_70712c71d05636::t_a38fdbdbecf1ef 134-136,161-163
+  s_70712c71d05636::t_b6b8cf9d4c276f 168-170
+  s_70712c71d05636::t_ad822109ce7ee5 1-81,89-129,137-160,171-177
+src/governance/audit/__tests__/deterministic.test.js
+  s_70712c71d05636::t_b389643b1319e5 16-25,80-89
+  s_70712c71d05636::t_72ada7c0f452d6 63
+  s_70712c71d05636::t_0d9a2a4daacf4f 13-15
+  s_70712c71d05636::t_a57d4fdcd2f48f 26-28,60-62
+  s_70712c71d05636::t_03b0b7a7340fad 64-66,77-79
+  s_70712c71d05636::t_a495a9b9bde2a5 90-92
+  s_70712c71d05636::t_1d61f7a51f4d70 1-12,29-59,67-76,93-118
+scripts/mkdocs-auto-sort.cjs
+  s_70712c71d05636::t_3c7ab384bbcac6 1-67
+scripts/mkdocs-rename.cjs
+  s_70712c71d05636::t_0a241fcd1c18b7 1-115
+docs/cic/batch-map-1-40-status.md
+  s_3a964b4e8845d2::t_cc14139557e5ac 1-172
+mkdocs.yml
+  s_24531e0f82e936::t_daa27c42e6520d 260
+docs/meta/repo-hygiene-audit-report.md
+  s_70712c71d05636::t_4ae16c3daa168b 1-251
+src/governance/audit/__tests__/cache.test.d.ts
+  s_70712c71d05636::t_5f202f8828255d 1-2
+src/governance/audit/__tests__/cache.test.d.ts.map
+  s_70712c71d05636::t_2eb936479bd593 1
+src/governance/audit/__tests__/cache.test.js
+  s_70712c71d05636::t_37c3c3a190ad3b 1-157
+src/governance/audit/__tests__/cache.test.js.map
+  s_70712c71d05636::t_9d0b39f1518d09 1
+src/governance/audit/__tests__/deterministic.test.d.ts
+  s_70712c71d05636::t_424655e1c485d5 1-2
+src/governance/audit/__tests__/deterministic.test.d.ts.map
+  s_70712c71d05636::t_13d00766327f05 1
+src/governance/audit/__tests__/deterministic.test.js.map
+  s_70712c71d05636::t_2e8818b02beb34 1
+src/governance/audit/__tests__/index.test.d.ts
+  s_70712c71d05636::t_bc9c13554a3bf0 1-2
+src/governance/audit/__tests__/index.test.d.ts.map
+  s_70712c71d05636::t_b8c49b64de7a5d 1
+src/governance/audit/__tests__/index.test.js.map
+  s_70712c71d05636::t_d94188e38d5a98 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "5f3d223448130a4d8b6e9a2af415a8ae54d865c6",
+  "prompts": {},
+  "sessions": {
+    "s_24531e0f82e936": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c6043ef0-b3d2-41c0-8516-888507c4bdef",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_3a964b4e8845d2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6ce0f47d-fb5d-43bc-8a28-4b05ea6a24f3",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_70712c71d05636": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6bf11aa7-16f2-4b98-a9ac-6cb6ac90b0b8",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
