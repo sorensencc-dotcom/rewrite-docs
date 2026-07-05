@@ -1,0 +1,37 @@
+.storybook/main.ts
+  s_24531e0f82e936::t_18e3ef240f5e77 18
+src/cic-dashboard/components/slo-panel.ts
+  s_24531e0f82e936::t_e465b7a9fc6297 16
+src/cic-dashboard/components/stability-panel.ts
+  s_24531e0f82e936::t_2dbe3b06408b6d 12,30
+src/governance/canary/state-machine.ts
+  s_24531e0f82e936::t_cc684563f369ab 89
+src/stories/cic/Button.stories.tsx
+  s_24531e0f82e936::t_ab4d76209158bb 25,36,45
+src/stories/cic/Card.stories.tsx
+  s_24531e0f82e936::t_9dc81bdb30a8b4 18,27,36,49,62,75,88,101,111,120
+src/stories/cic/Grid.stories.tsx
+  s_24531e0f82e936::t_8d9f3fbdc9b8d9 19,35,51,65,77,91,104,129,141,161,183
+src/stories/cic/Panel.stories.tsx
+  s_24531e0f82e936::t_bdf4ced3439f39 18,27,36,45,57,66,75,84,98,108
+src/stories/cic/Row.stories.tsx
+  s_24531e0f82e936::t_d51516e87412c2 18,27,36,50,62,73,85,95,105,120
+governance/cicState.json
+  s_24531e0f82e936::t_07bfb5e9ec81ea 22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "265eaa52228f4075e68100c6c22e7b985f1ed89e",
+  "prompts": {},
+  "sessions": {
+    "s_24531e0f82e936": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c6043ef0-b3d2-41c0-8516-888507c4bdef",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
