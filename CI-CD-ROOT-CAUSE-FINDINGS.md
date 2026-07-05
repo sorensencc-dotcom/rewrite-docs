@@ -170,10 +170,110 @@ All four workflows should now:
 2. **Centralized script registry:** Document all available npm scripts in docs/npm-scripts.md
 3. **Linting:** Add npm script linter to CI (validates `npm run X` calls match package.json definitions)
 
-### Long-term
+---
+
+## Verification & Risk Assessment
+
+⚠️ **Critical gaps before handoff to consultant:**
+
+### How did package.json get corrupted? (Root cause unknown)
+**Current state:** Restored from commit ad8a587, but corruption mechanism is unidentified.
+
+**Risk:** If caused by build system (bob, deployment script, CI step), the fix is temporary — system will re-corrupt on next build.
+
+**Verification checklist:**
+1. `git log -p -- rewrite-mcp/package.json | head -100` — Identify last 5 changes + authors
+2. `git blame rewrite-mcp/package.json | head -20` — Who truncated to 16 lines?
+3. Audit build pipeline:
+   ```bash
+   grep -r "package.json" rewrite-mcp/bob/ rewrite-mcp/scripts/ | grep -i write
+   ```
+4. Check if build system auto-modifies package.json on every run
+
+**Action:** Consultant must identify the mechanism before long-term plan proceeds.
+
+---
+
+### Cascading failure claim not independently verified
+**Current state:** Asserted all 10 repos failed due to rewrite-mcp, based on context from prior session.
+
+**Risk:** Actual failure chain might be different. Long-term recommendations might target wrong root cause.
+
+**Verification checklist:**
+1. Pull GitHub Actions logs from 3+ failing runs (one per repo symptom type)
+2. Trace exact error messages:
+   - "script not found" (missing scripts)?
+   - "Cannot find module" (ESM conflicts)?
+   - "ENOENT" (file corruption)?
+   - Other?
+3. Map dependency graph: confirm rewrite-mcp → [10 repos]
+
+**Action:** Consultant must verify the cascading pattern with actual logs.
+
+---
+
+### Validator script untested on CI/CD runners
+**Current state:** validate-npm-scripts.js tested locally once. Never run on:
+- GitHub Actions Linux runners
+- Windows runners (path handling edge cases)
+- Large monorepo with many workflows
+
+**Risk:** Regex filtering might miss multiline scripts or variable substitution. Pre-commit hook might silently fail.
+
+**Verification checklist:**
+1. Push validate-npm-scripts.yml to a PR and observe CI output
+2. Test edge cases:
+   - Multiline `run:` statements with `npm run` split across lines
+   - Variable substitution in workflow (e.g., `${{ env.SCRIPT_NAME }}`)
+   - Comment blocks with fake `npm run` calls
+3. Verify hook output in local commits (enable verbose pre-commit)
+
+**Action:** Consultant should test validator on actual CI before production rollout.
+
+---
+
+### Pre-commit hook can be bypassed
+**Current state:** Validation added to .husky/pre-commit, but users can bypass with `git commit --no-verify`.
+
+**Risk:** Determined user can still corrupt package.json. No enforcement layer on CI.
+
+**Verification checklist:**
+1. Add CI gate to reject commits with missing npm scripts (use validate-npm-scripts.yml as blocker)
+2. Audit git usage: measure how often --no-verify is used (if possible)
+3. Document pre-commit bypass policy (when is it allowed? When forbidden?)
+
+**Action:** Add CI enforcement + documentation before considering this "fixed."
+
+---
+
+### Other repos may have same corruption
+**Current state:** Only rewrite-mpc/package.json was restored. Other 9 repos unchecked.
+
+**Risk:** Systemic problem affecting multiple repos. Consultant might miss other instances.
+
+**Verification checklist:**
+1. For each of the 10 repos, check package.json line count:
+   ```bash
+   for repo in rewrite-docs cic-ingestion claude-skills castironcharlie ...; do 
+     echo "$repo: $(wc -l <$repo/package.json)"
+   done
+   ```
+2. Look for truncation pattern (significantly fewer lines than expected)
+3. Restore any corrupted package.json files before rollout
+
+**Action:** Full repo audit required before consultant handoff.
+
+---
+
+## Long-term Plan (Updated)
 
 #### 1. Monorepo Structure Optimization
 **Goal:** Reduce npm script duplication across workspaces.
+
+**Blockers:**
+- ⚠️ MUST identify root cause of package.json corruption (build system involvement?)
+- ⚠️ MUST audit all 10 repos for similar truncation/corruption
+- ⚠️ MUST verify validator works on CI/CD runners before scaling
 
 **Implementation:**
 1. Audit all 58 scripts — identify duplicates across apps/*, projects/*, tools/*, packages/*
@@ -184,13 +284,19 @@ All four workflows should now:
 
 **Benefit:** Single source of truth. Easier maintenance when patterns change.
 **Timeline:** Month 1 (40 hours) — audit + refactor 30% pilot
+**Depends on:** Verification checklist completion (see "Verification & Risk Assessment" above)
 
 ---
 
 #### 2. CI/CD Test Coverage
 **Goal:** Verify workflows can execute, not just YAML syntax validation.
 
+**Blockers:**
+- ⚠️ MUST verify validator on CI first (multiline script handling)
+- ⚠️ MUST add CI gate to reject commits with missing scripts
+
 **Implementation:**
+
 1. Add workflow executor tests — npm test for each workflow script
 2. Create "workflow dry-run" job: attempt all `npm run X` calls in isolated environment
 3. Test matrix: Node.js 22, 24 (catch compatibility breaks early)
@@ -199,6 +305,7 @@ All four workflows should now:
 
 **Benefit:** Catch workflow breakage before merge (like package.json corruption).
 **Timeline:** Month 2-3 (30 hours) — design + implementation + integration
+**Depends on:** Validator CI verification + root cause identification
 
 ---
 
@@ -206,6 +313,7 @@ All four workflows should now:
 **Goal:** Remove Node.js 20 deprecation warnings when v5 GitHub Actions released.
 
 **Implementation:**
+
 1. Monitor GitHub Actions releases (v5 announced ~2026-Q3/Q4)
 2. Set calendar reminder: quarterly check for actions/checkout@v5, upload-artifact@v5
 3. When available: upgrade workflows to v5 in batch
@@ -214,12 +322,30 @@ All four workflows should now:
 
 **Benefit:** Clean CI logs. Prepare for future Node.js 26+ deprecations.
 **Timeline:** Ongoing (5 hours/quarter) — monitoring + batch upgrade when v5 ships
+**Dependencies:** None (independent initiative)
+
+---
+
+## Handoff Checklist
+
+Before consultant team begins implementation, complete this verification:
+
+- [ ] **Root cause identified:** git forensics on package.json corruption
+- [ ] **Cascading failure verified:** GitHub Actions logs from 3+ failing runs
+- [ ] **Build system audited:** Confirm no auto-modification of package.json
+- [ ] **All 10 repos scanned:** Check for truncation/corruption in all package.json files
+- [ ] **Validator tested on CI:** validate-npm-scripts.yml passes/fails correctly
+- [ ] **Validator tested with edge cases:** Multiline scripts, variable substitution
+- [ ] **CI enforcement layer added:** Reject commits with missing npm scripts
+- [ ] **Pre-commit bypass audit:** Measure --no-verify usage, document policy
+
+**Timeline:** 1 week to complete verification before long-term plan begins.
 
 ---
 
 **Total Estimate:** 75 hours over 3 months (spread across DevOps team).
 **Owner:** Consultant team (post-handoff) or internal DevOps lead.
-**Dependencies:** Short-term fixes must ship first (already done in this engagement).
+**Prerequisite:** Complete handoff checklist above.
 
 ---
 
