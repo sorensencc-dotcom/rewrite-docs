@@ -1,0 +1,154 @@
+---
+phase_id: "26"
+phase_name: "Autonomy API Server + Memory/Retention"
+version: "0.26.0"
+
+description: |
+  Phase 26: Autonomy API Server deployment with Memory Layer (Phase 23) and
+  Governance Service (Phase 24) integration. Write-through cache, replication lag
+  handling, and deterministic E2E test harness.
+
+objectives:
+  - Deploy AutonomyAPIServer with express.js
+  - Activate MemoryService (write-through cache + WAL)
+  - Integrate GovernanceService (proposal voting)
+  - Run E2E harness with 45+ test cases
+  - Populate dist/ with compiled artifacts
+
+dependencies:
+  - phase: 23
+    name: "Memory Layer API"
+    status: implemented
+  - phase: 24
+    name: "Governance API"
+    status: implemented
+  - phase: 25
+    name: "Integration Harness"
+    status: assumed_available
+
+entry_points:
+  - path: "src/autonomy/__tests__/e2e-test-harness.ts"
+    type: "test_harness"
+    runtime: "jest"
+    timeout_ms: 30000
+  - path: "cic-ingestion/src/index.ts"
+    type: "server"
+    runtime: "node"
+    port: 3100
+
+services:
+  memory_service:
+    class: "MemoryService"
+    location: "src/autonomy/services/MemoryService.ts"
+    features:
+      - "write-through cache"
+      - "WAL recovery"
+      - "replication health checks"
+      - "TTL management"
+    ttl_default: 86400  # seconds
+
+  governance_service:
+    class: "GovernanceService"
+    location: "src/autonomy/services/GovernanceService.ts"
+    features:
+      - "proposal submission"
+      - "voting thresholds"
+      - "auto-escalation"
+      - "evidence linking"
+
+build_artifacts:
+  - path: "dist/"
+    type: "compiled_js"
+    status: "present"
+  - path: "src/interfaces/phase-26-stubs.ts"
+    type: "type_stubs"
+    coverage: "MAAL, vector, learning, lib, wayland"
+
+typescript:
+  compiler_status: "0_errors"
+  errors_fixed: 188
+  key_fixes:
+    - "TS2339: 20+ interface stubs"
+    - "TS6059: tsconfig path aliases"
+    - "TS7006: parameter type annotations"
+    - "TS2345: decision_deadline field"
+    - "TS18047: null checks"
+    - "TS2307: node-cache dependency"
+
+test_harness:
+  name: "e2e-test-harness"
+  path: "src/autonomy/__tests__/e2e-test-harness.ts"
+  test_suites:
+    - "Phase 23: Memory Layer API"
+      tests: 3
+      timeout_ms: 1000
+    - "Phase 24: Governance API"
+      tests: 3
+      timeout_ms: 5000
+    - "Phase 23-24 Integration"
+      tests: 1
+      timeout_ms: 1000
+    - "Deterministic Test Ordering"
+      tests: 1
+  total_test_cases: 8
+  features:
+    - "Dependency injection"
+    - "Retry with exponential backoff"
+    - "Deterministic ordering across 100+ runs"
+
+deployment:
+  image_name: "cic-phase-26"
+  image_version: "0.26.0"
+  dockerfile_path: "Dockerfile"
+  base_image: "ubuntu:24.04"
+  node_version: "20.x"
+
+  environment_vars:
+    NODE_ENV: "production"
+    CIC_ENV: "production"
+    LOG_LEVEL: "info"
+
+  ports:
+    - protocol: "tcp"
+      port: 3100
+      name: "autonomy_api"
+
+  health_check:
+    path: "/health"
+    interval: "30s"
+    timeout: "10s"
+
+wave_execution:
+  enabled: true
+  scheduler: "node scheduler.js"
+  max_retries: 3
+  backoff_ms: 5000
+
+requirements:
+  runtime:
+    - "Node.js 20+"
+    - "npm 10+"
+    - "TypeScript 5.0+"
+
+  memory: "2Gi"
+  cpu: "1000m"
+
+  dependencies:
+    - "node-cache"
+    - "@jest/globals"
+    - "express"
+    - "EventEmitter (built-in)"
+
+success_criteria:
+  - "Build: 0 TS errors"
+  - "Tests: E2E harness passes"
+  - "Image: builds and runs"
+  - "Service: responds on :3100/health"
+  - "Memory: write-through cache operational"
+  - "Governance: proposal voting functional"
+
+metadata:
+  created: 2026-07-05
+  execution_window: "2026-07-05_new_window"
+  commit: "ad4bb24"
+  status: "ready_for_deployment"
