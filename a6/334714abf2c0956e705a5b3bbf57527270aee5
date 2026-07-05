@@ -1,0 +1,21 @@
+cic-ingestion/src/core/maal/index.ts
+  s_1654a121839170::t_60d5ed64be033a 1-108
+cic-ingestion/src/core/maal/codesign/Proposal.ts
+  s_1654a121839170::t_58cc5025aec85d 1-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a6334714abf2c0956e705a5b3bbf57527270aee5",
+  "prompts": {},
+  "sessions": {
+    "s_1654a121839170": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d8f4a923-b276-4326-b1ef-3173066dd673",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
