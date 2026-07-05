@@ -11,3 +11,10 @@
 !src/tests/harnesses/maalRoutingReplay.ts
 !src/tests/harnesses/cicIngestionReplay.ts
 !src/tests/harnesses/driftScoringHarness.ts
+node_modules/
+dist/
+.venv/
+coverage/
+*.log
+.env
+.env.local
