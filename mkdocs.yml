@@ -2,7 +2,6 @@ site_name: MAAL Sandbox System
 site_description: Complete deterministic CIC/MAAL governance, routing, federation, and snapshot architecture
 site_author: CIC Team
 site_url: https://example.com/maal-sandbox/
-
 theme:
   name: material
   language: en
@@ -29,7 +28,6 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
-
 nav:
   - Home: index.md
   - Getting Started:
@@ -233,12 +231,10 @@ nav:
           - Phase 1 (Files Moved): meta/phase-1-execution.md
           - Phase 2 (Links Updated): meta/phase-2-completion.md
           - Phase 3 (Verification): meta/phase-3-completion.md
-
 plugins:
   - search
   - minify:
       minify_html: true
-
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -254,7 +250,6 @@ markdown_extensions:
   - codehilite
   - smarty
   - sane_lists
-
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -262,6 +257,5 @@ extra:
     - icon: fontawesome/brands/docker
       link: https://hub.docker.com/r/example/maal
   version: 1.0.0
-  last_update: 2026-06-29
-
+  last_update: 2026-06-29T00:00:00.000Z
 copyright: Copyright &copy; 2026 CIC Team. All rights reserved.
