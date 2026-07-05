@@ -270,6 +270,7 @@ describe('Phase 24: Governance API', () => {
       voting_threshold: 'majority',
       estimated_cost_usd: 5,
       risk_level: 'low',
+      decision_deadline: Date.now() + 3600000,
     });
 
     fixture.log(`Proposal submitted: ${proposal.id}`);
@@ -289,6 +290,7 @@ describe('Phase 24: Governance API', () => {
       voting_threshold: 'majority',
       estimated_cost_usd: 5,
       risk_level: 'low',
+      decision_deadline: Date.now() + 3600000,
     });
 
     fixture.log(`Proposal: ${proposal.id}, threshold: ${proposal.voting_threshold}`);
@@ -315,6 +317,7 @@ describe('Phase 24: Governance API', () => {
       500
     );
 
+    if (!resolved) throw new Error('Proposal not resolved');
     fixture.log(`Proposal resolved: ${resolved.status}`);
     expect(resolved.status).toBe('approved');
   }, 1000);
@@ -329,6 +332,7 @@ describe('Phase 24: Governance API', () => {
       voting_threshold: 'supermajority',
       estimated_cost_usd: 1000,
       risk_level: 'critical',
+      decision_deadline: Date.now() + 3600000,
     });
 
     fixture.log(`Critical proposal: ${proposal.id}, deadline in 1s`);
@@ -342,6 +346,7 @@ describe('Phase 24: Governance API', () => {
       3700 // Timeout + buffer
     );
 
+    if (!resolved) throw new Error('Proposal not auto-rejected');
     fixture.log(`Auto-escalation triggered: ${resolved.status}`);
     expect(resolved.status).toBe('rejected'); // High-risk defaults to reject
     expect(resolved.executed_at).toBeDefined();
@@ -407,6 +412,7 @@ describe('Phase 23-24 Integration', () => {
       voting_threshold: 'majority',
       estimated_cost_usd: 8,
       risk_level: 'low',
+      decision_deadline: Date.now() + 3600000,
     });
 
     fixture.log(`Step 2: Governance proposal created: ${proposal.id}`);

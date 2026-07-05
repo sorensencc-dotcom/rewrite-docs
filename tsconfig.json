@@ -18,7 +18,12 @@
     "baseUrl": ".",
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@maal/*": ["src/maal/*"],
+      "@vector/*": ["src/vector/*"],
+      "@learning/*": ["src/learning/*"],
+      "@wayland/*": ["src/wayland/*"],
+      "@lib/*": ["src/lib/*"]
     }
   },
   "include": [

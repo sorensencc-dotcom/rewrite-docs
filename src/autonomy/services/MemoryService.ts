@@ -294,7 +294,7 @@ class MemoryService extends EventEmitter {
       // Reasoning type filter
       if (query.reasoning_type && query.reasoning_type !== 'all') {
         const hasType = packet.reasoning_chain.some(
-          step => step.type === query.reasoning_type
+          (step: typeof packet.reasoning_chain[0]) => step.type === query.reasoning_type
         );
         if (!hasType) continue;
       }
@@ -312,7 +312,7 @@ class MemoryService extends EventEmitter {
       // Confidence filter
       if (query.min_confidence !== undefined) {
         const minConf = packet.reasoning_chain.every(
-          step => step.confidence >= (query.min_confidence || 0)
+          (step: typeof packet.reasoning_chain[0]) => step.confidence >= (query.min_confidence || 0)
         );
         if (!minConf) continue;
       }
