@@ -1,0 +1,19 @@
+scheduler.js
+  s_edd631ff5518e4::t_fafb9f55036bf8 9-14,137-140
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a988e928ba2d0d5e1e514cc26f0b6e6e18dab78a",
+  "prompts": {},
+  "sessions": {
+    "s_edd631ff5518e4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6e5614b6-8cbc-45a7-bc36-e7370292bfa7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
