@@ -1,0 +1,27 @@
+cic-ingestion/src/core/maal/BridgeOrchestrator.ts
+  s_38d1f14026a375::t_6ae69db912964b 1-247
+cic-ingestion/src/vector/__tests__/goldenQueries.test.ts
+  s_38d1f14026a375::t_599a89acfec844 1-63
+cic-ingestion/src/vector/__tests__/torqueQueryRegression.test.ts
+  s_38d1f14026a375::t_40469bf43c71c6 1-133
+cic-ingestion/src/vector/retrievalDriftDetector.ts
+  s_38d1f14026a375::t_db18569b3f765e 1-85
+cic-ingestion/src/wayland/__tests__/wayland-security-policy.test.ts
+  s_38d1f14026a375::t_7a916f08245068 1-338
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f906e2c55877f8ccad6e589f061daa3c0d800f22",
+  "prompts": {},
+  "sessions": {
+    "s_38d1f14026a375": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "007a8e6d-b554-4ca7-b28a-8ec8c6d80cb4",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
