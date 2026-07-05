@@ -1,0 +1,31 @@
+cic-ingestion/src/adapters/BaseAdapter.ts
+  s_1654a121839170::t_dbdcc0651dbb9c 1-56
+cic-ingestion/src/adapters/grok/GrokHardenedAdapter.ts
+  s_1654a121839170::t_615d187e144a26 1-247
+cic-ingestion/src/adapters/grok/GrokUnifiedAdapterOptimized.ts
+  s_38d1f14026a375::t_8bb15b1de4e564 1-201
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "30474fba923451f5348f1ee6dc9541e28034c18f",
+  "prompts": {},
+  "sessions": {
+    "s_1654a121839170": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d8f4a923-b276-4326-b1ef-3173066dd673",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_38d1f14026a375": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "007a8e6d-b554-4ca7-b28a-8ec8c6d80cb4",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
