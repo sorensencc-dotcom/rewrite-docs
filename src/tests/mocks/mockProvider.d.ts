@@ -1,5 +1,5 @@
-import { ModelSpec } from "../../core/modelSpec.js";
-import { ChatPayload, ChatResult, Provider } from "../../core/modelRouter.js";
+import { ModelSpec } from "../../core/modelSpec";
+import { ChatPayload, ChatResult, Provider } from "../../core/modelRouter";
 export type MockFailureMode = "500" | "timeout" | "malformed" | "empty" | "drift" | "capability_mismatch" | "ok";
 export declare class MockProvider implements Provider {
     private mode;

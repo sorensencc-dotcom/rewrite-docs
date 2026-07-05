@@ -144,7 +144,7 @@ export const ConsoleV3: React.FC = () => {
     if (!pipelinesData || pipelinesData.length === 0) return;
     const previousMap = new Map(previousPipelines);
     const announcements = PollingAnnouncements.formatPipelineAnnouncement(
-      pipelinesData.map((p: any) => ({ id: p.id, state: p.state })),
+      pipelinesData.map((p: any) => ({ id: p.id, state: p.state, name: p.name || '' })) as any,
       previousMap
     );
     announcements.forEach((a) => announce(a));
@@ -155,7 +155,7 @@ export const ConsoleV3: React.FC = () => {
   // Announce alert changes
   useEffect(() => {
     if (!alertsData || alertsData.length === 0) return;
-    const announcement = PollingAnnouncements.formatAlertAnnouncement(alertsData, previousAlerts);
+    const announcement = PollingAnnouncements.formatAlertAnnouncement(alertsData as any, previousAlerts);
     if (announcement) {
       announce(announcement);
     }
@@ -163,15 +163,15 @@ export const ConsoleV3: React.FC = () => {
   }, [alertsData, announce, previousAlerts]);
 
   // Keyboard shortcuts handler
-  const handleKeyboardAction = useCallback<KeyboardHookCallbacks>({
-    onRefresh: (target) => {
+  const handleKeyboardAction = useCallback(() => ({
+    onRefresh: (target: any) => {
       if (target === 'health') {
         announce({ type: 'status', message: 'Health panel refreshed' });
       } else if (target === 'all') {
         announce({ type: 'status', message: 'All panels refreshed' });
       }
     },
-    onPipeline: (action, pipelineNumber) => {
+    onPipeline: (action: any, pipelineNumber: any) => {
       announce({
         type: 'log',
         message: `Pipeline ${pipelineNumber} ${action}`,
@@ -183,7 +183,7 @@ export const ConsoleV3: React.FC = () => {
     onFocusSearch: () => {
       announce({ type: 'status', message: 'Search input focused' });
     },
-    onNavigatePanel: (direction) => {
+    onNavigatePanel: (direction: any) => {
       let nextIndex = focusedPanelIndex;
       if (direction === 'next') {
         nextIndex = (focusedPanelIndex + 1) % panelRefs.current.length;
@@ -197,19 +197,20 @@ export const ConsoleV3: React.FC = () => {
         message: `Focused panel ${nextIndex + 1}`,
       });
     },
-  }, [focusedPanelIndex, announce]);
+  }), [focusedPanelIndex, announce]);
 
   // Install keyboard hook on mount
   useEffect(() => {
     if (!consoleRef.current) return;
 
+    const keyboardCallbacks = handleKeyboardAction();
     const cleanup = installKeyboardHook(
       {
-        onRefresh: handleKeyboardAction.onRefresh,
-        onPipeline: handleKeyboardAction.onPipeline,
-        onAcknowledge: handleKeyboardAction.onAcknowledge,
-        onFocusSearch: handleKeyboardAction.onFocusSearch,
-        onNavigatePanel: handleKeyboardAction.onNavigatePanel,
+        onRefresh: keyboardCallbacks.onRefresh,
+        onPipeline: keyboardCallbacks.onPipeline,
+        onAcknowledge: keyboardCallbacks.onAcknowledge,
+        onFocusSearch: keyboardCallbacks.onFocusSearch,
+        onNavigatePanel: keyboardCallbacks.onNavigatePanel,
       },
       { target: consoleRef.current }
     );

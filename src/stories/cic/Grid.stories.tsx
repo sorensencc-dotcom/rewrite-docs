@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 // Golden path - 12 column (default)
 export const TwelveColumn: Story = {
-  args: {},
+  args: { children: null },
   render: () => (
     <DarkModeWrapper>
       <Grid cols={12}>
@@ -32,7 +32,7 @@ export const TwelveColumn: Story = {
 };
 
 export const SixColumn: Story = {
-  args: {},
+  args: { children: null },
   render: () => (
     <DarkModeWrapper>
       <Grid cols={6}>
@@ -48,7 +48,7 @@ export const SixColumn: Story = {
 };
 
 export const FourColumn: Story = {
-  args: {},
+  args: { children: null },
   render: () => (
     <DarkModeWrapper>
       <Grid cols={4}>
@@ -62,7 +62,7 @@ export const FourColumn: Story = {
 };
 
 export const TwoColumn: Story = {
-  args: {},
+  args: { children: null },
   render: () => (
     <DarkModeWrapper>
       <Grid cols={2}>
@@ -74,7 +74,7 @@ export const TwoColumn: Story = {
 };
 
 export const SingleColumn: Story = {
-  args: {},
+  args: { children: null },
   render: () => (
     <DarkModeWrapper>
       <Grid cols={1}>
@@ -88,7 +88,7 @@ export const SingleColumn: Story = {
 
 // Edge cases
 export const ManyItems: Story = {
-  args: {},
+  args: { children: null },
   render: () => (
     <DarkModeWrapper>
       <Grid cols={3}>
@@ -101,7 +101,7 @@ export const ManyItems: Story = {
 };
 
 export const UnevenSpans: Story = {
-  args: {},
+  args: { children: null },
   render: () => (
     <DarkModeWrapper>
       <Grid cols={12}>
@@ -126,7 +126,7 @@ export const UnevenSpans: Story = {
 };
 
 export const EmptyGrid: Story = {
-  args: {},
+  args: { cols: 4, children: null },
   render: () => (
     <DarkModeWrapper>
       <Grid cols={4}>
@@ -138,7 +138,7 @@ export const EmptyGrid: Story = {
 
 // Density testing
 export const Density: Story = {
-  args: {},
+  args: { children: null },
   render: () => (
     <DensityWrapper>
       <Grid cols={12}>
@@ -158,7 +158,7 @@ export const Density: Story = {
 
 // Responsive grid layout
 export const ResponsiveLayout: Story = {
-  args: {},
+  args: { children: null },
   render: () => (
     <DarkModeWrapper>
       <div style={{ maxWidth: '900px' }}>
@@ -180,7 +180,7 @@ export const ResponsiveLayout: Story = {
 
 // Gap and spacing
 export const WithCustomGap: Story = {
-  args: {},
+  args: { children: null },
   render: () => (
     <DarkModeWrapper>
       <Grid cols={3} style={{ gap: '20px' }}>

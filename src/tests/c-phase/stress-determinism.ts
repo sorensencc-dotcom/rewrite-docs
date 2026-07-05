@@ -10,10 +10,10 @@
  * Usage: node stress-determinism.js
  */
 
-import { ModelRouter } from "../../core/modelRouter.js";
-import { loadModelRegistry } from "../../core/modelRegistry.js";
-import { AgentRoutingProfile } from "../../agents/routingProfile.js";
-import { OrchestratorAgent } from "../../agents/orchestratorAgent.js";
+import { ModelRouter } from "../../core/modelRouter";
+import { loadModelRegistry } from "../../core/modelRegistry";
+import { AgentRoutingProfile } from "../../agents/routingProfile";
+import { OrchestratorAgent } from "../../agents/orchestratorAgent";
 
 process.env.MAAL_MODE = "local";
 
@@ -26,10 +26,10 @@ const PROFILES = [
 
 const payload = {
   model: "",
-  messages: [{ role: "user", content: "stress test" }]
+  messages: [{ role: "user" as const, content: "stress test" }]
 };
 
-const results = {
+const results: any = {
   routing: { runs: 0, identical: 0, diffs: [] },
   agent: { runs: 0, identical: 0, diffs: [] },
   parallel: { runs: 0, identical: 0, diffs: [] }

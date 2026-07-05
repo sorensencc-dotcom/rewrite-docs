@@ -1,4 +1,4 @@
-import { ResponseValidator } from "../../core/modelRouter.js";
+import { ResponseValidator } from "../../core/modelRouter";
 const TEST_SPEC = {
     name: "test-model",
     provider: "mock",

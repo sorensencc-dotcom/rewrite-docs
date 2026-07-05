@@ -22,7 +22,7 @@ export const Danger: Story = { args: { children: 'Button', variant: 'danger', si
 export const Ghost: Story = { args: { children: 'Button', variant: 'ghost', size: 'medium' } };
 
 export const AllSizes: Story = {
-  args: {},
+  args: { children: null },
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
       <Button size="small">Small</Button>
@@ -33,7 +33,7 @@ export const AllSizes: Story = {
 };
 
 export const DensityModes: Story = {
-  args: {},
+  args: { children: null },
   render: () => (
     <DensityWrapper>
       <Button variant="primary">Click me</Button>
@@ -42,7 +42,7 @@ export const DensityModes: Story = {
 };
 
 export const DarkMode: Story = {
-  args: {},
+  args: { children: null },
   render: () => (
     <div style={{ display: 'flex', gap: '2rem' }}>
       <div style={{ padding: '1rem' }}>

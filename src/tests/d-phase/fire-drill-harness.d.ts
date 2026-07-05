@@ -1,5 +1,5 @@
-import { ChatResult } from "../../core/modelRouter.js";
-import { MockProvider } from "../mocks/mockProvider.js";
+import { ChatResult } from "../../core/modelRouter";
+import { MockProvider } from "../mocks/mockProvider";
 export interface FireDrillResult {
     name: string;
     mode: string;
