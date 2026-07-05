@@ -1,0 +1,47 @@
+cic-ingestion/src/adapters/grok/GrokHardenedAdapter.ts
+  s_24531e0f82e936::t_7725694b3b9362 122,132,136,138-139
+cic-ingestion/src/adapters/grok/GrokUnifiedAdapterOptimized.ts
+  s_1654a121839170::t_bdd8d6faf59102 106,114,118,120-121
+cic-ingestion/src/core/maal/canary/CanaryGateOrchestrator.ts
+  s_1654a121839170::t_bd3f605ae56f1e 1-256
+cic-ingestion/src/ingestion/daemon.ts
+  s_38d1f14026a375::t_449857885d1620 1-215
+cic-ingestion/src/orchestrator/BridgeOrchestrator.ts
+  s_1654a121839170::t_d40cb7a733eedf 1-130
+cic-ingestion/src/tests/adapter-integration.test.ts
+  s_1654a121839170::t_9a144de5fd6ce6 1-197
+cic-ingestion/src/vector/__tests__/torqueQueryRegression.test.ts
+  s_1654a121839170::t_8405218dc12c6f 19,23,27,31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "9efaf8c30d3bf200a365534928f64ce2382e81f3",
+  "prompts": {},
+  "sessions": {
+    "s_1654a121839170": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d8f4a923-b276-4326-b1ef-3173066dd673",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_24531e0f82e936": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c6043ef0-b3d2-41c0-8516-888507c4bdef",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_38d1f14026a375": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "007a8e6d-b554-4ca7-b28a-8ec8c6d80cb4",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
