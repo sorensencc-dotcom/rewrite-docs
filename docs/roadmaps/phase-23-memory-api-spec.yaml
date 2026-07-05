@@ -1,0 +1,295 @@
+---
+title: Phase 23 Memory Layer API Contract
+version: 1.0.0
+status: FOUNDATION
+owner: autonomy-stack
+blocks: ["Phase 24", "Phase 25", "Phase 26", "Phase 27"]
+---
+
+# Phase 23: Memory Layer API Specification
+
+## Overview
+Autonomous memory system underpinning long-horizon reasoning. Persists reasoning chains, observes state drift, enables counterfactual replay.
+
+## Core Data Models
+
+### MemoryPacket
+```yaml
+type: MemoryPacket
+fields:
+  id:
+    type: string
+    description: UUID, immutable
+    format: "uuid4"
+
+  timestamp:
+    type: integer
+    description: Unix epoch (ms)
+    immutable: true
+
+  context:
+    type: object
+    description: Reasoning context snapshot
+    fields:
+      phase_id: string              # Which phase created this
+      agent_id: string              # Which agent (e.g., observer-1)
+      task_id: string               # Parent task (e.g., task-abc-001)
+      session_id: string            # User session (e.g., sess-xyz)
+
+  reasoning_chain:
+    type: array
+    description: Ordered steps leading to decision
+    items:
+      type: object
+      fields:
+        step_id: string
+        type: enum [hypothesis, observation, inference, decision]
+        content: string
+        confidence: float (0.0-1.0)
+        timestamp: integer
+
+  evidence:
+    type: object
+    description: Supporting artifacts
+    fields:
+      inputs: array[string]          # Input IDs
+      outputs: array[string]         # Output IDs
+      references: array[string]      # External doc URLs
+
+  state_snapshot:
+    type: object
+    description: CIC state at time of creation
+    fields:
+      knowledge_graph_hash: string   # KG snapshot digest
+      policy_rails_version: string   # Active governance version
+      skill_inventory: object        # Available skills at time
+
+  ttl_seconds:
+    type: integer
+    default: 2592000  # 30 days
+    description: Auto-purge after TTL (configurable per phase)
+
+  is_public:
+    type: boolean
+    default: false
+    description: Can downstream phases access this?
+```
+
+### MemoryQuery
+```yaml
+type: MemoryQuery
+fields:
+  phase_id:
+    type: string
+    required: true
+
+  start_time:
+    type: integer
+    description: Unix epoch (ms)
+
+  end_time:
+    type: integer
+    description: Unix epoch (ms)
+
+  reasoning_type:
+    type: enum
+    options: [all, hypothesis, inference, decision]
+    default: all
+
+  agent_ids:
+    type: array[string]
+    description: Filter by agents. Empty = all
+
+  task_ids:
+    type: array[string]
+    description: Filter by tasks. Empty = all
+
+  min_confidence:
+    type: float
+    description: Only reasoning steps ≥ threshold
+    default: 0.0
+
+  limit:
+    type: integer
+    default: 100
+    max: 10000
+```
+
+---
+
+## API Endpoints
+
+### POST /memory/packets
+Store memory packet. Phase 23 writes; 24+ reads.
+
+**Request:**
+```json
+{
+  "context": {
+    "phase_id": "23.4",
+    "agent_id": "observer-1",
+    "task_id": "task-abc-001",
+    "session_id": "sess-xyz"
+  },
+  "reasoning_chain": [
+    {
+      "step_id": "step-1",
+      "type": "observation",
+      "content": "Vector distance drift 12% above baseline",
+      "confidence": 0.98,
+      "timestamp": 1751000000
+    },
+    {
+      "step_id": "step-2",
+      "type": "hypothesis",
+      "content": "Knowledge graph semantic shift detected",
+      "confidence": 0.85,
+      "timestamp": 1751000001
+    }
+  ],
+  "evidence": {
+    "inputs": ["input-kg-snapshot-1"],
+    "outputs": ["drift-alert-1"],
+    "references": ["https://internal.cic/drift/report-20260704"]
+  },
+  "state_snapshot": {
+    "knowledge_graph_hash": "sha256:abc123...",
+    "policy_rails_version": "governance.v24.2",
+    "skill_inventory": { "count": 47, "active": 41 }
+  },
+  "ttl_seconds": 2592000,
+  "is_public": true
+}
+```
+
+**Response:**
+```json
+{
+  "id": "mem-xyz-123",
+  "status": "accepted",
+  "timestamp": 1751000002,
+  "acknowledgement": {
+    "phase_id": "23.4",
+    "packet_id": "mem-xyz-123",
+    "retrieval_deadline": 1751086402
+  }
+}
+```
+
+**Errors:**
+- `400 Bad Request`: Missing required fields (context, reasoning_chain)
+- `413 Payload Too Large`: Packet > 10 MB
+- `500 Internal Server Error`: Storage failure (retry idempotent)
+
+---
+
+### POST /memory/query
+Retrieve packets matching criteria. All downstream phases can query.
+
+**Request:**
+```json
+{
+  "phase_id": "24",
+  "start_time": 1750900000,
+  "end_time": 1751000000,
+  "reasoning_type": "inference",
+  "agent_ids": ["observer-1"],
+  "min_confidence": 0.80,
+  "limit": 50
+}
+```
+
+**Response:**
+```json
+{
+  "query_id": "q-xyz",
+  "total_results": 47,
+  "returned": 50,
+  "packets": [
+    {
+      "id": "mem-xyz-123",
+      "timestamp": 1751000002,
+      "context": { "phase_id": "23.4", ... },
+      "reasoning_chain": [ ... ],
+      "state_snapshot": { ... }
+    }
+  ],
+  "cursor": "next-batch-token-abc"
+}
+```
+
+**Errors:**
+- `400 Bad Request`: Invalid phase_id (not registered)
+- `403 Forbidden`: Requesting phase not authorized for this memory class
+- `404 Not Found`: No packets match query
+
+---
+
+### GET /memory/packets/{packet_id}
+Single packet retrieval (atomic read for validation).
+
+**Response:**
+```json
+{
+  "id": "mem-xyz-123",
+  "timestamp": 1751000002,
+  "context": { ... },
+  "reasoning_chain": [ ... ],
+  "evidence": { ... },
+  "state_snapshot": { ... },
+  "is_public": true,
+  "expires_at": 1753592002
+}
+```
+
+---
+
+### DELETE /memory/packets/{packet_id}
+Purge packet (Phase 23 + governance admins only).
+
+**Response:**
+```json
+{
+  "packet_id": "mem-xyz-123",
+  "status": "deleted",
+  "purged_at": 1751000050
+}
+```
+
+---
+
+## SLA & Reliability
+
+| Metric | Target | Notes |
+|--------|--------|-------|
+| Write latency (p50) | < 50ms | Memcached + PostgreSQL |
+| Write latency (p99) | < 200ms | Outlier retry allowed |
+| Query latency (p50) | < 100ms | Indexed by phase_id, timestamp |
+| Query latency (p99) | < 500ms | Full-table scan fallback |
+| Availability | 99.9% | 8.6 hours/month downtime max |
+| Data retention | 30 days | Configurable per phase via ttl_seconds |
+| Replication | 3x | Qdrant + PostgreSQL binlog |
+
+---
+
+## Authentication & Authorization
+
+- **Auth method**: JWT bearer token (CIC internal)
+- **Phases** mapped to roles:
+  - Phase 23 (Memory): `role:memory-writer`
+  - Phase 24+ (Consumers): `role:memory-reader`
+  - Governance admins: `role:memory-admin`
+- **Rate limits**: 1000 writes/min, 10000 queries/min per phase
+- **Audit log**: All reads/writes logged for compliance
+
+---
+
+## Integration Checklist
+
+- [ ] Phase 23.1–23.3: MemoryPacket storage + basic query working
+- [ ] Phase 23.4–23.7: Evidence linking + state snapshot capture
+- [ ] Phase 24: Governance reads Phase 23 memory (council voting)
+- [ ] Phase 25: Skills discover memory packets (confidence thresholds)
+- [ ] Phase 26: TorqueQuery indexes memory (full-text search)
+- [ ] Phase 27: CRO replays memory (counterfactual validation)
+- [ ] Integration test: Cross-phase memory flow (23→24→25→26→27)

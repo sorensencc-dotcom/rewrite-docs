@@ -1,0 +1,463 @@
+---
+title: Phase 26 TorqueQuery Adapter API Contract
+version: 1.0.0
+status: FOUNDATION
+owner: autonomy-stack
+depends_on: ["Phase 23 Memory Layer", "Phase 24 Governance"]
+blocks: ["Phase 27", "Phase 28c"]
+---
+
+# Phase 26: TorqueQuery Adapter API Specification
+
+## Overview
+Open-source ingestion + search engine. Indexes Phase 23 memory packets + Phase 24 governance decisions. Enables CIC counterfactual reasoning by querying past states.
+
+## Core Data Models
+
+### IndexableDocument
+```yaml
+type: IndexableDocument
+description: Searchable record from Phase 23 or 24
+fields:
+  id:
+    type: string
+    format: "{source_type}-{source_id}"
+    example: "memory-mem-xyz-123"
+
+  source_type:
+    type: enum
+    options: [memory_packet, governance_decision, policy_rail, evidence_packet]
+
+  source_id:
+    type: string
+    immutable: true
+
+  document_type:
+    type: enum
+    options: [reasoning_chain, state_snapshot, evidence, policy, decision]
+
+  content:
+    type: string
+    description: Full-text searchable body
+    max_length: 100000
+
+  indexed_fields:
+    type: object
+    description: Structured metadata for faceted search
+    fields:
+      phase_id: string
+      agent_id: string
+      timestamp: integer
+      confidence: float
+      severity: string
+      source_phase: string
+
+  embeddings:
+    type: object
+    description: Vector representation for semantic search
+    fields:
+      model: string
+        example: "text-embedding-3-small"
+      vector: array[float]
+        dimensions: 1536
+      generated_at: integer
+
+  created_at:
+    type: integer
+    unix_epoch_ms: true
+
+  expires_at:
+    type: integer
+    unix_epoch_ms: true
+    nullable: true
+```
+
+### SearchQuery
+```yaml
+type: SearchQuery
+description: Query against indexed documents
+fields:
+  query_text:
+    type: string
+    description: Full-text search string
+    required: true
+
+  semantic_search:
+    type: boolean
+    default: false
+    description: Use vector similarity (slower, more intelligent)
+
+  filters:
+    type: object
+    description: Structured facets
+    fields:
+      source_type: enum[memory_packet, governance_decision, policy_rail]
+      phase_ids: array[string]
+      date_range:
+        start_time: integer (unix_epoch_ms)
+        end_time: integer (unix_epoch_ms)
+      confidence_min: float (0.0-1.0)
+      severity: enum[critical, high, medium, low]
+      tags: array[string]
+
+  limit:
+    type: integer
+    default: 50
+    max: 1000
+
+  offset:
+    type: integer
+    default: 0
+
+  sort_by:
+    type: enum
+    options: [relevance, timestamp_desc, confidence_desc]
+    default: relevance
+```
+
+### SearchResult
+```yaml
+type: SearchResult
+description: Single search hit
+fields:
+  id:
+    type: string
+
+  score:
+    type: float
+    description: Relevance score (0.0-1.0)
+
+  source_type:
+    type: enum
+
+  source_id:
+    type: string
+
+  matched_content:
+    type: string
+    description: Excerpt with query terms highlighted
+
+  indexed_fields:
+    type: object
+
+  timestamp:
+    type: integer
+
+  url_reference:
+    type: string
+    nullable: true
+    description: Link to full document in memory/governance API
+```
+
+---
+
+## API Endpoints
+
+### POST /search/query
+Full-text + semantic search across indexed documents.
+
+**Request:**
+```json
+{
+  "query_text": "skill execution failed with timeout",
+  "semantic_search": false,
+  "filters": {
+    "source_type": "memory_packet",
+    "phase_ids": ["23", "24"],
+    "date_range": {
+      "start_time": 1750900000,
+      "end_time": 1751000000
+    },
+    "confidence_min": 0.80
+  },
+  "limit": 20,
+  "sort_by": "relevance"
+}
+```
+
+**Response:**
+```json
+{
+  "query_id": "q-xyz-789",
+  "total_hits": 47,
+  "returned": 20,
+  "results": [
+    {
+      "id": "memory-mem-xyz-123",
+      "score": 0.95,
+      "source_type": "memory_packet",
+      "source_id": "mem-xyz-123",
+      "matched_content": "...skill execution <mark>failed with timeout</mark> after 45s...",
+      "indexed_fields": {
+        "phase_id": "23.4",
+        "timestamp": 1751000000,
+        "confidence": 0.92
+      },
+      "url_reference": "https://cic.internal/memory/mem-xyz-123"
+    }
+  ],
+  "took_ms": 125,
+  "next_page_token": "offset-20"
+}
+```
+
+**Errors:**
+- `400 Bad Request`: Invalid query syntax or filters
+- `408 Request Timeout`: Semantic search exceeded 5s (retry with semantic_search=false)
+- `503 Service Unavailable`: Index unavailable (auto-retry)
+
+---
+
+### POST /search/semantic
+Similarity search using vector embeddings (for reasoning chains).
+
+**Request:**
+```json
+{
+  "query_embedding": [0.1, 0.2, ..., 0.9],
+  "embedding_model": "text-embedding-3-small",
+  "filters": {
+    "source_type": "memory_packet",
+    "phase_ids": ["23"]
+  },
+  "similarity_threshold": 0.75,
+  "limit": 10
+}
+```
+
+**Response:**
+```json
+{
+  "query_id": "q-semantic-456",
+  "total_hits": 12,
+  "returned": 10,
+  "results": [
+    {
+      "id": "memory-mem-xyz-124",
+      "score": 0.91,
+      "similarity": 0.91,
+      "source_type": "memory_packet",
+      "matched_content": "...counterfactual drift observed in policy rail 7...",
+      "url_reference": "https://cic.internal/memory/mem-xyz-124"
+    }
+  ],
+  "took_ms": 850
+}
+```
+
+---
+
+### POST /index/documents
+Bulk ingest documents from Phase 23/24 (Phase 23 writes; TorqueQuery indexes).
+
+**Request:**
+```json
+{
+  "documents": [
+    {
+      "id": "memory-mem-xyz-123",
+      "source_type": "memory_packet",
+      "source_id": "mem-xyz-123",
+      "document_type": "reasoning_chain",
+      "content": "Step 1: Observed drift 12%. Step 2: Hypothesized KG shift...",
+      "indexed_fields": {
+        "phase_id": "23.4",
+        "timestamp": 1751000000,
+        "confidence": 0.92,
+        "agent_id": "observer-1"
+      },
+      "embeddings": {
+        "model": "text-embedding-3-small",
+        "vector": [0.1, 0.2, ..., 0.9]
+      }
+    }
+  ],
+  "batch_id": "batch-ingest-20260704-1"
+}
+```
+
+**Response:**
+```json
+{
+  "batch_id": "batch-ingest-20260704-1",
+  "indexed": 1,
+  "failed": 0,
+  "failures": [],
+  "index_version": "v26.1.2"
+}
+```
+
+**Errors:**
+- `400 Bad Request`: Invalid document schema
+- `413 Payload Too Large`: Batch > 100 MB
+- `507 Insufficient Storage`: Index at capacity
+
+---
+
+### DELETE /index/documents/{document_id}
+Remove document from index (for memory TTL purges).
+
+**Response:**
+```json
+{
+  "document_id": "memory-mem-xyz-123",
+  "status": "deleted",
+  "index_updated_at": 1751000050
+}
+```
+
+---
+
+### GET /index/stats
+Index health & capacity metrics.
+
+**Response:**
+```json
+{
+  "index_version": "v26.1.2",
+  "total_documents": 150000,
+  "document_breakdown": {
+    "memory_packet": 100000,
+    "governance_decision": 30000,
+    "policy_rail": 15000,
+    "evidence_packet": 5000
+  },
+  "index_size_mb": 2400,
+  "max_capacity_mb": 10000,
+  "capacity_used_percent": 24,
+  "last_reindex": 1751000000,
+  "avg_query_time_ms": 125,
+  "queries_per_minute": 480
+}
+```
+
+---
+
+### POST /index/reindex
+Rebuild index from source (Phase 23/24 APIs). Async operation.
+
+**Request:**
+```json
+{
+  "source_types": ["memory_packet", "governance_decision"],
+  "start_time": 1750800000,
+  "end_time": 1751000000,
+  "regenerate_embeddings": false
+}
+```
+
+**Response:**
+```json
+{
+  "reindex_id": "reindex-xyz",
+  "status": "queued",
+  "estimated_duration_seconds": 600,
+  "progress_url": "https://cic.internal/index/reindex/reindex-xyz"
+}
+```
+
+---
+
+## CIC ↔ Rewrite Labs Bridge
+
+### POST /search/rl-query
+Specialized endpoint for Rewrite Labs integration (Phase 30).
+
+**Request:**
+```json
+{
+  "query_type": "cost_estimation",
+  "target_resource": "skill-webscraper-v2",
+  "historical_lookback_days": 7,
+  "filters": {
+    "phase_ids": ["26"],
+    "tags": ["rewrite-labs", "cost-analysis"]
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "query_id": "q-rl-cost-123",
+  "cost_estimates": [
+    {
+      "timestamp": 1750900000,
+      "tokens": 500000,
+      "usd": 2.50,
+      "source": "memory-mem-rl-001"
+    }
+  ],
+  "trend": "stable",
+  "recommendation": "safe_to_execute",
+  "confidence": 0.88
+}
+```
+
+---
+
+### POST /search/cic-query
+Specialized endpoint for CIC counterfactual reasoning (Phase 27).
+
+**Request:**
+```json
+{
+  "query_type": "state_replay",
+  "target_phase": "25",
+  "counterfactual_scenario": "if_skill_X_had_succeeded",
+  "memory_window_hours": 24
+}
+```
+
+**Response:**
+```json
+{
+  "query_id": "q-crf-xyz",
+  "replay_packets": [
+    {
+      "original_outcome": "skill_failed",
+      "hypothetical_outcome": "skill_succeeded",
+      "confidence": 0.72,
+      "evidence": ["mem-xyz-125", "mem-xyz-126"]
+    }
+  ]
+}
+```
+
+---
+
+## SLA & Reliability
+
+| Metric | Target | Notes |
+|--------|--------|-------|
+| Full-text query latency (p50) | < 100ms | Inverted index |
+| Semantic query latency (p99) | < 1000ms | Vector similarity |
+| Index ingest latency (p50) | < 50ms per doc | Batch async |
+| Index capacity | 10 GB | ≈500K documents |
+| Availability | 99.95% | <22 min/month downtime |
+| Data freshness | <5 min | Async indexing lag |
+| Index retention | Per TTL | Tied to Phase 23 memory TTL |
+
+---
+
+## Authentication & Authorization
+
+- **Auth**: JWT (same as Phase 23/24)
+- **Roles**:
+  - `role:search-reader`: Query endpoints (all phases)
+  - `role:index-writer`: Document ingestion (Phase 23, 24)
+  - `role:index-admin`: Reindex, stats (admins only)
+- **Rate limits**: 5000 queries/min per phase, 100 ingest batches/min
+
+---
+
+## Integration Checklist
+
+- [ ] Phase 26.1: Index storage + basic full-text search
+- [ ] Phase 26.2: Semantic embeddings + vector similarity
+- [ ] Phase 26.3: Document expiry + TTL sync with Phase 23
+- [ ] Phase 26.4: RL bridge endpoint working
+- [ ] Phase 26.5: CIC counterfactual query endpoint working
+- [ ] Phase 27: Uses TorqueQuery for state replay
+- [ ] Phase 30: Uses TorqueQuery for cost estimation
+- [ ] Integration test: Index memory packet → query → retrieve → use in reasoning

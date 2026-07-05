@@ -40,6 +40,12 @@ nav:
       - CIC Roadmap: roadmaps/cic-roadmap.md
       - Rewrite Labs Roadmap: roadmaps/rewrite-labs-roadmap.md
       - Unified Roadmap: roadmaps/unified-roadmap.md
+      - Phase 23-27 Autonomy Stack:
+          - Memory API: roadmaps/phase-23-memory-api-spec.yaml
+          - Governance API: roadmaps/phase-24-governance-api-spec.yaml
+          - TorqueQuery Adapter API: roadmaps/phase-26-torque-adapter-api-spec.yaml
+          - Execution Blueprint: roadmaps/execution-blueprint-phases-23-27.md
+          - Risk Register: roadmaps/risk-register-phases-23-27.md
       - Batch Map 1-40: cic/BATCH-MAP-1-40-STATUS.md
       - Tickets:
           - Batch 2 Index: roadmaps/tickets/batch-2/index.md

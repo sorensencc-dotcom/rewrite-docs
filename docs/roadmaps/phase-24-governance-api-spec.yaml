@@ -1,0 +1,460 @@
+---
+title: Phase 24 Governance API Contract
+version: 1.0.0
+status: FOUNDATION
+owner: autonomy-stack
+depends_on: ["Phase 23 Memory Layer"]
+blocks: ["Phase 25", "Phase 27", "Phase 28c"]
+---
+
+# Phase 24: Governance API Specification
+
+## Overview
+Policy rails + council voting + evidence vault. Ensures CIC decisions stay within human-defined guardrails. Phase 23 memory feeds evidence; Phase 25 skills query policy.
+
+## Core Data Models
+
+### PolicyRail
+```yaml
+type: PolicyRail
+description: Rule constraining CIC behavior
+fields:
+  id:
+    type: string
+    format: "rail-{governance_version}-{index}"
+    immutable: true
+
+  governance_version:
+    type: string
+    format: "governance.v{major}.{minor}"
+    example: "governance.v24.2"
+
+  name:
+    type: string
+    description: Human-readable rail name
+    example: "No skill execution without council approval"
+
+  severity:
+    type: enum
+    options: [critical, high, medium, low]
+    description: Impact of violation
+
+  rule_type:
+    type: enum
+    options: [capability_gate, approval_required, cost_limit, latency_bound, data_access, skill_isolation]
+
+  condition:
+    type: object
+    description: When rule applies
+    fields:
+      phase_ids: array[string]        # Which phases trigger
+      skill_ids: array[string]        # Which skills affected
+      resource_types: array[string]   # VM, network, storage, etc.
+      cost_threshold: number          # Optional: tokens or USD
+
+  enforcement:
+    type: enum
+    options: [block, warn, audit, defer]
+    description: Action on violation
+
+  evidence_requirement:
+    type: enum
+    options: [none, memory_packet, observation, council_approval]
+    description: What must accompany decision
+
+  created_at:
+    type: integer
+    unix_epoch_ms: true
+
+  expires_at:
+    type: integer
+    unix_epoch_ms: true
+    nullable: true
+    description: Null = permanent
+```
+
+### CouncilVote
+```yaml
+type: CouncilVote
+description: Council member decision on proposed action
+fields:
+  id:
+    type: string
+    format: "vote-{uuid}"
+
+  proposal_id:
+    type: string
+    required: true
+    description: What is being voted on
+
+  member_id:
+    type: string
+    description: Council member identifier
+
+  decision:
+    type: enum
+    options: [approve, reject, abstain, defer]
+
+  reasoning:
+    type: string
+    description: Justification (>20 chars, required for reject)
+
+  confidence:
+    type: float
+    range: [0.0, 1.0]
+    description: Member confidence in decision
+
+  timestamp:
+    type: integer
+    unix_epoch_ms: true
+
+  signature:
+    type: string
+    format: "sha256:{hash}"
+    description: Immutable vote commitment
+```
+
+### EvidencePacket
+```yaml
+type: EvidencePacket
+description: Fact bundle supporting decision
+fields:
+  id:
+    type: string
+    format: "ev-{uuid}"
+
+  proposal_id:
+    type: string
+    required: true
+
+  source_phase:
+    type: string
+    example: "23.4"
+
+  memory_packets:
+    type: array[string]
+    description: Phase 23 memory IDs referenced
+
+  observations:
+    type: array
+    items:
+      type: object
+      fields:
+        timestamp: integer
+        metric: string
+        value: number
+        confidence: float
+
+  risk_assessment:
+    type: object
+    fields:
+      risk_level: enum [low, medium, high, critical]
+      mitigations: array[string]
+      residual_risk: float (0.0-1.0)
+
+  cost_estimate:
+    type: object
+    fields:
+      tokens: integer
+      usd: number
+      confidence: float
+```
+
+### ProposalForDecision
+```yaml
+type: Proposal
+description: Action awaiting council decision
+fields:
+  id:
+    type: string
+    format: "prop-{uuid}"
+
+  action_type:
+    type: enum
+    options: [skill_execution, memory_purge, policy_update, resource_allocation, emergency_rollback]
+
+  target_resource:
+    type: string
+    description: What object is affected (skill_id, memory_packet_id, policy_rail_id)
+
+  requested_by:
+    type: string
+    description: Phase/agent requesting decision
+
+  evidence_packet_id:
+    type: string
+    required: true
+
+  decision_deadline:
+    type: integer
+    unix_epoch_ms: true
+    description: Time limit for council vote
+
+  voting_threshold:
+    type: enum
+    options: [majority, supermajority, unanimous, single_approval]
+
+  votes:
+    type: array[CouncilVote]
+
+  status:
+    type: enum
+    options: [pending, approved, rejected, deferred, expired]
+
+  executed_at:
+    type: integer
+    nullable: true
+    unix_epoch_ms: true
+```
+
+---
+
+## API Endpoints
+
+### GET /governance/policy-rails
+List active policy rails. All phases can query.
+
+**Query params:**
+```
+governance_version=governance.v24.2
+severity=critical,high
+rule_type=approval_required
+phase_id=25
+```
+
+**Response:**
+```json
+{
+  "version": "governance.v24.2",
+  "rails": [
+    {
+      "id": "rail-governance.v24.2-1",
+      "name": "No skill execution without council approval",
+      "severity": "critical",
+      "rule_type": "approval_required",
+      "condition": {
+        "phase_ids": ["25"],
+        "skill_ids": ["*"],
+        "resource_types": ["computation"]
+      },
+      "enforcement": "block",
+      "evidence_requirement": "council_approval",
+      "created_at": 1750800000
+    }
+  ],
+  "total": 1,
+  "effective_until": 1753392000
+}
+```
+
+---
+
+### POST /governance/proposals
+Submit action for council decision.
+
+**Request:**
+```json
+{
+  "action_type": "skill_execution",
+  "target_resource": "skill-webscraper-v2",
+  "requested_by": "phase-25.2",
+  "evidence_packet_id": "ev-xyz-456",
+  "decision_deadline": 1751086400,
+  "voting_threshold": "supermajority"
+}
+```
+
+**Response:**
+```json
+{
+  "proposal_id": "prop-abc-789",
+  "status": "pending",
+  "votes_required": 3,
+  "votes_received": 0,
+  "decision_deadline": 1751086400
+}
+```
+
+**Errors:**
+- `400 Bad Request`: Missing evidence_packet_id
+- `403 Forbidden`: action_type blocked by active policy rail
+- `404 Not Found`: evidence_packet_id doesn't exist
+
+---
+
+### POST /governance/proposals/{proposal_id}/vote
+Cast council vote.
+
+**Request:**
+```json
+{
+  "member_id": "council-observer-2",
+  "decision": "approve",
+  "reasoning": "Cost estimate acceptable, memory packets support approval",
+  "confidence": 0.95
+}
+```
+
+**Response:**
+```json
+{
+  "vote_id": "vote-xyz",
+  "proposal_id": "prop-abc-789",
+  "decision": "approve",
+  "signature": "sha256:def456...",
+  "timestamp": 1751000050,
+  "votes_to_threshold": 1
+}
+```
+
+**Errors:**
+- `400 Bad Request`: Member already voted
+- `410 Gone`: Proposal expired or decided
+
+---
+
+### POST /governance/evidence-packets
+Store evidence for proposal (Phase 23 writes; governance reads).
+
+**Request:**
+```json
+{
+  "proposal_id": "prop-abc-789",
+  "source_phase": "23.4",
+  "memory_packets": [
+    "mem-xyz-123",
+    "mem-xyz-124"
+  ],
+  "observations": [
+    {
+      "timestamp": 1751000000,
+      "metric": "skill_error_rate",
+      "value": 0.02,
+      "confidence": 0.98
+    }
+  ],
+  "risk_assessment": {
+    "risk_level": "medium",
+    "mitigations": [
+      "Sandbox skill execution",
+      "Limit concurrency to 1",
+      "Auto-rollback on failure"
+    ],
+    "residual_risk": 0.15
+  },
+  "cost_estimate": {
+    "tokens": 500000,
+    "usd": 2.50,
+    "confidence": 0.92
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "packet_id": "ev-xyz-456",
+  "proposal_id": "prop-abc-789",
+  "created_at": 1751000040,
+  "cost_estimate_approved": false,
+  "cost_approved_deadline": 1751086440
+}
+```
+
+---
+
+### GET /governance/proposals/{proposal_id}
+Retrieve proposal + vote status.
+
+**Response:**
+```json
+{
+  "proposal_id": "prop-abc-789",
+  "action_type": "skill_execution",
+  "target_resource": "skill-webscraper-v2",
+  "status": "approved",
+  "evidence_packet_id": "ev-xyz-456",
+  "votes": [
+    {
+      "member_id": "council-observer-2",
+      "decision": "approve",
+      "confidence": 0.95,
+      "timestamp": 1751000050
+    }
+  ],
+  "decision_deadline": 1751086400,
+  "executed_at": 1751000060
+}
+```
+
+---
+
+### POST /governance/policies/update
+Submit new policy rail (governance admins + supermajority only).
+
+**Request:**
+```json
+{
+  "governance_version": "governance.v24.3",
+  "new_rails": [
+    {
+      "name": "TorqueQuery cost ceiling",
+      "rule_type": "cost_limit",
+      "condition": {
+        "phase_ids": ["26"],
+        "cost_threshold": 1000
+      },
+      "enforcement": "warn",
+      "evidence_requirement": "none"
+    }
+  ],
+  "expires_at": 1753392000
+}
+```
+
+**Response:**
+```json
+{
+  "governance_version": "governance.v24.3",
+  "rails_staged": 1,
+  "requires_council_approval": true,
+  "approval_deadline": 1751000400
+}
+```
+
+---
+
+## SLA & Reliability
+
+| Metric | Target | Notes |
+|--------|--------|-------|
+| Policy query latency (p50) | < 50ms | In-memory cache |
+| Proposal submission latency (p99) | < 200ms | Async write-behind |
+| Vote submission latency (p99) | < 100ms | Atomic, no retry |
+| Decision announcement latency | < 5s | Broadcast to all phases |
+| Audit log retention | 90 days | Immutable for compliance |
+| Council majority threshold | 3/5 | Configurable, default majority |
+
+---
+
+## Authentication & Authorization
+
+- **Auth**: JWT (same as Phase 23)
+- **Roles**:
+  - `role:policy-reader`: Query rails (all phases)
+  - `role:proposal-submitter`: Create proposals (phases 23+)
+  - `role:council-member`: Vote (humans + oracle)
+  - `role:governance-admin`: Update policies
+- **Rate limits**: 100 proposals/min per phase, 10 votes/min per member
+
+---
+
+## Integration Checklist
+
+- [ ] Phase 24.1: Policy rail storage + query endpoint working
+- [ ] Phase 24.2: Council voting mechanism + vote aggregation
+- [ ] Phase 24.3: Evidence packet linking (Phase 23 → 24 flow)
+- [ ] Phase 24.4: Policy update submitter + approval workflow
+- [ ] Phase 25: Queries governance before skill execution
+- [ ] Phase 27: CRO validates decisions against policy rails
+- [ ] Integration test: Proposal → vote → decision → enforcement
