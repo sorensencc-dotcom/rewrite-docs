@@ -194,6 +194,7 @@ nav:
       - Cost Tracking: operations/cost-tracking.md
       - Weekly Sync: operations/weekly-sync.md
       - Drift Forecast: operations/drift-forecast.md
+      - Autonomous Image Builds: operations/autonomous-image-builds.md
       - Deployment:
           - Reproducible Dockerfiles: deployment/reproducible-dockerfiles.md
           - Registry Configuration: deployment/registry-config.md
