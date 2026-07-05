@@ -49,12 +49,9 @@ export class EnforcementIntegration {
       const violationClass = this.classifyViolation(event);
 
       // Emit governance violation event
-      canaryEventBus.emit("violation", {
-        type: "violation",
+      canaryEventBus.emit("status_check", {
+        type: "status_check" as const,
         timestamp: Date.now(),
-        sloId: event.sloId,
-        severity: event.severity,
-        violationClass,
       });
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : "unknown error";

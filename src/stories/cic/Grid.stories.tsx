@@ -129,7 +129,7 @@ export const EmptyGrid: Story = {
   args: { cols: 4, children: null },
   render: () => (
     <DarkModeWrapper>
-      <Grid cols={4}>
+      <Grid cols={4} children={null}>
         {/* Empty grid */}
       </Grid>
     </DarkModeWrapper>

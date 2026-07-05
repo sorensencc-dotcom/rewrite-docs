@@ -40,7 +40,7 @@ export async function dispatchToCloud(
   if (!provider) {
     throw new Error(`Cloud provider ${providerName} not found`);
   }
-  return provider.chat(req);
+  return provider.chat(req) as any;
 }
 
 // NEW: Determine if request should use cloud routing (with null-safety)
@@ -73,8 +73,7 @@ export async function handleChat(
   }
 
   // Fallback to MAAL offline routing (existing logic unchanged)
-  // const offlineResponse = await dispatchToOfflineRouting(req);
-  // return offlineResponse;
+  throw new Error("No cloud provider selected and offline routing not implemented");
 }
 
 // MODIFICATION: Update handleGetModels to include cloud models
@@ -126,19 +125,6 @@ export async function handleHealth(
   }
 
   return health;
-}
-
-// NEW: Helper to get cloud provider status
-export function getCloudProviderStatus(): Record<string, boolean> {
-  return {
-    openrouter: !!process.env.OPENROUTER_API_KEY,
-    huggingface: !!process.env.HUGGINGFACE_API_KEY,
-    groq: !!process.env.GROQ_API_KEY,
-    together: !!process.env.TOGETHER_API_KEY,
-    deepinfra: !!process.env.DEEPINFRA_API_KEY,
-    meituan:
-      !!process.env.MEITUAN_API_KEY || process.env.NODE_ENV === "test",
-  };
 }
 
 // NEW: Export cloud providers for integration

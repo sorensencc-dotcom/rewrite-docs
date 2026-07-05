@@ -29,9 +29,11 @@ export class L1MemoryCache {
     this.store.delete(key);
 
     if (this.store.size >= this.maxEntries) {
-      const first = this.store.keys().next().value;
-      this.store.delete(first);
-      this.onEviction?.(first);
+      const first = this.store.keys().next().value as string;
+      if (first) {
+        this.store.delete(first);
+        this.onEviction?.(first);
+      }
     }
 
     this.store.set(key, {

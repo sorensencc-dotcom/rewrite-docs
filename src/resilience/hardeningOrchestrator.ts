@@ -86,10 +86,11 @@ export class HardeningOrchestrator {
       try {
         return await this.fallbackChain.execute<T>();
       } catch (fallbackError) {
-        throw new Error(
-          `${this.name} primary and all fallback providers failed: ${(fallbackError as Error).message}`,
-          { cause: primaryError }
+        const err = new Error(
+          `${this.name} primary and all fallback providers failed: ${(fallbackError as Error).message}`
         );
+        (err as any).cause = primaryError;
+        throw err;
       }
     }
   }

@@ -159,7 +159,7 @@ export class AutonomyAPIServer {
         try {
           // PDF generation
           if (pdfEnabled) {
-            const { generatePdfReport } = await importPdfReports();
+            const generatePdfReport = await importPdfReports();
             await generatePdfReport('daily');
           }
 
@@ -181,7 +181,7 @@ export class AutonomyAPIServer {
         try {
           // PDF generation
           if (pdfEnabled) {
-            const { generatePdfReport } = await importPdfReports();
+            const generatePdfReport = await importPdfReports();
             await generatePdfReport('weekly');
           }
 

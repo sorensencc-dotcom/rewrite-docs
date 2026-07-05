@@ -120,8 +120,8 @@ function pickByCostAndLatency(
   slo: MAALRouteRequest["sloProfile"]
 ): [SandboxTierId, any] {
   const sorted = [...candidates].sort((a, b) => {
-    const costA = costRank[a[1].costTier];
-    const costB = costRank[b[1].costTier];
+    const costA = costRank[a[1].costTier as keyof typeof costRank] ?? 0;
+    const costB = costRank[b[1].costTier as keyof typeof costRank] ?? 0;
     return costA - costB;
   });
 

@@ -69,42 +69,42 @@ export class PromMetricsRegistry implements MetricsRegistry {
   get failureEvents() {
     return {
       inc: (labels?: Record<string, string>, value?: number) =>
-        this.failureEventsCounter.inc(labels, value),
+        this.failureEventsCounter.inc(labels || {}, value),
     };
   }
 
   get repairAttempts() {
     return {
       inc: (labels?: Record<string, string>, value?: number) =>
-        this.repairAttemptsCounter.inc(labels, value),
+        this.repairAttemptsCounter.inc(labels || {}, value),
     };
   }
 
   get escalations() {
     return {
       inc: (labels?: Record<string, string>, value?: number) =>
-        this.escalationsCounter.inc(labels, value),
+        this.escalationsCounter.inc(labels || {}, value),
     };
   }
 
   get manualInterventions() {
     return {
       inc: (labels?: Record<string, string>, value?: number) =>
-        this.manualInterventionsCounter.inc(labels, value),
+        this.manualInterventionsCounter.inc(labels || {}, value),
     };
   }
 
   get nodeRetries() {
     return {
       inc: (labels?: Record<string, string>, value?: number) =>
-        this.nodeRetriesCounter.inc(labels, value),
+        this.nodeRetriesCounter.inc(labels || {}, value),
     };
   }
 
   get buildRetries() {
     return {
       inc: (labels?: Record<string, string>, value?: number) =>
-        this.buildRetriesCounter.inc(labels, value),
+        this.buildRetriesCounter.inc(labels || {}, value),
     };
   }
 

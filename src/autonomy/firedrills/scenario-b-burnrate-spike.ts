@@ -56,8 +56,8 @@ export async function runBurnRateSpikeFireDrill(): Promise<FireDrillReport> {
   const status = sloController.getCanaryGateStatus();
   const abortTriggered = status.violations > 0;
 
-  const rollbackCompleted = !!lastRollbackResult?.success;
-  const rollbackMs = lastRollbackResult?.totalMs ?? null;
+  const rollbackCompleted = !!(lastRollbackResult as any)?.success;
+  const rollbackMs = (lastRollbackResult as any)?.totalMs ?? null;
 
   const completedAt = Date.now();
   const duration = completedAt - startedAt;

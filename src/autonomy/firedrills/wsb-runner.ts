@@ -53,6 +53,7 @@ async function loadWSBRules(): Promise<void> {
       metric: "slo_error_rate_1m",
       target: 0.001,
       burnRateThreshold: 3,
+      window: "1m",
     },
     {
       id: "slo-latency-p99",
@@ -60,6 +61,7 @@ async function loadWSBRules(): Promise<void> {
       metric: "slo_latency_p99_ms",
       target: 120,
       burnRateThreshold: 1.25,
+      window: "5m",
     },
     {
       id: "slo-error-rate-30m",
@@ -67,6 +69,7 @@ async function loadWSBRules(): Promise<void> {
       metric: "slo_error_rate_30m",
       target: 0.001,
       burnRateThreshold: 3,
+      window: "30m",
     },
     {
       id: "slo-cpu-saturation",
@@ -74,6 +77,7 @@ async function loadWSBRules(): Promise<void> {
       metric: "slo_cpu_usage",
       target: 0.15,
       burnRateThreshold: 5,
+      window: "30m",
     },
   ];
 

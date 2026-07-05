@@ -67,7 +67,7 @@ export async function runCICExecutionHarnessV2(
 
   // 4. Handle sandbox violations → escalate tier
   if (execResult.violation) {
-    const newTier = handleSandboxViolation({
+    const newTier = await handleSandboxViolation({
       tierId: route.selectedSandboxTier,
       violationType: execResult.violation.type
     });

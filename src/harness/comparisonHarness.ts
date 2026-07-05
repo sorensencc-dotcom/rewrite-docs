@@ -129,8 +129,6 @@ export class ComparisonHarness {
       const req: UnifiedChatRequest = {
         model,
         input: prompt,
-        stream: false,
-        temperature: 0.0,
       };
 
       const response: CloudChatResponse = await provider.chat(req);

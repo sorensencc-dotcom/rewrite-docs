@@ -62,10 +62,10 @@ export async function provisionSandboxEnvironment(
     libraryHashes,
     seed,
     modelVersion: "v1",
-    sandboxIsolationLevel: tierMap[tier].isolationLevel,
-    sandboxDeterminism: tierMap[tier].determinism,
-    sandboxNetwork: tierMap[tier].network,
-    sandboxCostTier: tierMap[tier].costTier
+    sandboxIsolationLevel: tierMap[tier].isolationLevel as any,
+    sandboxDeterminism: tierMap[tier].determinism as any,
+    sandboxNetwork: tierMap[tier].network as any,
+    sandboxCostTier: tierMap[tier].costTier as any
   };
 }
 
@@ -177,7 +177,7 @@ export async function runCICExecutionHarness(
 
   // 4. Handle sandbox violations
   if (execResult.violation) {
-    const newTier = handleSandboxViolation({
+    const newTier = await handleSandboxViolation({
       tierId: route.selectedSandboxTier,
       violationType: execResult.violation.type
     });
