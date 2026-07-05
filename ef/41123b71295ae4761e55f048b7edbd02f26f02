@@ -1,0 +1,46 @@
+src/autonomy/services/MemoryService.ts
+  s_c3b9df2a569410::t_1238eb7ed56871 1-339
+src/autonomy/services/GovernanceService.ts
+  s_c3b9df2a569410::t_a561d88da0f4c4 1-394
+src/autonomy/routes/governance.ts
+  s_c3b9df2a569410::t_0fa8ab036077ba 2-9,13,21,24-27,29,31-38,46-48,50,53,55-58,62-72,79-80,82,84-85,87-88,92,99-100,110,116,130,134,151,156
+  s_c3b9df2a569410::t_16a19f612c7f9c 107-109
+  s_c3b9df2a569410::t_4f0cb1cccc8ede 113-115
+  s_c3b9df2a569410::t_ccaeeaf2b92056 131-133
+  s_c3b9df2a569410::t_6640de28f9ac5c 148-150
+  s_c3b9df2a569410::t_9d1ad3b4f34609 153-155
+  s_c3b9df2a569410::t_97a59dbf3bcd7a 102,104,106,112,123-124,126,128,141-142,144,146,162-175
+src/autonomy/services/OrphanDetectionService.ts
+  s_c3b9df2a569410::t_659dfb52198a40 1-141
+src/autonomy/routes/memory.ts
+  s_c3b9df2a569410::t_8de1835d88a358 2-4
+  s_c3b9df2a569410::t_df7a3e6f369fcd 8,16,19-21,23,25-26,28-29,33,40-42,44,46-54,62-63,65,67-68,70-71,75,82-83,87,91,95,121,137,148,152
+  s_c3b9df2a569410::t_9477d2ec1f1bae 88
+  s_c3b9df2a569410::t_44a77cbf51e3eb 90
+  s_c3b9df2a569410::t_5ff675aa144956 96-98
+  s_c3b9df2a569410::t_e62e8d416abb2c 120
+  s_c3b9df2a569410::t_dd6789da5e5e22 122-124
+  s_c3b9df2a569410::t_8d5e405f81eb3c 138
+  s_c3b9df2a569410::t_ffe02abc6b3978 145-147
+  s_c3b9df2a569410::t_fb52618a3c9981 149-151
+  s_c3b9df2a569410::t_0d55d61d365ebc 153-155
+  s_c3b9df2a569410::t_c9e52163d4a4ce 85,99,106-107,109-118,132-133,135,140-141,156-157
+src/autonomy/__tests__/e2e-test-harness.ts
+  s_c3b9df2a569410::t_f991ac4fa7a746 1-475
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "ef41123b71295ae4761e55f048b7edbd02f26f02",
+  "prompts": {},
+  "sessions": {
+    "s_c3b9df2a569410": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e3c6cf21-d702-4d09-8a39-0e14a78ebebc",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
