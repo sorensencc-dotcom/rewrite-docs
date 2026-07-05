@@ -1,63 +1,58 @@
 # CIC Development Environment
-# Multi-stage build: compile → runtime
-# Version: 1.0.0 | Purpose: Deterministic CIC startup with MCP servers
+# Multi-stage build: deps → builder → runtime
+# Version: 2.0.0 | Purpose: Deterministic CIC startup with Node 22 LTS
+# Node 22 LTS: Active until 2027-04-30
 
-FROM ubuntu:24.04 AS base
+# Stage 1: Build dependencies only (avoid node_modules copy issues)
+FROM node:22-alpine AS builder
 
-ENV DEBIAN_FRONTEND=noninteractive \
-    NODE_ENV=development \
-    CIC_ENV=development
+WORKDIR /workspace
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# Install build tools
+RUN apk add --no-cache \
+    curl \
+    git \
+    python3 \
+    make \
+    g++
+
+# Copy only dependency files
+COPY package*.json ./
+
+# Install production dependencies
+RUN npm ci --omit=dev
+
+# Copy source code
+COPY . .
+
+# Build TypeScript
+RUN npm run build || true
+
+# Stage 2: Runtime base
+FROM node:22-alpine AS runtime
+
+ENV NODE_ENV=production \
+    CIC_ENV=production
+
+# Install runtime dependencies
+RUN apk add --no-cache \
     curl \
     git \
     jq \
-    lsof \
-    openssh-server \
-    build-essential \
+    openssh-client \
     python3 \
     ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install Node.js 20+
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
-    apt-get install -y nodejs && \
-    node --version && npm --version
+    bash
 
 # Install Claude Code CLI globally
 RUN npm install -g @anthropic-ai/claude-code && \
     claude --version
 
 # Create app user (non-root)
-RUN useradd -m -s /bin/bash chris && \
+RUN adduser -D -s /bin/bash chris && \
     mkdir -p /home/chris/.config/cic && \
     mkdir -p /home/chris/.ssh && \
     chmod 700 /home/chris/.ssh
-
-# Setup SSH for headless operation
-RUN mkdir -p /run/sshd && \
-    echo "PasswordAuthentication no" >> /etc/ssh/sshd_config && \
-    echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config && \
-    echo "PermitRootLogin no" >> /etc/ssh/sshd_config && \
-    echo "StrictModes yes" >> /etc/ssh/sshd_config
-
-WORKDIR /workspace
-RUN chown -R chris:chris /workspace
-
-# Copy project files
-COPY --chown=chris:chris . .
-
-# Build stage: compile TypeScript
-FROM base AS builder
-
-WORKDIR /workspace
-RUN npm ci && \
-    npm run build && \
-    npm run test || true
-
-# Runtime stage: minimal footprint
-FROM base AS runtime
 
 WORKDIR /workspace
 
@@ -70,7 +65,14 @@ COPY --from=builder --chown=chris:chris /workspace/package*.json ./
 COPY --chown=chris:chris scripts/ ./scripts/
 
 # Create log directory
-RUN mkdir -p logs && chown chris:chris logs
+RUN mkdir -p logs && chown chris:chris logs && \
+    mkdir -p /run/sshd
+
+# Setup SSH configuration
+RUN echo "PasswordAuthentication no" >> /etc/ssh/sshd_config && \
+    echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config && \
+    echo "PermitRootLogin no" >> /etc/ssh/sshd_config && \
+    echo "StrictModes yes" >> /etc/ssh/sshd_config
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
