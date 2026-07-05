@@ -1,0 +1,19 @@
+PHASE-26-VERIFICATION-CHECKLIST.md
+  s_edd631ff5518e4::t_fc6aa3037181b8 1-158
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "4275a68166bafc4b45d9b9dd764a413819b1b978",
+  "prompts": {},
+  "sessions": {
+    "s_edd631ff5518e4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6e5614b6-8cbc-45a7-bc36-e7370292bfa7",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
