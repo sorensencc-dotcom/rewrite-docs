@@ -28,7 +28,7 @@ export default {
   ],
   moduleNameMapper: {
     "^uuid$": "uuid",
-    "^(\\.{1,2}/.*)\\.js$": "$1",
+    "^((?:\\.{1,2}|src|cic|cic-ingestion)/.*)\\.js$": "$1",
     "\\.css$": "<rootDir>/jest-mock-css.js"
   },
   transform: {
