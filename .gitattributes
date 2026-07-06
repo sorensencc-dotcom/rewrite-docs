@@ -1,0 +1,20 @@
+# Force LF for shell scripts (Docker compatibility)
+*.sh text eol=lf
+scripts/* text eol=lf
+
+# Force LF for config files
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+Dockerfile text eol=lf
+.dockerignore text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.gz binary
+*.zip binary
+*.tar binary
+*.whl binary
+*.so binary

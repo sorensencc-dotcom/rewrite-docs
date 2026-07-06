@@ -32,6 +32,9 @@ COPY --chown=chris:chris scripts/ ./scripts/
 # Create log directory + SSH
 RUN mkdir -p logs && chown chris:chris logs && mkdir -p /run/sshd
 
+# Ensure /workspace is writable by chris user
+RUN chown -R chris:chris /workspace
+
 # Setup SSH configuration
 RUN echo "PasswordAuthentication no" >> /etc/ssh/sshd_config && \
     echo "PubkeyAuthentication yes" >> /etc/ssh/sshd_config && \
