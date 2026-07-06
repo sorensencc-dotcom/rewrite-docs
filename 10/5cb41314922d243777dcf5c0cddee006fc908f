@@ -1,0 +1,21 @@
+src/tests/cic/phase8.integration.test.ts
+  s_e27e2f20824514::t_a827a0ebc1a0b8 6-8
+jest.config.js
+  s_e27e2f20824514::t_635b21d45bf489 35,47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "105cb41314922d243777dcf5c0cddee006fc908f",
+  "prompts": {},
+  "sessions": {
+    "s_e27e2f20824514": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6dff16be-f826-4552-987a-e216480a567e",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
