@@ -44,7 +44,8 @@ export default {
     }]
   },
   transformIgnorePatterns: [
-    "node_modules/(?!(uuid|@paralleldrive|@noble|cuid2|node-cron)/)"
+    "node_modules/(?!(uuid|@paralleldrive|@noble|cuid2|node-cron)/)",
+    "^.+\\.js$"
   ],
   collectCoverageFrom: [
     "cic/src/**/*.ts",
