@@ -484,8 +484,8 @@ services:
   # Phase 2.5: Autonomy API Server (Autonomy + Config System)
   cic-ingestion:
     build:
-      context: cic-ingestion
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: cic-ingestion/Dockerfile
     container_name: cic-ingestion
     restart: unless-stopped
     environment:

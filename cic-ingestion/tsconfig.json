@@ -4,7 +4,7 @@
     "module": "ES2022",
     "moduleResolution": "node",
     "outDir": "dist",
-    "rootDir": "src",
+    "rootDir": "..",
     "baseUrl": "..",
     "strict": true,
     "isolatedModules": true,
@@ -24,6 +24,6 @@
       "rewrite-mcp/*": ["rewrite-mcp/*"]
     }
   },
-  "include": ["src/**/*.ts"],
+  "include": ["../src/**/*.ts", "src/**/*.ts"],
   "exclude": ["dist", "node_modules"]
 }
