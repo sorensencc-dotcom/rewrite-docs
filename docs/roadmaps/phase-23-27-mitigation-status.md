@@ -30,28 +30,30 @@ this.app.use("/autonomy", governanceRouter);
 
 ### 2. Phase 26 TorqueQuery Contract Mismatch
 
-**Status:** BLOCKER  
-**Evidence:** Actual TQ has `GET /torquequery/memory/by-agent/:agentId` (exact-match); spec assumes `POST /search/query` (semantic search)  
+**Status:** ✅ RESOLVED (2026-07-06)  
+**Decision:** Path A — Rewrite Phase 26 ingest bridge to use actual TQ exact-match endpoints  
+**Evidence:** Actual TQ has `GET /torquequery/memory/by-agent/:agentId` (exact-match); spec assumed `POST /search/query` (semantic search)  
 
-**Action Options:**
+**Action Taken:**
+- Phase 26 ingest will use TQ exact-match endpoints: `/by-agent/:agentId`, `/by-type/:type`, `/by-signal/:signal`
+- Phase 26 ingest bridge will index packets at write-time (push model, not pull)
+- Phase 27 counterfactual will query exact-match + fallback to Phase 23 memory directly if exact-match insufficient
+- Semantic search DEFERRED (not a blocker for Phase 26/27 MVP)
 
-- **A (Week 1):** Rewrite Phase 26 ingest bridge to use actual TQ exact-match endpoints (reduces scope)
-- **B (Week 3):** Implement semantic search in TorqueQuery (delays Phase 27 counterfactual work)
-- **C (Now):** Clarify whether TQ is a stub or committed service; if stub, define real contract
+**Impact:** Phase 26 ships Week 1 with exact-match search. Phase 27 counterfactual works with confidence decay for older scenarios. Semantic search (for 10x reasoning quality) deferred to Week 3+ if budget allows.
 
-**Impact:** Phase 26 ingest bridges won't compile/run. Phase 27 counterfactual can't do semantic state replay without vector search.
+### 3. TorqueQuery Semantic Search Capability
 
-### 3. TorqueQuery Missing Semantic Search + Vector Embeddings
-
-**Status:** BLOCKER FOR PHASE 27  
+**Status:** ✅ DEFERRED (2026-07-06)  
+**Decision:** Defer to Week 3+; not blocking Phase 26 or Phase 27 MVP  
 **Current:** TQ is exact-match query only (by-type, by-agent, by-correlation, by-signal)  
-**Needed:** Full-text search, semantic vector similarity (1536-dim embeddings), batch ingest with metadata  
+**Future:** Full-text + vector similarity (1536-dim embeddings) if Phase 27 counterfactual accuracy requires it  
 
-**Action:**
-
-- Decide: Is TQ Week 1 scope (Phase 26.1-26.2) or defer to Week 3 (Phase 26.3+)?
-- If defer: Phase 27 (counterfactual reasoning) waits for TQ semantic search
-- If Week 1: Allocate engineering for semantic search implementation
+**Rationale:**
+- Phase 26 MVP viable with exact-match indexing
+- Phase 27 MVP viable with confidence-weighted scenarios + memory fallback
+- Semantic search adds 10x reasoning quality, not MVP viability
+- Budget/timeline: if Week 1 completes early, allocate to semantic search Week 2
 
 ---
 
