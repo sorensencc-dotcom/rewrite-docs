@@ -1,0 +1,19 @@
+cic-ingestion/src/autonomy/AutonomyAPIServer.ts
+  s_ef697a0621858d::t_14a339949f5616 13,139-142,148
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "456b8aa918c3c33ae8d155423d3c35785b04b61a",
+  "prompts": {},
+  "sessions": {
+    "s_ef697a0621858d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "94a64fd3-1d7b-4c9f-aa49-440a7c420b15",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
