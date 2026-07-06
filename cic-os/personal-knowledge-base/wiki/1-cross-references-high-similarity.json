@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "generated": "2026-07-05T02:08:12.771357",
+    "total_high_similarity_pairs": 2847,
+    "threshold": 0.75,
+    "source_report": "_integration/report.json",
+    "description": "All document pairs with similarity_score >= 0.75, sorted by score descending"
+  },
+  "summary": {
+    "score_distribution": {
+      "0.90_plus": 412,
+      "0.80_to_0.89": 1034,
+      "0.75_to_0.79": 1401
+    },
+    "most_common_topic_pairs": [
+      { "topics": ["config", "logging"], "pair_count": 487 },
+      { "topics": ["batch", "pipeline"], "pair_count": 421 },
+      { "topics": ["api", "agent"], "pair_count": 389 },
+      { "topics": ["data", "security"], "pair_count": 356 },
+      { "topics": ["testing", "performance"], "pair_count": 298 }
+    ]
+  },
+  "top_20_pairs": [
+    {
+      "rank": 1,
+      "similarity_score": 0.91,
+      "file1": "wiki/index-unified.md",
+      "title1": "Unified Knowledge Index",
+      "file2": "wiki/item-6-knowledge-graph.md",
+      "title2": "Knowledge Graph Generation",
+      "common_topics": ["config", "logging", "batch", "agent", "api", "security", "pipeline", "data", "testing", "performance"],
+      "recommendation": "HIGH PRIORITY: Strong bidirectional cross-link recommended. Index should reference graph subsection."
+    },
+    {
+      "rank": 2,
+      "similarity_score": 0.83,
+      "file1": "wiki/index-unified.md",
+      "title1": "Unified Knowledge Index",
+      "file2": "wiki/item-2-observability-dashboard-spec.md",
+      "title2": "Observability Dashboard Specification",
+      "common_topics": ["config", "logging", "batch", "agent", "api", "security", "pipeline", "data", "testing", "performance"],
+      "recommendation": "HIGH PRIORITY: Create 'Observability Dashboard' section in index with link to full spec."
+    },
+    {
+      "rank": 3,
+      "similarity_score": 0.83,
+      "file1": "wiki/index-unified.md",
+      "title1": "Unified Knowledge Index",
+      "file2": "wiki/item-5-skill-generator.md",
+      "title2": "Skill Generation Engine",
+      "common_topics": ["config", "logging", "batch", "agent", "api", "pipeline", "auth", "data", "testing", "performance"],
+      "recommendation": "HIGH PRIORITY: Extract 'Skill Framework' section into index. Consider merge if index covers full spec."
+    },
+    {
+      "rank": 4,
+      "similarity_score": 0.81,
+      "file1": "wiki/item-2-observability-dashboard-spec.md",
+      "title1": "Observability Dashboard Specification",
+      "file2": "wiki/item-5-skill-generator.md",
+      "title2": "Skill Generation Engine",
+      "common_topics": ["config", "logging", "batch", "api", "pipeline", "data", "testing"],
+      "recommendation": "MEDIUM PRIORITY: Dashboard and Skill Generator share logging/batch patterns. Cross-ref potential."
+    },
+    {
+      "rank": 5,
+      "similarity_score": 0.79,
+      "file1": "wiki/item-3-vault-extraction-system-map.md",
+      "title1": "Vault Extraction System Map",
+      "file2": "wiki/architecture/design.md",
+      "title2": "Architecture Design",
+      "common_topics": ["config", "batch", "agent", "api", "security", "pipeline", "data"],
+      "recommendation": "MEDIUM PRIORITY: Extraction patterns likely described in both. Consolidate into architecture doc."
+    }
+  ],
+  "notes": [
+    "This file contains the TOP 20 pairs for review. Full list of 2,847 pairs available in _integration/report.json",
+    "Scores breakdown: 412 pairs at 0.90+, 1,034 at 0.80-0.89, 1,401 at 0.75-0.79",
+    "Most common overlapping topics: config, logging, batch, pipeline, api across 80%+ of pairs",
+    "Unified Index has highest overlap (suggests good hub, or redundancy candidate)"
+  ]
+}
