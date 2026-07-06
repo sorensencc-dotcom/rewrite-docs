@@ -1,0 +1,19 @@
+docs/meta/consolidation-inventory.md
+  s_ef697a0621858d::t_9c2e866b0059d9 1-355
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "472f557203ae2fc9a11684dde7b6c07967364fe9",
+  "prompts": {},
+  "sessions": {
+    "s_ef697a0621858d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "94a64fd3-1d7b-4c9f-aa49-440a7c420b15",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
