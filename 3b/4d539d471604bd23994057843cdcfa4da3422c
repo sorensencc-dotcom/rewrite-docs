@@ -1,0 +1,50 @@
+docs/roadmaps/phase-23-27-mitigation-status.md
+  s_3d744be5821d20::t_7674015a4c88a9 3-6
+  s_3d744be5821d20::t_0bac416087eca4 63,65-69
+governance/audit-log.json
+  s_62ab85d7a21222::t_faf0314d06dfa8 4916-6319,6322-6323,6325
+rl-ref/index.md
+  s_cb56280116250b::t_eeee8fc8ed6e16 5
+cic-os/personal-knowledge-base/wiki/1-cross-references-high-similarity.json
+  s_62ab85d7a21222::t_1952021c101f30 1-81
+cic-os/personal-knowledge-base/wiki/2-merge-candidates-review.md
+  s_62ab85d7a21222::t_7a8a81b0f00da7 1-150
+cic-os/personal-knowledge-base/wiki/3-topic-dependency-graph.md
+  s_62ab85d7a21222::t_e4eaeb9b64d39f 1-196
+data/rl-vault-status.json
+  s_62ab85d7a21222::t_48d3e35040f8a0 3
+governance/cicState.json
+  s_62ab85d7a21222::t_54bd444aa2a0de 22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "3b4d539d471604bd23994057843cdcfa4da3422c",
+  "prompts": {},
+  "sessions": {
+    "s_3d744be5821d20": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5e0ea76a-8d4f-4df7-aa1c-76655b71c3e6",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_62ab85d7a21222": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4e203350-bc20-46f6-a14e-f0545f73a12a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_cb56280116250b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "63131aa6-625c-495c-9caa-6ecb73b9e5c3",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
