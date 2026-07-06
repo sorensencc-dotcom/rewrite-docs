@@ -7,6 +7,8 @@ import express, { Express, Request, Response, NextFunction } from "express";
 import cron from "node-cron";
 import { createExecutionRouter } from "./routes/execution";
 import { createFireDrillRouter } from "./routes/firedrills";
+import { createMemoryRouter } from "./routes/memory";
+import { createGovernanceRouter } from "./routes/governance";
 import { UsageLedger } from "../lib/usage/UsageLedger";
 import { generateCicCostComputeReport } from "../lib/report/CicCostComputeReport";
 import { CostNotifier } from "../lib/notify/CostNotifier";
@@ -115,9 +117,17 @@ export class AutonomyAPIServer {
     // Mount routers
     const executionRouter = createExecutionRouter();
     const fireDrillRouter = createFireDrillRouter();
+    const memoryRouter = createMemoryRouter({
+      memoryStoreUrl: this.config.memoryQueryApiUrl,
+    });
+    const governanceRouter = createGovernanceRouter({
+      governanceControlPlaneUrl: process.env.GOVERNANCE_URL || 'http://localhost:3113',
+    });
 
     this.app.use("/autonomy", executionRouter);
     this.app.use("/autonomy", fireDrillRouter);
+    this.app.use("/autonomy", memoryRouter);
+    this.app.use("/autonomy", governanceRouter);
 
     // 404 handler
     this.app.use((req: Request, res: Response) => {
