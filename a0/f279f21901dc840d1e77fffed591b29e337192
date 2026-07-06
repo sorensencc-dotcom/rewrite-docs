@@ -1,0 +1,29 @@
+.gitattributes
+  s_5c02ea523022ac::t_d5c5bcd1c5dbf3 1-20
+Dockerfile
+  s_cb56280116250b::t_e91913814c9dc7 35-37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a0f279f21901dc840d1e77fffed591b29e337192",
+  "prompts": {},
+  "sessions": {
+    "s_5c02ea523022ac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65ae4da6-dbb1-442f-9552-e4acf5224bb9",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_cb56280116250b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "63131aa6-625c-495c-9caa-6ecb73b9e5c3",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
