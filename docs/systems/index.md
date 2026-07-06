@@ -22,9 +22,9 @@ Complete documentation for all subsystems across CIC and Rewrite Labs.
 
 Core autonomous agent learning framework with deterministic governance. Code: `governance/` (orchestrator, approval-gate, promotion-rollback, audit-policy, `cicState.json`).
 
-- [MAAL Architecture](../cic/PHASE-1_OVERVIEW.md)
+- [MAAL Architecture](../cic/phases/phase-1-overview.md)
 - [Governance Framework](../cic/GOVERNANCE.md)
-- [Memory & State](../cic/PHASE-1_LEDGER_SUBSTRATE.md)
+- [Memory & State](../cic/phases/phase-1-ledger-substrate.md)
 
 ### 🔹 Routing & Federation — ✅
 
@@ -46,9 +46,9 @@ Data pipeline from crawl → scrape → map → index (stage config: `roadmap-ru
 
 Knowledge graphs, memory governance, and semantic drift. Four distinct drift detectors exist — see the disambiguation table in [Drift Classification](../architecture/drift.md).
 
-- [Knowledge Graph Setup](../reference/knowledge-graph/QUICK_START.md)
+- [Knowledge Graph Setup](../reference/knowledge-graph/quick-start.md)
 - [Drift Classification](../architecture/drift.md)
-- [Memory Governance](../cic/MEMORY_V1_STAGING_ACTIVATION.md)
+- [Memory Governance](../cic/phases/phase-23-6-memory-explorer-ui.md)
 
 ### 🔹 Roadmap Runner — Build ✅ / Runner ⏸
 
@@ -79,8 +79,7 @@ Skill platform (`toolforge/skills/`, 10 skills). Agent directories (outreach/del
 
 Monitoring, tracing, determinism verification, sandbox.
 
-- [Observability Plan](../cic/CIC_RUNTIME_OBSERVABILITY_PLAN.md)
-- [Sandbox-3 Reference](../cic/SANDBOX-3_OVERVIEW.md)
+- [Observability Plan](../operations/monitoring.md)
 - [Operations Guide](../operations/running.md)
 
 ## Phase Roadmaps
@@ -88,9 +87,9 @@ Monitoring, tracing, determinism verification, sandbox.
 - [CIC Roadmap](../roadmaps/cic-roadmap.md) — all phases with status
 - [Rewrite Labs Roadmap](../roadmaps/rewrite-labs-roadmap.md) — RL-4.x dual status
 - [Unified Roadmap](../roadmaps/unified-roadmap.md) — cross-system alignment
-- [Phase 1–4: Foundation](../cic/PHASE-1_OVERVIEW.md) ✅
-- [Phase 5: TorqueQuery](../cic/TORQUEQUERY_EXECUTIVE_SUMMARY.md) ✅
-- [Phase A–C: Hardening](../cic/PHASE_A_OPTIMIZATION_SUMMARY.md) ✅
+- [Phase 1–4: Foundation](../cic/phases/phase-1-overview.md) ✅
+- [Phase 5: TorqueQuery](../cic/phases/phase-5-torquequery-v2-deployment-guide.md) ✅
+- [Phase A–C: Hardening](../cic/phases/phase-a-optimization-summary.md) ✅
 - [Phase 26: Implementation](../implementation/phase-26/summary.md) — Build ✅ / Runner ⏸
 
 ## Integration Points

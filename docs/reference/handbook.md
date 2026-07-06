@@ -169,9 +169,9 @@ All phases follow this structure:
 
 ### Adding a New Phase
 
-1. Create `docs/cic/phase-X.md` with YAML frontmatter
-2. Link from `docs/cic/index.md`
-3. Add to mkdocs.yml nav
+1. Create `docs/cic/phases/phase-X.md` with YAML frontmatter
+2. Link from `docs/cic/phases/index.md`
+3. Add to mkdocs.yml nav (under CIC Documentation → Phases 31-50)
 4. Link related phases (phase-X-1, phase-X+1)
 5. Update roadmap (CIC_MASTER_ROADMAP.md)
 
