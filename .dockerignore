@@ -1,7 +1,6 @@
 # Build artifacts & caches (can be regenerated in container)
 node_modules
 .git
-dist
 build
 coverage
 .next
@@ -15,12 +14,16 @@ rewrite-mcp/projects/*/node_modules
 *.venv
 venv
 logs
-data/temp
+data/
 charlie-deep-research
+cic-os/personal-knowledge-base/
 
 # IDE & workspace metadata
 .ijfw
 .claude
+*.log
+*.swp
+*.swo
 
 # Secrets (explicit — use .env.example instead)
 .env*
@@ -28,6 +31,9 @@ charlie-deep-research
 
 # OS
 .DS_Store
+Thumbs.db
 
-# Allow everything else for Docker builds
-# Dockerfiles will COPY only what they need
+# Large test fixtures
+**/*.tar
+**/*.zip
+**/*.gz

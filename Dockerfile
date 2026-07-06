@@ -1,52 +1,24 @@
 # CIC Development Environment
-# Multi-stage build: deps → builder → runtime (optimized for speed)
-# Version: 2.1.0 | Purpose: Reduce Docker context deadline timeouts
+# Single-stage: use pre-built dist/ from host
+# Version: 2.2.0 | Purpose: Skip Docker TS build (ultra-fast)
 # Node 22 LTS: Active until 2027-04-30
+# NOTE: Run `npm run build` on host before docker build
 
-# Stage 1: Dependencies (separate cacheable layer)
-FROM node:22-alpine AS deps
+FROM node:22-alpine
 
 WORKDIR /workspace
 
-RUN apk add --no-cache curl git python3 make g++
+RUN apk add --no-cache curl git python3 jq ca-certificates bash openssh-client
 
 COPY package*.json ./
 
-RUN npm ci --omit=dev --prefer-offline --no-fund 2>&1 | tail -20
+RUN npm ci --omit=dev --prefer-offline --no-fund
 
-# Stage 2: Builder
-FROM node:22-alpine AS builder
+# Copy pre-built dist/ from host
+COPY dist/ ./dist/
 
-WORKDIR /workspace
-
-RUN apk add --no-cache curl git python3 make g++
-
-COPY package*.json tsconfig.json ./
-COPY --from=deps /workspace/node_modules ./node_modules
-
-COPY . .
-
-RUN npm run build 2>&1 || true
-
-# Stage 2: Runtime base
-FROM node:22-alpine AS runtime
-
-ENV NODE_ENV=production \
-    CIC_ENV=production
-
-# Install runtime dependencies
-RUN apk add --no-cache \
-    curl \
-    git \
-    jq \
-    openssh-client \
-    python3 \
-    ca-certificates \
-    bash
-
-# Install Claude Code CLI globally
-RUN npm install -g @anthropic-ai/claude-code && \
-    claude --version
+# Setup Claude Code CLI globally
+RUN npm install -g @anthropic-ai/claude-code && claude --version
 
 # Create app user (non-root)
 RUN adduser -D -s /bin/bash chris && \
@@ -54,19 +26,11 @@ RUN adduser -D -s /bin/bash chris && \
     mkdir -p /home/chris/.ssh && \
     chmod 700 /home/chris/.ssh
 
-WORKDIR /workspace
-
-# Copy compiled code from builder
-COPY --from=builder --chown=chris:chris /workspace/dist ./dist
-COPY --from=builder --chown=chris:chris /workspace/node_modules ./node_modules
-COPY --from=builder --chown=chris:chris /workspace/package*.json ./
-
 # Copy operational scripts
 COPY --chown=chris:chris scripts/ ./scripts/
 
-# Create log directory
-RUN mkdir -p logs && chown chris:chris logs && \
-    mkdir -p /run/sshd
+# Create log directory + SSH
+RUN mkdir -p logs && chown chris:chris logs && mkdir -p /run/sshd
 
 # Setup SSH configuration
 RUN echo "PasswordAuthentication no" >> /etc/ssh/sshd_config && \
