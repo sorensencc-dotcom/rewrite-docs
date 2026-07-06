@@ -1,0 +1,27 @@
+docs/onboarding/index.md
+  s_ef697a0621858d::t_a7f349feb1f0dc 1-83
+docs/meta/consolidation-status.md
+  s_ef697a0621858d::t_a326987a00eb5b 1-227
+mkdocs.yml
+  s_ef697a0621858d::t_363b06d2a4298c 33-34
+  s_ef697a0621858d::t_9233bf246fe6de 219
+  s_ef697a0621858d::t_9357935306413b 227-229
+docs/reference/handbook.md
+  s_ef697a0621858d::t_a1b79be0a48c25 1-269
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "3ae645a63b8b8f3fe654cf9b3bff8f037c8cf06f",
+  "prompts": {},
+  "sessions": {
+    "s_ef697a0621858d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "94a64fd3-1d7b-4c9f-aa49-440a7c420b15",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
