@@ -24,6 +24,6 @@
       "rewrite-mcp/*": ["rewrite-mcp/*"]
     }
   },
-  "include": ["../src/**/*.ts", "src/**/*.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["dist", "node_modules"]
 }

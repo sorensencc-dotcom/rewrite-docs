@@ -1,6 +1,6 @@
-import { LedgerEvent } from '../../cic-os/src/core/ledger/LedgerEvent';
-import { RouteState } from '../../cic-os/src/learning/state/RouteState';
-import { RouteOutcome } from '../../cic-os/src/learning/reward/RouteOutcome';
+import { LedgerEvent } from '../core/ledger/LedgerEvent';
+import { RouteState } from './state/RouteState';
+import { RouteOutcome } from './reward/RouteOutcome';
 
 export interface LedgerEventConsumer {
   consumeEvents(

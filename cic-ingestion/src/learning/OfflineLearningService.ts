@@ -1,4 +1,4 @@
-import { PolicyNetwork } from '../../cic-os/src/learning/policy/PolicyNetwork';
+import { PolicyNetwork } from './policy/PolicyNetwork';
 
 export interface OfflineLearningServiceConfig {
   ledgerPollIntervalMs: number;

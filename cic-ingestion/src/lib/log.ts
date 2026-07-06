@@ -9,3 +9,7 @@ export function info(msg: string): void {
 export function error(msg: string): void {
   console.error(msg);
 }
+
+export function logStructured(source: string, data: Record<string, unknown>): void {
+  console.log(JSON.stringify({ source, ...data }));
+}

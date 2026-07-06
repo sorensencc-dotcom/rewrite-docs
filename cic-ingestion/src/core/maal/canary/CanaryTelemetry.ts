@@ -20,3 +20,35 @@ export interface CanaryTelemetry {
   collected_at: Date;
   recorded_at: Date;
 }
+
+export interface CanaryTelemetryPoint {
+  readonly proposalId: string;
+  readonly timestamp: number;
+  readonly cohortSize: number;
+  readonly avgLatency: number;
+  readonly avgCost: number;
+  readonly successRate: number;
+  readonly errorRate: number;
+  readonly driftScore: number;
+  readonly sampleCount: number;
+}
+
+export class CanaryTelemetryCollector {
+  private points: CanaryTelemetryPoint[] = [];
+
+  recordPoint(point: CanaryTelemetryPoint): void {
+    this.points.push(point);
+  }
+
+  getPoints(): CanaryTelemetryPoint[] {
+    return [...this.points];
+  }
+
+  getLatestPoint(): CanaryTelemetryPoint | undefined {
+    return this.points.length > 0 ? this.points[this.points.length - 1] : undefined;
+  }
+
+  clear(): void {
+    this.points = [];
+  }
+}

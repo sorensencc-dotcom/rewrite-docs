@@ -21,7 +21,7 @@ export interface MAARLRouterDependency {
 }
 
 // Re-export Phase 4 types for BridgeOrchestrator users
-export {
+export type {
   Phase4Hooks,
   ProposalAccepted,
   ProposalError,
