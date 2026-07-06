@@ -1,0 +1,39 @@
+docs/deployment/registry-config.md
+  s_ef697a0621858d::t_103753d532a629 1-7
+docs/meta/repo-hygiene-audit-report.md
+  s_ef697a0621858d::t_376caa23a833ff 1-7
+docs/operations/environment-optimization.md
+  s_ef697a0621858d::t_49f407f033f458 1-7
+docs/deployment/airgapped-import.md
+  s_ef697a0621858d::t_03681bf046a59f 1-7
+docs/deployment/reproducible-dockerfiles.md
+  s_ef697a0621858d::t_871c090ecdcb17 1-7
+docs/roadmaps/phase-23-27-mitigation-status.md
+  s_ef697a0621858d::t_249204cfb92f44 1-7
+docs/operations/autonomous-image-builds.md
+  s_ef697a0621858d::t_a6dddb87f9bf74 1-7
+docs/meta/consolidation-inventory.md
+  s_ef697a0621858d::t_9b56179c227d21 1-7
+docs/deployment/convergence-trace.md
+  s_ef697a0621858d::t_9e6ac7ab9f83d6 1-7
+docs/roadmaps/execution-blueprint-phases-23-27.md
+  s_ef697a0621858d::t_14f9a16ed5d755 1-7
+docs/roadmaps/risk-register-phases-23-27.md
+  s_ef697a0621858d::t_a3cdbf5fdfaf3a 1-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "bc7257c2debf878954bf564776a0d6a8c087fccd",
+  "prompts": {},
+  "sessions": {
+    "s_ef697a0621858d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "94a64fd3-1d7b-4c9f-aa49-440a7c420b15",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
