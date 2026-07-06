@@ -1,0 +1,23 @@
+.dockerignore
+  s_5c02ea523022ac::t_8a58e7d6f39811 17,19,24-26,34,36-39
+Dockerfile
+  s_5c02ea523022ac::t_f931a53bdad023 2-3,5,7
+  s_5c02ea523022ac::t_ca6d3548b3907b 11
+  s_5c02ea523022ac::t_e5f5011842387a 15,17-18,20-21,32-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "005ba33d195b721b59290702c5ecd84949a1a813",
+  "prompts": {},
+  "sessions": {
+    "s_5c02ea523022ac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65ae4da6-dbb1-442f-9552-e4acf5224bb9",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
