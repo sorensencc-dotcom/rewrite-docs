@@ -57,17 +57,17 @@ build-audit.log
 # Nested Git Repos (workspace projects)
 CIP/
 charlie-deep-research/
-/cic/
-!/cic/src/
-!/cic/src/**/*.ts
-!/cic/src/**/*.test.ts
-!/cic/torquequery/
-!/cic/torquequery/**/*
 /cic-ingestion/
 !cic-ingestion/tsconfig.json
 !cic-ingestion/package.json
 !cic-ingestion/.gitignore
 !cic-ingestion/src/drift/driftEngine.ts
+
+# CIC: Track specific directories (src/, torquequery/), ignore rest
+/cic/*
+!/cic/src/
+!/cic/torquequery/
+!/cic/.gitignore
 
 # Documentation directories (tracked)
 !/docs/cic/
