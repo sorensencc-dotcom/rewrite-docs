@@ -1,0 +1,244 @@
+docs/roadmaps/cic-roadmap.md
+  s_ef697a0621858d::t_24f27afa47f34e 33-36
+  s_ef697a0621858d::t_9072acd8598133 58,60-61,63-65,67
+  s_ef697a0621858d::t_fa2c3a4b738c1c 91
+  s_ef697a0621858d::t_350a834218f4d4 50-52
+  s_ef697a0621858d::t_624735688d188c 42-44
+docs/cic/phases/index.md
+  s_ef697a0621858d::t_fc8a4be0009d0e 1-42
+docs/systems/index.md
+  s_ef697a0621858d::t_7785bb9504ad49 90-92
+  s_ef697a0621858d::t_9ee9e1db8fb9fe 82
+  s_ef697a0621858d::t_eb8412f0d32008 25,27
+  s_ef697a0621858d::t_dc161bf7fb8950 49,51
+docs/reference/handbook.md
+  s_ef697a0621858d::t_d4defc5b493d40 172-174
+mkdocs.yml
+  s_ef697a0621858d::t_bb0dc29b0b153a 136,147-166
+docs/cic/phases/phase-1-architecture.md
+  s_e9508a1ab58572::t_1891f321c6c56d 1-228
+docs/cic/phases/phase-1-bridge-orchestrator.md
+  s_d3640c043b3d74::t_80cdf9e15d65f4 1-202
+docs/cic/phases/phase-1-execution-log.md
+  s_e62e9e4eccc8a9::t_7e03365adf4aab 1-183
+docs/cic/phases/phase-1-maal-core.md
+  s_e9508a1ab58572::t_d2cb3f8889d19f 1-260
+docs/cic/phases/phase-1-overview.md
+  s_e9508a1ab58572::t_03964dbe8c69a7 1-130
+docs/cic/phases/phase-2-completion-log.md
+  s_e62e9e4eccc8a9::t_f65ed4cf0c9edc 1-157
+docs/cic/phases/phase-2-completion.md
+  s_e62e9e4eccc8a9::t_59c00d30cd0bd8 1-310
+docs/cic/phases/phase-2-integration.md
+  s_d3640c043b3d74::t_3f22fee24f4b5e 1-278
+docs/cic/phases/phase-2-rollout.md
+  s_e62e9e4eccc8a9::t_3a60206f9ecaff 1-165
+docs/cic/phases/phase-2-status.md
+  s_e62e9e4eccc8a9::t_67c786cfb8b9b8 1-320
+docs/cic/phases/phase-2-testing.md
+  s_d3640c043b3d74::t_9b2a07dab98c18 1-307
+docs/cic/phases/phase-23-6-memory-explorer-ui.md
+  s_e62e9e4eccc8a9::t_3d7f9bf0307274 1-647
+docs/cic/phases/phase-27-4-dispatch.md
+  s_e62e9e4eccc8a9::t_1453693a0d4ede 1-229
+docs/cic/phases/phase-27-4-skeleton-summary.md
+  s_e62e9e4eccc8a9::t_1a385511301810 1-242
+docs/cic/phases/phase-27-files-generated.md
+  s_e62e9e4eccc8a9::t_9e9a1929ecfb05 1-293
+docs/cic/phases/phase-27-step3-complete.md
+  s_e62e9e4eccc8a9::t_ce60c12f9f926e 1-226
+docs/cic/phases/phase-28a-scp-completion.md
+  s_e62e9e4eccc8a9::t_f7fa51c44e2356 1-464
+docs/cic/phases/phase-3-6-setup-complete.md
+  s_e62e9e4eccc8a9::t_58271eadb6e438 1-111
+docs/cic/phases/phase-3-completion-log.md
+  s_e62e9e4eccc8a9::t_3851146b9ec35a 1-379
+docs/cic/phases/phase-3-completion.md
+  s_e62e9e4eccc8a9::t_1cddf5e63b3112 1-257
+docs/cic/phases/phase-30-mvp-spec-review.md
+  s_e62e9e4eccc8a9::t_6483a1faade861 1-65
+docs/cic/phases/phase-30-mvp-spec.md
+  s_e62e9e4eccc8a9::t_1406ba441f9a2b 1-2114
+docs/cic/phases/phase-31.md
+  s_f8a8ab5aa44b74::t_42f37663c8d249 1-42
+docs/cic/phases/phase-32.md
+  s_f8a8ab5aa44b74::t_29f2606a23c1c9 1-42
+docs/cic/phases/phase-33.md
+  s_f8a8ab5aa44b74::t_ff346ae3d026ae 1-42
+docs/cic/phases/phase-34.md
+  s_f8a8ab5aa44b74::t_6bec77a158b717 1-42
+docs/cic/phases/phase-35.md
+  s_f8a8ab5aa44b74::t_bcca9c8e327f9e 1-42
+docs/cic/phases/phase-36.md
+  s_f8a8ab5aa44b74::t_dc410ba6ab5514 1-42
+docs/cic/phases/phase-37.md
+  s_f8a8ab5aa44b74::t_af511ac4be5657 1-42
+docs/cic/phases/phase-38.md
+  s_f8a8ab5aa44b74::t_3584c3f7fde38f 1-42
+docs/cic/phases/phase-39.md
+  s_f8a8ab5aa44b74::t_9fa36f34a9b264 1-42
+docs/cic/phases/phase-4-migration-status.md
+  s_e62e9e4eccc8a9::t_2347fe8b64ec1c 1-77
+docs/cic/phases/phase-4-scaffolding-complete.md
+  s_e62e9e4eccc8a9::t_295c82d152996e 1-315
+docs/cic/phases/phase-40.md
+  s_f8a8ab5aa44b74::t_5823e979d5c536 1-42
+docs/cic/phases/phase-41.md
+  s_f8a8ab5aa44b74::t_ee3217922d7a0a 1-42
+docs/cic/phases/phase-42.md
+  s_f8a8ab5aa44b74::t_7e83f6f7656597 1-42
+docs/cic/phases/phase-43.md
+  s_f8a8ab5aa44b74::t_46f6b32409d565 1-42
+docs/cic/phases/phase-44.md
+  s_f8a8ab5aa44b74::t_f3c9c2cd284ea2 1-42
+docs/cic/phases/phase-45.md
+  s_f8a8ab5aa44b74::t_2c2ea4750ec42c 1-42
+docs/cic/phases/phase-46.md
+  s_f8a8ab5aa44b74::t_159cf08b541be5 1-42
+docs/cic/phases/phase-47.md
+  s_f8a8ab5aa44b74::t_a483f59fe10106 1-42
+docs/cic/phases/phase-48.md
+  s_f8a8ab5aa44b74::t_60f81e5ae9ffe3 1-42
+docs/cic/phases/phase-49.md
+  s_f8a8ab5aa44b74::t_1deaf3d92a0b40 1-42
+docs/cic/phases/phase-5-token-roi-analysis.md
+  s_e62e9e4eccc8a9::t_9a8a39c8061ebe 1-308
+docs/cic/phases/phase-5-torquequery-v2-deployment-guide.md
+  s_e62e9e4eccc8a9::t_cd80da8c1b8995 1-313
+docs/cic/phases/phase-50.md
+  s_f8a8ab5aa44b74::t_40cf7c59da769c 1-42
+docs/cic/phases/phase-5a-commit-summary.md
+  s_e62e9e4eccc8a9::t_2e31c4e75f37e3 1-325
+docs/cic/phases/phase-5a-executive-summary.md
+  s_e62e9e4eccc8a9::t_39f59d847a7305 1-289
+docs/cic/phases/phase-5a-quick-start.md
+  s_e62e9e4eccc8a9::t_10f447ae188791 1-196
+docs/cic/phases/phase-5a-verification.md
+  s_e62e9e4eccc8a9::t_0a26ac18873f21 1-299
+docs/cic/phases/phase-5b-implementation-summary.md
+  s_e62e9e4eccc8a9::t_ae2dec7670840c 1-308
+docs/cic/phases/phase-5b-verification-report.md
+  s_e62e9e4eccc8a9::t_5e37b73cdc9ef0 1-360
+docs/cic/phases/phase-5c-deprecation-inventory.md
+  s_e62e9e4eccc8a9::t_e8ac70acb9238d 1-550
+docs/cic/phases/phase-5c-file-removal-matrix.md
+  s_e62e9e4eccc8a9::t_2d0d6bcd3eefe1 1-481
+docs/cic/phases/phase-5c-phase-b-completion.md
+  s_e62e9e4eccc8a9::t_da4d79b1f2cd43 1-120
+docs/cic/phases/phase-5c-removal-plan.md
+  s_e62e9e4eccc8a9::t_3ddb3e01e5552c 1-401
+docs/cic/phases/phase-5e-execution-summary.md
+  s_e62e9e4eccc8a9::t_4fe5e87df8a92f 1-111
+docs/cic/phases/phase-5e-v1-service-locations.md
+  s_e62e9e4eccc8a9::t_98a390b318de75 1-258
+docs/cic/phases/phase-a-optimization-summary.md
+  s_e62e9e4eccc8a9::t_7891f774fb2cbb 1-343
+docs/cic/phases/phase-b-hardening-summary.md
+  s_e62e9e4eccc8a9::t_cbd22c66dd0f9e 1-467
+docs/cic/phases/phase-c-integration-summary.md
+  s_e62e9e4eccc8a9::t_72743e356bf289 1-424
+docs/cic/phases/phase27-3-execution-plan.md
+  s_e62e9e4eccc8a9::t_8919bdcbea35fb 1-117
+docs/cic/phases/phase4-spec-locked.md
+  s_e62e9e4eccc8a9::t_dd8c60bf5ff197 1-72
+docs/cic/phases/phase-1-file-contract.md
+  s_ef697a0621858d::t_32616f86bbb792 1-373
+docs/cic/phases/phase-1-implementation-order.md
+  s_ef697a0621858d::t_351af98787243a 1-364
+docs/cic/phases/phase-1-ledger-substrate.md
+  s_ef697a0621858d::t_194081d96730e2 1-296
+docs/cic/phases/phase-1-testing.md
+  s_ef697a0621858d::t_660b9d11248176 1-408
+docs/cic/phases/phase-2-action-space.md
+  s_ef697a0621858d::t_e4f4a32c2cc49f 1-176
+docs/cic/phases/phase-2-architecture.md
+  s_ef697a0621858d::t_db5340eecc43e2 1-270
+docs/cic/phases/phase-2-episode-trajectory.md
+  s_ef697a0621858d::t_293d44a6d4e7af 1-219
+docs/cic/phases/phase-2-overview.md
+  s_ef697a0621858d::t_82a12cedf16d1e 1-179
+docs/cic/phases/phase-2-policy-learner.md
+  s_ef697a0621858d::t_a1bc63083e95f0 1-226
+docs/cic/phases/phase-2-reward-function.md
+  s_ef697a0621858d::t_de249ab15af18f 1-209
+docs/cic/phases/phase-2-simulation-engine.md
+  s_ef697a0621858d::t_5d22abebaf3d1c 1-245
+docs/cic/phases/phase-2-state-space.md
+  s_ef697a0621858d::t_b8345f55184b16 1-224
+docs/cic/phases/phase-2-training-loop.md
+  s_ef697a0621858d::t_3557760e9a2d25 1-212
+docs/cic/phases/phase-5-canary-rollout-plan.md
+  s_df2e6afa516d1b::t_a5a626a88be423 1-370
+docs/cic/phases/phase-8-spec.md
+  s_e2a12a974c4dec::t_d6b4604bc85713 1-865
+docs/cic/phases/phase-8-test-matrices.md
+  s_ef697a0621858d::t_e9a5ea87d3d5dd 1-271
+docs/cic/phases/phase27-3-pr-checklist.md
+  s_ef697a0621858d::t_351067f43f4805 1-289
+docs/cic/phases/phase6-implementation-summary.md
+  s_ef697a0621858d::t_94c1046889db82 1-218
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a88c63f85759d27988b4be5b3a14783261fa7f15",
+  "prompts": {},
+  "sessions": {
+    "s_d3640c043b3d74": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6a3bc7a-e5d5-4837-8509-3c2a67fc7c7d",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_df2e6afa516d1b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4a2e1852-b897-4d5c-bdd0-12ea7d0cb831",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_e2a12a974c4dec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ad4a2a83-aa52-4668-88d3-0b572f49df60",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_e62e9e4eccc8a9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "364e34f8-c169-4845-8a19-418f94d74faa",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_e9508a1ab58572": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ff02a811-586c-4a20-a727-6f2ce26060d7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_ef697a0621858d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "94a64fd3-1d7b-4c9f-aa49-440a7c420b15",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_f8a8ab5aa44b74": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8f8d292c-cd68-4ce2-afb6-5a164334be87",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
