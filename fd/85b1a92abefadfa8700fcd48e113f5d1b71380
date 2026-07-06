@@ -1,0 +1,19 @@
+jest.config.js
+  s_5c02ea523022ac::t_e4e7765a796379 31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "fd85b1a92abefadfa8700fcd48e113f5d1b71380",
+  "prompts": {},
+  "sessions": {
+    "s_5c02ea523022ac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65ae4da6-dbb1-442f-9552-e4acf5224bb9",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
