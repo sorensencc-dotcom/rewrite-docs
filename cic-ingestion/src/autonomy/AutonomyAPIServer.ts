@@ -10,6 +10,7 @@ import { createFireDrillRouter } from "./routes/firedrills.js";
 import { createConsoleRouter } from "./routes/console.js";
 import { createMemoryRouter } from "./routes/memory.js";
 import { createGovernanceRouter } from "./routes/governance.js";
+import { createSearchRouter } from "./routes/search.js";
 import { AdapterRegistry } from "../adapters/AdapterRegistry.js";
 import { AdapterIntegrationService } from "../services/AdapterIntegrationService.js";
 import { GrokHardenedAdapter } from "../adapters/grok/GrokHardenedAdapter.js";
@@ -135,11 +136,16 @@ export class AutonomyAPIServer {
     const governanceRouter = createGovernanceRouter({
       governanceControlPlaneUrl: process.env.GOVERNANCE_URL || "http://localhost:3113",
     });
+    const searchRouter = createSearchRouter({
+      torqueQueryUrl: process.env.MEMORY_STORE_URL || "http://localhost:3110",
+      governanceUrl: process.env.GOVERNANCE_URL || "http://localhost:3113",
+    });
 
     this.app.use("/autonomy", executionRouter);
     this.app.use("/autonomy", fireDrillRouter);
     this.app.use("/autonomy", memoryRouter);
     this.app.use("/autonomy", governanceRouter);
+    this.app.use("/autonomy", searchRouter);
 
     // Grok Hardened Adapter (Phase A+B+C: Cache + Hardening)
     const adapterRegistry = new AdapterRegistry();
