@@ -3,9 +3,9 @@
  * Validates Phase 8 binding with GraphContext
  */
 
-import { graphContext } from '../../cic/graph/GraphContextBuilder.js';
-import { CICIntegrationAdapterPhase8, Phase8Config } from '../../cic/phase8/index.js';
-import { ModelDescriptor } from '../../cic/phase8/types/model_descriptor.js';
+import { graphContext } from '../cic/graph/GraphContextBuilder';
+import { CICIntegrationAdapterPhase8, Phase8Config } from '../cic/phase8';
+import { ModelDescriptor } from '../cic/phase8/types/model_descriptor';
 
 describe('Phase 8: Cost Optimization Integration', () => {
   const testModels: ModelDescriptor[] = [

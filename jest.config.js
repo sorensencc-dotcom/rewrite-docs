@@ -32,7 +32,7 @@ export default {
     "\\.css$": "<rootDir>/jest-mock-css.js"
   },
   transform: {
-    "^.+\\.tsx?$": ["ts-jest", {
+    "^.+\\.(ts|tsx|js|jsx)$": ["ts-jest", {
       useESM: true,
       isolatedModules: true,
       tsconfig: {
@@ -44,8 +44,7 @@ export default {
     }]
   },
   transformIgnorePatterns: [
-    "node_modules/(?!(uuid|@paralleldrive|@noble|cuid2|node-cron)/)",
-    "^.+\\.js$"
+    "node_modules/(?!(uuid|@paralleldrive|@noble|cuid2|node-cron)/)"
   ],
   collectCoverageFrom: [
     "cic/src/**/*.ts",
