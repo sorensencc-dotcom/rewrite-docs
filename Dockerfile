@@ -1,32 +1,32 @@
 # CIC Development Environment
-# Multi-stage build: deps → builder → runtime
-# Version: 2.0.0 | Purpose: Deterministic CIC startup with Node 22 LTS
+# Multi-stage build: deps → builder → runtime (optimized for speed)
+# Version: 2.1.0 | Purpose: Reduce Docker context deadline timeouts
 # Node 22 LTS: Active until 2027-04-30
 
-# Stage 1: Build dependencies only (avoid node_modules copy issues)
+# Stage 1: Dependencies (separate cacheable layer)
+FROM node:22-alpine AS deps
+
+WORKDIR /workspace
+
+RUN apk add --no-cache curl git python3 make g++
+
+COPY package*.json ./
+
+RUN npm ci --omit=dev --prefer-offline --no-fund 2>&1 | tail -20
+
+# Stage 2: Builder
 FROM node:22-alpine AS builder
 
 WORKDIR /workspace
 
-# Install build tools
-RUN apk add --no-cache \
-    curl \
-    git \
-    python3 \
-    make \
-    g++
+RUN apk add --no-cache curl git python3 make g++
 
-# Copy only dependency files (skip node_modules)
 COPY package*.json tsconfig.json ./
+COPY --from=deps /workspace/node_modules ./node_modules
 
-# Install production dependencies
-RUN npm ci --omit=dev
-
-# Copy source code (exclude node_modules via .dockerignore)
 COPY . .
 
-# Build TypeScript
-RUN npm run build || true
+RUN npm run build 2>&1 || true
 
 # Stage 2: Runtime base
 FROM node:22-alpine AS runtime
