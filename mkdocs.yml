@@ -30,6 +30,8 @@ theme:
         name: Switch to light mode
 nav:
   - Home: index.md
+  - Onboarding:
+      - Welcome: onboarding/index.md
   - Getting Started:
       - Quickstart: quickstart/index.md
       - Installation: quickstart/installation.md
@@ -214,6 +216,7 @@ nav:
       - Quick Start: reference/knowledge-graph/QUICK_START.md
       - Setup Guide: reference/knowledge-graph/SETUP_GUIDE.md
   - Reference:
+      - Developer Handbook: reference/handbook.md
       - Manifests: reference/manifests.md
       - Schemas: reference/schemas.md
       - Environment: reference/environment.md
@@ -221,6 +224,9 @@ nav:
       - Toolforge: reference/toolforge.md
       - Services: reference/services.md
       - System Index Builder (Planned): reference/system-index-builder.md
+  - Knowledge Base Consolidation:
+      - Inventory: meta/consolidation-inventory.md
+      - Status: meta/consolidation-status.md
   - Build Documentation:
       - 8-Items Complete: meta/8-items-complete.md
       - Build Progress: meta/build-progress.md
