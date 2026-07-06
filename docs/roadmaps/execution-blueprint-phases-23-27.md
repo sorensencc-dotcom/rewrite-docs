@@ -1,3 +1,10 @@
+---
+name: roadmap-execution-blueprint-phases-23-27
+description: Execution blueprint for phases 23-27 autonomy stack
+metadata:
+  type: roadmap
+---
+
 # Execution Blueprint: Phases 23–27 Autonomy Stack
 **Timeline:** 4-week sprint starting ~2026-07-08  
 **Critical Path:** 23 → 24 → 25 → 26 → 27  

@@ -1,3 +1,10 @@
+---
+name: operations-environment-optimization
+description: Environment optimization for slow filesystems and I/O constraints
+metadata:
+  type: operations
+---
+
 # Environment Optimization for Slow Filesystems
 
 Some environments (antivirus scanning, network drives, WSL with poor sync) cause git operations and pre-commit hooks to timeout. This guide covers identification and mitigation.

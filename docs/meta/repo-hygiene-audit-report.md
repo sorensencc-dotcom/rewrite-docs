@@ -1,3 +1,10 @@
+---
+name: repo-hygiene-audit-report
+description: Repository hygiene and code quality audit report
+metadata:
+  type: meta
+---
+
 # Gemini Repository Hygiene Audit Report
 
 **Date**: 2026-07-04  

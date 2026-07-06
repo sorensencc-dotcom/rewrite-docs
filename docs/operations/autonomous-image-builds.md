@@ -1,3 +1,10 @@
+---
+name: operations-autonomous-image-builds
+description: Autonomous image build scheduling and automation
+metadata:
+  type: operations
+---
+
 # Autonomous Image Build Scheduling
 
 Operator-image-build skill configured for autonomous daily builds with retry logic, Slack notifications, and registry verification.

@@ -1,3 +1,10 @@
+---
+name: roadmap-risk-register-phases-23-27
+description: Risk register and mitigation planning for phases 23-27
+metadata:
+  type: roadmap
+---
+
 # Risk Register: Phases 23–27 Autonomy Stack
 
 **Owner:** Autonomy Stack Lead  

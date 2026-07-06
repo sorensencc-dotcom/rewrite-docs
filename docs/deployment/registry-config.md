@@ -1,3 +1,10 @@
+---
+name: deployment-registry-config
+description: Container registry configuration and authentication
+metadata:
+  type: deployment
+---
+
 # Registry Configuration
 
 Kubernetes-ready Docker registry secrets and image pull policies for deterministic pod scheduling.

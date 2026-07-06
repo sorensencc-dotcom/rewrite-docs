@@ -1,3 +1,10 @@
+---
+name: roadmap-phase-23-27-mitigation-status
+description: Risk mitigation status tracking for phases 23-27
+metadata:
+  type: roadmap
+---
+
 # Phase 23-27 Risk Mitigation Status
 
 **Updated:** 2026-07-06  

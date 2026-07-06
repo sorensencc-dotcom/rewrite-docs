@@ -1,3 +1,10 @@
+---
+name: cic-knowledge-base-consolidation-inventory
+description: Phase 1 Inventory — 1,000+ files categorized, scope locked, consolidation plan
+metadata:
+  type: meta
+---
+
 # CIC Knowledge Base Consolidation — Inventory (Phase 1)
 
 **Date:** 2026-07-06  

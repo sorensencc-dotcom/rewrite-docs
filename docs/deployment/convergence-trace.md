@@ -1,3 +1,10 @@
+---
+name: deployment-convergence-trace
+description: Deployment convergence trace analysis and debugging
+metadata:
+  type: deployment
+---
+
 # Deployment Convergence Trace
 
 Full sequence from image push to pod running across the Kubernetes cluster. Deterministic state transitions with timing and troubleshooting.

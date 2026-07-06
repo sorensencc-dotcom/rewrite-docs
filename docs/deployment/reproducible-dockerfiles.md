@@ -1,3 +1,10 @@
+---
+name: deployment-reproducible-dockerfiles
+description: Deterministic and reproducible Dockerfile patterns
+metadata:
+  type: deployment
+---
+
 # Reproducible Dockerfiles
 
 Multi-stage, deterministic builds with SOURCE_DATE_EPOCH sealing for reproducible layer hashes.

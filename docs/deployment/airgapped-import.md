@@ -1,3 +1,10 @@
+---
+name: deployment-airgapped-import
+description: Air-gapped node-local import strategy for container images
+metadata:
+  type: deployment
+---
+
 # Air-Gapped Node-Local Import
 
 For clusters without registry access or immediate network constraints, save and import images directly into the node-local container runtime (containerd).
