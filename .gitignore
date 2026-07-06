@@ -61,6 +61,8 @@ charlie-deep-research/
 !/cic/src/
 !/cic/src/**/*.ts
 !/cic/src/**/*.test.ts
+!/cic/torquequery/
+!/cic/torquequery/**/*
 /cic-ingestion/
 !cic-ingestion/tsconfig.json
 !cic-ingestion/package.json
