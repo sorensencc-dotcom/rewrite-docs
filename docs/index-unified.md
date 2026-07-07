@@ -50,6 +50,7 @@ This index has been consolidated to eliminate duplicate sections. Framework sect
 - Location: docs/item-2-observability-dashboard-spec.md
 - Status: Implementation-ready
 - Spec: 3-dashboard platform (System Health, Pipeline Deep Dive, Cost & Usage)
+- See Also: [Configuration & Logging Standards](reference/configuration-logging.md) (logging sources for dashboards)
 
 **Item 3: Vault Extraction & System Map**
 - Location: docs/item-3-vault-extraction-system-map.md
@@ -66,11 +67,13 @@ This index has been consolidated to eliminate duplicate sections. Framework sect
 - Status: Implementation-ready
 - Framework: See [Skill Framework](reference/skill-framework.md)
 - Output: 5+ generated skills from vault docs
+- See Also: [Pipeline Architecture](reference/pipeline-architecture.md) (phases 3-5: generation, validation, deployment)
 
 **Item 6: Knowledge Graph**
 - Location: docs/item-6-knowledge-graph.md
 - Status: Implementation-ready
 - Output: Queryable semantic dependency map
+- See Also: [Pipeline Architecture](reference/pipeline-architecture.md) (impact analysis across phases)
 
 **Item 7: Memory Governance Framework**
 - Location: docs/item-7-memory-governance-framework.md
@@ -196,7 +199,33 @@ docs/
 
 ## Cross-Reference Map
 
-### Consolidation Backlinks
+### Phase 2 Consolidation Links (Critical Tier, 0.90+ similarity)
+
+#### Hard-Link: Index ↔ Knowledge Graph (0.91 similarity)
+**Strategy:** Keep both files separate; strengthen cross-reference
+- **Index role:** Unified navigation hub for all topics
+- **Knowledge Graph role:** Detailed specification for semantic dependency queries
+- **Cross-reference:** Index now includes explicit "See Also" in each Roadmap section
+- **Backlink:** item-6-knowledge-graph.md includes backlink to index
+- **Purpose:** Index guides navigation; graph provides deep implementation details
+
+#### Cross-Link: Index ↔ Observability Dashboard (0.83 similarity)
+**Strategy:** Keep spec separate; extract reference to dashboard index entry
+- **Index role:** High-level overview of 3-dashboard pattern
+- **Dashboard Spec role:** Full implementation (panels, metrics, queries, alerts)
+- **Cross-reference:** Index "Observability" section now references dashboard spec for implementation details
+- **Backlink:** item-2-observability-dashboard-spec.md includes backlink to index
+- **Verified:** No duplicate "Logging Standards" sections (config-logging.md is canonical)
+
+#### Cross-Link: Index ↔ Skill Generator (0.83 similarity)
+**Strategy:** Leverage extracted skill-framework.md; update index references
+- **Index role:** Overview of skill generation roadmap item
+- **Skill Generator Spec role:** Complete generation pipeline and type system
+- **Framework Doc role:** Canonical definition of skill types and development patterns
+- **Cross-reference:** Index now links to framework for definitions; generator for implementation
+- **Backlink:** item-5-skill-generator.md includes backlink to index
+
+### Consolidation Backlinks (Existing Phase 1)
 
 **configuration-logging.md** references:
 - docs/item-2-observability-dashboard-spec.md (Logging Standards, Metrics Export)

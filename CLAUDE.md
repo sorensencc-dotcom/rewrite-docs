@@ -14,6 +14,63 @@ scripts/ — Operational helpers, Docker management, deployment automation
 data/ — Extracted datasets, roadmap JSON, CI artifacts
 claude-skills/ — Skill definitions, validation, contribution pipeline
 
+## Knowledge Base Operational Model (Consolidated)
+
+### Three-Layer Architecture
+
+1. **docs/** — Authoritative Source
+   - All queries and edits target here
+   - Single source of truth per topic
+   - Cross-linked reference layer + implementation specs
+   - Examples: configuration-logging.md, pipeline-architecture.md, skill-framework.md
+
+2. **Backlinks** — Traceability Chain
+   - Every reference doc links back to sources
+   - Format: `See also: [item-2-observability-dashboard-spec.md](../item-2-observability-dashboard-spec.md)`
+   - Enables audit trail: consolidated → implementation → source
+
+3. **index-unified.md** — Navigation Hub
+   - Routes users to reference/ layer (definitions)
+   - Routes to implementation specs (Item 1-8)
+   - Central entry point for KB navigation
+
+### Consolidation Status
+
+- **Phase 1:** 1,320 pairs processed → 78% deduplication
+  - configuration-logging.md (487 pairs)
+  - pipeline-architecture.md (421 pairs)
+  - skill-framework.md (412 pairs)
+
+- **Phase 2:** 412 pairs hard-linked → 100% deduplication via cross-reference
+  - Index ↔ Knowledge Graph (0.91 similarity)
+  - Index ↔ Dashboard (0.83 similarity)
+  - Index ↔ Skill Generator (0.83 similarity)
+
+- **Total Deduplication:** ~50.6% (2,847 → ~1,406 pairs) at docs/ layer
+
+### Operational Rules
+
+1. **All KB work targets docs/**
+   - Do not edit wiki/ (legacy analysis layer)
+   - Do not regenerate merge-candidates (historical reference only)
+
+2. **Maintain backlinks**
+   - New reference docs must include "See also:" section
+   - Implementation specs must link back to reference layer
+   - Cross-references must be bidirectional
+
+3. **Update index-unified.md**
+   - Add new reference docs to navigation
+   - Update cross-reference map when new docs added
+   - Keep as single entry point for KB discovery
+
+4. **Verify no broken links**
+   - After edits: check all internal links are valid
+   - Backlinks must resolve to existing files
+   - Run mkdocs build --strict to validate
+
+---
+
 ## Patterns
 
 Express.js → HTTP APIs (codeflow-server.js, AutonomyAPIServer.ts)
@@ -127,5 +184,6 @@ Ask: **"Does this belong in docs/ or toolforge/skills/?**
 
 **mkdocs Policy:** All deliverable markdown → docs/ (organized by category)
 **Toolforge Policy:** All skills → toolforge/skills/{name}/ (standard structure)
+**KB Operations:** See [KB-OPERATIONS.md](docs/KB-OPERATIONS.md) for query, edit, and consolidation workflows
 **Enforcement:** Pre-commit validation (mkdocs build --strict, no orphaned .md files)
 **Reference:** This section of CLAUDE.md

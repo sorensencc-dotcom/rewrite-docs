@@ -2,11 +2,16 @@
 title: "ITEM 5 SKILL GENERATOR"
 summary: "# ITEM 5: SKILL GENERATOR **Date:** 2026-07-02 **Purpose:** Vault + ENV_REFERENCE → runbook skills **Status:** Implementation-ready"
 created: "2026-07-03T19:43:45.756Z"
-updated: "2026-07-03T19:43:45.756Z"
+updated: "2026-07-07T14:30:00.000Z"
 tags:
   - cic
   - rewrite-labs
   - roadmap
+backlinks:
+  - docs/index-unified.md (Unified Index & Navigation)
+  - docs/reference/skill-framework.md (Canonical skill type definitions)
+  - docs/reference/pipeline-architecture.md (Phases 3-5: Generation, Validation, Deployment)
+canonical: false
 ---
 # ITEM 5: SKILL GENERATOR
 **Date:** 2026-07-02  

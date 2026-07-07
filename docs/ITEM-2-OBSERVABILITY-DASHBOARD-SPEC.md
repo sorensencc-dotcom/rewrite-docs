@@ -2,11 +2,15 @@
 title: "ITEM 2 OBSERVABILITY DASHBOARD SPEC"
 summary: "# ITEM 2: OBSERVABILITY DASHBOARD SPEC **Date:** 2026-07-02 **Scope:** CIC + RL unified observability platform **Status:** Implementation-ready"
 created: "2026-07-03T19:43:45.750Z"
-updated: "2026-07-03T19:43:45.750Z"
+updated: "2026-07-07T14:30:00.000Z"
 tags:
   - cic
   - rewrite-labs
   - roadmap
+backlinks:
+  - docs/index-unified.md (Unified Index & Navigation)
+  - docs/reference/configuration-logging.md (Logging sources & standards)
+canonical: false
 ---
 # ITEM 2: OBSERVABILITY DASHBOARD SPEC
 **Date:** 2026-07-02  

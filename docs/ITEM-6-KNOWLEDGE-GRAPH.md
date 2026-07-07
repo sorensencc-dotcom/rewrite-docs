@@ -2,11 +2,15 @@
 title: "ITEM 6 KNOWLEDGE GRAPH"
 summary: "# ITEM 6: KNOWLEDGE GRAPH **Date:** 2026-07-02 **Purpose:** Vault backlinks → queryable dependency map (extend Item 3) **Status:** Implementation-ready"
 created: "2026-07-03T19:43:45.759Z"
-updated: "2026-07-03T19:43:45.759Z"
+updated: "2026-07-07T14:30:00.000Z"
 tags:
   - cic
   - rewrite-labs
   - roadmap
+backlinks:
+  - docs/index-unified.md (Unified Index & Navigation)
+  - docs/reference/pipeline-architecture.md (Impact analysis across phases)
+canonical: false
 ---
 # ITEM 6: KNOWLEDGE GRAPH
 **Date:** 2026-07-02  
