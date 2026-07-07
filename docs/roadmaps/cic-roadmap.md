@@ -60,6 +60,7 @@ Runner-managed phases carry a dual status: **Build** (engineering work, per comp
 | 24 | Autonomous Governance (council voting + evidence vault) | ✅ Done | Referenced as integration target by [Phase 28a](../cic/phases/phase-28a-scp-completion.md) |
 | 24.5 | AG-Trace Example (RPI→CIC execution trace) | 📋 Planned | Phase 28a documentation references this; phase-28a-scp-completion.md documents a different "governance integration" (not yet built, different deliverable). Phase 23.2 blocked on this. |
 | 26 | TorqueQuery — Shared Ingestion & Search Engine | Build: ✅ / Runner: ⏸ pending | [Implementation Summary](../implementation/phase-26/summary.md); `roadmap-runner/phases/PHASE-26.yaml`; zero runs in state-store |
+| 27 | Ingestion Autonomy — Routing, Profiles, Quarantine | 📋 Spec Locked | [Implementation Checklist](../cic/phases/phase-27-implementation-checklist.md); 6-wave (A–F), 9.3 days, locked 2026-07-07 |
 | 27.3 | Execution Plan | ✅ Done | [Execution Plan](../cic/phases/phase27-3-execution-plan.md) |
 | 27.4 | Dispatch | ✅ Done | [Dispatch](../cic/phases/phase-27-4-dispatch.md) |
 | 28a | SCP Completion | ✅ Done | [SCP Completion](../cic/phases/phase-28a-scp-completion.md); `build-roadmap.json` (complete) |
