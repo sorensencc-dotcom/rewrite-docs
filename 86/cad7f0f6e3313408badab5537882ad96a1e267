@@ -1,0 +1,57 @@
+test-verify-dist.mjs
+  s_0710a0017e5320::t_7fae64a6a2d0a0 1-31
+governance/audit-log.json
+  s_62ab85d7a21222::t_c5699ac89d2b2d 7022-7281,7284-7285,7287
+CLAUDE.md
+  s_cdc3386f388452::t_f73ff85dec63c0 17-73,187
+test-verify.mjs
+  s_0710a0017e5320::t_08b2497de278e3 1-24
+data/rl-vault-status.json
+  s_62ab85d7a21222::t_28f9de84fac1ab 3
+docs/ITEM-2-OBSERVABILITY-DASHBOARD-SPEC.md
+  s_62ab85d7a21222::t_68ecf99cd2cca9 5,10-13
+docs/ITEM-5-SKILL-GENERATOR.md
+  s_62ab85d7a21222::t_236aac2f3be761 5,10-14
+docs/ITEM-6-KNOWLEDGE-GRAPH.md
+  s_62ab85d7a21222::t_b95c3cabc0c41e 5,10-13
+docs/KB-OPERATIONS.md
+  s_62ab85d7a21222::t_ed0ea6f38d1848 1-591
+docs/index-unified.md
+  s_62ab85d7a21222::t_3b7a15761eab76 53,70,76,202-228
+docs/phase-2-consolidation-report.md
+  s_62ab85d7a21222::t_848194fd3fbd04 1-452
+governance/cicState.json
+  s_62ab85d7a21222::t_1c0ceec877df1a 22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "86cad7f0f6e3313408badab5537882ad96a1e267",
+  "prompts": {},
+  "sessions": {
+    "s_0710a0017e5320": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e9242950-293a-40b7-8715-26c8fb6b3114",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_62ab85d7a21222": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4e203350-bc20-46f6-a14e-f0545f73a12a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_cdc3386f388452": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fe81b8c-c66a-4140-8b7d-2061a674ad2f",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
