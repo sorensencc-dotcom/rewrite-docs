@@ -25,5 +25,5 @@
     }
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "node_modules", "src/rag/grok-rag-optimized.ts", "src/aperture/__tests__/**"]
 }

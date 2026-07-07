@@ -9,6 +9,7 @@ import { CICStateStore, BackendId } from "src/server/cicStateStore.js";
 import { clientSessionExtractor } from "../extractors/clientSessionExtractor.js";
 import { processClientSession } from "../harness/replayHarness.js";
 import { decayDriftScores } from "../drift/driftEngine.js";
+import { verifyIngestionEntry, VerifyResult } from "./verify.js";
 // TODO: verify audit-policy path — currently missing from codebase
 // import { verifyAuditChain } from "cic/governance/audit-policy.js";
 import { runDocsManagerIngestionJob } from "./jobs/docsManagerJob.js";
@@ -16,12 +17,15 @@ import { runDocsManagerIngestionJob } from "./jobs/docsManagerJob.js";
 export class IngestionDaemon {
   private intervalId: NodeJS.Timeout | null = null;
   private processedLines = new Set<string>();
+  private dlqPath: string;
 
   constructor(
     private logPath: string,
     private stateStore: CICStateStore,
     private intervalMs: number = 30000
-  ) {}
+  ) {
+    this.dlqPath = path.join(path.dirname(logPath), "..", "dlq", "failed-jobs.log");
+  }
 
   start(): void {
     if (this.intervalId) return;
@@ -82,6 +86,24 @@ export class IngestionDaemon {
       state.activePlaybooks.ingestionRecovery = false;
     } else if (category === "latency_breach" || category === "drift_spike" || category === "token_breach") {
       state.activePlaybooks.driftSpike = false;
+    }
+  }
+
+  private writeDlqEntry(entry: any, verifyResult: VerifyResult): void {
+    try {
+      const dlqEntry = {
+        dlqVersion: 1,
+        timestamp: new Date().toISOString(),
+        entry,
+        reasonCode: verifyResult.reasonCode,
+        reason: verifyResult.reason,
+        replayCount: 0,
+      };
+
+      fs.mkdirSync(path.dirname(this.dlqPath), { recursive: true });
+      fs.appendFileSync(this.dlqPath, JSON.stringify(dlqEntry) + "\n", "utf8");
+    } catch (err: any) {
+      console.error("[IngestionDaemon] DLQ write failed:", err.message);
     }
   }
 
@@ -148,15 +170,32 @@ export class IngestionDaemon {
       let cycleTotalTokens = 0;
 
       for (const entry of newEntries) {
-        const extracted = await clientSessionExtractor(entry);
-        processClientSession(extracted, state);
+        try {
+          const extracted = await clientSessionExtractor(entry);
+          const verifyResult = verifyIngestionEntry(extracted);
 
-        if (entry.response?.meta?.latency_ms) {
-          cycleTotalLatency += entry.response.meta.latency_ms;
-          cycleTurns++;
-        }
-        if (entry.response?.usage?.total_tokens) {
-          cycleTotalTokens += entry.response.usage.total_tokens;
+          if (!verifyResult.ok) {
+            this.writeDlqEntry(extracted, verifyResult);
+            continue; // Skip state mutation, process next entry
+          }
+
+          processClientSession(extracted, state);
+
+          if (entry.response?.meta?.latency_ms) {
+            cycleTotalLatency += entry.response.meta.latency_ms;
+            cycleTurns++;
+          }
+          if (entry.response?.usage?.total_tokens) {
+            cycleTotalTokens += entry.response.usage.total_tokens;
+          }
+        } catch (err: any) {
+          console.error("[IngestionDaemon] per-entry error:", err.message);
+          // Write to DLQ on extraction/verification failure
+          this.writeDlqEntry(entry, {
+            ok: false,
+            reasonCode: "EXTRACTOR_ERROR",
+            reason: err.message,
+          });
         }
       }
 

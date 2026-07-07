@@ -1,0 +1,23 @@
+[
+  {
+    "id": "golden-query-001",
+    "query": "memory consolidation",
+    "expected_primary_match_id": "memory-core-001",
+    "expected_score_range": [0.75, 0.95],
+    "comment": "Core memory system design, should rank first or within top 3"
+  },
+  {
+    "id": "golden-query-002",
+    "query": "governance audit chain",
+    "expected_primary_match_id": "governance-audit-chain-001",
+    "expected_score_range": [0.70, 0.92],
+    "comment": "Governance + compliance, critical for regulatory checks"
+  },
+  {
+    "id": "golden-query-003",
+    "query": "autonomy execution context",
+    "expected_primary_match_id": "autonomy-exec-context-001",
+    "expected_score_range": [0.72, 0.90],
+    "comment": "Autonomy API layer, execution contexts"
+  }
+]

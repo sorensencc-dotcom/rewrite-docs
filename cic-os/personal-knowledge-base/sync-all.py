@@ -31,14 +31,28 @@ def run_stage(script_name, description):
         result = subprocess.run(
             [sys.executable, script_name],
             cwd=Path(__file__).parent,
-            capture_output=False,
+            capture_output=True,
             text=True,
-            check=True
+            check=True,
+            timeout=60
         )
+        # Print captured output
+        if result.stdout:
+            print(result.stdout)
+        if result.stderr:
+            print(result.stderr, file=sys.stderr)
+
         log(f"✅ {description} completed successfully", "SUCCESS")
         return True
     except subprocess.CalledProcessError as e:
         log(f"❌ {description} failed with exit code {e.returncode}", "ERROR")
+        if e.stdout:
+            print("STDOUT:", e.stdout)
+        if e.stderr:
+            print("STDERR:", e.stderr)
+        return False
+    except subprocess.TimeoutExpired:
+        log(f"❌ {description} timed out (>60s)", "ERROR")
         return False
     except FileNotFoundError:
         log(f"❌ {script_name} not found in {Path(__file__).parent}", "ERROR")
