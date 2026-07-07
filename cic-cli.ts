@@ -144,6 +144,81 @@ program
   });
 
 // ============================================================================
+// QUARANTINE LIST COMMAND
+// ============================================================================
+
+program
+  .command("quarantine list")
+  .description("List quarantined ingestion items")
+  .action(() => {
+    try {
+      const { listQuarantined } = require("./cic-ingestion/src/ingestion/quarantineReview");
+      const items = listQuarantined();
+
+      if (items.length === 0) {
+        console.log(`\n[cic] No quarantined items`);
+        return;
+      }
+
+      console.log(`\n[cic] Quarantined items (${items.length}):\n`);
+      for (const item of items) {
+        const errors = (item.verification?.errors || []).join(", ");
+        console.log(`  ID: ${item.id}`);
+        console.log(`     Source: ${item.source} | Profile: ${item.profile}`);
+        console.log(`     Lane: ${item.lane} | Retries: ${item.retryCount}`);
+        console.log(`     Errors: ${errors || "N/A"}`);
+        console.log(`     Cost: $${item.cost?.totalCost || 0}`);
+        console.log();
+      }
+    } catch (e) {
+      console.error(`[cic] ✗ List failed:`, e instanceof Error ? e.message : String(e));
+      process.exit(1);
+    }
+  });
+
+// ============================================================================
+// QUARANTINE APPROVE COMMAND
+// ============================================================================
+
+program
+  .command("quarantine approve <id>")
+  .option("--lane <lane>", "Target lane for approval", "fast")
+  .description("Approve a quarantined ingestion item")
+  .action((id, opts) => {
+    try {
+      const { approveQuarantine } = require("./cic-ingestion/src/ingestion/quarantineReview");
+      approveQuarantine(id, opts.lane);
+      console.log(`[cic] ✓ Item approved: ${id}`);
+      console.log(`[cic]   Target lane: ${opts.lane}`);
+      console.log(`[cic]   Flag: forceReingest = true`);
+    } catch (e) {
+      console.error(`[cic] ✗ Approval failed:`, e instanceof Error ? e.message : String(e));
+      process.exit(1);
+    }
+  });
+
+// ============================================================================
+// QUARANTINE REJECT COMMAND
+// ============================================================================
+
+program
+  .command("quarantine reject <id>")
+  .option("--reason <reason>", "Reason for rejection", "Rejected via CLI")
+  .description("Reject a quarantined ingestion item")
+  .action((id, opts) => {
+    try {
+      const { rejectQuarantine } = require("./cic-ingestion/src/ingestion/quarantineReview");
+      rejectQuarantine(id, opts.reason);
+      console.log(`[cic] ✓ Item rejected: ${id}`);
+      console.log(`[cic]   Reason: ${opts.reason}`);
+      console.log(`[cic]   Flag: skip = true`);
+    } catch (e) {
+      console.error(`[cic] ✗ Rejection failed:`, e instanceof Error ? e.message : String(e));
+      process.exit(1);
+    }
+  });
+
+// ============================================================================
 // STATUS COMMAND
 // ============================================================================
 
