@@ -1,0 +1,199 @@
+docs/cic/index.md
+  s_d7cf3f52438588::t_0fb91b5ec37f95 51-55,57,59,63-65
+  s_d7cf3f52438588::t_f66691aa356517 126-129
+  s_d7cf3f52438588::t_f14dba85ca801d 139-142,146-148
+  s_d7cf3f52438588::t_26c8c36bfb908e 152
+  s_d7cf3f52438588::t_712fb39fb8d8e1 106-115
+  s_d7cf3f52438588::t_a429f776893ee4 69,72-74,78
+  s_d7cf3f52438588::t_273eef3dc86b6e 23-45
+  s_d7cf3f52438588::t_90b37bca4f0ee7 101-102
+  s_d7cf3f52438588::t_257be90e2499b8 94-96
+  s_d7cf3f52438588::t_0db76ba08b0848 133
+  s_d7cf3f52438588::t_825cb90f718cb1 119-122
+docs/integration/index.md
+  s_d7cf3f52438588::t_32bd1db9a027d4 44
+  s_d7cf3f52438588::t_4b7ca13a655190 93
+  s_d7cf3f52438588::t_add8f4ee97b9c8 29
+  s_d7cf3f52438588::t_83d2d2930371db 79
+  s_d7cf3f52438588::t_194f79432c954a 80
+docs/architecture/drift.md
+  s_d7cf3f52438588::t_306f7d7b0204d8 27
+docs/operations/drift-forecast.md
+  s_d7cf3f52438588::t_544ffd1daed34e 35
+docs/roadmaps/rewrite-labs-roadmap.md
+  s_d7cf3f52438588::t_55053de0a27b55 13
+  s_d7cf3f52438588::t_1ce1f5af1b8da7 27
+  s_d7cf3f52438588::t_d058ebca499bb3 57-58,64
+docs/rewrite-labs/index.md
+  s_d7cf3f52438588::t_8f5bd39b56461e 100,118
+  s_d7cf3f52438588::t_48885599b024ee 80
+  s_d7cf3f52438588::t_2f1a0ce6fccc7a 68
+docs/roadmaps/cic-roadmap.md
+  s_d7cf3f52438588::t_ead53affced166 73
+  s_d7cf3f52438588::t_67aff2a1f85537 61
+docs/reference/cic-rl-cross-reference.md
+  s_d7cf3f52438588::t_27660c5bd30530 206
+  s_d7cf3f52438588::t_28a7581324a3b4 197
+  s_d7cf3f52438588::t_14d6870bcff4a6 100
+docs/systems/index.md
+  s_d7cf3f52438588::t_297e23f7ed3ac4 26
+  s_d7cf3f52438588::t_48fb4dd8970060 42,108
+docs/reference/handbook.md
+  s_d7cf3f52438588::t_c62d5f6766f7f2 263
+docs/operations/roadmap-runner.md
+  s_d7cf3f52438588::t_8a8bc5fb6b2d57 15
+  s_d7cf3f52438588::t_7143736def96e6 48,52
+mkdocs.yml
+  s_d7cf3f52438588::t_0191ec981d2828 51
+  s_d7cf3f52438588::t_95bec47787cd6d 143
+  s_d7cf3f52438588::t_ec0a9f0245b555 181
+  s_d7cf3f52438588::t_75885621a8b421 257-259,261-263
+  s_d7cf3f52438588::t_74f12a4f6cd8f4 139-140
+  s_0710a0017e5320::t_f8577d0d599107 141
+docs/implementation/phase-26/test-verification-report.md
+  s_0710a0017e5320::t_279286a123106d 37,39,41,43,47,49,51,53,59,61,63,65-66,68,78-80,82,88-90,92,98-101,103
+  s_0710a0017e5320::t_f6b9ca0d55fa6d 5,13-18
+  s_0710a0017e5320::t_3f97eadc097ef0 57,72,74,76,86,96,107,109-114,118,120,122-130,134,137-138,140
+  s_0710a0017e5320::t_21bd4bc8c9459f 24-31
+docs/architecture/overview.md
+  s_d7cf3f52438588::t_2fa6b2d79bad53 41
+docs/onboarding/index.md
+  s_d7cf3f52438588::t_72520d8e732ca2 25
+  s_d7cf3f52438588::t_fd468c250fa99d 22,83
+docs/cic/phases/phase-2-reward-function.md
+  s_d7cf3f52438588::t_78a47c8a0dbe4f 206-208
+docs/cic/phases/phase-2-simulation-engine.md
+  s_d7cf3f52438588::t_7fcbd2e0dfcfac 242-244
+docs/cic/phases/phase-1-architecture.md
+  s_e9508a1ab58572::t_c3fe79aff49332 224-228
+docs/cic/phases/phase-1-bridge-orchestrator.md
+  s_d3640c043b3d74::t_f085b707207b5f 198-200,203
+docs/cic/phases/phase-1-maal-core.md
+  s_e9508a1ab58572::t_16337dd746feeb 257-260
+docs/cic/phases/phase-1-overview.md
+  s_e9508a1ab58572::t_64f238d4adb429 126-130
+docs/cic/phases/phase-2-integration.md
+  s_d3640c043b3d74::t_57a61cc1c738f5 275-276
+docs/cic/phases/phase-2-testing.md
+  s_d3640c043b3d74::t_c3ab4a8b7ad160 305
+docs/cic/sandbox-3-alerting.md
+  s_e9508a1ab58572::t_36359c6d8431f3 25-27
+docs/cic/sandbox-3-deployment.md
+  s_e9508a1ab58572::t_af067ffdc98333 26-28
+docs/cic/sandbox-3-firecracker-nodepool.md
+  s_e9508a1ab58572::t_727f9e0ebd10d0 25-27
+docs/cic/sandbox-3-incident-response.md
+  s_e9508a1ab58572::t_f9104629813d86 26-28
+docs/cic/sandbox-3-k8s.md
+  s_e9508a1ab58572::t_bd14eb760d297e 26-28
+docs/cic/sandbox-3-monitoring.md
+  s_e9508a1ab58572::t_f9cc8557536aa4 25-27
+docs/cic/sandbox-3-onnx-sidecar.md
+  s_e9508a1ab58572::t_f766028f885be9 25-27
+docs/cic/GOVERNANCE.md
+  s_d7cf3f52438588::t_03cf92d5982763 28
+docs/cic/phases/phase-1-file-contract.md
+  s_d7cf3f52438588::t_816e9881ada746 371-373
+docs/cic/phases/phase-1-implementation-order.md
+  s_d7cf3f52438588::t_b2ec2e5e0542b3 362-364
+docs/cic/phases/phase-1-ledger-substrate.md
+  s_d7cf3f52438588::t_55bca31dde1220 293-296
+docs/cic/phases/phase-1-testing.md
+  s_d7cf3f52438588::t_27d05aa25a0a83 406-408
+docs/cic/phases/phase-2-action-space.md
+  s_d7cf3f52438588::t_aa248a42dd5bb4 173-175
+docs/cic/phases/phase-2-architecture.md
+  s_d7cf3f52438588::t_e86bd5e461165a 264-269
+docs/cic/phases/phase-2-episode-trajectory.md
+  s_d7cf3f52438588::t_e50291bbb3b418 215-218
+docs/cic/phases/phase-2-overview.md
+  s_d7cf3f52438588::t_85e19c196ba605 169-178
+docs/cic/phases/phase-2-policy-learner.md
+  s_d7cf3f52438588::t_cf0c3c63392ef4 223-225
+docs/cic/phases/phase-2-state-space.md
+  s_d7cf3f52438588::t_97fd8a5db656e4 221-223
+docs/cic/phases/phase-2-training-loop.md
+  s_d7cf3f52438588::t_941df3c879c7ee 208-211
+docs/cic/sandbox-3-architecture.md
+  s_d7cf3f52438588::t_df6ff88944fd3a 84-87
+docs/cic/sandbox-3-determinism.md
+  s_d7cf3f52438588::t_9d85bc0ddd36f7 120-122
+docs/cic/sandbox-3-firecracker.md
+  s_d7cf3f52438588::t_dd7d0523db8fc5 86-88
+docs/cic/sandbox-3-harness-v3.md
+  s_d7cf3f52438588::t_2886da549ea947 89-91
+docs/cic/sandbox-3-latency.md
+  s_d7cf3f52438588::t_2c093c7f68746c 99-101
+docs/cic/sandbox-3-maal-integration.md
+  s_d7cf3f52438588::t_b31421e8544ba7 25-27
+docs/cic/sandbox-3-network-trace.md
+  s_d7cf3f52438588::t_403c7395dde08b 84-86
+docs/cic/sandbox-3-overview.md
+  s_d7cf3f52438588::t_406504a5fe2090 60-63
+docs/cic/sandbox-3-reproducibility.md
+  s_d7cf3f52438588::t_df6c7d1f4cca08 172-174
+docs/cic/sandbox-3-routing-v3.md
+  s_d7cf3f52438588::t_493a6dbb451796 25-27
+docs/cic/sandbox-3-runtime.md
+  s_d7cf3f52438588::t_84739c84963846 146-149
+docs/cic/sandbox-3-stability-v3.md
+  s_d7cf3f52438588::t_b92d07b547d536 52-54
+docs/cic/sandbox-3-syscall-trace.md
+  s_d7cf3f52438588::t_6efaffcec9d53e 105-107
+docs/cic/sandbox-3-tracing.md
+  s_d7cf3f52438588::t_652332978e8776 89-91
+docs/cic/sandbox-3-vm-snapshotting.md
+  s_d7cf3f52438588::t_e0818362b8246c 82-84
+docs/cic/torquequery-executive-summary.md
+  s_d7cf3f52438588::t_43441b7c01a280 427-429,434-435
+docs/cic/torquequery-index.md
+  s_d7cf3f52438588::t_8ab6c2c251876e 62,69,77,123,338,383,397-399,402,422-423,434,496
+docs/cic/torquequery-quickstart.md
+  s_d7cf3f52438588::t_59b72c42e02997 300,306,350-351,372
+docs/reference/DOCKER-BUILD-SUMMARY.md
+  s_d7cf3f52438588::t_9e63b3fab3fd69 271-273
+docs/reference/DOCKER-QUICKSTART.md
+  s_d7cf3f52438588::t_bf8e261911a7ca 130
+docs/reference/system-index-builder.md
+  s_d7cf3f52438588::t_017ba1650736f6 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "ad7ccdcaf0bc117be0a607375123b14f0a4f071e",
+  "prompts": {},
+  "sessions": {
+    "s_0710a0017e5320": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e9242950-293a-40b7-8715-26c8fb6b3114",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d3640c043b3d74": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6a3bc7a-e5d5-4837-8509-3c2a67fc7c7d",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d7cf3f52438588": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "50db806c-7e83-4e0a-812c-4638509f8e5a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_e9508a1ab58572": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ff02a811-586c-4a20-a727-6f2ce26060d7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
