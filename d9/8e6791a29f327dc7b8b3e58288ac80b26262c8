@@ -1,0 +1,21 @@
+docs/roadmaps/cic-roadmap.md
+  s_cdc3386f388452::t_c64e9ffcfc4c94 63
+docs/cic/phases/phase-27-implementation-checklist.md
+  s_cdc3386f388452::t_3d665f3e1248bf 1-604
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "d98e6791a29f327dc7b8b3e58288ac80b26262c8",
+  "prompts": {},
+  "sessions": {
+    "s_cdc3386f388452": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fe81b8c-c66a-4140-8b7d-2061a674ad2f",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
