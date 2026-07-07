@@ -181,6 +181,17 @@ nav:
       - Providers Configuration: gateway/providers.md
   - Dashboard:
       - Operator Dashboard: dashboard/dashboard.md
+      - Implementation Specs:
+          - Command Center Priority Matrix: dashboard/command-center-priority-matrix.md
+          - Missing Tokens (Agents Panel): dashboard/missing-tokens-for-agents-panel.md
+          - Tier 2 Agents Conflict Map: dashboard/tier2-agents-conflict-map.md
+      - Progress & Reports:
+          - 8-Item Progress: dashboard/8-item-progress.md
+          - 8-Items Complete Final: dashboard/8-items-complete-final.md
+          - Final Status (8-Items): dashboard/final-status-8-items.md
+          - Missing Tokens (Phase Progress): dashboard/missing-tokens-for-agents-panel-phase-progress.md
+          - Dark Mode v2 Implementation: dashboard/dark-mode-v2-implementation.md
+          - Dark Mode Completion Report: dashboard/dark-mode-completion-report.md
   - Test Matrices:
       - Routing Tests: tests/routing-tests.md
       - Feedback Loop Tests: tests/feedback-loop-tests.md
