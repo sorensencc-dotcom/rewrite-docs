@@ -1,0 +1,85 @@
+src/harness/regression/nightly.ts
+  s_0710a0017e5320::t_c10defcf8919a1 1-295
+governance/cicState.json
+  s_d7cf3f52438588::t_e22fee3f0d7a08 22
+docs/cic/phase-26-loop-runbook.md
+  s_0710a0017e5320::t_f897459753dee7 1-334
+src/harness/regression/cicQueryGolden.json
+  s_0710a0017e5320::t_73bc39e4be23b2 1-23
+docs-manager/docs-sync-summary.json
+  s_ef697a0621858d::t_37a7fb82c71e3e 2
+governance/audit-log.json
+  s_62ab85d7a21222::t_4afa2034f95475 6320-7021,7024-7025,7027
+cic-ingestion/src/ingestion/daemon.ts
+  s_d7cf3f52438588::t_8f9c1ccded296e 12,20,26-28,92-109,173-198
+data/rl-vault-status.json
+  s_ef697a0621858d::t_e08ee8b2ef77cf 3
+docs/consolidation-report.md
+  s_cdc3386f388452::t_9103d2f56cc874 1-453
+docs/meta/kb-sync-post-consolidation-migration.md
+  s_d7cf3f52438588::t_ded5a4065d909b 1-339
+docs/reference/pipeline-architecture.md
+  s_cdc3386f388452::t_2e2e7dc770de52 1-545
+cic
+  s_cdc3386f388452::t_964e298df32df4 1
+cic-ingestion/tsconfig.json
+  s_cdc3386f388452::t_17bf77924a351f 28
+cic-os/personal-knowledge-base/sync-all.py
+  s_cdc3386f388452::t_89ebb8985f7f9f 34,36-37,39-44,49-55
+cic-os/personal-knowledge-base/sync.py
+  s_cdc3386f388452::t_de29b1241d9d4a 1-296
+docs/index-unified.md
+  s_cdc3386f388452::t_272ceadeeb4d3d 1-249
+docs/reference/configuration-logging.md
+  s_cdc3386f388452::t_357c3a6905651f 1-329
+docs/reference/skill-framework.md
+  s_cdc3386f388452::t_3bb172d3100196 1-748
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "e041ed681158cd26bdef0773090201e66ca974d9",
+  "prompts": {},
+  "sessions": {
+    "s_0710a0017e5320": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e9242950-293a-40b7-8715-26c8fb6b3114",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_62ab85d7a21222": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4e203350-bc20-46f6-a14e-f0545f73a12a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_cdc3386f388452": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fe81b8c-c66a-4140-8b7d-2061a674ad2f",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d7cf3f52438588": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "50db806c-7e83-4e0a-812c-4638509f8e5a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_ef697a0621858d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "94a64fd3-1d7b-4c9f-aa49-440a7c420b15",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
