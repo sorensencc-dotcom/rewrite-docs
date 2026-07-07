@@ -134,7 +134,7 @@ nav:
   - CIC Documentation:
       - Index: cic/index.md
       - Phases: cic/phases/index.md
-      - Governance: cic/GOVERNANCE.md
+      - Governance: cic/governance.md
       - CodeFlow Harvester: cic/harvester.md
       - Drift Engine: cic/driftEngine.md
       - Replay Harness: cic/replayHarness.md
