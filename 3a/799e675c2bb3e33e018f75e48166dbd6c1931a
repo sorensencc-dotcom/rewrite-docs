@@ -1,0 +1,35 @@
+cic-ingestion/jest.config.cjs
+  s_cdc3386f388452::t_b025297a5a2495 1-16
+cic-ingestion/src/ingestion/ingestion-routing-gate.ts
+  s_cdc3386f388452::t_293ff56d37d2d0 1-233
+cic-ingestion/src/ingestion/ingestionManifest.test.ts
+  s_cdc3386f388452::t_1a85267574b21d 1-349
+cic-ingestion/src/ingestion/ingestionManifest.ts
+  s_cdc3386f388452::t_db59707506630d 1-164
+cic-ingestion/src/ingestion/ingestionProfiles.json
+  s_cdc3386f388452::t_151801cd6c3206 17
+cic-ingestion/src/ingestion/ingestionProfiles.test.ts
+  s_cdc3386f388452::t_b02b48b14f44c4 9
+cic-ingestion/src/ingestion/ingestionRouter.test.ts
+  s_cdc3386f388452::t_8f35b05f00cf91 1-165
+cic-ingestion/src/ingestion/ingestionRouter.ts
+  s_cdc3386f388452::t_9c0c5697cad446 1-74
+cic-ingestion/src/ingestion/ingestionRoutingGolden.json
+  s_cdc3386f388452::t_fa46c9ee468606 1-104
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "3a799e675c2bb3e33e018f75e48166dbd6c1931a",
+  "prompts": {},
+  "sessions": {
+    "s_cdc3386f388452": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fe81b8c-c66a-4140-8b7d-2061a674ad2f",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
