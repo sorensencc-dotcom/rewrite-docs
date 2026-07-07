@@ -1,0 +1,31 @@
+docs/cic/phase-27-wave-f-troubleshooting.md
+  s_eaf7b68a8592fd::t_771ce14cc3a28c 1-525
+docs/cic/phase-27-wave-f-rollback.md
+  s_eaf7b68a8592fd::t_9938806d450bed 1-340
+docs/cic/phase-27-wave-f-summary.md
+  s_eaf7b68a8592fd::t_bd871b4e14d8d9 1-330
+docs/cic/phase-27-wave-f-ship-checklist.md
+  s_eaf7b68a8592fd::t_9959e791bfa8ff 1-270
+docs/cic/phase-27-wave-f-architecture.md
+  s_eaf7b68a8592fd::t_3543b4fd7fa6be 1-337
+docs/cic/phase-27-wave-f-runbook.md
+  s_eaf7b68a8592fd::t_b0576925c015d8 1-356
+docs/cic/phase-27-wave-f-fixtures.md
+  s_eaf7b68a8592fd::t_ff16bb0bb56c41 1-340
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "6bb261d595c34cf029a0a5eb1ee3971bdf7caf2a",
+  "prompts": {},
+  "sessions": {
+    "s_eaf7b68a8592fd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0547e723-ba1b-434f-bf82-37e8f88c2262",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
