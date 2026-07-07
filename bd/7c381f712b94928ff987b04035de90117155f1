@@ -1,0 +1,19 @@
+.gitignore
+  s_d7cf3f52438588::t_ec113e3cf4f022 26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "bd7c381f712b94928ff987b04035de90117155f1",
+  "prompts": {},
+  "sessions": {
+    "s_d7cf3f52438588": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "50db806c-7e83-4e0a-812c-4638509f8e5a",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
