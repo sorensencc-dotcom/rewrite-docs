@@ -95,6 +95,9 @@ claude-configs/
 claude-skills/
 financeos/
 rewrite-mcp/
+!rewrite-mcp/projects/cic/src/harvester/extractors/verifyExtractors.ts
+!rewrite-mcp/projects/cic/src/harvester/extractors/__fixtures__/golden-inputs.json
+!rewrite-mcp/projects/cic/src/harvester/extractors/EXTRACTOR.md
 
 # Cleanup 2026-07-03: build/test/scan artifacts
 snapshots/
