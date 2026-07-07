@@ -6,7 +6,7 @@ import { IngestionProfiles, Lane } from "./types";
 describe("Phase 27 Ingestion Profiles", () => {
   let profiles: IngestionProfiles;
   let schema: any;
-  let ajv: Ajv.Ajv;
+  let ajv: InstanceType<typeof Ajv>;
 
   beforeAll(() => {
     const profilesPath = path.join(

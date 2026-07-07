@@ -14,7 +14,7 @@
     "maxRetries": 5
   },
   "api:generic": {
-    "defaultLane": "deep",
+    "defaultLane": "fast",
     "extractors": ["TextExtractor", "SemanticExtractor"],
     "maxSizeMB": 10,
     "requiresOperatorApproval": false,
