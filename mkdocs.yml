@@ -213,9 +213,11 @@ nav:
   - Implementation:
       - Cloud Extension Layer: implementation/cloud-extension-layer.md
   - Knowledge Graph:
-      - Overview: reference/knowledge-graph/README.md
-      - Quick Start: reference/knowledge-graph/QUICK_START.md
-      - Setup Guide: reference/knowledge-graph/SETUP_GUIDE.md
+      - Overview: reference/knowledge-graph/readme.md
+      - Quick Start: reference/knowledge-graph/quick-start.md
+      - Setup Guide: reference/knowledge-graph/setup-guide.md
+  - Observability:
+      - Dashboards Integration: observability/dashboards-integration.md
   - Reference:
       - Developer Handbook: reference/handbook.md
       - Manifests: reference/manifests.md
