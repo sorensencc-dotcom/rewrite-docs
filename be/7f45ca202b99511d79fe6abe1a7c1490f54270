@@ -1,0 +1,33 @@
+.gitignore
+  s_0710a0017e5320::t_28f2d99afa757d 78-80
+cic-ingestion/EXTRACTOR.md
+  s_0710a0017e5320::t_eac5326ff4f01a 1-13
+cic-ingestion/src/ingestion/dlqReplayer.ts
+  s_d7cf3f52438588::t_a80f90fec0de8b 1-175
+cic-ingestion/src/ingestion/verify.ts
+  s_0710a0017e5320::t_7e60cf09d73691 1-78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "be7f45ca202b99511d79fe6abe1a7c1490f54270",
+  "prompts": {},
+  "sessions": {
+    "s_0710a0017e5320": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e9242950-293a-40b7-8715-26c8fb6b3114",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d7cf3f52438588": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "50db806c-7e83-4e0a-812c-4638509f8e5a",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
