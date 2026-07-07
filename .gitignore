@@ -23,6 +23,7 @@ safety/
 out/
 .cache/
 *.tsbuildinfo
+site/
 
 # Dependencies
 package-lock.json
