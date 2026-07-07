@@ -1,0 +1,27 @@
+cic-ingestion/src/ingestion/daemon-routing.test.ts
+  s_cdc3386f388452::t_34a1c0a45ad758 1-364
+cic-ingestion/src/ingestion/daemon-routing.ts
+  s_cdc3386f388452::t_b383030794634c 1-326
+cic-ingestion/src/ingestion/ingestion-daemon-integration-gate.ts
+  s_cdc3386f388452::t_fc770d0c312789 1-258
+cic-ingestion/src/ingestion/operatorOverrides.json
+  s_cdc3386f388452::t_83bd249ca2d4e6 1-14
+cic-ingestion/src/ingestion/operatorOverrides.ts
+  s_cdc3386f388452::t_fe6e2867300818 1-77
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "07f89f3fa9ec70324f883b49e14c79bc468c485a",
+  "prompts": {},
+  "sessions": {
+    "s_cdc3386f388452": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fe81b8c-c66a-4140-8b7d-2061a674ad2f",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
