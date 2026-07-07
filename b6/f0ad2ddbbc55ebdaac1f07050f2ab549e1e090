@@ -1,0 +1,19 @@
+mkdocs.yml
+  s_d7cf3f52438588::t_275546787ba5bb 184-194
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b6f0ad2ddbbc55ebdaac1f07050f2ab549e1e090",
+  "prompts": {},
+  "sessions": {
+    "s_d7cf3f52438588": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "50db806c-7e83-4e0a-812c-4638509f8e5a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
