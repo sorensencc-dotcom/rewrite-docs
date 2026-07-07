@@ -1,0 +1,22 @@
+docs/rewrite-labs/index.md
+  s_d7cf3f52438588::t_b8b14c448257ce 19-20
+  s_d7cf3f52438588::t_752038922d34e5 53
+mkdocs.yml
+  s_d7cf3f52438588::t_86071d7b52c079 174-178
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "411b0fed7cc6aeae256f18f6222eb70f9f4949f0",
+  "prompts": {},
+  "sessions": {
+    "s_d7cf3f52438588": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "50db806c-7e83-4e0a-812c-4638509f8e5a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
