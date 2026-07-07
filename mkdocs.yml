@@ -171,6 +171,11 @@ nav:
           - Setup: rewrite-labs/vault-mirror/setup.md
           - Configuration: rewrite-labs/vault-mirror/configuration.md
           - RL Setup: rewrite-labs/vault-mirror/rl-setup.md
+      - Reference Vault:
+          - RL Index: rewrite-labs/00-rl-index.md
+          - Vault Setup: rewrite-labs/rl-vault-setup.md
+          - Vault README: rewrite-labs/vault-readme.md
+          - Sync Configuration: rewrite-labs/vault-sync-configuration.md
   - Gateway:
       - API & State Store: gateway/adapterGatewayAPI.md
       - Providers Configuration: gateway/providers.md
