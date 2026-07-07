@@ -1,0 +1,19 @@
+cic-cli.ts
+  s_eaf7b68a8592fd::t_0e49dd4fb69a84 146-220
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "83dfc0c6da9a26a4238ecd4eebb05f2c492e8a83",
+  "prompts": {},
+  "sessions": {
+    "s_eaf7b68a8592fd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0547e723-ba1b-434f-bf82-37e8f88c2262",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
