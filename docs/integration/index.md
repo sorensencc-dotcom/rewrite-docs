@@ -26,8 +26,7 @@ Both CIC and RL are governed by the same framework (`governance/`):
 - **Validation Gates**: Shared canary + rollback (`governance/approval-gate.ts`, `governance/promotion-rollback.ts`)
 
 **Files**:
-- [CIC Governance](../cic/GOVERNANCE.md)
-- [Governance Validation Setup](../meta/GOVERNANCE_VALIDATION_SETUP.md)
+- [CIC Governance](../cic/governance.md)
 
 ### 2️⃣ Ingestion Pipeline — ✅
 
@@ -42,7 +41,7 @@ Note: Crawler/Scraper/Mapper/Indexer are *pipeline stage names* in config, not c
 
 **Files**:
 - [Ingestion Architecture](../architecture/ingestion.md)
-- [RL Vault Setup](../rewrite-labs/VAULT-README.md)
+- [RL Vault Setup](../rewrite-labs/vault-readme.md)
 - [CodeFlow Harvester](../cic/harvester.md)
 
 ### 3️⃣ Routing Integration — ✅
@@ -77,8 +76,8 @@ Unified semantic model:
 - **Shared Edges**: Depends-on, implements, mirrors
 
 **Files**:
-- [Knowledge Graph Setup](../reference/knowledge-graph/QUICK_START.md)
-- [Knowledge Graph README](../reference/knowledge-graph/README.md)
+- [Knowledge Graph Setup](../reference/knowledge-graph/quick-start.md)
+- [Knowledge Graph README](../reference/knowledge-graph/readme.md)
 
 ### 5️⃣ Operations & Monitoring
 
@@ -91,7 +90,7 @@ Both systems share the same ops stack:
 
 **Files**:
 - [Operations Guide](../operations/running.md)
-- [Sandbox-3 Overview](../cic/SANDBOX-3_OVERVIEW.md)
+- [Sandbox-3 Overview](../cic/sandbox-3-overview.md)
 - [Monitoring](../operations/monitoring.md)
 
 ### 6️⃣ Services Layer — 🔄

@@ -220,7 +220,7 @@ selectAction(state, epsilon = 0.1): RouteAction {
 ---
 
 See related:
-- [Architecture](phase--.md)
-- [Action Space](phase--.md)
-- [Training Loop](phase--.md)
+- [Architecture](phase-2-architecture.md)
+- [Action Space](phase-2-action-space.md)
+- [Training Loop](phase-2-training-loop.md)
 

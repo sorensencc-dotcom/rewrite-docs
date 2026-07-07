@@ -272,7 +272,7 @@ This ensures zero impact on live CIC routing while training offline.
 ---
 
 See related:
-- [Overview](phase--.md)
-- [Training Loop](phase--.md)
+- [Overview](phase-2-overview.md)
+- [Training Loop](phase-2-training-loop.md)
 - `Phase 3: Integration`
 

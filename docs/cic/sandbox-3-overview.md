@@ -57,6 +57,7 @@ Sandbox-3 delivers deterministic microVM execution via Firecracker with comprehe
 ---
 
 See detailed docs:
-- [Architecture](SANDBOX-3_ARCHITECTURE.md)
-- [Runtime](SANDBOX-3_RUNTIME.md)
-- [Harness v3](SANDBOX-3_HARNESS_V3.md)
+- [Architecture](sandbox-3-architecture.md)
+- [Runtime](sandbox-3-runtime.md)
+- [Harness v3](sandbox-3-harness-v3.md)
+

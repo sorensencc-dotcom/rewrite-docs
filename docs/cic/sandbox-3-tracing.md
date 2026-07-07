@@ -86,5 +86,6 @@ await ingestTrace(runId, collectedTrace)
 ---
 
 See related:
-- [Network Trace](SANDBOX-3_NETWORK_TRACE.md)
-- [Syscall Trace](SANDBOX-3_SYSCALL_TRACE.md)
+- [Network Trace](sandbox-3-network-trace.md)
+- [Syscall Trace](sandbox-3-syscall-trace.md)
+

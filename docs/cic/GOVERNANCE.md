@@ -25,7 +25,7 @@ Adds **policy enforcement**, **approval gates**, and **drift detection** to the 
 | `governance/audit-log.json` | Append-only audit trail |
 | `governance/cicState.json` | Live runtime state: per-provider drift scores, SLA settings/metrics, active playbooks, violations, freeze flags (`routingFrozen`, `promotionsFrozen`, `rollbacksFrozen`, `governanceLockdown`) |
 
-**Governance CI:** `.github/workflows/governance-validation.yml` + [Governance Validation Setup](../meta/GOVERNANCE_VALIDATION_SETUP.md).
+**Governance CI:** `.github/workflows/governance-validation.yml` + [Governance Validation Setup](../meta/governance-validation-setup.md).
 
 **Evidence vault:** council voting + evidence vault shipped with Phase 24 (Autonomous Governance); Phase 24.5 extends it with build-lineage linking — status in the [CIC Roadmap](../roadmaps/cic-roadmap.md).
 

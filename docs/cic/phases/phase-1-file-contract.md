@@ -368,6 +368,7 @@ CREATE INDEX idx_cost_ledger_regime ON cost_ledger(regime, timestamp);
 ---
 
 See related:
-- [Overview](phase--.md)
-- [Implementation Order](phase--.md)
+- [Overview](phase-1-overview.md)
+- [Implementation Order](phase-1-implementation-order.md)
+
 

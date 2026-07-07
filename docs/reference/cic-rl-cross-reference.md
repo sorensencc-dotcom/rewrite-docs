@@ -97,7 +97,7 @@ Full phase details: [Rewrite Labs Roadmap](../roadmaps/rewrite-labs-roadmap.md) 
 
 **Key Files**:
 - `operations/monitoring.md` (observability)
-- `cic/SANDBOX-3_OVERVIEW.md` (determinism)
+- `cic/sandbox-3-overview.md` (determinism)
 - `docker-compose.yml` (unified runtime)
 
 ## Dependency Graph
@@ -194,7 +194,7 @@ Memory state synced between CIC and RL:
 2. GitHub token in `.env`
 3. Sync daemon logs
 
-**Fix**: See [RL Setup Guide](../rewrite-labs/RL-VAULT-SETUP.md)
+**Fix**: See [RL Setup Guide](../rewrite-labs/rl-vault-setup.md)
 
 ### Issue: Knowledge graph incomplete
 
@@ -203,7 +203,7 @@ Memory state synced between CIC and RL:
 2. IR packet schema validation
 3. Graph indexer state
 
-**Fix**: See [Knowledge Graph Setup](../reference/knowledge-graph/SETUP_GUIDE.md)
+**Fix**: See [Knowledge Graph Setup](../reference/knowledge-graph/quick-start.md)
 
 ### Issue: Routing inconsistency
 

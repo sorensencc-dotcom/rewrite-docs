@@ -59,14 +59,14 @@ MCP protocol server wrapping substrate HTTP API:
 ## 📚 Documentation Files
 
 ### Quick Start & Getting Running
-1. **[TORQUEQUERY_QUICKSTART.md](TORQUEQUERY_QUICKSTART.md)**
+1. **[TORQUEQUERY_QUICKSTART.md](torquequery-quickstart.md)**
    - 5-minute setup guide
    - Manual and automated options
    - Troubleshooting
    - Development workflow
 
 ### Understanding the System
-2. **[TORQUEQUERY_BUILD_SUMMARY.md](TORQUEQUERY_BUILD_SUMMARY.md)**
+2. **[TORQUEQUERY_BUILD_SUMMARY.md](torquequery-build-summary.md)**
    - What was built and why
    - Every rule validated (with test matrix)
    - Architecture diagram
@@ -74,7 +74,7 @@ MCP protocol server wrapping substrate HTTP API:
    - Deployment readiness checklist
 
 ### Using the Tools
-3. **[TORQUEQUERY_MCP_REFERENCE.md](TORQUEQUERY_MCP_REFERENCE.md)**
+3. **[TORQUEQUERY_MCP_REFERENCE.md](torquequery-mcp-reference.md)**
    - Complete MCP tool reference
    - Input/output schemas
    - Governance rules applied
@@ -120,7 +120,7 @@ cd c:\dev\rewrite-mcp\services\torquequery-mcp
 ```
 
 ### Option 2: Manual Setup (5-10 minutes)
-See [TORQUEQUERY_QUICKSTART.md](TORQUEQUERY_QUICKSTART.md)
+See [TORQUEQUERY_QUICKSTART.md](torquequery-quickstart.md)
 
 ### Verify Installation
 ```bash
@@ -335,7 +335,7 @@ Coverage: 89% (35/39 files)
 7. **delete_chunk** - Soft-delete
 8. **get_stats** - Service statistics
 
-See [TORQUEQUERY_MCP_REFERENCE.md](TORQUEQUERY_MCP_REFERENCE.md) for complete reference.
+See [TORQUEQUERY_MCP_REFERENCE.md](torquequery-mcp-reference.md) for complete reference.
 
 ---
 
@@ -380,7 +380,7 @@ PostgreSQL + pgvector
 - **Tests failing** → Ensure substrate service running on port 3000
 - **Port already in use** → Kill existing process or use different port
 
-See [TORQUEQUERY_QUICKSTART.md](TORQUEQUERY_QUICKSTART.md#troubleshooting) for detailed troubleshooting.
+See [TORQUEQUERY_QUICKSTART.md](torquequery-quickstart.md#troubleshooting) for detailed troubleshooting.
 
 ---
 
@@ -394,12 +394,12 @@ See [TORQUEQUERY_QUICKSTART.md](TORQUEQUERY_QUICKSTART.md#troubleshooting) for d
 - ✓ Configuration templates (.env.example)
 
 ### Documentation
-- ✓ Quick start guide (TORQUEQUERY_QUICKSTART.md)
-- ✓ Build summary (TORQUEQUERY_BUILD_SUMMARY.md)
-- ✓ MCP tool reference (TORQUEQUERY_MCP_REFERENCE.md)
+- ✓ Quick start guide (torquequery-quickstart.md)
+- ✓ Build summary (torquequery-build-summary.md)
+- ✓ MCP tool reference (torquequery-mcp-reference.md)
 - ✓ Validation guide (VALIDATION.md)
 - ✓ Service README (README.md)
-- ✓ This index (TORQUEQUERY_INDEX.md)
+- ✓ This index (torquequery-index.md)
 
 ### Automation
 - ✓ Setup script (setup-and-validate.ps1)
@@ -419,8 +419,8 @@ See [TORQUEQUERY_QUICKSTART.md](TORQUEQUERY_QUICKSTART.md#troubleshooting) for d
 ## 🎓 Learning Resources
 
 ### For Developers
-1. Start with [TORQUEQUERY_QUICKSTART.md](TORQUEQUERY_QUICKSTART.md)
-2. Review [TORQUEQUERY_BUILD_SUMMARY.md](TORQUEQUERY_BUILD_SUMMARY.md) for architecture
+1. Start with [TORQUEQUERY_QUICKSTART.md](torquequery-quickstart.md)
+2. Review [TORQUEQUERY_BUILD_SUMMARY.md](torquequery-build-summary.md) for architecture
 3. Read [README.md](c:\dev\rewrite-mcp\services\torquequery-mcp\README.md) for deep dive
 4. Check test cases in `src/integration.test.ts` for examples
 
@@ -431,7 +431,7 @@ See [TORQUEQUERY_QUICKSTART.md](TORQUEQUERY_QUICKSTART.md#troubleshooting) for d
 4. Configure alerting for critical metrics
 
 ### For Users
-1. Read [TORQUEQUERY_MCP_REFERENCE.md](TORQUEQUERY_MCP_REFERENCE.md) for tool usage
+1. Read [TORQUEQUERY_MCP_REFERENCE.md](torquequery-mcp-reference.md) for tool usage
 2. Review common workflows section
 3. Understand chunk types and TTLs
 4. Follow best practices for tags and importance
@@ -493,3 +493,4 @@ See [TORQUEQUERY_QUICKSTART.md](TORQUEQUERY_QUICKSTART.md#troubleshooting) for d
 **Last Updated:** 2026-06-24  
 **Delivery Status:** ✓ COMPLETE  
 **Ready for Deployment:** ✓ YES
+

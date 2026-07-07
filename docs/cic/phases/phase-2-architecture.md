@@ -261,10 +261,10 @@ Phase 2: training_runs, training_metrics, policy_checkpoints, evaluation_results
 ---
 
 See related:
-- [Overview](phase--.md)
-- [State Space](phase--.md)
-- [Action Space](phase--.md)
-- [Reward Function](phase--.md)
-- [Policy Learner](phase--.md)
-- [Training Loop](phase--.md)
+- [Overview](phase-2-overview.md)
+- [State Space](phase-2-state-space.md)
+- [Action Space](phase-2-action-space.md)
+- [Reward Function](phase-2-reward-function.md)
+- [Policy Learner](phase-2-policy-learner.md)
+- [Training Loop](phase-2-training-loop.md)
 

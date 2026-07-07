@@ -22,5 +22,6 @@ Will document:
 ---
 
 See related:
-- [Alerting](SANDBOX-3_ALERTING.md)
-- [Deployment](SANDBOX-3_DEPLOYMENT.md)
+- [Alerting](sandbox-3-alerting.md)
+- [Deployment](sandbox-3-deployment.md)
+

@@ -23,7 +23,7 @@ Complete documentation for all subsystems across CIC and Rewrite Labs.
 Core autonomous agent learning framework with deterministic governance. Code: `governance/` (orchestrator, approval-gate, promotion-rollback, audit-policy, `cicState.json`).
 
 - [MAAL Architecture](../cic/phases/phase-1-overview.md)
-- [Governance Framework](../cic/GOVERNANCE.md)
+- [Governance Framework](../cic/governance.md)
 - [Memory & State](../cic/phases/phase-1-ledger-substrate.md)
 
 ### 🔹 Routing & Federation — ✅
@@ -39,7 +39,7 @@ Model routing, fallback chains, and multi-vendor federation. Code: `src/cic-runt
 Data pipeline from crawl → scrape → map → index (stage config: `roadmap-runner/ingestion-config.json`; code: `cic-ingestion/src/harvester/`, `cic-ingestion/src/drift/`).
 
 - [Ingestion Architecture](../architecture/ingestion.md)
-- [Vault Extraction (RL)](../rewrite-labs/00-RL-INDEX.md)
+- [Vault Extraction (RL)](../rewrite-labs/00-rl-index.md)
 - [CodeFlow Harvester](../cic/harvester.md)
 
 ### 🔹 Knowledge Systems — ✅
@@ -105,6 +105,6 @@ Monitoring, tracing, determinism verification, sandbox.
 ## Quick Links
 
 - [CIC Index](../cic/index.md) — all CIC phases & components
-- [RL Index](../rewrite-labs/00-RL-INDEX.md) — Rewrite Labs vault system
+- [RL Index](../rewrite-labs/00-rl-index.md) — Rewrite Labs vault system
 - [Architecture Overview](../architecture/overview.md)
 - [Full API Reference](../api/overview.md)

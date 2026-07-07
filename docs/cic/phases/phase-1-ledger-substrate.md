@@ -290,7 +290,8 @@ CIC → TaskFingerprinting → MAALRouter → EventStream (push)
 ---
 
 See related:
-- [Architecture](phase--.md)
-- [MAAL Core](phase--.md)
-- [BridgeOrchestrator](phase--.md)
+- [Architecture](phase-1-architecture.md)
+- [MAAL Core](phase-1-maal-core.md)
+- [BridgeOrchestrator](phase-1-bridge-orchestrator.md)
+
 

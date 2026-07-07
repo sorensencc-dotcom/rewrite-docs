@@ -297,13 +297,13 @@ c:\dev\
 ## Next Steps
 
 ### 1. Explore the API
-- Read [TORQUEQUERY_MCP_REFERENCE.md](TORQUEQUERY_MCP_REFERENCE.md) for tool reference
+- Read [TORQUEQUERY_MCP_REFERENCE.md](torquequery-mcp-reference.md) for tool reference
 - Try storing a chunk with different types
 - Search for chunks using text and embeddings
 - Get task context with token budget
 
 ### 2. Understand the Rules
-- Read [TORQUEQUERY_BUILD_SUMMARY.md](TORQUEQUERY_BUILD_SUMMARY.md) for architecture
+- Read [TORQUEQUERY_BUILD_SUMMARY.md](torquequery-build-summary.md) for architecture
 - Review [c:\dev\rewrite-mcp\services\torquequery-mcp\README.md](c:\dev\rewrite-mcp\services\torquequery-mcp\README.md)
 - Check test cases in `src/integration.test.ts`
 
@@ -347,8 +347,8 @@ c:\dev\
 ## Support
 
 ### Documentation
-- [MCP Tool Reference](TORQUEQUERY_MCP_REFERENCE.md)
-- [Build Summary](TORQUEQUERY_BUILD_SUMMARY.md)
+- [MCP Tool Reference](torquequery-mcp-reference.md)
+- [Build Summary](torquequery-build-summary.md)
 - [Validation Guide](c:\dev\rewrite-mcp\services\torquequery-mcp\VALIDATION.md)
 - [README](c:\dev\rewrite-mcp\services\torquequery-mcp\README.md)
 
@@ -369,3 +369,4 @@ c:\dev\
 **Status:** Production Ready  
 
 Ready to build amazing things! 🚀
+

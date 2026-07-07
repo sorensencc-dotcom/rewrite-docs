@@ -218,7 +218,7 @@ export const createStateFeaturizer = (): StateFeaturizer => {
 ---
 
 See related:
-- [Architecture](phase--.md)
-- [Action Space](phase--.md)
-- [Reward Function](phase--.md)
+- [Architecture](phase-2-architecture.md)
+- [Action Space](phase-2-action-space.md)
+- [Reward Function](phase-2-reward-function.md)
 

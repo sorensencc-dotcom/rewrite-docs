@@ -123,8 +123,9 @@ Tests:
 ---
 
 See related:
-- [Architecture](phase--.md)
-- [File Contract](phase--.md)
-- [Implementation Order](phase--.md)
-- [Testing](phase--.md)
+- [Architecture](phase-1-architecture.md)
+- [File Contract](phase-1-file-contract.md)
+- [Implementation Order](phase-1-implementation-order.md)
+- [Testing](phase-1-testing.md)
+
 

@@ -143,6 +143,7 @@ Return { latencyMs, reproducibility, traceData }
 ---
 
 See related:
-- [Firecracker](SANDBOX-3_FIRECRACKER.md)
-- [VM Snapshotting](SANDBOX-3_VM_SNAPSHOTTING.md)
-- [Harness v3](SANDBOX-3_HARNESS_V3.md)
+- [Firecracker](sandbox-3-firecracker.md)
+- [VM Snapshotting](sandbox-3-vm-snapshotting.md)
+- [Harness v3](sandbox-3-harness-v3.md)
+

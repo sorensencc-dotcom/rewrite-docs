@@ -81,6 +81,7 @@ ExecutionHarnessV3
 ---
 
 See related:
-- [Runtime](SANDBOX-3_RUNTIME.md)
-- [Firecracker](SANDBOX-3_FIRECRACKER.md)
-- [Reproducibility](SANDBOX-3_REPRODUCIBILITY.md)
+- [Runtime](sandbox-3-runtime.md)
+- [Firecracker](sandbox-3-firecracker.md)
+- [Reproducibility](sandbox-3-reproducibility.md)
+

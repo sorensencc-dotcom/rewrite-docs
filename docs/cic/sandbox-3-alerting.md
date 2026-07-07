@@ -22,5 +22,6 @@ Will document:
 ---
 
 See related:
-- [Monitoring](SANDBOX-3_MONITORING.md)
-- [Incident Response](SANDBOX-3_INCIDENT_RESPONSE.md)
+- [Monitoring](sandbox-3-monitoring.md)
+- [Incident Response](sandbox-3-incident-response.md)
+

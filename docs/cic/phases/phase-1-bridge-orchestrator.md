@@ -195,8 +195,9 @@ Phase 3 then:
 ---
 
 See related:
-- [Architecture](phase--.md)
-- [MAAL Core](phase--.md)
-- [Ledger Substrate](phase--.md)
+- [Architecture](phase-1-architecture.md)
+- [MAAL Core](phase-1-maal-core.md)
+- [Ledger Substrate](phase-1-ledger-substrate.md)
 - `Phase 3: Integration`
+
 

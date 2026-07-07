@@ -254,7 +254,8 @@ No randomness. No external I/O. Pure computation.
 ---
 
 See related:
-- [Architecture](phase--.md)
-- [Ledger Substrate](phase--.md)
-- [File Contract](phase--.md)
+- [Architecture](phase-1-architecture.md)
+- [Ledger Substrate](phase-1-ledger-substrate.md)
+- [File Contract](phase-1-file-contract.md)
+
 

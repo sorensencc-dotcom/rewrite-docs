@@ -10,7 +10,7 @@ tags:
 ---
 # System Index Builder — 💡 Planned (not implemented)
 
-> **No code exists for this system.** Searches for `system-index`, `index-builder`, and `systemIndex` across `scripts/`, `toolforge/`, and `cic-ingestion/` return nothing. This page is a **spec-only proposal**. The nearest existing artifact is the *dual-system reference index* — a hand-maintained markdown file at [docs/rewrite-labs/00-RL-INDEX.md](../rewrite-labs/00-RL-INDEX.md).
+> **No code exists for this system.** Searches for `system-index`, `index-builder`, and `systemIndex` across `scripts/`, `toolforge/`, and `cic-ingestion/` return nothing. This page is a **spec-only proposal**. The nearest existing artifact is the *dual-system reference index* — a hand-maintained markdown file at [docs/rewrite-labs/00-RL-INDEX.md](../rewrite-labs/00-rl-index.md).
 
 ## What it would be
 

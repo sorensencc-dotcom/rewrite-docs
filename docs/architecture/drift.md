@@ -24,7 +24,7 @@ The repo contains **four separate drift detectors** with different purposes. Do 
 | Ingestion/governance drift engine | `cic-ingestion/src/drift/` (`driftEngine.ts`, `DriftDetectorEngine.ts`, `grok-drift.ts`) + root `drift-detector.ts` | Provider drift scoring from SLA breaches (penalty/decay, audited); DB-backed alerts; corpus-hash drift; CIC-vs-CodeFlow lag | Library code; wired into ingestion daemon + governance audit trail |
 | Work-summarizer drift detector | `toolforge/skills/work-summarizer/src/drift-detector.ts` | Session-scan drift signals (keyword-based) for the work-summarizer skill | Runs inside the work-summarizer skill |
 
-This page documents the classification model behind the **ingestion/governance drift engine** (row 3). Score decay math: [Drift Engine](../cic/driftEngine.md).
+This page documents the classification model behind the **ingestion/governance drift engine** (row 3). Score decay math: [Drift Engine](../cic/driftengine.md).
 
 ## Drift → Routing → Cost loop
 

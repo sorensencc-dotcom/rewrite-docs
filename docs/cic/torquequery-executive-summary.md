@@ -424,11 +424,12 @@ This delivery has been:
 
 ## Contact & Support
 
-- 📖 Documentation: See [TORQUEQUERY_INDEX.md](TORQUEQUERY_INDEX.md)
-- 🚀 Quick Start: See [TORQUEQUERY_QUICKSTART.md](TORQUEQUERY_QUICKSTART.md)
-- 🧰 Tool Reference: See [TORQUEQUERY_MCP_REFERENCE.md](TORQUEQUERY_MCP_REFERENCE.md)
+- 📖 Documentation: See [TORQUEQUERY_INDEX.md](torquequery-index.md)
+- 🚀 Quick Start: See [TORQUEQUERY_QUICKSTART.md](torquequery-quickstart.md)
+- 🧰 Tool Reference: See [TORQUEQUERY_MCP_REFERENCE.md](torquequery-mcp-reference.md)
 - ✅ Validation: See [VALIDATION.md](c:\dev\rewrite-mcp\services\torquequery-mcp\VALIDATION.md)
 
 ---
 
-**Ready to ship? Follow [TORQUEQUERY_QUICKSTART.md](TORQUEQUERY_QUICKSTART.md) to get running in 5 minutes.** 🚀
+**Ready to ship? Follow [TORQUEQUERY_QUICKSTART.md](torquequery-quickstart.md) to get running in 5 minutes.** 🚀
+

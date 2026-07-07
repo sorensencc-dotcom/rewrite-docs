@@ -117,5 +117,6 @@ assert(hashes1.snapshotHash === hashes2.snapshotHash)
 ---
 
 See related:
-- [Reproducibility](SANDBOX-3_REPRODUCIBILITY.md)
-- [Architecture](SANDBOX-3_ARCHITECTURE.md)
+- [Reproducibility](sandbox-3-reproducibility.md)
+- [Architecture](sandbox-3-architecture.md)
+

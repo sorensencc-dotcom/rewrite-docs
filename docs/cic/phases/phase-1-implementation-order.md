@@ -359,6 +359,7 @@ All 10 files present. All interfaces implemented. All tests passing.
 ---
 
 See related:
-- [File Contract](phase--.md)
-- [Testing](phase--.md)
+- [File Contract](phase-1-file-contract.md)
+- [Testing](phase-1-testing.md)
+
 

@@ -205,8 +205,8 @@ CREATE TABLE training_metrics (
 ---
 
 See related:
-- [Architecture](phase--.md)
-- [Policy Learner](phase--.md)
-- [Simulation Engine](phase--.md)
-- [Integration](phase--.md)
+- [Architecture](phase-2-architecture.md)
+- [Policy Learner](phase-2-policy-learner.md)
+- [Simulation Engine](phase-2-simulation-engine.md)
+- [Integration](phase-2-integration.md)
 

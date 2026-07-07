@@ -22,5 +22,6 @@ Will document:
 ---
 
 See related:
-- [Stability v3](SANDBOX-3_STABILITY_V3.md)
-- [Deployment](SANDBOX-3_DEPLOYMENT.md)
+- [Stability v3](sandbox-3-stability-v3.md)
+- [Deployment](sandbox-3-deployment.md)
+

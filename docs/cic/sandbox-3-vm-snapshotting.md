@@ -79,5 +79,6 @@ Snapshots exposed via:
 ---
 
 See related:
-- [Reproducibility](SANDBOX-3_REPRODUCIBILITY.md)
-- [Runtime](SANDBOX-3_RUNTIME.md)
+- [Reproducibility](sandbox-3-reproducibility.md)
+- [Runtime](sandbox-3-runtime.md)
+

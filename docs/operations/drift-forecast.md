@@ -32,7 +32,7 @@ These are verified divergences as of this forecast — the baseline the next syn
 - **Governance changes (medium).** Drift scores in `cicState.json` are currently all zero with no active playbooks — a clean baseline. First real ingestion runs will move these; expect the drift → routing → cost loop docs to need concrete-value updates.
 - **Cross-system dependency shifts (medium).** If runner execution starts, RL-4.6 → RL-4.0 → … completion order will create new CIC dependencies (TorqueQuery load, governance approvals for RL-4.2/4.4) not yet reflected in the [Cross-Reference](../reference/cic-rl-cross-reference.md).
 - **Documentation gaps (medium).** The `docs/meta/` build-artifact pile (42+ docs) keeps growing and is mostly outside nav; expect orphan warnings from `mkdocs build --strict` when files are added without nav entries.
-- **Roadmap-runner changes (low-medium).** Scheduler enforcement patch (manifest freshness) is documented as copy-paste pending in the [Integration Guide](../reference/INTEGRATION_GUIDE.md); if applied, runner behavior changes (refuses stale graphs) and the runner doc needs an update.
+- **Roadmap-runner changes (low-medium).** Scheduler enforcement patch (manifest freshness) is documented as copy-paste pending in the [Integration Guide](../reference/integration-guide.md); if applied, runner behavior changes (refuses stale graphs) and the runner doc needs an update.
 - **Placeholder-phase inflation (low).** Phases 31–50 sit queued with no specs. Risk: docs or briefs treating them as scoped work. They are placeholders until specs exist in `docs/cic/`.
 
 ## How to update this forecast

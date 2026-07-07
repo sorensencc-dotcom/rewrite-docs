@@ -12,7 +12,7 @@ tags:
 
 Phase execution engine at `c:\dev\roadmap-runner\`. Loads the compiled roadmap dependency graph, resolves runnable phases, executes them in Docker containers, validates success gates, and tracks state. Repo-level docs: `roadmap-runner/README.md` and `roadmap-runner/STARTUP_CHECKLIST.md` (summarized here, not duplicated).
 
-**Status (2026-07-03):** system Build ✅ (production-ready per [Deploy Summary](../reference/DEPLOY_SUMMARY.md)); Runner execution ⏸ — all 9 configured phases `pending` with zero runs in `state-store.json`; phase Docker images are stubs.
+**Status (2026-07-03):** system Build ✅ (production-ready per [Deploy Summary](../reference/deploy-summary.md)); Runner execution ⏸ — all 9 configured phases `pending` with zero runs in `state-store.json`; phase Docker images are stubs.
 
 ## Components
 
@@ -45,11 +45,11 @@ Roadmap docs report runner-managed phases with two statuses:
 - **Build** — engineering deliverables complete per completion docs/commits.
 - **Runner** — execution recorded in `state-store.json`.
 
-A phase can be Build ✅ while Runner shows ⏸ pending: configs and gates are locked, but no container run has been recorded (current state for every phase). Runner execution is blocked on real phase images replacing the stubs (see the caveat in the [Integration Guide](../reference/INTEGRATION_GUIDE.md)).
+A phase can be Build ✅ while Runner shows ⏸ pending: configs and gates are locked, but no container run has been recorded (current state for every phase). Runner execution is blocked on real phase images replacing the stubs (see the caveat in the [Integration Guide](../reference/integration-guide.md)).
 
 ## Enforcement
 
-The scheduler integrates with TheFoundry's compiled-docs manifest (freshness enforcement): it refuses to run when the roadmap dependency graph is stale — see [Integration Guide](../reference/INTEGRATION_GUIDE.md).
+The scheduler integrates with TheFoundry's compiled-docs manifest (freshness enforcement): it refuses to run when the roadmap dependency graph is stale — see [Integration Guide](../reference/integration-guide.md).
 
 ## Related
 

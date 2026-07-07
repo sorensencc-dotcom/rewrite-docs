@@ -86,5 +86,6 @@ interface RunManifestV3 {
 ---
 
 See related:
-- [Latency & SLO](SANDBOX-3_LATENCY.md)
-- [Runtime](SANDBOX-3_RUNTIME.md)
+- [Latency & SLO](sandbox-3-latency.md)
+- [Runtime](sandbox-3-runtime.md)
+

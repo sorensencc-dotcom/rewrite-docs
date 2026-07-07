@@ -38,7 +38,7 @@ Single live state file coordinating drift, SLA, and safety freezes:
 - **activePlaybooks** — driftSpike, routingStability, backendRecovery, ingestionRecovery, governanceLockdown, dashboardRecovery
 - **violations** + freeze flags — `routingFrozen`, `promotionsFrozen`, `rollbacksFrozen`, `governanceLockdown`
 
-Drift scores feed routing decisions ([Routing](routing.md)) and decay per the [Drift Engine](../cic/driftEngine.md) algorithms.
+Drift scores feed routing decisions ([Routing](routing.md)) and decay per the [Drift Engine](../cic/driftengine.md) algorithms.
 
 ## System Diagram
 

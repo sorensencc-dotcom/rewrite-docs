@@ -102,5 +102,6 @@ Returns:
 ---
 
 See related:
-- [Tracing](SANDBOX-3_TRACING.md)
-- [Network Trace](SANDBOX-3_NETWORK_TRACE.md)
+- [Tracing](sandbox-3-tracing.md)
+- [Network Trace](sandbox-3-network-trace.md)
+

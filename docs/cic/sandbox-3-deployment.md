@@ -23,5 +23,6 @@ Will document:
 ---
 
 See related:
-- [Kubernetes](SANDBOX-3_K8S.md)
-- [Firecracker Nodepool](SANDBOX-3_FIRECRACKER_NODEPOOL.md)
+- [Kubernetes](sandbox-3-k8s.md)
+- [Firecracker Nodepool](sandbox-3-firecracker-nodepool.md)
+

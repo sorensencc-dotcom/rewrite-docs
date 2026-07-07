@@ -23,5 +23,6 @@ Will document:
 ---
 
 See related:
-- [Deployment](SANDBOX-3_DEPLOYMENT.md)
-- [Monitoring](SANDBOX-3_MONITORING.md)
+- [Deployment](sandbox-3-deployment.md)
+- [Monitoring](sandbox-3-monitoring.md)
+

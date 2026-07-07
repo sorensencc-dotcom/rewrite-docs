@@ -127,4 +127,4 @@ docker-compose up --build
 
 ---
 
-For full details, see [DOCKER.md](DOCKER.md)
+For full details, see [docker.md](docker.md)

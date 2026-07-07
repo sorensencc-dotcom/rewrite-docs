@@ -48,7 +48,7 @@ nav:
           - TorqueQuery Adapter API: roadmaps/phase-26-torque-adapter-api-spec.yaml
           - Execution Blueprint: roadmaps/execution-blueprint-phases-23-27.md
           - Risk Register: roadmaps/risk-register-phases-23-27.md
-      - Batch Map 1-40: cic/BATCH-MAP-1-40-STATUS.md
+      - Batch Map 1-40: cic/batch-map-1-40-status.md
       - Tickets:
           - Batch 2 Index: roadmaps/tickets/batch-2/index.md
           - CIC Phase 8 Spec Finalization: roadmaps/tickets/batch-2/cic-phase-8-spec-finalization.md
@@ -136,10 +136,11 @@ nav:
       - Phases: cic/phases/index.md
       - Governance: cic/governance.md
       - CodeFlow Harvester: cic/harvester.md
-      - Drift Engine: cic/driftEngine.md
-      - Replay Harness: cic/replayHarness.md
+      - Drift Engine: cic/driftengine.md
+      - Replay Harness: cic/replayharness.md
+      - Phase 26 Loop Runbook: cic/phase-26-loop-runbook.md
       - Research Skill:
-          - Overview: cic/research-skill/SKILL.md
+          - Overview: cic/research-skill/skill.md
           - Test Results:
               - Iteration 1: cic/research-skill/test-results/iteration-1-grading.md
               - Iteration 2: cic/research-skill/test-results/iteration-2-grading.md
@@ -177,7 +178,7 @@ nav:
           - Vault README: rewrite-labs/vault-readme.md
           - Sync Configuration: rewrite-labs/vault-sync-configuration.md
   - Gateway:
-      - API & State Store: gateway/adapterGatewayAPI.md
+      - API & State Store: gateway/adaptergatewayapi.md
       - Providers Configuration: gateway/providers.md
   - Dashboard:
       - Operator Dashboard: dashboard/dashboard.md
@@ -253,13 +254,13 @@ nav:
       - Reorganization Plan: meta/reorganization.md
       - Work Summarizer v2 Implementation Guide: meta/work-summarizer-implementation-guide.md
       - Governance:
-          - Governance Validation Setup: meta/GOVERNANCE_VALIDATION_SETUP.md
-          - Repository Governance Audit: meta/REPOSITORY_GOVERNANCE_AUDIT.md
-          - Rule 2 Compliance Fix: meta/RULE_2_COMPLIANCE_FIX.md
+          - Governance Validation Setup: meta/governance-validation-setup.md
+          - Repository Governance Audit: meta/repository-governance-audit.md
+          - Rule 2 Compliance Fix: meta/rule-2-compliance-fix.md
       - Integration & Review:
-          - Repository Cleanup Review: meta/repo-cleanup-REVIEW.md
-          - KB Sync Implementation: meta/KB_SYNC_IMPLEMENTATION_COMPLETE.md
-          - Phase 5 Implementation Plan: meta/implementation_plan.md
+          - Repository Cleanup Review: meta/repo-cleanup-review.md
+          - KB Sync Implementation: meta/kb-sync-implementation-complete.md
+          - Phase 5 Implementation Plan: meta/implementation-plan.md
       - Execution Logs:
           - Phase 1 (Files Moved): meta/phase-1-execution.md
           - Phase 2 (Links Updated): meta/phase-2-completion.md

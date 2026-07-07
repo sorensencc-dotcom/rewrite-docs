@@ -302,6 +302,6 @@ describe("Phase 1 Integrity (No Modifications)", () => {
 ---
 
 See related:
-- [Overview](phase--.md)
+- [Overview](phase-2-overview.md)
 - `Implementation Order` *(placeholder)*
 

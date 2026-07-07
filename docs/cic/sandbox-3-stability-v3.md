@@ -49,5 +49,6 @@ WHERE model_id = $1 AND timestamp > NOW() - INTERVAL '24 hours'
 ---
 
 See related:
-- [Determinism](SANDBOX-3_DETERMINISM.md)
-- [Architecture](SANDBOX-3_ARCHITECTURE.md)
+- [Determinism](sandbox-3-determinism.md)
+- [Architecture](sandbox-3-architecture.md)
+

@@ -10,7 +10,7 @@ tags:
 ---
 # Rewrite Labs Roadmap
 
-Canonical status roadmap for Rewrite Labs (RL) phases. Compiled from `roadmap-runner/phases/RL-4.*.yaml`, `roadmap-runner/state-store.json`, and the [Deploy Summary](../reference/DEPLOY_SUMMARY.md).
+Canonical status roadmap for Rewrite Labs (RL) phases. Compiled from `roadmap-runner/phases/RL-4.*.yaml`, `roadmap-runner/state-store.json`, and the [Deploy Summary](../reference/deploy-summary.md).
 
 **Last updated:** 2026-07-03
 
@@ -24,7 +24,7 @@ Canonical status roadmap for Rewrite Labs (RL) phases. Compiled from `roadmap-ru
 | 💡 Potential | Idea/candidate only — no code or files exist yet |
 | ⛔ Deprecated | Superseded or removed |
 
-**Dual status for runner-managed phases.** Every RL-4.x phase has a locked config in `roadmap-runner/phases/` (Build track), but `roadmap-runner/state-store.json` (v3.0) records **zero runs — all phases `pending`**. Runner execution uses stub Docker images until real phase images are built (see [Integration Guide](../reference/INTEGRATION_GUIDE.md)). Do not read "Build ✅" as "runner-verified".
+**Dual status for runner-managed phases.** Every RL-4.x phase has a locked config in `roadmap-runner/phases/` (Build track), but `roadmap-runner/state-store.json` (v3.0) records **zero runs — all phases `pending`**. Runner execution uses stub Docker images until real phase images are built (see [Integration Guide](../reference/integration-guide.md)). Do not read "Build ✅" as "runner-verified".
 
 ## RL-4.x Phase Wave
 
@@ -54,14 +54,14 @@ RL-4.6 (CrawlerEngine)
 | Component | Status | Evidence |
 |-----------|--------|----------|
 | Vault Mirror extraction + sync | ✅ Done | [Executive Summary](../rewrite-labs/vault-mirror/executive-summary.md), [Setup](../rewrite-labs/vault-mirror/setup.md) |
-| CIC reference vault sync (`cic-ref/`) | ✅ Done | Last synced 2026-07-02 per [RL Index](../rewrite-labs/00-RL-INDEX.md) |
-| RL reference vault sync (`rl-ref/`) | ✅ Done | First sync 2026-07-04: 14 docs from GitHub `sorensencc-dotcom/rewrite-mcp` (main) via `scripts/rl-vault-sync.js` + `rl-vault-manifest.json` — see [RL Index](../rewrite-labs/00-RL-INDEX.md) |
+| CIC reference vault sync (`cic-ref/`) | ✅ Done | Last synced 2026-07-02 per [RL Index](../rewrite-labs/00-rl-index.md) |
+| RL reference vault sync (`rl-ref/`) | ✅ Done | First sync 2026-07-04: 14 docs from GitHub `sorensencc-dotcom/rewrite-mcp` (main) via `scripts/rl-vault-sync.js` + `rl-vault-manifest.json` — see [RL Index](../rewrite-labs/00-rl-index.md) |
 
 ## 📋 Planned / Next
 
 - **Runner execution of RL-4.6 → RL-4.5 wave** — configs and gates locked; blocked on real phase Docker images replacing stubs.
 - **RL vault sync automation** — first sync done; remaining: wire `node scripts/rl-vault-sync.js --pull` into the weekly sync / scheduled automation.
-- **Architecture pattern folders** (`architecture/rl-patterns/`) — planned per [RL Index](../rewrite-labs/00-RL-INDEX.md).
+- **Architecture pattern folders** (`architecture/rl-patterns/`) — planned per [RL Index](../rewrite-labs/00-rl-index.md).
 
 ## 💡 Potential
 

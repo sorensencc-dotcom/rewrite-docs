@@ -22,5 +22,6 @@ Will document:
 ---
 
 See related:
-- [Deployment](SANDBOX-3_DEPLOYMENT.md)
-- [Kubernetes](SANDBOX-3_K8S.md)
+- [Deployment](sandbox-3-deployment.md)
+- [Kubernetes](sandbox-3-k8s.md)
+

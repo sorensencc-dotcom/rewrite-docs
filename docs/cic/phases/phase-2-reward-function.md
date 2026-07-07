@@ -203,7 +203,7 @@ export const createRewardFunction = (): RewardFunction => {
 ---
 
 See related:
-- [Architecture](phase--.md)
-- [State Space](phase--.md)
-- [Episode & Trajectory](phase--.md)
+- [Architecture](phase-2-architecture.md)
+- [State Space](phase-2-state-space.md)
+- [Episode & Trajectory](phase-2-episode-trajectory.md)
 

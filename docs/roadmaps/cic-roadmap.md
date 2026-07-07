@@ -58,7 +58,7 @@ Runner-managed phases carry a dual status: **Build** (engineering work, per comp
 | 23 | Memory Explorer UI (23.6) | ✅ Done | [Phase 23.6](../cic/phases/phase-23-6-memory-explorer-ui.md) |
 | 23.2 | Memory Query API | 🔄 In Progress | `build-roadmap.json` (in-progress, depends on 24.5) |
 | 24 | Autonomous Governance (council voting + evidence vault) | ✅ Done | Referenced as integration target by [Phase 28a](../cic/phases/phase-28a-scp-completion.md) |
-| 24.5 | AG-Trace Example (RPI→CIC execution trace) | 📋 Planned | [CIC_MASTER_ROADMAP.md](../reference/CIC_MASTER_ROADMAP.md#24-5--full-rpicic-execution-trace-ag-trace); phase-28a-scp-completion.md documents a different "governance integration" (not yet built, different deliverable). Phase 23.2 blocked on this. |
+| 24.5 | AG-Trace Example (RPI→CIC execution trace) | 📋 Planned | Phase 28a documentation references this; phase-28a-scp-completion.md documents a different "governance integration" (not yet built, different deliverable). Phase 23.2 blocked on this. |
 | 26 | TorqueQuery — Shared Ingestion & Search Engine | Build: ✅ / Runner: ⏸ pending | [Implementation Summary](../implementation/phase-26/summary.md); `roadmap-runner/phases/PHASE-26.yaml`; zero runs in state-store |
 | 27.3 | Execution Plan | ✅ Done | [Execution Plan](../cic/phases/phase27-3-execution-plan.md) |
 | 27.4 | Dispatch | ✅ Done | [Dispatch](../cic/phases/phase-27-4-dispatch.md) |
@@ -70,7 +70,7 @@ Runner-managed phases carry a dual status: **Build** (engineering work, per comp
 
 | Phase | Title | Status | Evidence |
 |-------|-------|--------|----------|
-| 0.9 | TheFoundry — Deterministic Build Environment | Build: ✅ / Runner: ⏸ pending | `roadmap-runner/phases/PHASE-0.9.yaml`; [Deploy Summary](../reference/DEPLOY_SUMMARY.md) |
+| 0.9 | TheFoundry — Deterministic Build Environment | Build: ✅ / Runner: ⏸ pending | `roadmap-runner/phases/PHASE-0.9.yaml`; [Deploy Summary](../reference/deploy-summary.md) |
 | 0.9 M2 | CI Integration | ✅ Done | `build-roadmap.json` (complete) |
 | 0.9 M3 | Deployment | 🔄 In Progress | `build-roadmap.json` (in-progress) |
 | 0.9.1 | Follow-on | 📋 Planned | `build-roadmap.json` (queued) |

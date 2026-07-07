@@ -403,6 +403,7 @@ npm test -- --testMatch="**/__tests__/**/*.test.ts"
 ---
 
 See related:
-- [Overview](phase--.md)
-- [Implementation Order](phase--.md)
+- [Overview](phase-1-overview.md)
+- [Implementation Order](phase-1-implementation-order.md)
+
 

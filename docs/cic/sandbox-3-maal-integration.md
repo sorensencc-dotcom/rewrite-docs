@@ -22,5 +22,6 @@ Will document:
 ---
 
 See related:
-- [Routing v3](SANDBOX-3_ROUTING_V3.md)
-- [Harness v3](SANDBOX-3_HARNESS_V3.md)
+- [Routing v3](sandbox-3-routing-v3.md)
+- [Harness v3](sandbox-3-harness-v3.md)
+

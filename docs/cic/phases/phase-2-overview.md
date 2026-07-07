@@ -166,14 +166,14 @@ Tests:
 ---
 
 See related:
-- [Architecture](phase--.md)
-- [State Space](phase--.md)
-- [Action Space](phase--.md)
-- [Reward Function](phase--.md)
-- [Episode & Trajectory](phase--.md)
-- [Policy Learner](phase--.md)
-- [Simulation Engine](phase--.md)
-- [Training Loop](phase--.md)
-- [Integration](phase--.md)
-- [Testing](phase--.md)
+- [Architecture](phase-2-architecture.md)
+- [State Space](phase-2-state-space.md)
+- [Action Space](phase-2-action-space.md)
+- [Reward Function](phase-2-reward-function.md)
+- [Episode & Trajectory](phase-2-episode-trajectory.md)
+- [Policy Learner](phase-2-policy-learner.md)
+- [Simulation Engine](phase-2-simulation-engine.md)
+- [Training Loop](phase-2-training-loop.md)
+- [Integration](phase-2-integration.md)
+- [Testing](phase-2-testing.md)
 

@@ -212,8 +212,8 @@ class TrajectoryCollector {
 ---
 
 See related:
-- [Architecture](phase--.md)
-- [Reward Function](phase--.md)
-- [Simulation Engine](phase--.md)
-- [Training Loop](phase--.md)
+- [Architecture](phase-2-architecture.md)
+- [Reward Function](phase-2-reward-function.md)
+- [Simulation Engine](phase-2-simulation-engine.md)
+- [Training Loop](phase-2-training-loop.md)
 

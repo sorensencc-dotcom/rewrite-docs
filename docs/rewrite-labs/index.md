@@ -65,7 +65,7 @@ RL feeds into CIC's ingestion pipeline:
 **Related CIC Docs**:
 - [CodeFlow Harvester](../cic/harvester.md)
 - [Ingestion Architecture](../architecture/ingestion.md)
-- [Knowledge Graph Setup](../reference/knowledge-graph/QUICK_START.md)
+- [Knowledge Graph Setup](../reference/knowledge-graph/quick-start.md)
 
 ## Integration with CIC Systems
 
@@ -77,7 +77,7 @@ RL artifacts are governed by the same MAAL framework as CIC:
 - **State**: RL mirror state syncs with CIC state store
 - **Validation**: Canary gates apply to both systems
 
-**Related**: [CIC Governance Framework](../cic/GOVERNANCE.md)
+**Related**: [CIC Governance Framework](../cic/governance.md)
 
 ### Routing & Federation
 
@@ -97,7 +97,7 @@ Both CIC and RL contribute nodes to the shared knowledge graph:
 - **RL Nodes**: Repository artifacts, documents, patterns
 - **Shared Edges**: Dependencies, implementations, mirrors
 
-**Related**: [Knowledge Graph Setup](../reference/knowledge-graph/QUICK_START.md)
+**Related**: [Knowledge Graph Setup](../reference/knowledge-graph/quick-start.md)
 
 ### Observability
 
@@ -115,7 +115,7 @@ RL operations are monitored alongside CIC:
 - **Architecture**: [Architecture Overview](../architecture/overview.md)
 - **Integration**: [CIC ↔ RL Cross-Reference](../reference/cic-rl-cross-reference.md)
 - **Operations**: [Running the System](../operations/running.md)
-- **Knowledge**: [Knowledge Graph Setup](../reference/knowledge-graph/QUICK_START.md)
+- **Knowledge**: [Knowledge Graph Setup](../reference/knowledge-graph/quick-start.md)
 
 ## Files & Locations
 

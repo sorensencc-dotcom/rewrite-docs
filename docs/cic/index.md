@@ -20,62 +20,62 @@ Complete reference for CIC (Computational Intelligence Core) phases, components,
 
 ### Foundation (1–4) — ✅ Done
 
-- [Phase 1: MAAL Core](PHASE-1_OVERVIEW.md)
-  - [Architecture](PHASE-1_ARCHITECTURE.md)
-  - [File Contract](PHASE-1_FILE_CONTRACT.md)
-  - [Implementation Order](PHASE-1_IMPLEMENTATION_ORDER.md)
-  - [Ledger Substrate](PHASE-1_LEDGER_SUBSTRATE.md)
-  - [Bridge Orchestrator](PHASE-1_BRIDGE_ORCHESTRATOR.md)
-  - [Testing](PHASE-1_TESTING.md)
+- [Phase 1: MAAL Core](phases/phase-1-overview.md)
+  - [Architecture](phases/phase-1-architecture.md)
+  - [File Contract](phases/phase-1-file-contract.md)
+  - [Implementation Order](phases/phase-1-implementation-order.md)
+  - [Ledger Substrate](phases/phase-1-ledger-substrate.md)
+  - [Bridge Orchestrator](phases/phase-1-bridge-orchestrator.md)
+  - [Testing](phases/phase-1-testing.md)
 
-- [Phase 2: SPL/RL Foundation](PHASE-2_OVERVIEW.md)
-  - [Architecture](PHASE-2_ARCHITECTURE.md)
-  - [State Space](PHASE-2_STATE_SPACE.md)
-  - [Action Space](PHASE-2_ACTION_SPACE.md)
-  - [Reward Function](PHASE-2_REWARD_FUNCTION.md)
-  - [Policy Learner](PHASE-2_POLICY_LEARNER.md)
-  - [Simulation Engine](PHASE-2_SIMULATION_ENGINE.md)
-  - [Training Loop](PHASE-2_TRAINING_LOOP.md)
-  - [Episode Trajectory](PHASE-2_EPISODE_TRAJECTORY.md)
-  - [Integration](PHASE-2_INTEGRATION.md)
-  - [Testing](PHASE-2_TESTING.md)
+- [Phase 2: SPL/RL Foundation](phases/phase-2-overview.md)
+  - [Architecture](phases/phase-2-architecture.md)
+  - [State Space](phases/phase-2-state-space.md)
+  - [Action Space](phases/phase-2-action-space.md)
+  - [Reward Function](phases/phase-2-reward-function.md)
+  - [Policy Learner](phases/phase-2-policy-learner.md)
+  - [Simulation Engine](phases/phase-2-simulation-engine.md)
+  - [Training Loop](phases/phase-2-training-loop.md)
+  - [Episode Trajectory](phases/phase-2-episode-trajectory.md)
+  - [Integration](phases/phase-2-integration.md)
+  - [Testing](phases/phase-2-testing.md)
 
-- [Phase 3: SPL Integration](PHASE-3-COMPLETION-LOG.md)
+- [Phase 3: SPL Integration](phases/phase-3-completion-log.md)
 
-- [Phase 4: Canary Gates](PHASE4-SPEC-LOCKED.md)
+- [Phase 4: Canary Gates](phases/phase4-spec-locked.md)
 
 ### Core Components (5–8)
 
 Phase 5 ✅ · Phase 6 ✅ · Phase 8 📋 (spec locked, no completion log)
 
-- [Phase 5: TorqueQuery](TORQUEQUERY_EXECUTIVE_SUMMARY.md)
-  - [Build Summary](TORQUEQUERY_BUILD_SUMMARY.md)
-  - [Quickstart](TORQUEQUERY_QUICKSTART.md)
-  - [MCP Reference](TORQUEQUERY_MCP_REFERENCE.md)
-  - [Index](TORQUEQUERY_INDEX.md)
+- [Phase 5: TorqueQuery](torquequery-executive-summary.md)
+  - [Build Summary](torquequery-build-summary.md)
+  - [Quickstart](torquequery-quickstart.md)
+  - [MCP Reference](torquequery-mcp-reference.md)
+  - [Index](torquequery-index.md)
 
-- Phase 6: [Implementation Summary](PHASE6-IMPLEMENTATION-SUMMARY.md)
+- Phase 6: [Implementation Summary](phases/phase6-implementation-summary.md)
 
-- Phase 8: [Spec](PHASE_8_SPEC.md) | [Test Matrices](PHASE_8_TEST_MATRICES.md)
+- Phase 8: [Spec](phases/phase-8-spec.md) | [Test Matrices](phases/phase-8-test-matrices.md)
 
 ### Optimization & Hardening (A–C) — ✅ Done
 
-- [Phase A: Optimization](PHASE_A_OPTIMIZATION_SUMMARY.md)
-- [Phase B: Hardening](PHASE_B_HARDENING_SUMMARY.md)
-- [Phase C: Integration](PHASE_C_INTEGRATION_SUMMARY.md)
+- [Phase A: Optimization](phases/phase-a-optimization-summary.md)
+- [Phase B: Hardening](phases/phase-b-hardening-summary.md)
+- [Phase C: Integration](phases/phase-c-integration-summary.md)
 
 ### Advanced Phases (23–30)
 
-- [Phase 23](PHASE-23-6-MEMORY-EXPLORER-UI.md) ✅ (23.2 Memory Query API 🔄)
+- [Phase 23](phases/phase-23-6-memory-explorer-ui.md) ✅ (23.2 Memory Query API 🔄)
 - Phase 24: Autonomous Governance ✅ (24.5 Build Governance 📋 — see [roadmap](../roadmaps/cic-roadmap.md))
 - [Phase 26: Implementation](../implementation/phase-26/summary.md) — Build ✅ / Runner ⏸ pending
-- [Phase 27.3](PHASE27_3_EXECUTION_PLAN.md) ✅ | [Phase 27.4](PHASE_27_4_DISPATCH.md) ✅
-- [Phase 28a: SCP Completion](PHASE-28a-SCP-COMPLETION.md) ✅ (28b 📋 queued)
-- [Phase 30: MVP Spec](PHASE-30-MVP-SPEC.md) 📋
+- [Phase 27.3](phases/phase27-3-execution-plan.md) ✅ | [Phase 27.4](phases/phase-27-4-dispatch.md) ✅
+- [Phase 28a: SCP Completion](phases/phase-28a-scp-completion.md) ✅ (28b 📋 queued)
+- [Phase 30: MVP Spec](phases/phase-30-mvp-spec.md) 📋
 
 ### ⛔ Deprecated
 
-Per the [Phase 5c Deprecation Inventory](PHASE_5C_DEPRECATION_INVENTORY.md):
+Per the [Phase 5c Deprecation Inventory](phases/phase-5c-deprecation-inventory.md):
 
 - Memory-Spine service (dormant; superseded by TorqueQuery)
 - Operator-UI clones (5 duplicates; canonical promoted to Console v3)
@@ -91,65 +91,65 @@ Per the [Phase 5c Deprecation Inventory](PHASE_5C_DEPRECATION_INVENTORY.md):
 
 ### Governance & Memory
 
-- [Governance Framework](GOVERNANCE.md)
-- [Memory System](MEMORY_V1_STAGING_ACTIVATION.md)
-- [Knowledge Integration](KB_INTEGRATION_SUMMARY.md)
+- [Governance Framework](governance.md)
+- [Memory System](memory-v1-staging-activation.md)
+- [Knowledge Integration](kb-integration-summary.md)
 
 ### Data Pipeline
 
 - [CodeFlow Harvester](harvester.md)
-- [Drift Engine](driftEngine.md)
-- [Replay Harness](replayHarness.md)
+- [Drift Engine](driftengine.md)
+- [Replay Harness](replayharness.md)
 
 ### Observability & Determinism
 
-- [Runtime Observability Plan](CIC_RUNTIME_OBSERVABILITY_PLAN.md)
-- [Prometheus Integration](PROMETHEUS_INTEGRATION_STATUS.md)
-- [Sandbox-3 Overview](SANDBOX-3_OVERVIEW.md)
-  - [Architecture](SANDBOX-3_ARCHITECTURE.md)
-  - [Kubernetes](SANDBOX-3_K8S.md)
-  - [Determinism](SANDBOX-3_DETERMINISM.md)
-  - [Routing v3](SANDBOX-3_ROUTING_V3.md)
-  - [Stability v3](SANDBOX-3_STABILITY_V3.md)
-  - [Monitoring](SANDBOX-3_MONITORING.md)
-  - [Incident Response](SANDBOX-3_INCIDENT_RESPONSE.md)
+- [Runtime Observability Plan](cic-runtime-observability-plan.md)
+- [Prometheus Integration](prometheus-integration-status.md)
+- [Sandbox-3 Overview](sandbox-3-overview.md)
+  - [Architecture](sandbox-3-architecture.md)
+  - [Kubernetes](sandbox-3-k8s.md)
+  - [Determinism](sandbox-3-determinism.md)
+  - [Routing v3](sandbox-3-routing-v3.md)
+  - [Stability v3](sandbox-3-stability-v3.md)
+  - [Monitoring](sandbox-3-monitoring.md)
+  - [Incident Response](sandbox-3-incident-response.md)
 
 ### Token & Cost
 
-- [Token Audit Report](TOKEN_AUDIT_REPORT.md)
-- [Token Coverage Matrix](TOKEN_COVERAGE_MATRIX.md)
-- [Phase Roadmap](TOKEN_COVERAGE_MATRIX_PHASE_ROADMAP.md)
-- [CIC Token Pack v2.0](CIC_TOKEN_PACK_v2_0_FULL_LIST.md)
+- [Token Audit Report](token-audit-report.md)
+- [Token Coverage Matrix](token-coverage-matrix.md)
+- [Phase Roadmap](token-coverage-matrix-phase-roadmap.md)
+- [CIC Token Pack v2.0](cic-token-pack-v2-0-full-list.md)
 
 ### Deployment & Operations
 
-- [Canary Gates](CANARY_GATES.md)
-- [Phase A Deployment](CANARY_PHASE_A_DEPLOYMENT.md)
-- [Phase A Prod Deployment Checklist](CANARY_PHASE_A_PROD_DEPLOYMENT_CHECKLIST.md)
-- [Phase 5 Canary Rollout Plan](PHASE_5_CANARY_ROLLOUT_PLAN.md)
+- [Canary Gates](canary-gates.md)
+- [Phase A Deployment](canary-phase-a-deployment.md)
+- [Phase A Prod Deployment Checklist](canary-phase-a-prod-deployment-checklist.md)
+- [Phase 5 Canary Rollout Plan](phases/phase-5-canary-rollout-plan.md)
 
 ## Research & Testing
 
-- [Research Skill Overview](research-skill/SKILL.md)
+- [Research Skill Overview](research-skill/skill.md)
 - [Test Results - Iteration 1](research-skill/test-results/iteration-1-grading.md)
 - [Test Results - Iteration 2](research-skill/test-results/iteration-2-grading.md)
 
 ## Status Reports
 
-- [Execution Status](EXECUTION-STATUS.md)
-- [P1 Implementation Complete](P1_IMPLEMENTATION_COMPLETE.md)
-- [Phase 2 Status](PHASE_2_STATUS.md)
-- [Sandbox-3 Progress](SANDBOX-3-PROGRESS.md)
+- [Execution Status](execution-status.md)
+- [P1 Implementation Complete](p1-implementation-complete.md)
+- [Phase 2 Status](phases/phase-2-status.md)
+- [Sandbox-3 Progress](sandbox-3-progress.md)
 
 ## Execution Logs
 
-- [Phase 1 Execution Log](PHASE-1-EXECUTION-LOG.md)
-- [Phase 2 Completion Log](PHASE-2-COMPLETION-LOG.md)
-- [Phase 3 Completion Log](PHASE-3-COMPLETION-LOG.md)
+- [Phase 1 Execution Log](phases/phase-1-execution-log.md)
+- [Phase 2 Completion Log](phases/phase-2-completion-log.md)
+- [Phase 3 Completion Log](phases/phase-3-completion-log.md)
 
 ## Quick Navigation
 
-- **Getting Started**: [Phase 1 Overview](PHASE-1_OVERVIEW.md)
+- **Getting Started**: [Phase 1 Overview](phases/phase-1-overview.md)
 - **Architecture**: [Architecture Overview](../architecture/overview.md)
 - **API Reference**: [API Overview](../api/overview.md)
 - **Operations**: [Running the System](../operations/running.md)

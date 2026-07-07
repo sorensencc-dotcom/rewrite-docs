@@ -81,5 +81,6 @@ Returns:
 ---
 
 See related:
-- [Tracing](SANDBOX-3_TRACING.md)
-- [Syscall Trace](SANDBOX-3_SYSCALL_TRACE.md)
+- [Tracing](sandbox-3-tracing.md)
+- [Syscall Trace](sandbox-3-syscall-trace.md)
+

@@ -170,7 +170,7 @@ export const createActionSpace = (
 ---
 
 See related:
-- [Architecture](phase--.md)
-- [State Space](phase--.md)
-- [Policy Learner](phase--.md)
+- [Architecture](phase-2-architecture.md)
+- [State Space](phase-2-state-space.md)
+- [Policy Learner](phase-2-policy-learner.md)
 

@@ -239,7 +239,7 @@ class PrioritizedReplayBuffer {
 ---
 
 See related:
-- [Architecture](phase--.md)
-- [Episode & Trajectory](phase--.md)
-- [Training Loop](phase--.md)
+- [Architecture](phase-2-architecture.md)
+- [Episode & Trajectory](phase-2-episode-trajectory.md)
+- [Training Loop](phase-2-training-loop.md)
 

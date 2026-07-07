@@ -22,5 +22,6 @@ Will document:
 ---
 
 See related:
-- [MAAL Integration](SANDBOX-3_MAAL_INTEGRATION.md)
-- [Harness v3](SANDBOX-3_HARNESS_V3.md)
+- [MAAL Integration](sandbox-3-maal-integration.md)
+- [Harness v3](sandbox-3-harness-v3.md)
+

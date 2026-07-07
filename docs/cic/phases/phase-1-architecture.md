@@ -221,8 +221,9 @@ All MAAL components must be **fully deterministic**:
 ---
 
 See related:
-- [Overview](phase--.md)
-- [MAAL Core](phase--.md)
-- [Ledger Substrate](phase--.md)
-- [BridgeOrchestrator](phase--.md)
+- [Overview](phase-1-overview.md)
+- [MAAL Core](phase-1-maal-core.md)
+- [Ledger Substrate](phase-1-ledger-substrate.md)
+- [BridgeOrchestrator](phase-1-bridge-orchestrator.md)
+
 

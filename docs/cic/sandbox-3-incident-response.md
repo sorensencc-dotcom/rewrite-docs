@@ -23,5 +23,6 @@ Will document:
 ---
 
 See related:
-- [Alerting](SANDBOX-3_ALERTING.md)
-- [Monitoring](SANDBOX-3_MONITORING.md)
+- [Alerting](sandbox-3-alerting.md)
+- [Monitoring](sandbox-3-monitoring.md)
+

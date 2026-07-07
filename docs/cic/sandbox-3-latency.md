@@ -96,5 +96,6 @@ Returns:
 ---
 
 See related:
-- [Harness v3](SANDBOX-3_HARNESS_V3.md)
-- [Architecture](SANDBOX-3_ARCHITECTURE.md)
+- [Harness v3](sandbox-3-harness-v3.md)
+- [Architecture](sandbox-3-architecture.md)
+
