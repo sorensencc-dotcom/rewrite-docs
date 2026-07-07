@@ -75,6 +75,9 @@ charlie-deep-research/
 !/docs/rewrite-labs/
 !cic-ingestion/src/ingestion/jobs/docsManager*.ts
 !cic-ingestion/src/ingestion/daemon.ts
+!cic-ingestion/src/ingestion/verify.ts
+!cic-ingestion/src/ingestion/dlqReplayer.ts
+!cic-ingestion/EXTRACTOR.md
 !cic-ingestion/src/services/torquequery/TorqueQueryV2Server.py
 !cic-ingestion/src/adapters/torqueQueryV2.ts
 !cic-ingestion/src/adapters/cloudProviderAdapter.ts
