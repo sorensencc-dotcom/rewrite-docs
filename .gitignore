@@ -94,6 +94,9 @@ charlie-deep-research/
 !cic-ingestion/src/autonomy/InstinctOps.ts
 !cic-ingestion/src/autonomy/SixRulesFramework.ts
 !cic-ingestion/src/autonomy/ExecutionPolicyInterceptor.AutoHealing.ts
+!cic-ingestion/src/autonomy/HealingPrimitives.ts
+!cic-ingestion/src/autonomy/HealingPrimitives.test.ts
+!cic-ingestion/src/autonomy/g.healing.primitives.yaml
 !cic-ingestion/src/drift/CodeLevelDriftDetector.ts
 !cic-ingestion/src/tests/six-rules-integration.test.ts
 !cic-ingestion/src/ingestion/repairManifest.SixRules.ts
