@@ -1,0 +1,23 @@
+.gitignore
+  s_9df6068d39c023::t_de3ec77d547934 68-69
+cic-ingestion/src/autonomy/AutonomyAPIServer.ts
+  s_9df6068d39c023::t_a39485c6d6afed 14,103-109,151,158
+cic-ingestion/src/autonomy/routes/wave-g.ts
+  s_9df6068d39c023::t_e3863795d7b462 1-183
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "851f558463aebaf1dbb196d3e5966ac39636799d",
+  "prompts": {},
+  "sessions": {
+    "s_9df6068d39c023": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd3a8b0d-47f8-4f0f-a511-393c978880be",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
