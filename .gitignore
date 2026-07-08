@@ -91,6 +91,11 @@ charlie-deep-research/
 !cic-ingestion/src/autonomy/AutonomyAPIServer.ts
 !cic-ingestion/src/autonomy/routes/memory.ts
 !cic-ingestion/src/autonomy/routes/governance.ts
+!cic-ingestion/src/autonomy/InstinctOps.ts
+!cic-ingestion/src/autonomy/SixRulesFramework.ts
+!cic-ingestion/src/autonomy/ExecutionPolicyInterceptor.AutoHealing.ts
+!cic-ingestion/src/drift/CodeLevelDriftDetector.ts
+!cic-ingestion/src/tests/six-rules-integration.test.ts
 claude-configs/
 claude-skills/
 financeos/
