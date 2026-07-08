@@ -1,0 +1,22 @@
+docs/meta/global-operating-rules-cic-rewrite-labs.md
+  s_7c39ca85897f28::t_c7a58a38566a89 428-523
+  s_7c39ca85897f28::t_5c53afd16b73db 560
+  s_7c39ca85897f28::t_e9d00a7d736600 5,7
+  s_7c39ca85897f28::t_f9368dd23e7835 32-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "beacade6091410c07ae5ec50a9c21e2ee2a0743f",
+  "prompts": {},
+  "sessions": {
+    "s_7c39ca85897f28": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "17bed246-9491-4068-8cf6-da22e3d5d519",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
