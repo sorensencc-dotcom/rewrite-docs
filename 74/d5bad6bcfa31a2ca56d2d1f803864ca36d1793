@@ -1,0 +1,31 @@
+cic-ingestion/src/ingestion/repairManifest.SixRules.ts
+  s_eaf7b68a8592fd::t_cf522950c0664f 1-276
+.gitignore
+  s_9df6068d39c023::t_83d5350cc51a17 99-100
+cic-ingestion/src/ingestion/repairManifest.SixRules.test.ts
+  s_eaf7b68a8592fd::t_5d4a178b531c9b 1-235
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "74d5bad6bcfa31a2ca56d2d1f803864ca36d1793",
+  "prompts": {},
+  "sessions": {
+    "s_9df6068d39c023": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd3a8b0d-47f8-4f0f-a511-393c978880be",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_eaf7b68a8592fd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0547e723-ba1b-434f-bf82-37e8f88c2262",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
