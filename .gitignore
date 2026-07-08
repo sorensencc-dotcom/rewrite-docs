@@ -97,6 +97,12 @@ charlie-deep-research/
 !cic-ingestion/src/autonomy/HealingPrimitives.ts
 !cic-ingestion/src/autonomy/HealingPrimitives.test.ts
 !cic-ingestion/src/autonomy/g.healing.primitives.yaml
+!cic-ingestion/src/autonomy/DriftCorrelationGraph.ts
+!cic-ingestion/src/autonomy/DriftCorrelationGraph.test.ts
+!cic-ingestion/src/autonomy/g.drift.correlation.graph.yaml
+!cic-ingestion/src/autonomy/ResumeGate.ts
+!cic-ingestion/src/autonomy/ResumeGate.test.ts
+!cic-ingestion/src/autonomy/g.resume.gate.yaml
 !cic-ingestion/src/drift/CodeLevelDriftDetector.ts
 !cic-ingestion/src/tests/six-rules-integration.test.ts
 !cic-ingestion/src/ingestion/repairManifest.SixRules.ts
