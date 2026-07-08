@@ -103,6 +103,9 @@ charlie-deep-research/
 !cic-ingestion/src/autonomy/ResumeGate.ts
 !cic-ingestion/src/autonomy/ResumeGate.test.ts
 !cic-ingestion/src/autonomy/g.resume.gate.yaml
+!cic-ingestion/src/autonomy/MultiWaveTelemetryStitcher.ts
+!cic-ingestion/src/autonomy/MultiWaveTelemetryStitcher.test.ts
+!cic-ingestion/src/autonomy/g.multi.wave.telemetry.yaml
 !cic-ingestion/src/drift/CodeLevelDriftDetector.ts
 !cic-ingestion/src/tests/six-rules-integration.test.ts
 !cic-ingestion/src/ingestion/repairManifest.SixRules.ts
