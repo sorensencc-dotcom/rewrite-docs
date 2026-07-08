@@ -1,0 +1,557 @@
+{
+  "timestamp": "2026-07-08T19:09:04.541336",
+  "version": "2.0-post-consolidation",
+  "summary": {
+    "total_pages": 192,
+    "broken_links": 106,
+    "case_normalizations": 0,
+    "status": "ISSUES_FOUND"
+  },
+  "target_directories": [
+    "docs\\reference",
+    "docs\\api",
+    "docs\\security",
+    "docs\\dashboards",
+    "docs\\cic"
+  ],
+  "broken_links": [
+    {
+      "source": "reference\\cic-rl-cross-reference.md",
+      "target": "../architecture/routing.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\cic-rl-cross-reference.md",
+      "target": "../roadmaps/unified-roadmap.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\cic-rl-cross-reference.md",
+      "target": "../operations/monitoring.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\cic-rl-cross-reference.md",
+      "target": "../roadmaps/rewrite-labs-roadmap.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\cic-rl-cross-reference.md",
+      "target": "../rewrite-labs/rl-vault-setup.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\cic-rl-cross-reference.md",
+      "target": "../roadmaps/cic-roadmap.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\cli.md",
+      "target": "../operations/running.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\cli.md",
+      "target": "../operations/sealing.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\handbook.md",
+      "target": "../architecture/overview.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\implementation-setup.md",
+      "target": "rl-ref/agents",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\implementation-setup.md",
+      "target": "rl-ref/system-overview",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\integration-guide.md",
+      "target": "../roadmaps/rewrite-labs-roadmap.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\integration-guide.md",
+      "target": "../operations/roadmap-runner.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\manifests.md",
+      "target": "../architecture/overview.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\post-migration-checklist.md",
+      "target": "cic-ref/build-summary",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\post-migration-checklist.md",
+      "target": "wiki-links",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\post-migration-checklist.md",
+      "target": "cic-ref/roadmap",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\rl-vault-adapter-implementation.md",
+      "target": "../rewrite-labs/rl-vault-manifest.json",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\rl-vault-adapter-implementation.md",
+      "target": "../operations/weekly-sync.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\rl-vault-adapter-implementation.md",
+      "target": "../lib/drift.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\rl-vault-adapter-implementation.md",
+      "target": "../meta/cic-os-doc-unification-2026-07-03.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\services.md",
+      "target": "../architecture/routing.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\services.md",
+      "target": "../systems/index.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\services.md",
+      "target": "../integration/index.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\setup-checklist.md",
+      "target": "cic-ref/...",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\setup-checklist.md",
+      "target": "rl-ref/system-overview",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\setup-checklist.md",
+      "target": "rl-ref/\" + $_.name.replace('.md','') + \"",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\setup-checklist.md",
+      "target": "rl-ref/...",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\setup-checklist.md",
+      "target": "cic-ref/build-summary",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\setup-checklist.md",
+      "target": "rl-ref/roadmap",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\skill-framework.md",
+      "target": "../../../cic-ref/cic_env_reference.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\system-index-builder.md",
+      "target": "../systems/index.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\system-index-builder.md",
+      "target": "../rewrite-labs/00-rl-index.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\system-index-builder.md",
+      "target": "../roadmaps/unified-roadmap.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\system-index-builder.md",
+      "target": "../operations/weekly-sync.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\toolforge.md",
+      "target": "../architecture/drift.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\toolforge.md",
+      "target": "../architecture/routing.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\toolforge.md",
+      "target": "../roadmaps/unified-roadmap.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\toolforge.md",
+      "target": "../roadmaps/cic-roadmap.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\knowledge-graph\\readme.md",
+      "target": "exact-link-name",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\knowledge-graph\\readme.md",
+      "target": "links",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\knowledge-graph\\readme.md",
+      "target": "wiki-links",
+      "type": "broken_reference"
+    },
+    {
+      "source": "reference\\knowledge-graph\\readme.md",
+      "target": "concept",
+      "type": "broken_reference"
+    },
+    {
+      "source": "api\\access-layer.md",
+      "target": "../batches/batch-36.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "api\\federation-layer.md",
+      "target": "../batches/batch-37.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "api\\seal-verify.md",
+      "target": "../architecture/deterministic-stack.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "api\\seal-verify.md",
+      "target": "../batches/batch-40.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "api\\seal-verify.md",
+      "target": "../operations/sealing.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "api\\snapshot-layer.md",
+      "target": "../batches/batch-39.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/jest.config.js",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/cic-ingestion/src/extractors/clientsessionextractor.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/providers/gpt4allprovider.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/tests/dashboard-endpoints.test.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/maal/router/sandbox-violation.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/models/ollama.json",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/providers/localaiprovider.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/rewrite-mcp/castironforge/dashboard.html",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/providers/ollamaprovider.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/slo-controller/canary-abort.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/cic-ingestion/src/harness/replayharness.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/cic-ingestion/src/ingestion/queue/index.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/models/llamafile.json",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/models/koboldcpp.json",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/package.json",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/tests/feedback-loop.test.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/models/localai.json",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/harvester-bridge/resolver.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/maal/router/maal-router-types.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/dashboard.html",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/tests/maal-routing-policy.test.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/providers/koboldcppprovider.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/cic-ingestion/src/harvester/index.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/providers/anythingllmprovider.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/models/gpt4all.json",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/cic-ingestion/src/drift/driftengine.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/models/anythingllm.json",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\cic-maal-audit-overview.md",
+      "target": "file:///c:/dev/src/providers/llamafileprovider.ts",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\driftengine.md",
+      "target": "../architecture/drift.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\governance.md",
+      "target": "../meta/governance-validation-setup.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\governance.md",
+      "target": " $(echo $gate_result ",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\governance.md",
+      "target": "../roadmaps/cic-roadmap.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\index.md",
+      "target": "../architecture/overview.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\index.md",
+      "target": "../implementation/phase-26/summary.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\index.md",
+      "target": "../roadmaps/cic-roadmap.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\index.md",
+      "target": "../roadmaps/unified-roadmap.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\index.md",
+      "target": "../operations/running.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\kb-integration-summary.md",
+      "target": "cic/overview.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\kb-integration-summary.md",
+      "target": "cic/agents.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\kb-integration-summary.md",
+      "target": "../../docs/api/agents.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\kb-integration-summary.md",
+      "target": "../../docs/reference/manifests.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\six-rules-framework.md",
+      "target": "../specs/cic.workflow.six-rules.v1.yaml",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\six-rules-framework.md",
+      "target": "phase-27-ingestion-autonomy.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\six-rules-framework.md",
+      "target": "pipeline-architecture.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\six-rules-framework.md",
+      "target": "../autonomy-model.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\torquequery-index.md",
+      "target": "rewrite-mcp/services/torquequery-mcp\\readme.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\torquequery-index.md",
+      "target": "rewrite-mcp/services/torquequery-mcp\\validation.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\torquequery-index.md",
+      "target": "services/cic-substrate\\schema.sql",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\torquequery-quickstart.md",
+      "target": "rewrite-mcp/services/torquequery-mcp\\validation.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\torquequery-quickstart.md",
+      "target": "rewrite-mcp/services/torquequery-mcp\\readme.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\research-skill\\skill.md",
+      "target": "cic-ref/agents.md",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\research-skill\\skill.md",
+      "target": "cic-ref/agents_api",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\research-skill\\skill.md",
+      "target": "cic-ref/build-summary",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\research-skill\\skill.md",
+      "target": "cic-ref/cic_env_reference",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\research-skill\\skill.md",
+      "target": "cic-ref/roadmap",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\research-skill\\test-results\\iteration-1-grading.md",
+      "target": "cic-ref/build-summary",
+      "type": "broken_reference"
+    },
+    {
+      "source": "cic\\research-skill\\test-results\\iteration-2-grading.md",
+      "target": "cic-ref/file",
+      "type": "broken_reference"
+    }
+  ],
+  "case_normalizations": [],
+  "recommendations": [
+    {
+      "priority": "HIGH",
+      "action": "Fix broken links",
+      "details": "106 broken references found."
+    }
+  ]
+}

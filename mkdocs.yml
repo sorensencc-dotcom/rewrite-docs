@@ -32,6 +32,8 @@ nav:
   - Home: index.md
   - Onboarding:
       - Welcome: onboarding/index.md
+      - Global Operating Rules: meta/global-operating-rules-cic-rewrite-labs.md
+      - Claude Project Instructions: meta/claude-project-instructions-artifact-first.md
   - Getting Started:
       - Quickstart: quickstart/index.md
       - Installation: quickstart/installation.md
@@ -245,6 +247,7 @@ nav:
       - Services: reference/services.md
       - System Index Builder (Planned): reference/system-index-builder.md
   - Knowledge Base Consolidation:
+      - Unified Index: index-unified.md
       - Inventory: meta/consolidation-inventory.md
       - Status: meta/consolidation-status.md
   - Build Documentation:

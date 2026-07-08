@@ -28,6 +28,8 @@ This index has been consolidated to eliminate duplicate sections. Framework sect
 - [Agents API](reference/agents-api.md) — Agent interface specification
 
 **Environment & Operations:**
+- [Global Operating Rules](meta/global-operating-rules-cic-rewrite-labs.md) — System Governance Charter
+- [Claude Project Instructions](meta/claude-project-instructions-artifact-first.md) — Artifact-First Operator Workflow
 - [Configuration & Logging Standards](reference/configuration-logging.md) — Unified config and logging patterns
 - [Pipeline Architecture & Phases](reference/pipeline-architecture.md) — Execution model and phase definitions
 - [Environment Reference](cic-ref/CIC_ENV_REFERENCE.md) — All environment variables and validation rules

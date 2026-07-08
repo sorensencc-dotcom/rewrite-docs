@@ -9,16 +9,24 @@ Outputs: wiki/index-unified.md, _integration/cross-refs.json, _integration/repor
 
 import json
 import re
+import os
 from pathlib import Path
 from collections import defaultdict
 from datetime import datetime
 import hashlib
 
+
 class KBIntegrator:
-    def __init__(self, config_path="integration-config.json"):
-        self.base_dir = Path(__file__).parent
+    def __init__(self, config_path="integration-config.json", base_dir=None):
+        # Auto-detect base_dir if not provided
+        if base_dir is None:
+            base_dir = self._find_base_dir()
+
+        # Set base to dev root, not personal-knowledge-base
+        self.dev_root = Path(base_dir)
+        self.base_dir = self.dev_root / "cic-os" / "personal-knowledge-base"
         self.wiki_dir = self.base_dir / "wiki"
-        self.docs_dir = self.base_dir / ".." / "docs"
+        self.docs_dir = self.dev_root / "docs"
         self.integration_dir = self.base_dir / "_integration"
 
         # Load config
@@ -28,6 +36,22 @@ class KBIntegrator:
         self.pages = {}  # path -> {title, topics, content}
         self.cross_refs = defaultdict(list)
         self.duplicates = []
+
+    def _find_base_dir(self):
+        """Auto-detect the base directory by looking for docs/ folder."""
+        # Try environment variable first
+        if "KB_BASE_DIR" in os.environ:
+            return os.environ["KB_BASE_DIR"]
+
+        # Try walking up from current working directory
+        current = Path.cwd()
+        for _ in range(5):  # Walk up max 5 levels
+            if (current / "docs").exists() and (current / "cic-os").exists():
+                return current
+            current = current.parent
+
+        # Fall back to current directory
+        return Path.cwd()
 
     def _load_config(self, config_path):
         """Load integration configuration."""
@@ -129,7 +153,7 @@ class KBIntegrator:
                 title = self._extract_title(content, md_file.name)
                 topics = self._extract_topics(content)
 
-                rel_path = md_file.relative_to(self.base_dir.parent)
+                rel_path = md_file.relative_to(self.dev_root)
                 self.pages[str(rel_path)] = {
                     "title": title,
                     "topics": topics,
@@ -275,7 +299,7 @@ class KBIntegrator:
         # Write unified index
         output_path = self.base_dir / self.config["output_paths"]["unified_index"]
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        output_path.write_text("\n".join(index_lines))
+        output_path.write_text("\n".join(index_lines), encoding="utf-8")
         self.log(f"Generated: {output_path}")
 
     def _save_cross_refs(self):
@@ -336,9 +360,18 @@ class KBIntegrator:
 
         return recommendations
 
+
 def main():
+    import sys
+    if sys.platform.startswith('win'):
+        try:
+            sys.stdout.reconfigure(encoding='utf-8')
+            sys.stderr.reconfigure(encoding='utf-8')
+        except AttributeError:
+            pass
     integrator = KBIntegrator()
     integrator.run()
+
 
 if __name__ == "__main__":
     main()

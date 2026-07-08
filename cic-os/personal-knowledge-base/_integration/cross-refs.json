@@ -1,0 +1,427 @@
+{
+  "wiki\\2-merge-candidates-review.md": [
+    {
+      "path": "docs\\consolidation-report.md",
+      "title": "Knowledge Base Consolidation Report \u2014 Phase 1",
+      "common_topics": [
+        "api",
+        "security",
+        "performance",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 11
+    },
+    {
+      "path": "docs\\item-7-memory-governance-framework.md",
+      "title": "ITEM 7: MEMORY + VAULT FUSION GOVERNANCE FRAMEWORK",
+      "common_topics": [
+        "api",
+        "security",
+        "performance",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 11
+    },
+    {
+      "path": "docs\\architecture\\overview.md",
+      "title": "Architecture Overview",
+      "common_topics": [
+        "api",
+        "security",
+        "performance",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 11
+    },
+    {
+      "path": "docs\\cic\\phase-27-wave-f-ship-checklist.md",
+      "title": "Phase 27 Wave F: Ship-Readiness Checklist",
+      "common_topics": [
+        "api",
+        "security",
+        "performance",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 11
+    },
+    {
+      "path": "docs\\cic\\phase-27-wave-f-summary.md",
+      "title": "Phase 27 Wave F: Summary & Deliverables",
+      "common_topics": [
+        "api",
+        "security",
+        "performance",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 11
+    }
+  ],
+  "wiki\\3-topic-dependency-graph.md": [
+    {
+      "path": "docs\\consolidation-report.md",
+      "title": "Knowledge Base Consolidation Report \u2014 Phase 1",
+      "common_topics": [
+        "api",
+        "security",
+        "performance",
+        "error",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 12
+    },
+    {
+      "path": "docs\\item-7-memory-governance-framework.md",
+      "title": "ITEM 7: MEMORY + VAULT FUSION GOVERNANCE FRAMEWORK",
+      "common_topics": [
+        "api",
+        "security",
+        "performance",
+        "error",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 12
+    },
+    {
+      "path": "docs\\architecture\\overview.md",
+      "title": "Architecture Overview",
+      "common_topics": [
+        "api",
+        "security",
+        "performance",
+        "error",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 12
+    },
+    {
+      "path": "docs\\cic\\phase-27-wave-f-ship-checklist.md",
+      "title": "Phase 27 Wave F: Ship-Readiness Checklist",
+      "common_topics": [
+        "api",
+        "security",
+        "performance",
+        "error",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 12
+    },
+    {
+      "path": "docs\\cic\\phase-27-wave-f-summary.md",
+      "title": "Phase 27 Wave F: Summary & Deliverables",
+      "common_topics": [
+        "api",
+        "security",
+        "performance",
+        "error",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 12
+    }
+  ],
+  "wiki\\index-unified.md": [
+    {
+      "path": "docs\\consolidation-report.md",
+      "title": "Knowledge Base Consolidation Report \u2014 Phase 1",
+      "common_topics": [
+        "api",
+        "security",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "auth",
+        "pipeline"
+      ],
+      "overlap_count": 8
+    },
+    {
+      "path": "docs\\item-7-memory-governance-framework.md",
+      "title": "ITEM 7: MEMORY + VAULT FUSION GOVERNANCE FRAMEWORK",
+      "common_topics": [
+        "api",
+        "security",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "auth",
+        "pipeline"
+      ],
+      "overlap_count": 8
+    },
+    {
+      "path": "docs\\mkdocs-structure-map.md",
+      "title": "MkDocs Structure Map \u2014 Documentation Organization",
+      "common_topics": [
+        "api",
+        "security",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "auth",
+        "pipeline"
+      ],
+      "overlap_count": 8
+    },
+    {
+      "path": "docs\\architecture\\overview.md",
+      "title": "Architecture Overview",
+      "common_topics": [
+        "api",
+        "security",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "auth",
+        "pipeline"
+      ],
+      "overlap_count": 8
+    },
+    {
+      "path": "docs\\cic\\execution-policy-phase-a-b-summary.md",
+      "title": "Execution Policy System: Phase A + B Complete",
+      "common_topics": [
+        "api",
+        "security",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "auth",
+        "pipeline"
+      ],
+      "overlap_count": 8
+    }
+  ],
+  "wiki\\cic\\research-skill\\test-results\\iteration-1-grading.md": [
+    {
+      "path": "docs\\consolidation-report.md",
+      "title": "Knowledge Base Consolidation Report \u2014 Phase 1",
+      "common_topics": [
+        "api",
+        "security",
+        "error",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 11
+    },
+    {
+      "path": "docs\\item-7-memory-governance-framework.md",
+      "title": "ITEM 7: MEMORY + VAULT FUSION GOVERNANCE FRAMEWORK",
+      "common_topics": [
+        "api",
+        "security",
+        "error",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 11
+    },
+    {
+      "path": "docs\\architecture\\overview.md",
+      "title": "Architecture Overview",
+      "common_topics": [
+        "api",
+        "security",
+        "error",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 11
+    },
+    {
+      "path": "docs\\cic\\execution-policy-phase-a-b-summary.md",
+      "title": "Execution Policy System: Phase A + B Complete",
+      "common_topics": [
+        "api",
+        "security",
+        "error",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 11
+    },
+    {
+      "path": "docs\\cic\\governance.md",
+      "title": "CIC Governance Layer",
+      "common_topics": [
+        "api",
+        "security",
+        "error",
+        "data",
+        "batch",
+        "logging",
+        "testing",
+        "config",
+        "auth",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 11
+    }
+  ],
+  "wiki\\cic\\research-skill\\test-results\\iteration-2-grading.md": [
+    {
+      "path": "docs\\consolidation-report.md",
+      "title": "Knowledge Base Consolidation Report \u2014 Phase 1",
+      "common_topics": [
+        "performance",
+        "batch",
+        "logging",
+        "testing",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 6
+    },
+    {
+      "path": "docs\\item-2-observability-dashboard-spec.md",
+      "title": "ITEM 2: OBSERVABILITY DASHBOARD SPEC",
+      "common_topics": [
+        "performance",
+        "batch",
+        "logging",
+        "testing",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 6
+    },
+    {
+      "path": "docs\\item-5-skill-generator.md",
+      "title": "ITEM 5: SKILL GENERATOR",
+      "common_topics": [
+        "performance",
+        "batch",
+        "logging",
+        "testing",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 6
+    },
+    {
+      "path": "docs\\item-6-knowledge-graph.md",
+      "title": "ITEM 6: KNOWLEDGE GRAPH",
+      "common_topics": [
+        "performance",
+        "batch",
+        "logging",
+        "testing",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 6
+    },
+    {
+      "path": "docs\\item-7-memory-governance-framework.md",
+      "title": "ITEM 7: MEMORY + VAULT FUSION GOVERNANCE FRAMEWORK",
+      "common_topics": [
+        "performance",
+        "batch",
+        "logging",
+        "testing",
+        "agent",
+        "pipeline"
+      ],
+      "overlap_count": 6
+    }
+  ]
+}

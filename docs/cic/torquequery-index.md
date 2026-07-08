@@ -20,7 +20,7 @@ Complete handoff documentation for CIC Substrate Service + TorqueQuery MCP serve
 ## 📍 What Was Built
 
 ### Layer 1: CIC Substrate Service
-**Location:** `c:\dev\services\cic-substrate`
+**Location:** `services/cic-substrate`
 
 Pure PostgreSQL-backed HTTP service implementing TorqueQuery substrate:
 - 7 TypeScript modules (governance, ingestion, retrieval, context)
@@ -32,7 +32,7 @@ Pure PostgreSQL-backed HTTP service implementing TorqueQuery substrate:
 **Status:** ✓ Validated, ready for deployment
 
 ### Layer 2: TorqueQuery MCP Server
-**Location:** `c:\dev\rewrite-mcp\services\torquequery-mcp`
+**Location:** `rewrite-mcp/services/torquequery-mcp`
 
 MCP protocol server wrapping substrate HTTP API:
 - 8 MCP tools for agent orchestration
@@ -43,7 +43,7 @@ MCP protocol server wrapping substrate HTTP API:
 **Status:** ✓ Built, tested, ready for deployment
 
 ### Layer 3: Test & Validation Suite
-**Location:** `c:\dev\rewrite-mcp\services\torquequery-mcp\src\integration.test.ts`
+**Location:** `rewrite-mcp/services/torquequery-mcp\src\integration.test.ts`
 
 38 tests validating:
 - ✓ Governance rules (18 tests)
@@ -82,28 +82,16 @@ MCP protocol server wrapping substrate HTTP API:
    - Error handling
    - Best practices
 
-### Comprehensive Validation
-4. **[c:\dev\rewrite-mcp\services\torquequery-mcp\VALIDATION.md](c:\dev\rewrite-mcp\services\torquequery-mcp\VALIDATION.md)**
-   - Pre-flight checklist
-   - 7-level validation strategy
-   - Detailed rule validation matrix
-   - Performance benchmarks
-   - Load testing
-   - Rollback procedures
-   - CI/CD integration
-
-### Service Documentation
-5. **[c:\dev\rewrite-mcp\services\torquequery-mcp\README.md](c:\dev\rewrite-mcp\services\torquequery-mcp\README.md)**
-   - Architecture & system design
-   - MCP tools reference
-   - Governance rules
-   - Ingestion pipeline
+### Additional Resources
+4. See service repository: `rewrite-mcp/services/torquequery-mcp/`
+   - VALIDATION.md — Pre-flight checklist & validation strategy
+   - README.md — Complete architecture & implementation details
    - Hybrid retrieval algorithm
    - Context packing algorithm
    - Deployment (Docker, Kubernetes)
    - Related services
 
-6. **[c:\dev\services\cic-substrate\schema.sql](c:\dev\services\cic-substrate\schema.sql)**
+6. **[services/cic-substrate\schema.sql](services/cic-substrate\schema.sql)**
    - PostgreSQL schema
    - Table definitions (tq_chunks, tq_vectors)
    - Indexes (GIN for tags, IVFFLAT for vectors)
@@ -115,7 +103,7 @@ MCP protocol server wrapping substrate HTTP API:
 
 ### Option 1: Automated Setup (2-3 minutes)
 ```bash
-cd c:\dev\rewrite-mcp\services\torquequery-mcp
+cd rewrite-mcp/services/torquequery-mcp
 .\setup-and-validate.ps1
 ```
 
@@ -128,7 +116,7 @@ See [TORQUEQUERY_QUICKSTART.md](torquequery-quickstart.md)
 curl http://localhost:3000/stats
 
 # Run tests
-cd c:\dev\rewrite-mcp\services\torquequery-mcp && npm test
+cd rewrite-mcp/services/torquequery-mcp && npm test
 ```
 
 ---
@@ -137,7 +125,7 @@ cd c:\dev\rewrite-mcp\services\torquequery-mcp && npm test
 
 ### CIC Substrate Service
 ```
-c:\dev\services\cic-substrate\
+services/cic-substrate\
 ├── src/
 │   ├── index.ts              # Express server (35 LOC)
 │   ├── handlers.ts           # HTTP handlers (158 LOC)
@@ -155,7 +143,7 @@ c:\dev\services\cic-substrate\
 
 ### TorqueQuery MCP Server
 ```
-c:\dev\rewrite-mcp\services\torquequery-mcp\
+rewrite-mcp/services/torquequery-mcp\
 ├── src/
 │   ├── index.ts              # MCP server (300+ LOC)
 │   ├── substrate-client.ts   # HTTP client (90+ LOC)
@@ -421,11 +409,11 @@ See [TORQUEQUERY_QUICKSTART.md](torquequery-quickstart.md#troubleshooting) for d
 ### For Developers
 1. Start with [TORQUEQUERY_QUICKSTART.md](torquequery-quickstart.md)
 2. Review [TORQUEQUERY_BUILD_SUMMARY.md](torquequery-build-summary.md) for architecture
-3. Read [README.md](c:\dev\rewrite-mcp\services\torquequery-mcp\README.md) for deep dive
+3. Read [README.md](rewrite-mcp/services/torquequery-mcp\README.md) for deep dive
 4. Check test cases in `src/integration.test.ts` for examples
 
 ### For Operators
-1. Read [VALIDATION.md](c:\dev\rewrite-mcp\services\torquequery-mcp\VALIDATION.md) for operations
+1. Read [VALIDATION.md](rewrite-mcp/services/torquequery-mcp\VALIDATION.md) for operations
 2. Review deployment options in README.md
 3. Set up monitoring with Prometheus/Grafana
 4. Configure alerting for critical metrics

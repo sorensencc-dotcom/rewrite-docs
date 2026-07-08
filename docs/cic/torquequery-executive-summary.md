@@ -45,7 +45,7 @@ tags:
 - **Hybrid search** (BM25 + Vector embeddings + RRF fusion)
 - **Context packing** (token-aware retrieval for LLM context windows)
 
-**Location:** `c:\dev\services\cic-substrate`
+**Location:** `services/cic-substrate`
 
 ### 2. TorqueQuery MCP Server
 - **MCP protocol wrapper** around substrate HTTP API
@@ -53,7 +53,7 @@ tags:
 - **Full type safety** (TypeScript)
 - **Production-ready error handling**
 
-**Location:** `c:\dev\rewrite-mcp\services\torquequery-mcp`
+**Location:** `rewrite-mcp/services/torquequery-mcp`
 
 ---
 
@@ -169,8 +169,8 @@ Coverage: 89%
 
 ### Quick Setup (2-3 minutes)
 ```bash
-cd c:\dev\rewrite-mcp\services\torquequery-mcp
-.\setup-and-validate.ps1
+cd rewrite-mcp/services/torquequery-mcp
+./setup-and-validate.ps1
 ```
 
 ### Verify
@@ -427,7 +427,6 @@ This delivery has been:
 - 📖 Documentation: See [TORQUEQUERY_INDEX.md](torquequery-index.md)
 - 🚀 Quick Start: See [TORQUEQUERY_QUICKSTART.md](torquequery-quickstart.md)
 - 🧰 Tool Reference: See [TORQUEQUERY_MCP_REFERENCE.md](torquequery-mcp-reference.md)
-- ✅ Validation: See [VALIDATION.md](c:\dev\rewrite-mcp\services\torquequery-mcp\VALIDATION.md)
 
 ---
 

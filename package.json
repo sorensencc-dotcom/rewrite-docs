@@ -38,7 +38,9 @@
     "release": "npm run build && npm run docs:refresh && npm version patch",
     "audit:pre-wrap": "tsx scripts/pre-wrap-audit.ts",
     "audit:pre-wrap:no-block": "tsx scripts/pre-wrap-audit.ts --no-block",
-    "finish:with-audit": "npm run audit:pre-wrap && npm run build"
+    "finish:with-audit": "npm run audit:pre-wrap && npm run build",
+    "health-monitor": "tsx scripts/skill-health-monitor.ts",
+    "health-monitor:watch": "tsx watch scripts/skill-health-monitor.ts"
   },
   "dependencies": {
     "dockerode": "^4.0.0",

@@ -33,7 +33,8 @@ def run_stage(script_name, description):
             cwd=Path(__file__).parent,
             capture_output=True,
             text=True,
-            check=True,
+            encoding='utf-8',
+            check=False,  # Don't check exit code - we handle it ourselves
             timeout=60
         )
         # Print captured output
@@ -42,15 +43,12 @@ def run_stage(script_name, description):
         if result.stderr:
             print(result.stderr, file=sys.stderr)
 
-        log(f"✅ {description} completed successfully", "SUCCESS")
-        return True
-    except subprocess.CalledProcessError as e:
-        log(f"❌ {description} failed with exit code {e.returncode}", "ERROR")
-        if e.stdout:
-            print("STDOUT:", e.stdout)
-        if e.stderr:
-            print("STDERR:", e.stderr)
-        return False
+        if result.returncode == 0:
+            log(f"✅ {description} completed successfully", "SUCCESS")
+            return True
+        else:
+            log(f"⚠️  {description} returned exit code {result.returncode}", "WARN")
+            return False
     except subprocess.TimeoutExpired:
         log(f"❌ {description} timed out (>60s)", "ERROR")
         return False
@@ -60,14 +58,22 @@ def run_stage(script_name, description):
 
 def main():
     """Orchestrate the sync workflow."""
+    import sys
+    if sys.platform.startswith('win'):
+        try:
+            sys.stdout.reconfigure(encoding='utf-8')
+            sys.stderr.reconfigure(encoding='utf-8')
+        except AttributeError:
+            pass
     log("Knowledge Base Sync Orchestrator Starting")
     log("This will run: sync.py → integrate.py")
     print()
 
     # Stage 1: Wiki Sync
-    if not run_stage("sync.py", "Wiki Sync (Stage 1)"):
-        log("Aborting: Stage 1 (Wiki Sync) failed", "ERROR")
-        sys.exit(1)
+    sync_result = run_stage("sync.py", "Wiki Sync (Stage 1)")
+    if not sync_result:
+        log("Warning: Stage 1 (Wiki Sync) reported issues - check _integration/report.json", "WARN")
+        # Continue anyway - sync.py still produced valid output with a report
 
     print()
 

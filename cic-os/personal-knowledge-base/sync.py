@@ -10,24 +10,28 @@ Tasks:
 1. Normalize case (uppercase → lowercase references)
 2. Validate links across consolidated docs
 3. Detect broken references in docs/cic/index.md and phase files
-4. Generate _integration/report.json with findings
+4. Generate _integration/sync-report.json with findings
 5. Support nightly sync via sync-all.py
 """
 
 import json
 import re
+import os
 from pathlib import Path
 from collections import defaultdict
 from datetime import datetime
 import hashlib
 
+
 class KBSync:
-    def __init__(self, base_dir="C:\\dev"):
+    def __init__(self, base_dir=None):
+        if base_dir is None:
+            base_dir = self._find_base_dir()
+
         self.base_dir = Path(base_dir)
         self.docs_dir = self.base_dir / "docs"
         self.integration_dir = self.base_dir / "cic-os" / "personal-knowledge-base" / "_integration"
 
-        # Target directories (new consolidated structure)
         self.target_dirs = [
             self.docs_dir / "reference",
             self.docs_dir / "api",
@@ -36,27 +40,34 @@ class KBSync:
             self.docs_dir / "cic",
         ]
 
-        # Ignore patterns
         self.ignore_patterns = ["wiki", "_archive", "legacy", "_integration", "node_modules", ".git"]
 
-        # Data structures
-        self.pages = {}  # path -> {title, content, links}
-        self.all_links = set()  # All valid link targets
-        self.broken_links = []  # Found broken references
-        self.case_normalizations = []  # Uppercase → lowercase conversions found
+        self.pages = {}
+        self.all_links = set()
+        self.broken_links = []
+        self.case_normalizations = []
+
+    def _find_base_dir(self):
+        if "KB_BASE_DIR" in os.environ:
+            return os.environ["KB_BASE_DIR"]
+
+        current = Path.cwd()
+        for _ in range(5):
+            if (current / "docs").exists() and (current / "cic-os").exists():
+                return current
+            current = current.parent
+
+        return Path.cwd()
 
     def log(self, msg, level="INFO"):
-        """Simple logging."""
         ts = datetime.now().isoformat()
         print(f"[{ts}] {level}: {msg}")
 
     def should_ignore(self, path):
-        """Check if path should be ignored."""
         path_str = str(path).lower()
         return any(pattern in path_str for pattern in self.ignore_patterns)
 
     def scan_pages(self):
-        """Scan target directories for markdown files."""
         self.log("Starting page scan across consolidated docs")
         count = 0
 
@@ -71,11 +82,9 @@ class KBSync:
 
                 try:
                     content = md_file.read_text(encoding="utf-8")
-                    # Extract title (first H1)
                     title_match = re.search(r"^#\s+(.+)$", content, re.MULTILINE)
                     title = title_match.group(1) if title_match else md_file.stem
 
-                    # Extract links (markdown and frontmatter references)
                     links = self._extract_links(content)
 
                     self.pages[str(md_file)] = {
@@ -93,18 +102,14 @@ class KBSync:
         return count
 
     def _extract_links(self, content):
-        """Extract markdown links and references."""
         links = set()
 
-        # Markdown links: [text](path/to/file.md)
         for match in re.finditer(r"\[([^\]]+)\]\(([^)]+)\)", content):
             link = match.group(2)
-            # Normalize: remove anchors, convert to lowercase
             link = link.split("#")[0].lower()
             if link and not link.startswith(("http://", "https://", "/")):
                 links.add(link)
 
-        # Wikilink-style: [[path/to/file|Display Text]]
         for match in re.finditer(r"\[\[([^\]|]+)", content):
             link = match.group(1).lower()
             if link:
@@ -113,26 +118,23 @@ class KBSync:
         return links
 
     def build_link_index(self):
-        """Build index of all valid link targets."""
         self.log("Building link index")
 
-        # All markdown files are valid targets
         for page_path, page_data in self.pages.items():
             rel_path = page_data["rel_path"]
             self.all_links.add(str(rel_path).lower())
-            # Also add without extension
             self.all_links.add(str(rel_path.with_suffix("")).lower())
 
         self.log(f"✅ Built index with {len(self.all_links)} valid targets")
 
     def validate_links(self):
-        """Validate all links found in pages."""
         self.log("Validating links")
         broken_count = 0
 
         for page_path, page_data in self.pages.items():
+            source_dir = page_data["rel_path"].parent
             for link in page_data["links"]:
-                if not self._is_valid_link(link):
+                if not self._is_valid_link(link, source_dir):
                     self.broken_links.append({
                         "source": str(page_data["rel_path"]),
                         "target": link,
@@ -147,31 +149,42 @@ class KBSync:
 
         return broken_count
 
-    def _is_valid_link(self, link):
-        """Check if a link target exists."""
-        # Normalize
-        link = link.lower().strip()
+    def _resolve_relative_path(self, link, source_dir):
+        link_lower = link.lower()
 
-        # Check direct match
-        if link in self.all_links:
+        if link_lower.startswith("../"):
+            parts = link_lower.split("/")
+            current_dir = source_dir
+
+            for part in parts:
+                if part == "..":
+                    current_dir = current_dir.parent
+
+            remaining = "/".join([p for p in parts if p != ".."])
+            return str(current_dir / remaining).lower() if remaining else str(current_dir).lower()
+        else:
+            return str(source_dir / link_lower).lower()
+
+    def _is_valid_link(self, link, source_dir):
+        link_normalized = link.lower().strip()
+
+        resolved = self._resolve_relative_path(link_normalized, source_dir)
+
+        if resolved in self.all_links:
             return True
 
-        # Check with .md extension
-        if f"{link}.md" in self.all_links:
+        if f"{resolved}.md" in self.all_links:
             return True
 
-        # Check as directory reference (e.g., "cic/phases" → "cic/phases/index.md")
-        if f"{link}/index.md" in self.all_links:
+        if f"{resolved}/index.md" in self.all_links:
             return True
 
         return False
 
     def detect_case_issues(self):
-        """Detect uppercase references that should be lowercase."""
         self.log("Detecting case normalization issues")
 
-        # Scan for uppercase paths in content
-        uppercase_pattern = re.compile(r"[A-Z_]{3,}")  # 3+ uppercase letters or underscores
+        uppercase_pattern = re.compile(r"[A-Z_]{3,}")
 
         for page_path, page_data in self.pages.items():
             content = Path(page_path).read_text(encoding="utf-8")
@@ -179,7 +192,6 @@ class KBSync:
                 potential_reference = match.group(0)
                 lowercase_version = potential_reference.lower()
 
-                # Check if lowercase version exists as a file
                 if lowercase_version in self.all_links or f"{lowercase_version}.md" in self.all_links:
                     self.case_normalizations.append({
                         "source": str(page_data["rel_path"]),
@@ -194,7 +206,6 @@ class KBSync:
             self.log("✅ No case normalization issues")
 
     def generate_report(self):
-        """Generate integration report."""
         self.log("Generating report")
 
         self.integration_dir.mkdir(parents=True, exist_ok=True)
@@ -209,12 +220,12 @@ class KBSync:
                 "status": "HEALTHY" if len(self.broken_links) == 0 else "ISSUES_FOUND",
             },
             "target_directories": [str(d.relative_to(self.base_dir)) for d in self.target_dirs],
-            "broken_links": self.broken_links[:50],  # Top 50
-            "case_normalizations": self.case_normalizations[:20],  # Top 20
+            "broken_links": self.broken_links,
+            "case_normalizations": self.case_normalizations[:20],
             "recommendations": self._generate_recommendations(),
         }
 
-        report_path = self.integration_dir / "report.json"
+        report_path = self.integration_dir / "sync-report.json"
         with open(report_path, "w") as f:
             json.dump(report, f, indent=2)
 
@@ -222,75 +233,72 @@ class KBSync:
         return report
 
     def _generate_recommendations(self):
-        """Generate actionable recommendations."""
         recs = []
 
         if self.broken_links:
             recs.append({
                 "priority": "HIGH",
                 "action": "Fix broken links",
-                "details": f"{len(self.broken_links)} broken references found. Review _integration/report.json.",
+                "details": f"{len(self.broken_links)} broken references found.",
             })
 
         if self.case_normalizations:
             recs.append({
                 "priority": "MEDIUM",
-                "action": "Normalize case in references",
-                "details": f"{len(self.case_normalizations)} uppercase references should be lowercase.",
+                "action": "Normalize case",
+                "details": f"{len(self.case_normalizations)} uppercase refs should be lowercase.",
             })
 
         if len(self.pages) == 0:
             recs.append({
                 "priority": "CRITICAL",
                 "action": "No pages found",
-                "details": "Ensure docs/cic/, docs/reference/, docs/api/, docs/security/, docs/dashboards/ exist and contain .md files.",
+                "details": "Ensure docs/ folders contain .md files.",
             })
 
         if len(recs) == 0:
             recs.append({
                 "priority": "INFO",
                 "action": "Knowledge base healthy",
-                "details": f"All {len(self.pages)} pages scanned successfully with no issues.",
+                "details": f"All {len(self.pages)} pages scanned with no issues.",
             })
 
         return recs
 
     def run(self):
-        """Execute full sync workflow."""
         self.log("=" * 60)
         self.log("CIC Knowledge Base Sync (Post-Consolidation)")
         self.log("=" * 60)
 
-        # Stage 1: Scan pages
         page_count = self.scan_pages()
         if page_count == 0:
-            self.log("❌ CRITICAL: No pages found. Aborting.", "ERROR")
+            self.log("❌ CRITICAL: No pages found.", "ERROR")
             return False
 
-        # Stage 2: Build link index
         self.build_link_index()
-
-        # Stage 3: Validate links
         broken = self.validate_links()
-
-        # Stage 4: Detect case issues
         self.detect_case_issues()
-
-        # Stage 5: Generate report
         report = self.generate_report()
 
-        # Summary
         self.log("=" * 60)
         self.log(f"Summary: {report['summary']}")
         self.log("=" * 60)
 
         return report['summary']['status'] == 'HEALTHY'
 
+
 def main():
     import sys
+    if sys.platform.startswith('win'):
+        try:
+            sys.stdout.reconfigure(encoding='utf-8')
+            sys.stderr.reconfigure(encoding='utf-8')
+        except AttributeError:
+            pass
     sync = KBSync()
     success = sync.run()
     sys.exit(0 if success else 1)
+
 
 if __name__ == "__main__":
     main()

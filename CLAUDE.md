@@ -13,6 +13,7 @@ rewrite-mcp/ — MCP servers, phase implementations, multi-tenant architecture
 scripts/ — Operational helpers, Docker management, deployment automation
 data/ — Extracted datasets, roadmap JSON, CI artifacts
 claude-skills/ — Skill definitions, validation, contribution pipeline
+toolforge/skills/ — Operational skills (13 total, 100% compliant) [Ashfall Phase 1 ✅]
 
 ## Knowledge Base Operational Model (Consolidated)
 
@@ -99,6 +100,19 @@ codeflow-api-contract.json — Versioned API spec for static analysis engine
 Project memory at .ijfw/memory/. Call `ijfw_memory_prelude` for full context.
 </ijfw-memory>
 <!-- IJFW-MEMORY-END -->
+
+## Ashfall Project Status (Toolforge Skills)
+
+**Stable Structure:** 13 operational skills in `toolforge/skills/`
+- All 13 have valid entrypoints (src/index.ts)
+- All 13 have standardized categories
+- Health-monitor script validates 100/100 compliance
+- Reference implementations: tool-lifecycle-manager (v0.1.0), toolforge-drift-monitor (v0.1.0)
+- Core skills: analyze-token-burn, ashfall, kb-sync-nightly, operator-image-build, pre-wrap-audit, reconcile-vector-store, roadmap-validator, rollback-phase, run-adapter-diagnostic, scale-ingestion-service, work-summarizer (4.0.0)
+
+**STATE doc:** CIC_ASHFALL_STATE.md tracks volatile status (dates, blockers, next actions)
+**Git:** All changes committed; can resume from last commit
+**Next Phase:** Distributed sync + Cowork registration
 
 markdown## Documentation & Skills Policy
 

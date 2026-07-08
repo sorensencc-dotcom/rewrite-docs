@@ -22,7 +22,7 @@ Get TorqueQuery running locally in 5 minutes.
 
 ### Windows PowerShell
 ```powershell
-cd c:\dev\rewrite-mcp\services\torquequery-mcp
+cd rewrite-mcp/services/torquequery-mcp
 .\setup-and-validate.ps1
 ```
 
@@ -49,13 +49,13 @@ docker run --name postgres-pgvector \
   -d pgvector/pgvector:pg16
 
 # Apply schema
-psql postgresql://postgres:postgres@localhost:5432/postgres \
-  < c:\dev\services\cic-substrate\schema.sql
+# (Download schema.sql from services/cic-substrate/schema.sql)
+psql postgresql://postgres:postgres@localhost:5432/postgres < schema.sql
 ```
 
 ### Step 2: Start Substrate Service
 ```bash
-cd c:\dev\services\cic-substrate
+cd services/cic-substrate
 npm install
 npm run build
 npm run dev
@@ -69,7 +69,7 @@ CIC Substrate Service running on port 3000
 ### Step 3: Run MCP Server Tests
 In a new terminal:
 ```bash
-cd c:\dev\rewrite-mcp\services\torquequery-mcp
+cd rewrite-mcp/services/torquequery-mcp
 npm install
 npm run build
 npm test
@@ -101,7 +101,7 @@ psql postgresql://postgres:postgres@localhost:5432/postgres \
 
 ### Run a Quick Test
 ```bash
-cd c:\dev\rewrite-mcp\services\torquequery-mcp
+cd rewrite-mcp/services/torquequery-mcp
 
 # Store a chunk
 curl -X POST http://localhost:3000/chunks \
@@ -124,7 +124,7 @@ curl http://localhost:3000/stats
 
 ### Run MCP Server
 ```bash
-cd c:\dev\rewrite-mcp\services\torquequery-mcp
+cd rewrite-mcp/services/torquequery-mcp
 npm run dev
 ```
 
@@ -178,7 +178,7 @@ Available tools:
 
 ### Run Tests
 ```bash
-cd c:\dev\rewrite-mcp\services\torquequery-mcp
+cd rewrite-mcp/services/torquequery-mcp
 npm test
 ```
 
@@ -231,7 +231,7 @@ curl http://localhost:3000/stats
 ### "Tests failing with connection errors"
 ```bash
 # Make sure substrate service is running
-cd c:\dev\services\cic-substrate && npm run dev
+cd services/cic-substrate && npm run dev
 
 # Wait 5 seconds for service startup
 # Then run tests in another terminal
@@ -304,7 +304,7 @@ c:\dev\
 
 ### 2. Understand the Rules
 - Read [TORQUEQUERY_BUILD_SUMMARY.md](torquequery-build-summary.md) for architecture
-- Review [c:\dev\rewrite-mcp\services\torquequery-mcp\README.md](c:\dev\rewrite-mcp\services\torquequery-mcp\README.md)
+- Review [rewrite-mcp/services/torquequery-mcp\README.md](rewrite-mcp/services/torquequery-mcp\README.md)
 - Check test cases in `src/integration.test.ts`
 
 ### 3. Integrate with Your Project
@@ -349,8 +349,8 @@ c:\dev\
 ### Documentation
 - [MCP Tool Reference](torquequery-mcp-reference.md)
 - [Build Summary](torquequery-build-summary.md)
-- [Validation Guide](c:\dev\rewrite-mcp\services\torquequery-mcp\VALIDATION.md)
-- [README](c:\dev\rewrite-mcp\services\torquequery-mcp\README.md)
+- [Validation Guide](rewrite-mcp/services/torquequery-mcp\VALIDATION.md)
+- [README](rewrite-mcp/services/torquequery-mcp\README.md)
 
 ### Testing
 - Run: `npm test`
