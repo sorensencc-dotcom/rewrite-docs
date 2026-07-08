@@ -96,6 +96,8 @@ charlie-deep-research/
 !cic-ingestion/src/autonomy/ExecutionPolicyInterceptor.AutoHealing.ts
 !cic-ingestion/src/drift/CodeLevelDriftDetector.ts
 !cic-ingestion/src/tests/six-rules-integration.test.ts
+!cic-ingestion/src/ingestion/repairManifest.SixRules.ts
+!cic-ingestion/src/ingestion/repairManifest.SixRules.test.ts
 claude-configs/
 claude-skills/
 financeos/
