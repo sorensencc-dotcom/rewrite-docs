@@ -1,0 +1,27 @@
+docs/meta/global-operating-rules-cic-rewrite-labs.md
+  s_7c39ca85897f28::t_3a98685c45b3c0 464
+  s_7c39ca85897f28::t_8ddf7e9884dbcd 207-208
+  s_7c39ca85897f28::t_eced678d3d81c2 437-438
+  s_7c39ca85897f28::t_14580441f7b4b2 415
+  s_7c39ca85897f28::t_6bec4fc2e3288c 165
+  s_7c39ca85897f28::t_2cc90830207c9b 310-313
+  s_7c39ca85897f28::t_ac82dedbe74a12 195-196
+  s_7c39ca85897f28::t_88c2842e195254 356
+  s_7c39ca85897f28::t_d7f762a6bc3947 5,7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a5e1828842d5ac88b5a35447cce5932982dd44da",
+  "prompts": {},
+  "sessions": {
+    "s_7c39ca85897f28": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "17bed246-9491-4068-8cf6-da22e3d5d519",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
