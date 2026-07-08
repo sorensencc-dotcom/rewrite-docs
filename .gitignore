@@ -65,6 +65,8 @@ charlie-deep-research/
 !cic-ingestion/package.json
 !cic-ingestion/.gitignore
 !cic-ingestion/src/drift/driftEngine.ts
+!cic-ingestion/src/autonomy/routes/wave-g.ts
+!cic-ingestion/src/autonomy/AutonomyAPIServer.ts
 
 # CIC: Track specific directories (src/, torquequery/), ignore rest
 /cic/*

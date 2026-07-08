@@ -11,6 +11,7 @@ import { createConsoleRouter } from "./routes/console.js";
 import { createMemoryRouter } from "./routes/memory.js";
 import { createGovernanceRouter } from "./routes/governance.js";
 import { createSearchRouter } from "./routes/search.js";
+import { createWaveGRouter } from "./routes/wave-g.js";
 import { AdapterRegistry } from "../adapters/AdapterRegistry.js";
 import { AdapterIntegrationService } from "../services/AdapterIntegrationService.js";
 import { GrokHardenedAdapter } from "../adapters/grok/GrokHardenedAdapter.js";
@@ -99,6 +100,13 @@ export class AutonomyAPIServer {
             "POST /autonomy/firedrills/schedule": "Schedule periodic runs",
             "POST /autonomy/firedrills/unschedule": "Stop periodic runs",
           },
+          "wave-g": {
+            "POST /autonomy/wave-g/g1/primitives": "Apply 7 healing strategies",
+            "POST /autonomy/wave-g/g2/correlate": "Build drift correlation graph",
+            "POST /autonomy/wave-g/g3/resume": "Make resume gate decision",
+            "POST /autonomy/wave-g/g4/stitch": "Collect unified telemetry",
+            "GET /autonomy/wave-g/status": "Check Wave G status",
+          },
         },
       });
     });
@@ -140,12 +148,14 @@ export class AutonomyAPIServer {
       torqueQueryUrl: process.env.MEMORY_STORE_URL || "http://localhost:3110",
       governanceUrl: process.env.GOVERNANCE_URL || "http://localhost:3113",
     });
+    const waveGRouter = createWaveGRouter();
 
     this.app.use("/autonomy", executionRouter);
     this.app.use("/autonomy", fireDrillRouter);
     this.app.use("/autonomy", memoryRouter);
     this.app.use("/autonomy", governanceRouter);
     this.app.use("/autonomy", searchRouter);
+    this.app.use("/autonomy/wave-g", waveGRouter);
 
     // Grok Hardened Adapter (Phase A+B+C: Cache + Hardening)
     const adapterRegistry = new AdapterRegistry();
