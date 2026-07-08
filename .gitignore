@@ -1,8 +1,10 @@
 # System state
 .ijfw/
-.claude/
 **/.claude/
 **/.claude/**/*
+.claude/*
+!.claude/hooks/
+!.claude/PRE-WRAP-AUDIT-SETUP.md
 .vscode/
 .idea/
 

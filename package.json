@@ -35,7 +35,10 @@
     "docs:drift": "tsx docs-manager/cli.ts drift",
     "docs:consolidate": "tsx docs-manager/cli.ts consolidate",
     "docs:refresh": "tsx docs-manager/cli.ts refresh",
-    "release": "npm run build && npm run docs:refresh && npm version patch"
+    "release": "npm run build && npm run docs:refresh && npm version patch",
+    "audit:pre-wrap": "tsx scripts/pre-wrap-audit.ts",
+    "audit:pre-wrap:no-block": "tsx scripts/pre-wrap-audit.ts --no-block",
+    "finish:with-audit": "npm run audit:pre-wrap && npm run build"
   },
   "dependencies": {
     "dockerode": "^4.0.0",

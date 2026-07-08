@@ -1,0 +1,29 @@
+{
+  "name": "Pre-Wrap-Audit Hook",
+  "description": "Run pre-wrap-audit before session termination",
+  "version": "1.0.0",
+  "triggers": [
+    {
+      "event": "session:before-terminate",
+      "action": "npm run audit:pre-wrap",
+      "description": "Run audit before session ends"
+    },
+    {
+      "event": "command:finish",
+      "action": "npm run finish:with-audit",
+      "description": "Run audit + build on /finish command"
+    }
+  ],
+  "behavior": {
+    "on_red_flag": "block_termination",
+    "on_yellow_flag": "require_acceptance",
+    "on_green_flag": "proceed",
+    "store_report": true,
+    "report_location": ".claude/sessions/[sessionId]/audit-report.json"
+  },
+  "documentation": {
+    "manual_run": "npm run audit:pre-wrap",
+    "finish_with_audit": "npm run finish:with-audit",
+    "accept_yellow_risk": "npm run audit:pre-wrap -- --accept-risk"
+  }
+}
