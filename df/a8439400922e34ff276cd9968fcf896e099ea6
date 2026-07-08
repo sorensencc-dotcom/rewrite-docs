@@ -1,0 +1,30 @@
+.claude/hooks/pre-wrap-audit.json
+  s_9df6068d39c023::t_df5aaf6d56128c 1-29
+.claude/hooks/pre-wrap-audit-handler.ts
+  s_9df6068d39c023::t_33df61bc32808c 1-15,18-146
+  s_9df6068d39c023::t_50e7a42eee8a01 16-17
+.claude/PRE-WRAP-AUDIT-SETUP.md
+  s_9df6068d39c023::t_908e8e94afae22 1-320
+scripts/pre-wrap-audit.ts
+  s_9df6068d39c023::t_0d8e1798cd4a0b 1-122
+.gitignore
+  s_9df6068d39c023::t_48fa840591ef0d 5-7
+package.json
+  s_9df6068d39c023::t_be95e99a3f92a0 38-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "dfa8439400922e34ff276cd9968fcf896e099ea6",
+  "prompts": {},
+  "sessions": {
+    "s_9df6068d39c023": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd3a8b0d-47f8-4f0f-a511-393c978880be",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
