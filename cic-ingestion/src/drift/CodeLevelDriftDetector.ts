@@ -62,6 +62,10 @@ export class CodeLevelDriftDetector {
    * Check code changes for drift signals
    */
   check(input: CodeLevelInput): DriftSignal | null {
+    // Check Runaway Refactor first (highest priority — cascading changes)
+    const rrDrift = this.detectRunawayRefactor(input);
+    if (rrDrift) return rrDrift;
+
     // Check Kitchen Sink (scope drift)
     const ksDrift = this.detectKitchenSink(input);
     if (ksDrift) return ksDrift;
@@ -73,10 +77,6 @@ export class CodeLevelDriftDetector {
     // Check Optimistic Path (error handling)
     const opDrift = this.detectOptimisticPath(input);
     if (opDrift) return opDrift;
-
-    // Check Runaway Refactor (cascade)
-    const rrDrift = this.detectRunawayRefactor(input);
-    if (rrDrift) return rrDrift;
 
     return null;
   }
@@ -99,7 +99,7 @@ export class CodeLevelDriftDetector {
       (diff) => !expectedScope.some((scope) => diff.file.includes(scope))
     );
 
-    // Unrelated files modified → Kitchen Sink
+    // Multiple unrelated files → Kitchen Sink (CRITICAL)
     if (unrelatedFiles.length >= this.kitchenSinkThreshold) {
       return {
         type: 'KITCHEN_SINK',
@@ -114,8 +114,8 @@ export class CodeLevelDriftDetector {
       };
     }
 
-    // Single unrelated file → flag as HIGH
-    if (unrelatedFiles.length > 0) {
+    // Single unrelated file → HIGH severity
+    if (unrelatedFiles.length === 1) {
       return {
         type: 'KITCHEN_SINK',
         severity: 'HIGH',
@@ -123,7 +123,7 @@ export class CodeLevelDriftDetector {
           filesModified,
           expectedScope,
           unrelatedFiles: unrelatedFiles.map((f) => f.file),
-          reason: 'At least one file outside scope',
+          reason: 'File modified outside scope',
         },
         timestamp: Date.now(),
       };
@@ -186,8 +186,8 @@ export class CodeLevelDriftDetector {
 
     const totalTests = input.tests.failing.length + input.tests.passing.length;
 
-    // If no negative tests and code changes exist → Optimistic Path
-    if (negativeTests.length === 0 && input.codeChanges.length > 0) {
+    // Flag if: tests exist but ZERO negative tests (optimistic only)
+    if (totalTests > 0 && negativeTests.length === 0 && input.codeChanges.length > 0) {
       return {
         type: 'OPTIMISTIC_PATH',
         severity: 'HIGH',
@@ -195,25 +195,7 @@ export class CodeLevelDriftDetector {
           totalTests,
           negativeTests: negativeTests.length,
           missingErrorCases: true,
-          reason: 'No negative test cases found',
-        },
-        timestamp: Date.now(),
-      };
-    }
-
-    // Check error handling in code
-    const errorHandling = input.codeChanges.filter((c) =>
-      c.hunks.some((h) => h.includes('catch') || h.includes('throw'))
-    );
-
-    if (errorHandling.length === 0 && input.codeChanges.length > 0) {
-      return {
-        type: 'OPTIMISTIC_PATH',
-        severity: 'MEDIUM',
-        details: {
-          filesWithErrorHandling: errorHandling.length,
-          totalFiles: input.codeChanges.length,
-          reason: 'No error handling detected in code changes',
+          reason: 'Tests exist but zero cover error cases',
         },
         timestamp: Date.now(),
       };
