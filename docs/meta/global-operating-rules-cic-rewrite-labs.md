@@ -2,9 +2,9 @@
 
 System Governance Charter
 
-**Document Version:** 1.2
+**Document Version:** 1.3
 
-**Effective Date:** July 2026 | **Amendment Dates:** July 8, 2026 (v1.1 → v1.2)
+**Effective Date:** July 2026 | **Amendment Dates:** July 8, 2026 (v1.1 → v1.2); July 8, 2026 (v1.2 → v1.3)
 
 **Review Cadence:** Quarterly — January, April, July, October
 
@@ -29,7 +29,8 @@ INTERNAL — OPERATOR CONFIDENTIAL
 - [Section 7 — Daily Operator Automation](#section-7-daily-operator-automation)
 - [Section 8 — Drift Prevention](#section-8-drift-prevention)
 - [Section 9 — Safety Boundaries](#section-9-safety-boundaries)
-- [Section 10 — Document Governance](#section-10-document-governance)
+- [Section 10 — Design & Artifact Standards](#section-10-design--artifact-standards)
+- [Section 11 — Document Governance](#section-11-document-governance)
 
 ---
 
@@ -424,7 +425,102 @@ If the system encounters a request it cannot fulfill safely within the boundarie
 
 ---
 
-## Section 10 — Document Governance
+## Section 10 — Design & Artifact Standards
+
+### 10.1 Design System Authority
+
+All artifacts produced by CIC or Rewrite Labs must align with an established design system. When a project design system exists, that system governs all visual production. When no project design system is defined, artifacts default to the Cast Iron Charlie design system.
+
+**Cast Iron Charlie — Default Design System**
+
+- **Typography:** Playfair Display (headings/display); Baskerville (body/running text); Barlow (labels/metadata/UI elements)
+- **Color Palette:** Ember (#8B4513), Rust (#A0522D), Brass (#D4AF37), Charcoal (#2C2C2C), Off-white (#F5F3EF), Sage (#9B9B8F)
+- **Tone:** Grave, literary, deliberate. Minimize flourish. Favor clarity over ornamentation.
+
+All artifact hypertext (HTML, web artifacts) must implement both light and dark theme support via CSS custom properties, with `prefers-color-scheme` media query as the default signal and `data-theme` attribute override for explicit user theme selection. The second theme receives equal design care — no naive inversion. Both themes maintain WCAG AA contrast minimum (4.5:1 for body text, 3:1 for UI elements).
+
+### 10.2 Artifact Accessibility Baseline
+
+All artifacts must meet the following accessibility requirements at creation. Inaccessible artifacts are not finalized.
+
+| Requirement | Specification |
+|---|---|
+| Semantic HTML | All structural elements use semantic tags. No role-patching to fake semantics. |
+| Keyboard Navigation | All interactive elements are keyboard-accessible. Tabindex is not used except for `tabindex="-1"` on elements excluded from tab order. |
+| Focus Visibility | Focused elements have visible focus indicator. Focus indicator has minimum 3:1 contrast against adjacent colors. |
+| Color Contrast | Body text: 4.5:1 (WCAG AA). UI labels: 3:1 (WCAG AA). Sufficient contrast in both light and dark themes. |
+| Theme Support | Light and dark theme support via `@media (prefers-color-scheme)` + `[data-theme]` attribute override. Both themes are styled and tested. |
+| Responsive Layout | Layout adapts to viewport width without horizontal scroll of page body. Wide content (tables, code blocks) scrolls internally only. |
+| Motion | `prefers-reduced-motion` is respected. Animations are removed or reduced for users who have enabled this preference. |
+| Typography | Running text line length stays near 65 characters for readability. Type scale is consistent. Headings use `text-wrap: balance`. |
+
+### 10.3 Design Process Requirements
+
+All artifact creation must follow a structured design process. Skipping directly to code without a design plan is not permitted.
+
+**Design Plan Requirements**
+
+Before writing any artifact code, the creator must draft a short design plan containing:
+
+1. **Color Token System:** 4–6 named hex values describing the palette. Include neutral/ground, accent, and semantic colors (if applicable).
+2. **Typography Plan:** Typeface assignments for 2+ roles (display/heading, body, utility/data). Include rationale for pairing.
+3. **Layout Concept:** 1–2 sentences describing the layout approach and how content hierarchy is encoded in visual structure.
+
+The design plan is reviewed for uniqueness against the subject before build begins. If any part reads like a generic template default, that part is revised and the revision is noted.
+
+### 10.4 Prohibited Design Patterns
+
+The following patterns are explicitly prohibited for all artifacts. These patterns are currently overused in AI-generated design and indicate lack of deliberate choice:
+
+- Warm cream background (#F4F1EA) paired with serif display + terracotta accent (standalone default — permissible only if project system explicitly requires it)
+- Near-black background with single bright accent pop (acidgreen, vermilion) without supporting palette
+- Broadsheet hairline rule dividers with dense text columns
+- Hero with purple-to-blue gradient on white background
+- Universal use of Inter or Space Grotesk without subject-grounded rationale
+- Emoji as section markers without semantic purpose
+- Everything center-aligned without hierarchical intent
+- Border-radius: rounded-lg everywhere without distinction between component types
+- Accent bar/rail on every card or section
+
+These patterns are not inherently wrong — they become problematic when used as template defaults without analysis of whether they serve the subject.
+
+### 10.5 Copy Standards for Artifacts
+
+All artifact copy must follow these principles:
+
+- **Active Voice:** Prefer "Publish artifact" over "Artifact will be published."
+- **Specific Controls:** Interactive elements state exactly what happens. "Publish" followed by "Published" feedback, not "Submit" → "Success."
+- **Error Copy:** Errors explain what failed and how to fix it. No apologies, no vagueness. Example: "Database connection failed. Check network and try again."
+- **User Perspective:** Name things by user recognition, not system internals. Users manage "notifications," not "webhook config."
+- **No Filler:** Drop hedging language. "Fix this bug" not "This appears to help with the issue."
+
+### 10.6 When Artifacts Are Required
+
+The following artifact contexts require HTML/interactive output. Operational runbooks and internal logs remain markdown only.
+
+**Mandatory Artifact Contexts:**
+
+- Governance documents (Class 1 Strategy artifacts)
+- Reference material and design systems
+- Interactive dashboards or tools
+- Editorial artifacts intended for external distribution or archival (Class 2–3)
+- Standing instructions (recurring deliverables with standing artifact instruction)
+
+**Optional Artifact Contexts:**
+
+- Research reports (Class 2) may be markdown or artifact depending on audience and distribution model
+- Operational digests (Class 4) remain markdown unless specifically requested as artifact
+
+**Markdown-Only Contexts:**
+
+- Automation failure logs
+- Internal operation notes
+- Tier 1 review documents
+- Temporary working documents (ephemeral, not archived)
+
+---
+
+## Section 11 — Document Governance
 
 ### 10.1 Ownership
 
@@ -461,7 +557,7 @@ Any unresolvable conflict between the two documents must be escalated to Tier 1 
 ---
 
 **Global Operating Rules — CIC + Rewrite Labs**
-**Version 1.2 • Effective July 2026 • Amended July 8, 2026 (v1.1 → v1.2)**
+**Version 1.3 • Effective July 2026 • Amended July 8, 2026 (v1.1 → v1.2 → v1.3)**
 **INTERNAL — OPERATOR CONFIDENTIAL**
 
 Document Owner: Chris (Architect — Tier 1)
