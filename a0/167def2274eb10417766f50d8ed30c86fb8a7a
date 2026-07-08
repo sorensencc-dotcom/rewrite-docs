@@ -1,0 +1,31 @@
+docs/cic/six-rules-framework.md
+  s_9df6068d39c023::t_2d97b63eaf48d9 1-325
+.gitignore
+  s_9df6068d39c023::t_c00b2926ced239 94-98
+cic-ingestion/src/autonomy/SixRulesFramework.ts
+  s_9df6068d39c023::t_66dbffb1c227e4 1-26
+cic-ingestion/src/autonomy/ExecutionPolicyInterceptor.AutoHealing.ts
+  s_9df6068d39c023::t_1836e0f064dc9e 1-297
+cic-ingestion/src/autonomy/InstinctOps.ts
+  s_9df6068d39c023::t_d494be38bc83e1 1-297
+cic-ingestion/src/drift/CodeLevelDriftDetector.ts
+  s_9df6068d39c023::t_8adb1545ef7d4b 1-325
+cic-ingestion/src/tests/six-rules-integration.test.ts
+  s_9df6068d39c023::t_8020c4a5f633ad 1-367
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a0167def2274eb10417766f50d8ed30c86fb8a7a",
+  "prompts": {},
+  "sessions": {
+    "s_9df6068d39c023": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd3a8b0d-47f8-4f0f-a511-393c978880be",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
