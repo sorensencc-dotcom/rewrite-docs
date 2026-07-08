@@ -1,0 +1,19 @@
+cic-ingestion/src/drift/CodeLevelDriftDetector.ts
+  s_9df6068d39c023::t_6d98e9d0f825ae 65-68,102,117-118,126,189-190,198
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "0feae434bddd98b5dec57b42eba2e2daa014eced",
+  "prompts": {},
+  "sessions": {
+    "s_9df6068d39c023": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd3a8b0d-47f8-4f0f-a511-393c978880be",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
