@@ -1,0 +1,19 @@
+scripts/secret-scan-hook.sh
+  s_5c02ea523022ac::t_02943ced99f7f3 19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "8533b9cda065e99befd58c192438f3bb13d71c6c",
+  "prompts": {},
+  "sessions": {
+    "s_5c02ea523022ac": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65ae4da6-dbb1-442f-9552-e4acf5224bb9",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
