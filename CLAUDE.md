@@ -15,6 +15,16 @@ data/ — Extracted datasets, roadmap JSON, CI artifacts
 claude-skills/ — Skill definitions, validation, contribution pipeline
 toolforge/skills/ — Operational skills (13 total, 100% compliant) [Ashfall Phase 1 ✅]
 
+## Quick Start
+
+```bash
+npm install          # Install monorepo dependencies
+npm run dev          # Start dev servers (cic, ingestion, dashboard)
+npm test             # Run test suite (Jest + Vitest)
+npm run build        # Build Docker image
+docker-compose up    # Launch full stack locally on port 3100
+```
+
 ## Knowledge Base Operational Model (Consolidated)
 
 ### Three-Layer Architecture
@@ -85,7 +95,7 @@ GitHub Actions for CI/CD: docker build, test, deploy (`.github/workflows/`)
 ## Key Files
 
 cic/package.json — Governance, version 1.0.0, root for monorepo
-cic-ingestion/package.json — Autonomy/memory (NOTE: missing — to be reconstructed for Phase 26 image build)
+cic-ingestion/package.json — Autonomy/memory (reconstructed Phase 26, deployable)
 jest.config.js — Root jest config, ts-jest preset, 30s timeout
 docker-compose.yml — Single CIC dev container, port 3100 (MCP)
 Dockerfile — Multi-stage Ubuntu build, Node 20+, Claude Code CLI pre-installed
@@ -114,7 +124,7 @@ Project memory at .ijfw/memory/. Call `ijfw_memory_prelude` for full context.
 **Git:** All changes committed; can resume from last commit
 **Next Phase:** Distributed sync + Cowork registration
 
-markdown## Documentation & Skills Policy
+## Documentation & Skills Policy
 
 ### Deliverable Storage Rules
 
