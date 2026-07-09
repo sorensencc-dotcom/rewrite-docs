@@ -1,107 +1,112 @@
-# Project Context
+# CIC + Rewrite Labs Governance
 
-Stack: TypeScript/Node.js (Express), Docker, PostgreSQL, Qdrant vector DB
-Architecture: Microservices (Update Monitor, CodeFlow Analyzer, CIC Ingestion, Roadmap Service)
-Entry: cic-cli.ts (CLI), cic-ingestion (autonomy API server), cic/ governance pipeline
-Tests: Jest (ts-jest), Jest + Vitest, cmd: `npm test` or `jest` per package
+Governance document for project architecture, structure, knowledge base operations, and documentation standards. Covers governance only (not Claude runtime behavior).
 
-## Structure
+## 1. Project Architecture
 
-cic/ — Governance pipeline, audit services, skill validation, observation
-cic-ingestion/ — Autonomy API server, memory/retention, token compression (Caveman)
-rewrite-mcp/ — MCP servers, phase implementations, multi-tenant architecture
-scripts/ — Operational helpers, Docker management, deployment automation
-data/ — Extracted datasets, roadmap JSON, CI artifacts
-claude-skills/ — Skill definitions, validation, contribution pipeline
-toolforge/skills/ — Operational skills (13 total, 100% compliant) [Ashfall Phase 1 ✅]
+**Stack:** TypeScript/Node.js (Express), Docker, PostgreSQL, Qdrant vector DB, MCP servers, Commander.js CLI, Jest + Vitest
 
-## Quick Start
+**Microservices:**
 
-```bash
-npm install          # Install monorepo dependencies
-npm run dev          # Start dev servers (cic, ingestion, dashboard)
-npm test             # Run test suite (Jest + Vitest)
-npm run build        # Build Docker image
-docker-compose up    # Launch full stack locally on port 3100
+- Update Monitor — watches repo + roadmap changes
+- CodeFlow Analyzer — static analysis engine
+- CIC Ingestion — autonomy API server, memory/retention, Caveman compression
+- Roadmap Service — roadmap JSON + CI artifacts
+- Dashboard — observability + operator console
+
+**Entrypoints:**
+
+- cic-cli.ts — CLI
+- cic-ingestion/ — autonomy API server
+- cic/ — governance pipeline
+
+**Code Patterns:**
+
+- Express.js → HTTP APIs (codeflow-server.js, AutonomyAPIServer.ts)
+- Jest async/mock patterns; ts-jest preset for TypeScript
+- Commander.js → CLI tools (cic-cli.ts, cic-cli-governance.ts)
+- Fetch + node-fetch → external API calls (GitHub, services)
+- Structured logging through observability modules (cic-observability.ts)
+- Docker Compose for local dev, Kubernetes for prod (k3d in cic-ingestion/)
+- GitHub Actions for CI/CD: docker build, test, deploy (`.github/workflows/`)
+
+## 2. Directory Structure
+
+**Code:**
+
+```text
+cic/                 # Governance pipeline, audit services, observation
+cic-ingestion/       # Autonomy API server, memory/retention, Caveman
+rewrite-mcp/         # MCP servers, multi-tenant architecture
+claude-skills/       # Skill definitions, validation, contribution pipeline
+toolforge/skills/    # Operational skills (13 total, Ashfall Phase 1 ✅)
+scripts/             # Operational helpers, Docker, deployment automation
+data/                # Extracted datasets, roadmap JSON, CI artifacts
+docs/                # Authoritative Knowledge Base (mkdocs)
 ```
 
-## Knowledge Base Operational Model (Consolidated)
+**Key Files:**
 
-### Three-Layer Architecture
+- cic/package.json — Governance root, version 1.0.0
+- cic-ingestion/package.json — Autonomy/memory (reconstructed Phase 26, deployable)
+- jest.config.js — Root jest config, ts-jest preset, 30s timeout
+- docker-compose.yml — CIC dev container (port 3100, MCP)
+- Dockerfile — Multi-stage Ubuntu + Node 20 + Claude Code CLI
+- .env.example — GitHub token, DB password, registry, service URLs
+- BUILD-SUMMARY.md — Architecture walkthrough (5 layers)
+- codeflow-api-contract.json — Versioned API spec
 
-1. **docs/** — Authoritative Source
+## 3. SYSTEM / STATE / Living Docs
+
+Governance principle for documentation types:
+
+**SYSTEM Docs** (stable architecture, authoritative)
+
+- Location: `docs/`
+- Examples: pipeline-architecture.md, configuration-logging.md, skill-framework.md
+- Checked into git, updated infrequently
+
+**STATE Docs** (volatile status, dates/blockers)
+
+- Location: `docs/meta/`
+- Examples: CIC_ASHFALL_STATE.md
+- Updated frequently; never reference directly from memory
+
+**Living Docs** (authoritative but external)
+
+- Location: OneDrive/Drive
+- Examples: Roadmap, Rewrite Labs redesign briefs, operator logs
+- Source of truth for dates, blockers, next actions
+
+**Rule:** Never store volatile state, file paths, IDs, versions, or counts in memory.
+
+## 4. Knowledge Base Operational Model
+
+**Three-Layer Architecture:**
+
+1. **docs/** — Authoritative source
    - All queries and edits target here
    - Single source of truth per topic
    - Cross-linked reference layer + implementation specs
    - Examples: configuration-logging.md, pipeline-architecture.md, skill-framework.md
 
-2. **Backlinks** — Traceability Chain
-   - Every reference doc links back to sources
-   - Format: `See also: [item-2-observability-dashboard-spec.md](../item-2-observability-dashboard-spec.md)`
+2. **Backlinks** — Traceability chain
+   - Every reference doc includes: `See also: [item-2-observability-dashboard-spec.md](../item-2-observability-dashboard-spec.md)`
    - Enables audit trail: consolidated → implementation → source
+   - Bidirectional links required
 
-3. **index-unified.md** — Navigation Hub
+3. **index-unified.md** — Navigation hub
    - Routes users to reference/ layer (definitions)
    - Routes to implementation specs (Item 1-8)
-   - Central entry point for KB navigation
+   - Central entry point for KB discovery
 
-### Consolidation Status
+**Consolidation Status:**
 
-- **Phase 1:** 1,320 pairs processed → 78% deduplication
-  - configuration-logging.md (487 pairs)
-  - pipeline-architecture.md (421 pairs)
-  - skill-framework.md (412 pairs)
+- Phase 1: 1,320 pairs processed → 78% deduplication
+- Phase 2: 412 pairs hard-linked → 100% deduplication via cross-reference
+- Total: ~50.6% deduplication (2,847 → ~1,406 pairs) at docs/ layer
 
-- **Phase 2:** 412 pairs hard-linked → 100% deduplication via cross-reference
-  - Index ↔ Knowledge Graph (0.91 similarity)
-  - Index ↔ Dashboard (0.83 similarity)
-  - Index ↔ Skill Generator (0.83 similarity)
-
-- **Total Deduplication:** ~50.6% (2,847 → ~1,406 pairs) at docs/ layer
-
-### Operational Rules
-
-1. **All KB work targets docs/**
-   - Do not edit wiki/ (legacy analysis layer)
-   - Do not regenerate merge-candidates (historical reference only)
-
-2. **Maintain backlinks**
-   - New reference docs must include "See also:" section
-   - Implementation specs must link back to reference layer
-   - Cross-references must be bidirectional
-
-3. **Update index-unified.md**
-   - Add new reference docs to navigation
-   - Update cross-reference map when new docs added
-   - Keep as single entry point for KB discovery
-
-4. **Verify no broken links**
-   - After edits: check all internal links are valid
-   - Backlinks must resolve to existing files
-   - Run mkdocs build --strict to validate
-
----
-
-## Patterns
-
-Express.js → HTTP APIs (codeflow-server.js, AutonomyAPIServer.ts)
-Jest async/mock patterns; ts-jest preset for TypeScript
-Commander.js → CLI tools (cic-cli.ts, cic-cli-governance.ts)
-Fetch + node-fetch → external API calls (GitHub, services)
-Structured logging through observability modules (cic-observability.ts)
-Docker Compose for local dev, Kubernetes for prod (k3d in cic-ingestion/)
-GitHub Actions for CI/CD: docker build, test, deploy (`.github/workflows/`)
-
-## Key Files
-
-cic/package.json — Governance, version 1.0.0, root for monorepo
-cic-ingestion/package.json — Autonomy/memory (reconstructed Phase 26, deployable)
-jest.config.js — Root jest config, ts-jest preset, 30s timeout
-docker-compose.yml — Single CIC dev container, port 3100 (MCP)
-Dockerfile — Multi-stage Ubuntu build, Node 20+, Claude Code CLI pre-installed
-.env.example — GitHub token, DB password, registry, service URLs
-BUILD-SUMMARY.md — Architecture walkthrough (5 layers: Source → Analyzer → CIC → Dashboard)
-codeflow-api-contract.json — Versioned API spec for static analysis engine
+**Validation:** `mkdocs build --strict` ensures no broken links, valid backlinks, valid navigation.
 
 <!-- Auto-generated by IJFW from repo scan. Edit freely -- IJFW only touches the managed block below. -->
 
@@ -111,103 +116,103 @@ Project memory at .ijfw/memory/. Call `ijfw_memory_prelude` for full context.
 </ijfw-memory>
 <!-- IJFW-MEMORY-END -->
 
-## Ashfall Project Status (Toolforge Skills)
+## 5. Toolforge Skills (Ashfall Phase 1)
 
-**Stable Structure:** 13 operational skills in `toolforge/skills/`
-- All 13 have valid entrypoints (src/index.ts)
-- All 13 have standardized categories
-- Health-monitor script validates 100/100 compliance
-- Reference implementations: tool-lifecycle-manager (v0.1.0), toolforge-drift-monitor (v0.1.0)
-- Core skills: analyze-token-burn, ashfall, kb-sync-nightly, operator-image-build, pre-wrap-audit, reconcile-vector-store, roadmap-validator, rollback-phase, run-adapter-diagnostic, scale-ingestion-service, work-summarizer (4.0.0)
+**13 operational skills, all compliant:**
 
-**STATE doc:** CIC_ASHFALL_STATE.md tracks volatile status (dates, blockers, next actions)
-**Git:** All changes committed; can resume from last commit
+- analyze-token-burn, ashfall, kb-sync-nightly, operator-image-build, pre-wrap-audit
+- reconcile-vector-store, roadmap-validator, rollback-phase, run-adapter-diagnostic
+- scale-ingestion-service, tool-lifecycle-manager (v0.1.0), toolforge-drift-monitor (v0.1.0)
+- work-summarizer (4.0.0)
+
+All 13 have valid entrypoints (src/index.ts), standardized categories, health-monitor validates 100/100 compliance.
+
+**STATE doc:** CIC_ASHFALL_STATE.md tracks volatile status
+
 **Next Phase:** Distributed sync + Cowork registration
 
-## Documentation & Skills Policy
-
-### Deliverable Storage Rules
-
-**RULE 1: mkdocs Structure**
-- All deliverable markdown files → `C:\dev\docs/`
-- Never leave .md files in `C:\dev\` root (except CLAUDE.md, README.md if codebase)
-- Organize by category:
-  - CIC content → `docs/cic/`
-  - Dashboard → `docs/dashboard/`
-  - Rewrite Labs → `docs/rewrite-labs/`
-  - References → `docs/reference/`
-  - Meta/summary → `docs/meta/`
-
-**RULE 2: Toolforge Skills**
-- All operational skills → `C:\dev\toolforge\skills/{skill-name}/`
-- Required structure per skill:
-toolforge/skills/{skill-name}/
-├── skill.json          (metadata)
-├── README.md           (quick reference)
-├── src/                (implementation)
-│   └── index.ts
-├── tests/              (test suite)
-│   └── test.ts
-└── docs/               (documentation)
-└── USAGE.md
-- No skills in root or scattered directories
-
-**RULE 3: Code & Config Stay in Root**
-- Scripts (*.ps1, *.sh, *.ts impl) → C:\dev\ or subdirs
-- Config (*.json, *.yaml, .env) → C:\dev\ or subdirs
-- Vault references (cic-ref/, rl-ref/, architecture/) → Unchanged
-
-### Validation Checklist (Before Shipping)
-
-Run when adding/moving deliverables:
+## 6. Quick Start
 
 ```bash
-# 1. Check no orphaned .md files in root
+npm install          # Install monorepo dependencies
+npm run dev          # Start dev servers (cic, ingestion, dashboard)
+npm test             # Run test suite (Jest + Vitest)
+npm run build        # Build Docker image
+docker-compose up    # Launch full stack locally on port 3100
+```
+
+## 7. Documentation & Skills Policy
+
+**RULE 1: mkdocs Structure**
+
+- All deliverable markdown → `docs/` (organized by category)
+- Never leave .md files in root (except CLAUDE.md, README.md)
+- Categories: `docs/cic/`, `docs/dashboard/`, `docs/rewrite-labs/`, `docs/reference/`, `docs/meta/`
+
+**RULE 2: Toolforge Skills**
+
+- All skills → `toolforge/skills/{skill-name}/`
+- Required structure:
+
+```text
+skill.json          (metadata)
+README.md           (quick reference)
+src/index.ts        (implementation)
+tests/test.ts       (test suite)
+docs/USAGE.md       (documentation)
+```
+
+**RULE 3: Code & Config Stay in Root**
+
+- Scripts (*.ps1, *.sh, *.ts impl) → C:\dev\ or subdirs
+- Config (*.json, *.yaml, .env) → C:\dev\ or subdirs
+- Vault references → Unchanged
+
+## 8. File Movement Protocol
+
+When creating/moving deliverables:
+
+1. Create in final location (not root)
+2. Update mkdocs.yml navigation
+3. Scan for old paths (grep for broken links)
+4. Run `mkdocs build --strict`
+5. Update CLAUDE.md if new patterns introduced
+
+## 9. Naming Conventions
+
+- Files: `lowercase-with-hyphens.md` (not CamelCase)
+- Skills: `action-noun` pattern (e.g., `run-cic-phase`)
+- Sections: Capitalize first letter in mkdocs nav
+- Test files: `iteration-1-grading.md`, `test-cases.json`
+
+## 10. Validation Checklist
+
+Before shipping:
+
+```bash
+# 1. No orphaned .md files in root
 ls C:\dev\*.md | grep -v CLAUDE.md | grep -v README.md
 
-# 2. Verify mkdocs.yml updated with new sections
-# Search mkdocs.yml for your new content paths
+# 2. mkdocs.yml updated with new sections
 
-# 3. Check toolforge skill structure
-# If new skill: verify skill.json + src/ + tests/ + docs/ exist
+# 3. Toolforge skill structure validated (if new skill)
 
-# 4. Test mkdocs build
+# 4. Build passes strict validation
 mkdocs build --strict
 
-# 5. Verify cross-references
-# Search for old paths in docs/
+# 5. Cross-references validated
 grep -r "C:\\dev\\{old-path}" docs/
 # Should return: 0 results (or only documentation strings)
 ```
 
-### File Movement Protocol
+## 11. When Unsure: docs/ or toolforge/skills/?
 
-When creating/moving deliverables:
+- Markdown documentation → `docs/`
+- Operational skill (runbook, runnable) → `toolforge/skills/`
+- Code/config → Keep in functional location (root/src/etc)
 
-1. **Create in output location** (not root)
-2. **Update mkdocs.yml navigation** (add nav entry)
-3. **Scan for old paths** (grep for broken links)
-4. **Test mkdocs build** (mkdocs build --strict)
-5. **Update CLAUDE.md** (reference if new pattern)
+## 12. Enforcement
 
-### Naming Conventions
-
-- Files: `lowercase-with-hyphens.md` (not CamelCase, not underscores)
-- Skills: `run-cic-phase` (kebab-case, action-noun pattern)
-- Sections: Capitalize first letter in mkdocs nav
-- Test files: `test-cases.json`, `iteration-1-grading.md` (numbered iterations)
-
-### When Unsure
-
-Ask: **"Does this belong in docs/ or toolforge/skills/?**
-- If markdown documentation → `docs/`
-- If operational skill (runbook, runnable) → `toolforge/skills/`
-- If code/config → Keep in functional location (root/src/etc)
-
-## Project Governance
-
-**mkdocs Policy:** All deliverable markdown → docs/ (organized by category)
-**Toolforge Policy:** All skills → toolforge/skills/{name}/ (standard structure)
-**KB Operations:** See [KB-OPERATIONS.md](docs/KB-OPERATIONS.md) for query, edit, and consolidation workflows
-**Enforcement:** Pre-commit validation (mkdocs build --strict, no orphaned .md files)
-**Reference:** This section of CLAUDE.md
+- Pre-commit validation: `mkdocs build --strict`, no orphaned .md files
+- KB Operations: See [KB-OPERATIONS.md](docs/KB-OPERATIONS.md) for query, edit, consolidation workflows
+- This document is authoritative reference for all governance
