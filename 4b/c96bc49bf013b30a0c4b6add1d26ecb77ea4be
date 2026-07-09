@@ -1,0 +1,21 @@
+scripts/fix-doc-links.py
+  s_fe4a607b589077::t_e91a53f1bc8129 61,66,91,98,120-121,143,180,209,253,291,308-310,312-313,328-331,333-343,346,348,351,354,380-381,385
+scripts/fix-mkdocs-external-links.py
+  s_fe4a607b589077::t_4d206485fcbd30 15-17,22-23,39,41-42,50-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "4bc96bc49bf013b30a0c4b6add1d26ecb77ea4be",
+  "prompts": {},
+  "sessions": {
+    "s_fe4a607b589077": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a3b4a99-5f1a-480f-a4ab-8ef682040cbc",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
