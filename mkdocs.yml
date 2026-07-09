@@ -230,6 +230,7 @@ nav:
       - Drift Forecast: operations/drift-forecast.md
       - Autonomous Image Builds: operations/autonomous-image-builds.md
       - Environment Optimization: operations/environment-optimization.md
+      - Logging Policy: operations/logging-policy.md
       - Deployment:
           - Reproducible Dockerfiles: deployment/reproducible-dockerfiles.md
           - Registry Configuration: deployment/registry-config.md
