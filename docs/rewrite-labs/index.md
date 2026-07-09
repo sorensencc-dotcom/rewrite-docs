@@ -51,6 +51,7 @@ The Vault Mirror is the foundational extraction and sync system for Rewrite Labs
 ### Integration
 
 - [Vault Sync Configuration](vault-sync-configuration.md)
+- [NotebookLM Workflow Spec](notebooklm-workflow.md)
 - [CIC ↔ RL Integration](../reference/cic-rl-cross-reference.md)
 
 ## Data Pipeline

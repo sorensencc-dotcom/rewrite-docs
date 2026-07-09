@@ -1,0 +1,13 @@
+# TorqueQuery & NotebookLM Mapping Configuration
+# Mapped to active Google Account index (authuser=2)
+
+notebook_mappings:
+  # Core Client / Research Brief Notebooks
+  notebook_01: "1b4861a3-931f-4632-8fc1-343a8dd37df8"
+  notebook_02: "a574fa62-68f5-4cd7-8589-57d35f04268a"
+  notebook_03: "bec5a197-8256-4eba-af78-c4881cc28fdd"
+  notebook_04: "3d1f84b2-1ac8-48d2-8ec8-5052e91a55a0"
+  notebook_05: "ef78168d-b7b9-4952-8e0f-fcb353a21181"
+
+  # Isolated Subtopic / Sandbox
+  bourbon_tracker: "482b69ee-6796-4990-bc9b-4425b11becd1"

@@ -94,6 +94,9 @@ Per the [Phase 5c Deprecation Inventory](phases/phase-5c-deprecation-inventory.m
 - [Governance Framework](governance.md)
 - [Memory System](memory-v1-staging-activation.md)
 - [Knowledge Integration](kb-integration-summary.md)
+- [NotebookLM Adapter Spec](notebooklm-adapter-spec.md)
+- [TorqueQuery NotebookLM Spec](torquequery-notebooklm-spec.md)
+- [NotebookLM Integration Plan](notebooklm-integration-plan.md)
 
 ### Data Pipeline
 

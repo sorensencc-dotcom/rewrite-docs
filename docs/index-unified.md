@@ -34,10 +34,15 @@ This index has been consolidated to eliminate duplicate sections. Framework sect
 - [Pipeline Architecture & Phases](reference/pipeline-architecture.md) — Execution model and phase definitions
 - [Environment Reference](cic-ref/CIC_ENV_REFERENCE.md) — All environment variables and validation rules
 - [Observability Plan](cic-ref/CIC_RUNTIME_OBSERVABILITY_PLAN.md) — Metrics, dashboards, alerting
+- [NotebookLM MCP Architecture](reference/notebooklm-mcp-architecture.md) — Security and process isolation topology
 
 **Skills & Capabilities:**
 - [Skill Framework](reference/skill-framework.md) — How to define, generate, and deploy skills
 - [Token Packs](cic-ref/CIC_TOKEN_PACK_v2_0_FULL_LIST.md) — Model pricing and context windows
+- [NotebookLM Adapter Spec](cic/notebooklm-adapter-spec.md) — Upstream context provider via CLI and MCP
+- [TorqueQuery NotebookLM Spec](cic/torquequery-notebooklm-spec.md) — Federated search and namespace mapping
+- [NotebookLM Integration Plan](cic/notebooklm-integration-plan.md) — Master rollout and orchestration plan
+- [Rewrite Labs NotebookLM Workflow](rewrite-labs/notebooklm-workflow.md) — Grounded client knowledge vault workflow
 
 ---
 

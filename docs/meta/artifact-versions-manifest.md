@@ -59,7 +59,42 @@
 
 ---
 
-### Artifact 4: Governance Package v1.0
+### Artifact 4: Claude Project Instructions v1.0 (HTML)
+
+| Field | Value |
+|-------|-------|
+| **Title** | Claude Project Instructions — Artifact-First Operator Workflow v1.0 |
+| **Class** | Class 1 (Strategy Artifact) |
+| **Status** | FINALIZED ✅ |
+| **Version** | 1.0 |
+| **Created** | 2026-07-08 |
+| **Tier 1 Approved** | 2026-07-08 |
+| **URL** | https://claude.ai/code/artifact/84ee50ca-5da9-4f2e-8301-d7a2ae0e2021 |
+| **Format** | HTML (Cast Iron Charlie design system) |
+| **Content** | Governance document defining Claude's behavioral defaults, output standards, reasoning protocols, operator interaction model, and safety rules for CIC + Rewrite Labs. 10 sections covering purpose, behavioral defaults, operator interaction, artifact production, memory, reasoning modes, drift prevention, safety, session startup, and document governance. |
+| **Related Files** | c:\dev\docs\meta\claude-project-instructions-artifact-first.md (markdown source) |
+
+---
+
+### Artifact 5: Global Operating Rules v1.3 (HTML)
+
+| Field | Value |
+|-------|-------|
+| **Title** | Global Operating Rules — CIC + Rewrite Labs v1.3 |
+| **Class** | Class 1 (Strategy Artifact) |
+| **Status** | FINALIZED ✅ |
+| **Version** | 1.3 |
+| **Created** | 2026-07-08 |
+| **Amended** | July 8, 2026 (v1.1 → v1.2 → v1.3) |
+| **Tier 1 Approved** | 2026-07-08 |
+| **URL** | https://claude.ai/code/artifact/47c478e8-fe55-4c88-bfe1-ac9e681c9a9f |
+| **Format** | HTML (Cast Iron Charlie design system) |
+| **Content** | System governance charter for CIC + Rewrite Labs. Defines architecture, memory governance, terminology, structured output taxonomy (Classes 1–5), reasoning modes (6 modes), daily operator automation, drift prevention, safety boundaries, design standards, and document governance. 11 sections covering all aspects of the unified content production environment. |
+| **Related Files** | c:\dev\docs\meta\global-operating-rules-cic-rewrite-labs.md (markdown source) |
+
+---
+
+### Artifact 6: Governance Package v1.0
 
 | Field | Value |
 |-------|-------|
@@ -70,9 +105,9 @@
 | **Created** | 2026-07-08 |
 | **Tier 1 Approved** | 2026-07-08 |
 | **URL** | https://claude.ai/code/artifact/4602a236-4774-466c-86f3-4e83d593e645 |
-| **Content** | Governance documents finalized with bidirectional hyperlinks. Documents 3 critical conflicts resolved (Active Assumptions scope, Design System mandate, Tier 1 pre-auth alignment). Hyperlink coverage verified. Governance health: 🟢 PRODUCTION READY. |
-| **Supersedes** | Governance Audit Report v1.0 |
-| **Related Files** | c:\dev\docs\meta\claude-project-instructions-artifact-first.md, c:\dev\docs\meta\global-operating-rules-cic-rewrite-labs.md |
+| **Content** | Summary artifact documenting improvements to Claude Instructions v1.0 + Global Rules v1.3. Resolves 3 critical conflicts (Active Assumptions scope, Design System mandate, Tier 1 pre-auth alignment). Verifies hyperlink coverage and governance health. Status: 🟢 PRODUCTION READY. |
+| **Supersedes** | Governance Audit Report v1.0 (consolidated) |
+| **Related Files** | Claude Instructions v1.0 (HTML), Global Operating Rules v1.3 (HTML) |
 
 ---
 
