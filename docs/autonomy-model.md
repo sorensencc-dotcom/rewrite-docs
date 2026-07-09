@@ -1,3 +1,10 @@
+---
+title: "Autonomy Model"
+summary: "[Back to index](index-unified.md)"
+updated: "2026-07-09"
+tags:
+  - docs
+---
 # Autonomy Model
 
 [Back to index](index-unified.md)

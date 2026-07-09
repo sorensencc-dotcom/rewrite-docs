@@ -1,3 +1,10 @@
+---
+title: "Running CIC Services"
+summary: "Quick reference for starting and monitoring local CIC services."
+updated: "2026-07-09"
+tags:
+  - operations
+---
 # Running CIC Services
 
 Quick reference for starting and monitoring local CIC services.

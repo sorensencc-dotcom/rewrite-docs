@@ -140,9 +140,8 @@ Master table of contents linking both systems.
 # Unified Knowledge Index
 
 ## CIC Architecture (Hand-Curated)
-- [Overview](cic/overview.md)
-- [Agents](cic/agents.md)
-  - Related: [Agent API Reference](../api/agents.md)
+- [CIC Architecture Overview](../architecture/overview.md)
+- [Agent API Reference](../api/agents.md)
   - Related: [Agent Manifests](../reference/manifests.md)
 ...
 
@@ -163,7 +162,7 @@ Topic-to-page mappings (for tools, search, discovery).
 **Format:**
 ```json
 {
-  "cic/agents.md": [
+  "docs/api/agents.md": [
     {
       "path": "docs/api/agents.md",
       "title": "Agent API Reference",

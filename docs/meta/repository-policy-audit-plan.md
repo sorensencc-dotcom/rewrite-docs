@@ -1,3 +1,10 @@
+---
+title: "Repository Policy & Audit Framework — Skeleton Plan"
+summary: "**Status:** Planning"
+updated: "2026-07-09"
+tags:
+  - meta
+---
 # Repository Policy & Audit Framework — Skeleton Plan
 
 **Status:** Planning  

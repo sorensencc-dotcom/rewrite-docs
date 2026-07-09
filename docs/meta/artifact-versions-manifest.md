@@ -1,3 +1,10 @@
+---
+title: "Artifact Versions Manifest"
+summary: "**Purpose:** Track all published artifacts by URL, version, status, and approval. Artifacts are discoverable/restorable "
+updated: "2026-07-09"
+tags:
+  - meta
+---
 # Artifact Versions Manifest
 
 **Purpose:** Track all published artifacts by URL, version, status, and approval. Artifacts are discoverable/restorable via this manifest.

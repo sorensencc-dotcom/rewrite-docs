@@ -1,3 +1,10 @@
+---
+title: "Runbook"
+summary: "[Back to index](../index-unified.md)"
+updated: "2026-07-09"
+tags:
+  - operations
+---
 # Runbook
 
 [Back to index](../index-unified.md)

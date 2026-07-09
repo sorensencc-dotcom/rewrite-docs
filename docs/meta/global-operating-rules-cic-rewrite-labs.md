@@ -1,3 +1,10 @@
+---
+title: "Global Operating Rules — CIC + Rewrite Labs"
+summary: "System Governance Charter"
+updated: "2026-07-09"
+tags:
+  - meta
+---
 # Global Operating Rules — CIC + Rewrite Labs
 
 System Governance Charter

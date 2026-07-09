@@ -1,3 +1,10 @@
+---
+title: "Knowledge Base Broken Links Analysis"
+summary: "**Total Broken Links:** 357"
+updated: "2026-07-09"
+tags:
+  - meta
+---
 # Knowledge Base Broken Links Analysis
 
 **Total Broken Links:** 357

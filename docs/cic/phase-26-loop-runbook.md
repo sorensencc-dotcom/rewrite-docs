@@ -1,3 +1,10 @@
+---
+title: "Phase 26 Loop Runbook"
+summary: "Phase 26 implements three autonomic verification loops wired to actual running infrastructure. Each loop follows the pat"
+updated: "2026-07-09"
+tags:
+  - cic
+---
 # Phase 26 Loop Runbook
 
 ## Overview

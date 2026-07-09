@@ -1,3 +1,10 @@
+---
+title: "Claude Project Instructions — Artifact‑First Operator Workflow"
+summary: "**Document Version:** 1.0"
+updated: "2026-07-09"
+tags:
+  - meta
+---
 # Claude Project Instructions — Artifact‑First Operator Workflow
 
 **Document Version:** 1.0

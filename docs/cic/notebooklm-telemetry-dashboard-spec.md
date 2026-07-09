@@ -1,3 +1,10 @@
+---
+title: "NotebookLM Telemetry Dashboard Specification (v1.0)"
+summary: "**Status:** Proposed"
+updated: "2026-07-09"
+tags:
+  - cic
+---
 # NotebookLM Telemetry Dashboard Specification (v1.0)
 
 **Status:** Proposed  

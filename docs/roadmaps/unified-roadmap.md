@@ -1,3 +1,10 @@
+---
+title: "Unified Roadmap"
+summary: "> **Status:** Placeholder | Cross-references CIC and Rewrite Labs roadmaps"
+updated: "2026-07-09"
+tags:
+  - roadmaps
+---
 # Unified Roadmap
 
 > **Status:** Placeholder | Cross-references CIC and Rewrite Labs roadmaps

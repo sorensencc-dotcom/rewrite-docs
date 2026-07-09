@@ -1,3 +1,10 @@
+---
+title: "CIC Roadmap"
+summary: "**Status:** Living document in OneDrive | See [CIC_SYSTEM.md](../cic-system.md)"
+updated: "2026-07-09"
+tags:
+  - roadmaps
+---
 # CIC Roadmap
 
 **Status:** Living document in OneDrive | See [CIC_SYSTEM.md](../cic-system.md)

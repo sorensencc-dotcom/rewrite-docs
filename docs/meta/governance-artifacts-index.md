@@ -1,3 +1,10 @@
+---
+title: "Governance Artifacts Index"
+summary: "**Last Updated:** 2026-07-08"
+updated: "2026-07-09"
+tags:
+  - meta
+---
 # Governance Artifacts Index
 
 **Last Updated:** 2026-07-08  

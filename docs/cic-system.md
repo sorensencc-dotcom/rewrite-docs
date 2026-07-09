@@ -1,3 +1,10 @@
+---
+title: "Cic System"
+summary: "[Back to index](index-unified.md)"
+updated: "2026-07-09"
+tags:
+  - docs
+---
 # Cic System
 
 [Back to index](index-unified.md)

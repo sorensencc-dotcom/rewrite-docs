@@ -1,3 +1,10 @@
+---
+title: "Broken Links Quick-Fix Action Plan"
+summary: "**Status:** 357 broken links detected across 190 docs pages"
+updated: "2026-07-09"
+tags:
+  - meta
+---
 # Broken Links Quick-Fix Action Plan
 
 **Status:** 357 broken links detected across 190 docs pages  

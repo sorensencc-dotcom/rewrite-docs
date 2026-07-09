@@ -1,3 +1,10 @@
+---
+title: "Phase 27 Wave F: Ship-Readiness Checklist"
+summary: "**Target Ship Date:** 2026-07-10"
+updated: "2026-07-09"
+tags:
+  - cic
+---
 # Phase 27 Wave F: Ship-Readiness Checklist
 
 **Target Ship Date:** 2026-07-10  

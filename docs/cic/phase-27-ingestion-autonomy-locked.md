@@ -1,3 +1,10 @@
+---
+title: "Phase 27: Ingestion Autonomy (Locked)"
+summary: "**Status:** Architecture finalized, implementation in progress"
+updated: "2026-07-09"
+tags:
+  - cic
+---
 # Phase 27: Ingestion Autonomy (Locked)
 
 **Status:** Architecture finalized, implementation in progress

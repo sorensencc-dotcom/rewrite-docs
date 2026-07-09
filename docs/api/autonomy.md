@@ -1,3 +1,10 @@
+---
+title: "Autonomy"
+summary: "[Back to index](../index-unified.md)"
+updated: "2026-07-09"
+tags:
+  - api
+---
 # Autonomy
 
 [Back to index](../index-unified.md)

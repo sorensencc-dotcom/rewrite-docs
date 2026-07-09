@@ -1,3 +1,10 @@
+---
+title: "Phase 27 Wave F: Architecture & Integration"
+summary: "**Status:** Implementation (due 2026-07-10)"
+updated: "2026-07-09"
+tags:
+  - cic
+---
 # Phase 27 Wave F: Architecture & Integration
 
 **Status:** Implementation (due 2026-07-10)  

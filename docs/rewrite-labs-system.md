@@ -1,3 +1,10 @@
+---
+title: "Rewrite Labs System"
+summary: "[Back to index](index-unified.md)"
+updated: "2026-07-09"
+tags:
+  - docs
+---
 # Rewrite Labs System
 
 [Back to index](index-unified.md)

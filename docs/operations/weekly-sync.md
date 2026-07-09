@@ -1,3 +1,10 @@
+---
+title: "Weekly Sync Cadence"
+summary: "Operational cadence for CIC and Rewrite Labs coordination."
+updated: "2026-07-09"
+tags:
+  - operations
+---
 # Weekly Sync Cadence
 
 Operational cadence for CIC and Rewrite Labs coordination.

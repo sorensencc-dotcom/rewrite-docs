@@ -1,3 +1,10 @@
+---
+title: "Architecture"
+summary: "[Back to index](../index-unified.md)"
+updated: "2026-07-09"
+tags:
+  - reference
+---
 # Architecture
 
 [Back to index](../index-unified.md)

@@ -1,3 +1,10 @@
+---
+title: "Phase 27 Wave F: Rollback Procedures"
+summary: "**Purpose:** Safe rollback strategies if Phase 27 deployment has issues"
+updated: "2026-07-09"
+tags:
+  - cic
+---
 # Phase 27 Wave F: Rollback Procedures
 
 **Purpose:** Safe rollback strategies if Phase 27 deployment has issues

@@ -1,3 +1,10 @@
+---
+title: "Phase 27 Wave F: Golden Test Fixtures"
+summary: "**Purpose:** Realistic end-to-end test scenarios for Phase 27 ingestion pipeline"
+updated: "2026-07-09"
+tags:
+  - cic
+---
 # Phase 27 Wave F: Golden Test Fixtures
 
 **Purpose:** Realistic end-to-end test scenarios for Phase 27 ingestion pipeline

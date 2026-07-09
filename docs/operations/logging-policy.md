@@ -1,3 +1,10 @@
+---
+title: "Logging Policy"
+summary: "Structured logging across CIC ecosystem. Logs organized by project/service with retention and archival policies."
+updated: "2026-07-09"
+tags:
+  - operations
+---
 # Logging Policy
 
 ## Overview

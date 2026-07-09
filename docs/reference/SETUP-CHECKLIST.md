@@ -363,9 +363,11 @@ Get-WinEvent -LogName "Microsoft-Windows-TaskScheduler/Operational" `
 ```powershell
 # Get list of synced files
 Get-ChildItem C:\dev\rl-ref -Recurse -Filter "*.md" | ForEach-Object {
-    "- [[rl-ref/" + $_.Name.Replace('.md','') + "|" + $_.Name + "]]"
+    Write-Host "- rl-ref/$($_.Name.Replace('.md',''))"
 }
 ```
+
+<!-- NOTE: File listing is from rl-ref/ vault (external reference system) -->
 
 ### Step 6.2: Update `00-RL-INDEX.md`
 
@@ -385,8 +387,8 @@ notepad C:\dev\00-RL-INDEX.md
 **Replace with:**
 ```markdown
 ### Core Systems
-- [[rl-ref/SYSTEM-OVERVIEW|RL System Overview]] — Generation architecture
-- [[rl-ref/ROADMAP|RL Roadmap]] — Phase planning
+- RL System Overview (rl-ref/SYSTEM-OVERVIEW.md) — Generation architecture
+- RL Roadmap (rl-ref/ROADMAP.md) — Phase planning
 ```
 
 ### Step 6.3: Update Quick Reference Table
@@ -402,7 +404,7 @@ notepad C:\dev\00-RL-INDEX.md
 ```markdown
 | System | Reference |
 |--------|-----------|
-| RL | `rl-ref/OBSERVABILITY.md` |
+| RL | rl-ref/OBSERVABILITY.md |
 ```
 
 ### Step 6.4: Verify All Links Work
@@ -456,7 +458,7 @@ Description of the pattern...
 - Practice 2
 
 ## References
-- [[cic-ref/BUILD-SUMMARY|System Overview]]
+- See cic-ref/ for system overview
 ```
 
 ### Step 7.2: Create RL Pattern Documents
@@ -484,10 +486,10 @@ Files to create:
 # [Aspect] Comparison: CIC vs. Rewrite Labs
 
 ## CIC Approach
-[Description from cic-ref/...]
+[Description from cic-ref/ vault]
 
 ## Rewrite Labs Approach
-[Description from rl-ref/...]
+[Description from rl-ref/ vault]
 
 ## Key Differences
 | Aspect | CIC | RL |
@@ -495,8 +497,7 @@ Files to create:
 | [Aspect] | [Value] | [Value] |
 
 ## References
-- [[cic-ref/...]]
-- [[rl-ref/...]]
+- See cic-ref/ and rl-ref/ for detailed system documentation
 ```
 
 **Checkpoint:** ✓ Architecture patterns documented

@@ -1,3 +1,10 @@
+---
+title: "Systems Index"
+summary: "Registry of all CIC and Rewrite Labs systems, services, and components."
+updated: "2026-07-09"
+tags:
+  - systems
+---
 # Systems Index
 
 Registry of all CIC and Rewrite Labs systems, services, and components.

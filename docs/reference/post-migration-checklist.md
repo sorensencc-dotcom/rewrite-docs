@@ -138,7 +138,7 @@ Select-String -Path "C:\dev\docs\**\*.md" -Pattern "C:\\dev\\SKILL_" -Recurse
 ```
 
 - [ ] No old file paths found in docs/
-- [ ] All [[wiki-links]] point to existing vault docs
+- [ ] All vault references point to existing docs (cic-ref/, rl-ref/, architecture/)
 - [ ] All relative links (docs/ paths) are correct
 
 ### ✓ Vault References
@@ -158,8 +158,8 @@ Select-String -Path "C:\dev\docs\**\*.md" -Pattern "\[\[architecture\|" -Recurse
 
 Manually verify 5-10 links work:
 
-- [ ] In research-skill/SKILL.md: Check [[cic-ref/BUILD-SUMMARY]] link
-- [ ] In gap-analysis.md: Check [[cic-ref/ROADMAP]] link
+- [ ] In research-skill/SKILL.md: Check cic-ref/BUILD-SUMMARY references
+- [ ] In gap-analysis.md: Check cic-ref/ROADMAP references
 - [ ] In knowledge-graph docs: Check references to implementation files
 - [ ] In memory-governance: Check references to CLAUDE.md template
 

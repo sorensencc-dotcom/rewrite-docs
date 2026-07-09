@@ -34,7 +34,7 @@ When answering, the skill:
 1. Identifies which docs contain relevant information
 2. Synthesizes across multiple sources to answer the full question
 3. Explains the reasoning and architectural intent
-4. Cites specific vault docs with references (e.g., "See [[cic-ref/AGENTS.md]] for details")
+4. Cites specific vault docs with references (e.g., "See cic-ref/AGENTS.md for details")
 5. Grounds explanations in documented content; flags inferences vs. direct evidence
 6. Suggests related topics, next docs, and code files to explore
 7. When vault docs don't fully cover a question, be honest about gaps instead of inferring
@@ -46,9 +46,9 @@ Answers focus on *why* and *how* rather than code or implementation details. The
 ## Reference Format
 
 **Vault docs:**
-- Direct reference: "See [[cic-ref/BUILD-SUMMARY]] for the system overview"
-- Specific section: "The ROADMAP explains phase sequencing; see [[cic-ref/ROADMAP]] for timeline details"
-- Cross-reference suggestion: "Next, read [[cic-ref/AGENTS_API]] to understand how agents interact"
+- Direct reference: "See cic-ref/BUILD-SUMMARY for the system overview"
+- Specific section: "The ROADMAP explains phase sequencing; see cic-ref/ROADMAP for timeline details"
+- Cross-reference suggestion: "Next, read cic-ref/AGENTS_API to understand how agents interact"
 
 **Code anchors** (when applicable):
 - "To see this in practice, look at `src/codeflow-extractor.ts` (normalizes CodeFlow output)"
@@ -69,7 +69,7 @@ Answers focus on *why* and *how* rather than code or implementation details. The
 2. Explain the role of extractors in each phase
 3. Describe how they interact with the agent system
 4. Reference specific vault docs
-5. Suggest next reads: "To understand how extractors are discovered, see [[cic-ref/CIC_ENV_REFERENCE]]. To see them in practice across phases, read the ROADMAP."
+5. Suggest next reads: "To understand how extractors are discovered, see cic-ref/CIC_ENV_REFERENCE. To see them in practice across phases, read the ROADMAP."
 
 ## Architecture Questions You Can Answer
 

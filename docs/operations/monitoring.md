@@ -1,3 +1,10 @@
+---
+title: "Observability & Monitoring"
+summary: "Real-time metrics and health checks for CIC services."
+updated: "2026-07-09"
+tags:
+  - operations
+---
 # Observability & Monitoring
 
 Real-time metrics and health checks for CIC services.

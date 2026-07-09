@@ -1,3 +1,10 @@
+---
+title: "Phase 27 Wave F: Operational Runbook"
+summary: "**Target Audience:** Site reliability engineers, DevOps, on-call operators"
+updated: "2026-07-09"
+tags:
+  - cic
+---
 # Phase 27 Wave F: Operational Runbook
 
 **Target Audience:** Site reliability engineers, DevOps, on-call operators

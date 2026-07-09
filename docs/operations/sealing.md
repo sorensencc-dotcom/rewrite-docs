@@ -1,3 +1,10 @@
+---
+title: "Sealing & Verification"
+summary: "CIC ingestion sealing: locking the state, creating audit trail, verifying integrity."
+updated: "2026-07-09"
+tags:
+  - operations
+---
 # Sealing & Verification
 
 CIC ingestion sealing: locking the state, creating audit trail, verifying integrity.

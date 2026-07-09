@@ -97,6 +97,8 @@ Per the [Phase 5c Deprecation Inventory](phases/phase-5c-deprecation-inventory.m
 - [NotebookLM Adapter Spec](notebooklm-adapter-spec.md)
 - [TorqueQuery NotebookLM Spec](torquequery-notebooklm-spec.md)
 - [NotebookLM Integration Plan](notebooklm-integration-plan.md)
+- [NotebookLM Use Case Library](use-case-library.md)
+- [CoWork MCP Integration Spec](../reference/cowork-mcp-integration-spec.md)
 
 ### Data Pipeline
 

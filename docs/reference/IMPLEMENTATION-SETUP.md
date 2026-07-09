@@ -274,8 +274,8 @@ Example before/after:
 **After:**
 ```markdown
 ### Rewrite Labs Reference Architecture
-- [[rl-ref/SYSTEM-OVERVIEW|RL System Overview]] — Generation architecture
-- [[rl-ref/AGENTS|RL Agents]] — Agent framework
+- RL System Overview (rl-ref/SYSTEM-OVERVIEW.md) — Generation architecture
+- RL Agents (rl-ref/AGENTS.md) — Agent framework
 ```
 
 ---
@@ -363,25 +363,26 @@ Once fully configured, enable queries like:
 
 **1. Compare Extraction vs. Generation**
 ```
-"How does CIC's extraction approach (cic-ref/BUILD-SUMMARY) 
- differ from RL's generation approach (rl-ref/ARCHITECTURE)?"
+"How does CIC's extraction approach differ from RL's generation approach?
+ See cic-ref/ and rl-ref/ for detailed comparison."
 ```
 
 **2. Token Management Strategies**
 ```
-"Compare token optimization in CIC (cic-ref/CIC_TOKEN_PACK_v2_0_FULL_LIST)
- vs. RL's token strategy (rl-ref/TOKEN-MANAGEMENT)"
+"Compare token optimization in CIC vs. RL's token strategy.
+ Reference: cic-ref/ and rl-ref/ documentation"
 ```
 
 **3. Runtime Observability**
 ```
-"What observability patterns do CIC (cic-ref/CIC_RUNTIME_OBSERVABILITY_PLAN)
- and RL (rl-ref/OBSERVABILITY) use?"
+"What observability patterns do CIC and RL use?
+ See cic-ref/ and rl-ref/ for observability strategies"
 ```
 
 **4. Agent Architecture**
 ```
-"How do CIC agents (cic-ref/AGENTS) and RL agents compare in design?"
+"How do CIC agents and RL agents compare in design?
+ Reference: cic-ref/ and rl-ref/ for agent documentation"
 ```
 
 ---

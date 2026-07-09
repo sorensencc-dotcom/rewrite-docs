@@ -1,3 +1,10 @@
+---
+title: "Rewrite Labs Roadmap"
+summary: "**Status:** Living document in OneDrive | See [REWRITE_LABS_SYSTEM.md](../rewrite-labs-system.md)"
+updated: "2026-07-09"
+tags:
+  - roadmaps
+---
 # Rewrite Labs Roadmap
 
 **Status:** Living document in OneDrive | See [REWRITE_LABS_SYSTEM.md](../rewrite-labs-system.md)

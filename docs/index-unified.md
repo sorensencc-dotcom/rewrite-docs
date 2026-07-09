@@ -24,6 +24,7 @@ This index has been consolidated to eliminate duplicate sections. Framework sect
 **System Overview & Roadmap:**
 - [System Overview](cic-ref/BUILD-SUMMARY.md) — Architecture, deployment, testing
 - [Roadmap](cic-ref/ROADMAP.md) — Phase planning and milestones
+- [NotebookLM v1.2 Roadmap Addendum](roadmaps/notebooklm-v12-roadmap-addendum.md) — Release plan for v1.2 updates
 - [Agents](cic-ref/AGENTS.md) — Agent definitions and capabilities
 - [Agents API](reference/agents-api.md) — Agent interface specification
 
@@ -35,6 +36,7 @@ This index has been consolidated to eliminate duplicate sections. Framework sect
 - [Environment Reference](cic-ref/CIC_ENV_REFERENCE.md) — All environment variables and validation rules
 - [Observability Plan](cic-ref/CIC_RUNTIME_OBSERVABILITY_PLAN.md) — Metrics, dashboards, alerting
 - [NotebookLM MCP Architecture](reference/notebooklm-mcp-architecture.md) — Security and process isolation topology
+- [CoWork MCP Integration Spec](reference/cowork-mcp-integration-spec.md) — Multi-Context Protocol integration spec between CoWork and NotebookLM
 
 **Skills & Capabilities:**
 - [Skill Framework](reference/skill-framework.md) — How to define, generate, and deploy skills
@@ -42,6 +44,7 @@ This index has been consolidated to eliminate duplicate sections. Framework sect
 - [NotebookLM Adapter Spec](cic/notebooklm-adapter-spec.md) — Upstream context provider via CLI and MCP
 - [TorqueQuery NotebookLM Spec](cic/torquequery-notebooklm-spec.md) — Federated search and namespace mapping
 - [NotebookLM Integration Plan](cic/notebooklm-integration-plan.md) — Master rollout and orchestration plan
+- [NotebookLM Use Case Library](cic/use-case-library.md) — Expanded library of NotebookLM use cases across domains
 - [Rewrite Labs NotebookLM Workflow](rewrite-labs/notebooklm-workflow.md) — Grounded client knowledge vault workflow
 
 ---

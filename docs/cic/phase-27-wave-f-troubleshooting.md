@@ -1,3 +1,10 @@
+---
+title: "Phase 27 Wave F: Troubleshooting Guide"
+summary: "**Purpose:** Diagnostics and fixes for common issues"
+updated: "2026-07-09"
+tags:
+  - cic
+---
 # Phase 27 Wave F: Troubleshooting Guide
 
 **Purpose:** Diagnostics and fixes for common issues

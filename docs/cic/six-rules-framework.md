@@ -1,3 +1,10 @@
+---
+title: "Six Rules Framework — Integration Guide"
+summary: "**Status:** Phase 27 Wave E Integration Ready"
+updated: "2026-07-09"
+tags:
+  - cic
+---
 # Six Rules Framework — Integration Guide
 
 **Status:** Phase 27 Wave E Integration Ready  
