@@ -12,16 +12,15 @@ DOCS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'docs')
 # Pattern: [link text](relative/path)
 LINK_RE = re.compile(r'\[([^\]]+)\]\(([^)]+)\)')
 
-def is_external_link(href: str) -> bool:
-    """Return True if href is a URL or escapes the docs directory."""
-    if href.startswith(('http://', 'https://', 'mailto:', '#')):
-        return False
-    return True  # all relative links — we'll check if they escape
+def normalize_path(path_str):
+    """Normalize Windows backslashes and strip whitespace."""
+    return path_str.replace("\\", "/").strip()
 
 def resolves_outside_docs(file_path: str, href: str) -> bool:
     """Return True if href, resolved relative to file_path, is outside DOCS_DIR."""
     file_dir = os.path.dirname(file_path)
-    resolved = os.path.normpath(os.path.join(file_dir, href))
+    href_norm = normalize_path(href)
+    resolved = os.path.normpath(os.path.join(file_dir, href_norm))
     # Strip anchor fragments
     if '#' in resolved:
         resolved = resolved[:resolved.index('#')]
@@ -37,9 +36,10 @@ def convert_link_to_code(match: re.Match, file_path: str) -> str:
     if not resolves_outside_docs(file_path, href.split('#')[0]):
         return match.group(0)
     # Convert to code — use the basename as the code text if text == basename
-    basename = os.path.basename(href.split('#')[0])
+    basename = os.path.basename(normalize_path(href.split('#')[0]))
     # Use the link text if it's descriptive, fall back to basename
-    code_text = text if text != basename else basename
+    # Case-insensitive comparison
+    code_text = text if text.lower() != basename.lower() else basename
     return f'`{code_text}`'
 
 def process_file(file_path: str, dry_run: bool = False) -> int:
@@ -47,8 +47,8 @@ def process_file(file_path: str, dry_run: bool = False) -> int:
         content = f.read()
 
     # Don't touch content inside fenced code blocks or inline code
-    # Split into code / non-code segments
-    parts = re.split(r'(```[\s\S]*?```|`[^`]+`)', content)
+    # Split into code / non-code segments with DOTALL to safely handle CRLF line endings
+    parts = re.split(r'(```[\s\S]*?```|`[^`]+`)', content, flags=re.DOTALL)
     changed = 0
     new_parts = []
     for i, part in enumerate(parts):
