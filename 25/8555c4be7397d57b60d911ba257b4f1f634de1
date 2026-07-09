@@ -1,0 +1,19 @@
+castironforge/cic-ingestion
+  s_fe4a607b589077::t_31c30b1cc51e8c 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "258555c4be7397d57b60d911ba257b4f1f634de1",
+  "prompts": {},
+  "sessions": {
+    "s_fe4a607b589077": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a3b4a99-5f1a-480f-a4ab-8ef682040cbc",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
