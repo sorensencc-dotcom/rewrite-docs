@@ -1,0 +1,53 @@
+docs/meta/artifact-versions-manifest.md
+  s_fdad444b9111a2::t_826cf50c6f600d 62-97,108-110
+docs/cic/index.md
+  s_d7cf3f52438588::t_1683048c8268ce 97-99
+docs/rewrite-labs/index.md
+  s_a1138fae383203::t_87962f4839e4df 54
+cic_notebooks.yaml
+  s_fdad444b9111a2::t_1ecc8c1296fa86 1-13
+docs/cic/notebooklm-adapter-spec.md
+  s_fdad444b9111a2::t_1876813b9732ca 1-348
+docs/cic/notebooklm-integration-plan.md
+  s_fdad444b9111a2::t_4b8e37a0d2716c 1-273
+docs/cic/torquequery-notebooklm-spec.md
+  s_fdad444b9111a2::t_23c3fc7dbd6c59 1-186
+docs/index-unified.md
+  s_fdad444b9111a2::t_7a9bdc88ccc3b0 37,42-45
+docs/reference/notebooklm-mcp-architecture.md
+  s_fdad444b9111a2::t_b94e46849ae227 1-173
+docs/rewrite-labs/notebooklm-workflow.md
+  s_fdad444b9111a2::t_82a870a3cf2ef1 1-135
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "23e953efe29b58931b1760617f349cac48d91798",
+  "prompts": {},
+  "sessions": {
+    "s_a1138fae383203": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a64e47a452860172a",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d7cf3f52438588": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "50db806c-7e83-4e0a-812c-4638509f8e5a",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_fdad444b9111a2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "21537be3-fd36-4fb8-a827-ca3c332f85db",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
