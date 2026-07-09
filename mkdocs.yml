@@ -35,6 +35,7 @@ nav:
       - Global Operating Rules: meta/global-operating-rules-cic-rewrite-labs.md
       - Claude Project Instructions: meta/claude-project-instructions-artifact-first.md
       - Governance Artifacts: meta/governance-artifacts-index.md
+      - Artifact Versions: meta/artifact-versions-manifest.md
   - Getting Started:
       - Quickstart: quickstart/index.md
       - Installation: quickstart/installation.md
