@@ -13,6 +13,8 @@ from src.fs.planner import QueryPlanner
 from src.fs.resolvers import DefaultLazyResolver
 from src.fs.plan_graph import PlanGraphStore
 from src.fs.orchestrator import CICOrchestrator
+from src.rag.notebooklm_client import NotebookLMClient
+from src.rag.rrf import rrf_fuse
 
 cfg = load_config()
 _state: dict = {}
@@ -593,6 +595,88 @@ def fs_hybrid_search(req: FSHybridSearchRequest):
     })
     
     return results
+
+
+class FederatedSearchOptions(BaseModel):
+    rrf_constant: int = 60
+    include_notebooklm: bool = True
+    notebooklm_weight: float = 1.0
+
+class FederatedSearchRequest(BaseModel):
+    query: str
+    namespaces: list[str]
+    limit: int = 5
+    options: FederatedSearchOptions | None = None
+
+@app.post("/search/federated")
+def search_federated(req: FederatedSearchRequest):
+    # 1. Gather local DB results
+    # Standard query to local chromadb via query_planner
+    start_time = time.time()
+    # Find active documents in user groups or use standard layout (admin scope here)
+    # We query chroma directly or reuse query_planner._fetch_all_chunks + BM25/Similarity
+    # For safety/simplicity, we reuse _query_vector_similarity or query_planner.search:
+    
+    # Simulate a path_set matching all docs
+    path_set = set(fs_runtime.get_pruned_fs([], is_admin=True)[0])
+    
+    local_matches = []
+    # If namespaces has namespaces, we can prefix search or filter
+    # For each namespace, try to match documents:
+    for ns in req.namespaces:
+        prefix = f"docs/{ns}"
+        matches = query_planner.search(
+            query=req.query,
+            mode="semantic",
+            path_set=path_set,
+            path_prefix=prefix,
+            max_results=req.limit * 2
+        )
+        for m in matches:
+            # Re-fetch body for snippet standard shape
+            local_matches.append({
+                "chunk_id": f"local_{m['path']}",
+                "body": "\n".join(m["snippets"]),
+                "importance": 0.8,
+                "namespace": ns,
+                "provenance": {
+                    "source": m["path"]
+                }
+            })
+
+    # 2. Query NotebookLM leg
+    notebooklm_results = []
+    partial_flag = False
+    error_code = None
+
+    if req.options is None or req.options.include_notebooklm:
+        client = NotebookLMClient()
+        # Query matching namespaces in parallel/sequential
+        for ns in req.namespaces:
+            # Query NotebookLM
+            res = client.query(ns, req.query)
+            if res.get("success"):
+                notebooklm_results.extend(res.get("results", []))
+            else:
+                partial_flag = True
+                error_code = res.get("notebooklm_error_code", "SCRIPT_ERROR")
+
+    # 3. Fuse results using RRF
+    rrf_const = req.options.rrf_constant if req.options else 60
+    weight = req.options.notebooklm_weight if req.options else 1.0
+    fused = rrf_fuse(local_matches, notebooklm_results, rrf_constant=rrf_const, notebooklm_weight=weight)
+
+    # Limit results
+    final_results = fused[:req.limit]
+
+    response = {
+        "results": final_results
+    }
+    if partial_flag:
+        response["notebooklm_partial_results"] = True
+        response["notebooklm_error_code"] = error_code
+
+    return response
 
 
 @app.post("/api/fs/find")
