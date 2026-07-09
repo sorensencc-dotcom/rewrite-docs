@@ -29,17 +29,17 @@ $script:passed = @()
 $script:fixed = @()
 
 # Color output
-function Write-Pass { Write-Host "✅ $args" -ForegroundColor Green }
-function Write-Fail { Write-Host "❌ $args" -ForegroundColor Red }
-function Write-Warn { Write-Host "⚠️  $args" -ForegroundColor Yellow }
-function Write-Info { Write-Host "ℹ️  $args" -ForegroundColor Cyan }
+function Write-Pass { Write-Host "[PASS] $args" -ForegroundColor Green }
+function Write-Fail { Write-Host "[FAIL] $args" -ForegroundColor Red }
+function Write-Warn { Write-Host "[WARN] $args" -ForegroundColor Yellow }
+function Write-Info { Write-Host "[INFO] $args" -ForegroundColor Cyan }
 
 # Validate RULE 1: Markdown files in root
 function Validate-Rule1 {
     Write-Host "`n=== RULE 1: Markdown Files in Root ===" -ForegroundColor Magenta
 
     $exceptions = @("CLAUDE.md", "README.md")
-    $rootMds = Get-ChildItem -Path "C:\dev" -MaxDepth 1 -Filter "*.md" -ErrorAction SilentlyContinue
+    $rootMds = Get-ChildItem -Path "C:\dev" -Filter "*.md" -ErrorAction SilentlyContinue
 
     $violations = $rootMds | Where-Object { $_.Name -notin $exceptions }
 
@@ -93,7 +93,7 @@ function Validate-Rule2 {
         }
 
         if ($missing.Count -eq 0) {
-            Write-Pass "✓ $($skill.Name) - Complete structure"
+            Write-Pass "OK: $($skill.Name) - Complete structure"
             $compliant++
         }
         else {
@@ -124,7 +124,7 @@ function Validate-Rule3 {
     Write-Host "`n=== RULE 3: Code & Config Location ===" -ForegroundColor Magenta
 
     # Check for orphaned config files in root
-    $configFiles = Get-ChildItem -Path "C:\dev" -MaxDepth 1 -Filter "*.json" -ErrorAction SilentlyContinue |
+    $configFiles = Get-ChildItem -Path "C:\dev" -Filter "*.json" -ErrorAction SilentlyContinue |
         Where-Object { $_.Name -notin @("package.json") }
 
     $orphanedConfigs = $configFiles | Where-Object {
@@ -165,16 +165,16 @@ function Validate-Mkdocs {
 function Generate-Report {
     if ($script:violations.Count -eq 0) {
         Write-Host "`n`n" -NoNewline
-        Write-Host "╔════════════════════════════════════════╗" -ForegroundColor Green
-        Write-Host "║         GOVERNANCE COMPLIANT           ║" -ForegroundColor Green
-        Write-Host "╚════════════════════════════════════════╝" -ForegroundColor Green
+        Write-Host "+----------------------------------------+" -ForegroundColor Green
+        Write-Host "|         GOVERNANCE COMPLIANT           |" -ForegroundColor Green
+        Write-Host "+----------------------------------------+" -ForegroundColor Green
         return 0
     }
     else {
         Write-Host "`n`n" -NoNewline
-        Write-Host "╔════════════════════════════════════════╗" -ForegroundColor Red
-        Write-Host "║      VIOLATIONS FOUND ($($script:violations.Count))          ║" -ForegroundColor Red
-        Write-Host "╚════════════════════════════════════════╝" -ForegroundColor Red
+        Write-Host "+----------------------------------------+" -ForegroundColor Red
+        Write-Host "|      VIOLATIONS FOUND ($($script:violations.Count))          |" -ForegroundColor Red
+        Write-Host "+----------------------------------------+" -ForegroundColor Red
 
         Write-Host "`n## Violations Summary" -ForegroundColor Yellow
         foreach ($v in $script:violations) {
@@ -191,9 +191,9 @@ function Generate-Report {
 
 # Main validation flow
 function Main {
-    Write-Host "`n╔════════════════════════════════════════╗" -ForegroundColor Cyan
-    Write-Host "║  Repository Governance Validation     ║" -ForegroundColor Cyan
-    Write-Host "╚════════════════════════════════════════╝" -ForegroundColor Cyan
+    Write-Host "`n+----------------------------------------+" -ForegroundColor Cyan
+    Write-Host "|  Repository Governance Validation     |" -ForegroundColor Cyan
+    Write-Host "+----------------------------------------+" -ForegroundColor Cyan
 
     $rule1Pass = Validate-Rule1
     $rule2Pass = Validate-Rule2
@@ -213,11 +213,14 @@ function Main {
 
 function Export-Report {
     $reportPath = "C:\dev\GOVERNANCE_VALIDATION_REPORT.json"
+    $r1 = if ($rule1Pass) { "PASS" } else { "FAIL" }
+    $r2 = if ($rule2Pass) { "PASS" } else { "FAIL" }
+    $r3 = if ($rule3Pass) { "PASS" } else { "FAIL" }
     $report = @{
         Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-        Rule1 = if ($rule1Pass) { "PASS" } else { "FAIL" }
-        Rule2 = if ($rule2Pass) { "PASS" } else { "FAIL" }
-        Rule3 = if ($rule3Pass) { "PASS" } else { "FAIL" }
+        Rule1 = $r1
+        Rule2 = $r2
+        Rule3 = $r3
         Violations = $script:violations
         TotalViolations = $script:violations.Count
     }

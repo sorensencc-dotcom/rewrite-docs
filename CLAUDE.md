@@ -205,6 +205,49 @@ grep -r "C:\\dev\\{old-path}" docs/
 # Should return: 0 results (or only documentation strings)
 ```
 
+## 10.1 Document Review Checklist (Specs, Roadmaps, Use Case Libraries)
+
+Before merging specs or roadmap docs:
+
+- Scope statements match table contents (e.g., "twelve use cases" in text must match actual count in matrix)
+- TOC anchors match section headings exactly (e.g., `#2--scope-and-objectives` not `#2--scope-and-object-list`)
+- Cross-reference backlinks present: all docs include "See also:" section linking to source/related docs
+- Cross-references resolve: verify all markdown links point to files that exist
+- Run `mkdocs build --strict` before sign-off; catches broken links and invalid nav entries
+
+## 10.2 Log-Structured Manifest Pattern
+
+Append-only activity logs (approval manifests, audit trails, state mutations):
+
+- New records appended to end of file; old records never replaced
+- `.find()` returns first record (original state), not latest
+- Use `.reverse().find()` to get most recent record (e.g., latest approval status)
+- Pattern discovered in ingestion-wave-f-master-gate tests (Wave D approval lookup)
+
+## 10.3 MCP Gateway Security Gates
+
+Context injection security surface:
+
+- Session binding validation: Bearer token `sub` must match session `user_id` (prevents cross-session injection attacks)
+- PII redaction audit logging: every redaction event logged with category, timestamp, actor (required by spec §8)
+- Request schema validation: return 400/422 errors for malformed/unprocessable payloads, not 500
+- Rate limit response headers: `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset` required (spec §4.5)
+- Circuit breaker window: 60-second rolling window, minimum 10 requests before tripping (spec §7.2)
+
+## 10.4 Credential Scanner Discipline
+
+Never use `--no-verify` to bypass credential scanner without identifying root cause. If false positive: whitelist the pattern in `.gitignore-credentials` or redact sensitive value from source. Bypassing the hook can hide real credential leaks and violate security policy.
+
+## 10.5 MCP Gateway Test Coverage (Spec-Compliance)
+
+Required test scenarios (not optional):
+
+- p95 latency SLA: context injection ≤200ms under nominal load (spec §9.1)
+- 409 Conflict: concurrent modification attempts on same session (spec §4.2 error codes)
+- Graceful degradation: read-only mode when circuit breaker open, cached context served (spec §7.4)
+- Timeout simulation: downstream call exceeds timeout threshold, proper error propagation
+- Rate limit headers: present in all 2xx and 429 responses
+
 ## 11. When Unsure: docs/ or toolforge/skills/?
 
 - Markdown documentation → `docs/`
@@ -216,3 +259,7 @@ grep -r "C:\\dev\\{old-path}" docs/
 - Pre-commit validation: `mkdocs build --strict`, no orphaned .md files
 - KB Operations: See [KB-OPERATIONS.md](docs/KB-OPERATIONS.md) for query, edit, consolidation workflows
 - This document is authoritative reference for all governance
+
+---
+
+**Last Updated:** 2026-07-09 — Session: NotebookLM v1.2 Integration Specs & MCP Gateway Refactor. Added sections 10.1–10.5 capturing document review discipline, log-structured manifest pattern, MCP security gates, credential scanner policy, and spec-compliance test coverage requirements.

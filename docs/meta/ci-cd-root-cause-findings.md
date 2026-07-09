@@ -1,3 +1,13 @@
+---
+title: "CI/CD Cascading Failures: Root Cause Analysis & Fixes"
+summary: "Root cause analysis of CI/CD build issues and environment compatibility"
+created: "2026-07-05"
+updated: "2026-07-09"
+tags:
+  - ci-cd
+  - troubleshooting
+  - devops
+---
 # CI/CD Cascading Failures: Root Cause Analysis & Fixes
 
 **Status:** CRITICAL ISSUE IDENTIFIED & FIXED  

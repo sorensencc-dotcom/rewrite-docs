@@ -1,3 +1,13 @@
+---
+title: "Vault Sync Automation Setup"
+summary: "Complete guide for integrating vault sync into Task Scheduler (Windows) and CI/CD (GitHub Actions)"
+created: "2026-07-04"
+updated: "2026-07-09"
+tags:
+  - vault
+  - setup
+  - automation
+---
 # Vault Sync Automation Setup
 
 Complete guide for integrating vault sync into Task Scheduler (Windows) and CI/CD (GitHub Actions).

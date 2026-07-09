@@ -46,6 +46,7 @@ nav:
       - CIC Roadmap: roadmaps/cic-roadmap.md
       - Rewrite Labs Roadmap: roadmaps/rewrite-labs-roadmap.md
       - Unified Roadmap: roadmaps/unified-roadmap.md
+      - NotebookLM v1.2 Roadmap Addendum: roadmaps/notebooklm-v12-roadmap-addendum.md
       - Phase 23-27 Autonomy Stack:
           - Memory API: roadmaps/phase-23-memory-api-spec.yaml
           - Governance API: roadmaps/phase-24-governance-api-spec.yaml
@@ -145,9 +146,13 @@ nav:
       - Drift Engine: cic/driftengine.md
       - Replay Harness: cic/replayharness.md
       - Phase 26 Loop Runbook: cic/phase-26-loop-runbook.md
+      - Phase 26 Verification Checklist: cic/phase-26-verification-checklist.md
+      - Phase 8 & 30 Implementation: cic/phase-8-phase-30-implementation.md
+      - Phase 8 Implementation Summary: cic/phase-8-implementation-summary.md
       - NotebookLM Adapter Spec: cic/notebooklm-adapter-spec.md
       - TorqueQuery NotebookLM Spec: cic/torquequery-notebooklm-spec.md
       - NotebookLM Integration Plan: cic/notebooklm-integration-plan.md
+      - NotebookLM Use Case Library: cic/use-case-library.md
       - Research Skill:
           - Overview: cic/research-skill/skill.md
           - Test Results:
@@ -186,6 +191,8 @@ nav:
           - Vault Setup: rewrite-labs/rl-vault-setup.md
           - Vault README: rewrite-labs/vault-readme.md
           - Sync Configuration: rewrite-labs/vault-sync-configuration.md
+          - Vault Sync Automation: rewrite-labs/vault-sync-automation.md
+          - Vault Automation Setup: rewrite-labs/vault-automation-setup.md
           - NotebookLM Workflow: rewrite-labs/notebooklm-workflow.md
   - Gateway:
       - API & State Store: gateway/adaptergatewayapi.md
@@ -256,6 +263,7 @@ nav:
       - Services: reference/services.md
       - System Index Builder (Planned): reference/system-index-builder.md
       - NotebookLM MCP Architecture: reference/notebooklm-mcp-architecture.md
+      - CoWork MCP Integration Spec: reference/cowork-mcp-integration-spec.md
   - Knowledge Base Consolidation:
       - Unified Index: index-unified.md
       - Inventory: meta/consolidation-inventory.md
@@ -278,6 +286,11 @@ nav:
           - Phase 1 (Files Moved): meta/phase-1-execution.md
           - Phase 2 (Links Updated): meta/phase-2-completion.md
           - Phase 3 (Verification): meta/phase-3-completion.md
+      - Meta & State:
+          - Changelog: meta/changelog.md
+          - CI-CD Root Cause Findings: meta/ci-cd-root-cause-findings.md
+          - CIC Ashfall State: meta/cic-ashfall-state.md
+          - KB Link Repair Plan: meta/kb-link-repair-plan.md
 plugins:
   - search
   - minify:

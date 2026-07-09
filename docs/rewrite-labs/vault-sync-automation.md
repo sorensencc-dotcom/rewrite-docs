@@ -1,3 +1,13 @@
+---
+title: "Vault Sync Automation"
+summary: "Orchestration guide for daily document synchronization across CIC and Rewrite Labs"
+created: "2026-07-04"
+updated: "2026-07-09"
+tags:
+  - vault-sync
+  - automation
+  - devops
+---
 # RL Vault Sync Setup & Automation
 
 ## Overview

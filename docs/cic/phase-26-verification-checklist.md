@@ -1,3 +1,13 @@
+---
+title: "PHASE-26 Verification Checklist"
+summary: "Checklist for verifying TorqueQuery NotebookLM adapters and Phase 26 milestones"
+created: "2026-07-05"
+updated: "2026-07-09"
+tags:
+  - phase-26
+  - validation
+  - checklist
+---
 # PHASE-26 Verification Checklist
 
 **Status:** Pre-deployment verification (BLOCKING)

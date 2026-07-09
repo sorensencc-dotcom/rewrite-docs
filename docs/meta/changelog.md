@@ -1,3 +1,12 @@
+---
+title: "Changelog"
+summary: "Project release logs and change tracking"
+created: "2026-06-24"
+updated: "2026-07-09"
+tags:
+  - changelog
+  - meta
+---
 # Changelog
 
 ## Changes (2026-06-24T00:00:00Z)
