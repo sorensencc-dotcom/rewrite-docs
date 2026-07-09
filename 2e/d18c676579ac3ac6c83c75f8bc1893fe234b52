@@ -1,0 +1,19 @@
+docs/cic/notebooklm-telemetry-dashboard-spec.md
+  s_f14d68f9e97598::t_61f27783e40bda 1-151
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "2ed18c676579ac3ac6c83c75f8bc1893fe234b52",
+  "prompts": {},
+  "sessions": {
+    "s_f14d68f9e97598": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "51c7a00d-9063-4347-bf8d-a5fb6932e34f",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
