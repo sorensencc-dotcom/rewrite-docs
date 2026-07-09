@@ -1,0 +1,97 @@
+CLAUDE.md
+  s_b373d71e8d6906::t_056ba870c92420 208-250,262-265
+docs/cic/phase-26-verification-checklist.md
+  s_edd631ff5518e4::t_e7c98111ff5979 1-10
+docs/cic/phase-8-implementation-summary.md
+  s_e27e2f20824514::t_fa551b8d32d142 1-10
+docs/cic/phase-8-phase-30-implementation.md
+  s_5f8cd86b682621::t_6a37f4294a5a8a 1-10
+docs/meta/ci-cd-root-cause-findings.md
+  s_73dd6234326c0c::t_66468954246475 1-10
+docs/rewrite-labs/vault-automation-setup.md
+  s_f6cb7aa404ec09::t_63ce4398e7696c 1-10
+docs/rewrite-labs/vault-sync-automation.md
+  s_f6cb7aa404ec09::t_dfdc51840194d2 1-10
+mkdocs.yml
+  s_1c4d69115e72f8::t_416886637a6779 49,149-151,155,194-195,266,289-293
+validate-governance.ps1
+  s_d3640c043b3d74::t_2348420f240197 32-35,42,96,127,168-170,175-177,194-196,216-218,221-223
+docs/meta/changelog.md
+  s_b373d71e8d6906::t_fd5bd54e2a8e94 1-9
+docs/meta/cic-ashfall-state.md
+  s_b373d71e8d6906::t_dfebd22af8fecc 1-10
+docs/meta/kb-link-repair-plan.md
+  s_b373d71e8d6906::t_e3b046e5e3e2ce 1-215
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "4c88dfdc8e9db0f911ec646260a6d3520aeb7442",
+  "prompts": {},
+  "sessions": {
+    "s_1c4d69115e72f8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cf82daf4-0894-43b2-b27e-084c92dd3848",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_5f8cd86b682621": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fc8cb2e7-0adf-46a0-81be-507a28551618",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_73dd6234326c0c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8ed91774-4707-4f64-8180-e6601008ef76",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_b373d71e8d6906": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e4e5e6ec-886f-4214-93ff-c8b21970b341",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d3640c043b3d74": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b6a3bc7a-e5d5-4837-8509-3c2a67fc7c7d",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_e27e2f20824514": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6dff16be-f826-4552-987a-e216480a567e",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_edd631ff5518e4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6e5614b6-8cbc-45a7-bc36-e7370292bfa7",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_f6cb7aa404ec09": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1553d0db-a31f-4b86-9499-fa528e956eb3",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
