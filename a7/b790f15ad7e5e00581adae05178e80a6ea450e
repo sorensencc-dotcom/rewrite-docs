@@ -1,0 +1,33 @@
+mkdocs.yml
+  s_1c4d69115e72f8::t_188567cab2b7aa 127-128
+docs/roadmaps/tickets/repository-policy-audit.md
+  s_1c4d69115e72f8::t_babe6858513b58 1-84
+toolforge
+  s_24531e0f82e936::t_e4c1a1254b00ad 1
+docs/meta/repository-policy-audit-plan.md
+  s_1c4d69115e72f8::t_4f7ca5d684bf6d 1-196
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a7b790f15ad7e5e00581adae05178e80a6ea450e",
+  "prompts": {},
+  "sessions": {
+    "s_1c4d69115e72f8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cf82daf4-0894-43b2-b27e-084c92dd3848",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_24531e0f82e936": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c6043ef0-b3d2-41c0-8516-888507c4bdef",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
