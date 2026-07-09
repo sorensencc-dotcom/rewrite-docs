@@ -94,7 +94,7 @@ robocopy "C:\dev" "\\THE_FOREMAN\c$\dev" /E /MT:64 /R:0 /W:0 /ZB /FFT /NP /NFL /
 **Duration:** ~102 minutes (1:41:01)  
 **Files:** 3,970 dirs, 23,956 files, 535.69 MB  
 **Exit Code:** 0 (no errors)  
-**Log:** [copy_dev.log](C:\migration_logs\copy_dev.log)
+**Log:** `C:/migration_logs/copy_dev.log`
 
 ---
 
@@ -112,7 +112,7 @@ robocopy "C:\CIC_MEDIA_LIBRARY" "\\THE_FOREMAN\c$\CIC_MEDIA_LIBRARY" /E /MT:64 /
 **Duration:** ~178 seconds (0:02:58 actual copy, 2:58:08 total)  
 **Files:** 246 dirs, 1,348 files, 1.492 GB  
 **Exit Code:** 0 (no errors)  
-**Log:** [copy_cic_media.log](C:\migration_logs\copy_cic_media.log)
+**Log:** `C:/migration_logs/copy_cic_media.log`
 
 ---
 

@@ -70,14 +70,14 @@ All 4 test cases (handshake, session creation, pipeline execution, and ping live
 
 ## Assets Reviewed
 
-1. **[transport_spec.md](file:///c:/dev/docs/strategy/transport_spec.md)** — WebSocket protocol spec.
-2. **[micro_loop_contract.md](file:///c:/dev/docs/strategy/micro_loop_contract.md)** — Task delegation boundaries.
-3. **[session_state_machine.md](file:///c:/dev/docs/strategy/session_state_machine.md)** — Session visual mapping.
-4. **[transport.types.ts](file:///c:/dev/docs/strategy/transport.types.ts)** — Protocol TypeScript interfaces.
-5. **[cic_rpc_router.ts](file:///c:/dev/docs/strategy/cic_rpc_router.ts)** — Server WebSocket daemon router.
-6. **[extension_skeleton.ts](file:///c:/dev/docs/strategy/extension_skeleton.ts)** — VS Code client transport wrapper.
-7. **[extension_manifest.json](file:///c:/dev/docs/strategy/extension_manifest.json)** — Extension contributes manifest.
-8. **[vscode-rpc.test.ts](file:///c:/dev/rewrite-mcp/tests/cic/vscode-rpc.test.ts)** — Vitest integration test suite.
+1. **`transport_spec.md`** — WebSocket protocol spec.
+2. **`micro_loop_contract.md`** — Task delegation boundaries.
+3. **`session_state_machine.md`** — Session visual mapping.
+4. **`transport.types.ts`** — Protocol TypeScript interfaces.
+5. **`cic_rpc_router.ts`** — Server WebSocket daemon router.
+6. **`extension_skeleton.ts`** — VS Code client transport wrapper.
+7. **`extension_manifest.json`** — Extension contributes manifest.
+8. **`rpc.test.ts`** — Vitest integration test suite.
 
 ---
 

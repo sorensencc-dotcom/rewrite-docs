@@ -319,7 +319,6 @@ All drift events logged:
 
 ## See Also
 
-- [CIC Drift Engine](pipeline-architecture.md#drift-engine)
+- [CIC Drift Engine](../reference/pipeline-architecture.md)
 - [ExecutionPolicy Architecture](../autonomy-model.md)
-- [Phase 27 Autonomy Specification](phase-27-ingestion-autonomy.md)
-- [Six Rules Workflow YAML](../specs/cic.workflow.six-rules.v1.yaml)
+- [Phase 27 Autonomy Specification](phase-27-ingestion-autonomy-locked.md)

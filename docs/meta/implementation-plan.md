@@ -39,27 +39,27 @@ This implementation plan details the programmatic enforcement of the operational
 
 ### Component 1: Caching & Jest Fixes
 
-#### [MODIFY] [jest.config.js](file:///c:/dev/jest.config.js)
+#### [MODIFY] `jest.config.js`
 - Add `"^uuid$": "uuid"` inside `moduleNameMapper` to resolve Jest's JSDOM import resolving to ESM-browser version of `uuid` under node-cron.
 
-#### [MODIFY] [adapter-wrapper.ts](file:///c:/dev/src/adapter-gateway-cache/gateway/adapter-wrapper.ts)
+#### [MODIFY] `adapter-wrapper.ts`
 - Add a private set `keys = new Set<string>()` to track all generated cache keys for this adapter.
 - In `invoke` and `invokeAdapter`, add the `cacheKey` to `this.keys`.
 - Modify `invalidateCache(pattern?: string)`: if `allPatterns` is empty, invalidate all keys in `this.keys` by deleting them from L1/L2 and then clearing `this.keys`.
 
-#### [MODIFY] [integration.test.ts](file:///c:/dev/src/adapter-gateway-cache/__tests__/integration.test.ts)
+#### [MODIFY] `integration.test.ts`
 - In the test `"should handle different cache policies per adapter"`, call `gateway.invoke("data-adapter", ...)` once *before* setting the policy to `CachePolicy.READ_ONLY` to ensure there is a cache hit.
 
 ---
 
 ### Component 2: SLA Enforcement & State Persistence
 
-#### [NEW] [cicStateStore.ts](file:///c:/dev/src/server/cicStateStore.ts)
+#### [NEW] `cicStateStore.ts`
 - Define interfaces for SLA thresholds (`SLASettings`), SLA metrics (`SLAMetrics`), active playbooks status (`ActivePlaybooks`), and SLA violations.
 - Create class `CICStateStore` to manage loading, saving, and updating the state object in `governance/cicState.json`.
 - Provide helper methods: `addViolation(category, desc, severity)`, `clearViolation(category)`, `triggerPlaybook(name, active)`, `freezeRouting(frozen, backend?)`.
 
-#### [MODIFY] [adapterGatewayAPI.ts](file:///c:/dev/src/server/adapterGatewayAPI.ts)
+#### [MODIFY] `adapterGatewayAPI.ts`
 - Replace in-memory `cicState` with an instance of `CICStateStore`.
 - Update `/metrics` endpoint to return the persistent state including active playbooks, SLA metrics, backlog, and active violations.
 - Modify `route()` invocation to pass the loaded `cicState`. If `cicState.routingFrozen` is active, return the `frozenBackend` directly, bypassing the regular policy.
@@ -69,27 +69,27 @@ This implementation plan details the programmatic enforcement of the operational
 
 ### Component 3: Ingestion Daemon & Drift Engine
 
-#### [NEW] [daemon.ts](file:///c:/dev/cic-ingestion/src/ingestion/daemon.ts)
+#### [NEW] `daemon.ts`
 - Implement `IngestionDaemon` running on a 30s cycle.
 - Use `readline` and a readable stream to read `client_sessions.jsonl` line-by-line (streaming JSONL reader).
 - Include error recovery: wrap `JSON.parse` in try/catch to log and skip corrupted lines.
 - Implement idempotency tracking using a set of processed transaction IDs (`timestamp-backend`).
 - Evaluate loop-level SLAs (backlog count, routing stability) on each cycle and write violations/triggers to `cicState`.
 
-#### [MODIFY] [driftEngine.ts](file:///c:/dev/cic-ingestion/src/drift/driftEngine.ts)
+#### [MODIFY] `driftEngine.ts`
 - Modify `decayDriftScores()` and `updateDriftScores()` to log decay and updates to the governance audit trail.
 
 ---
 
 ### Component 4: Governance Hooks & Cryptographic Hash-Chain
 
-#### [MODIFY] [audit-policy.ts](file:///c:/dev/governance/audit-policy.ts)
+#### [MODIFY] `audit-policy.ts`
 - Modify `appendAuditEvent()` to read the previous event's hash and incorporate it into the current event's `hash` calculation (proper cryptographic hash-chain).
 - Add new event types: `"drift_decay"`, `"drift_score_updated"`, `"sla_violation"`, `"governance_lockdown"`, `"promotion_frozen"`.
 - Implement `verifyAuditChain(logPath)`: traverses the events list and validates the continuity of the hashes.
 - If a chain break is detected, log a critical SLA violation and write to the state to trigger the Governance Lockdown Runbook.
 
-#### [MODIFY] [promotion-rollback.ts](file:///c:/dev/governance/promotion-rollback.ts)
+#### [MODIFY] `promotion-rollback.ts`
 - In `executePromotion` and `executeRollback`, load `governance/cicState.json`.
 - If `promotionsFrozen` or `rollbacksFrozen` is active, reject the request with `ERR_PROMOTIONS_FROZEN` or `ERR_ROLLBACKS_FROZEN`.
 
@@ -97,7 +97,7 @@ This implementation plan details the programmatic enforcement of the operational
 
 ### Component 5: Operator Dashboard Enhancements
 
-#### [MODIFY] [dashboard.html](file:///c:/dev/dashboard.html)
+#### [MODIFY] `dashboard.html`
 - Add a high-visibility **SLA Violation Banner** at the top of the page showing active alerts (e.g. "SEV-1: GOVERNANCE LOCKDOWN ACTIVE").
 - Add an **Ingestion Backlog Meter** visualizing the number of unprocessed lines in the log.
 - Add a **Routing Stability Graph** showing recent routing switches.

@@ -42,48 +42,48 @@ All paths are absolute and point directly to their workspace locations:
 
 ### 1. Model Specifications (JSON Specifications)
 Authoritative specification files indicating base URLs, API keys, and model capability matrices:
-*   [llamafile.json](file:///C:/dev/src/models/llamafile.json)
-*   [koboldcpp.json](file:///C:/dev/src/models/koboldcpp.json)
-*   [gpt4all.json](file:///C:/dev/src/models/gpt4all.json)
-*   [localai.json](file:///C:/dev/src/models/localai.json)
-*   [ollama.json](file:///C:/dev/src/models/ollama.json)
-*   [anythingllm.json](file:///C:/dev/src/models/anythingllm.json)
+*   `llamafile.json`
+*   `koboldcpp.json`
+*   `gpt4all.json`
+*   `localai.json`
+*   `ollama.json`
+*   `anythingllm.json`
 
 ### 2. Provider Wrappers (Fetch-based with 30s timeouts)
 Clean API adapters with `AbortController` timeouts and robust fallback stubs:
-*   [llamafileProvider.ts](file:///C:/dev/src/providers/llamafileProvider.ts)
-*   [koboldcppProvider.ts](file:///C:/dev/src/providers/koboldcppProvider.ts)
-*   [ollamaProvider.ts](file:///C:/dev/src/providers/ollamaProvider.ts)
-*   [localaiProvider.ts](file:///C:/dev/src/providers/localaiProvider.ts)
-*   [gpt4allProvider.ts](file:///C:/dev/src/providers/gpt4allProvider.ts)
-*   [anythingllmProvider.ts](file:///C:/dev/src/providers/anythingllmProvider.ts)
+*   `llamafileProvider.ts`
+*   `koboldcppProvider.ts`
+*   `ollamaProvider.ts`
+*   `localaiProvider.ts`
+*   `gpt4allProvider.ts`
+*   `anythingllmProvider.ts`
 
 ### 3. Ingestion & Drift Feedback Loop
 Ingestion pipeline modules parsing logs, extracting drift signals, and updating routing states:
-*   [clientSessionExtractor.ts](file:///C:/dev/cic-ingestion/src/extractors/clientSessionExtractor.ts)
-*   [harvester/index.ts](file:///C:/dev/cic-ingestion/src/harvester/index.ts)
-*   [ingestion/queue/index.ts](file:///C:/dev/cic-ingestion/src/ingestion/queue/index.ts)
-*   [resolver.ts](file:///C:/dev/harvester-bridge/resolver.ts)
-*   [driftEngine.ts](file:///C:/dev/cic-ingestion/src/drift/driftEngine.ts)
-*   [replayHarness.ts](file:///C:/dev/cic-ingestion/src/harness/replayHarness.ts)
+*   `clientSessionExtractor.ts`
+*   `harvester/index.ts`
+*   `ingestion/ingestionRouter.ts`
+*   `resolver.ts`
+*   `driftEngine.ts`
+*   `replayHarness.ts`
 
 ### 4. Operator Console UI
-*   [dashboard.html](file:///C:/dev/dashboard.html) (Root) & [dashboard.html](file:///C:/dev/rewrite-mcp/castironforge/dashboard.html) (Sync Copy) — Frosted-glass dark mode dashboard.
+*   `dashboard.html` (Root) & `dashboard.html` (Sync Copy) — Frosted-glass dark mode dashboard.
 
 ### 5. Test Suites
-*   [maal-routing-policy.test.ts](file:///C:/dev/src/tests/maal-routing-policy.test.ts) — Tests 11 routing conditions.
-*   [feedback-loop.test.ts](file:///C:/dev/src/tests/feedback-loop.test.ts) — Integration test verifying log-to-drift-feedback.
-*   [dashboard-endpoints.test.ts](file:///C:/dev/src/tests/dashboard-endpoints.test.ts) — Tests `/metrics` and `/dashboard` HTTP codes.
+*   `maal-routing-policy.test.ts` — Tests 11 routing conditions.
+*   `feedback-loop.test.ts` — Integration test verifying log-to-drift-feedback.
+*   `dashboard-endpoints.test.ts` — Tests `/metrics` and `/dashboard` HTTP codes.
 
 ---
 
 ## 📝 Files Modified
 
-*   [package.json](file:///C:/dev/package.json): Added `"start:adapter-gateway"` script.
-*   [maal-router-types.ts](file:///C:/dev/src/maal/router/maal-router-types.ts): Added ESM imports and exports for `UnifiedChatRequest` and `UnifiedChatResponse`.
-*   [sandbox-violation.ts](file:///C:/dev/src/maal/router/sandbox-violation.ts): Fixed incorrect import paths to `postgres-client`.
-*   [canary-abort.ts](file:///C:/dev/src/slo-controller/canary-abort.ts): Made `triggerCanaryAbort` robust to both single-argument object calls and dual-argument string calls.
-*   [jest.config.js](file:///C:/dev/jest.config.js): Ignored obsolete `cic-ingestion/tests/` directory to prevent false-negative test runs in CI.
+*   `package.json`: Added `"start:adapter-gateway"` script.
+*   `maal-router-types.ts`: Added ESM imports and exports for `UnifiedChatRequest` and `UnifiedChatResponse`.
+*   `sandbox-violation.ts`: Fixed incorrect import paths to `postgres-client`.
+*   `canary-abort.ts`: Made `triggerCanaryAbort` robust to both single-argument object calls and dual-argument string calls.
+*   `jest.config.js`: Ignored obsolete `cic-ingestion/tests/` directory to prevent false-negative test runs in CI.
 
 ---
 

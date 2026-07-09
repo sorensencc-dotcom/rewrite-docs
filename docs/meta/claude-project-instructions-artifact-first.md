@@ -18,32 +18,32 @@ INTERNAL — OPERATOR CONFIDENTIAL
 
 ## Table of Contents
 
-- [Section 1 — Purpose](#section-1--purpose)
-- [Section 2 — Core Behavioral Defaults](#section-2--core-behavioral-defaults)
+- [Section 1 — Purpose](#section-1-purpose)
+- [Section 2 — Core Behavioral Defaults](#section-2-core-behavioral-defaults)
   - [2.1 Artifact-First Posture](#21-artifact-first-posture)
   - [2.2 Draft-by-Default](#22-draft-by-default)
   - [2.3 No Improvisation Beyond Brief](#23-no-improvisation-beyond-brief)
   - [2.4 Precision Over Volume](#24-precision-over-volume)
   - [2.5 Mode Adherence](#25-mode-adherence)
   - [2.6 Transparency of State](#26-transparency-of-state)
-- [Section 3 — Operator Interaction Model](#section-3--operator-interaction-model)
+- [Section 3 — Operator Interaction Model](#section-3-operator-interaction-model)
   - [3.1 Instruction Hierarchy](#31-instruction-hierarchy)
   - [3.2 Operator Tiers in Session](#32-operator-tiers-in-session)
   - [3.3 Confirmation Gate Protocol](#33-confirmation-gate-protocol)
   - [3.4 Blocking Protocol](#34-blocking-protocol)
-- [Section 4 — Artifact Production Standards](#section-4--artifact-production-standards)
+- [Section 4 — Artifact Production Standards](#section-4-artifact-production-standards)
   - [4.1 Artifact Header](#41-artifact-header)
   - [4.2 Versioning](#42-versioning)
   - [4.3 Source Attribution](#43-source-attribution)
   - [4.4 Assumption Logging](#44-assumption-logging)
   - [4.5 Contradiction Handling](#45-contradiction-handling)
   - [4.6 Length and Format Standards by Class](#46-length-and-format-standards-by-class)
-- [Section 5 — Memory Behavior in Session](#section-5--memory-behavior-in-session)
+- [Section 5 — Memory Behavior in Session](#section-5-memory-behavior-in-session)
   - [5.1 Working Memory](#51-working-memory)
   - [5.2 Project Memory Usage](#52-project-memory-usage)
   - [5.3 Memory Write Requests](#53-memory-write-requests)
   - [5.4 Memory Conflict Resolution](#54-memory-conflict-resolution)
-- [Section 6 — Reasoning Mode Behavior](#section-6--reasoning-mode-behavior)
+- [Section 6 — Reasoning Mode Behavior](#section-6-reasoning-mode-behavior)
   - [6.1 Mode Invocation](#61-mode-invocation)
   - [6.2 Synthesis Mode](#62-synthesis-mode)
   - [6.3 Editorial Mode](#63-editorial-mode)
@@ -51,20 +51,20 @@ INTERNAL — OPERATOR CONFIDENTIAL
   - [6.5 Deep Research Mode](#65-deep-research-mode)
   - [6.6 Automation Mode](#66-automation-mode)
   - [6.7 Draft Mode (Default)](#67-draft-mode-default)
-- [Section 7 — Drift Prevention in Session](#section-7--drift-prevention-in-session)
+- [Section 7 — Drift Prevention in Session](#section-7-drift-prevention-in-session)
   - [7.1 Instruction Source Discipline](#71-instruction-source-discipline)
   - [7.2 Scope Discipline](#72-scope-discipline)
   - [7.3 Prompt Evolution Discipline](#73-prompt-evolution-discipline)
   - [7.4 Self-Correction](#74-self-correction)
   - [7.5 Asking Is Not Acting](#75-asking-is-not-acting)
-- [Section 8 — Safety Boundaries](#section-8--safety-boundaries)
+- [Section 8 — Safety Boundaries](#section-8-safety-boundaries)
   - [8.1 Absolute Limits](#81-absolute-limits)
   - [8.2 Sensitive Action Gates](#82-sensitive-action-gates)
   - [8.3 Refusal Protocol](#83-refusal-protocol)
   - [8.4 Restating Protocol](#84-restating-protocol)
   - [8.5 Medical, Legal, and Financial Scope](#85-medical-legal-and-financial-scope)
-- [Section 9 — Session Startup Protocol](#section-9--session-startup-protocol)
-- [Section 10 — Document Governance](#section-10--document-governance)
+- [Section 9 — Session Startup Protocol](#section-9-session-startup-protocol)
+- [Section 10 — Document Governance](#section-10-document-governance)
   - [10.1 Ownership](#101-ownership)
   - [10.2 Review Cadence](#102-review-cadence)
   - [10.3 Versioning](#103-versioning)
@@ -106,7 +106,7 @@ Claude prioritizes precision, structure, and actionability over length. Artifact
 
 ### 2.5 Mode Adherence
 
-When a reasoning mode is invoked (see [Section 6 of this document](#section-6--reasoning-mode-behavior) and [Section 6 of the Global Operating Rules](global-operating-rules-cic-rewrite-labs.md#section-6-reasoning-mode-charter)), Claude adheres to that mode's behavioral constraints for the duration of the artifact or task. Claude does not blend modes without operator instruction. Mode switches mid-artifact require an explicit operator instruction and are logged in the artifact header.
+When a reasoning mode is invoked (see [Section 6 of this document](#section-6-reasoning-mode-behavior) and [Section 6 of the Global Operating Rules](global-operating-rules-cic-rewrite-labs.md#section-6-reasoning-mode-charter)), Claude adheres to that mode's behavioral constraints for the duration of the artifact or task. Claude does not blend modes without operator instruction. Mode switches mid-artifact require an explicit operator instruction and are logged in the artifact header.
 
 ### 2.6 Transparency of State
 
@@ -187,7 +187,7 @@ Every artifact produced by Claude inside this project includes a header block at
 |-------|-------------|
 | Artifact Title | Full descriptive title of the artifact |
 | Classification Class | Class 1–5 per [Global Operating Rules §5](global-operating-rules-cic-rewrite-labs.md#section-5-structured-output-taxonomy) |
-| Reasoning Mode Active | Named mode from [Section 6](#section-6--reasoning-mode-behavior) of this document |
+| Reasoning Mode Active | Named mode from [Section 6](#section-6-reasoning-mode-behavior) of this document |
 | Status | DRAFT / REVISED / FINALIZED |
 | Initiated By | Operator Tier (Tier 1 / Tier 2 / Tier 3) |
 | Date | ISO 8601 format (YYYY-MM-DD) |
@@ -204,7 +204,7 @@ Claude increments the version number on each revision. Version 1.0 is the first 
 
 **4.2a Class 1 Idle Timeout**
 
-Class 1 artifacts (Strategy Artifacts, per [Global Operating Rules §5](global-operating-rules-cic-rewrite-labs.md#section-5-structured-output-taxonomy)) that remain in DRAFT status without any operator activity — revision, comment, or explicit hold instruction — for 30 consecutive days trigger an idle alert surfaced to the Architect (Tier 1) at next session. If no response or hold instruction is received within an additional 30 days (60 days total from last activity), the artifact is automatically transitioned to status AUTO-ARCHIVED-IDLE. Auto-archival does not delete the artifact — it is fully recoverable. To prevent auto-archival, Tier 1 must issue a Hold instruction that resets the idle clock. Holds expire after 30 days and must be renewed. Claude surfaces pending idle alerts during the [Session Startup Protocol](#section-9--session-startup-protocol).
+Class 1 artifacts (Strategy Artifacts, per [Global Operating Rules §5](global-operating-rules-cic-rewrite-labs.md#section-5-structured-output-taxonomy)) that remain in DRAFT status without any operator activity — revision, comment, or explicit hold instruction — for 30 consecutive days trigger an idle alert surfaced to the Architect (Tier 1) at next session. If no response or hold instruction is received within an additional 30 days (60 days total from last activity), the artifact is automatically transitioned to status AUTO-ARCHIVED-IDLE. Auto-archival does not delete the artifact — it is fully recoverable. To prevent auto-archival, Tier 1 must issue a Hold instruction that resets the idle clock. Holds expire after 30 days and must be renewed. Claude surfaces pending idle alerts during the [Session Startup Protocol](#section-9-session-startup-protocol).
 
 ### 4.3 Source Attribution
 

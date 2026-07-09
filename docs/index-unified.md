@@ -200,7 +200,7 @@ docs/
 1. **Configure Logging** → [Configuration & Logging Standards](reference/configuration-logging.md)
 2. **Dashboard Spec** → docs/item-2-observability-dashboard-spec.md (full spec)
 3. **Metrics & Alerts** → [Configuration & Logging: Prometheus](reference/configuration-logging.md#prometheus-metrics-export)
-4. **Pipeline Monitoring** → [Pipeline Architecture: Observability](reference/pipeline-architecture.md#observability--monitoring)
+4. **Pipeline Monitoring** → [Pipeline Architecture: Observability](reference/pipeline-architecture.md#observability-monitoring)
 
 ---
 

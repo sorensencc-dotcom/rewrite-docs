@@ -23,4 +23,4 @@ Referenced by:
 
 ---
 
-**Dashboards:** See [observability/](../dashboards/)
+**Dashboards:** Navigate to the observability directory in the project root.

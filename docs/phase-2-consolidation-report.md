@@ -53,7 +53,7 @@ Phase 2 consolidation targeted the 3 highest-similarity pairs from the Critical 
 - Users navigating roadmap will find index; users building graph will find spec
 
 **Actions Taken:**
-- ✅ Added "See Also: [Unified Index](../index-unified.md)" to item-6-knowledge-graph.md frontmatter
+- ✅ Added "See Also: [Unified Index](index-unified.md)" to item-6-knowledge-graph.md frontmatter
 - ✅ Added backlink in Knowledge Graph frontmatter pointing to index
 - ✅ Added "See Also:" in index Item 6 section pointing to item-6-knowledge-graph.md
 

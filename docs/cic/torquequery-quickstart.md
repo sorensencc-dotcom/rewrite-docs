@@ -304,7 +304,7 @@ c:\dev\
 
 ### 2. Understand the Rules
 - Read [TORQUEQUERY_BUILD_SUMMARY.md](torquequery-build-summary.md) for architecture
-- Review [rewrite-mcp/services/torquequery-mcp\README.md](rewrite-mcp/services/torquequery-mcp\README.md)
+- Review `README.md`
 - Check test cases in `src/integration.test.ts`
 
 ### 3. Integrate with Your Project
@@ -349,8 +349,8 @@ c:\dev\
 ### Documentation
 - [MCP Tool Reference](torquequery-mcp-reference.md)
 - [Build Summary](torquequery-build-summary.md)
-- [Validation Guide](rewrite-mcp/services/torquequery-mcp\VALIDATION.md)
-- [README](rewrite-mcp/services/torquequery-mcp\README.md)
+- `Validation Guide`
+- `README`
 
 ### Testing
 - Run: `npm test`

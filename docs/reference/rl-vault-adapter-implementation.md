@@ -261,4 +261,4 @@ Instrumented via `metricsExporter`:
 - [CIC-OS Doc Unification](../meta/cic-os-doc-unification-2026-07-03.md) — 25-doc manifest validation
 - [RL Vault Manifest](../rewrite-labs/rl-vault-manifest.json) — source of truth for sync
 - [Weekly Sync Procedure](../operations/weekly-sync.md) — step 9 runs this adapter
-- [Drift Domain Registration](../lib/drift.ts) — RL vault domain config
+- `Drift Domain Registration` — RL vault domain config

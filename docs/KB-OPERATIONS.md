@@ -55,7 +55,7 @@ tags:
 | **Skill Dev** | index-unified.md → Skill Framework | reference/skill-framework.md → item-5-skill-generator.md |
 | **Architecture** | index-unified.md → CIC Architecture | reference/pipeline-architecture.md → item-6-knowledge-graph.md |
 | **Dashboard** | index-unified.md → Observability | item-2-observability-dashboard-spec.md → reference/configuration-logging.md |
-| **Governance** | This file (KB-OPERATIONS.md) | CLAUDE.md → Consolidation Status |
+| **Governance** | This file (kb-operations.md) | CLAUDE.md → Consolidation Status |
 
 ---
 
@@ -286,7 +286,7 @@ grep -r "reference/configuration-logging.md" docs/
 # Find all markdown links in docs/
 for file in docs/**/*.md; do
   while IFS= read -r line; do
-    if [[ $line =~ \]\(([^)]+)\) ]]; then
+    if [[ $line =~ /]/(([^)]+)\) ]]; then
       path="${BASH_REMATCH[1]}"
       if [[ ! $path =~ ^http ]]; then  # Skip external links
         # Resolve relative path
@@ -317,7 +317,7 @@ done
 
 ### Broken Link? → Check File Path
 
-**Error:** "404: [reference/config-logging.md](reference/config-logging.md) not found"
+**Error:** "404: `reference/config-logging.md` not found"
 
 **Solution:**
 1. Open `C:\dev\docs\reference\` in explorer

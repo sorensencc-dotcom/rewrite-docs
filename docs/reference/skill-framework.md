@@ -571,7 +571,7 @@ export QDRANT_URL=http://localhost:6333
 ```
 
 Q: What validation rules apply?
-A: See [CIC_ENV_REFERENCE.md](../../../cic-ref/CIC_ENV_REFERENCE.md) for complete rules.
+A: See [CIC_ENV_REFERENCE.md](../cic-ref/CIC_ENV_REFERENCE.md) for complete rules.
 ```
 ```
 

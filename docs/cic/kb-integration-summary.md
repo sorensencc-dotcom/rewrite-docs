@@ -142,8 +142,8 @@ Master table of contents linking both systems.
 ## CIC Architecture (Hand-Curated)
 - [Overview](cic/overview.md)
 - [Agents](cic/agents.md)
-  - Related: [Agent API Reference](../../docs/api/agents.md)
-  - Related: [Agent Manifests](../../docs/reference/manifests.md)
+  - Related: [Agent API Reference](../api/agents.md)
+  - Related: [Agent Manifests](../reference/manifests.md)
 ...
 
 ## Code & Operations (Auto-Generated)

@@ -91,7 +91,7 @@ MCP protocol server wrapping substrate HTTP API:
    - Deployment (Docker, Kubernetes)
    - Related services
 
-6. **[services/cic-substrate\schema.sql](services/cic-substrate\schema.sql)**
+6. **`schema.sql`**
    - PostgreSQL schema
    - Table definitions (tq_chunks, tq_vectors)
    - Indexes (GIN for tags, IVFFLAT for vectors)
@@ -409,11 +409,11 @@ See [TORQUEQUERY_QUICKSTART.md](torquequery-quickstart.md#troubleshooting) for d
 ### For Developers
 1. Start with [TORQUEQUERY_QUICKSTART.md](torquequery-quickstart.md)
 2. Review [TORQUEQUERY_BUILD_SUMMARY.md](torquequery-build-summary.md) for architecture
-3. Read [README.md](rewrite-mcp/services/torquequery-mcp\README.md) for deep dive
+3. Read `README.md` for deep dive
 4. Check test cases in `src/integration.test.ts` for examples
 
 ### For Operators
-1. Read [VALIDATION.md](rewrite-mcp/services/torquequery-mcp\VALIDATION.md) for operations
+1. Read `VALIDATION.md` for operations
 2. Review deployment options in README.md
 3. Set up monitoring with Prometheus/Grafana
 4. Configure alerting for critical metrics
