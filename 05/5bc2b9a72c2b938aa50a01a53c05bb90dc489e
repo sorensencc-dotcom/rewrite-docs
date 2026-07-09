@@ -1,0 +1,211 @@
+docs/cic/index.md
+  s_d7cf3f52438588::t_069586d2df4160 100-101
+docs/cic/phase-26-loop-runbook.md
+  s_0710a0017e5320::t_b8a324e3fc5bc2 1-7
+docs/cic/phase-27-wave-f-architecture.md
+  s_eaf7b68a8592fd::t_96e427692778a0 1-7
+docs/cic/phase-27-wave-f-fixtures.md
+  s_eaf7b68a8592fd::t_661eb31d8bd547 1-7
+docs/cic/phase-27-wave-f-rollback.md
+  s_eaf7b68a8592fd::t_601ee8b752be01 1-7
+docs/cic/phase-27-wave-f-runbook.md
+  s_eaf7b68a8592fd::t_7ed9b53ee05478 1-7
+docs/cic/phase-27-wave-f-ship-checklist.md
+  s_eaf7b68a8592fd::t_aee16e89628535 1-7
+docs/cic/phase-27-wave-f-summary.md
+  s_eaf7b68a8592fd::t_e9c0d7178eaf37 1-7
+docs/cic/phase-27-wave-f-troubleshooting.md
+  s_eaf7b68a8592fd::t_9f8df351c8be0a 1-7
+docs/cic/research-skill/SKILL.md
+  s_f14d68f9e97598::t_bc7bf295400978 37,49-51,72
+docs/cic/six-rules-framework.md
+  s_9df6068d39c023::t_f80a9769173517 1-7
+docs/meta/BROKEN-LINKS-ACTION-PLAN.md
+  s_9df6068d39c023::t_be92b4a12cf351 1-7
+docs/meta/artifact-versions-manifest.md
+  s_fdad444b9111a2::t_f27e237e78698f 1-7
+docs/meta/broken-links-report.md
+  s_9df6068d39c023::t_eb376e63038eb1 1-7
+docs/meta/claude-project-instructions-artifact-first.md
+  s_fdad444b9111a2::t_8f9d975da23bac 1-7
+docs/meta/global-operating-rules-cic-rewrite-labs.md
+  s_fdad444b9111a2::t_9fd272a641d4e8 1-7
+docs/meta/governance-artifacts-index.md
+  s_fdad444b9111a2::t_33f17cf582ff5c 1-7
+docs/meta/repository-policy-audit-plan.md
+  s_1c4d69115e72f8::t_54be9da9c5f283 1-7
+docs/operations/logging-policy.md
+  s_1c4d69115e72f8::t_8e3f88291fc324 1-7
+docs/operations/roadmap-runner.md
+  s_d7cf3f52438588::t_7b1e730e3d6ea3 1-7
+docs/operations/weekly-sync.md
+  s_4e6550832e2b51::t_51695110760559 1-7
+docs/reference/DOCKER-QUICKSTART.md
+  s_d7cf3f52438588::t_63323cd8c2ba85 1-7
+docs/rewrite-labs/vault-automation-setup.md
+  s_f6cb7aa404ec09::t_c96a132d9dbabd 206-210
+docs/roadmaps/cic-roadmap.md
+  s_cdc3386f388452::t_96f004e69dd945 1-7
+docs/roadmaps/rewrite-labs-roadmap.md
+  s_d7cf3f52438588::t_7e322f49e69988 1-7
+docs/roadmaps/tickets/repository-policy-audit.md
+  s_1c4d69115e72f8::t_3a793d4898b788 1-7
+docs/roadmaps/unified-roadmap.md
+  s_ba7881dc85f037::t_d0bbc280a4550c 1-7
+docs/systems/index.md
+  s_d7cf3f52438588::t_eb3d39b240d502 1-7
+docs/api/autonomy.md
+  s_eaf7b68a8592fd::t_c37e336475dfc2 1-7
+docs/autonomy-model.md
+  s_eaf7b68a8592fd::t_97e0a7cad6fe5b 1-7
+docs/cic-ref/AGENTS.md
+  s_eaf7b68a8592fd::t_22a3258a328154 1-7
+docs/cic-ref/AGENTS_API.md
+  s_eaf7b68a8592fd::t_776f3ae9fd50f4 1-7
+docs/cic-ref/BUILD-SUMMARY.md
+  s_eaf7b68a8592fd::t_3779c5cd9504e6 1-7
+docs/cic-ref/CIC_ENV_REFERENCE.md
+  s_eaf7b68a8592fd::t_dbbd068ac398a4 1-7
+docs/cic-ref/CIC_RUNTIME_OBSERVABILITY_PLAN.md
+  s_eaf7b68a8592fd::t_358013cb282b7e 1-7
+docs/cic-ref/CIC_TOKEN_PACK_v2_0_FULL_LIST.md
+  s_eaf7b68a8592fd::t_dcd9070b9ca329 1-7
+docs/cic-ref/ROADMAP.md
+  s_eaf7b68a8592fd::t_a0a990be46d85c 1-7
+docs/cic-system.md
+  s_eaf7b68a8592fd::t_13239a2a706234 1-7
+docs/cic/kb-integration-summary.md
+  s_eaf7b68a8592fd::t_e0d93eb0a06059 143-144,165
+docs/cic/notebooklm-telemetry-dashboard-spec.md
+  s_eaf7b68a8592fd::t_f39bfe9ea91350 1-7
+docs/cic/phase-27-ingestion-autonomy-locked.md
+  s_eaf7b68a8592fd::t_ab4fb36bf7b413 1-7
+docs/cic/use-case-library.md
+  s_eaf7b68a8592fd::t_1da6d40427822c 33-35,37-39,41-42,44-45,47
+docs/index-unified.md
+  s_eaf7b68a8592fd::t_8704bf266e5dc6 27,39,47
+docs/meta/cic-os-doc-unification-2026-07-03.md
+  s_eaf7b68a8592fd::t_a63203f23d2e77 1-7
+docs/operations/monitoring.md
+  s_eaf7b68a8592fd::t_8d5109657d14f9 1-7
+docs/operations/runbook.md
+  s_eaf7b68a8592fd::t_df9fedf254bcdf 1-7
+docs/operations/running.md
+  s_eaf7b68a8592fd::t_71db1de97274e1 1-7
+docs/operations/sealing.md
+  s_eaf7b68a8592fd::t_db358c241c0581 1-7
+docs/reference/DOCKER.md
+  s_eaf7b68a8592fd::t_55885102bb8e2c 1-7
+docs/reference/IMPLEMENTATION-SETUP.md
+  s_eaf7b68a8592fd::t_3c4a9928e4be19 277-278,366-367,372-373,378-379,384-385
+docs/reference/SETUP-CHECKLIST.md
+  s_eaf7b68a8592fd::t_ab2178149cdbe9 366,370-371,390-391,407,461,489,492,500
+docs/reference/architecture.md
+  s_eaf7b68a8592fd::t_6ca03726506c51 1-7
+docs/reference/cowork-mcp-integration-spec.md
+  s_eaf7b68a8592fd::t_f6cc6061ab2ed6 30-31,35,39,45,49,53,58-62
+docs/reference/environment.md
+  s_eaf7b68a8592fd::t_179a650ecc69d8 1-7
+docs/reference/post-migration-checklist.md
+  s_eaf7b68a8592fd::t_9403738e5da72c 141,161-162
+docs/rewrite-labs-system.md
+  s_eaf7b68a8592fd::t_9c1317a5dcaed5 1-7
+docs/rl-ref/index.md
+  s_eaf7b68a8592fd::t_ccc4ba0a8cf0db 1-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "055bc2b9a72c2b938aa50a01a53c05bb90dc489e",
+  "prompts": {},
+  "sessions": {
+    "s_0710a0017e5320": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e9242950-293a-40b7-8715-26c8fb6b3114",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_1c4d69115e72f8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cf82daf4-0894-43b2-b27e-084c92dd3848",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_4e6550832e2b51": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3dc4e968-5918-4920-abac-fb18557321da",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_9df6068d39c023": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd3a8b0d-47f8-4f0f-a511-393c978880be",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_ba7881dc85f037": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e00ee7f9-6395-4540-bb93-3693150b37bd",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_cdc3386f388452": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5fe81b8c-c66a-4140-8b7d-2061a674ad2f",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_d7cf3f52438588": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "50db806c-7e83-4e0a-812c-4638509f8e5a",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_eaf7b68a8592fd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0547e723-ba1b-434f-bf82-37e8f88c2262",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_f14d68f9e97598": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "51c7a00d-9063-4347-bf8d-a5fb6932e34f",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_f6cb7aa404ec09": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1553d0db-a31f-4b86-9499-fa528e956eb3",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_fdad444b9111a2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "21537be3-fd36-4fb8-a827-ca3c332f85db",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
