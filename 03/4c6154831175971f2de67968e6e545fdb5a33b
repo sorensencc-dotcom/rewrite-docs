@@ -1,0 +1,23 @@
+docs/cic/use-case-library.md
+  s_b373d71e8d6906::t_67c0002aee69b8 1-865
+docs/reference/cowork-mcp-integration-spec.md
+  s_b373d71e8d6906::t_2d6e0a53833236 1-490
+docs/roadmaps/notebooklm-v12-roadmap-addendum.md
+  s_b373d71e8d6906::t_a110fcbfc9b7e4 1-384
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "034c6154831175971f2de67968e6e545fdb5a33b",
+  "prompts": {},
+  "sessions": {
+    "s_b373d71e8d6906": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e4e5e6ec-886f-4214-93ff-c8b21970b341",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
