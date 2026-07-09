@@ -124,6 +124,8 @@ nav:
           - Autonomous Fusion Runner: roadmaps/tickets/batch-5/autonomous-fusion-runner.md
           - CIC Evolution Engine V2: roadmaps/tickets/batch-5/cic-evolution-engine-v2.md
           - CIC Evolution Runner V2: roadmaps/tickets/batch-5/cic-evolution-runner-v2.md
+      - Backlog (Medium Priority):
+          - Repository Policy & Audit Framework: roadmaps/tickets/repository-policy-audit.md
   - Integration:
       - Overview: integration/index.md
       - CIC ↔ RL Cross-Reference: reference/cic-rl-cross-reference.md
