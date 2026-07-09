@@ -1,0 +1,25 @@
+castironforge/torque-query/src/main.py
+  s_fe4a607b589077::t_bbcf94959498a4 16-17,599-680
+castironforge/torque-query/src/rag/notebooklm_client.py
+  s_fe4a607b589077::t_04d4a2834ddde2 1-87
+castironforge/torque-query/src/rag/rrf.py
+  s_fe4a607b589077::t_67f2c1d240149d 1-46
+castironforge/torque-query/tests/test_torquequery_notebooklm.py
+  s_fe4a607b589077::t_715062ee31c5ee 1-54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "82a8ac913599df835ce92ca74c7be27d662ac042",
+  "prompts": {},
+  "sessions": {
+    "s_fe4a607b589077": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a3b4a99-5f1a-480f-a4ab-8ef682040cbc",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
