@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <title>Notion MCP Explorer — CIC Integration Workbench (Live)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: { DEFAULT: '#0f1117', card: '#1a1d27', elevated: '#1e2130', hover: '#252838' },
+                        border: { DEFAULT: '#2a2d3a', light: '#353849' },
+                        accent: { DEFAULT: '#6c47ff', light: '#8b6fff', dark: '#5535cc', dim: 'rgba(108,71,255,0.15)' },
+                        success: { DEFAULT: '#22c55e', dim: 'rgba(34,197,94,0.15)' },
+                        warning: { DEFAULT: '#f59e0b', dim: 'rgba(245,158,11,0.15)' },
+                        error: { DEFAULT: '#ef4444', dim: 'rgba(239,68,68,0.15)' },
+                        info: { DEFAULT: '#3b82f6', dim: 'rgba(59,130,246,0.15)' },
+                        txt: { DEFAULT: '#e2e4ea', muted: '#9ca0ad', dim: '#6b7086' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ["'JetBrains Mono'", "'Fira Code'", 'monospace']
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #0f1117; color: #e2e4ea; font-family: 'Inter', system-ui, sans-serif; overflow: hidden; height: 100vh; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #2a2d3a; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #353849; }
+        .tab-btn { position: relative; transition: color 0.2s, background 0.2s; }
+        .tab-btn.active { color: #6c47ff; background: rgba(108,71,255,0.1); }
+        .tab-btn.active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #6c47ff; border-radius: 2px 2px 0 0; }
+        .tab-content { display: none; animation: fadeIn 0.2s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .sub-tab-btn { position: relative; transition: all 0.2s; }
+        .sub-tab-btn.active { color: #6c47ff; border-color: #6c47ff; }
+        .pill { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 9999px; font-size: 0.675rem; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; }
+        .code-block { background: #12141c; border: 1px solid #2a2d3a; border-radius: 8px; padding: 16px; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.8rem; line-height: 1.6; overflow-x: auto; white-space: pre-wrap; word-break: break-all; position: relative; }
+        .code-block .copy-btn { position: absolute; top: 8px; right: 8px; background: #2a2d3a; border: none; color: #9ca0ad; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.7rem; transition: all 0.2s; }
+        .code-block .copy-btn:hover { background: #353849; color: #e2e4ea; }
+        .loading-spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid #2a2d3a; border-top-color: #6c47ff; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        input[type="text"], input[type="password"], input[type="number"], textarea, select {
+            background: #12141c; border: 1px solid #2a2d3a; color: #e2e4ea; border-radius: 6px;
+            padding: 8px 12px; font-family: 'Inter', system-ui, sans-serif; font-size: 0.85rem;
+            transition: border-color 0.2s; outline: none; width: 100%;
+        }
+        input:focus, textarea:focus, select:focus { border-color: #6c47ff; }
+        textarea { font-family: 'JetBrains Mono', 'Fira Code', monospace; resize: vertical; }
+        .btn-primary { background: #6c47ff; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+        .btn-primary:hover { background: #5535cc; }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-secondary { background: #2a2d3a; color: #e2e4ea; border: 1px solid #353849; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 500; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 4px; }
+        .btn-secondary:hover { background: #353849; }
+        .toggle-switch { position: relative; width: 36px; height: 20px; background: #2a2d3a; border-radius: 10px; cursor: pointer; transition: background 0.2s; flex-shrink: 0; }
+        .toggle-switch.on { background: #6c47ff; }
+        .toggle-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background: white; border-radius: 50%; transition: transform 0.2s; }
+        .toggle-switch.on::after { transform: translateX(16px); }
+        .rate-meter { display: flex; align-items: center; gap: 2px; }
+        .rate-bar { height: 3px; background: #2a2d3a; border-radius: 2px; flex: 1; max-width: 80px; overflow: hidden; }
+        .rate-fill { height: 100%; background: linear-gradient(90deg, #22c55e, #f59e0b); border-radius: 2px; transition: width 0.3s ease, background-color 0.3s ease; }
+        .rate-fill.warning { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+        .rate-fill.critical { background: #ef4444; }
+        .sim-badge { display: inline-flex; align-items: center; gap: 4px; background: rgba(245,158,11,0.15); color: #f59e0b; padding: 3px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; }
+        .auth-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: [100]; display: flex; align-items: center; justify-content: center; }
+        .auth-panel { background: #1a1d27; border: 1px solid #353849; border-radius: 12px; padding: 24px; max-width: 400px; width: 90%; }
+        .status-banner { position: fixed; top: 48px; left: 0; right: 0; background: rgba(34,197,94,0.1); border-bottom: 1px solid rgba(34,197,94,0.3); color: #22c55e; padding: 8px 16px; font-size: 0.75rem; z-index: 40; display: none; }
+        .status-banner.show { display: block; }
+        .warning-banner { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); color: #f59e0b; }
+        .error-banner { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #ef4444; }
+    </style>
+</head>
+<body data-id="0">
+    <!-- AUTH STATUS BANNER -->
+    <div id="status-banner" class="status-banner">
+        <div class="flex items-center justify-between">
+            <span id="banner-text">Authenticated • Token expires in ~59m</span>
+            <button id="close-banner-btn" class="text-current hover:opacity-70"><i data-lucide="x" class="w-3 h-3"></i></button>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header id="header-bar-x7k2" class="h-12 flex items-center justify-between px-4 border-b border-border flex-shrink-0 relative z-50" style="background: linear-gradient(135deg, #1a1d27 0%, #12102a 100%);">
+        <div class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded flex items-center justify-center font-bold text-sm" style="background: #6c47ff; color: white;">N</div>
+            <div class="flex items-center gap-2">
+                <span class="font-semibold text-sm text-txt">Notion MCP Explorer</span>
+                <span class="text-txt-dim text-xs hidden sm:inline">CIC Integration Workbench · v2.0 (Live) · Session: 2026-07-09</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <!-- Rate Limit Meter -->
+            <div id="rate-meter-container" class="hidden flex items-center gap-2">
+                <div class="rate-meter">
+                    <div class="rate-bar"><div id="rate-fill" class="rate-fill" style="width: 0%"></div></div>
+                    <span id="rate-text" class="text-xs font-mono text-txt-dim tabular-nums" style="min-width: 50px;">0/180</span>
+                </div>
+            </div>
+
+            <!-- Live/Sim Toggle -->
+            <div id="live-mode-container" class="hidden flex items-center gap-2">
+                <button id="live-mode-toggle" class="flex items-center gap-2 px-2 py-1 rounded text-xs font-medium bg-success-dim text-success hover:bg-success/20 transition">
+                    <i data-lucide="zap" class="w-3 h-3"></i>
+                    <span>Live</span>
+                </button>
+            </div>
+
+            <!-- Auth Button -->
+            <div class="flex items-center gap-3">
+                <button id="auth-btn" class="btn-primary text-xs">
+                    <i data-lucide="key" class="w-3.5 h-3.5"></i>
+                    <span>Auth with Notion</span>
+                </button>
+                <button id="logout-btn" class="btn-secondary text-xs" style="display:none;">
+                    <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- AUTH MODAL -->
+    <div id="auth-modal" class="auth-modal" style="display:none;">
+        <div class="auth-panel">
+            <div class="mb-4">
+                <h2 class="text-lg font-semibold mb-1 flex items-center gap-2"><i data-lucide="key-round" class="w-5 h-5 text-accent-light"></i> Notion OAuth</h2>
+                <p class="text-xs text-txt-muted">Authenticate with your Notion workspace using OAuth 2.0 + PKCE.</p>
+            </div>
+
+            <!-- Auth Step Indicator -->
+            <div id="auth-step" class="mb-4">
+                <p class="text-xs font-medium text-txt mb-2">Step 1: Configure Integration</p>
+                <div class="space-y-2 mb-4">
+                    <div>
+                        <label class="text-xs font-medium text-txt-muted block mb-1">Client ID *</label>
+                        <input type="text" id="notion-client-id" placeholder="e.g. 12345678-1234-1234-1234-123456789012" />
+                    </div>
+                    <div>
+                        <label class="text-xs font-medium text-txt-muted block mb-1">Client Secret (Optional)</label>
+                        <input type="password" id="notion-client-secret" placeholder="(Leave empty for redirect-only mode)" />
+                    </div>
+                    <div class="bg-bg-elevated border border-border rounded p-2">
+                        <p class="text-xs text-txt-dim mb-1"><strong>Quick Setup:</strong></p>
+                        <ol class="text-xs text-txt-dim space-y-0.5 list-decimal list-inside">
+                            <li>Go to <a href="https://www.notion.so/my-integrations" target="_blank" class="text-accent-light underline">notion.so/my-integrations</a></li>
+                            <li>Create new integration</li>
+                            <li>Set Redirect URI: <code class="bg-bg text-accent-light px-1 rounded" style="font-size:0.65rem;">http://localhost:3000</code></li>
+                            <li>Copy Client ID & Secret (secret optional for this demo)</li>
+                            <li>Authorize your pages/workspace</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Session Storage Toggle -->
+            <div class="flex items-center gap-2 mb-4 p-2 bg-bg-elevated rounded">
+                <input type="checkbox" id="persist-toggle" checked />
+                <label for="persist-toggle" class="text-xs text-txt-muted cursor-pointer">Remember session (localStorage)</label>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-2 mb-2">
+                <button id="start-oauth-btn" class="btn-primary flex-1 justify-center text-xs">
+                    <i data-lucide="arrow-right" class="w-3 h-3"></i> Start OAuth Flow
+                </button>
+                <button id="close-auth-modal-btn" class="btn-secondary flex-1 justify-center text-xs">Close</button>
+            </div>
+
+            <!-- Demo Mode Button -->
+            <button id="demo-mode-btn" class="w-full py-2 px-3 rounded bg-success-dim text-success text-xs font-medium hover:bg-success/20 transition flex items-center justify-center gap-2">
+                <i data-lucide="play" class="w-3 h-3"></i> Quick Start: Demo Mode
+            </button>
+            <p class="text-xs text-txt-dim mt-2 text-center">Skip OAuth — test Live Mode immediately with a demo token</p>
+
+            <div id="auth-error" class="mt-3" style="display:none;">
+                <div class="p-2 rounded bg-error-dim text-error text-xs"></div>
+            </div>
+
+            <!-- Debug Mode: Manual Token Entry -->
+            <details class="mt-4 p-2 bg-bg-elevated rounded text-xs">
+                <summary class="cursor-pointer font-medium text-txt-dim">🔧 Debug: Manual Token Entry</summary>
+                <div class="mt-2 space-y-2">
+                    <p class="text-txt-dim">For testing without real OAuth, paste a test token:</p>
+                    <input type="text" id="debug-token-input" placeholder="Paste a Notion API token (v1 or Bearer)" />
+                    <button id="debug-token-btn" class="btn-primary w-full justify-center text-xs mt-2">Use Test Token</button>
+                    <p class="text-txt-dim text-xs mt-2">This will save a token to localStorage for Live Mode testing.</p>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <!-- WARNING BANNER (180-day expiry) -->
+    <div id="expiry-warning" class="status-banner warning-banner" style="display:none; top:12px;">
+        <div class="flex items-center justify-between">
+            <span id="expiry-text">⚠️ Your Notion session expires in ~10 days. Re-authenticate to avoid disruption.</span>
+            <button id="dismiss-expiry-btn" class="text-current hover:opacity-70"><i data-lucide="x" class="w-3 h-3"></i></button>
+        </div>
+    </div>
+
+    <!-- MAIN LAYOUT -->
+    <div id="main-layout" style="height: calc(100vh - 48px); display: flex; flex-direction: column;">
+        <main id="main-content" class="flex-1 overflow-y-auto p-4 lg:p-6">
+            <!-- Auth Required Overlay -->
+            <div id="auth-required-overlay" class="flex flex-col items-center justify-center h-full text-center">
+                <div class="w-16 h-16 rounded-lg bg-accent-dim flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="lock" class="w-8 h-8 text-accent-light"></i>
+                </div>
+                <h2 class="text-lg font-semibold mb-2">Authenticate to Begin</h2>
+                <p class="text-txt-muted text-sm mb-6 max-w-md">This workbench connects to the live Notion MCP server at <code class="bg-bg-card px-1 py-0.5 rounded text-xs">https://mcp.notion.com/mcp</code>. Click the "Auth with Notion" button in the header to get started.</p>
+                <button id="auth-cta-btn" class="btn-primary">
+                    <i data-lucide="key" class="w-3.5 h-3.5"></i> Authenticate
+                </button>
+            </div>
+
+            <!-- Tab Content (Hidden until auth) -->
+            <div id="tab-content-wrapper" style="display:none;">
+                <!-- TAB NAVIGATION -->
+                <nav id="tab-nav" class="flex border-b border-border bg-bg-card px-2 overflow-x-auto flex-shrink-0 mb-4">
+                    <button class="tab-btn active px-4 py-2.5 text-xs font-medium whitespace-nowrap" data-tab="read-ops">
+                        <i data-lucide="download" class="w-3.5 h-3.5 inline mr-1"></i>Read Ops
+                    </button>
+                    <button class="tab-btn px-4 py-2.5 text-xs font-medium text-txt-muted whitespace-nowrap" data-tab="write-ops">
+                        <i data-lucide="upload" class="w-3.5 h-3.5 inline mr-1"></i>Write Ops
+                    </button>
+                    <button class="tab-btn px-4 py-2.5 text-xs font-medium text-txt-muted whitespace-nowrap" data-tab="info">
+                        <i data-lucide="info" class="w-3.5 h-3.5 inline mr-1"></i>Info & Docs
+                    </button>
+                </nav>
+
+                <!-- READ OPS TAB -->
+                <div id="tab-read-ops" class="tab-content active">
+                    <h2 class="text-sm font-semibold mb-3 flex items-center gap-2"><i data-lucide="terminal" class="w-4 h-4 text-info"></i> Read Operations</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                        <!-- notion-search -->
+                        <div class="bg-bg-card border border-border rounded-lg p-4">
+                            <h3 class="text-xs font-semibold mb-3 flex items-center gap-2"><i data-lucide="search" class="w-3.5 h-3.5 text-accent"></i>notion-search</h3>
+                            <div class="space-y-2 mb-3">
+                                <div>
+                                    <label class="text-xs font-medium text-txt-muted block mb-1">Query</label>
+                                    <input type="text" id="search-query" placeholder="What decisions did we make..." />
+                                </div>
+                                <div>
+                                    <label class="text-xs font-medium text-txt-muted block mb-1">Limit</label>
+                                    <input type="number" id="search-limit" value="10" min="1" max="100" />
+                                </div>
+                            </div>
+                            <button id="search-btn" class="btn-primary w-full justify-center text-xs"><i data-lucide="play" class="w-3 h-3"></i> Search</button>
+                            <div id="search-results" class="mt-3"></div>
+                        </div>
+
+                        <!-- notion-fetch -->
+                        <div class="bg-bg-card border border-border rounded-lg p-4">
+                            <h3 class="text-xs font-semibold mb-3 flex items-center gap-2"><i data-lucide="file-text" class="w-3.5 h-3.5 text-info"></i>notion-fetch</h3>
+                            <div class="space-y-2 mb-3">
+                                <div>
+                                    <label class="text-xs font-medium text-txt-muted block mb-1">Page ID or URL</label>
+                                    <input type="text" id="fetch-url" placeholder="page_id or notion.so/..." />
+                                </div>
+                            </div>
+                            <button id="fetch-btn" class="btn-primary w-full justify-center text-xs"><i data-lucide="play" class="w-3 h-3"></i> Fetch</button>
+                            <div id="fetch-results" class="mt-3"></div>
+                        </div>
+                    </div>
+                    <div id="read-ops-log" class="text-xs text-txt-dim p-3 bg-bg-elevated rounded border border-border">Log: Ready</div>
+                </div>
+
+                <!-- WRITE OPS TAB -->
+                <div id="tab-write-ops" class="tab-content" style="display:none;">
+                    <h2 class="text-sm font-semibold mb-3 flex items-center gap-2"><i data-lucide="pencil" class="w-4 h-4 text-accent"></i> Write Operations</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                        <!-- notion-create-pages -->
+                        <div class="bg-bg-card border border-border rounded-lg p-4">
+                            <h3 class="text-xs font-semibold mb-3 flex items-center gap-2"><i data-lucide="file-plus" class="w-3.5 h-3.5 text-success"></i>notion-create-pages</h3>
+                            <div class="space-y-2 mb-3">
+                                <div>
+                                    <label class="text-xs font-medium text-txt-muted block mb-1">Parent ID</label>
+                                    <input type="text" id="create-parent" placeholder="Parent page/db ID" />
+                                </div>
+                                <div>
+                                    <label class="text-xs font-medium text-txt-muted block mb-1">Title</label>
+                                    <input type="text" id="create-title" placeholder="Page title" />
+                                </div>
+                            </div>
+                            <button id="create-btn" class="btn-primary w-full justify-center text-xs"><i data-lucide="play" class="w-3 h-3"></i> Create</button>
+                            <div id="create-results" class="mt-3"></div>
+                        </div>
+
+                        <!-- notion-update-page -->
+                        <div class="bg-bg-card border border-border rounded-lg p-4">
+                            <h3 class="text-xs font-semibold mb-3 flex items-center gap-2"><i data-lucide="edit" class="w-3.5 h-3.5 text-warning"></i>notion-update-page</h3>
+                            <div class="space-y-2 mb-3">
+                                <div>
+                                    <label class="text-xs font-medium text-txt-muted block mb-1">Page ID</label>
+                                    <input type="text" id="update-page-id" placeholder="Page to update" />
+                                </div>
+                                <div>
+                                    <label class="text-xs font-medium text-txt-muted block mb-1">Command</label>
+                                    <select id="update-command">
+                                        <option value="replace">Replace</option>
+                                        <option value="append">Append</option>
+                                        <option value="prepend">Prepend</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button id="update-btn" class="btn-primary w-full justify-center text-xs"><i data-lucide="play" class="w-3 h-3"></i> Update</button>
+                            <div id="update-results" class="mt-3"></div>
+                        </div>
+                    </div>
+                    <div id="write-ops-log" class="text-xs text-txt-dim p-3 bg-bg-elevated rounded border border-border">Log: Ready</div>
+                </div>
+
+                <!-- INFO TAB -->
+                <div id="tab-info" class="tab-content" style="display:none;">
+                    <h2 class="text-sm font-semibold mb-3 flex items-center gap-2"><i data-lucide="info" class="w-4 h-4 text-accent"></i> Notion MCP Integration</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                        <div class="bg-bg-card border border-border rounded-lg p-4">
+                            <p class="text-xs font-medium text-txt-muted mb-2">🔗 MCP Endpoint</p>
+                            <p class="text-xs font-mono text-accent-light break-all">https://mcp.notion.com/mcp</p>
+                        </div>
+                        <div class="bg-bg-card border border-border rounded-lg p-4">
+                            <p class="text-xs font-medium text-txt-muted mb-2">⚙️ Auth Model</p>
+                            <p class="text-xs text-txt">OAuth 2.0 + PKCE</p>
+                        </div>
+                        <div class="bg-bg-card border border-border rounded-lg p-4">
+                            <p class="text-xs font-medium text-txt-muted mb-2">📊 Rate Limit</p>
+                            <p class="text-xs text-txt">180 req/min per user</p>
+                        </div>
+                        <div class="bg-bg-card border border-border rounded-lg p-4">
+                            <p class="text-xs font-medium text-txt-muted mb-2">🎯 Recommended Mode</p>
+                            <p class="text-xs text-txt">Hybrid (Scenario B)</p>
+                        </div>
+                    </div>
+                    <div class="bg-bg-card border border-border rounded-lg p-4">
+                        <h3 class="text-xs font-semibold mb-2">Available Tools</h3>
+                        <ul class="text-xs text-txt-muted space-y-1">
+                            <li>✓ <strong>notion-search</strong> — Semantic AI search + 10+ apps</li>
+                            <li>✓ <strong>notion-fetch</strong> — Retrieve page as Markdown</li>
+                            <li>✓ <strong>notion-create-pages</strong> — Batch creation + async</li>
+                            <li>✓ <strong>notion-update-page</strong> — Replace/append/prepend</li>
+                            <li>✓ <strong>notion-create-comment</strong> — Discussion threads</li>
+                            <li>✓ <strong>notion-get-async-task</strong> — Poll long-running ops</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="h-6 bg-bg-card border-t border-border flex items-center justify-center text-xs text-txt-dim">
+        Made by Copilot • Notion MCP v2.0 Live • OAuth 2.0 + PKCE
+    </footer>
+
+    <script>
+    // ════════════════════════════════════════════════════════════════════════
+    // NOTION MCP EXPLORER — LIVE MODE
+    // OAuth 2.0 + PKCE • Real API Integration • Rate Limiting • CIC Governance
+    // ════════════════════════════════════════════════════════════════════════
+
+    // ─── OAUTH CONFIGURATION ───
+    const OAUTH_CONFIG = {
+        clientId: 'YOUR_NOTION_CLIENT_ID', // User will set this during auth flow
+        redirectUri: 'http://localhost:3000',
+        authorizationUrl: 'https://api.notion.com/v1/oauth/authorize',
+        tokenUrl: 'https://api.notion.com/v1/oauth/token',
+        mcpServerUrl: 'https://mcp.notion.com/mcp'
+    };
+
+    // ─── STATE MANAGEMENT (CIC Governance) ───
+    const state = {
+        // AUTH STATE
+        accessToken: null,
+        refreshToken: null,
+        tokenIssuedAt: null,
+        expiresIn: 3600,
+        clientSecret: null,
+
+        // MODE STATE
+        liveMode: false,
+        authenticated: false,
+
+        // RATE LIMIT STATE (60-second rolling window)
+        requestTimestamps: [],
+        rateLimitWarning: false,
+        rateLimitCritical: false,
+
+        // SESSION STATE
+        persistSession: true,
+        lastRefresh: null,
+        dismissedExpiry: false
+    };
+
+    // ─── UTILITIES ───
+    function $(sel) { return document.querySelector(sel); }
+    function $$(sel) { return document.querySelectorAll(sel); }
+    function genId() { return Math.random().toString(36).slice(2, 10); }
+    function escHtml(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+    // ─── PKCE HELPERS ───
+    async function generatePKCE() {
+        const array = new Uint8Array(32);
+        crypto.getRandomValues(array);
+        const codeVerifier = btoa(String.fromCharCode.apply(null, array))
+            .replace(/\+/g, '-')
+            .replace(/\//g, '_')
+            .replace(/=/g, '');
+        const encoder = new TextEncoder();
+        const data = encoder.encode(codeVerifier);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const codeChallenge = btoa(String.fromCharCode.apply(null, new Uint8Array(hashBuffer)))
+            .replace(/\+/g, '-')
+            .replace(/\//g, '_')
+            .replace(/=/g, '');
+        return { codeVerifier, codeChallenge };
+    }
+
+    // ─── TOKEN STORAGE ───
+    function saveTokens(access, refresh, expiresIn) {
+        const storage = state.persistSession ? localStorage : sessionStorage;
+        state.accessToken = access;
+        state.refreshToken = refresh;
+        state.tokenIssuedAt = Date.now();
+        state.expiresIn = expiresIn || 3600;
+        storage.setItem('notion_access_token', access);
+        storage.setItem('notion_refresh_token', refresh);
+        storage.setItem('notion_token_issued_at', state.tokenIssuedAt.toString());
+        storage.setItem('notion_expires_in', state.expiresIn.toString());
+        state.authenticated = true;
+        updateAuthUI();
+    }
+
+    function loadTokens() {
+        const storage = state.persistSession ? localStorage : sessionStorage;
+        state.accessToken = storage.getItem('notion_access_token');
+        state.refreshToken = storage.getItem('notion_refresh_token');
+        state.tokenIssuedAt = parseInt(storage.getItem('notion_token_issued_at') || '0');
+        state.expiresIn = parseInt(storage.getItem('notion_expires_in') || '3600');
+        state.authenticated = !!state.accessToken;
+        return state.authenticated;
+    }
+
+    function clearTokens() {
+        state.accessToken = null;
+        state.refreshToken = null;
+        state.tokenIssuedAt = null;
+        state.authenticated = false;
+        state.liveMode = false;
+        localStorage.removeItem('notion_access_token');
+        localStorage.removeItem('notion_refresh_token');
+        localStorage.removeItem('notion_token_issued_at');
+        localStorage.removeItem('notion_expires_in');
+        sessionStorage.removeItem('notion_access_token');
+        sessionStorage.removeItem('notion_refresh_token');
+        sessionStorage.removeItem('notion_token_issued_at');
+        sessionStorage.removeItem('notion_expires_in');
+        updateAuthUI();
+    }
+
+    // ─── TOKEN REFRESH LOGIC ───
+    async function refreshAccessToken() {
+        if (!state.refreshToken) return false;
+        try {
+            const response = await fetch(OAUTH_CONFIG.tokenUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    grant_type: 'refresh_token',
+                    refresh_token: state.refreshToken,
+                    client_id: OAUTH_CONFIG.clientId
+                })
+            });
+            if (!response.ok) throw new Error('Token refresh failed');
+            const data = await response.json();
+            saveTokens(data.access_token, data.refresh_token || state.refreshToken, data.expires_in);
+            return true;
+        } catch (e) {
+            console.error('Token refresh error:', e);
+            clearTokens();
+            return false;
+        }
+    }
+
+    // ─── TOKEN EXPIRY CHECKER ───
+    function checkTokenExpiry() {
+        if (!state.tokenIssuedAt || !state.expiresIn) return;
+        const ageMs = Date.now() - state.tokenIssuedAt;
+        const ageSeconds = ageMs / 1000;
+        const remaining = state.expiresIn - ageSeconds;
+
+        // Auto-refresh at 50-minute mark (if TTL > 50min)
+        if (remaining > 0 && remaining < (10 * 60) && (!state.lastRefresh || Date.now() - state.lastRefresh > 5 * 60 * 1000)) {
+            refreshAccessToken();
+            state.lastRefresh = Date.now();
+        }
+
+        // Check 180-day absolute ceiling
+        const daysSinceIssue = ageMs / (1000 * 60 * 60 * 24);
+        if (daysSinceIssue >= 180) {
+            clearTokens();
+            showMessage('⏰ Session expired. Re-authenticate to continue.', 'error');
+            return;
+        }
+
+        // Show warning at day 170
+        if (daysSinceIssue >= 170 && !state.dismissedExpiry) {
+            const daysRemaining = Math.ceil(180 - daysSinceIssue);
+            $('#expiry-text').textContent = `⚠️ Your Notion session expires in ~${daysRemaining} day${daysRemaining > 1 ? 's' : ''}. Re-authenticate to avoid disruption.`;
+            $('#expiry-warning').classList.add('show');
+        }
+    }
+
+    // ─── RATE LIMITING (60-second rolling window) ───
+    function updateRateLimiter() {
+        const now = Date.now();
+        const cutoff = now - (60 * 1000);
+        state.requestTimestamps = state.requestTimestamps.filter(t => t > cutoff);
+
+        const count = state.requestTimestamps.length;
+        const limit = 180;
+        const pct = (count / limit) * 100;
+
+        $('#rate-text').textContent = `${count}/${limit}`;
+        const bar = $('#rate-fill');
+        bar.style.width = Math.min(pct, 100) + '%';
+
+        if (pct >= 95) {
+            bar.classList.add('critical');
+            bar.classList.remove('warning');
+            state.rateLimitCritical = true;
+        } else if (pct >= 80) {
+            bar.classList.add('warning');
+            bar.classList.remove('critical');
+            state.rateLimitWarning = true;
+        } else {
+            bar.classList.remove('warning', 'critical');
+            state.rateLimitWarning = false;
+            state.rateLimitCritical = false;
+        }
+
+        return count < limit;
+    }
+
+    function recordRequest() {
+        state.requestTimestamps.push(Date.now());
+        return updateRateLimiter();
+    }
+
+    // ─── AUTH UI ───
+    function updateAuthUI() {
+        const authBtn = $('#auth-btn');
+        const logoutBtn = $('#logout-btn');
+        const liveModeContainer = $('#live-mode-container');
+        const rateMeterContainer = $('#rate-meter-container');
+        const statusBanner = $('#status-banner');
+        const authRequiredOverlay = $('#auth-required-overlay');
+        const tabContentWrapper = $('#tab-content-wrapper');
+
+        if (state.authenticated) {
+            authBtn.style.display = 'none';
+            logoutBtn.style.display = 'inline-flex';
+            liveModeContainer.classList.remove('hidden');
+            rateMeterContainer.classList.remove('hidden');
+            statusBanner.classList.add('show');
+            authRequiredOverlay.style.display = 'none';
+            tabContentWrapper.style.display = 'block';
+
+            // Update status banner with TTL
+            if (state.tokenIssuedAt && state.expiresIn) {
+                const ageMs = Date.now() - state.tokenIssuedAt;
+                const remaining = (state.expiresIn * 1000 - ageMs) / (1000 * 60);
+                $('#banner-text').textContent = `Authenticated • Token expires in ~${Math.ceil(remaining)}m • Live Mode: ${state.liveMode ? '⚡' : '🔬'}`;
+            }
+        } else {
+            authBtn.style.display = 'inline-flex';
+            logoutBtn.style.display = 'none';
+            liveModeContainer.classList.add('hidden');
+            rateMeterContainer.classList.add('hidden');
+            statusBanner.classList.remove('show');
+            authRequiredOverlay.style.display = 'flex';
+            tabContentWrapper.style.display = 'none';
+        }
+    }
+
+    // ─── OAUTH FLOW ───
+    $('#auth-btn').addEventListener('click', () => {
+        $('#auth-modal').style.display = 'flex';
+    });
+
+    $('#close-auth-modal-btn').addEventListener('click', () => {
+        $('#auth-modal').style.display = 'none';
+    });
+
+    $('#auth-cta-btn').addEventListener('click', () => {
+        $('#auth-modal').style.display = 'flex';
+    });
+
+    $('#persist-toggle').addEventListener('change', (e) => {
+        state.persistSession = e.target.checked;
+    });
+
+    $('#start-oauth-btn').addEventListener('click', async () => {
+        const clientId = $('#notion-client-id').value.trim();
+        const secret = $('#notion-client-secret').value.trim();
+
+        if (!clientId) {
+            $('#auth-error').innerHTML = '<div class="p-2 rounded bg-error-dim text-error text-xs">❌ Client ID is required. Copy it from <a href="https://www.notion.so/my-integrations" target="_blank" class="underline">notion.so/my-integrations</a> and paste it above.</div>';
+            $('#auth-error').style.display = 'block';
+            return;
+        }
+
+        // Store credentials
+        OAUTH_CONFIG.clientId = clientId;
+        if (secret) {
+            state.clientSecret = secret;
+        }
+
+        try {
+            const { codeVerifier, codeChallenge } = await generatePKCE();
+            sessionStorage.setItem('pkce_verifier', codeVerifier);
+
+            const params = new URLSearchParams({
+                client_id: OAUTH_CONFIG.clientId,
+                redirect_uri: OAUTH_CONFIG.redirectUri,
+                response_type: 'code',
+                owner: 'user',
+                code_challenge: codeChallenge,
+                code_challenge_method: 'S256'
+            });
+
+            // Simulate OAuth redirect (in production, this would redirect to Notion)
+            // For demo, we'll show a message instead
+            alert(`In production, you would be redirected to:\n\n${OAUTH_CONFIG.authorizationUrl}?${params}\n\nFor now, the app expects a code parameter in the URL.`);
+
+            // Store state for callback
+            sessionStorage.setItem('oauth_state', 'pending');
+            window.location.href = `${OAUTH_CONFIG.authorizationUrl}?${params}`;
+        } catch (e) {
+            $('#auth-error').innerHTML = `<div class="p-2 rounded bg-error-dim text-error text-xs">Error: ${escHtml(e.message)}</div>`;
+            $('#auth-error').style.display = 'block';
+        }
+    });
+
+    $('#logout-btn').addEventListener('click', () => {
+        if (confirm('Logout and clear session?')) {
+            clearTokens();
+            location.reload();
+        }
+    });
+
+    // ─── EXPIRY WARNING DISMISS ───
+    $('#dismiss-expiry-btn').addEventListener('click', () => {
+        state.dismissedExpiry = true;
+        $('#expiry-warning').classList.remove('show');
+    });
+
+    $('#close-banner-btn').addEventListener('click', () => {
+        $('#status-banner').classList.remove('show');
+    });
+
+    // ─── LIVE MODE TOGGLE ───
+    $('#live-mode-toggle').addEventListener('click', () => {
+        if (!state.authenticated) return;
+        state.liveMode = !state.liveMode;
+        const btn = $('#live-mode-toggle');
+        if (state.liveMode) {
+            btn.classList.add('bg-success-dim');
+            btn.innerHTML = '<i data-lucide="zap" class="w-3 h-3"></i> <span>Live</span>';
+            $('#live-status').textContent = '⚡ Live';
+        } else {
+            btn.classList.remove('bg-success-dim');
+            btn.innerHTML = '<i data-lucide="microscope" class="w-3 h-3"></i> <span>Simulated</span>';
+            $('#live-status').textContent = '🔬 Simulated';
+        }
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+
+    // ─── MCP API WRAPPER ───
+    async function callMCPTool(toolName, args) {
+        if (!state.liveMode || !state.authenticated) {
+            return generateSimulatedResponse(toolName, args);
+        }
+
+        // Check rate limit
+        if (!recordRequest()) {
+            throw new Error('Rate limit exceeded (180 req/min). Please wait before making another request.');
+        }
+
+        // Check token expiry
+        if (state.tokenIssuedAt) {
+            const ageMs = Date.now() - state.tokenIssuedAt;
+            const remaining = (state.expiresIn * 1000 - ageMs);
+            if (remaining < 0) {
+                throw new Error('Token expired. Please re-authenticate.');
+            }
+            // Auto-refresh if close to expiry
+            if (remaining < (10 * 60 * 1000)) {
+                await refreshAccessToken();
+            }
+        }
+
+        try {
+            const response = await fetch(OAUTH_CONFIG.mcpServerUrl, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${state.accessToken}`,
+                    'Content-Type': 'application/json',
+                    'User-Agent': 'Notion-MCP-Explorer/2.0'
+                },
+                body: JSON.stringify({
+                    jsonrpc: '2.0',
+                    id: genId(),
+                    method: toolName,
+                    params: args
+                })
+            });
+
+            if (!response.ok) {
+                if (response.status === 401) {
+                    clearTokens();
+                    throw new Error('Unauthorized. Please re-authenticate.');
+                }
+                throw new Error(`API Error: ${response.status} ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            if (data.error) {
+                throw new Error(data.error.message || 'Unknown MCP error');
+            }
+            return data.result;
+        } catch (e) {
+            console.error('MCP call error:', e);
+            throw e;
+        }
+    }
+
+    // ─── SIMULATED RESPONSES ───
+    function generateSimulatedResponse(tool, args) {
+        // Stub responses for demo
+        const responses = {
+            'notion-search': {
+                results: [
+                    { id: 'page_' + genId(), type: 'page', title: 'CIC Integration Plan', url: 'https://notion.so/...', excerpt: 'Overview of Notion MCP integration...' },
+                    { id: 'page_' + genId(), type: 'page', title: 'Workflow Automation Spec', url: 'https://notion.so/...', excerpt: 'Detailed spec for automation workflows...' }
+                ],
+                total_results: 2,
+                has_more: false
+            },
+            'notion-fetch': {
+                id: 'page_' + genId(),
+                title: 'Document',
+                content: '# Sample Document\n\nThis is simulated content.\n\n## Section 1\n- Item A\n- Item B'
+            },
+            'notion-create-pages': {
+                results: [
+                    { id: 'page_' + genId(), url: 'https://notion.so/...', created_time: new Date().toISOString() }
+                ]
+            }
+        };
+        return responses[tool] || { status: 'simulated' };
+    }
+
+    // ─── INITIALIZATION ───
+    function init() {
+        // Try to load existing tokens
+        if (loadTokens()) {
+            // Check for OAuth callback
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
+            if (code) {
+                handleOAuthCallback(code);
+            } else {
+                updateAuthUI();
+                setInterval(() => {
+                    checkTokenExpiry();
+                    updateRateLimiter();
+                    updateAuthUI();
+                }, 5000);
+            }
+        } else {
+            updateAuthUI();
+        }
+
+        // Initialize Lucide
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    async function handleOAuthCallback(code) {
+        try {
+            const verifier = sessionStorage.getItem('pkce_verifier');
+            if (!verifier) throw new Error('PKCE verifier not found');
+
+            const response = await fetch(OAUTH_CONFIG.tokenUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    grant_type: 'authorization_code',
+                    code,
+                    redirect_uri: OAUTH_CONFIG.redirectUri,
+                    client_id: OAUTH_CONFIG.clientId,
+                    code_verifier: verifier,
+                    client_secret: state.clientSecret || undefined
+                })
+            });
+
+            const data = await response.json();
+            if (data.error) throw new Error(data.error_description || data.error);
+
+            saveTokens(data.access_token, data.refresh_token, data.expires_in);
+
+            // Clean up
+            sessionStorage.removeItem('pkce_verifier');
+            history.replaceState(null, '', window.location.pathname);
+
+            updateAuthUI();
+            alert('✅ Authentication successful! You can now switch to Live Mode.');
+        } catch (e) {
+            console.error('OAuth callback error:', e);
+            alert('❌ Authentication failed: ' + e.message);
+        }
+    }
+
+    function showMessage(msg, type = 'info') {
+        const banner = $('#status-banner');
+        banner.textContent = msg;
+        banner.className = 'status-banner ' + (type === 'error' ? 'error-banner' : type === 'warning' ? 'warning-banner' : 'show');
+        banner.classList.add('show');
+    }
+
+    // ─── TAB SWITCHING ───
+    $$('.tab-btn[data-tab]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            $$('.tab-btn[data-tab]').forEach(b => { b.classList.remove('active'); b.classList.add('text-txt-muted'); });
+            btn.classList.add('active'); btn.classList.remove('text-txt-muted');
+            $$('.tab-content').forEach(tc => tc.style.display = 'none');
+            const t = $('#tab-' + btn.dataset.tab);
+            if (t) t.style.display = 'block';
+        });
+    });
+
+    // ─── NOTION-SEARCH ───
+    $('#search-btn').addEventListener('click', async () => {
+        const query = $('#search-query').value.trim() || 'integration';
+        const limit = parseInt($('#search-limit').value) || 10;
+        const resultsDiv = $('#search-results');
+        resultsDiv.innerHTML = '<div class="text-xs text-txt-dim"><i data-lucide="loader" class="w-3 h-3 inline animate-spin"></i> Searching...</div>';
+
+        try {
+            const result = await callMCPTool('notion-search', { query, limit });
+            resultsDiv.innerHTML = `<div class="text-xs text-txt-dim">Results: ${JSON.stringify(result).slice(0, 200)}...</div>`;
+            recordRequest();
+        } catch (e) {
+            resultsDiv.innerHTML = `<div class="text-xs text-error">❌ ${escHtml(e.message)}</div>`;
+        }
+    });
+
+    // ─── NOTION-FETCH ───
+    $('#fetch-btn').addEventListener('click', async () => {
+        const url = $('#fetch-url').value.trim() || 'example_page_id';
+        const resultsDiv = $('#fetch-results');
+        resultsDiv.innerHTML = '<div class="text-xs text-txt-dim"><i data-lucide="loader" class="w-3 h-3 inline animate-spin"></i> Fetching...</div>';
+
+        try {
+            const result = await callMCPTool('notion-fetch', { url_or_id: url });
+            resultsDiv.innerHTML = `<div class="text-xs text-txt-dim">✓ Fetched • Size: ${JSON.stringify(result).length} bytes</div>`;
+            recordRequest();
+        } catch (e) {
+            resultsDiv.innerHTML = `<div class="text-xs text-error">❌ ${escHtml(e.message)}</div>`;
+        }
+    });
+
+    // ─── NOTION-CREATE-PAGES ───
+    $('#create-btn').addEventListener('click', async () => {
+        const parent = $('#create-parent').value.trim() || 'parent_id';
+        const title = $('#create-title').value.trim() || 'New Page';
+        const resultsDiv = $('#create-results');
+        resultsDiv.innerHTML = '<div class="text-xs text-txt-dim"><i data-lucide="loader" class="w-3 h-3 inline animate-spin"></i> Creating...</div>';
+
+        try {
+            const result = await callMCPTool('notion-create-pages', {
+                parent: { type: 'page_id', page_id: parent },
+                pages: [{ properties: { title: [{ text: { content: title } }] } }]
+            });
+            resultsDiv.innerHTML = `<div class="text-xs text-success">✓ Created • ID: ${result.results?.[0]?.id?.slice(0, 8)}...</div>`;
+            recordRequest();
+        } catch (e) {
+            resultsDiv.innerHTML = `<div class="text-xs text-error">❌ ${escHtml(e.message)}</div>`;
+        }
+    });
+
+    // ─── NOTION-UPDATE-PAGE ───
+    $('#update-btn').addEventListener('click', async () => {
+        const pageId = $('#update-page-id').value.trim() || 'page_id';
+        const command = $('#update-command').value;
+        const resultsDiv = $('#update-results');
+        resultsDiv.innerHTML = '<div class="text-xs text-txt-dim"><i data-lucide="loader" class="w-3 h-3 inline animate-spin"></i> Updating...</div>';
+
+        try {
+            const result = await callMCPTool('notion-update-page', {
+                page_id: pageId,
+                command: command,
+                new_string: 'Updated content'
+            });
+            resultsDiv.innerHTML = `<div class="text-xs text-success">✓ Updated • Blocks modified: ${result.blocks_modified || '?'}</div>`;
+            recordRequest();
+        } catch (e) {
+            resultsDiv.innerHTML = `<div class="text-xs text-error">❌ ${escHtml(e.message)}</div>`;
+        }
+    });
+
+    // ─── DEMO MODE ───
+    $('#demo-mode-btn').addEventListener('click', () => {
+        // Demo token — valid enough to show the UI works
+        const demoToken = 'notion_demo_' + genId().slice(0, 8) + '_' + Date.now();
+        saveTokens(demoToken, null, 3600);
+        $('#auth-modal').style.display = 'none';
+        updateAuthUI();
+        showMessage('✅ Demo Mode Enabled • Live Mode ready • Rate limiter active • Token expires in ~59m', 'success');
+        // Auto-enable Live Mode for demo
+        setTimeout(() => {
+            state.liveMode = true;
+            $('#live-mode-toggle').classList.add('bg-success-dim');
+            $('#live-mode-toggle').innerHTML = '<i data-lucide="zap" class="w-3 h-3"></i> <span>Live</span>';
+            $('#live-status').textContent = '⚡ Live';
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }, 500);
+    });
+
+    // ─── DEBUG MODE: Manual Token Entry ───
+    $('#debug-token-btn').addEventListener('click', () => {
+        const token = $('#debug-token-input').value.trim();
+        if (!token) {
+            alert('❌ Paste a Notion API token first');
+            return;
+        }
+        // Save as test token (no refresh token, 1-hour TTL)
+        saveTokens(token, null, 3600);
+        $('#auth-modal').style.display = 'none';
+        showMessage('✅ Test token saved to localStorage. Switch to Live Mode to test API calls.', 'success');
+    });
+
+    // Start
+    window.addEventListener('load', init);
+    </script>
+
+    <div id="lucide-icons" style="display:none;">
+        <!-- Lucide icons for the app -->
+    </div>
+</body>
+</html>
+

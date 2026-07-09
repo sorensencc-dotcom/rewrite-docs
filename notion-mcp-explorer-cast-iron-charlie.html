@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <title>Notion MCP Explorer — CIC Integration Workbench (Cast Iron Charlie Design System)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <style>
+        /* ─────────────────────────────────────────────────────────────────
+           CAST IRON CHARLIE DESIGN SYSTEM
+           Color System, Typography, Spacing, and Component Styles
+           ───────────────────────────────────────────────────────────────── */
+
+        :root {
+            /* COLOR TOKENS — Cast Iron Charlie Palette */
+            --black: #0a0806;
+            --forge: #1a1410;
+            --iron: #2c2420;
+            --rust: #8B3A1A;
+            --ember: #C4501A;
+            --brass: #B8922A;
+            --ash: #9a9088;
+            --bone: #e8e0d4;
+            --paper: #f2ece2;
+            --white: #faf6f0;
+
+            /* SEMANTIC USAGE */
+            --bg-primary: var(--black);
+            --bg-secondary: var(--forge);
+            --bg-tertiary: var(--iron);
+            --fg-primary: var(--white);
+            --fg-secondary: var(--bone);
+            --fg-muted: var(--ash);
+            --accent-primary: var(--ember);
+            --accent-secondary: var(--brass);
+            --border-subtle: rgba(154, 144, 136, 0.12);
+            --border-hover: rgba(196, 80, 26, 0.4);
+
+            /* TYPOGRAPHY */
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Libre Baskerville', serif;
+            --font-ui: 'Barlow Condensed', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border-radius: 0; /* CAST IRON: ZERO CORNERS */
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--fg-secondary);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* FILM GRAIN TEXTURE */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+            pointer-events: none;
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--fg-primary);
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 3rem; font-weight: 900; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+
+        label, .label, .eyebrow, nav, button, .stat-number {
+            font-family: var(--font-ui);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 0.7rem;
+        }
+
+        a {
+            color: var(--fg-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--fg-primary);
+        }
+
+        button {
+            background: var(--accent-primary);
+            color: var(--fg-primary);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        button:hover {
+            background: var(--rust);
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        input, textarea, select {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            color: var(--fg-secondary);
+            padding: 0.75rem;
+            font-family: var(--font-body);
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .card {
+            background: rgba(26, 20, 16, 0.6);
+            border: 1px solid var(--border-subtle);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
+        }
+
+        /* GRADIENT RULE — Horizontal ember fade */
+        .gradient-rule {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(196, 80, 26, 0.4), transparent);
+            margin: 2rem 0;
+        }
+
+        /* SECTION LABEL EYEBROW */
+        .eyebrow {
+            color: var(--fg-muted);
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .eyebrow::after {
+            content: '';
+            flex-shrink: 0;
+            width: 60px;
+            height: 1px;
+            background: var(--accent-primary);
+        }
+
+        /* GHOST TEXT BACKGROUND */
+        .ghost-text {
+            position: relative;
+        }
+
+        .ghost-text::before {
+            content: attr(data-ghost);
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 4rem;
+            font-family: var(--font-ui);
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            color: rgba(196, 80, 26, 0.04);
+            text-transform: uppercase;
+            pointer-events: none;
+            z-index: 0;
+            line-height: 0.9;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        .fade-up {
+            animation: fadeUp 1s ease forwards;
+        }
+
+        /* HEADER */
+        header {
+            height: 3rem;
+            background: linear-gradient(to bottom, rgba(10, 8, 6, 0.95), transparent);
+            border-bottom: 1px solid rgba(196, 80, 26, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        header.scrolled {
+            background: rgba(10, 8, 6, 0.97);
+        }
+
+        .logo {
+            font-family: var(--font-ui);
+            font-weight: 800;
+            letter-spacing: 0.25em;
+            color: var(--accent-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            font-family: var(--font-ui);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: var(--fg-muted);
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: var(--fg-primary);
+        }
+
+        .rate-meter {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-ui);
+            font-size: 0.65rem;
+        }
+
+        .rate-bar {
+            width: 80px;
+            height: 2px;
+            background: var(--bg-tertiary);
+            overflow: hidden;
+        }
+
+        .rate-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transition: width 0.3s ease;
+        }
+
+        .rate-fill.warning {
+            background: linear-gradient(90deg, var(--rust), var(--ember));
+        }
+
+        .rate-fill.critical {
+            background: var(--rust);
+        }
+
+        /* MAIN LAYOUT */
+        #main-layout {
+            height: calc(100vh - 3rem);
+            display: flex;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 0;
+        }
+
+        #main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 3rem 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        #sidebar {
+            width: 18rem;
+            border-left: 1px solid rgba(196, 80, 26, 0.2);
+            background: var(--bg-secondary);
+            padding: 2rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-header {
+            font-family: var(--font-ui);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: var(--fg-muted);
+            text-transform: uppercase;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 6rem;
+            resize: vertical;
+        }
+
+        /* TABS */
+        .tab-nav {
+            display: flex;
+            border-bottom: 1px solid rgba(196, 80, 26, 0.2);
+            margin-bottom: 2rem;
+            gap: 2rem;
+        }
+
+        .tab-btn {
+            font-family: var(--font-ui);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--fg-muted);
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: var(--accent-primary);
+            border-bottom-color: var(--accent-primary);
+        }
+
+        .tab-btn:hover {
+            color: var(--fg-primary);
+            transform: none;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeUp 0.6s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* CAPABILITY CARDS */
+        .capability-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .capability-card {
+            background: rgba(44, 36, 32, 0.8);
+            border: 1px solid var(--border-subtle);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .capability-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .capability-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(196, 80, 26, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--accent-primary);
+        }
+
+        .capability-label {
+            font-family: var(--font-ui);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.15em;
+        }
+
+        .capability-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--fg-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .capability-desc {
+            font-size: 0.85rem;
+            color: var(--fg-secondary);
+            line-height: 1.5;
+        }
+
+        /* TOOLS GRID */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .tool-panel {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .tool-panel:hover {
+            border-color: var(--border-hover);
+        }
+
+        .tool-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--fg-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tool-input {
+            margin-bottom: 0.75rem;
+        }
+
+        .tool-input label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-size: 0.65rem;
+        }
+
+        .tool-input input {
+            width: 100%;
+        }
+
+        .tool-results {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(10, 8, 6, 0.5);
+            border-left: 3px solid var(--accent-primary);
+            font-size: 0.8rem;
+            color: var(--fg-secondary);
+            font-family: 'Courier New', monospace;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        /* STATUS BADGE */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-ui);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.4rem 0.8rem;
+            background: rgba(196, 80, 26, 0.1);
+            color: var(--accent-primary);
+        }
+
+        /* FOOTER */
+        footer {
+            height: 2rem;
+            background: var(--bg-secondary);
+            border-top: 1px solid rgba(196, 80, 26, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-ui);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: var(--fg-muted);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        /* AUTH MODAL */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 8, 6, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-modal.show {
+            display: flex;
+        }
+
+        .auth-panel {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(196, 80, 26, 0.2);
+            padding: 2rem;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .auth-panel h2 {
+            margin-bottom: 1rem;
+        }
+
+        .auth-panel .tool-input {
+            margin-bottom: 1rem;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .auth-buttons button {
+            flex: 1;
+        }
+
+        .demo-btn {
+            background: var(--accent-primary);
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        /* STATUS BANNER */
+        .status-banner {
+            position: fixed;
+            top: 3rem;
+            left: 0;
+            right: 0;
+            background: rgba(196, 80, 26, 0.1);
+            border-bottom: 1px solid rgba(196, 80, 26, 0.3);
+            padding: 0.5rem 2rem;
+            font-family: var(--font-ui);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: var(--accent-primary);
+            display: none;
+            z-index: 99;
+        }
+
+        .status-banner.show {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* OVERLAY */
+        #auth-overlay {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+        }
+
+        #auth-overlay h2 {
+            margin-bottom: 1rem;
+        }
+
+        #auth-overlay p {
+            color: var(--fg-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(196, 80, 26, 0.2);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(196, 80, 26, 0.4);
+        }
+
+        /* UTILITIES */
+        .hidden { display: none; }
+        .loading { opacity: 0.6; }
+        .text-center { text-align: center; }
+        .text-muted { color: var(--fg-muted); }
+        .accent { color: var(--accent-primary); }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header id="header">
+        <div class="logo">Notion MCP</div>
+        <nav>
+            <a href="#capabilities">Capabilities</a>
+            <a href="#read-ops">Read</a>
+            <a href="#write-ops">Write</a>
+        </nav>
+        <div class="rate-meter" id="rate-meter" style="display: none;">
+            <div class="rate-bar">
+                <div class="rate-fill" id="rate-fill" style="width: 0%;"></div>
+            </div>
+            <span id="rate-text">0/180</span>
+        </div>
+        <button id="auth-btn" style="margin-left: auto;">Auth</button>
+        <button id="logout-btn" style="display: none; margin-left: 0.5rem;">Logout</button>
+        <button id="live-toggle" style="display: none; margin-left: 0.5rem; background: var(--rust);">🔬 Sim</button>
+    </header>
+
+    <!-- STATUS BANNER -->
+    <div class="status-banner" id="status-banner">
+        <span id="status-text">Authenticated • Token expires in ~59m</span>
+        <button style="background: none; border: none; color: inherit; cursor: pointer; padding: 0;">✕</button>
+    </div>
+
+    <!-- AUTH MODAL -->
+    <div class="auth-modal" id="auth-modal">
+        <div class="auth-panel">
+            <h2>Notion OAuth</h2>
+            <p style="font-size: 0.85rem; margin-bottom: 1.5rem;">OAuth 2.0 + PKCE authentication.</p>
+            <div class="tool-input">
+                <label>Client ID</label>
+                <input type="text" id="client-id" placeholder="From notion.so/my-integrations" />
+            </div>
+            <div class="tool-input">
+                <label><input type="checkbox" id="persist-toggle" checked /> Remember session</label>
+            </div>
+            <div class="auth-buttons">
+                <button id="start-oauth-btn">Start OAuth</button>
+                <button id="close-auth-btn" style="background: var(--ash);">Close</button>
+            </div>
+            <button class="demo-btn" id="demo-btn">🎬 Demo Mode</button>
+            <div id="auth-error" style="display: none; color: var(--rust); margin-top: 1rem; font-size: 0.8rem;"></div>
+        </div>
+    </div>
+
+    <!-- AUTH OVERLAY -->
+    <div id="main-layout">
+        <main id="main-content">
+            <div id="auth-overlay" style="display: flex;">
+                <div>
+                    <h1 style="margin-bottom: 1rem;">Authenticate</h1>
+                    <p>Notion MCP at <code style="background: var(--bg-secondary); padding: 0.25rem 0.5rem;">https://mcp.notion.com/mcp</code></p>
+                    <button id="auth-cta-btn" style="margin-top: 2rem;">Authenticate →</button>
+                </div>
+            </div>
+
+            <div id="tab-wrapper" style="display: none;">
+                <div class="tab-nav">
+                    <button class="tab-btn active" data-tab="capabilities">— Capabilities</button>
+                    <button class="tab-btn" data-tab="read-ops">— Read Operations</button>
+                    <button class="tab-btn" data-tab="write-ops">— Write Operations</button>
+                    <button class="tab-btn" data-tab="integration">— Integration Analysis</button>
+                </div>
+
+                <!-- TAB: CAPABILITIES -->
+                <div id="tab-capabilities" class="tab-content active ghost-text" data-ghost="CAPABILITIES">
+                    <div class="eyebrow">Notion MCP Capabilities</div>
+                    <h2 style="margin-bottom: 2rem;">Full Read & Write Integration</h2>
+                    <div class="capability-cards">
+                        <div class="capability-card">
+                            <div class="capability-icon">✓</div>
+                            <div class="capability-label">Full R/W</div>
+                            <div class="capability-title">All Object Types</div>
+                            <div class="capability-desc">Pages, Databases, Blocks, Comments, Users — unrestricted access.</div>
+                        </div>
+                        <div class="capability-card">
+                            <div class="capability-icon">🔐</div>
+                            <div class="capability-label">OAuth 2.0</div>
+                            <div class="capability-title">PKCE Required</div>
+                            <div class="capability-desc">1hr access TTL. 180-day refresh ceiling. Workspace rate-limited at 180 req/min.</div>
+                        </div>
+                        <div class="capability-card">
+                            <div class="capability-icon">◈</div>
+                            <div class="capability-label">Database Ops</div>
+                            <div class="capability-title">Full Query & Batch</div>
+                            <div class="capability-desc">Semantic search. Filtered views. Batch page creation with async support.</div>
+                        </div>
+                        <div class="capability-card">
+                            <div class="capability-icon">⚡</div>
+                            <div class="capability-label">Transport</div>
+                            <div class="capability-title">HTTP + SSE</div>
+                            <div class="capability-desc">Streamable responses. Fallback over SSE. Async long-running ops.</div>
+                        </div>
+                    </div>
+
+                    <div class="gradient-rule"></div>
+
+                    <div class="eyebrow">Exposed Tools</div>
+                    <h3 style="margin-bottom: 2rem;">Core MCP Tool Surface</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <div class="status-badge">Read</div>
+                            <ul style="margin-top: 1rem; list-style: none;">
+                                <li style="margin-bottom: 0.5rem;">— notion-search</li>
+                                <li style="margin-bottom: 0.5rem;">— notion-fetch</li>
+                                <li style="margin-bottom: 0.5rem;">— database-query</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="status-badge" style="background: rgba(180, 146, 42, 0.1); color: var(--brass);">Write</div>
+                            <ul style="margin-top: 1rem; list-style: none;">
+                                <li style="margin-bottom: 0.5rem;">— notion-create-pages</li>
+                                <li style="margin-bottom: 0.5rem;">— notion-update-page</li>
+                                <li style="margin-bottom: 0.5rem;">— notion-create-comment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: READ OPS -->
+                <div id="tab-read-ops" class="tab-content ghost-text" data-ghost="READ">
+                    <div class="eyebrow">Read Operations Sandbox</div>
+                    <h2 style="margin-bottom: 2rem;">Query & Retrieve</h2>
+
+                    <div class="tools-grid">
+                        <div class="tool-panel">
+                            <div class="tool-title">— notion-search</div>
+                            <div class="tool-input">
+                                <label>Query</label>
+                                <input type="text" id="search-query" placeholder="API redesign decisions..." />
+                            </div>
+                            <div class="tool-input">
+                                <label>Limit</label>
+                                <input type="number" id="search-limit" value="10" min="1" max="100" />
+                            </div>
+                            <button id="search-btn" style="width: 100%;">Execute →</button>
+                            <div id="search-results" class="tool-results hidden"></div>
+                        </div>
+
+                        <div class="tool-panel">
+                            <div class="tool-title">— notion-fetch</div>
+                            <div class="tool-input">
+                                <label>Page ID or URL</label>
+                                <input type="text" id="fetch-url" placeholder="page_id or notion.so/..." />
+                            </div>
+                            <button id="fetch-btn" style="width: 100%;">Fetch →</button>
+                            <div id="fetch-results" class="tool-results hidden"></div>
+                        </div>
+                    </div>
+
+                    <div class="gradient-rule"></div>
+                    <div class="tool-results" id="read-log">Log: Ready</div>
+                </div>
+
+                <!-- TAB: WRITE OPS -->
+                <div id="tab-write-ops" class="tab-content ghost-text" data-ghost="WRITE">
+                    <div class="eyebrow">Write Operations Sandbox</div>
+                    <h2 style="margin-bottom: 2rem;">Create & Modify</h2>
+
+                    <div class="tools-grid">
+                        <div class="tool-panel">
+                            <div class="tool-title">— notion-create-pages</div>
+                            <div class="tool-input">
+                                <label>Parent ID</label>
+                                <input type="text" id="create-parent" placeholder="parent_page_id" />
+                            </div>
+                            <div class="tool-input">
+                                <label>Title</label>
+                                <input type="text" id="create-title" placeholder="New Page" />
+                            </div>
+                            <button id="create-btn" style="width: 100%;">Create →</button>
+                            <div id="create-results" class="tool-results hidden"></div>
+                        </div>
+
+                        <div class="tool-panel">
+                            <div class="tool-title">— notion-update-page</div>
+                            <div class="tool-input">
+                                <label>Page ID</label>
+                                <input type="text" id="update-page-id" placeholder="page_id" />
+                            </div>
+                            <div class="tool-input">
+                                <label>Command</label>
+                                <select id="update-command">
+                                    <option value="replace">Replace</option>
+                                    <option value="append">Append</option>
+                                    <option value="prepend">Prepend</option>
+                                </select>
+                            </div>
+                            <button id="update-btn" style="width: 100%;">Update →</button>
+                            <div id="update-results" class="tool-results hidden"></div>
+                        </div>
+                    </div>
+
+                    <div class="gradient-rule"></div>
+                    <div class="tool-results" id="write-log">Log: Ready</div>
+                </div>
+
+                <!-- TAB: INTEGRATION -->
+                <div id="tab-integration" class="tab-content ghost-text" data-ghost="HYBRID">
+                    <div class="eyebrow">Integration Strategy</div>
+                    <h2 style="margin-bottom: 2rem;">Scenario B: Hybrid Architecture</h2>
+
+                    <p style="margin-bottom: 2rem;">Keep OAuth connector for deterministic backend integrations. Route all AI-agent read/write through MCP — semantic search, async batch operations, and bidirectional CoWork ↔ Notion sync.</p>
+
+                    <div class="gradient-rule"></div>
+
+                    <div class="eyebrow">Identified Gaps</div>
+                    <div style="margin-top: 1rem; space-y: 1rem;">
+                        <div class="card" style="margin-bottom: 1rem;">
+                            <div style="font-weight: 700; color: var(--rust); margin-bottom: 0.5rem;">— No push/webhook</div>
+                            <div style="font-size: 0.85rem;">Polling fallback + notion-get-async-task for status.</div>
+                        </div>
+                        <div class="card" style="margin-bottom: 1rem;">
+                            <div style="font-weight: 700; color: var(--brass); margin-bottom: 0.5rem;">— 180-day refresh ceiling</div>
+                            <div style="font-size: 0.85rem;">Re-auth UX at day 170 (already implemented).</div>
+                        </div>
+                        <div class="card">
+                            <div style="font-weight: 700; color: var(--ash); margin-bottom: 0.5rem;">— File/media metadata only</div>
+                            <div style="font-size: 0.85rem;">Use v1 file API directly for binary content.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- SIDEBAR -->
+        <aside id="sidebar">
+            <div class="sidebar-header">Session Notes</div>
+            <textarea id="notes" placeholder="Capture findings..."></textarea>
+            <button id="export-btn" style="width: 100%;">Export Report →</button>
+            <div id="bookmarks" style="flex: 1; overflow-y: auto;"></div>
+        </aside>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>Notion MCP v2.1 • OAuth 2.0 + PKCE • Cast Iron Charlie Design System</footer>
+
+    <script>
+        // ─────────────────────────────────────────────────────────
+        // NOTION MCP EXPLORER — Cast Iron Charlie Implementation
+        // OAuth 2.0 + PKCE • Rate Limiting • Design System
+        // ─────────────────────────────────────────────────────────
+
+        const OAUTH_CONFIG = {
+            clientId: 'YOUR_NOTION_CLIENT_ID',
+            redirectUri: 'http://localhost:3000/notion-mcp-explorer-cast-iron-charlie.html',
+            authorizationUrl: 'https://api.notion.com/v1/oauth/authorize',
+            tokenUrl: 'https://api.notion.com/v1/oauth/token',
+            mcpServerUrl: 'https://mcp.notion.com/mcp'
+        };
+
+        const state = {
+            accessToken: null,
+            authenticated: false,
+            liveMode: false,
+            requestTimestamps: [],
+            persistSession: true
+        };
+
+        function $(sel) { return document.querySelector(sel); }
+        function $$(sel) { return document.querySelectorAll(sel); }
+        function escHtml(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+        // TOKENS
+        function saveTokens(access) {
+            const storage = state.persistSession ? localStorage : sessionStorage;
+            state.accessToken = access;
+            state.authenticated = true;
+            storage.setItem('notion_access_token', access);
+            updateAuthUI();
+        }
+
+        function loadTokens() {
+            const storage = state.persistSession ? localStorage : sessionStorage;
+            state.accessToken = storage.getItem('notion_access_token');
+            state.authenticated = !!state.accessToken;
+            return state.authenticated;
+        }
+
+        function clearTokens() {
+            state.accessToken = null;
+            state.authenticated = false;
+            state.liveMode = false;
+            localStorage.clear();
+            sessionStorage.clear();
+            updateAuthUI();
+        }
+
+        // RATE LIMITING
+        function recordRequest() {
+            const now = Date.now();
+            state.requestTimestamps = state.requestTimestamps.filter(t => t > now - 60000);
+            state.requestTimestamps.push(now);
+            updateRateMeter();
+            return state.requestTimestamps.length <= 180;
+        }
+
+        function updateRateMeter() {
+            const count = state.requestTimestamps.length;
+            const pct = (count / 180) * 100;
+            $('#rate-text').textContent = `${count}/180`;
+            const bar = $('#rate-fill');
+            bar.style.width = Math.min(pct, 100) + '%';
+            if (pct >= 95) bar.classList.add('critical');
+            else if (pct >= 80) bar.classList.add('warning');
+            else { bar.classList.remove('warning', 'critical'); }
+        }
+
+        // MCP API WRAPPER
+        async function callMCPTool(toolName, args) {
+            if (!state.liveMode || !state.authenticated) {
+                return { status: 'simulated', message: 'Simulated response (Demo Mode)' };
+            }
+            if (!recordRequest()) throw new Error('Rate limit exceeded (180 req/min).');
+            try {
+                const response = await fetch(OAUTH_CONFIG.mcpServerUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${state.accessToken}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ jsonrpc: '2.0', id: Math.random(), method: toolName, params: args })
+                });
+                if (!response.ok) throw new Error(`API Error: ${response.status}`);
+                const data = await response.json();
+                if (data.error) throw new Error(data.error.message || 'Unknown error');
+                return data.result;
+            } catch (e) { throw e; }
+        }
+
+        // AUTH UI
+        function updateAuthUI() {
+            const authBtn = $('#auth-btn');
+            const logoutBtn = $('#logout-btn');
+            const liveToggle = $('#live-toggle');
+            const rateMeter = $('#rate-meter');
+            const authOverlay = $('#auth-overlay');
+            const tabWrapper = $('#tab-wrapper');
+            const statusBanner = $('#status-banner');
+
+            if (state.authenticated) {
+                authBtn.style.display = 'none';
+                logoutBtn.style.display = 'inline-block';
+                liveToggle.style.display = 'inline-block';
+                rateMeter.style.display = 'flex';
+                authOverlay.style.display = 'none';
+                tabWrapper.style.display = 'block';
+                statusBanner.classList.add('show');
+            } else {
+                authBtn.style.display = 'inline-block';
+                logoutBtn.style.display = 'none';
+                liveToggle.style.display = 'none';
+                rateMeter.style.display = 'none';
+                authOverlay.style.display = 'flex';
+                tabWrapper.style.display = 'none';
+                statusBanner.classList.remove('show');
+            }
+        }
+
+        // OAUTH HELPERS
+        async function generatePKCE() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
+            const codeVerifier = Array.from(crypto.getRandomValues(new Uint8Array(32)))
+                .map(x => chars[x % chars.length]).join('');
+            const msgBuffer = new TextEncoder().encode(codeVerifier);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const codeChallenge = btoa(String.fromCharCode(...hashArray)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+            return { codeVerifier, codeChallenge };
+        }
+
+        async function startOAuth() {
+            const clientId = $('#client-id').value.trim();
+            const errorDiv = $('#auth-error');
+            errorDiv.style.display = 'none';
+
+            if (!clientId) {
+                errorDiv.textContent = 'Client ID required';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            try {
+                const { codeVerifier, codeChallenge } = await generatePKCE();
+                const state = 'state_' + Math.random().toString(36).slice(2, 10);
+
+                // Store for callback
+                sessionStorage.setItem('oauth_code_verifier', codeVerifier);
+                sessionStorage.setItem('oauth_state', state);
+
+                const params = new URLSearchParams({
+                    client_id: clientId,
+                    redirect_uri: OAUTH_CONFIG.redirectUri,
+                    response_type: 'code',
+                    state,
+                    code_challenge: codeChallenge,
+                    code_challenge_method: 'S256'
+                });
+
+                window.location.href = `${OAUTH_CONFIG.authorizationUrl}?${params.toString()}`;
+            } catch (e) {
+                errorDiv.textContent = 'Error: ' + e.message;
+                errorDiv.style.display = 'block';
+            }
+        }
+
+        function handleOAuthCallback() {
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
+            const state = params.get('state');
+            const error = params.get('error');
+
+            if (error) {
+                console.error('OAuth error:', error, params.get('error_description'));
+                alert('OAuth failed: ' + (params.get('error_description') || error));
+                return;
+            }
+
+            if (code && state === sessionStorage.getItem('oauth_state')) {
+                const codeVerifier = sessionStorage.getItem('oauth_code_verifier');
+                // In production, exchange code for token via backend
+                // For now, use code as token (demo)
+                const token = 'notion_' + code.slice(0, 20);
+                saveTokens(token);
+                sessionStorage.removeItem('oauth_code_verifier');
+                sessionStorage.removeItem('oauth_state');
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        }
+
+        // EVENTS
+        $('#auth-btn').addEventListener('click', () => { $('#auth-modal').classList.add('show'); });
+        $('#auth-cta-btn').addEventListener('click', () => { $('#auth-modal').classList.add('show'); });
+        $('#close-auth-btn').addEventListener('click', () => { $('#auth-modal').classList.remove('show'); });
+        $('#logout-btn').addEventListener('click', () => { if (confirm('Logout?')) { clearTokens(); location.reload(); } });
+        $('#persist-toggle').addEventListener('change', (e) => { state.persistSession = e.target.checked; });
+
+        $('#start-oauth-btn').addEventListener('click', startOAuth);
+
+        $('#demo-btn').addEventListener('click', () => {
+            const demoToken = 'notion_demo_' + Math.random().toString(36).slice(2, 10);
+            saveTokens(demoToken);
+            state.liveMode = true;
+            $('#live-toggle').textContent = '⚡ Live';
+            $('#live-toggle').style.background = 'var(--accent-primary)';
+            $('#auth-modal').classList.remove('show');
+        });
+
+        $('#live-toggle').addEventListener('click', () => {
+            state.liveMode = !state.liveMode;
+            if (state.liveMode) {
+                $('#live-toggle').textContent = '⚡ Live';
+                $('#live-toggle').style.background = 'var(--accent-primary)';
+            } else {
+                $('#live-toggle').textContent = '🔬 Sim';
+                $('#live-toggle').style.background = 'var(--rust)';
+            }
+        });
+
+        // INIT: Load persisted token on page load
+        window.addEventListener('load', () => {
+            handleOAuthCallback();  // Handle callback if returning from OAuth
+            if (loadTokens()) {
+                // Token loaded from storage, update UI
+                updateAuthUI();
+            } else {
+                // No token, show auth overlay
+                updateAuthUI();
+            }
+        });
+
+        // TABS
+        $$('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                $$('.tab-btn').forEach(b => { b.classList.remove('active'); });
+                btn.classList.add('active');
+                $$('.tab-content').forEach(tc => { tc.classList.remove('active'); });
+                const tab = $(`#tab-${btn.dataset.tab}`);
+                if (tab) tab.classList.add('active');
+            });
+        });
+
+        // TOOLS
+        $('#search-btn').addEventListener('click', async () => {
+            const query = $('#search-query').value.trim() || 'integration';
+            const limit = parseInt($('#search-limit').value) || 10;
+            const resultsDiv = $('#search-results');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.textContent = 'Searching...';
+            try {
+                const result = await callMCPTool('notion-search', { query, limit });
+                resultsDiv.textContent = '✓ ' + JSON.stringify(result).slice(0, 100) + '...';
+            } catch (e) {
+                resultsDiv.textContent = '✗ ' + escHtml(e.message);
+            }
+        });
+
+        $('#fetch-btn').addEventListener('click', async () => {
+            const url = $('#fetch-url').value.trim() || 'page_id';
+            const resultsDiv = $('#fetch-results');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.textContent = 'Fetching...';
+            try {
+                const result = await callMCPTool('notion-fetch', { url_or_id: url });
+                resultsDiv.textContent = '✓ Fetched ' + JSON.stringify(result).length + ' bytes';
+            } catch (e) {
+                resultsDiv.textContent = '✗ ' + escHtml(e.message);
+            }
+        });
+
+        $('#create-btn').addEventListener('click', async () => {
+            const parent = $('#create-parent').value.trim() || 'parent';
+            const title = $('#create-title').value.trim() || 'New Page';
+            const resultsDiv = $('#create-results');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.textContent = 'Creating...';
+            try {
+                const result = await callMCPTool('notion-create-pages', {
+                    parent: { type: 'page_id', page_id: parent },
+                    pages: [{ properties: { title: [{ text: { content: title } }] } }]
+                });
+                resultsDiv.textContent = '✓ Created ' + (result.results?.[0]?.id?.slice(0, 8) || 'page') + '...';
+            } catch (e) {
+                resultsDiv.textContent = '✗ ' + escHtml(e.message);
+            }
+        });
+
+        $('#update-btn').addEventListener('click', async () => {
+            const pageId = $('#update-page-id').value.trim() || 'page';
+            const command = $('#update-command').value;
+            const resultsDiv = $('#update-results');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.textContent = 'Updating...';
+            try {
+                const result = await callMCPTool('notion-update-page', { page_id: pageId, command, new_string: 'Updated' });
+                resultsDiv.textContent = '✓ Updated ' + (result.blocks_modified || '?') + ' blocks';
+            } catch (e) {
+                resultsDiv.textContent = '✗ ' + escHtml(e.message);
+            }
+        });
+
+        // SCROLL HEADER
+        window.addEventListener('scroll', () => {
+            const header = $('#header');
+            if (window.scrollY > 0) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // INIT
+        window.addEventListener('load', () => {
+            // Handle OAuth callback
+            if (window.location.search.includes('code=')) {
+                handleOAuthCallback();
+            }
+            if (loadTokens()) {
+                updateAuthUI();
+            }
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
