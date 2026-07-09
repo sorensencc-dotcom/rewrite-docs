@@ -34,6 +34,7 @@ nav:
       - Welcome: onboarding/index.md
       - Global Operating Rules: meta/global-operating-rules-cic-rewrite-labs.md
       - Claude Project Instructions: meta/claude-project-instructions-artifact-first.md
+      - Governance Artifacts: meta/governance-artifacts-index.md
   - Getting Started:
       - Quickstart: quickstart/index.md
       - Installation: quickstart/installation.md
@@ -141,6 +142,9 @@ nav:
       - Drift Engine: cic/driftengine.md
       - Replay Harness: cic/replayharness.md
       - Phase 26 Loop Runbook: cic/phase-26-loop-runbook.md
+      - NotebookLM Adapter Spec: cic/notebooklm-adapter-spec.md
+      - TorqueQuery NotebookLM Spec: cic/torquequery-notebooklm-spec.md
+      - NotebookLM Integration Plan: cic/notebooklm-integration-plan.md
       - Research Skill:
           - Overview: cic/research-skill/skill.md
           - Test Results:
@@ -179,6 +183,7 @@ nav:
           - Vault Setup: rewrite-labs/rl-vault-setup.md
           - Vault README: rewrite-labs/vault-readme.md
           - Sync Configuration: rewrite-labs/vault-sync-configuration.md
+          - NotebookLM Workflow: rewrite-labs/notebooklm-workflow.md
   - Gateway:
       - API & State Store: gateway/adaptergatewayapi.md
       - Providers Configuration: gateway/providers.md
@@ -246,6 +251,7 @@ nav:
       - Toolforge: reference/toolforge.md
       - Services: reference/services.md
       - System Index Builder (Planned): reference/system-index-builder.md
+      - NotebookLM MCP Architecture: reference/notebooklm-mcp-architecture.md
   - Knowledge Base Consolidation:
       - Unified Index: index-unified.md
       - Inventory: meta/consolidation-inventory.md
