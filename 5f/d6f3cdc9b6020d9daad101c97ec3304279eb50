@@ -1,0 +1,19 @@
+CLAUDE.md
+  s_1a1a7bd82e663a::t_89ff08fada3279 18-27,98,127
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "5fd6f3cdc9b6020d9daad101c97ec3304279eb50",
+  "prompts": {},
+  "sessions": {
+    "s_1a1a7bd82e663a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9863b2fd-59cf-441a-be01-b23152a03f2a",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
