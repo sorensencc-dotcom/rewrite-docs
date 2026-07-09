@@ -1,0 +1,19 @@
+castironforge/torque-query/storage/chroma/8edc82ae-5e95-4dec-8e21-ebbc0a9e0655/length.bin
+  s_fe4a607b589077::t_4410eefc9cf861 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "3e98a3929228f0e231a0cee6a9cfdf65606da1a9",
+  "prompts": {},
+  "sessions": {
+    "s_fe4a607b589077": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a3b4a99-5f1a-480f-a4ab-8ef682040cbc",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
