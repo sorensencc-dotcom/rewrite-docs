@@ -4,17 +4,17 @@
       "path": "docs\\consolidation-report.md",
       "title": "Knowledge Base Consolidation Report \u2014 Phase 1",
       "common_topics": [
-        "api",
-        "security",
-        "performance",
         "data",
-        "batch",
-        "logging",
-        "testing",
-        "config",
-        "auth",
         "agent",
-        "pipeline"
+        "api",
+        "pipeline",
+        "config",
+        "batch",
+        "performance",
+        "logging",
+        "auth",
+        "testing",
+        "security"
       ],
       "overlap_count": 11
     },
@@ -22,17 +22,17 @@
       "path": "docs\\item-7-memory-governance-framework.md",
       "title": "ITEM 7: MEMORY + VAULT FUSION GOVERNANCE FRAMEWORK",
       "common_topics": [
-        "api",
-        "security",
-        "performance",
         "data",
-        "batch",
-        "logging",
-        "testing",
-        "config",
-        "auth",
         "agent",
-        "pipeline"
+        "api",
+        "pipeline",
+        "config",
+        "batch",
+        "performance",
+        "logging",
+        "auth",
+        "testing",
+        "security"
       ],
       "overlap_count": 11
     },
@@ -40,17 +40,17 @@
       "path": "docs\\architecture\\overview.md",
       "title": "Architecture Overview",
       "common_topics": [
-        "api",
-        "security",
-        "performance",
         "data",
-        "batch",
-        "logging",
-        "testing",
-        "config",
-        "auth",
         "agent",
-        "pipeline"
+        "api",
+        "pipeline",
+        "config",
+        "batch",
+        "performance",
+        "logging",
+        "auth",
+        "testing",
+        "security"
       ],
       "overlap_count": 11
     },
@@ -58,17 +58,17 @@
       "path": "docs\\cic\\phase-27-wave-f-ship-checklist.md",
       "title": "Phase 27 Wave F: Ship-Readiness Checklist",
       "common_topics": [
-        "api",
-        "security",
-        "performance",
         "data",
-        "batch",
-        "logging",
-        "testing",
-        "config",
-        "auth",
         "agent",
-        "pipeline"
+        "api",
+        "pipeline",
+        "config",
+        "batch",
+        "performance",
+        "logging",
+        "auth",
+        "testing",
+        "security"
       ],
       "overlap_count": 11
     },
@@ -76,17 +76,17 @@
       "path": "docs\\cic\\phase-27-wave-f-summary.md",
       "title": "Phase 27 Wave F: Summary & Deliverables",
       "common_topics": [
-        "api",
-        "security",
-        "performance",
         "data",
-        "batch",
-        "logging",
-        "testing",
-        "config",
-        "auth",
         "agent",
-        "pipeline"
+        "api",
+        "pipeline",
+        "config",
+        "batch",
+        "performance",
+        "logging",
+        "auth",
+        "testing",
+        "security"
       ],
       "overlap_count": 11
     }
@@ -96,18 +96,18 @@
       "path": "docs\\consolidation-report.md",
       "title": "Knowledge Base Consolidation Report \u2014 Phase 1",
       "common_topics": [
-        "api",
-        "security",
-        "performance",
-        "error",
         "data",
-        "batch",
-        "logging",
-        "testing",
-        "config",
-        "auth",
+        "error",
         "agent",
-        "pipeline"
+        "api",
+        "pipeline",
+        "config",
+        "batch",
+        "performance",
+        "logging",
+        "auth",
+        "testing",
+        "security"
       ],
       "overlap_count": 12
     },
@@ -115,18 +115,18 @@
       "path": "docs\\item-7-memory-governance-framework.md",
       "title": "ITEM 7: MEMORY + VAULT FUSION GOVERNANCE FRAMEWORK",
       "common_topics": [
-        "api",
-        "security",
-        "performance",
-        "error",
         "data",
-        "batch",
-        "logging",
-        "testing",
-        "config",
-        "auth",
+        "error",
         "agent",
-        "pipeline"
+        "api",
+        "pipeline",
+        "config",
+        "batch",
+        "performance",
+        "logging",
+        "auth",
+        "testing",
+        "security"
       ],
       "overlap_count": 12
     },
@@ -134,18 +134,18 @@
       "path": "docs\\architecture\\overview.md",
       "title": "Architecture Overview",
       "common_topics": [
-        "api",
-        "security",
-        "performance",
-        "error",
         "data",
-        "batch",
-        "logging",
-        "testing",
-        "config",
-        "auth",
+        "error",
         "agent",
-        "pipeline"
+        "api",
+        "pipeline",
+        "config",
+        "batch",
+        "performance",
+        "logging",
+        "auth",
+        "testing",
+        "security"
       ],
       "overlap_count": 12
     },
@@ -153,18 +153,18 @@
       "path": "docs\\cic\\phase-27-wave-f-ship-checklist.md",
       "title": "Phase 27 Wave F: Ship-Readiness Checklist",
       "common_topics": [
-        "api",
-        "security",
-        "performance",
-        "error",
         "data",
-        "batch",
-        "logging",
-        "testing",
-        "config",
-        "auth",
+        "error",
         "agent",
-        "pipeline"
+        "api",
+        "pipeline",
+        "config",
+        "batch",
+        "performance",
+        "logging",
+        "auth",
+        "testing",
+        "security"
       ],
       "overlap_count": 12
     },
@@ -172,18 +172,18 @@
       "path": "docs\\cic\\phase-27-wave-f-summary.md",
       "title": "Phase 27 Wave F: Summary & Deliverables",
       "common_topics": [
-        "api",
-        "security",
-        "performance",
-        "error",
         "data",
-        "batch",
-        "logging",
-        "testing",
-        "config",
-        "auth",
+        "error",
         "agent",
-        "pipeline"
+        "api",
+        "pipeline",
+        "config",
+        "batch",
+        "performance",
+        "logging",
+        "auth",
+        "testing",
+        "security"
       ],
       "overlap_count": 12
     }
@@ -193,14 +193,14 @@
       "path": "docs\\consolidation-report.md",
       "title": "Knowledge Base Consolidation Report \u2014 Phase 1",
       "common_topics": [
-        "api",
-        "security",
         "data",
+        "api",
+        "pipeline",
         "batch",
         "logging",
-        "testing",
         "auth",
-        "pipeline"
+        "testing",
+        "security"
       ],
       "overlap_count": 8
     },
@@ -208,14 +208,14 @@
       "path": "docs\\item-7-memory-governance-framework.md",
       "title": "ITEM 7: MEMORY + VAULT FUSION GOVERNANCE FRAMEWORK",
       "common_topics": [
-        "api",
-        "security",
         "data",
+        "api",
+        "pipeline",
         "batch",
         "logging",
-        "testing",
         "auth",
-        "pipeline"
+        "testing",
+        "security"
       ],
       "overlap_count": 8
     },
@@ -223,14 +223,14 @@
       "path": "docs\\mkdocs-structure-map.md",
       "title": "MkDocs Structure Map \u2014 Documentation Organization",
       "common_topics": [
-        "api",
-        "security",
         "data",
+        "api",
+        "pipeline",
         "batch",
         "logging",
-        "testing",
         "auth",
-        "pipeline"
+        "testing",
+        "security"
       ],
       "overlap_count": 8
     },
@@ -238,14 +238,14 @@
       "path": "docs\\architecture\\overview.md",
       "title": "Architecture Overview",
       "common_topics": [
-        "api",
-        "security",
         "data",
+        "api",
+        "pipeline",
         "batch",
         "logging",
-        "testing",
         "auth",
-        "pipeline"
+        "testing",
+        "security"
       ],
       "overlap_count": 8
     },
@@ -253,14 +253,14 @@
       "path": "docs\\cic\\execution-policy-phase-a-b-summary.md",
       "title": "Execution Policy System: Phase A + B Complete",
       "common_topics": [
-        "api",
-        "security",
         "data",
+        "api",
+        "pipeline",
         "batch",
         "logging",
-        "testing",
         "auth",
-        "pipeline"
+        "testing",
+        "security"
       ],
       "overlap_count": 8
     }
@@ -270,17 +270,17 @@
       "path": "docs\\consolidation-report.md",
       "title": "Knowledge Base Consolidation Report \u2014 Phase 1",
       "common_topics": [
-        "api",
-        "security",
-        "error",
         "data",
+        "error",
+        "agent",
+        "api",
+        "pipeline",
+        "config",
         "batch",
         "logging",
-        "testing",
-        "config",
         "auth",
-        "agent",
-        "pipeline"
+        "testing",
+        "security"
       ],
       "overlap_count": 11
     },
@@ -288,17 +288,17 @@
       "path": "docs\\item-7-memory-governance-framework.md",
       "title": "ITEM 7: MEMORY + VAULT FUSION GOVERNANCE FRAMEWORK",
       "common_topics": [
-        "api",
-        "security",
-        "error",
         "data",
+        "error",
+        "agent",
+        "api",
+        "pipeline",
+        "config",
         "batch",
         "logging",
-        "testing",
-        "config",
         "auth",
-        "agent",
-        "pipeline"
+        "testing",
+        "security"
       ],
       "overlap_count": 11
     },
@@ -306,17 +306,17 @@
       "path": "docs\\architecture\\overview.md",
       "title": "Architecture Overview",
       "common_topics": [
-        "api",
-        "security",
-        "error",
         "data",
+        "error",
+        "agent",
+        "api",
+        "pipeline",
+        "config",
         "batch",
         "logging",
-        "testing",
-        "config",
         "auth",
-        "agent",
-        "pipeline"
+        "testing",
+        "security"
       ],
       "overlap_count": 11
     },
@@ -324,17 +324,17 @@
       "path": "docs\\cic\\execution-policy-phase-a-b-summary.md",
       "title": "Execution Policy System: Phase A + B Complete",
       "common_topics": [
-        "api",
-        "security",
-        "error",
         "data",
+        "error",
+        "agent",
+        "api",
+        "pipeline",
+        "config",
         "batch",
         "logging",
-        "testing",
-        "config",
         "auth",
-        "agent",
-        "pipeline"
+        "testing",
+        "security"
       ],
       "overlap_count": 11
     },
@@ -342,17 +342,17 @@
       "path": "docs\\cic\\governance.md",
       "title": "CIC Governance Layer",
       "common_topics": [
-        "api",
-        "security",
-        "error",
         "data",
+        "error",
+        "agent",
+        "api",
+        "pipeline",
+        "config",
         "batch",
         "logging",
-        "testing",
-        "config",
         "auth",
-        "agent",
-        "pipeline"
+        "testing",
+        "security"
       ],
       "overlap_count": 11
     }
@@ -362,12 +362,12 @@
       "path": "docs\\consolidation-report.md",
       "title": "Knowledge Base Consolidation Report \u2014 Phase 1",
       "common_topics": [
-        "performance",
-        "batch",
-        "logging",
-        "testing",
         "agent",
-        "pipeline"
+        "pipeline",
+        "batch",
+        "performance",
+        "logging",
+        "testing"
       ],
       "overlap_count": 6
     },
@@ -375,12 +375,12 @@
       "path": "docs\\item-2-observability-dashboard-spec.md",
       "title": "ITEM 2: OBSERVABILITY DASHBOARD SPEC",
       "common_topics": [
-        "performance",
-        "batch",
-        "logging",
-        "testing",
         "agent",
-        "pipeline"
+        "pipeline",
+        "batch",
+        "performance",
+        "logging",
+        "testing"
       ],
       "overlap_count": 6
     },
@@ -388,12 +388,12 @@
       "path": "docs\\item-5-skill-generator.md",
       "title": "ITEM 5: SKILL GENERATOR",
       "common_topics": [
-        "performance",
-        "batch",
-        "logging",
-        "testing",
         "agent",
-        "pipeline"
+        "pipeline",
+        "batch",
+        "performance",
+        "logging",
+        "testing"
       ],
       "overlap_count": 6
     },
@@ -401,12 +401,12 @@
       "path": "docs\\item-6-knowledge-graph.md",
       "title": "ITEM 6: KNOWLEDGE GRAPH",
       "common_topics": [
-        "performance",
-        "batch",
-        "logging",
-        "testing",
         "agent",
-        "pipeline"
+        "pipeline",
+        "batch",
+        "performance",
+        "logging",
+        "testing"
       ],
       "overlap_count": 6
     },
@@ -414,12 +414,12 @@
       "path": "docs\\item-7-memory-governance-framework.md",
       "title": "ITEM 7: MEMORY + VAULT FUSION GOVERNANCE FRAMEWORK",
       "common_topics": [
-        "performance",
-        "batch",
-        "logging",
-        "testing",
         "agent",
-        "pipeline"
+        "pipeline",
+        "batch",
+        "performance",
+        "logging",
+        "testing"
       ],
       "overlap_count": 6
     }

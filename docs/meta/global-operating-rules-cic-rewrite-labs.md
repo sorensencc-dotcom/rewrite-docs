@@ -10,7 +10,7 @@ System Governance Charter
 
 **Document Owner:** Chris (Architect — Tier 1)
 
-**Companion Document:** Claude Project Instructions — Artifact-First Operator Workflow
+**Companion Document:** [Claude Project Instructions — Artifact-First Operator Workflow](claude-project-instructions-artifact-first.md)
 
 **Supersedes:** All prior versions of this document
 
@@ -29,7 +29,7 @@ INTERNAL — OPERATOR CONFIDENTIAL
 - [Section 7 — Daily Operator Automation](#section-7-daily-operator-automation)
 - [Section 8 — Drift Prevention](#section-8-drift-prevention)
 - [Section 9 — Safety Boundaries](#section-9-safety-boundaries)
-- [Section 10 — Design & Artifact Standards](#section-10-design--artifact-standards)
+- [Section 10 — Design & Artifact Standards](#section-10-design-artifact-standards)
 - [Section 11 — Document Governance](#section-11-document-governance)
 
 ---
@@ -522,17 +522,17 @@ The following artifact contexts require HTML/interactive output. Operational run
 
 ## Section 11 — Document Governance
 
-### 10.1 Ownership
+### 11.1 Ownership
 
 This document is owned by the Architect (Tier 1). All changes — including minor editorial corrections, subsection additions, and structural revisions — require Tier 1 authorization before taking effect. No other operator tier may amend this document, and no automated agent may propose, draft, or stage amendments without explicit Tier 1 instruction.
 
-### 10.2 Review Cadence
+### 11.2 Review Cadence
 
 This document is reviewed on a fixed quarterly schedule: January, April, July, and October. The review is initiated by the Architect and must be completed within the first two weeks of the quarter. Emergency amendments may be made at any time by Tier 1; emergency amendments are documented with an amendment date and reason, and trigger an out-of-cycle versioning increment.
 
 **Review Deadline Enforcement:** If quarterly review is not completed within the two-week window, the document status changes to REVIEW-OVERDUE. No amendments may be made to this document until the overdue review is completed and caught up. Overdue reviews are escalated to Tier 1's next session as a blocking item and added to the drift audit queue.
 
-### 10.3 Versioning
+### 11.3 Versioning
 
 Each version of this document is numbered sequentially using the following convention:
 
@@ -541,7 +541,7 @@ Each version of this document is numbered sequentially using the following conve
 - All prior versions are archived as Class 1 artifacts and retained indefinitely.
 - The current version number and effective date appear on the title page of each version.
 
-### 10.4 Companion Document
+### 11.4 Companion Document
 
 This document operates in conjunction with the Claude Project Instructions — Artifact-First Operator Workflow, which governs Claude's session-level behavior within the CIC and Rewrite Labs environment.
 
