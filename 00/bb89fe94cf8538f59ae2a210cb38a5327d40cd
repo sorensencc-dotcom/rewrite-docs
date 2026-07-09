@@ -1,0 +1,19 @@
+docs/cic/notebooklm-integration-plan.md
+  s_1c4d69115e72f8::t_5831001b413e65 364-657,664
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "00bb89fe94cf8538f59ae2a210cb38a5327d40cd",
+  "prompts": {},
+  "sessions": {
+    "s_1c4d69115e72f8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cf82daf4-0894-43b2-b27e-084c92dd3848",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
