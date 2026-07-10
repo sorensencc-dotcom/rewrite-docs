@@ -1,300 +1,62 @@
-site_name: MAAL Sandbox System
-site_description: Complete deterministic CIC/MAAL governance, routing, federation, and snapshot architecture
-site_author: CIC Team
-site_url: https://example.com/maal-sandbox/
+site_name: CIC + Rewrite Labs Knowledge Base
+site_description: >
+  Unified governance documentation for the Cognitive Intelligence Core (CIC)
+  and Rewrite Labs (RL) platform — covering architecture, knowledge-base
+  operations, skill governance, system state, and operational runbooks.
+site_author: Rewrite Labs Engineering
+docs_dir: docs
+site_dir: site
+
+repo_url: https://github.com/rewrite-labs/cic-kb
+repo_name: rewrite-labs/cic-kb
+edit_uri: edit/main/docs/
+
 theme:
   name: material
-  language: en
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.expand
-    - navigation.top
-    - search.suggest
-    - search.highlight
-    - toc.follow
-    - content.tabs.link
-    - content.code.copy
   palette:
     - scheme: default
       primary: indigo
-      accent: indigo
+      accent: blue
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - scheme: slate
       primary: indigo
-      accent: indigo
+      accent: blue
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
-nav:
-  - Home: index.md
-  - Onboarding:
-      - Welcome: onboarding/index.md
-      - Global Operating Rules: meta/global-operating-rules-cic-rewrite-labs.md
-      - Claude Project Instructions: meta/claude-project-instructions-artifact-first.md
-      - Governance Artifacts: meta/governance-artifacts-index.md
-      - Artifact Versions: meta/artifact-versions-manifest.md
-  - Getting Started:
-      - Quickstart: quickstart/index.md
-      - Installation: quickstart/installation.md
-      - First Steps: quickstart/first-steps.md
-  - Systems (Unified):
-      - Overview: systems/index.md
-  - Roadmaps:
-      - CIC Roadmap: roadmaps/cic-roadmap.md
-      - Rewrite Labs Roadmap: roadmaps/rewrite-labs-roadmap.md
-      - Unified Roadmap: roadmaps/unified-roadmap.md
-      - NotebookLM v1.2 Roadmap Addendum: roadmaps/notebooklm-v12-roadmap-addendum.md
-      - Phase 23-27 Autonomy Stack:
-          - Memory API: roadmaps/phase-23-memory-api-spec.yaml
-          - Governance API: roadmaps/phase-24-governance-api-spec.yaml
-          - TorqueQuery Adapter API: roadmaps/phase-26-torque-adapter-api-spec.yaml
-          - Execution Blueprint: roadmaps/execution-blueprint-phases-23-27.md
-          - Risk Register: roadmaps/risk-register-phases-23-27.md
-      - Batch Map 1-40: cic/batch-map-1-40-status.md
-      - Tickets:
-          - Batch 2 Index: roadmaps/tickets/batch-2/index.md
-          - CIC Phase 8 Spec Finalization: roadmaps/tickets/batch-2/cic-phase-8-spec-finalization.md
-          - CIC Phase 8 Implementation Stubs: roadmaps/tickets/batch-2/cic-phase-8-implementation-stubs.md
-          - CIC Phase 30 MVP Expansion: roadmaps/tickets/batch-2/cic-phase-30-mvp-expansion.md
-          - CIC Phases 31-50 Spec Generator: roadmaps/tickets/batch-2/cic-phase-31-50-spec-generator.md
-          - RL Patterns Generator: roadmaps/tickets/batch-2/rl-patterns-generator.md
-          - Foundry Expansion M2-M3: roadmaps/tickets/batch-2/foundry-expansion-m2-m3.md
-          - Runner Hardening V2: roadmaps/tickets/batch-2/runner-hardening-v2.md
-          - Unified Execution Graph Generator: roadmaps/tickets/batch-2/unified-execution-graph-generator.md
-          - Services Layer Expansion: roadmaps/tickets/batch-2/services-layer-expansion.md
-          - Routing Engine V2: roadmaps/tickets/batch-2/routing-engine-v2.md
-          - Drift Detector Integration V2: roadmaps/tickets/batch-2/drift-detector-integration-v2.md
-          - Cost Attribution Engine: roadmaps/tickets/batch-2/cost-attribution-engine.md
-          - Repo Cleanup V3: roadmaps/tickets/batch-2/repo-cleanup-v3.md
-          - Observability V3: roadmaps/tickets/batch-2/observability-v3.md
-          - Batch 3 Index: roadmaps/tickets/batch-3/index.md
-          - TQ Shared Ingestion V2: roadmaps/tickets/batch-3/tq-shared-ingestion-v2.md
-          - TQ Search Engine V2: roadmaps/tickets/batch-3/tq-search-engine-v2.md
-          - CIC Ingestion Hardening V3: roadmaps/tickets/batch-3/cic-ingestion-hardening-v3.md
-          - CIC Ingestion Multi-Source: roadmaps/tickets/batch-3/cic-ingestion-multi-source.md
-          - RL-5.x Spec Generator: roadmaps/tickets/batch-3/rl-5x-spec-generator.md
-          - RL-5.x Architecture Patterns: roadmaps/tickets/batch-3/rl-5x-arch-patterns.md
-          - Governance Automation V2: roadmaps/tickets/batch-3/governance-automation-v2.md
-          - Governance Runner Hooks: roadmaps/tickets/batch-3/governance-runner-hooks.md
-          - Runner Orchestration V3: roadmaps/tickets/batch-3/runner-orchestration-v3.md
-          - Runner Execution Graph Integration: roadmaps/tickets/batch-3/runner-execution-graph-integration.md
-          - World-Corpus Pipeline V1: roadmaps/tickets/batch-3/world-corpus-pipeline-v1.md
-          - World-Corpus Indexer: roadmaps/tickets/batch-3/world-corpus-indexer.md
-          - Fusion Layer V1: roadmaps/tickets/batch-3/fusion-layer-v1.md
-          - Fusion Layer Integration: roadmaps/tickets/batch-3/fusion-layer-integration.md
-          - CIC Evolution Engine V1: roadmaps/tickets/batch-3/cic-evolution-engine-v1.md
-          - CIC Evolution Runner: roadmaps/tickets/batch-3/cic-evolution-runner.md
-          - KD Engine V1: roadmaps/tickets/batch-3/kd-engine-v1.md
-          - RL-CIC Fusion V2: roadmaps/tickets/batch-3/rl-cic-fusion-v2.md
-          - Batch 4 Index: roadmaps/tickets/batch-4/index.md
-          - TQ V3 Architecture: roadmaps/tickets/batch-4/tq-v3-architecture.md
-          - TQ V3 Semantic Pipeline: roadmaps/tickets/batch-4/tq-v3-semantic-pipeline.md
-          - TQ V3 Hybrid Engine: roadmaps/tickets/batch-4/tq-v3-hybrid-engine.md
-          - CIC Runtime V4 Core: roadmaps/tickets/batch-4/cic-runtime-v4-core.md
-          - CIC Runtime V4 Sandbox: roadmaps/tickets/batch-4/cic-runtime-v4-sandbox.md
-          - CIC Runtime V4 Adapters: roadmaps/tickets/batch-4/cic-runtime-v4-adapters.md
-          - RL Crawler V2 Core: roadmaps/tickets/batch-4/rl-crawler-v2-core.md
-          - RL Crawler V2 Adapters: roadmaps/tickets/batch-4/rl-crawler-v2-adapters.md
-          - RL Crawler V2 Runner: roadmaps/tickets/batch-4/rl-crawler-v2-runner.md
-          - World Search V2 Architecture: roadmaps/tickets/batch-4/world-search-v2-architecture.md
-          - World Search V2 Pipeline: roadmaps/tickets/batch-4/world-search-v2-pipeline.md
-          - Foundry CICD V1: roadmaps/tickets/batch-4/foundry-cicd-v1.md
-          - Foundry CICD Pipeline: roadmaps/tickets/batch-4/foundry-cicd-pipeline.md
-          - Runtime Orchestrator V4: roadmaps/tickets/batch-4/runtime-orchestrator-v4.md
-          - Runtime Orchestrator Execution Graph: roadmaps/tickets/batch-4/runtime-orchestrator-execution-graph.md
-          - Fusion Engine V3: roadmaps/tickets/batch-4/fusion-engine-v3.md
-          - Fusion Engine Runner: roadmaps/tickets/batch-4/fusion-engine-runner.md
-          - Batch 5 Index: roadmaps/tickets/batch-5/index.md
-          - CIC Runtime V5 Architecture: roadmaps/tickets/batch-5/cic-runtime-v5-architecture.md
-          - CIC Runtime V5 Self-Healing: roadmaps/tickets/batch-5/cic-runtime-v5-self-healing.md
-          - CIC Runtime V5 Auto-Governance: roadmaps/tickets/batch-5/cic-runtime-v5-auto-governance.md
-          - RL-6.x Spec Generator: roadmaps/tickets/batch-5/rl-6x-spec-generator.md
-          - RL-6.x Autonomous Redesign: roadmaps/tickets/batch-5/rl-6x-autonomous-redesign.md
-          - RL-6.x Auto-Outreach: roadmaps/tickets/batch-5/rl-6x-auto-outreach.md
-          - World-Corpus V3 Architecture: roadmaps/tickets/batch-5/world-corpus-v3-architecture.md
-          - World-Corpus V3 Auto-Ingestion: roadmaps/tickets/batch-5/world-corpus-v3-auto-ingestion.md
-          - World-Corpus V3 Auto-Indexer: roadmaps/tickets/batch-5/world-corpus-v3-auto-indexer.md
-          - Multi-Agent Orchestration V1: roadmaps/tickets/batch-5/multi-agent-orchestration-v1.md
-          - Multi-Agent Orchestration Runner: roadmaps/tickets/batch-5/multi-agent-orchestration-v1-runner.md
-          - Autonomous Governance V3: roadmaps/tickets/batch-5/autonomous-governance-v3.md
-          - Autonomous Governance Runner: roadmaps/tickets/batch-5/autonomous-governance-runner.md
-          - Autonomous Fusion V4: roadmaps/tickets/batch-5/autonomous-fusion-v4.md
-          - Autonomous Fusion Runner: roadmaps/tickets/batch-5/autonomous-fusion-runner.md
-          - CIC Evolution Engine V2: roadmaps/tickets/batch-5/cic-evolution-engine-v2.md
-          - CIC Evolution Runner V2: roadmaps/tickets/batch-5/cic-evolution-runner-v2.md
-      - Backlog (Medium Priority):
-          - Repository Policy & Audit Framework: roadmaps/tickets/repository-policy-audit.md
-  - Integration:
-      - Overview: integration/index.md
-      - CIC ↔ RL Cross-Reference: reference/cic-rl-cross-reference.md
-  - Architecture:
-      - Overview: architecture/overview.md
-      - System Design: architecture/design.md
-      - Deterministic Stack: architecture/deterministic-stack.md
-      - Data Flow: architecture/data-flow.md
-      - Local-First Routing: architecture/routing.md
-      - Drift Classification: architecture/drift.md
-      - Ingestion & Trace: architecture/ingestion.md
-  - CIC Documentation:
-      - Index: cic/index.md
-      - Phases: cic/phases/index.md
-      - Governance: cic/governance.md
-      - CodeFlow Harvester: cic/harvester.md
-      - Drift Engine: cic/driftengine.md
-      - Replay Harness: cic/replayharness.md
-      - Phase 26 Loop Runbook: cic/phase-26-loop-runbook.md
-      - Phase 26 Verification Checklist: cic/phase-26-verification-checklist.md
-      - Phase 8 & 30 Implementation: cic/phase-8-phase-30-implementation.md
-      - Phase 8 Implementation Summary: cic/phase-8-implementation-summary.md
-      - NotebookLM Adapter Spec: cic/notebooklm-adapter-spec.md
-      - TorqueQuery NotebookLM Spec: cic/torquequery-notebooklm-spec.md
-      - NotebookLM Integration Plan: cic/notebooklm-integration-plan.md
-      - NotebookLM Use Case Library: cic/use-case-library.md
-      - Research Skill:
-          - Overview: cic/research-skill/skill.md
-          - Test Results:
-              - Iteration 1: cic/research-skill/test-results/iteration-1-grading.md
-              - Iteration 2: cic/research-skill/test-results/iteration-2-grading.md
-      - Phases 31-50 (Placeholder Chain):
-          - Phase 31: cic/phases/phase-31.md
-          - Phase 32: cic/phases/phase-32.md
-          - Phase 33: cic/phases/phase-33.md
-          - Phase 34: cic/phases/phase-34.md
-          - Phase 35: cic/phases/phase-35.md
-          - Phase 36: cic/phases/phase-36.md
-          - Phase 37: cic/phases/phase-37.md
-          - Phase 38: cic/phases/phase-38.md
-          - Phase 39: cic/phases/phase-39.md
-          - Phase 40: cic/phases/phase-40.md
-          - Phase 41: cic/phases/phase-41.md
-          - Phase 42: cic/phases/phase-42.md
-          - Phase 43: cic/phases/phase-43.md
-          - Phase 44: cic/phases/phase-44.md
-          - Phase 45: cic/phases/phase-45.md
-          - Phase 46: cic/phases/phase-46.md
-          - Phase 47: cic/phases/phase-47.md
-          - Phase 48: cic/phases/phase-48.md
-          - Phase 49: cic/phases/phase-49.md
-          - Phase 50: cic/phases/phase-50.md
-  - Rewrite Labs:
-      - Index: rewrite-labs/index.md
-      - Vault Mirror:
-          - Overview: rewrite-labs/vault-mirror/executive-summary.md
-          - Setup: rewrite-labs/vault-mirror/setup.md
-          - Configuration: rewrite-labs/vault-mirror/configuration.md
-          - RL Setup: rewrite-labs/vault-mirror/rl-setup.md
-      - Reference Vault:
-          - RL Index: rewrite-labs/00-rl-index.md
-          - Vault Setup: rewrite-labs/rl-vault-setup.md
-          - Vault README: rewrite-labs/vault-readme.md
-          - Sync Configuration: rewrite-labs/vault-sync-configuration.md
-          - Vault Sync Automation: rewrite-labs/vault-sync-automation.md
-          - Vault Automation Setup: rewrite-labs/vault-automation-setup.md
-          - NotebookLM Workflow: rewrite-labs/notebooklm-workflow.md
-  - Gateway:
-      - API & State Store: gateway/adaptergatewayapi.md
-      - Providers Configuration: gateway/providers.md
-  - Dashboard:
-      - Operator Dashboard: dashboard/dashboard.md
-      - Implementation Specs:
-          - Command Center Priority Matrix: dashboard/command-center-priority-matrix.md
-          - Missing Tokens (Agents Panel): dashboard/missing-tokens-for-agents-panel.md
-          - Tier 2 Agents Conflict Map: dashboard/tier2-agents-conflict-map.md
-      - Progress & Reports:
-          - 8-Item Progress: dashboard/8-item-progress.md
-          - 8-Items Complete Final: dashboard/8-items-complete-final.md
-          - Final Status (8-Items): dashboard/final-status-8-items.md
-          - Missing Tokens (Phase Progress): dashboard/missing-tokens-for-agents-panel-phase-progress.md
-          - Dark Mode v2 Implementation: dashboard/dark-mode-v2-implementation.md
-          - Dark Mode Completion Report: dashboard/dark-mode-completion-report.md
-  - Test Matrices:
-      - Routing Tests: tests/routing-tests.md
-      - Feedback Loop Tests: tests/feedback-loop-tests.md
-      - Dashboard Tests: tests/dashboard-tests.md
-  - Batches:
-      - Batch Catalog: batches/index.md
-      - Batches 1-35: batches/batches-1-35.md
-      - Batch 36 (Access): batches/batch-36.md
-      - Batch 37 (Federation): batches/batch-37.md
-      - Batch 39 (Snapshot): batches/batch-39.md
-      - Batch 40 (Final Seal): batches/batch-40.md
-  - API Reference:
-      - Overview: api/overview.md
-      - Access Layer: api/access-layer.md
-      - Federation Layer: api/federation-layer.md
-      - Snapshot Layer: api/snapshot-layer.md
-      - Seal & Verify: api/seal-verify.md
-  - Operations:
-      - Running the System: operations/running.md
-      - Sealing Layers: operations/sealing.md
-      - Verification: operations/verification.md
-      - Monitoring: operations/monitoring.md
-      - Troubleshooting: operations/troubleshooting.md
-      - Roadmap Runner: operations/roadmap-runner.md
-      - Cost Tracking: operations/cost-tracking.md
-      - Weekly Sync: operations/weekly-sync.md
-      - Drift Forecast: operations/drift-forecast.md
-      - Autonomous Image Builds: operations/autonomous-image-builds.md
-      - Environment Optimization: operations/environment-optimization.md
-      - Logging Policy: operations/logging-policy.md
-      - Deployment:
-          - Reproducible Dockerfiles: deployment/reproducible-dockerfiles.md
-          - Registry Configuration: deployment/registry-config.md
-          - Air-Gapped Import: deployment/airgapped-import.md
-          - Convergence Trace: deployment/convergence-trace.md
-  - Implementation:
-      - Cloud Extension Layer: implementation/cloud-extension-layer.md
-  - Knowledge Graph:
-      - Overview: reference/knowledge-graph/readme.md
-      - Quick Start: reference/knowledge-graph/quick-start.md
-      - Setup Guide: reference/knowledge-graph/setup-guide.md
-  - Observability:
-      - Dashboards Integration: observability/dashboards-integration.md
-  - Reference:
-      - Developer Handbook: reference/handbook.md
-      - Manifests: reference/manifests.md
-      - Schemas: reference/schemas.md
-      - Environment: reference/environment.md
-      - CLI Commands: reference/cli.md
-      - Toolforge: reference/toolforge.md
-      - Services: reference/services.md
-      - System Index Builder (Planned): reference/system-index-builder.md
-      - NotebookLM MCP Architecture: reference/notebooklm-mcp-architecture.md
-      - CoWork MCP Integration Spec: reference/cowork-mcp-integration-spec.md
-  - Knowledge Base Consolidation:
-      - Unified Index: index-unified.md
-      - Inventory: meta/consolidation-inventory.md
-      - Status: meta/consolidation-status.md
-  - Build Documentation:
-      - 8-Items Complete: meta/8-items-complete.md
-      - Build Progress: meta/build-progress.md
-      - Final Status: meta/final-status.md
-      - Reorganization Plan: meta/reorganization.md
-      - Work Summarizer v2 Implementation Guide: meta/work-summarizer-implementation-guide.md
-      - Governance:
-          - Governance Validation Setup: meta/governance-validation-setup.md
-          - Repository Governance Audit: meta/repository-governance-audit.md
-          - Rule 2 Compliance Fix: meta/rule-2-compliance-fix.md
-      - Integration & Review:
-          - Repository Cleanup Review: meta/repo-cleanup-review.md
-          - KB Sync Implementation: meta/kb-sync-implementation-complete.md
-          - Phase 5 Implementation Plan: meta/implementation-plan.md
-      - Execution Logs:
-          - Phase 1 (Files Moved): meta/phase-1-execution.md
-          - Phase 2 (Links Updated): meta/phase-2-completion.md
-          - Phase 3 (Verification): meta/phase-3-completion.md
-      - Meta & State:
-          - Changelog: meta/changelog.md
-          - CI-CD Root Cause Findings: meta/ci-cd-root-cause-findings.md
-          - CIC Ashfall State: meta/cic-ashfall-state.md
-          - KB Link Repair Plan: meta/kb-link-repair-plan.md
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.tabs.link
+    - content.code.annotate
+    - content.code.copy
+    - toc.follow
+    - toc.integrate
+
 plugins:
-  - search
+  - search:
+      lang: en
   - minify:
       minify_html: true
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+  - tags
+
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -302,20 +64,66 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.highlight:
-      use_pygments: true
-  - pymdownx.emoji
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - attr_list
+  - md_in_html
   - tables
+  - footnotes
   - toc:
-      toc_depth: 3
-  - codehilite
-  - smarty
-  - sane_lists
+      permalink: true
+      title: On this page
+
+nav:
+  - Home: index-unified.md
+
+  - Architecture:
+    - Overview: architecture/overview.md
+    - CIC System: architecture/CIC_SYSTEM.md
+    - CIC State: architecture/CIC_STATE.md
+    - Data Flow: architecture/data-flow.md
+    - Security Model: architecture/security.md
+
+  - Knowledge Base:
+    - KB Operations: kb/KB-OPERATIONS.md
+    - Naming Conventions: kb/naming-conventions.md
+    - File Movement Protocol: kb/file-movement-protocol.md
+    - Validation Workflows: kb/validation-workflows.md
+    - Taxonomy & Tags: kb/taxonomy.md
+
+  - Skills & Toolforge:
+    - Skills Governance Guide: skills/toolforge-skills-governance.md
+    - Skill Authoring: skills/authoring.md
+    - Skill Versioning: skills/versioning.md
+    - Skill Testing: skills/testing.md
+    - Skill Registry: skills/registry.md
+
+  - Operations:
+    - Runbooks: ops/runbooks.md
+    - Incident Response: ops/incident-response.md
+    - Change Management: ops/change-management.md
+    - Monitoring & Alerts: ops/monitoring.md
+
+  - Reference:
+    - Glossary: reference/glossary.md
+    - API Reference: reference/api.md
+    - Changelog: reference/changelog.md
+
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/example/maal-sandbox
-    - icon: fontawesome/brands/docker
-      link: https://hub.docker.com/r/example/maal
-  version: 1.0.0
-  last_update: 2026-06-29T00:00:00.000Z
-copyright: Copyright &copy; 2026 CIC Team. All rights reserved.
+      link: https://github.com/rewrite-labs/cic-kb
+  version:
+    provider: mike
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/extra.js

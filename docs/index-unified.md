@@ -1,21 +1,10 @@
----
-title: "CIC & Rewrite Labs Reference (Unified Index)"
-description: "Consolidated reference layer with cross-linked documentation"
-created: "2026-07-07"
-updated: "2026-07-07"
-tags:
-  - cic
-  - rewrite-labs
-  - roadmap
-  - reference
-canonical: true
----
+# CIC + Rewrite Labs — Unified Knowledge Base
 
-# CIC & Rewrite Labs Reference (Unified Index)
+> **Version:** 2.0.0 · **Updated:** 2026-07-09 · **Owner:** Rewrite Labs Engineering
 
-**Consolidated reference layer.** Source of truth: Vault documentation (cic-ref/) and OneDrive/Drive living docs.
-
-This index has been consolidated to eliminate duplicate sections. Framework sections are extracted to dedicated reference documents.
+Welcome to the unified governance and operational knowledge base for the **Cognitive Intelligence Core (CIC)**
+and **Rewrite Labs (RL)** platform. This site is the single source of truth for architecture decisions,
+knowledge-base (KB) operations, Toolforge skill governance, system state, and runbooks.
 
 ---
 
