@@ -1,0 +1,39 @@
+docs/architecture/data-flow.md
+  s_58f3f2063b886e::t_1e60981b28d1d9 1,4,6-7,9,11-168
+docs/architecture/overview.md
+  s_58f3f2063b886e::t_34aa32a67f4471 1,6-9,11,13-125
+docs/reference/api.md
+  s_58f3f2063b886e::t_785ab04bd51b95 1,6-7,9,11-237
+docs/reference/changelog.md
+  s_58f3f2063b886e::t_5073afeeb6fbcc 1-2,6-7,9,11-158
+docs/reference/glossary.md
+  s_58f3f2063b886e::t_08a3d4a0c157c0 1,6,8,10-195
+mkdocs.yml
+  s_009762e0c47c61::t_ea226b23a5e1b8 88-92,95-101,120-138,143-148
+docs/cic/CIC_ASHFALL_STATE.md
+  s_58f3f2063b886e::t_ba80ba7e83f77b 1-157
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.11",
+  "base_commit_sha": "acf2bfe73a002630972b2cd4999bdf84aa93fba3",
+  "prompts": {},
+  "sessions": {
+    "s_009762e0c47c61": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1e684a20-d25a-4bda-a0b6-18f4dbfd616d",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    },
+    "s_58f3f2063b886e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "31fe069b-46b4-44e4-acfd-4f25779668bf",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
