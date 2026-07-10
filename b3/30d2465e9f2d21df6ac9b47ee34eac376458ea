@@ -1,0 +1,19 @@
+toolforge
+  s_009762e0c47c61::t_059aa639353783 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.11",
+  "base_commit_sha": "b330d2465e9f2d21df6ac9b47ee34eac376458ea",
+  "prompts": {},
+  "sessions": {
+    "s_009762e0c47c61": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1e684a20-d25a-4bda-a0b6-18f4dbfd616d",
+        "model": "unknown"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
