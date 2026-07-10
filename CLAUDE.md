@@ -45,6 +45,8 @@ data/                # Extracted datasets, roadmap JSON, CI artifacts
 docs/                # Authoritative Knowledge Base (mkdocs)
 ```
 
+**See also:** [OWNERSHIP_MATRIX.md](docs/meta/ownership-matrix.md) — File location rules and owner responsibilities
+
 **Key Files:**
 
 - cic/package.json — Governance root, version 1.0.0
@@ -178,12 +180,16 @@ When creating/moving deliverables:
 4. Run `mkdocs build --strict`
 5. Update CLAUDE.md if new patterns introduced
 
+**See also:** [FILE_LIFECYCLE_POLICY.md](docs/meta/file-lifecycle-policy.md) — File creation, archival, and deletion rules
+
 ## 9. Naming Conventions
 
 - Files: `lowercase-with-hyphens.md` (not CamelCase)
 - Skills: `action-noun` pattern (e.g., `run-cic-phase`)
 - Sections: Capitalize first letter in mkdocs nav
 - Test files: `iteration-1-grading.md`, `test-cases.json`
+
+**See also:** [NAMING_STANDARD.md](docs/meta/naming-standard.md) — Detailed naming rules, exceptions, and enforcement
 
 ## 10. Validation Checklist
 
