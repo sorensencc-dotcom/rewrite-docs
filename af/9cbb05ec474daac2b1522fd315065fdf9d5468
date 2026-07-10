@@ -1,0 +1,21 @@
+governance/audit-log.json
+  s_62ab85d7a21222::t_634ac5df7f60ae 7724-7827,7830-7831,7833
+toolforge
+  s_62ab85d7a21222::t_2d7aebc8e0be4a 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.11",
+  "base_commit_sha": "af9cbb05ec474daac2b1522fd315065fdf9d5468",
+  "prompts": {},
+  "sessions": {
+    "s_62ab85d7a21222": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4e203350-bc20-46f6-a14e-f0545f73a12a",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
