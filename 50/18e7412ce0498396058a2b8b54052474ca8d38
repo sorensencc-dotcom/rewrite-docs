@@ -1,0 +1,27 @@
+docs/meta/ownership-matrix.md
+  s_8b2960d1236eaa::t_1560d110c4735b 1-283
+docs/meta/naming-standard.md
+  s_8b2960d1236eaa::t_a86249fef2fd25 1-277
+docs/meta/file-lifecycle-policy.md
+  s_8b2960d1236eaa::t_3d2bf2e16f5aaa 1-256
+CLAUDE.md
+  s_8b2960d1236eaa::t_c9cb5a1630d7fa 48-49,183-184,192-193
+notion-mcp-explorer-enhanced.html
+  s_8b2960d1236eaa::t_f55316c46514c9 1-1195
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.11",
+  "base_commit_sha": "5018e7412ce0498396058a2b8b54052474ca8d38",
+  "prompts": {},
+  "sessions": {
+    "s_8b2960d1236eaa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "11a6aa00-f746-4116-ad55-aa478b325d43",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Haiku 4.5 <noreply@anthropic.com>"
+    }
+  }
+}
