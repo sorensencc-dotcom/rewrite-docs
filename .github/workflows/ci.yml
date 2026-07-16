@@ -13,8 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: recursive
-          token: ${{ secrets.SUBMODULE_PAT }}
+          submodules: false
+
+      - name: Checkout submodules (private submodule authenticated separately)
+        run: |
+          git config --global url."https://x-access-token:${{ secrets.SUBMODULE_PAT }}@github.com/sorensencc-dotcom/claude-setup.git".insteadOf "https://github.com/sorensencc-dotcom/claude-setup.git"
+          git submodule update --init --recursive
 
       - name: Use Node 20
         uses: actions/setup-node@v4
