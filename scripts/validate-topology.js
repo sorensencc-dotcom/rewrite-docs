@@ -7,8 +7,8 @@
  * - No mangled path-artifact directories
  */
 
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
 const ROOT = process.cwd();
 const DOCS = path.join(ROOT, "docs");

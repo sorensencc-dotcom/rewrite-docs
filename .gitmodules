@@ -2,3 +2,12 @@
 	path = toolforge
 	url = https://github.com/sorensencc-dotcom/toolforge.git
 	branch = main
+[submodule "castironforge/cic-ingestion"]
+	path = castironforge/cic-ingestion
+	url = https://github.com/sorensencc-dotcom/cic-ingestion.git
+[submodule "cic"]
+	path = cic
+	url = https://github.com/sorensencc-dotcom/CIC.git
+[submodule "claude-config-backup"]
+	path = claude-config-backup
+	url = https://github.com/sorensencc-dotcom/claude-setup.git

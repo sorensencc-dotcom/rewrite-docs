@@ -28,8 +28,6 @@ out/
 site/
 
 # Dependencies
-package-lock.json
-yarn.lock
 
 # OS
 .DS_Store
