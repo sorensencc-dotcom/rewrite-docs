@@ -1,0 +1,21 @@
+.github/workflows/batch-11-ci.yml
+  s_0dcbf3d517c0f9::t_8ff65441b5ee02 13-17
+.github/workflows/ci.yml
+  s_0dcbf3d517c0f9::t_df92be171f5648 16-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "8a0983aa6dcb6eeb72dc09e863e6cb84325e197a",
+  "prompts": {},
+  "sessions": {
+    "s_0dcbf3d517c0f9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "94e5400c-ecb6-4961-9927-b33cf2b5f59a",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
