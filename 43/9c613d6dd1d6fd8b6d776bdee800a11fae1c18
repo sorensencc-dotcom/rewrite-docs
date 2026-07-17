@@ -1,0 +1,37 @@
+castironforge/torque-query/scripts/smoke.py
+  s_19b6035df5cd47::t_bf4400d83594d4 36
+  s_19b6035df5cd47::t_6ba88c702a3737 45-57
+  s_19b6035df5cd47::t_676f3c801995a6 90-91,96
+  s_19b6035df5cd47::t_8a4b85fd0c47f0 1-35,37-44,58-68,74-77,79-84,86-89,92-95,97-107,120-188
+  s_19b6035df5cd47::t_0218e9236e0807 69-73,78,85
+  s_19b6035df5cd47::t_939e306f280eda 108-119
+castironforge/torque-query/Makefile
+  s_19b6035df5cd47::t_18d3d9b575c7c6 1
+  s_35e8218929b70d::t_0278ac3ea9e382 16-23
+.github/workflows/torque-query-docs-smoke.yml
+  s_19b6035df5cd47::t_ea00a688cb6aaa 1-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "439c613d6dd1d6fd8b6d776bdee800a11fae1c18",
+  "prompts": {},
+  "sessions": {
+    "s_19b6035df5cd47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "feb35b8b-3e13-4d8b-b3c2-79b5c0ac19b5",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_35e8218929b70d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a6c320b7570eb0295",
+        "model": "unknown"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
