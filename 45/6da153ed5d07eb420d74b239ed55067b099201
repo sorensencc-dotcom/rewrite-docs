@@ -1,0 +1,21 @@
+castironforge/torque-query/HARDENING-NOTES.md
+  s_19b6035df5cd47::t_f2bf78a3855261 1-97
+castironforge/torque-query/PHASE-26-READINESS.md
+  s_19b6035df5cd47::t_91c4d392a4e437 49,57-69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "456da153ed5d07eb420d74b239ed55067b099201",
+  "prompts": {},
+  "sessions": {
+    "s_19b6035df5cd47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "feb35b8b-3e13-4d8b-b3c2-79b5c0ac19b5",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
