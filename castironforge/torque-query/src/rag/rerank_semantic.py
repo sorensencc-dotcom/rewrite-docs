@@ -1,3 +1,7 @@
+import logging
+
+logger = logging.getLogger("torquequery.rerank_semantic")
+
 _reranker = None
 
 def init_reranker(model_name: str):
@@ -9,15 +13,36 @@ def rerank_semantic(question: str, source_nodes, top_k: int):
     import math
     if not source_nodes:
         return []
-        
+
+    pre_scores_by_id = {id(sn): float(sn.score or 0.0) for sn in source_nodes}
     pairs = [(question, sn.node.text) for sn in source_nodes]
     scores = _reranker.predict(pairs)
-    
+
     def sigmoid(x):
         return 1.0 / (1.0 + math.exp(-x))
-        
+
     for sn, score in zip(source_nodes, scores):
         sn.score = float(sigmoid(score))
-        
+
     ranked = sorted(source_nodes, key=lambda x: x.score or 0.0, reverse=True)
-    return ranked[:top_k]
+    kept, dropped = ranked[:top_k], ranked[top_k:]
+
+    logger.info(
+        "semantic_rerank decisions=%s",
+        {
+            "candidateCount": len(source_nodes),
+            "keptCount": len(kept),
+            "droppedCount": len(dropped),
+            "kept": [
+                {
+                    "file": sn.node.metadata.get("file_path", ""),
+                    "preScore": round(pre_scores_by_id[id(sn)], 4),
+                    "postScore": round(float(sn.score or 0.0), 4),
+                }
+                for sn in kept
+            ],
+            "droppedFiles": [sn.node.metadata.get("file_path", "") for sn in dropped],
+        },
+    )
+
+    return kept
