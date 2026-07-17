@@ -1,0 +1,40 @@
+castironforge/torque-query/src/rag/rerank_semantic.py
+  s_19b6035df5cd47::t_9515ca069aef79 1-4,16-17,20,23,26,28-30
+  s_19b6035df5cd47::t_1ba2e768e18a87 31-33
+  s_35e8218929b70d::t_7e6070d6988346 34-48
+castironforge/torque-query/scripts/ingest.py
+  s_19b6035df5cd47::t_08dd405788951f 40
+  s_19b6035df5cd47::t_d5cfd5dca4b21c 3,9,14,16-39,41-50,54,58
+  s_19b6035df5cd47::t_b401d557217c80 51-53
+  s_19b6035df5cd47::t_bbb1a956ff9a04 55-57
+  s_19b6035df5cd47::t_94a4932c2e5bc8 59-61
+castironforge/torque-query/src/rag/rerank_tags.py
+  s_19b6035df5cd47::t_edf4f1e0e84069 1-5
+  s_19b6035df5cd47::t_b69a505c4de75d 15,23-26
+  s_19b6035df5cd47::t_1a82bacf43aacd 27-29
+  s_35e8218929b70d::t_294df0162a5cea 30-32,34-43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "a9a431e76dc48d0659df7fdb6acefff59e4fa291",
+  "prompts": {},
+  "sessions": {
+    "s_19b6035df5cd47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "feb35b8b-3e13-4d8b-b3c2-79b5c0ac19b5",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_35e8218929b70d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a6c320b7570eb0295",
+        "model": "unknown"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
