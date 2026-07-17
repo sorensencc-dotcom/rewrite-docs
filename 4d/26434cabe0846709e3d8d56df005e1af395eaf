@@ -1,0 +1,30 @@
+castironforge/torque-query/tests/test_query_snapshot.py
+  s_19b6035df5cd47::t_6b85d38db83352 1-134,138-169
+  s_19b6035df5cd47::t_71f2f1f09f2867 135-137
+castironforge/torque-query/pyproject.toml
+  s_35e8218929b70d::t_1e0b879f6c4cfa 18-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "4d26434cabe0846709e3d8d56df005e1af395eaf",
+  "prompts": {},
+  "sessions": {
+    "s_19b6035df5cd47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "feb35b8b-3e13-4d8b-b3c2-79b5c0ac19b5",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    },
+    "s_35e8218929b70d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a6c320b7570eb0295",
+        "model": "unknown"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
