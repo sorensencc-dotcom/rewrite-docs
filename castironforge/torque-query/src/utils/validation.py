@@ -39,8 +39,12 @@ def validate_fs_read(path: str, offset: int | None = None, limit: int | None = N
     if len(path) > 1024:
         raise ValidationError("path exceeds 1024 character limit")
 
-    safe_offset = offset or 0
-    safe_limit = limit or 50000
+    # NOTE: must use explicit `is None` checks, not `x or default` -- `limit or 50000`
+    # would silently treat an explicitly-passed limit=0 as "not given" and default it
+    # to 50000 instead of letting the `safe_limit < 1` check below reject it. Fixed
+    # 2026-07-17 (found during TorqueQuery pre-decision hardening).
+    safe_offset = offset if offset is not None else 0
+    safe_limit = limit if limit is not None else 50000
 
     if not isinstance(safe_offset, int) or safe_offset < 0:
         raise ValidationError("offset must be non-negative integer")

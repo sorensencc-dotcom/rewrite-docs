@@ -1,6 +1,6 @@
 ---
 title: "00 EIGHT ITEM BUILD PLAN"
-summary: "# 8-Item Build Plan — Complete **Status:** ✅ COMPLETE **Date:** 2026-07-02 **All Deliverables:** Deployed to C:\dev\docs/"
+summary: "# 8-Item Build Plan — Complete **Status:** ✅ COMPLETE **Date:** 2026-07-02 **All Deliverables:** Deployed to C:\\dev\\docs/"
 created: "2026-07-03T19:43:45.269Z"
 updated: "2026-07-03T19:43:45.293Z"
 tags:
