@@ -1,0 +1,32 @@
+castironforge/torque-query-docs/README.md
+  s_19b6035df5cd47::t_7d26fadd3b6940 1-9
+castironforge/torque-query-docs/HARDENING-NOTES.md
+  s_19b6035df5cd47::t_0e854b31a9118c 85-104
+castironforge/torque-query-docs/clients/ts/TorqueQueryDocsClient.ts
+  s_19b6035df5cd47::t_948380d5c48a55 87-90
+  s_19b6035df5cd47::t_6b8fa94841fc8e 1-17
+castironforge/torque-query-docs/PHASE-26-READINESS.md
+  s_19b6035df5cd47::t_3a7743efeafe5f 76-78
+  s_19b6035df5cd47::t_1a856b8a9ec9bc 1-6,9-12
+.github/workflows/torque-query-docs-smoke.yml
+  s_19b6035df5cd47::t_fb2126ff88b4dd 3,13,18,24
+  s_19b6035df5cd47::t_dcf1c97b2a0563 4-7
+castironforge/torque-query-docs/pyproject.toml
+  s_19b6035df5cd47::t_4b23391b11a38e 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "1dccd2dce95550cf93806dc857d3c4e658922a76",
+  "prompts": {},
+  "sessions": {
+    "s_19b6035df5cd47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "feb35b8b-3e13-4d8b-b3c2-79b5c0ac19b5",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
