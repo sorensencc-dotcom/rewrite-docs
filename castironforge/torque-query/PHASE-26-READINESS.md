@@ -46,7 +46,7 @@
 - [x] All chunking parameters pinned
 - [x] All retrieval parameters pinned
 - [x] JSON schema locked
-- [ ] Snapshot tests added
+- [x] Snapshot tests added
 
 ## G. Smoke Test
 - [x] `make ingest` runs successfully
@@ -54,3 +54,16 @@
 - [x] `/health` returns healthy
 - [x] `/query` returns valid JSON
 - [x] CIC agent successfully resolves a real doc question
+
+## H. Pre-Decision Hardening (2026-07-17)
+- [x] Snapshot/determinism tests for `format_json_answer()` and `pack_context()`
+      (`tests/test_query_snapshot.py`)
+- [x] `make smoke` / `make ci` end-to-end harness (`scripts/smoke.py`) +
+      `.github/workflows/torque-query-docs-smoke.yml`
+- [x] Structured ingest logging, rerank decision logging, `GET /metrics`
+- [x] `response_model` on `/query` and `/ingest`, structured `/ingest` error handling
+      and precondition validation
+- [x] Isolated CIC-facing TS client draft (`clients/ts/TorqueQueryDocsClient.ts`)
+
+See `HARDENING-NOTES.md` for details. This is pre-decision hardening only -- no
+naming/governance decision was made as part of this work.
