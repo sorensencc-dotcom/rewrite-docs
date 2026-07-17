@@ -15,6 +15,13 @@ dependencies = [
   "pyyaml",
 ]
 
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "pytest-asyncio",
+  "httpx",
+]
+
 [tool.uvicorn]
 app = "src.main:app"
 host = "0.0.0.0"
