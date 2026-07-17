@@ -1,0 +1,23 @@
+castironforge/torque-query/tests/snapshots/basic_multi_source_answer.json
+  s_35e8218929b70d::t_3db959c14e8443 1-25
+castironforge/torque-query/tests/snapshots/empty_nodes.json
+  s_35e8218929b70d::t_d5006b7cbe659f 1-6
+castironforge/torque-query/tests/snapshots/not_in_docs_trigger.json
+  s_35e8218929b70d::t_5e400a77877d80 1-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "089162e6cea178f90dfc5ae37b833385a19932a4",
+  "prompts": {},
+  "sessions": {
+    "s_35e8218929b70d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a6c320b7570eb0295",
+        "model": "unknown"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
