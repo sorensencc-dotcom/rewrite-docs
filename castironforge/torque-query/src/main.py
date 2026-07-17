@@ -126,7 +126,35 @@ class Query(BaseModel):
     question: str
     taskLabels: list[str] | None = None
 
-@app.post("/query")
+
+class QuerySource(BaseModel):
+    file: str
+    section: str
+    tags: list[str]
+    score: float
+
+
+class QueryResponse(BaseModel):
+    answer: str
+    sources: list[QuerySource]
+    confidence: float
+    not_in_docs: bool
+
+
+class IngestResponse(BaseModel):
+    status: str
+    docCount: int | None = None
+    nodeCount: int | None = None
+    durationMs: float | None = None
+
+
+class IngestErrorResponse(BaseModel):
+    status: str = "error"
+    errorCode: str
+    message: str
+
+
+@app.post("/query", response_model=QueryResponse)
 def query(req: Query):
     from src.utils.validation import validate_query, ValidationError
     try:
@@ -142,11 +170,61 @@ def query(req: Query):
         )
     return answer(cfg, qe, question, labels)
 
-@app.post("/ingest")
+
+def _validate_ingest_preconditions():
+    """
+    Ingestion has no request body, but it does have real preconditions: the docs
+    root and mkdocs.yml it reads from must exist, and the Chroma directory's parent
+    must be writable. Fail clean and early (400) instead of letting ingestion blow up
+    partway through with an unstructured traceback.
+    """
+    docs_root = Path(cfg["paths"]["docs_root"])
+    mkdocs_yml = Path(cfg["paths"]["mkdocs_yml"])
+
+    if not docs_root.exists() or not docs_root.is_dir():
+        raise HTTPException(
+            status_code=400,
+            detail={
+                "status": "error",
+                "errorCode": "DOCS_ROOT_NOT_FOUND",
+                "message": f"Configured docs_root '{docs_root}' does not exist or is not a directory.",
+            },
+        )
+
+    if not mkdocs_yml.exists() or not mkdocs_yml.is_file():
+        raise HTTPException(
+            status_code=400,
+            detail={
+                "status": "error",
+                "errorCode": "MKDOCS_YML_NOT_FOUND",
+                "message": f"Configured mkdocs_yml '{mkdocs_yml}' does not exist or is not a file.",
+            },
+        )
+
+
+@app.post(
+    "/ingest",
+    response_model=IngestResponse,
+    responses={400: {"model": IngestErrorResponse}, 500: {"model": IngestErrorResponse}},
+)
 def ingest():
+    _validate_ingest_preconditions()
+
     from scripts.ingest import main as ingest_main
-    ingest_main()
-    return {"status": "ok"}
+    try:
+        stats = ingest_main()
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "status": "error",
+                "errorCode": "INGESTION_FAILED",
+                "message": f"{type(e).__name__}: {e}",
+            },
+        )
+
+    stats = stats or {}
+    return IngestResponse(status="ok", **stats)
 
 @app.get("/health")
 def health():
@@ -162,6 +240,18 @@ def health():
             "maxContextTokens": cfg["retrieval"]["max_context_tokens"],
         },
     }
+
+@app.get("/metrics")
+def metrics():
+    """
+    Request-counter and latency-stats summary for this service (distinct from the
+    Virtual-FS-specific /api/fs/metrics). Reuses get_metrics_summary(), which already
+    aggregates the same storage/metrics/metrics.jsonl feed that log_observability_metrics
+    (the HTTP middleware above) and scripts/ingest.py both write to -- so /query, /ingest,
+    and ingestion-pipeline events all show up here under one summary.
+    """
+    from src.utils.metrics import get_metrics_summary
+    return get_metrics_summary()
 
 # --- Console V3 Dashboard Endpoints ---
 @app.get("/console/health")
