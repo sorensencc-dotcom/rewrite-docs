@@ -82,16 +82,23 @@ that separated TorqueQuery without assigning an owner.
    adapter yet.` Type-checked clean with `tsc --strict` (no build tooling exists yet in
    this repo to wire it into, intentionally -- it's a draft).
 
-## Known pre-existing issue found, not fixed (out of scope)
+## Known pre-existing issue found, fixed 2026-07-17 (follow-up, separate commit)
 
-`tests/test_validation.py::TestFsReadValidation::test_zero_limit_rejected` fails on
-main: `validate_fs_read`'s `safe_limit = limit or 50000` treats `limit=0` as falsy and
-silently substitutes the default instead of rejecting it. Pre-existing, unrelated to this
-hardening pass; flagging rather than fixing since it's outside the five deliverables
-scoped for this work.
+`tests/test_validation.py::TestFsReadValidation::test_zero_limit_rejected` was failing
+on main: `validate_fs_read`'s `safe_limit = limit or 50000` treated `limit=0` as falsy
+and silently substituted the default instead of rejecting it. Fixed by switching to
+explicit `is not None` checks for both `offset` and `limit`. 40/40 validation tests pass,
+full suite 53/53.
+
+Also fixed same day: `docs/00-EIGHT-ITEM-BUILD-PLAN.md`'s frontmatter had an unescaped
+backslash in a double-quoted YAML scalar, which broke `/ingest` on that file. Escaped;
+`/ingest` now completes clean (455 docs / 1124 chunks, 0 errors).
 
 ## Governance
 
-This is pre-decision hardening -- no governance or naming decision was made as part of
-this work; see docs/meta/phases/torquequery-reconciliation-charter.md in the main
-c:\dev repo for the pending Tier 1 decision.
+**Tier 1 decision APPROVED 2026-07-17** (Option i, split and rename): this service is
+now named `torque-query-docs`, distinct from the memory/drift search service (which
+keeps the name `TorqueQuery`) in `cic-ingestion/src/services/torquequery`. See
+docs/meta/phases/torquequery-reconciliation-charter.md in the main c:\dev repo for the
+full decision record. This directory was renamed from `castironforge/torque-query` to
+`castironforge/torque-query-docs` as part of executing that decision.

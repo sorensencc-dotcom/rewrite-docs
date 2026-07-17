@@ -1,26 +1,27 @@
 name: torque-query-docs Smoke
 
-# CI gate for the documentation RAG service in castironforge/torque-query.
-# NOTE: this service is explicitly the documentation RAG service -- distinct from
-# the other (memory-search) TorqueQuery service elsewhere in this org. No naming
-# decision has been made; see castironforge/torque-query/HARDENING-NOTES.md.
+# CI gate for the documentation RAG service in castironforge/torque-query-docs.
+# Named per Tier 1 decision 2026-07-17 (split/rename), distinct from the
+# memory-search TorqueQuery service in cic-ingestion. See
+# docs/meta/phases/torquequery-reconciliation-charter.md in the main C:/dev
+# repo, and castironforge/torque-query-docs/HARDENING-NOTES.md.
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'castironforge/torque-query/**'
+      - 'castironforge/torque-query-docs/**'
       - '.github/workflows/torque-query-docs-smoke.yml'
   pull_request:
     branches: [ main ]
     paths:
-      - 'castironforge/torque-query/**'
+      - 'castironforge/torque-query-docs/**'
       - '.github/workflows/torque-query-docs-smoke.yml'
   workflow_dispatch:
 
 defaults:
   run:
-    working-directory: castironforge/torque-query
+    working-directory: castironforge/torque-query-docs
 
 jobs:
   test-and-smoke:

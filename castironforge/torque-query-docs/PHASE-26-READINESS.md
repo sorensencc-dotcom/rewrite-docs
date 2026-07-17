@@ -1,7 +1,15 @@
-# Phase‑26 — TorqueQuery Readiness Checklist
+# Phase‑26 — torque-query-docs Readiness Checklist
+
+Named `torque-query-docs` per Tier 1 decision 2026-07-17 (Option i, split and
+rename) -- distinct from the memory/drift search service, which kept the name
+`TorqueQuery`. See `docs/meta/phases/torquequery-reconciliation-charter.md` in
+the main C:/dev repo.
 
 ## A. Workspace & Structure
-- [x] `cic/torquequery/` workspace created
+
+- [x] `cic/torquequery/` workspace created (original scaffold location; this
+      directory was later moved to `castironforge/torque-query-docs`, and the
+      unrelated empty `cic/torquequery/` placeholder was retired 2026-07-17)
 - [x] `pyproject.toml` defined
 - [x] `config/settings.yaml` pinned
 - [x] `src/` folder with ingestion + RAG engine
@@ -65,5 +73,6 @@
       and precondition validation
 - [x] Isolated CIC-facing TS client draft (`clients/ts/TorqueQueryDocsClient.ts`)
 
-See `HARDENING-NOTES.md` for details. This is pre-decision hardening only -- no
-naming/governance decision was made as part of this work.
+See `HARDENING-NOTES.md` for details. Tier 1 decision APPROVED 2026-07-17
+(Option i, split and rename) -- this service is named `torque-query-docs`
+going forward.

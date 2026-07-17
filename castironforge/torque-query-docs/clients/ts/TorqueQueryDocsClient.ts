@@ -1,17 +1,20 @@
-// Phase 26 SDK draft -- pre-Tier-1-decision, not wired into any adapter yet.
+// Phase 26 SDK draft -- not wired into any adapter yet.
 //
-// Typed client for THIS service: the documentation RAG service in
-// castironforge/torque-query. It answers questions against ingested MkDocs
-// content (embeddings + reranking + LLM synthesis over docs/*.md).
+// Typed client for torque-query-docs: the documentation RAG service in
+// castironforge/torque-query-docs. It answers questions against ingested
+// MkDocs content (embeddings + reranking + LLM synthesis over docs/*.md).
 //
-// This is explicitly NOT the other "TorqueQuery" service (memory/search over
-// CIC Console v3 data, client at cic-ingestion/src/services/torquequery/TorqueQueryClient.ts,
-// default port 3110). Do not merge or alias these two clients -- see
-// castironforge/torque-query/HARDENING-NOTES.md for the pending Tier 1 naming decision.
+// Named per Tier 1 decision 2026-07-17 (Option i, split and rename). This is
+// explicitly NOT the other "TorqueQuery" service (memory/drift search over
+// CIC + MAAL data, which keeps that name -- client at
+// cic-ingestion/src/services/torquequery/TorqueQueryClient.ts, default port
+// 3110). Do not merge or alias these two clients -- see
+// docs/meta/phases/torquequery-reconciliation-charter.md in the main C:/dev
+// repo, and castironforge/torque-query-docs/HARDENING-NOTES.md.
 //
 // Response shapes here mirror the Pydantic response_model classes frozen in
-// castironforge/torque-query/src/main.py (QueryResponse / IngestResponse /
-// IngestErrorResponse) as of the Phase 26 hardening pass.
+// castironforge/torque-query-docs/src/main.py (QueryResponse / IngestResponse
+// / IngestErrorResponse) as of the Phase 26 hardening pass.
 
 export interface TorqueQueryDocsClientConfig {
   /** Base URL of the documentation RAG service, e.g. http://localhost:8000 */
@@ -81,9 +84,10 @@ export class TorqueQueryDocsClientError extends Error {
 }
 
 /**
- * Minimal typed HTTP client for the documentation RAG service ("torque-query-docs"
- * working name, pending Tier 1 naming decision). Not wired into any CIC adapter --
- * this is a standalone draft SDK produced during pre-decision hardening.
+ * Minimal typed HTTP client for the documentation RAG service, named
+ * "torque-query-docs" per Tier 1 decision 2026-07-17. Not wired into any CIC
+ * adapter -- this is a standalone draft SDK produced during pre-decision
+ * hardening, still awaiting adapter integration.
  */
 export class TorqueQueryDocsClient {
   private readonly url: string;
