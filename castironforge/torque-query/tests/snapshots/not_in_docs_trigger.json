@@ -1,0 +1,15 @@
+{
+  "answer": "I do not have information about that topic in the docs.",
+  "sources": [
+    {
+      "file": "docs/misc/paint.md",
+      "section": "Misc > Paint",
+      "tags": [
+        "paint"
+      ],
+      "score": 0.35
+    }
+  ],
+  "confidence": 0.0,
+  "not_in_docs": true
+}

@@ -1,0 +1,25 @@
+{
+  "answer": "The M8 bolt torque spec is 25 Nm.",
+  "sources": [
+    {
+      "file": "docs/hardware/torque-specs.md",
+      "section": "Hardware > Torque Specs",
+      "tags": [
+        "hardware",
+        "torque"
+      ],
+      "score": 0.91
+    },
+    {
+      "file": "docs/hardware/tools.md",
+      "section": "Hardware > Tools",
+      "tags": [
+        "hardware",
+        "tools"
+      ],
+      "score": 0.62
+    }
+  ],
+  "confidence": 0.91,
+  "not_in_docs": false
+}
