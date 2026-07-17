@@ -1,0 +1,19 @@
+castironforge/torque-query/src/main.py
+  s_35e8218929b70d::t_03c96c1959c73d 129-157,173-209,211-212,214-227,244-255
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "3d5f7c22426e3c6c9a19826c2a60e05abb5df28e",
+  "prompts": {},
+  "sessions": {
+    "s_35e8218929b70d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "agent-a6c320b7570eb0295",
+        "model": "unknown"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
