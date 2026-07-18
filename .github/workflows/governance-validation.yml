@@ -42,7 +42,7 @@ jobs:
 
       - name: Upload compliance report
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: governance-report
           path: C:\dev\GOVERNANCE_VALIDATION_REPORT.json
