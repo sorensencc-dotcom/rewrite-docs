@@ -44,11 +44,11 @@ jobs:
           $system = "${{ github.event.inputs.system || 'all' }}"
           $verbose = "${{ github.event.inputs.verbose }}" -eq "true"
 
-          $args = @("-System", $system)
-          if ($verbose) { $args += "-Verbose" }
+          $syncArgs = @{ System = $system }
+          if ($verbose) { $syncArgs.Verbose = $true }
 
           Write-Host "⏱️  Starting vault sync: system=$system, verbose=$verbose" -ForegroundColor Cyan
-          & .\sync-vault.ps1 @args
+          & .\sync-vault.ps1 @syncArgs
 
           if ($LASTEXITCODE -ne 0) {
             Write-Host "❌ Sync failed with exit code $LASTEXITCODE" -ForegroundColor Red
