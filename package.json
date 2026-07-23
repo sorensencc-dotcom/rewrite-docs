@@ -18,6 +18,7 @@
     "dev": "tsx watch cic-runtime/example-entrypoint.ts",
     "build": "tsc && tsx docs-manager/cli.ts sync",
     "lint": "tsc --noEmit",
+    "pre-flight": "npm run lint && npm test",
     "cic-ui": "node cic-ui/index.js",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
