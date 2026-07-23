@@ -1,0 +1,20 @@
+scripts/setup-git-hook.ps1
+  s_5f8d40bf855cf6::t_57a2655e0c4bdb 29
+  s_5f8d40bf855cf6::t_bbeb0db31b9508 1-28,30-45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "abdf9c50aec5f031b41f639dd386d03445f1df18",
+  "prompts": {},
+  "sessions": {
+    "s_5f8d40bf855cf6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "08f1121a-602b-4b4c-a8fe-b6db21242ea3",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
