@@ -130,6 +130,8 @@ __pycache__/
 docs-manager/docs-audit-report.json
 docs-manager/docs-drift-report.json
 gemini-scan-report.txt
+.performance-report.json
+.validation-report.json
 
 # Env files: examples only
 .env.*
