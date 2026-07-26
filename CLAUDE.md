@@ -1,6 +1,7 @@
-# CIC + Rewrite Labs Governance
+# Rewrite Labs (CIC + Governance Stack)
 
-Governance document for project architecture, structure, knowledge base operations, and documentation standards. Covers governance only (not Claude runtime behavior).
+**Stack:** TypeScript/Node.js, Express, Docker, PostgreSQL, Qdrant, MCP, Jest + Vitest  
+**Status:** Active (Phase 8+); governance rules in `docs/meta/governance/`  
 
 ## 1. Project Architecture
 
@@ -143,129 +144,19 @@ npm run build        # Build Docker image
 docker-compose up    # Launch full stack locally on port 3100
 ```
 
-## 7. Documentation & Skills Policy
+## 7. Governance & Policy Reference
 
-**RULE 1: mkdocs Structure**
+Governance rules (doc structure, file placement, naming, validation, security gates, testing) live in authoritative policy docs:
 
-- All deliverable markdown → `docs/` (organized by category)
-- Never leave .md files in root (except CLAUDE.md, README.md)
-- Categories: `docs/cic/`, `docs/dashboard/`, `docs/rewrite-labs/`, `docs/reference/`, `docs/meta/`
+- `docs/meta/governance/global-operating-rules-cic-rewrite-labs.md` (v2.0) — core governance framework
+- `docs/meta/governance/documentation-policy.md` — doc naming/placement rules
+- `docs/meta/file-lifecycle-policy.md` — file creation, archival, deletion
+- `docs/meta/naming-standard.md` — naming conventions
+- `docs/KB-OPERATIONS.md` — KB query/edit/consolidation workflows
+- `docs/meta/ownership-matrix.md` — file location rules and responsibilities
 
-**RULE 2: Toolforge Skills**
-
-- All skills → `toolforge/skills/{skill-name}/`
-- Required structure:
-
-```text
-skill.json          (metadata)
-README.md           (quick reference)
-src/index.ts        (implementation)
-tests/test.ts       (test suite)
-docs/USAGE.md       (documentation)
-```
-
-**RULE 3: Code & Config Stay in Root**
-
-- Scripts (*.ps1, *.sh, *.ts impl) → C:\dev\ or subdirs
-- Config (*.json, *.yaml, .env) → C:\dev\ or subdirs
-- Vault references → Unchanged
-
-## 8. File Movement Protocol
-
-When creating/moving deliverables:
-
-1. Create in final location (not root)
-2. Update mkdocs.yml navigation
-3. Scan for old paths (grep for broken links)
-4. Run `mkdocs build --strict`
-5. Update CLAUDE.md if new patterns introduced
-
-**See also:** [FILE_LIFECYCLE_POLICY.md](docs/meta/file-lifecycle-policy.md) — File creation, archival, and deletion rules
-
-## 9. Naming Conventions
-
-- Files: `lowercase-with-hyphens.md` (not CamelCase)
-- Skills: `action-noun` pattern (e.g., `run-cic-phase`)
-- Sections: Capitalize first letter in mkdocs nav
-- Test files: `iteration-1-grading.md`, `test-cases.json`
-
-**See also:** [NAMING_STANDARD.md](docs/meta/naming-standard.md) — Detailed naming rules, exceptions, and enforcement
-
-## 10. Validation Checklist
-
-Before shipping:
-
-```bash
-# 1. No orphaned .md files in root
-ls C:\dev\*.md | grep -v CLAUDE.md | grep -v README.md
-
-# 2. mkdocs.yml updated with new sections
-
-# 3. Toolforge skill structure validated (if new skill)
-
-# 4. Build passes strict validation
-mkdocs build --strict
-
-# 5. Cross-references validated
-grep -r "C:\\dev\\{old-path}" docs/
-# Should return: 0 results (or only documentation strings)
-```
-
-## 10.1 Document Review Checklist (Specs, Roadmaps, Use Case Libraries)
-
-Before merging specs or roadmap docs:
-
-- Scope statements match table contents (e.g., "twelve use cases" in text must match actual count in matrix)
-- TOC anchors match section headings exactly (e.g., `#2--scope-and-objectives` not `#2--scope-and-object-list`)
-- Cross-reference backlinks present: all docs include "See also:" section linking to source/related docs
-- Cross-references resolve: verify all markdown links point to files that exist
-- Run `mkdocs build --strict` before sign-off; catches broken links and invalid nav entries
-
-## 10.2 Log-Structured Manifest Pattern
-
-Append-only activity logs (approval manifests, audit trails, state mutations):
-
-- New records appended to end of file; old records never replaced
-- `.find()` returns first record (original state), not latest
-- Use `.reverse().find()` to get most recent record (e.g., latest approval status)
-- Pattern discovered in ingestion-wave-f-master-gate tests (Wave D approval lookup)
-
-## 10.3 MCP Gateway Security Gates
-
-Context injection security surface:
-
-- Session binding validation: Bearer token `sub` must match session `user_id` (prevents cross-session injection attacks)
-- PII redaction audit logging: every redaction event logged with category, timestamp, actor (required by spec §8)
-- Request schema validation: return 400/422 errors for malformed/unprocessable payloads, not 500
-- Rate limit response headers: `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset` required (spec §4.5)
-- Circuit breaker window: 60-second rolling window, minimum 10 requests before tripping (spec §7.2)
-
-## 10.4 Credential Scanner Discipline
-
-Never use `--no-verify` to bypass credential scanner without identifying root cause. If false positive: whitelist the pattern in `.gitignore-credentials` or redact sensitive value from source. Bypassing the hook can hide real credential leaks and violate security policy.
-
-## 10.5 MCP Gateway Test Coverage (Spec-Compliance)
-
-Required test scenarios (not optional):
-
-- p95 latency SLA: context injection ≤200ms under nominal load (spec §9.1)
-- 409 Conflict: concurrent modification attempts on same session (spec §4.2 error codes)
-- Graceful degradation: read-only mode when circuit breaker open, cached context served (spec §7.4)
-- Timeout simulation: downstream call exceeds timeout threshold, proper error propagation
-- Rate limit headers: present in all 2xx and 429 responses
-
-## 11. When Unsure: docs/ or toolforge/skills/?
-
-- Markdown documentation → `docs/`
-- Operational skill (runbook, runnable) → `toolforge/skills/`
-- Code/config → Keep in functional location (root/src/etc)
-
-## 12. Enforcement
-
-- Pre-commit validation: `mkdocs build --strict`, no orphaned .md files
-- KB Operations: See [KB-OPERATIONS.md](docs/KB-OPERATIONS.md) for query, edit, consolidation workflows
-- This document is authoritative reference for all governance
+**CLAUDE.md Focus:** Dev workflow + architecture only. Policy changes update governance docs, not this file.
 
 ---
 
-**Last Updated:** 2026-07-09 — Session: NotebookLM v1.2 Integration Specs & MCP Gateway Refactor. Added sections 10.1–10.5 capturing document review discipline, log-structured manifest pattern, MCP security gates, credential scanner policy, and spec-compliance test coverage requirements.
+**Last Updated:** 2026-07-18 — Refactored to focus on project architecture + dev workflow; moved governance/policy sections to authoritative docs/ location.
