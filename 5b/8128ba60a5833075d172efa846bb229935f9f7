@@ -1,0 +1,21 @@
+.github/workflows/claude-md-drift-check.yml
+  s_bf425cfb5dd902::t_c20471ec99e514 1-22
+scripts/check-claude-md-links.cjs
+  s_bf425cfb5dd902::t_8fcbae0dc15421 1-71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "5b8128ba60a5833075d172efa846bb229935f9f7",
+  "prompts": {},
+  "sessions": {
+    "s_bf425cfb5dd902": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d0bddb46-1770-430a-a668-ee0f4c688ce6",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
