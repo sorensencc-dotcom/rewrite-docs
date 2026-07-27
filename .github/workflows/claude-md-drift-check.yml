@@ -1,0 +1,22 @@
+name: CLAUDE.md Drift Check
+
+on:
+  pull_request:
+    paths:
+      - "**/CLAUDE.md"
+      - "docs/meta/**"
+  push:
+    branches: [main]
+    paths:
+      - "**/CLAUDE.md"
+      - "docs/meta/**"
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify CLAUDE.md links resolve
+        run: node scripts/check-claude-md-links.cjs
