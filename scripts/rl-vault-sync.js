@@ -23,12 +23,17 @@ const doPull = args.includes("--pull");
 const dryRun = args.includes("--dry-run");
 
 const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
-const clone = manifest.localClone;
+const clone = resolve(repoRoot, manifest.localClone);
 const target = manifest.target;
 
 if (!existsSync(clone)) {
-  console.error(`[rl-vault-sync] local clone not found: ${clone}`);
-  process.exit(1);
+  if (!manifest.source) {
+    console.error(`[rl-vault-sync] local clone not found and manifest.source is empty: ${clone}`);
+    process.exit(1);
+  }
+  console.log(`[rl-vault-sync] cloning ${manifest.source} into ${clone} ...`);
+  mkdirSync(dirname(clone), { recursive: true });
+  execSync(`git clone --depth 1 ${JSON.stringify(manifest.source)} ${JSON.stringify(clone)}`, { stdio: "inherit" });
 }
 
 if (doPull) {

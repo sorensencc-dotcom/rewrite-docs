@@ -70,6 +70,23 @@ function Get-VaultConfig {
     }
 }
 
+function Test-VaultConfig {
+    param($Config)
+
+    if (-not $Config.indexing.mainIndex) {
+        throw "Vault configuration error: indexing.mainIndex is required."
+    }
+
+    foreach ($vault in @($Config.vaults)) {
+        if ($vault.enabled -and [string]::IsNullOrWhiteSpace($vault.source)) {
+            throw "Vault configuration error: enabled vault '$($vault.name)' has no source."
+        }
+        if ($vault.enabled -and $vault.source -match '^(PENDING|CONFIGURE_)') {
+            throw "Vault configuration error: enabled vault '$($vault.name)' uses placeholder source '$($vault.source)'."
+        }
+    }
+}
+
 function Get-DefaultConfig {
     @{
         vaults = @(
@@ -289,6 +306,7 @@ function Main {
 
     # Load configuration
     $config = Get-VaultConfig
+    Test-VaultConfig -Config $config
 
     # Process vaults
     $systemMap = @{ 'cic' = 'CIC'; 'rl' = 'RewriteLabs' }
@@ -328,7 +346,7 @@ function Main {
     Create-ArchitectureStructure -Architecture $config.architecture
 
     # Update index
-    Update-VaultIndex -IndexFile $config.indexFile
+    Update-VaultIndex -IndexFile $config.indexing.mainIndex
 
     # Show status
     Get-SyncStatus -Config $config
