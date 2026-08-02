@@ -1,0 +1,59 @@
+vault-sync-config.json
+  s_9b04e33689e249::t_28ceec551a0849 8
+src/devops/ci/github-action.yml
+  s_9b04e33689e249::t_28ceec551a0849 11,13,15
+sync-vault.ps1
+  s_9b04e33689e249::t_28ceec551a0849 73-89,309,349
+scripts/rl-vault-sync.js
+  s_9b04e33689e249::t_2269ce683540d0 26,30-36
+.github/workflows/auto-docs-pr.yml
+  s_9b04e33689e249::t_2665cd8d2be06f 15,22
+.github/workflows/batch-11-ci.yml
+  s_9b04e33689e249::t_59b0e540bf8f51 11,19,21
+.github/workflows/build.yml
+  s_9b04e33689e249::t_9da5f1662c8381 16
+.github/workflows/ci.yml
+  s_9b04e33689e249::t_127933aad24db2 14,24,26
+.github/workflows/cic-governance-ci.yml
+  s_9b04e33689e249::t_696c9fa9b8d2f2 29
+.github/workflows/cic-ingestion-build.yml
+  s_9b04e33689e249::t_d24c94e81f2e9d 18
+.github/workflows/claude-md-drift-check.yml
+  s_9b04e33689e249::t_d03492fc9c7171 19
+.github/workflows/docs-audit-pr.yml
+  s_9b04e33689e249::t_e14a261055d5a6 11,13,15,25
+.github/workflows/docs-release.yml
+  s_9b04e33689e249::t_84f58ed7a71181 15,19,21,52
+.github/workflows/docs-sync-main.yml
+  s_9b04e33689e249::t_1cc5899c49c766 14,18,20,61
+.github/workflows/governance-validation.yml
+  s_9b04e33689e249::t_7f6a75cb059653 16,45
+.github/workflows/phase-0-8-build.yml
+  s_9b04e33689e249::t_e090c56ac6e4de 21,24
+.github/workflows/phase0.7-build.yml
+  s_9b04e33689e249::t_50c097aab8bf8f 21,43
+.github/workflows/phase0.7-deploy.yml
+  s_9b04e33689e249::t_284f126c795302 26
+.github/workflows/topology-check.yml
+  s_9b04e33689e249::t_20f685d8f211ae 15,18,20
+.github/workflows/torque-query-docs-smoke.yml
+  s_9b04e33689e249::t_d46fcc7a96c261 31
+.github/workflows/vault-sync.yml
+  s_9b04e33689e249::t_b7996c63940bd5 32,85
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "af00616cc98bc46db003747a11af7c7499827b0e",
+  "prompts": {},
+  "sessions": {
+    "s_9b04e33689e249": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fc2cc-b74c-7c20-b39b-9af6e9ee68b9",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "Chris Sorensen <sorensencc@gmail.com>"
+    }
+  }
+}
