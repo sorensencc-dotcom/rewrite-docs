@@ -28,6 +28,12 @@ export default {
   ],
   moduleNameMapper: {
     "^uuid$": "uuid",
+    "^@/(.*)$": "<rootDir>/src/$1",
+    "^@maal/(.*)$": "<rootDir>/src/maal/$1",
+    "^@vector/(.*)$": "<rootDir>/src/vector/$1",
+    "^@learning/(.*)$": "<rootDir>/src/learning/$1",
+    "^@wayland/(.*)$": "<rootDir>/src/wayland/$1",
+    "^@lib/(.*)$": "<rootDir>/src/lib/$1",
     "^((?:\\.{1,2}|src|cic|cic-ingestion)/.*)\\.js$": "$1",
     "\\.css$": "<rootDir>/jest-mock-css.js"
   },
