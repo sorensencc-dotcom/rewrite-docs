@@ -11,6 +11,8 @@
 import NodeCache from 'node-cache';
 import { EventEmitter } from 'events';
 
+const NodeCacheCtor = (NodeCache as any)?.default || NodeCache;
+
 export interface MemoryPacket {
   id: string;
   timestamp: number;
@@ -86,7 +88,7 @@ class MemoryService extends EventEmitter {
 
   constructor(ttl = 2592000) {
     super();
-    this.cache = new NodeCache({ stdTTL: ttl });
+    this.cache = new NodeCacheCtor({ stdTTL: ttl });
   }
 
   /**

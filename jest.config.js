@@ -36,7 +36,8 @@ export default {
     "src/tests/feedback-loop\\.test\\.ts",
     "src/tests/cic/phase8\\.integration\\.test\\.ts",
     "src/autonomy/routes/__tests__/firedrills-integration\\.test\\.ts",
-    "src/autonomy/__tests__/phase-23-2-integration.test.ts"
+    "src/autonomy/__tests__/phase-23-2-integration\\.test\\.ts",
+    "src/autonomy/__tests__/e2e-test-harness\\.test\\.ts"
   ],
   moduleNameMapper: {
     "^uuid$": "uuid",
