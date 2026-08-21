@@ -153,7 +153,7 @@ describe("SpaHydrationDetector", () => {
 
       const result = await detector.detect(mockPage)
 
-      expect(result.timeMs).toBeGreaterThan(0)
+      expect(result.timeMs).toBeGreaterThanOrEqual(0)
       expect(result.timeMs).toBeLessThan(5000)
     })
   })

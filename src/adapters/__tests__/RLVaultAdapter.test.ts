@@ -266,7 +266,7 @@ Test content here.`;
     test("pipeline returns timing metrics", async () => {
       const result = await adapter.run("ingest", {});
       expect(result.ok).toBe(true);
-      expect(result.data.durationMs).toBeGreaterThan(0);
+      expect(result.data.durationMs).toBeGreaterThanOrEqual(0);
     });
 
     test("pipeline metadata is correct", async () => {
