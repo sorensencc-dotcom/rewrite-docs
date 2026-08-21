@@ -6,6 +6,7 @@
 import { RLVaultAdapter } from "../RLVaultAdapter";
 import * as fs from "fs";
 import * as path from "path";
+import * as os from "os";
 
 // Mock the logger and metrics
 jest.mock("../../logging/adapterLogger", () => ({
@@ -41,8 +42,37 @@ jest.mock("../../validation/envelope", () => ({
 
 describe("RLVaultAdapter", () => {
   let adapter: RLVaultAdapter;
-  const testVaultPath = "C:\\dev\\rl-ref";
-  const testManifestPath = "C:\\dev\\docs\\rewrite-labs\\rl-vault-manifest.json";
+  let tempDir: string;
+  let testVaultPath: string;
+  let testManifestPath: string;
+
+  beforeAll(() => {
+    tempDir = path.join(os.tmpdir(), `rl-vault-test-${Date.now()}`);
+    testVaultPath = path.join(tempDir, "vault");
+    testManifestPath = path.join(tempDir, "manifest.json");
+
+    fs.mkdirSync(testVaultPath, { recursive: true });
+    fs.writeFileSync(
+      path.join(testVaultPath, "sample.md"),
+      "---\ntitle: Sample Doc\n---\n# Sample Title\n\nSample content with\ttabs and <!-- comment --> data."
+    );
+
+    const manifestData = {
+      sections: [
+        {
+          name: "core",
+          include: ["sample.md"],
+        },
+      ],
+    };
+    fs.writeFileSync(testManifestPath, JSON.stringify(manifestData, null, 2));
+  });
+
+  afterAll(() => {
+    try {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    } catch {}
+  });
 
   beforeEach(() => {
     adapter = new RLVaultAdapter(testVaultPath, testManifestPath);
@@ -64,7 +94,7 @@ describe("RLVaultAdapter", () => {
       });
 
       test("fails if vault file is missing", async () => {
-        const badVaultPath = "C:\\dev\\nonexistent-rl-ref";
+        const badVaultPath = path.join(tempDir, "nonexistent-vault");
         const badAdapter = new RLVaultAdapter(badVaultPath, testManifestPath);
         const result = await badAdapter.run("discover", {});
         expect(result.ok).toBe(false);
@@ -73,7 +103,6 @@ describe("RLVaultAdapter", () => {
 
     describe("harvest", () => {
       test("extracts frontmatter and content from markdown", async () => {
-        // Create a temp file with frontmatter
         const tempFile = path.join(testVaultPath, "test-temp.md");
         const content = `---
 title: Test Document
@@ -83,21 +112,21 @@ author: Test Author
 
 Test content here.`;
 
-        if (!fs.existsSync(testVaultPath)) {
-          fs.mkdirSync(testVaultPath, { recursive: true });
-        }
-
         fs.writeFileSync(tempFile, content);
 
         try {
-          const discovered = await adapter.run("discover", {});
-          if (!discovered.ok || discovered.data.length === 0) {
-            // Skip if no files in vault (expected when RL vault not synced)
-            return;
-          }
-          const harvested = await adapter.run("harvest", { files: discovered.data });
+          const harvested = await adapter.run("harvest", {
+            files: [
+              {
+                path: tempFile,
+                absolutePath: tempFile,
+                size: content.length,
+                lastModified: new Date(),
+                section: "core",
+              },
+            ],
+          });
           expect(harvested.ok).toBe(true);
-          // Verify harvest extracts frontmatter/content structure
           expect(harvested.data.length).toBeGreaterThan(0);
           harvested.data.forEach((f: any) => {
             expect(f.frontmatter).toBeDefined();
@@ -114,20 +143,22 @@ Test content here.`;
         const tempFile = path.join(testVaultPath, "test-h1.md");
         const content = "# Inferred Title\n\nContent here.";
 
-        if (!fs.existsSync(testVaultPath)) {
-          fs.mkdirSync(testVaultPath, { recursive: true });
-        }
-
         fs.writeFileSync(tempFile, content);
 
         try {
-          const discovered = await adapter.run("discover", {});
-          if (!discovered.ok || discovered.data.length === 0) {
-            // Skip if no files in vault (expected when RL vault not synced)
-            return;
-          }
-          const harvested = await adapter.run("harvest", { files: discovered.data });
+          const harvested = await adapter.run("harvest", {
+            files: [
+              {
+                path: tempFile,
+                absolutePath: tempFile,
+                size: content.length,
+                lastModified: new Date(),
+                section: "core",
+              },
+            ],
+          });
           expect(harvested.ok).toBe(true);
+          expect(harvested.data[0].frontmatter.title).toBe("Inferred Title");
         } finally {
           if (fs.existsSync(tempFile)) {
             fs.unlinkSync(tempFile);
@@ -168,7 +199,6 @@ Test content here.`;
         expect(chunked.ok).toBe(true);
         expect(chunked.data.length).toBeGreaterThan(0);
 
-        // Verify chunk IDs start with "rlv-"
         chunked.data.forEach((chunk: any) => {
           expect(chunk.id).toMatch(/^rlv-[a-f0-9]+-\d+$/);
         });
@@ -198,7 +228,6 @@ Test content here.`;
         expect(embedded.ok).toBe(true);
         expect(embedded.data.length).toBeGreaterThan(0);
 
-        // Verify embedding structure
         embedded.data.forEach((result: any) => {
           expect(result.vector).toBeDefined();
           expect(Array.isArray(result.vector)).toBe(true);

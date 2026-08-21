@@ -11,3 +11,12 @@ export function loadRuntimeConfig() {
     fs.readFileSync("runtime/config/runtime-config.json", "utf8")
   );
 }
+
+export function isLocalFirstEnabled(): boolean {
+  try {
+    const config = loadRuntimeConfig();
+    return Boolean(config.localFirst ?? true);
+  } catch {
+    return true;
+  }
+}

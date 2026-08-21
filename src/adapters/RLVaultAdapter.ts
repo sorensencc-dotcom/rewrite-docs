@@ -144,11 +144,11 @@ export class RLVaultAdapter {
         let frontmatter: Record<string, any> = {};
         let content = raw;
 
-        const fmMatch = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+        const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
         if (fmMatch) {
           try {
             // Simple YAML parse (minimal—no nested structures expected)
-            const fmLines = fmMatch[1].split("\n");
+            const fmLines = fmMatch[1].split(/\r?\n/);
             for (const line of fmLines) {
               const [key, ...valueParts] = line.split(":");
               if (key && valueParts.length > 0) {

@@ -12,6 +12,7 @@ describe("Offline Mode", () => {
   let shouldFail = false;
 
   beforeEach(async () => {
+    shouldFail = false;
     tempDir = path.join(os.tmpdir(), `offline-test-${Date.now()}`);
     gateway = new AdapterGateway({
       l1MaxEntries: 10,
@@ -133,11 +134,11 @@ describe("Offline Mode", () => {
     });
 
     it("should serve from cache in read-only mode", async () => {
-      const policyManager = (gateway as any).policyManager;
-      policyManager.setPolicy("test-adapter", CachePolicy.READ_ONLY);
-
       const response1 = await gateway.invoke("test-adapter", { value: 5 });
       expect(response1.success).toBe(true);
+
+      const policyManager = (gateway as any).policyManager;
+      policyManager.setPolicy("test-adapter", CachePolicy.READ_ONLY);
 
       shouldFail = true;
       const response2 = await gateway.invoke("test-adapter", { value: 5 });

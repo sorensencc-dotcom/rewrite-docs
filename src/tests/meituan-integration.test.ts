@@ -64,6 +64,7 @@ describe("Meituan Provider Integration", () => {
   it("should throw on missing API key in production", async () => {
     process.env.NODE_ENV = "production";
     delete process.env.MEITUAN_API_KEY;
+    delete process.env.MOCK_PROVIDERS;
 
     const req: UnifiedChatRequest = {
       model: "meituan:meituan-llm-v1",

@@ -4,6 +4,7 @@ import { exec } from "child_process";
 import util from "util";
 import fs from "fs";
 import path from "path";
+import os from "os";
 import { ExecutionResult, InputSnapshot, EnvironmentSnapshot } from "../runtime-types";
 
 const execAsync = util.promisify(exec);
@@ -21,9 +22,9 @@ export async function executeS3(
 
   try {
     const vmId = `fc-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
-    const vmDir = path.join("/tmp", vmId);
+    const vmDir = path.join(os.tmpdir(), vmId);
 
-    fs.mkdirSync(vmDir);
+    fs.mkdirSync(vmDir, { recursive: true });
 
     const rootfsPath = "/var/lib/firecracker/rootfs.ext4"; // pinned image
     const kernelPath = "/var/lib/firecracker/vmlinux";      // pinned kernel
