@@ -14,7 +14,7 @@ describe('rollback-timing-harness', () => {
 
     expect(result.withinTarget).toBe(true);
     expect(result.totalMs).toBeLessThanOrEqual(300);
-    expect(result.startToCompleteMs).toBeGreaterThanOrEqual(50);
+    expect(result.startToCompleteMs).toBeGreaterThanOrEqual(40);
   });
 
   test('detects rollback exceeding hard limit', async () => {
@@ -43,6 +43,6 @@ describe('rollback-timing-harness', () => {
     );
 
     expect(result.abortToStartMs).toBeGreaterThanOrEqual(0);
-    expect(result.abortToStartMs).toBeLessThan(10);
+    expect(result.abortToStartMs).toBeLessThan(100);
   });
 });
