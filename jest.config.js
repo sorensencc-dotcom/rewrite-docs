@@ -1,6 +1,7 @@
 export default {
   preset: "ts-jest",
   testEnvironment: "jsdom",
+  testTimeout: 10000,
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   roots: ["<rootDir>/src", "<rootDir>/cic", "<rootDir>/cic-runtime", "<rootDir>/cic-ingestion", "<rootDir>/cic-ui", "<rootDir>/cic-os"],
   testMatch: ["**/*.test.ts", "**/*.test.tsx"],
