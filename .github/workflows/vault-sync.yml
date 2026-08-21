@@ -34,6 +34,8 @@ jobs:
     steps:
       - name: Verify Credentials Pre-Flight
         shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if (-not $env:GITHUB_TOKEN -and -not "${{ secrets.SYNC_TOKEN }}") {
             Write-Host "::error::Vault sync credentials not provisioned."
