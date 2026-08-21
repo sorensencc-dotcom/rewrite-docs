@@ -19,6 +19,8 @@
     "build": "tsc && tsx docs-manager/cli.ts sync",
     "lint": "tsc --noEmit",
     "type-check": "tsc --noEmit",
+    "check:topology": "node scripts/validate-topology.js && node scripts/verify-topology-docs.js",
+    "pre-push": "npm run check:topology && npm run type-check",
     "pre-flight": "npm run lint && npm test",
     "cic-ui": "node cic-ui/index.js",
     "storybook": "storybook dev -p 6006",

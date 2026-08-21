@@ -140,3 +140,4 @@ gemini-scan-report.txt
 
 # Local development engines
 engines/
+temp-e2e-test-data/

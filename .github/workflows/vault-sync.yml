@@ -20,6 +20,10 @@ on:
         type: boolean
         default: false
 
+concurrency:
+  group: vault-sync
+  cancel-in-progress: false
+
 jobs:
   sync:
     name: Sync Vaults
@@ -28,6 +32,15 @@ jobs:
       contents: write
 
     steps:
+      - name: Verify Credentials Pre-Flight
+        shell: pwsh
+        run: |
+          if (-not $env:GITHUB_TOKEN -and -not "${{ secrets.SYNC_TOKEN }}") {
+            Write-Host "::error::Vault sync credentials not provisioned."
+            exit 1
+          }
+          Write-Host "✅ Pre-flight credentials verified."
+
       - name: Checkout code
         uses: actions/checkout@v7
         with:
