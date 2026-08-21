@@ -23,7 +23,7 @@ function main() {
   });
 
   const rootMd = fs.readdirSync(ROOT)
-    .filter(f => f.endsWith(".md") && !["CLAUDE.md", "README.md", "CHANGELOG.md"].includes(f));
+    .filter(f => f.endsWith(".md") && !["CLAUDE.md", "README.md", "CHANGELOG.md", "ROADMAP.md"].includes(f));
 
   console.log("=== Topology Verification ===");
   if (missing.length) {

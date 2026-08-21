@@ -11,9 +11,13 @@ Registry of all CIC and Rewrite Labs systems, services, and components.
 
 ## CIC Services
 
+- **MAAL:** Model Adaptive Abstraction Layer & Reasoning Runtime
+- **Governance:** Policy verification and compliance gates
+- **Routing:** Message delivery and service routing
+- **Ingestion:** Core pipeline (Phase 27: locked)
+- **Knowledge:** Knowledge graph and memory substrate
 - **Update Monitor:** GitHub polling + event ingestion
 - **CodeFlow Analyzer:** Static analysis + impact detection
-- **CIC Ingestion:** Core pipeline (Phase 27: locked)
 - **Autonomy API:** Programmatic ingestion control
 - **Roadmap Service:** Milestone tracking
 
