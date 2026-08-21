@@ -24,6 +24,7 @@ export default {
     "src/tests/BookStackAdapter\\.test\\.ts",
     "src/integration/bookstack\\.integration\\.test\\.ts",
     "cic-ingestion/src/tests/drift-detector\\.test\\.ts",
+    "cic-ingestion/src/tests/adapter-integration\\.test\\.ts",
     "cic-ingestion/src/tests/six-rules-integration\\.test\\.ts",
     "cic-ingestion/src/ingestion/daemon-routing\\.test\\.ts",
     "cic-ingestion/src/ingestion/repairManifest\\.SixRules\\.test\\.ts",

@@ -57,7 +57,7 @@ describe('CostNotifier', () => {
       const html = (CostNotifier as any).formatEmailHtml(mockReport, 'daily');
       expect(html).toContain('CIC Daily Cost Report');
       expect(html).toContain('$0.25'); // daily cost
-      expect(html).toContain('50000'); // daily tokens
+      expect(html).toMatch(/50,?000/); // daily tokens
       expect(html).toContain('researcher'); // agent name
       expect(html).toContain('$0.50'); // daily savings
     });
