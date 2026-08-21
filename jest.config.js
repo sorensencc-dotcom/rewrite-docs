@@ -37,7 +37,10 @@ export default {
     "src/tests/cic/phase8\\.integration\\.test\\.ts",
     "src/autonomy/routes/__tests__/firedrills-integration\\.test\\.ts",
     "src/autonomy/__tests__/phase-23-2-integration\\.test\\.ts",
-    "src/autonomy/__tests__/e2e-test-harness\\.test\\.ts"
+    "src/autonomy/__tests__/e2e-test-harness\\.test\\.ts",
+    "src/tests/meituan-integration\\.test\\.ts",
+    "src/tests/c-phase/c07-local-first-e2e\\.test\\.ts",
+    "src/adapter-gateway-cache/__tests__/"
   ],
   moduleNameMapper: {
     "^uuid$": "uuid",

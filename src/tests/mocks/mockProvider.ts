@@ -30,7 +30,7 @@ export class MockProvider implements Provider {
 
       case "timeout":
         return new Promise((_, reject) =>
-          setTimeout(() => reject(new Error("Simulated timeout")), 25000)
+          setTimeout(() => reject(new Error("Simulated timeout")), this.delayMs || 50)
         );
 
       case "malformed":

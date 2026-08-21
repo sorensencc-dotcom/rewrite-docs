@@ -83,16 +83,21 @@ export function listDriftDomains(): DriftDomain[] {
  * Check if a file path matches any drift domain.
  */
 export function matchesDriftDomain(filePath: string): DriftDomain[] {
+  const normalizedPath = filePath.replace(/\\/g, "/");
   const matched: DriftDomain[] = [];
 
   for (const domain of driftDomains) {
     for (const pattern of domain.patterns) {
-      const hasDoubleStar = pattern.startsWith("**/");
-      const base = hasDoubleStar ? pattern.slice(3) : pattern;
-      const converted = base.replace(/\./g, "\\.").replace(/\*/g, ".*").replace(/\?/g, ".");
+      const normalizedPattern = pattern.replace(/\\/g, "/");
+      const hasDoubleStar = normalizedPattern.startsWith("**/");
+      const base = hasDoubleStar ? normalizedPattern.slice(3) : normalizedPattern;
+      const converted = base
+        .replace(/[.+^${}()|[\]\\]/g, "\\$&")
+        .replace(/\*/g, ".*")
+        .replace(/\?/g, ".");
       const finalPattern = hasDoubleStar ? "(?:^|.*/)" + converted + "$" : "^" + converted + "$";
       const regex = new RegExp(finalPattern, "i");
-      if (regex.test(filePath)) {
+      if (regex.test(normalizedPath)) {
         matched.push(domain);
         break; // Don't add same domain twice
       }

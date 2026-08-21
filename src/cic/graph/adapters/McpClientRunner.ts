@@ -67,6 +67,13 @@ export class McpClientRunner {
         }
       });
 
+      child.stdin.on('error', (err) => {
+        if (!resolved) {
+          resolved = true;
+          reject(err);
+        }
+      });
+
       // Handshake first
       const initRequest = {
         jsonrpc: "2.0",
@@ -79,7 +86,14 @@ export class McpClientRunner {
         }
       };
 
-      child.stdin.write(JSON.stringify(initRequest) + '\n');
+      try {
+        child.stdin.write(JSON.stringify(initRequest) + '\n');
+      } catch (err) {
+        if (!resolved) {
+          resolved = true;
+          reject(err);
+        }
+      }
 
       let stage = 'init'; // 'init' -> 'call'
 
