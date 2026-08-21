@@ -87,8 +87,11 @@ export function matchesDriftDomain(filePath: string): DriftDomain[] {
 
   for (const domain of driftDomains) {
     for (const pattern of domain.patterns) {
-      // Simple glob matching (in production, use a proper glob library)
-      const regex = new RegExp(pattern.replace(/\*/g, ".*").replace(/\?/g, "."));
+      const hasDoubleStar = pattern.startsWith("**/");
+      const base = hasDoubleStar ? pattern.slice(3) : pattern;
+      const converted = base.replace(/\./g, "\\.").replace(/\*/g, ".*").replace(/\?/g, ".");
+      const finalPattern = hasDoubleStar ? "(?:^|.*/)" + converted + "$" : "^" + converted + "$";
+      const regex = new RegExp(finalPattern, "i");
       if (regex.test(filePath)) {
         matched.push(domain);
         break; // Don't add same domain twice
