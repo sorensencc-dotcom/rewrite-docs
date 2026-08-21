@@ -15,9 +15,13 @@ import { localaiChat } from "../providers/localaiProvider.js";
 import { gpt4allChat } from "../providers/gpt4allProvider.js";
 import { anythingllmChat } from "../providers/anythingllmProvider.js";
 import { cloudProviders, getCloudProvider } from "./cloudProviders.js";
+// @ts-ignore
 import { resolveJob } from "../../harvester-bridge/resolver.js";
+// @ts-ignore
 import { clientSessionExtractor } from "../../cic-ingestion/src/extractors/clientSessionExtractor.js";
+// @ts-ignore
 import { processClientSession } from "../../cic-ingestion/src/harness/replayHarness.js";
+// @ts-ignore
 import { decayDriftScores } from "../../cic-ingestion/src/drift/driftEngine.js";
 import { CICStateStore } from "./cicStateStore.js";
 

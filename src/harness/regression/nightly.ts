@@ -157,7 +157,7 @@ async function cicQueryGate(): Promise<GateStatus> {
     for (const gq of goldenQueries) {
       try {
         const url = `${TORQUE_QUERY_URL}/autonomy/search/cic-query?q=${encodeURIComponent(gq.query)}`;
-        const response = await fetch(url, { timeout: 5000 });
+        const response = await fetch(url, { signal: AbortSignal.timeout(5000) });
 
         if (!response.ok) {
           failCount++;
