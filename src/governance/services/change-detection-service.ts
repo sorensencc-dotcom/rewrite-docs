@@ -105,7 +105,7 @@ export class ChangeDetectionService {
             linesModified: 0,
             percentageChanged: 0,
             lastDetectedAt: new Date().toISOString() as ISO8601,
-            errorMessage: "Could not fetch remote; using cached state",
+            errorMessage: "Could not reach upstream after retries",
             retryAttempts: this.maxRetries,
           },
           detectedAt: new Date().toISOString() as ISO8601,
@@ -307,14 +307,14 @@ export class ChangeDetectionService {
     let added = 0;
     let deleted = 0;
 
-    // Lines in remote but not local = added
-    remoteLines.forEach((line) => {
-      if (!localLines.has(line)) added++;
+    // Lines in local but not remote = added locally
+    localLines.forEach((line) => {
+      if (!remoteLines.has(line)) added++;
     });
 
-    // Lines in local but not remote = deleted
-    localLines.forEach((line) => {
-      if (!remoteLines.has(line)) deleted++;
+    // Lines in remote but not local = deleted locally
+    remoteLines.forEach((line) => {
+      if (!localLines.has(line)) deleted++;
     });
 
     // Modified = min(added, deleted) to avoid double-counting

@@ -217,11 +217,8 @@ describe("ChangeDetectionService", () => {
 
     it("should handle SSH-style git URLs", () => {
       const url = "git@github.com:anthropics/claude-skills.git";
-      // Note: current implementation only handles https
-      // This test documents the limitation
-      expect(() => {
-        (service as any).buildGithubRawUrl(url, "main", "skills/test.md");
-      }).toThrow();
+      const rawUrl = (service as any).buildGithubRawUrl(url, "main", "skills/test.md");
+      expect(rawUrl).toBe("https://raw.githubusercontent.com/anthropics/claude-skills/main/skills/test.md");
     });
   });
 
@@ -247,8 +244,7 @@ describe("ChangeDetectionService", () => {
       expect(result).toHaveLength(2);
       expect(result[0].skill_id).toBe("skill-1");
       expect(mockDb.query).toHaveBeenCalledWith(
-        expect.stringContaining("is_locally_modified = 1"),
-        undefined
+        expect.stringContaining("is_locally_modified = 1")
       );
     });
   });
