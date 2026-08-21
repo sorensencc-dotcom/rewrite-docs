@@ -14,7 +14,7 @@ const ROOT = process.cwd();
 const DOCS = path.join(ROOT, "docs");
 
 // Blessed root files (exceptions to markdown rule)
-const BLESSED_ROOT_FILES = ["CLAUDE.md", "README.md", ".gitignore"];
+const BLESSED_ROOT_FILES = ["CLAUDE.md", "README.md", "ROADMAP.md", ".gitignore"];
 
 // Directories that must NOT exist (mangled path artifacts)
 const FORBIDDEN_DIRS = [
