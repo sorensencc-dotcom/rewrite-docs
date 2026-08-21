@@ -22,7 +22,8 @@ interface RefreshReport {
   [key: string]: unknown;
 }
 
-const mode = process.argv[2] || 'audit';
+const positionalArgs = process.argv.slice(2).filter((arg) => !arg.startsWith('-'));
+const mode = positionalArgs[0] || 'audit';
 const configPath = path.join(process.cwd(), 'docs-manager', 'docs-config.json');
 
 try {

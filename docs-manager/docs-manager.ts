@@ -761,8 +761,9 @@ class DocsManager {
 
 // CLI Entry Point
 async function main() {
-  const mode = process.argv[2] || "audit";
-  const configPath = process.argv[3] || "docs-manager/docs-config.json";
+  const positionalArgs = process.argv.slice(2).filter((arg) => !arg.startsWith("-"));
+  const mode = positionalArgs[0] || "audit";
+  const configPath = positionalArgs[1] || "docs-manager/docs-config.json";
 
   const manager = new DocsManager(configPath);
 
@@ -810,6 +811,14 @@ async function main() {
   }
 }
 
-main();
+const isMain = Boolean(
+  process.argv[1] &&
+    (process.argv[1].endsWith("docs-manager.ts") ||
+      process.argv[1].endsWith("docs-manager.js"))
+);
+
+if (isMain) {
+  main();
+}
 
 export { DocsManager, AuditReport, ConsolidationPlan };
