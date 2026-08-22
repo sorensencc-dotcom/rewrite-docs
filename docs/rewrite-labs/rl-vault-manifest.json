@@ -1,7 +1,7 @@
 {
   "$comment": "RL reference vault sync manifest. Source of truth for what syncs from rewrite-mcp into C:\\dev\\rl-ref. Paths verified against the real repo layout 2026-07-04 — do not add paths without checking they exist. The repo root ROADMAP.md is deliberately excluded (it is a synced copy of the Toolforge roadmap, not RL).",
   "version": "1.0",
-  "source": "github://sorensencc-dotcom/rewrite-mcp#main",
+  "source": "https://github.com/sorensencc-dotcom/rewrite-mcp.git",
   "localClone": "C:\\dev\\rewrite-mcp",
   "target": "C:\\dev\\rl-ref",
   "sections": [

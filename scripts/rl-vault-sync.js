@@ -31,9 +31,18 @@ if (!existsSync(clone)) {
     console.error(`[rl-vault-sync] local clone not found and manifest.source is empty: ${clone}`);
     process.exit(1);
   }
-  console.log(`[rl-vault-sync] cloning ${manifest.source} into ${clone} ...`);
+  let gitUrl = manifest.source;
+  let branch = "";
+  if (gitUrl.startsWith("github://")) {
+    const withoutScheme = gitUrl.slice("github://".length);
+    const [repoPath, b] = withoutScheme.split("#");
+    gitUrl = `https://github.com/${repoPath}.git`;
+    if (b) branch = b;
+  }
+  const branchFlag = branch ? `-b ${JSON.stringify(branch)} ` : "";
+  console.log(`[rl-vault-sync] cloning ${gitUrl} into ${clone} ...`);
   mkdirSync(dirname(clone), { recursive: true });
-  execSync(`git clone --depth 1 ${JSON.stringify(manifest.source)} ${JSON.stringify(clone)}`, { stdio: "inherit" });
+  execSync(`git clone --depth 1 ${branchFlag}${JSON.stringify(gitUrl)} ${JSON.stringify(clone)}`, { stdio: "inherit" });
 }
 
 if (doPull) {
