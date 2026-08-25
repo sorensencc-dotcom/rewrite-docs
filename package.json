@@ -8,6 +8,8 @@
     "cic-report": "./dist/scripts/cic-report.js"
   },
   "scripts": {
+    "prepare": "node scripts/install-git-hooks.mjs",
+    "secret-scan": "node scripts/secret-scan.mjs",
     "start": "tsx cic-runtime/example-entrypoint.ts",
     "start:maal": "tsx cic-runtime/bootstrap-maal.ts",
     "start:adapter-gateway": "tsx src/server/adapterGatewayAPI.ts",

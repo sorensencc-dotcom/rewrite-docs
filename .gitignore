@@ -12,6 +12,9 @@
 .env
 .env.local
 .env.*.local
+*.pem
+*.key
+secrets/
 
 # Build & test artifacts
 node_modules/

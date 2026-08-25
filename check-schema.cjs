@@ -1,11 +1,19 @@
 const pg = require('pg');
 
+const password = process.env.CIC_SCHEMA_CHECK_DB_PASSWORD;
+if (!password) {
+  console.error('CIC_SCHEMA_CHECK_DB_PASSWORD is not set. This script talks to the local dev');
+  console.error('Postgres instance (127.0.0.1:5434) and requires the password via env var');
+  console.error('instead of a hardcoded default.');
+  process.exit(1);
+}
+
 const client = new pg.Client({
   host: '127.0.0.1',
   port: 5434,
   database: 'cic_agents',
   user: 'postgres',
-  password: 'postgres'
+  password
 });
 
 async function main() {

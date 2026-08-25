@@ -1,0 +1,4 @@
+title = "rewrite-docs gitleaks config"
+
+[extend]
+useDefault = true
