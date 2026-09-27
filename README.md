@@ -4,6 +4,17 @@
 
 TypeScript/Node.js monorepo for CIC governance pipeline, autonomy API, and execution orchestration.
 
+
+**Audience:** Rewrite Labs / CIC platform engineers working on the governance pipeline, autonomy API, MCP servers, and execution orchestration. This repo is **not** Cast Iron Charlie Industrial chrome — do not apply `cic_design_system` forge palette here.
+
+## Wiki / docs
+
+- [docs/](docs/) — operator KB, accessibility, phase docs
+- [docs/cic/GOVERNANCE.md](docs/cic/GOVERNANCE.md) — CIC governance layer
+- [docs/OPERATOR_KB.md](docs/OPERATOR_KB.md) — operational runbook
+- [CLAUDE.md](CLAUDE.md) — project conventions
+- [BUILD-SUMMARY.md](BUILD-SUMMARY.md) — architecture walkthrough
+
 ## What's Here
 
 - **cic-ingestion** — Autonomy API server, memory/retention, adapter framework, SPA hydration detection
