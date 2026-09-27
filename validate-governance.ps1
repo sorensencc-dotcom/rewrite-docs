@@ -195,12 +195,10 @@ function Main {
     Write-Host "|  Repository Governance Validation     |" -ForegroundColor Cyan
     Write-Host "+----------------------------------------+" -ForegroundColor Cyan
 
-    $rule1Pass = Validate-Rule1
-    $rule2Pass = Validate-Rule2
-    $rule3Pass = Validate-Rule3
-    $mkdocsPass = Validate-Mkdocs
-
-    $allPass = $rule1Pass -and $rule2Pass -and $rule3Pass
+    $script:rule1Pass = Validate-Rule1
+    $script:rule2Pass = Validate-Rule2
+    $script:rule3Pass = Validate-Rule3
+    $script:mkdocsPass = Validate-Mkdocs
 
     $exitCode = Generate-Report
 
@@ -212,10 +210,11 @@ function Main {
 }
 
 function Export-Report {
-    $reportPath = "C:\dev\GOVERNANCE_VALIDATION_REPORT.json"
-    $r1 = if ($rule1Pass) { "PASS" } else { "FAIL" }
-    $r2 = if ($rule2Pass) { "PASS" } else { "FAIL" }
-    $r3 = if ($rule3Pass) { "PASS" } else { "FAIL" }
+    $reportPath = Join-Path $PSScriptRoot "GOVERNANCE_VALIDATION_REPORT.json"
+    if (-not $PSScriptRoot) { $reportPath = Join-Path (Get-Location) "GOVERNANCE_VALIDATION_REPORT.json" }
+    $r1 = if ($script:rule1Pass) { "PASS" } else { "FAIL" }
+    $r2 = if ($script:rule2Pass) { "PASS" } else { "FAIL" }
+    $r3 = if ($script:rule3Pass) { "PASS" } else { "FAIL" }
     $report = @{
         Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
         Rule1 = $r1
@@ -225,7 +224,7 @@ function Export-Report {
         TotalViolations = $script:violations.Count
     }
 
-    $report | ConvertTo-Json | Out-File -FilePath $reportPath -Force
+    $report | ConvertTo-Json | Out-File -FilePath $reportPath -Force -Encoding utf8
     Write-Info "Report exported to: $reportPath"
 }
 

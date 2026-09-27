@@ -27,11 +27,11 @@ jobs:
           & ".\validate-governance.ps1" -Verbose
 
           if ($LASTEXITCODE -ne 0) {
-            Write-Host "❌ Governance validation failed"
+            Write-Host "Governance validation failed"
             exit 1
           }
 
-          Write-Host "✅ Governance validation passed"
+          Write-Host "Governance validation passed"
           exit 0
 
       - name: Generate compliance report
@@ -45,8 +45,9 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: governance-report
-          path: C:\dev\GOVERNANCE_VALIDATION_REPORT.json
+          path: GOVERNANCE_VALIDATION_REPORT.json
           retention-days: 30
+          if-no-files-found: warn
 
       - name: Comment PR with results
         if: github.event_name == 'pull_request' && always()
@@ -54,7 +55,12 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const report = JSON.parse(fs.readFileSync('GOVERNANCE_VALIDATION_REPORT.json', 'utf8'));
+            const reportPath = 'GOVERNANCE_VALIDATION_REPORT.json';
+            if (!fs.existsSync(reportPath)) {
+              core.warning(`Skipping PR comment: ${reportPath} not found`);
+              return;
+            }
+            const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
 
             let comment = '## Governance Validation Results\n\n';
             comment += `- RULE 1 (Markdown files): ${report.Rule1}\n`;
@@ -63,7 +69,7 @@ jobs:
             comment += `\nTotal violations: ${report.TotalViolations}\n`;
 
             if (report.TotalViolations > 0) {
-              comment += '\n⚠️ **Review violations in REPOSITORY_GOVERNANCE_AUDIT.md**\n';
+              comment += '\n**Review violations in REPOSITORY_GOVERNANCE_AUDIT.md**\n';
             }
 
             github.rest.issues.createComment({
@@ -72,3 +78,4 @@ jobs:
               repo: context.repo.repo,
               body: comment
             });
+
