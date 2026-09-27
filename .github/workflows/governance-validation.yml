@@ -56,26 +56,30 @@ jobs:
           script: |
             const fs = require('fs');
             const reportPath = 'GOVERNANCE_VALIDATION_REPORT.json';
-            if (!fs.existsSync(reportPath)) {
-              core.warning(`Skipping PR comment: ${reportPath} not found`);
-              return;
+            try {
+              if (!fs.existsSync(reportPath)) {
+                core.warning(`Skipping PR comment: ${reportPath} not found`);
+                return;
+              }
+              const raw = fs.readFileSync(reportPath, 'utf8').replace(/^\uFEFF/, '');
+              const report = JSON.parse(raw);
+
+              let comment = '## Governance Validation Results\n\n';
+              comment += `- RULE 1 (Markdown files): ${report.Rule1}\n`;
+              comment += `- RULE 2 (Toolforge skills): ${report.Rule2}\n`;
+              comment += `- RULE 3 (Code/Config): ${report.Rule3}\n`;
+              comment += `\nTotal violations: ${report.TotalViolations}\n`;
+
+              if (report.TotalViolations > 0) {
+                comment += '\n**Review violations in REPOSITORY_GOVERNANCE_AUDIT.md**\n';
+              }
+
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+            } catch (err) {
+              core.warning(`Skipping PR comment: ${err.message}`);
             }
-            const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
-
-            let comment = '## Governance Validation Results\n\n';
-            comment += `- RULE 1 (Markdown files): ${report.Rule1}\n`;
-            comment += `- RULE 2 (Toolforge skills): ${report.Rule2}\n`;
-            comment += `- RULE 3 (Code/Config): ${report.Rule3}\n`;
-            comment += `\nTotal violations: ${report.TotalViolations}\n`;
-
-            if (report.TotalViolations > 0) {
-              comment += '\n**Review violations in REPOSITORY_GOVERNANCE_AUDIT.md**\n';
-            }
-
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: comment
-            });
-

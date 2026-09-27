@@ -224,7 +224,9 @@ function Export-Report {
         TotalViolations = $script:violations.Count
     }
 
-    $report | ConvertTo-Json | Out-File -FilePath $reportPath -Force -Encoding utf8
+    $json = $report | ConvertTo-Json
+    $utf8NoBom = New-Object System.Text.UTF8Encoding $false
+    [System.IO.File]::WriteAllText($reportPath, $json, $utf8NoBom)
     Write-Info "Report exported to: $reportPath"
 }
 
