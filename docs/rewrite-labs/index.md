@@ -16,8 +16,8 @@ Complete reference for Rewrite Labs (RL) vault system, extraction, and integrati
 
 ## Overview
 
-- [RL Index](00-rl-index.md)
-- [Vault README](vault-readme.md)
+- [RL Index](00-RL-INDEX.md)
+- [Vault README](VAULT-README.md)
 - [Rewrite Labs Roadmap](../roadmaps/rewrite-labs-roadmap.md) — full RL-4.x status
 - [Unified Roadmap](../roadmaps/unified-roadmap.md) — CIC ↔ RL alignment
 
@@ -50,7 +50,7 @@ The Vault Mirror is the foundational extraction and sync system for Rewrite Labs
 
 ### Integration
 
-- [Vault Sync Configuration](vault-sync-configuration.md)
+- [Vault Sync Configuration](VAULT-SYNC-CONFIGURATION.md)
 - [NotebookLM Workflow Spec](notebooklm-workflow.md)
 - [CIC ↔ RL Integration](../reference/cic-rl-cross-reference.md)
 
@@ -78,7 +78,7 @@ RL artifacts are governed by the same MAAL framework as CIC:
 - **State**: RL mirror state syncs with CIC state store
 - **Validation**: Canary gates apply to both systems
 
-**Related**: [CIC Governance Framework](../cic/governance.md)
+**Related**: [CIC Governance Framework](../cic/GOVERNANCE.md)
 
 ### Routing & Federation
 

@@ -360,4 +360,4 @@ Next Prune: 2026-07-08 20:00 UTC
 
 ---
 
-See also: [phase-27-wave-f-architecture.md](./phase-27-wave-f-architecture.md), [phase-27-wave-f-troubleshooting.md](./phase-27-wave-f-troubleshooting.md)
+See also: [phase-27-wave-f-architecture.md](phase-27-wave-f-architecture.md), [phase-27-wave-f-troubleshooting.md](phase-27-wave-f-troubleshooting.md)

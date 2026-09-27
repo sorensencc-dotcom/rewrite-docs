@@ -29,9 +29,9 @@ tags:
 
 **Step 2: Follow to Reference Layer**
 - If looking for **definitions or frameworks** → navigate to `docs/reference/`
-  - Example: "How do I configure logging?" → index → [Configuration & Logging Standards](reference/configuration-logging.md)
+  - Example: "How do I configure logging?" → index → `Configuration & Logging Standards` (docs/reference/)
 - If looking for **implementation details** → navigate to `docs/item-N-*.md`
-  - Example: "How does the skill generator pipeline work?" → index → [item-5-skill-generator.md](item-5-skill-generator.md)
+  - Example: "How does the skill generator pipeline work?" → index → `item-5-skill-generator.md`
 
 **Step 3: Use Backlinks for Context**
 - Reference docs include "See also:" sections with backlinks
@@ -133,8 +133,8 @@ Common issues and solutions.
 
 ## See Also
 
-- [item-N](../item-N-filename.md) — Implementation use case
-- [CLAUDE.md](../../CLAUDE.md) — KB operational model
+- `item-N` (docs/item-N-*.md) — Implementation use case
+- `CLAUDE.md` (repo root) — KB operational model
 ```
 
 ### Checklist: Add New Content
@@ -240,7 +240,7 @@ Example: "Configuration" appears in:
 **Step 3: Update Source Docs**
 - Add backlink in frontmatter pointing to new reference doc
 - Remove duplicate sections from source docs
-- Add cross-reference: "See [Configuration & Logging Standards](reference/configuration-logging.md)"
+- Add cross-reference: "See `Configuration & Logging Standards` (docs/reference/)"
 
 **Step 4: Update index-unified.md**
 - Add reference doc to "Reference Documentation" section

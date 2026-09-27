@@ -268,8 +268,8 @@ All fixes backward compatible. Production ready.
 
 ## Contact & Support
 
-- Documentation: [docker.md](docker.md)
-- Quick start: [docker-quickstart.md](docker-quickstart.md)
+- Documentation: [docker.md](DOCKER.md)
+- Quick start: [docker-quickstart.md](DOCKER-QUICKSTART.md)
 - Issues: Check docker.md Troubleshooting section
 - Code handoff: See "Deployment Checklist" above
 

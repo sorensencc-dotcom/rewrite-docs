@@ -134,7 +134,7 @@ nav:
     - Phase 27 Rollback: cic/phase-27-wave-f-rollback.md
     - Phase 27 Troubleshooting: cic/phase-27-wave-f-troubleshooting.md
     - Ashfall State: cic/CIC_ASHFALL_STATE.md
-    - Governance: cic/governance.md
+    - Governance: cic/GOVERNANCE.md
     - Six Rules Framework: cic/six-rules-framework.md
 
   - Reference:
@@ -145,7 +145,7 @@ nav:
     - CIC–RL Cross Reference: reference/cic-rl-cross-reference.md
     - Integration Guide: reference/integration-guide.md
     - Handbook: reference/handbook.md
-    - Knowledge Graph: reference/knowledge-graph/readme.md
+    - Knowledge Graph: reference/knowledge-graph/README.md
     - Changelog: reference/changelog.md
 
 extra:

@@ -344,4 +344,4 @@ npm run cic-ingestion -- stats > /tmp/incident-2026-07-07/stats.json
 
 ---
 
-See also: [phase-27-wave-f-runbook.md](./phase-27-wave-f-runbook.md), [phase-27-wave-f-troubleshooting.md](./phase-27-wave-f-troubleshooting.md)
+See also: [phase-27-wave-f-runbook.md](phase-27-wave-f-runbook.md), [phase-27-wave-f-troubleshooting.md](phase-27-wave-f-troubleshooting.md)

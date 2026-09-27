@@ -13,7 +13,7 @@ tags:
 
 Detailed design of the MAAL Sandbox deterministic architecture.
 
-> For the wider CIC-OS repository layout (routing, governance, ingestion, services, toolforge — all distributed, no monolithic `cic-os/` tree), see the [Architecture Overview](overview.md#cic-os-system-layout-real-repo-structure).
+> For the wider CIC-OS repository layout (routing, governance, ingestion, services, toolforge — all distributed, no monolithic `cic-os/` tree), see the [Architecture Overview](overview.md).
 
 ## Design Goals
 

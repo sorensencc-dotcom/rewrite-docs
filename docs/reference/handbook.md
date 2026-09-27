@@ -259,9 +259,9 @@ observability.log('info', 'Operation started', {
 ## Resources
 
 - **[Architecture Overview](../architecture/overview.md)** — System design
-- **[CIC Governance](../cic/governance.md)** — Compliance and audit
-- **[Deployment Guide](deployment.md)** — Docker/K8s setup
-- **[Reference Schemas](../reference/schemas.md)** — Type definitions
+- **[CIC Governance](../cic/GOVERNANCE.md)** — Compliance and audit
+- **[Deployment Guide](DEPLOYMENT.md)** — Docker/K8s setup
+- **[Reference Schemas](schemas.md)** — Type definitions
 
 ---
 

@@ -194,7 +194,7 @@ Memory state synced between CIC and RL:
 2. GitHub token in `.env`
 3. Sync daemon logs
 
-**Fix**: See [RL Setup Guide](../rewrite-labs/rl-vault-setup.md)
+**Fix**: See [RL Setup Guide](../rewrite-labs/RL-VAULT-SETUP.md)
 
 ### Issue: Knowledge graph incomplete
 
@@ -203,7 +203,7 @@ Memory state synced between CIC and RL:
 2. IR packet schema validation
 3. Graph indexer state
 
-**Fix**: See [Knowledge Graph Setup](../reference/knowledge-graph/quick-start.md)
+**Fix**: See [Knowledge Graph Setup](knowledge-graph/quick-start.md)
 
 ### Issue: Routing inconsistency
 

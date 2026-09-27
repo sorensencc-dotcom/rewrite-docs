@@ -46,29 +46,29 @@ tags:
 
 ### ✅ Documentation
 
-- [ ] Architecture doc ([phase-27-wave-f-architecture.md](./phase-27-wave-f-architecture.md))
+- [ ] Architecture doc ([phase-27-wave-f-architecture.md](phase-27-wave-f-architecture.md))
   - 5-layer pipeline design
   - Type system detailed
   - Routing logic explained
   - Manifest format documented
   - Durability strategy detailed
-- [ ] Operational runbook ([phase-27-wave-f-runbook.md](./phase-27-wave-f-runbook.md))
+- [ ] Operational runbook ([phase-27-wave-f-runbook.md](phase-27-wave-f-runbook.md))
   - Daily checklist (morning + evening)
   - Alerting thresholds
   - Common operations (6 scenarios)
   - Escalation path
   - Maintenance windows
-- [ ] Troubleshooting guide ([phase-27-wave-f-troubleshooting.md](./phase-27-wave-f-troubleshooting.md))
+- [ ] Troubleshooting guide ([phase-27-wave-f-troubleshooting.md](phase-27-wave-f-troubleshooting.md))
   - 6 major issues with root causes
   - Diagnostic commands
   - Fixes provided
   - Quick-fix checklist
-- [ ] Golden fixtures ([phase-27-wave-f-fixtures.md](./phase-27-wave-f-fixtures.md))
+- [ ] Golden fixtures ([phase-27-wave-f-fixtures.md](phase-27-wave-f-fixtures.md))
   - 4 fixture files created
   - Use cases documented
   - Templates provided
   - E2E testing examples
-- [ ] Rollback procedures ([phase-27-wave-f-rollback.md](./phase-27-wave-f-rollback.md))
+- [ ] Rollback procedures ([phase-27-wave-f-rollback.md](phase-27-wave-f-rollback.md))
   - 4 rollback scenarios
   - Decision trees
   - Step-by-step procedures
@@ -274,4 +274,4 @@ Once this passes → **READY FOR SHIP-GATE**
 
 ---
 
-See also: [phase-27-ingestion-autonomy-locked.md](./phase-27-ingestion-autonomy-locked.md)
+See also: [phase-27-ingestion-autonomy-locked.md](phase-27-ingestion-autonomy-locked.md)

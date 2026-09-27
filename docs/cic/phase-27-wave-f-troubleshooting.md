@@ -529,4 +529,4 @@ npm run cic-ingestion -- prune
 
 ---
 
-See also: [phase-27-wave-f-runbook.md](./phase-27-wave-f-runbook.md), [phase-27-wave-f-architecture.md](./phase-27-wave-f-architecture.md)
+See also: [phase-27-wave-f-runbook.md](phase-27-wave-f-runbook.md), [phase-27-wave-f-architecture.md](phase-27-wave-f-architecture.md)

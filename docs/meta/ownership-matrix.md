@@ -274,7 +274,7 @@ audit.ps1
 
 - [FILE_LIFECYCLE_POLICY.md](file-lifecycle-policy.md) — Creation → use → archival
 - [NAMING_STANDARD.md](naming-standard.md) — File naming conventions
-- [CLAUDE.md](../../CLAUDE.md) — Main governance document (§2: Directory Structure)
+- [CLAUDE.md](../CLAUDE.md) — Main governance document (§2: Directory Structure)
 
 ---
 

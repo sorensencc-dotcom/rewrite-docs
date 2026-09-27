@@ -203,7 +203,7 @@ Both Task Scheduler and GitHub Actions use the same config:
 
 ## Related
 
-- [rl-vault-setup.md](rl-vault-setup.md) — Vault configuration & manual sync
+- [rl-vault-setup.md](RL-VAULT-SETUP.md) — Vault configuration & manual sync
 - `vault-sync-config.json` — Source of truth for vaults (root of repo)
 - `sync-vault.ps1` — Main sync script (root of repo)
 - `scripts/register-vault-sync-task.ps1` — Task Scheduler registration

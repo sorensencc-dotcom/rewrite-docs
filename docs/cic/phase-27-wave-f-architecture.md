@@ -341,4 +341,4 @@ npm run cic-ingestion -- repair --dry-run
 
 ---
 
-See also: [phase-27-ingestion-autonomy-locked.md](./phase-27-ingestion-autonomy-locked.md)
+See also: [phase-27-ingestion-autonomy-locked.md](phase-27-ingestion-autonomy-locked.md)
