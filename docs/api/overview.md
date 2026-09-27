@@ -22,7 +22,7 @@ Complete API reference for the MAAL Sandbox system.
 
 ## Module Structure
 
-```
+```text
 access/
 ├── acl.ts              # loadACL, getAccess
 └── permissions.ts      # loadPermissions, getPermissionTargets

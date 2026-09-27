@@ -328,10 +328,10 @@ Wave F completes Phase 27 ingestion autonomy system with comprehensive gates, do
 ---
 
 See also:
-- [phase-27-ingestion-autonomy-locked.md](./phase-27-ingestion-autonomy-locked.md) — 6-wave spec
-- [phase-27-wave-f-architecture.md](./phase-27-wave-f-architecture.md) — Design details
-- [phase-27-wave-f-runbook.md](./phase-27-wave-f-runbook.md) — Operations guide
-- [phase-27-wave-f-troubleshooting.md](./phase-27-wave-f-troubleshooting.md) — Diagnostics
-- [phase-27-wave-f-rollback.md](./phase-27-wave-f-rollback.md) — Recovery procedures
-- [phase-27-wave-f-fixtures.md](./phase-27-wave-f-fixtures.md) — Test data
-- [phase-27-wave-f-ship-checklist.md](./phase-27-wave-f-ship-checklist.md) — Pre-deployment
+- [phase-27-ingestion-autonomy-locked.md](phase-27-ingestion-autonomy-locked.md) — 6-wave spec
+- [phase-27-wave-f-architecture.md](phase-27-wave-f-architecture.md) — Design details
+- [phase-27-wave-f-runbook.md](phase-27-wave-f-runbook.md) — Operations guide
+- [phase-27-wave-f-troubleshooting.md](phase-27-wave-f-troubleshooting.md) — Diagnostics
+- [phase-27-wave-f-rollback.md](phase-27-wave-f-rollback.md) — Recovery procedures
+- [phase-27-wave-f-fixtures.md](phase-27-wave-f-fixtures.md) — Test data
+- [phase-27-wave-f-ship-checklist.md](phase-27-wave-f-ship-checklist.md) — Pre-deployment

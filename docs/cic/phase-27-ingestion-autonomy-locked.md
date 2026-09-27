@@ -25,4 +25,4 @@ This phase locks the ingestion pipeline and introduces autonomy API with sealed 
 
 ---
 
-**See also:** [Wave F Architecture](./phase-27-wave-f-architecture.md)
+**See also:** [Wave F Architecture](phase-27-wave-f-architecture.md)

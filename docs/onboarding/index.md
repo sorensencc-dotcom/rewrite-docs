@@ -22,7 +22,7 @@ CIC is a comprehensive governance, routing, and federation architecture built on
 - **[Getting Started](../quickstart/index.md)** — Installation and first steps
 - **[Architecture Overview](../architecture/overview.md)** — System design and components
 - **[CIC Core Docs](../cic/index.md)** — Phases, governance, contracts
-- **[Deployment](../reference/docker.md)** — Docker, Kubernetes, CI/CD
+- **[Deployment](../reference/DOCKER.md)** — Docker, Kubernetes, CI/CD
 - **[Developer Handbook](../reference/handbook.md)** — Coding standards, workflows
 
 ## Core Concepts

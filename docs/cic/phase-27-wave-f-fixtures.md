@@ -344,4 +344,4 @@ describe("E2E with golden fixture", () => {
 
 ---
 
-See also: [phase-27-wave-f-architecture.md](./phase-27-wave-f-architecture.md)
+See also: [phase-27-wave-f-architecture.md](phase-27-wave-f-architecture.md)

@@ -95,7 +95,7 @@ Used for both CIC phase artifacts and RL vault artifacts.
 **Knowledge Graph**
 The queryable graph of concepts, phases, agents, and relationships extracted from vault docs.
 280+ nodes, 600+ edges. Built by `extract-backlinks.ts`; queried via `knowledge-graph-query.ts`.
-See [Knowledge Graph Reference](knowledge-graph/readme.md).
+See [Knowledge Graph Reference](knowledge-graph/README.md).
 
 ---
 

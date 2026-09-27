@@ -91,7 +91,7 @@ Per the [Phase 5c Deprecation Inventory](phases/phase-5c-deprecation-inventory.m
 
 ### Governance & Memory
 
-- [Governance Framework](governance.md)
+- [Governance Framework](GOVERNANCE.md)
 - [Memory System](memory-v1-staging-activation.md)
 - [Knowledge Integration](kb-integration-summary.md)
 - [NotebookLM Adapter Spec](notebooklm-adapter-spec.md)
@@ -103,8 +103,8 @@ Per the [Phase 5c Deprecation Inventory](phases/phase-5c-deprecation-inventory.m
 ### Data Pipeline
 
 - [CodeFlow Harvester](harvester.md)
-- [Drift Engine](driftengine.md)
-- [Replay Harness](replayharness.md)
+- [Drift Engine](driftEngine.md)
+- [Replay Harness](replayHarness.md)
 
 ### Observability & Determinism
 
@@ -135,16 +135,16 @@ Per the [Phase 5c Deprecation Inventory](phases/phase-5c-deprecation-inventory.m
 
 ## Research & Testing
 
-- [Research Skill Overview](research-skill/skill.md)
+- [Research Skill Overview](research-skill/SKILL.md)
 - [Test Results - Iteration 1](research-skill/test-results/iteration-1-grading.md)
 - [Test Results - Iteration 2](research-skill/test-results/iteration-2-grading.md)
 
 ## Status Reports
 
-- [Execution Status](execution-status.md)
+- [Execution Status](EXECUTION-STATUS.md)
 - [P1 Implementation Complete](p1-implementation-complete.md)
 - [Phase 2 Status](phases/phase-2-status.md)
-- [Sandbox-3 Progress](sandbox-3-progress.md)
+- [Sandbox-3 Progress](SANDBOX-3-PROGRESS.md)
 
 ## Execution Logs
 

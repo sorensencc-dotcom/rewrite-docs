@@ -13,7 +13,7 @@ tags:
 
 ## Phase Timeline
 
-See: [CIC Roadmap](./cic-roadmap.md) | [Rewrite Labs Roadmap](./rewrite-labs-roadmap.md)
+See: [CIC Roadmap](cic-roadmap.md) | [Rewrite Labs Roadmap](rewrite-labs-roadmap.md)
 
 ### Current Phase
 

@@ -247,7 +247,7 @@ See OWNERSHIP_MATRIX.md for dir-to-owner mapping.
 
 - [OWNERSHIP_MATRIX.md](ownership-matrix.md) — Maps all dirs to owners
 - [NAMING_STANDARD.md](naming-standard.md) — File naming conventions
-- [CLAUDE.md](../../CLAUDE.md) — Main governance document
+- [CLAUDE.md](../CLAUDE.md) — Main governance document
 
 ---
 

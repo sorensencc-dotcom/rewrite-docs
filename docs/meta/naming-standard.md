@@ -249,7 +249,7 @@ scripts/audit/rename.ps1
 
 - [OWNERSHIP_MATRIX.md](ownership-matrix.md) — File location rules
 - [FILE_LIFECYCLE_POLICY.md](file-lifecycle-policy.md) — File creation + archival
-- [CLAUDE.md](../../CLAUDE.md) — Main governance document (§9: Naming Conventions)
+- [CLAUDE.md](../CLAUDE.md) — Main governance document (§9: Naming Conventions)
 
 ---
 

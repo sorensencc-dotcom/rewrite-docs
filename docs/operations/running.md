@@ -34,4 +34,4 @@ Referenced by:
 
 ---
 
-**Full runbook:** See [operations/runbook.md](./runbook.md)
+**Full runbook:** See [operations/runbook.md](runbook.md)

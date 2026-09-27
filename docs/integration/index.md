@@ -26,7 +26,7 @@ Both CIC and RL are governed by the same framework (`governance/`):
 - **Validation Gates**: Shared canary + rollback (`governance/approval-gate.ts`, `governance/promotion-rollback.ts`)
 
 **Files**:
-- [CIC Governance](../cic/governance.md)
+- [CIC Governance](../cic/GOVERNANCE.md)
 
 ### 2️⃣ Ingestion Pipeline — ✅
 
@@ -41,7 +41,7 @@ Note: Crawler/Scraper/Mapper/Indexer are *pipeline stage names* in config, not c
 
 **Files**:
 - [Ingestion Architecture](../architecture/ingestion.md)
-- [RL Vault Setup](../rewrite-labs/vault-readme.md)
+- [RL Vault Setup](../rewrite-labs/VAULT-README.md)
 - [CodeFlow Harvester](../cic/harvester.md)
 
 ### 3️⃣ Routing Integration — ✅
@@ -77,7 +77,7 @@ Unified semantic model:
 
 **Files**:
 - [Knowledge Graph Setup](../reference/knowledge-graph/quick-start.md)
-- [Knowledge Graph README](../reference/knowledge-graph/readme.md)
+- [Knowledge Graph README](../reference/knowledge-graph/README.md)
 
 ### 5️⃣ Operations & Monitoring
 
