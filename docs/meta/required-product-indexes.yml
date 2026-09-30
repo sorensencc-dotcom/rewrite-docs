@@ -26,7 +26,7 @@ products:
     index: products/toolforge-marketplace/index.md
   - id: charlie-deep-research
     title: CIC Deep Research Toolkit
-    index: products/charlie-deep-research/index.md
+    index: products/charlie-deep-research.md
   - id: rewrite-mcp
     title: rewrite-mcp
-    index: products/rewrite-mcp/index.md
+    index: products/rewrite-mcp.md
