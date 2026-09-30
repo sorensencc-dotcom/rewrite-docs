@@ -1,0 +1,32 @@
+# Products that must have an index page on this MkDocs site.
+# scripts/check_required_product_indexes.py fails the build when any
+# listed page is missing on disk or missing from mkdocs.yml nav.
+# Add a product here only together with its stub page and nav entry.
+products:
+  - id: helix
+    title: Helix
+    index: products/helix/index.md
+  - id: iron-ledger
+    title: Iron Ledger
+    index: products/iron-ledger/index.md
+  - id: sigil
+    title: Sigil
+    index: products/sigil/index.md
+  - id: icf
+    title: Iron Command Forge (ICF)
+    index: products/icf/index.md
+  - id: trm
+    title: Topic Research Module (TRM)
+    index: products/trm/index.md
+  - id: toolforge
+    title: Toolforge
+    index: products/toolforge/index.md
+  - id: toolforge-marketplace
+    title: Toolforge Marketplace
+    index: products/toolforge-marketplace/index.md
+  - id: charlie-deep-research
+    title: CIC Deep Research Toolkit
+    index: products/charlie-deep-research/index.md
+  - id: rewrite-mcp
+    title: rewrite-mcp
+    index: products/rewrite-mcp/index.md

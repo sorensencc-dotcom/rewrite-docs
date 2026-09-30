@@ -7,8 +7,8 @@ site_author: Rewrite Labs Engineering
 docs_dir: docs
 site_dir: site
 
-repo_url: https://github.com/rewrite-labs/cic-kb
-repo_name: rewrite-labs/cic-kb
+repo_url: https://github.com/sorensencc-dotcom/rewrite-docs
+repo_name: sorensencc-dotcom/rewrite-docs
 edit_uri: edit/main/docs/
 
 theme:
@@ -77,8 +77,22 @@ markdown_extensions:
       permalink: true
       title: On this page
 
+hooks:
+  - scripts/check_required_product_indexes.py
+
 nav:
   - Home: index-unified.md
+
+  - Products:
+    - Helix: products/helix/index.md
+    - Iron Ledger: products/iron-ledger/index.md
+    - Sigil: products/sigil/index.md
+    - Iron Command Forge: products/icf/index.md
+    - Topic Research Module: products/trm/index.md
+    - Toolforge: products/toolforge/index.md
+    - Toolforge Marketplace: products/toolforge-marketplace/index.md
+    - CIC Deep Research Toolkit: products/charlie-deep-research/index.md
+    - rewrite-mcp: products/rewrite-mcp/index.md
 
   - Architecture:
     - Overview: architecture/overview.md
@@ -151,7 +165,7 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/rewrite-labs/cic-kb
+      link: https://github.com/sorensencc-dotcom/rewrite-docs
   version:
     provider: mike
 
