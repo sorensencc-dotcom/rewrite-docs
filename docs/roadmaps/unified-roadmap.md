@@ -17,8 +17,7 @@ See: [CIC Roadmap](cic-roadmap.md) | [Rewrite Labs Roadmap](rewrite-labs-roadmap
 
 ### Current Phase
 
-- CIC Phase 27: Wave F (Governance + Ingestion)
-- Rewrite Labs: Discovery & domain scanning
+This roadmap has not been refreshed since July 2026. A replacement phase is not named here.
 
 ### Upcoming Milestones
 
@@ -39,16 +38,13 @@ Referenced by:
 **Status:** normal
 **Last modified:** 2026-07-18T20:07:08.671Z
 **Changes:**
-- Directory modified in last 24 hours
 - Tests directory present
 - Source code directory present
 
 ---
 
-**Last synced:** 2026-07-19T18:50:11.331Z
 **Status:** normal
 **Last modified:** 2026-07-18T20:07:08.671Z
 **Changes:**
-- Directory modified in last 24 hours
 - Tests directory present
 - Source code directory present

@@ -1,15 +1,29 @@
 ---
-title: index
-summary: ""
-created: "2026-07-03T19:44:37.930Z"
-updated: "2026-07-03T19:44:37.930Z"
+title: Home
+summary: "This knowledge base indexes these products. Full writeups are not inlined yet."
 tags:
-  - cic
-  - rewrite-labs
-  - roadmap
+  - home
 ---
 
-# MAAL Sandbox System
+# CIC + Rewrite Labs Knowledge Base
+
+This knowledge base indexes these products, and the full writeups are not inlined yet. The links below are short stubs, not the product manuals.
+
+- [Helix](products/helix/index.md)
+- [Iron Ledger](products/iron-ledger/index.md)
+- [Sigil](products/sigil/index.md)
+- [Iron Command Forge](products/icf/index.md)
+- [TRM](products/trm/index.md)
+- [Toolforge](products/toolforge/index.md)
+- [Toolforge Marketplace](products/toolforge-marketplace/index.md)
+- [CIC Deep Research Toolkit (Cast Iron Charlie)](products/charlie-deep-research.md)
+- [rewrite-mcp](products/rewrite-mcp.md)
+
+Older pages on this site are notes from earlier work. They are not a live status board for the knowledge base.
+
+## MAAL Sandbox System
+
+The section below describes the MAAL Sandbox System. It is not the current production status of this site. A June 2026 status block (version, production-ready, last-updated date, and an end-to-end reproducibility claim) is left off so it is not read as current.
 
 **Complete deterministic governance, routing, federation, and snapshot architecture for the CIC platform.**
 
@@ -53,13 +67,7 @@ Built on the CIC (Governance/Control) core, the system enables:
 
 ---
 
-## System Status
-
-- **Version**: 1.0.0
-- **Status**: Production-ready
-- **Last Updated**: 2026-06-29
-- **Seal Hash**: SHA256
-- **Reproducibility**: Verified end-to-end
+## Seal commands
 
 ```bash
 # Run complete seal
