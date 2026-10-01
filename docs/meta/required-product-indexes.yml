@@ -1,32 +1,54 @@
 # Products that must have an index page on this MkDocs site.
 # scripts/check_required_product_indexes.py fails the build when any
-# listed page is missing on disk or missing from mkdocs.yml nav.
+# listed page is missing on disk or missing from mkdocs.yml nav, and
+# when the product repo's default branch has a commit after the end of
+# last_reviewed in America/New_York. Bumping last_reviewed is the
+# attestation that the index was looked at again. The check does not
+# judge whether the prose changed.
 # Add a product here only together with its stub page and nav entry.
 products:
   - id: helix
     title: Helix
     index: products/helix/index.md
+    repo: sorensencc-dotcom/helix
+    last_reviewed: 2026-09-30
   - id: iron-ledger
     title: Iron Ledger
     index: products/iron-ledger/index.md
+    repo: sorensencc-dotcom/ironledger
+    last_reviewed: 2026-09-30
   - id: sigil
     title: Sigil
     index: products/sigil/index.md
+    repo: sorensencc-dotcom/sigil
+    last_reviewed: 2026-09-30
   - id: icf
     title: Iron Command Forge (ICF)
     index: products/icf/index.md
+    repo: sorensencc-dotcom/icf
+    last_reviewed: 2026-09-30
   - id: trm
     title: Topic Research Module (TRM)
     index: products/trm/index.md
+    repo: sorensencc-dotcom/TRM
+    last_reviewed: 2026-09-30
   - id: toolforge
     title: Toolforge
     index: products/toolforge/index.md
+    repo: sorensencc-dotcom/toolforge
+    last_reviewed: 2026-09-30
   - id: toolforge-marketplace
     title: Toolforge Marketplace
     index: products/toolforge-marketplace/index.md
+    repo: sorensencc-dotcom/toolforge-marketplace
+    last_reviewed: 2026-09-30
   - id: charlie-deep-research
     title: CIC Deep Research Toolkit
     index: products/charlie-deep-research.md
+    repo: sorensencc-dotcom/charlie-deep-research
+    last_reviewed: 2026-09-30
   - id: rewrite-mcp
     title: rewrite-mcp
     index: products/rewrite-mcp.md
+    repo: sorensencc-dotcom/rewrite-mcp
+    last_reviewed: 2026-09-30

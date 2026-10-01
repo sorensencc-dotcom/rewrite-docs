@@ -1,24 +1,76 @@
-"""Fail the docs build when a known product has no index page.
+"""Fail the docs build when a known product has no index page,
+or when that product repo has moved past last_reviewed.
 
 List: docs/meta/required-product-indexes.yml
 Each entry must exist under the MkDocs docs directory and be linked from
-mkdocs.yml nav. MkDocs loads this file as a hook (on_config), so
-`mkdocs build --strict` fails closed. The docs workflow runs the same check.
+mkdocs.yml nav. Each entry also names a public GitHub repo and a
+last_reviewed date (YYYY-MM-DD).
+
+Freshness uses the later of the author and committer timestamps on the
+tip commit of that repo's default branch. The deadline is the end of the
+last_reviewed calendar day in America/New_York: a commit during that day,
+including late evening Eastern, still passes. A commit at or after the
+next midnight Eastern fails. Bumping last_reviewed is the attestation
+that someone looked again. This script does not read the page prose and
+does not decide whether the writeup actually changed.
+
+The product repos are public. Requests go to the GitHub REST API with no
+Authorization header, even if GITHUB_TOKEN or GH_TOKEN is set. A token
+minted for the rewrite-docs workflow is scoped to that repository.
+contents: read on this repo is not permission to read the others, and
+sending that token makes GitHub answer 404 for a repo the token cannot
+see. No extra secret is required while these repos stay public.
+
+MkDocs loads this file as a hook (on_config), so `mkdocs build --strict`
+fails closed. The docs workflow runs the same check.
 """
 
 from __future__ import annotations
 
+import json
+import re
 import sys
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+from dataclasses import dataclass
+from datetime import date, datetime, time as dt_time, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import yaml
 
 LIST_REL = Path("docs/meta/required-product-indexes.yml")
 MKDOCS_REL = Path("mkdocs.yml")
+REVIEW_TZ_NAME = "America/New_York"
+REPO_RE = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
+API = "https://api.github.com"
+USER_AGENT = "rewrite-docs-product-index-check"
 
 
 def repo_root() -> Path:
     return Path(__file__).resolve().parents[1]
+
+
+def review_tz() -> ZoneInfo:
+    try:
+        return ZoneInfo(REVIEW_TZ_NAME)
+    except Exception as exc:  # ZoneInfoNotFoundError, and tzdata missing on Windows
+        raise RuntimeError(
+            f"cannot load timezone {REVIEW_TZ_NAME} ({exc}). "
+            "Install tzdata on platforms without a system zone database."
+        ) from exc
+
+
+def end_of_reviewed_day(reviewed: date, tz: ZoneInfo) -> datetime:
+    """First instant of the next calendar day in America/New_York.
+
+    Commits timestamped during last_reviewed still pass. Commits at or
+    after this instant are past the reviewed day.
+    """
+    start = datetime.combine(reviewed, dt_time.min, tzinfo=tz)
+    return start + timedelta(days=1)
 
 
 def iter_nav_paths(node):
@@ -35,24 +87,135 @@ def iter_nav_paths(node):
         yield node.replace("\\", "/")
 
 
-def check(root: Path) -> list[str]:
+@dataclass
+class Freshness:
+    product_id: str
+    title: str
+    repo: str
+    branch: str
+    sha: str
+    stamp: datetime
+    stamp_field: str
+    last_reviewed: date
+
+
+def _parse_github_time(value: str) -> datetime:
+    text = value.strip()
+    if text.endswith("Z"):
+        text = text[:-1] + "+00:00"
+    parsed = datetime.fromisoformat(text)
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def _parse_reviewed(value) -> date | None:
+    if isinstance(value, datetime):
+        return value.date()
+    if isinstance(value, date):
+        return value
+    if isinstance(value, str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+        try:
+            return date.fromisoformat(value)
+        except ValueError:
+            return None
+    return None
+
+
+def github_json(url: str) -> dict:
+    """GET a public GitHub URL. Never sends an Authorization header."""
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+    request = urllib.request.Request(url, headers=headers)
+    delay = 2.0
+    last_error = f"no response from {url}"
+    for attempt in range(4):
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                payload = json.load(response)
+            if not isinstance(payload, dict):
+                raise RuntimeError(f"unexpected GitHub payload from {url}")
+            return payload
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode("utf-8", errors="replace")[:300]
+            last_error = f"HTTP {exc.code} from {url}: {body}"
+            if exc.code in (403, 429, 502, 503) and attempt < 3:
+                retry_after = exc.headers.get("Retry-After") if exc.headers else None
+                wait = float(retry_after) if retry_after and str(retry_after).isdigit() else delay
+                time.sleep(min(wait, 30.0))
+                delay *= 2
+                continue
+            raise RuntimeError(last_error) from exc
+        except urllib.error.URLError as exc:
+            last_error = f"network error from {url}: {exc.reason}"
+            if attempt < 3:
+                time.sleep(delay)
+                delay *= 2
+                continue
+            raise RuntimeError(last_error) from exc
+    raise RuntimeError(last_error)
+
+
+def tip_commit(repo: str) -> tuple[str, str, datetime, str]:
+    meta = github_json(f"{API}/repos/{repo}")
+    if meta.get("private") is True:
+        raise RuntimeError(
+            f"{repo} is private; this check only reads public repos and does not use a token"
+        )
+    branch = str(meta.get("default_branch") or "")
+    if not branch:
+        raise RuntimeError(f"{repo}: GitHub did not return default_branch")
+    # Keep slashes so a default branch like "codex/weekly-retro-reporting" stays a path.
+    ref = urllib.parse.quote(branch, safe="/")
+    commit = github_json(f"{API}/repos/{repo}/commits/{ref}")
+    sha = str(commit.get("sha") or "")
+    commit_obj = commit.get("commit") or {}
+    author_raw = (commit_obj.get("author") or {}).get("date")
+    committer_raw = (commit_obj.get("committer") or {}).get("date")
+    if not sha or not author_raw or not committer_raw:
+        raise RuntimeError(f"{repo}: tip commit on {branch} has no sha or timestamps")
+    author_dt = _parse_github_time(str(author_raw))
+    committer_dt = _parse_github_time(str(committer_raw))
+    if author_dt > committer_dt:
+        return branch, sha, author_dt, "author"
+    return branch, sha, committer_dt, "committer"
+
+
+def _fmt_utc(moment: datetime) -> str:
+    return moment.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _fmt_local(moment: datetime, tz: ZoneInfo) -> str:
+    return moment.astimezone(tz).strftime("%Y-%m-%d %H:%M:%S")
+
+
+def check(root: Path) -> tuple[list[str], list[Freshness]]:
     errors: list[str] = []
+    fresh: list[Freshness] = []
     list_path = root / LIST_REL
     mkdocs_path = root / MKDOCS_REL
     if not list_path.is_file():
-        return [f"missing product index list: {LIST_REL.as_posix()}"]
+        return [f"missing product index list: {LIST_REL.as_posix()}"], fresh
     if not mkdocs_path.is_file():
-        return [f"missing {MKDOCS_REL.as_posix()}"]
+        return [f"missing {MKDOCS_REL.as_posix()}"], fresh
 
     listed = yaml.safe_load(list_path.read_text(encoding="utf-8")) or {}
     products = listed.get("products")
     if not isinstance(products, list) or not products:
-        return [f"{LIST_REL.as_posix()} has no products"]
+        return [f"{LIST_REL.as_posix()} has no products"], fresh
 
     mkdocs = yaml.safe_load(mkdocs_path.read_text(encoding="utf-8")) or {}
     nav_paths = set(iter_nav_paths(mkdocs.get("nav")))
     docs_dir = root / (mkdocs.get("docs_dir") or "docs")
     seen: set[str] = set()
+
+    try:
+        tz = review_tz()
+    except RuntimeError as exc:
+        return [str(exc)], fresh
 
     for entry in products:
         if not isinstance(entry, dict):
@@ -75,12 +238,53 @@ def check(root: Path) -> list[str]:
             errors.append(
                 f"{title} ({product_id}): index page missing from mkdocs.yml nav: {index}"
             )
-    return errors
+
+        reviewed = _parse_reviewed(entry.get("last_reviewed"))
+        if reviewed is None:
+            errors.append(
+                f"{title} ({product_id}): last_reviewed must be YYYY-MM-DD"
+            )
+        repo = str(entry.get("repo") or "")
+        if not REPO_RE.fullmatch(repo):
+            errors.append(
+                f"{title} ({product_id}): repo must be owner/name, got {repo!r}"
+            )
+            continue
+        if reviewed is None:
+            continue
+        try:
+            branch, sha, stamp, stamp_field = tip_commit(repo)
+        except RuntimeError as exc:
+            errors.append(f"{title} ({product_id}): {exc}")
+            continue
+        deadline = end_of_reviewed_day(reviewed, tz)
+        if stamp >= deadline:
+            errors.append(
+                f"{title} ({product_id}): default branch {branch} of {repo} "
+                f"has commit {sha} at {_fmt_utc(stamp)} "
+                f"({_fmt_local(stamp, tz)} {REVIEW_TZ_NAME}, {stamp_field} date), "
+                f"after last_reviewed {reviewed.isoformat()} "
+                f"(that {REVIEW_TZ_NAME} day ends at {_fmt_utc(deadline)})"
+            )
+        else:
+            fresh.append(
+                Freshness(
+                    product_id=product_id,
+                    title=title,
+                    repo=repo,
+                    branch=branch,
+                    sha=sha,
+                    stamp=stamp,
+                    stamp_field=stamp_field,
+                    last_reviewed=reviewed,
+                )
+            )
+    return errors, fresh
 
 
 def on_config(config):
     root = Path(config["config_file_path"]).resolve().parent
-    errors = check(root)
+    errors, _fresh = check(root)
     if errors:
         from mkdocs.exceptions import ConfigurationError
 
@@ -92,15 +296,26 @@ def on_config(config):
 
 
 def main() -> int:
-    errors = check(repo_root())
+    root = repo_root()
+    errors, fresh = check(root)
     if errors:
         print("required product index check failed:", file=sys.stderr)
         for item in errors:
             print(f"- {item}", file=sys.stderr)
         return 1
-    data = yaml.safe_load((repo_root() / LIST_REL).read_text(encoding="utf-8"))
-    count = len(data.get("products") or [])
-    print(f"required product index check passed ({count} products)")
+    print(f"required product index check passed ({len(fresh)} products)")
+    for item in fresh:
+        try:
+            tz = review_tz()
+        except RuntimeError:
+            local = ""
+        else:
+            local = f" ({_fmt_local(item.stamp, tz)} {REVIEW_TZ_NAME})"
+        print(
+            f"freshness ok: {item.product_id} last_reviewed={item.last_reviewed.isoformat()} "
+            f"repo={item.repo} branch={item.branch} sha={item.sha} "
+            f"{item.stamp_field}={_fmt_utc(item.stamp)}{local}"
+        )
     return 0
 
 
