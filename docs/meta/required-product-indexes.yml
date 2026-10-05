@@ -31,7 +31,7 @@ products:
     title: Topic Research Module (TRM)
     index: products/trm/index.md
     repo: sorensencc-dotcom/TRM
-    last_reviewed: 2026-09-30
+    last_reviewed: 2026-10-04
   - id: toolforge
     title: Toolforge
     index: products/toolforge/index.md
