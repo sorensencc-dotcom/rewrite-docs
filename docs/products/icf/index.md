@@ -28,4 +28,5 @@ The full tree stays in the ICF repository. This page is only the index. GitHub's
 - Publication and rollback: [reporting/docs/weekly-retro-publication-runbook.md](https://github.com/sorensencc-dotcom/icf/blob/codex/weekly-retro-reporting/reporting/docs/weekly-retro-publication-runbook.md)
 - Ironbots fleet: [docs/ironbots-autonomous-agent-pipeline.md](https://github.com/sorensencc-dotcom/icf/blob/codex/weekly-retro-reporting/docs/ironbots-autonomous-agent-pipeline.md)
 - Architecture diagrams: [docs/](https://github.com/sorensencc-dotcom/icf/tree/codex/weekly-retro-reporting/docs)
+- Wiki source (Home, Architecture, Reporting Engine, Web Dashboard, Operations Guide): [wiki/](https://github.com/sorensencc-dotcom/icf/tree/codex/weekly-retro-reporting/wiki)
 - Local checkout on this machine: `C:\dev\icf`
