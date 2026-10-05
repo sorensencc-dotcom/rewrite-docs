@@ -16,7 +16,7 @@ products:
     title: Iron Ledger
     index: products/iron-ledger/index.md
     repo: sorensencc-dotcom/ironledger
-    last_reviewed: 2026-09-30
+    last_reviewed: 2026-10-05
   - id: sigil
     title: Sigil
     index: products/sigil/index.md
