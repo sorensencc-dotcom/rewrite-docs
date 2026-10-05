@@ -21,7 +21,7 @@ products:
     title: Sigil
     index: products/sigil/index.md
     repo: sorensencc-dotcom/sigil
-    last_reviewed: 2026-09-30
+    last_reviewed: 2026-10-05
   - id: icf
     title: Iron Command Forge (ICF)
     index: products/icf/index.md
