@@ -41,7 +41,7 @@ products:
     title: Toolforge Marketplace
     index: products/toolforge-marketplace/index.md
     repo: sorensencc-dotcom/toolforge-marketplace
-    last_reviewed: 2026-09-30
+    last_reviewed: 2026-10-05
   - id: charlie-deep-research
     title: CIC Deep Research Toolkit
     index: products/charlie-deep-research.md
