@@ -36,7 +36,7 @@ products:
     title: Toolforge
     index: products/toolforge/index.md
     repo: sorensencc-dotcom/toolforge
-    last_reviewed: 2026-09-30
+    last_reviewed: 2026-10-05
   - id: toolforge-marketplace
     title: Toolforge Marketplace
     index: products/toolforge-marketplace/index.md
