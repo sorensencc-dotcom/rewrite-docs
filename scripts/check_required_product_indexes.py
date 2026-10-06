@@ -32,6 +32,12 @@ products whose index page or list entry changed since <git-ref>; it exists
 for PR builds (e.g. --touched-since origin/main) so a PR that re-reviews one
 product is not failed by other products' staleness. Push builds check
 everything.
+
+When run in GitHub Actions on a pull_request event (GITHUB_EVENT_NAME ==
+"pull_request" with GITHUB_BASE_REF set), the script scopes itself
+automatically to the PR-touched products, fetching the base ref when it is
+not present locally. Explicit --only / --touched-since /
+PRODUCT_INDEX_CHECK_ONLY take precedence over the automatic scope.
 """
 
 from __future__ import annotations
@@ -251,6 +257,28 @@ def _docs_dir_name(root: Path) -> str:
     return name or "docs"
 
 
+def _ensure_ref(root: Path, ref: str) -> None:
+    """Fetch <ref> (e.g. origin/main) when it is not present locally.
+
+    Best effort: if the fetch fails, callers fall back to checking
+    everything.
+    """
+    if _blob_at(root, ref, LIST_REL.as_posix()) is not None:
+        return
+    remote, _, branch = ref.partition("/")
+    if not remote or not branch:
+        return
+    try:
+        subprocess.run(
+            ["git", "fetch", remote, branch, "--depth=1"],
+            cwd=root,
+            capture_output=True,
+            timeout=120,
+        )
+    except Exception:
+        pass
+
+
 def _touched_products(
     root: Path, ref: str, products: list, docs_dir: str = "docs"
 ) -> set[str] | None:
@@ -437,9 +465,18 @@ def main(argv: list[str] | None = None) -> int:
     only = _parse_only(
         args.only if args.only is not None else os.environ.get("PRODUCT_INDEX_CHECK_ONLY")
     )
-    if only is None and args.touched_since:
+    touched_since = args.touched_since
+    if only is None and touched_since is None:
+        # Automatic scope on pull-request CI runs: freshness-check only the
+        # products this PR touches. Push builds check every product.
+        if os.environ.get("GITHUB_EVENT_NAME") == "pull_request":
+            base_ref = os.environ.get("GITHUB_BASE_REF")
+            if base_ref:
+                touched_since = f"origin/{base_ref}"
+    if only is None and touched_since:
+        _ensure_ref(root, touched_since)
         only = _touched_products(
-            root, args.touched_since, _read_products(root), _docs_dir_name(root)
+            root, touched_since, _read_products(root), _docs_dir_name(root)
         )
     errors, fresh = check(root, only=only)
     if errors:
