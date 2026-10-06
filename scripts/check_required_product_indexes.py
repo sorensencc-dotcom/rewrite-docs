@@ -23,12 +23,24 @@ see. No extra secret is required while these repos stay public.
 
 MkDocs loads this file as a hook (on_config), so `mkdocs build --strict`
 fails closed. The docs workflow runs the same check.
+
+Scoping for pull requests: --only <id,...> (or the PRODUCT_INDEX_CHECK_ONLY
+env var) limits the *freshness* check to the named products. The structural
+checks (page exists on disk, page in nav, valid dates and repo names) always
+run for every product. --touched-since <git-ref> freshness-checks only the
+products whose index page or list entry changed since <git-ref>; it exists
+for PR builds (e.g. --touched-since origin/main) so a PR that re-reviews one
+product is not failed by other products' staleness. Push builds check
+everything.
 """
 
 from __future__ import annotations
 
+import argparse
 import json
+import os
 import re
+import subprocess
 import sys
 import time
 import urllib.error
@@ -192,7 +204,108 @@ def _fmt_local(moment: datetime, tz: ZoneInfo) -> str:
     return moment.astimezone(tz).strftime("%Y-%m-%d %H:%M:%S")
 
 
-def check(root: Path) -> tuple[list[str], list[Freshness]]:
+def _parse_only(value: str | None) -> set[str] | None:
+    """Parse a comma-separated product-id list.
+
+    None means check everything. Any other value (even blank) yields a set;
+    an empty set freshness-checks nothing.
+    """
+    if value is None:
+        return None
+    return {part.strip() for part in value.split(",") if part.strip()}
+
+
+def _blob_at(root: Path, ref: str, rel: str) -> bytes | None:
+    """Raw bytes of a file at <ref>, or None when unreadable.
+
+    Uses `git show`, so only the ref's tip commit must be present locally;
+    no merge-base computation is needed.
+    """
+    try:
+        proc = subprocess.run(
+            ["git", "show", f"{ref}:{rel}"],
+            cwd=root,
+            capture_output=True,
+            timeout=60,
+        )
+    except Exception:
+        return None
+    return proc.stdout if proc.returncode == 0 else None
+
+
+def _read_products(root: Path) -> list:
+    try:
+        listed = yaml.safe_load((root / LIST_REL).read_text(encoding="utf-8")) or {}
+    except Exception:
+        return []
+    products = listed.get("products")
+    return products if isinstance(products, list) else []
+
+
+def _docs_dir_name(root: Path) -> str:
+    try:
+        mkdocs = yaml.safe_load((root / MKDOCS_REL).read_text(encoding="utf-8")) or {}
+    except Exception:
+        return "docs"
+    name = str(mkdocs.get("docs_dir") or "docs").replace("\\", "/").strip("/")
+    return name or "docs"
+
+
+def _touched_products(
+    root: Path, ref: str, products: list, docs_dir: str = "docs"
+) -> set[str] | None:
+    """Ids of products whose index page or list entry changed since <ref>.
+
+    Compares each product's list entry and index-page bytes between <ref>
+    and the working tree. Returns None when <ref> cannot be read, in which
+    case callers should check everything.
+    """
+    raw = _blob_at(root, ref, LIST_REL.as_posix())
+    if raw is None:
+        return None
+    try:
+        old = yaml.safe_load(raw.decode("utf-8")) or {}
+    except Exception:
+        return None
+    old_entries: dict[str, object] = {}
+    for entry in old.get("products") or []:
+        if isinstance(entry, dict) and entry.get("id"):
+            old_entries[str(entry["id"])] = entry
+    touched: set[str] = set()
+    for entry in products:
+        if not isinstance(entry, dict) or not entry.get("id"):
+            continue
+        product_id = str(entry["id"])
+        if old_entries.get(product_id) != entry:
+            # New product, or any entry change (last_reviewed bump,
+            # repo move, title change, ...).
+            touched.add(product_id)
+            continue
+        index = str(entry.get("index") or "").replace("\\", "/").lstrip("/")
+        if not index:
+            continue
+        # index paths in the list are relative to the MkDocs docs_dir.
+        rel = (Path(docs_dir) / Path(index)).as_posix()
+        old_blob = _blob_at(root, ref, rel)
+        try:
+            new_path = root / Path(rel)
+            new_blob = new_path.read_bytes() if new_path.is_file() else None
+        except OSError:
+            new_blob = None
+        if old_blob != new_blob:
+            touched.add(product_id)
+    return touched
+
+
+def check(
+    root: Path, only: set[str] | None = None
+) -> tuple[list[str], list[Freshness]]:
+    """Run the checks.
+
+    only: when not None, the freshness check (tip commit vs last_reviewed)
+    runs solely for these product ids. Structural checks always run for
+    every product.
+    """
     errors: list[str] = []
     fresh: list[Freshness] = []
     list_path = root / LIST_REL
@@ -252,6 +365,8 @@ def check(root: Path) -> tuple[list[str], list[Freshness]]:
             continue
         if reviewed is None:
             continue
+        if only is not None and product_id not in only:
+            continue
         try:
             branch, sha, stamp, stamp_field = tip_commit(repo)
         except RuntimeError as exc:
@@ -284,7 +399,8 @@ def check(root: Path) -> tuple[list[str], list[Freshness]]:
 
 def on_config(config):
     root = Path(config["config_file_path"]).resolve().parent
-    errors, _fresh = check(root)
+    only = _parse_only(os.environ.get("PRODUCT_INDEX_CHECK_ONLY"))
+    errors, _fresh = check(root, only=only)
     if errors:
         from mkdocs.exceptions import ConfigurationError
 
@@ -295,15 +411,46 @@ def on_config(config):
     return config
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Fail when a required product index page is missing or stale."
+    )
+    parser.add_argument(
+        "--only",
+        default=None,
+        metavar="IDS",
+        help="Comma-separated product ids: freshness-check only these. "
+        "Structural checks still run for every product. Overrides "
+        "PRODUCT_INDEX_CHECK_ONLY.",
+    )
+    parser.add_argument(
+        "--touched-since",
+        default=None,
+        metavar="GIT_REF",
+        help="Freshness-check only products whose index page or list entry "
+        "changed since GIT_REF (e.g. origin/main). Falls back to checking "
+        "everything when the ref cannot be read.",
+    )
+    args = parser.parse_args(argv)
+
     root = repo_root()
-    errors, fresh = check(root)
+    only = _parse_only(
+        args.only if args.only is not None else os.environ.get("PRODUCT_INDEX_CHECK_ONLY")
+    )
+    if only is None and args.touched_since:
+        only = _touched_products(
+            root, args.touched_since, _read_products(root), _docs_dir_name(root)
+        )
+    errors, fresh = check(root, only=only)
     if errors:
         print("required product index check failed:", file=sys.stderr)
         for item in errors:
             print(f"- {item}", file=sys.stderr)
         return 1
-    print(f"required product index check passed ({len(fresh)} products)")
+    scope_note = (
+        "" if only is None else f" (freshness scoped to: {', '.join(sorted(only)) or 'none'})"
+    )
+    print(f"required product index check passed ({len(fresh)} products fresh{scope_note})")
     for item in fresh:
         try:
             tz = review_tz()
