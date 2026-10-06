@@ -26,7 +26,7 @@ products:
     title: Iron Command Forge (ICF)
     index: products/icf/index.md
     repo: sorensencc-dotcom/icf
-    last_reviewed: 2026-09-30
+    last_reviewed: 2026-10-05
   - id: trm
     title: Topic Research Module (TRM)
     index: products/trm/index.md
