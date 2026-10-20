@@ -74,76 +74,62 @@ export class McpClientRunner {
         }
       });
 
-      // Handshake first
-      const initRequest = {
+      const callRequest = {
         jsonrpc: "2.0",
-        id: 0,
-        method: "initialize",
+        id: 1,
+        method: "tools/call",
         params: {
-          protocolVersion: "2024-11-05",
-          capabilities: {},
-          clientInfo: { name: "cic-client", version: "1.0.0" }
+          name: toolName,
+          arguments: args,
+          _meta: {
+            "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+            "io.modelcontextprotocol/clientInfo": { name: "cic-client", version: "1.0.0" },
+            "io.modelcontextprotocol/clientCapabilities": {}
+          }
         }
       };
 
+      rl.on('line', (line) => {
+        if (!line.trim()) return;
+        let response: { id?: unknown; error?: { message?: string }; result?: { content?: Array<{ text?: string }> } };
+        try {
+          response = JSON.parse(line);
+        } catch (e) {
+          if (!resolved) {
+            resolved = true;
+            reject(e);
+          }
+          return;
+        }
+        if (response.id !== 1) return;
+        resolved = true;
+        child.stdin.end();
+        child.kill();
+
+        if (response.error) {
+          reject(new Error(response.error.message || JSON.stringify(response.error)));
+          return;
+        }
+        const textContent = response.result?.content?.[0]?.text;
+        if (textContent) {
+          try {
+            resolve(JSON.parse(textContent));
+          } catch {
+            resolve(textContent);
+          }
+        } else {
+          resolve(response.result);
+        }
+      });
+
       try {
-        child.stdin.write(JSON.stringify(initRequest) + '\n');
+        child.stdin.write(JSON.stringify(callRequest) + '\n');
       } catch (err) {
         if (!resolved) {
           resolved = true;
           reject(err);
         }
       }
-
-      let stage = 'init'; // 'init' -> 'call'
-
-      rl.on('line', (line) => {
-        try {
-          const response = JSON.parse(line);
-          if (stage === 'init') {
-            if (response.id === 0) {
-              // Handshake complete, call tool
-              stage = 'call';
-              const callRequest = {
-                jsonrpc: "2.0",
-                id: 1,
-                method: "tools/call",
-                params: {
-                  name: toolName,
-                  arguments: args
-                }
-              };
-              child.stdin.write(JSON.stringify(callRequest) + '\n');
-            }
-          } else if (stage === 'call') {
-            if (response.id === 1) {
-              resolved = true;
-              child.stdin.end();
-              child.kill();
-              
-              if (response.error) {
-                reject(new Error(response.error.message || JSON.stringify(response.error)));
-              } else {
-                const textContent = response.result?.content?.[0]?.text;
-                if (textContent) {
-                  try {
-                    resolve(JSON.parse(textContent));
-                  } catch (e) {
-                    resolve(textContent);
-                  }
-                } else {
-                  resolve(response.result);
-                }
-              }
-            }
-          }
-        } catch (e) {
-          if (!resolved) {
-            resolved = true;
-            reject(e);
-          }
-        }
-      });
 
       child.on('close', (code) => {
         if (!resolved) {
